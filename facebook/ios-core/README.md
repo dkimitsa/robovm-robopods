@@ -6,7 +6,7 @@
 <config>
     ...
     <frameworkPaths>
-        <path>libs</path>  <!-- path where FBAudienceNetwork.framework is located -->
+        <path>libs</path>  <!-- path where FBSDKCoreKit.framework is located -->
     </frameworkPaths>
 </config>
 ```
