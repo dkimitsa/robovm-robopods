@@ -37,7 +37,7 @@ import org.robovm.apple.uikit.*;
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/FIRAdditionalUserInfo/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
-    /*<implements>*//*</implements>*/ {
+    /*<implements>*/implements NSSecureCoding/*</implements>*/ {
 
     /*<ptr>*/public static class FIRAdditionalUserInfoPtr extends Ptr<FIRAdditionalUserInfo, FIRAdditionalUserInfoPtr> {}/*</ptr>*/
     /*<bind>*/static { ObjCRuntime.bind(FIRAdditionalUserInfo.class); }/*</bind>*/
@@ -46,6 +46,8 @@ import org.robovm.apple.uikit.*;
     protected FIRAdditionalUserInfo() {}
     protected FIRAdditionalUserInfo(Handle h, long handle) { super(h, handle); }
     protected FIRAdditionalUserInfo(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithCoder:")
+    public FIRAdditionalUserInfo(NSCoder coder) { super((SkipInit) null); initObject(init(coder)); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "providerID")
@@ -59,6 +61,13 @@ import org.robovm.apple.uikit.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    
+    @Method(selector = "newUser")
+    public native boolean newUser();
+    @Method(selector = "initWithCoder:")
+    protected native @Pointer long init(NSCoder coder);
+    @Method(selector = "encodeWithCoder:")
+    public native void encode(NSCoder coder);
+    @Method(selector = "supportsSecureCoding")
+    public static native boolean supportsSecureCoding();
     /*</methods>*/
 }

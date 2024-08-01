@@ -37,15 +37,17 @@ import org.robovm.apple.uikit.*;
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/FIRMultiFactorInfo/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
-    /*<implements>*//*</implements>*/ {
+    /*<implements>*/implements NSSecureCoding/*</implements>*/ {
 
     /*<ptr>*/public static class FIRMultiFactorInfoPtr extends Ptr<FIRMultiFactorInfo, FIRMultiFactorInfoPtr> {}/*</ptr>*/
     /*<bind>*/static { ObjCRuntime.bind(FIRMultiFactorInfo.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public FIRMultiFactorInfo() {}
+    protected FIRMultiFactorInfo() {}
     protected FIRMultiFactorInfo(Handle h, long handle) { super(h, handle); }
     protected FIRMultiFactorInfo(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithCoder:")
+    public FIRMultiFactorInfo(NSCoder coder) { super((SkipInit) null); initObject(init(coder)); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "UID")
@@ -59,6 +61,11 @@ import org.robovm.apple.uikit.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    
+    @Method(selector = "encodeWithCoder:")
+    public native void encode(NSCoder coder);
+    @Method(selector = "initWithCoder:")
+    protected native @Pointer long init(NSCoder coder);
+    @Method(selector = "supportsSecureCoding")
+    public static native boolean supportsSecureCoding();
     /*</methods>*/
 }

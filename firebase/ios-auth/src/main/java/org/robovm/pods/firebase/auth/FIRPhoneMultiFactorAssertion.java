@@ -32,7 +32,9 @@ import org.robovm.apple.uikit.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
+/**
+ * @since Available in iOS 13.0 and later.
+ */
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/FIRPhoneMultiFactorAssertion/*</name>*/ 
@@ -43,7 +45,7 @@ import org.robovm.apple.uikit.*;
     /*<bind>*/static { ObjCRuntime.bind(FIRPhoneMultiFactorAssertion.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public FIRPhoneMultiFactorAssertion() {}
+    protected FIRPhoneMultiFactorAssertion() {}
     protected FIRPhoneMultiFactorAssertion(Handle h, long handle) { super(h, handle); }
     protected FIRPhoneMultiFactorAssertion(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/

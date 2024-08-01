@@ -312,7 +312,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 /// <code>GoogleService-Info.plist</code>.
 /// If you provide a custom instance of <code>FirebaseApp</code>,
 /// the storage location will be specified via the <code>FirebaseOptions.storageBucket</code> property.
-SWIFT_CLASS_NAMED("Storage")
+SWIFT_CLASS_NAMED("Storage") SWIFT_AVAILABILITY(watchos,introduced=7) SWIFT_AVAILABILITY(maccatalyst,introduced=13) SWIFT_AVAILABILITY(macos,introduced=10.15) SWIFT_AVAILABILITY(tvos,introduced=13) SWIFT_AVAILABILITY(ios,introduced=13)
 @interface FIRStorage : NSObject
 /// The default <code>Storage</code> instance.
 ///
@@ -370,7 +370,7 @@ SWIFT_CLASS_NAMED("Storage")
 ///
 /// returns:
 /// An instance of <code>StorageReference</code> referencing the root of the storage bucket.
-- (FIRStorageReference * _Nonnull)reference SWIFT_WARN_UNUSED_RESULT;
+- (FIRStorageReference * _Nonnull)reference SWIFT_WARN_UNUSED_RESULT SWIFT_AVAILABILITY(watchos,introduced=7) SWIFT_AVAILABILITY(maccatalyst,introduced=13) SWIFT_AVAILABILITY(macos,introduced=10.15) SWIFT_AVAILABILITY(tvos,introduced=13) SWIFT_AVAILABILITY(ios,introduced=13);
 /// Creates a StorageReference given a <code>gs://</code>, <code>http://</code>, or <code>https://</code> URL pointing to a
 /// Firebase Storage location.
 /// For example, you can pass in an <code>https://</code> download URL retrieved from
@@ -381,12 +381,11 @@ SWIFT_CLASS_NAMED("Storage")
 ///
 /// throws:
 /// Throws a fatal error if <code>url</code> is not associated with the <code>FirebaseApp</code> used to
-/// initialize
-/// this Storage instance.
+/// initialize this Storage instance.
 ///
 /// returns:
 /// An instance of StorageReference at the given child path.
-- (FIRStorageReference * _Nonnull)referenceForURL:(NSString * _Nonnull)url SWIFT_WARN_UNUSED_RESULT;
+- (FIRStorageReference * _Nonnull)referenceForURL:(NSString * _Nonnull)url SWIFT_WARN_UNUSED_RESULT SWIFT_AVAILABILITY(watchos,introduced=7) SWIFT_AVAILABILITY(maccatalyst,introduced=13) SWIFT_AVAILABILITY(macos,introduced=10.15) SWIFT_AVAILABILITY(tvos,introduced=13) SWIFT_AVAILABILITY(ios,introduced=13);
 /// Creates a <code>StorageReference</code> initialized at a location specified by the <code>path</code> parameter.
 /// \param path A relative path from the root of the storage bucket,
 /// for instance @“path/to/object”.
@@ -435,7 +434,7 @@ SWIFT_PROTOCOL_NAMED("StorageTaskManagement")
 /// Callbacks are always fired on the developer-specified callback queue.
 /// If no queue is specified, it defaults to the main queue.
 /// This class is thread-safe.
-SWIFT_CLASS_NAMED("StorageTask")
+SWIFT_CLASS_NAMED("StorageTask") SWIFT_AVAILABILITY(watchos,introduced=7) SWIFT_AVAILABILITY(maccatalyst,introduced=13) SWIFT_AVAILABILITY(macos,introduced=10.15) SWIFT_AVAILABILITY(tvos,introduced=13) SWIFT_AVAILABILITY(ios,introduced=13)
 @interface FIRStorageTask : NSObject
 /// An immutable view of the task and associated metadata, progress, error, etc.
 @property (nonatomic, readonly, strong) FIRStorageTaskSnapshot * _Nonnull snapshot;
@@ -449,7 +448,7 @@ enum FIRStorageTaskStatus : NSInteger;
 /// in task state.
 /// Observers produce a <code>StorageHandle</code>, which is used to keep track of and remove specific
 /// observers at a later date.
-SWIFT_CLASS_NAMED("StorageObservableTask")
+SWIFT_CLASS_NAMED("StorageObservableTask") SWIFT_AVAILABILITY(watchos,introduced=7) SWIFT_AVAILABILITY(maccatalyst,introduced=13) SWIFT_AVAILABILITY(macos,introduced=10.15) SWIFT_AVAILABILITY(tvos,introduced=13) SWIFT_AVAILABILITY(ios,introduced=13)
 @interface FIRStorageObservableTask : FIRStorageTask
 /// Observes changes in the upload status: Resume, Pause, Progress, Success, and Failure.
 /// \param status The <code>StorageTaskStatus</code> change to observe.
@@ -481,7 +480,7 @@ SWIFT_CLASS_NAMED("StorageObservableTask")
 /// Downloads can currently be returned as <code>Data</code> in memory, or as a <code>URL</code> to a file on disk.
 /// Downloads are performed on a background queue, and callbacks are raised on the developer
 /// specified <code>callbackQueue</code> in Storage, or the main queue if left unspecified.
-SWIFT_CLASS_NAMED("StorageDownloadTask")
+SWIFT_CLASS_NAMED("StorageDownloadTask") SWIFT_AVAILABILITY(watchos,introduced=7) SWIFT_AVAILABILITY(maccatalyst,introduced=13) SWIFT_AVAILABILITY(macos,introduced=10.15) SWIFT_AVAILABILITY(tvos,introduced=13) SWIFT_AVAILABILITY(ios,introduced=13)
 @interface FIRStorageDownloadTask : FIRStorageObservableTask <FIRStorageTaskManagement>
 /// Prepares a task and begins execution.
 - (void)enqueue;
@@ -510,12 +509,15 @@ typedef SWIFT_ENUM_NAMED(NSInteger, FIRStorageErrorCode, "StorageErrorCode", ope
   FIRStorageErrorCodeDownloadSizeExceeded = -13032,
   FIRStorageErrorCodeCancelled = -13040,
   FIRStorageErrorCodeInvalidArgument = -13050,
+  FIRStorageErrorCodeBucketMismatch = -13051,
+  FIRStorageErrorCodeInternalError = -13052,
+  FIRStorageErrorCodePathError = -13053,
 };
 static NSString * _Nonnull const FIRStorageErrorCodeDomain = @"FirebaseStorage.StorageErrorCode";
 
 
 /// Contains the prefixes and items returned by a <code>StorageReference.list()</code> call.
-SWIFT_CLASS_NAMED("StorageListResult")
+SWIFT_CLASS_NAMED("StorageListResult") SWIFT_AVAILABILITY(watchos,introduced=7) SWIFT_AVAILABILITY(maccatalyst,introduced=13) SWIFT_AVAILABILITY(macos,introduced=10.15) SWIFT_AVAILABILITY(tvos,introduced=13) SWIFT_AVAILABILITY(ios,introduced=13)
 @interface FIRStorageListResult : NSObject
 /// The prefixes (folders) returned by a <code>list()</code> operation.
 @property (nonatomic, readonly, copy) NSArray<FIRStorageReference *> * _Nonnull prefixes;
@@ -536,7 +538,7 @@ SWIFT_CLASS_NAMED("StorageListResult")
 /// returned on successful operations, and can be used to retrieve download URLs, content types,
 /// and a Storage reference to the object in question. Full documentation can be found in the
 /// <a href="https://cloud.google.com/storage/docs/json_api/v1/objects#resource">GCS documentation</a>
-SWIFT_CLASS_NAMED("StorageMetadata")
+SWIFT_CLASS_NAMED("StorageMetadata") SWIFT_AVAILABILITY(watchos,introduced=7) SWIFT_AVAILABILITY(maccatalyst,introduced=13) SWIFT_AVAILABILITY(macos,introduced=10.15) SWIFT_AVAILABILITY(tvos,introduced=13) SWIFT_AVAILABILITY(ios,introduced=13)
 @interface FIRStorageMetadata : NSObject
 /// The name of the bucket containing this object.
 @property (nonatomic, readonly, copy) NSString * _Nonnull bucket;
@@ -599,7 +601,7 @@ SWIFT_CLASS_NAMED("StorageMetadata")
 /// <code>StorageReference</code> represents a reference to a Google Cloud Storage object. Developers can
 /// upload and download objects, as well as get/set object metadata, and delete an object at the
 /// path. See the <a href="https://cloud.google.com/storage/">Cloud docs</a>  for more details.
-SWIFT_CLASS_NAMED("StorageReference")
+SWIFT_CLASS_NAMED("StorageReference") SWIFT_AVAILABILITY(watchos,introduced=7) SWIFT_AVAILABILITY(maccatalyst,introduced=13) SWIFT_AVAILABILITY(macos,introduced=10.15) SWIFT_AVAILABILITY(tvos,introduced=13) SWIFT_AVAILABILITY(ios,introduced=13)
 @interface FIRStorageReference : NSObject
 /// The <code>Storage</code> service object which created this reference.
 @property (nonatomic, readonly, strong) FIRStorage * _Nonnull storage;
@@ -830,7 +832,7 @@ SWIFT_CLASS_NAMED("StorageReference")
 /// <code>StorageTaskSnapshot</code> represents an immutable view of a task.
 /// A snapshot contains a task, storage reference, metadata (if it exists),
 /// progress, and an error (if one occurred).
-SWIFT_CLASS_NAMED("StorageTaskSnapshot")
+SWIFT_CLASS_NAMED("StorageTaskSnapshot") SWIFT_AVAILABILITY(watchos,introduced=7) SWIFT_AVAILABILITY(maccatalyst,introduced=13) SWIFT_AVAILABILITY(macos,introduced=10.15) SWIFT_AVAILABILITY(tvos,introduced=13) SWIFT_AVAILABILITY(ios,introduced=13)
 @interface FIRStorageTaskSnapshot : NSObject
 /// The task this snapshot represents.
 @property (nonatomic, readonly, strong) FIRStorageTask * _Nonnull task;
@@ -866,7 +868,7 @@ typedef SWIFT_ENUM_NAMED(NSInteger, FIRStorageTaskStatus, "StorageTaskStatus", o
 /// Uploads can be initialized from <code>Data</code> in memory, or a URL to a file on disk.
 /// Uploads are performed on a background queue, and callbacks are raised on the developer
 /// specified <code>callbackQueue</code> in Storage, or the main queue if unspecified.
-SWIFT_CLASS_NAMED("StorageUploadTask")
+SWIFT_CLASS_NAMED("StorageUploadTask") SWIFT_AVAILABILITY(watchos,introduced=7) SWIFT_AVAILABILITY(maccatalyst,introduced=13) SWIFT_AVAILABILITY(macos,introduced=10.15) SWIFT_AVAILABILITY(tvos,introduced=13) SWIFT_AVAILABILITY(ios,introduced=13)
 @interface FIRStorageUploadTask : FIRStorageObservableTask <FIRStorageTaskManagement>
 /// Prepares a task and begins execution.
 - (void)enqueue;

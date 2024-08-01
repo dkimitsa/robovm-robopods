@@ -48,7 +48,10 @@ public enum /*<name>*/FIRStorageErrorCode/*</name>*/ implements NSErrorCode {
     NonMatchingChecksum(-13031L),
     DownloadSizeExceeded(-13032L),
     Cancelled(-13040L),
-    InvalidArgument(-13050L);
+    InvalidArgument(-13050L),
+    BucketMismatch(-13051L),
+    InternalError(-13052L),
+    PathError(-13053L);
     /*</values>*/
 
     /*<bind>*/
@@ -59,7 +62,7 @@ public enum /*<name>*/FIRStorageErrorCode/*</name>*/ implements NSErrorCode {
     /*<members>*//*</members>*/
     /*<methods>*//*</methods>*/
 
-    // dkimitsa: maualy added code
+    // dkimitsa: manually added code
     private static String getClassDomain() {
         return ErrorClassDomain;
     }

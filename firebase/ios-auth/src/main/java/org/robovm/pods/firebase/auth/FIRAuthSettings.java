@@ -43,15 +43,15 @@ import org.robovm.apple.uikit.*;
     /*<bind>*/static { ObjCRuntime.bind(FIRAuthSettings.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public FIRAuthSettings() {}
+    protected FIRAuthSettings() {}
     protected FIRAuthSettings(Handle h, long handle) { super(h, handle); }
     protected FIRAuthSettings(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "isAppVerificationDisabledForTesting")
     public native boolean isAppVerificationDisabledForTesting();
-    @Property(selector = "setAppVerificationDisabledForTesting:")
-    public native void setAppVerificationDisabledForTesting(boolean v);
+    @Property(selector = "setIsAppVerificationDisabledForTesting:")
+    public native void setIsAppVerificationDisabledForTesting(boolean v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

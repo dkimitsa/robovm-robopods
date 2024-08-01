@@ -32,7 +32,9 @@ import org.robovm.apple.uikit.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
+/**
+ * @since Available in iOS 13.0 and later.
+ */
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/FIRPhoneAuthCredential/*</name>*/ 
@@ -50,8 +52,7 @@ import org.robovm.apple.uikit.*;
     public FIRPhoneAuthCredential(NSCoder coder) { super((SkipInit) null); initObject(init(coder)); }
     /*</constructors>*/
     /*<properties>*/
-    @Property(selector = "supportsSecureCoding")
-    public static native boolean supportsSecureCoding();
+    
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
@@ -59,5 +60,9 @@ import org.robovm.apple.uikit.*;
     public native void encode(NSCoder coder);
     @Method(selector = "initWithCoder:")
     protected native @Pointer long init(NSCoder coder);
+    @Method(selector = "supportsSecureCoding")
+    public static native boolean supportsSecureCoding();
+    @Method(selector = "setSupportsSecureCoding:")
+    public static native void setSupportsSecureCoding(boolean value);
     /*</methods>*/
 }

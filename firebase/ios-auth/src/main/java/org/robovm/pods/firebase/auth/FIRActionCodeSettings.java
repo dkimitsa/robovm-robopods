@@ -62,10 +62,16 @@ import org.robovm.apple.uikit.*;
     public native void setIOSBundleID(String v);
     @Property(selector = "androidPackageName")
     public native String getAndroidPackageName();
+    @Property(selector = "setAndroidPackageName:")
+    public native void setAndroidPackageName(String v);
     @Property(selector = "androidMinimumVersion")
     public native String getAndroidMinimumVersion();
+    @Property(selector = "setAndroidMinimumVersion:")
+    public native void setAndroidMinimumVersion(String v);
     @Property(selector = "androidInstallIfNotAvailable")
     public native boolean isAndroidInstallIfNotAvailable();
+    @Property(selector = "setAndroidInstallIfNotAvailable:")
+    public native void setAndroidInstallIfNotAvailable(boolean v);
     @Property(selector = "dynamicLinkDomain")
     public native String getDynamicLinkDomain();
     @Property(selector = "setDynamicLinkDomain:")

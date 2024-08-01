@@ -32,12 +32,14 @@ import org.robovm.apple.uikit.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
+/**
+ * @since Available in iOS 13.0 and later.
+ */
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/FIRAuthDataResult/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
-    /*<implements>*//*</implements>*/ {
+    /*<implements>*/implements NSSecureCoding/*</implements>*/ {
 
     /*<ptr>*/public static class FIRAuthDataResultPtr extends Ptr<FIRAuthDataResult, FIRAuthDataResultPtr> {}/*</ptr>*/
     /*<bind>*/static { ObjCRuntime.bind(FIRAuthDataResult.class); }/*</bind>*/
@@ -46,6 +48,8 @@ import org.robovm.apple.uikit.*;
     protected FIRAuthDataResult() {}
     protected FIRAuthDataResult(Handle h, long handle) { super(h, handle); }
     protected FIRAuthDataResult(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithCoder:")
+    public FIRAuthDataResult(NSCoder coder) { super((SkipInit) null); initObject(init(coder)); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "user")
@@ -53,10 +57,17 @@ import org.robovm.apple.uikit.*;
     @Property(selector = "additionalUserInfo")
     public native FIRAdditionalUserInfo getAdditionalUserInfo();
     @Property(selector = "credential")
-    public native FIRAuthCredential getCredential();
+    public native FIROAuthCredential getCredential();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    
+    @Method(selector = "encodeWithCoder:")
+    public native void encode(NSCoder coder);
+    @Method(selector = "initWithCoder:")
+    protected native @Pointer long init(NSCoder coder);
+    @Method(selector = "supportsSecureCoding")
+    public static native boolean supportsSecureCoding();
+    @Method(selector = "setSupportsSecureCoding:")
+    public static native void setSupportsSecureCoding(boolean value);
     /*</methods>*/
 }

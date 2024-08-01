@@ -32,7 +32,9 @@ import org.robovm.apple.uikit.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
+/**
+ * @since Available in iOS 13.0 and later.
+ */
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/FIRPhoneAuthProvider/*</name>*/ 
@@ -56,13 +58,15 @@ import org.robovm.apple.uikit.*;
     public static native NSString getProviderID();
     
     @Method(selector = "verifyPhoneNumber:UIDelegate:completion:")
-    public native void verifyPhoneNumber(String phoneNumber, FIRAuthUIDelegate UIDelegate, @Block VoidBlock2<NSString, NSError> completion);
+    public native void verifyPhoneNumber(String phoneNumber, FIRAuthUIDelegate uiDelegate, @Block VoidBlock2<NSString, NSError> completion);
     @Method(selector = "verifyPhoneNumber:UIDelegate:multiFactorSession:completion:")
-    public native void verifyPhoneNumber(String phoneNumber, FIRAuthUIDelegate UIDelegate, FIRMultiFactorSession session, @Block VoidBlock2<NSString, NSError> completion);
+    public native void verifyPhoneNumber(String phoneNumber, FIRAuthUIDelegate uiDelegate, FIRMultiFactorSession multiFactorSession, @Block VoidBlock2<NSString, NSError> completion);
     @Method(selector = "verifyPhoneNumberWithMultiFactorInfo:UIDelegate:multiFactorSession:completion:")
-    public native void verifyPhoneNumber(FIRPhoneMultiFactorInfo phoneMultiFactorInfo, FIRAuthUIDelegate UIDelegate, FIRMultiFactorSession session, @Block VoidBlock2<NSString, NSError> completion);
+    public native void verifyPhoneNumber(FIRPhoneMultiFactorInfo multiFactorInfo, FIRAuthUIDelegate uiDelegate, FIRMultiFactorSession multiFactorSession, @Block VoidBlock2<NSString, NSError> completion);
     @Method(selector = "credentialWithVerificationID:verificationCode:")
     public native FIRPhoneAuthCredential getCredential(String verificationID, String verificationCode);
+    @Method(selector = "id")
+    public static native String id();
     @Method(selector = "provider")
     public static native FIRPhoneAuthProvider create();
     @Method(selector = "providerWithAuth:")

@@ -32,7 +32,9 @@ import org.robovm.apple.uikit.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
+/**
+ * @since Available in iOS 13.0 and later.
+ */
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/FIROAuthProvider/*</name>*/ 
@@ -61,21 +63,26 @@ import org.robovm.apple.uikit.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
+    /**
+     * @since Available in iOS 13.0 and later.
+     */
+    @Method(selector = "getCredentialWithUIDelegate:completion:")
+    public native void getCredential(FIRAuthUIDelegate uiDelegate, @Block VoidBlock2<FIRAuthCredential, NSError> completionHandler);
+    @Method(selector = "id")
+    public static native String id();
     @Method(selector = "providerWithProviderID:")
     public static native FIROAuthProvider create(String providerID);
     @Method(selector = "providerWithProviderID:auth:")
     public static native FIROAuthProvider create(String providerID, FIRAuth auth);
     @Method(selector = "credentialWithProviderID:IDToken:accessToken:")
-    public static native FIROAuthCredential createUsingIDTokenAccessToken(String providerID, String IDToken, String accessToken);
+    public static native FIROAuthCredential createUsingIDTokenAccessToken(String providerID, String idToken, String accessToken);
     @Method(selector = "credentialWithProviderID:accessToken:")
     public static native FIROAuthCredential createUsingAccessToken(String providerID, String accessToken);
     @Method(selector = "credentialWithProviderID:IDToken:rawNonce:accessToken:")
-    public static native FIROAuthCredential createUsingIDToken(String providerID, String IDToken, String rawNonce, String accessToken);
+    public static native FIROAuthCredential createUsingIDToken(String providerID, String idToken, String rawNonce, String accessToken);
     @Method(selector = "credentialWithProviderID:IDToken:rawNonce:")
-    public static native FIROAuthCredential createUsingIDToken(String providerID, String IDToken, String rawNonce);
+    public static native FIROAuthCredential createUsingIDToken(String providerID, String idToken, String rawNonce);
     @Method(selector = "appleCredentialWithIDToken:rawNonce:fullName:")
-    public static native FIROAuthCredential appleCredential(String IDToken, String rawNonce, NSPersonNameComponents fullName);
-    @Method(selector = "getCredentialWithUIDelegate:completion:")
-    public native void getCredential(FIRAuthUIDelegate UIDelegate, @Block VoidBlock2<FIRAuthCredential, NSError> completion);
+    public static native FIROAuthCredential appleCredential(String idToken, String rawNonce, NSPersonNameComponents fullName);
     /*</methods>*/
 }

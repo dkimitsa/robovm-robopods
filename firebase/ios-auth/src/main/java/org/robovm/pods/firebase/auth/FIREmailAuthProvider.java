@@ -32,7 +32,9 @@ import org.robovm.apple.uikit.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
+/**
+ * @since Available in iOS 13.0 and later.
+ */
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/FIREmailAuthProvider/*</name>*/ 
@@ -43,7 +45,7 @@ import org.robovm.apple.uikit.*;
     /*<bind>*/static { ObjCRuntime.bind(FIREmailAuthProvider.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    protected FIREmailAuthProvider() {}
+    public FIREmailAuthProvider() {}
     protected FIREmailAuthProvider(Handle h, long handle) { super(h, handle); }
     protected FIREmailAuthProvider(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
@@ -55,6 +57,8 @@ import org.robovm.apple.uikit.*;
     @GlobalValue(symbol="FIREmailAuthProviderID", optional=true)
     public static native NSString getProviderID();
     
+    @Method(selector = "id")
+    public static native String id();
     @Method(selector = "credentialWithEmail:password:")
     public static native FIRAuthCredential createCredentialUsingEmailPassword(String email, String password);
     @Method(selector = "credentialWithEmail:link:")

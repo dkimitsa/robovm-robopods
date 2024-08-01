@@ -52,6 +52,8 @@ import org.robovm.apple.webkit.*;
     protected GADAdLoader(SkipInit skipInit) { super(skipInit); }
     @Method(selector = "initWithAdUnitID:rootViewController:adTypes:options:")
     public GADAdLoader(String adUnitID, UIViewController rootViewController, NSArray<NSString> adTypes, NSArray<GADAdLoaderOptions> options) { super((SkipInit) null); initObject(init(adUnitID, rootViewController, adTypes, options)); }
+    @Method(selector = "initWithRootViewController:")
+    public GADAdLoader(UIViewController rootViewController) { super((SkipInit) null); initObject(init(rootViewController)); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "delegate")
@@ -69,5 +71,9 @@ import org.robovm.apple.webkit.*;
     protected native @Pointer long init(String adUnitID, UIViewController rootViewController, NSArray<NSString> adTypes, NSArray<GADAdLoaderOptions> options);
     @Method(selector = "loadRequest:")
     public native void loadRequest(GADRequest request);
+    @Method(selector = "initWithRootViewController:")
+    protected native @Pointer long init(UIViewController rootViewController);
+    @Method(selector = "loadWithAdResponseString:")
+    public native void load(String adResponseString);
     /*</methods>*/
 }

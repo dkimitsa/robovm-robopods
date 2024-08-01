@@ -39,7 +39,7 @@ classes:
                 name: getImageURL
     GIDSignIn:
         properties:
-            'sharedInstance':
+            '+sharedInstance':
                 getter: sharedInstance
         methods:
             '-restorePreviousSignInWithCallback:':

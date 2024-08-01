@@ -58,9 +58,9 @@ import org.robovm.apple.uikit.*;
     public static native String GitHub();
     @GlobalValue(symbol="FIRGoogleAuthSignInMethod", optional=true)
     public static native String Google();
-    @GlobalValue(symbol="FIRTwitterAuthSignInMethod", optional=true)
-    public static native String Twitter();
     @GlobalValue(symbol="FIRPhoneAuthSignInMethod", optional=true)
     public static native String Phone();
+    @GlobalValue(symbol="FIRTwitterAuthSignInMethod", optional=true)
+    public static native String Twitter();
     /*</methods>*/
 }

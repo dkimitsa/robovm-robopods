@@ -32,7 +32,9 @@ import org.robovm.apple.uikit.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
+/**
+ * @since Available in iOS 13.0 and later.
+ */
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/FIRFacebookAuthProvider/*</name>*/ 
@@ -55,6 +57,8 @@ import org.robovm.apple.uikit.*;
     @GlobalValue(symbol="FIRFacebookAuthProviderID", optional=true)
     public static native NSString getProviderID();
     
+    @Method(selector = "id")
+    public static native String id();
     @Method(selector = "credentialWithAccessToken:")
     public static native FIRAuthCredential createCredential(String accessToken);
     /*</methods>*/

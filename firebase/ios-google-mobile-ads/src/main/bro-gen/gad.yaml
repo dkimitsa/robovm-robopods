@@ -47,6 +47,10 @@ classes:
         methods:
             '-initWithAdUnitID:rootViewController:adTypes:options:':
                 name: init
+            '-initWithRootViewController:':
+                name: init
+            '-loadWithAdResponseString:':
+                name: load
     GADAdLoaderOptions: {}
     GADAdReward:
         methods:
@@ -62,6 +66,8 @@ classes:
                 name: load
             '-canPresentFromRootViewController:error:':
                 name: canPresentFromRootViewController
+            '+loadWithAdResponseString:completionHandler:':
+                name: load
     GADAppOpenAdView: {}
     GADAudioVideoManager: {}
     GADBannerView:
@@ -70,6 +76,8 @@ classes:
                 name: init
             '-initWithAdSize:':
                 name: init
+            '-loadWithAdResponseString:':
+                name: load
     GADCustomEventExtras:
         methods:
             '-setExtras:forLabel:':
@@ -118,6 +126,8 @@ classes:
                 name: DisableSDKCrashReporting
             '-presentAdInspectorFromViewController:completionHandler:':
                 name: presentAdInspector
+            '+generateSignal:completionHandler:':
+                name: generateSignal
     GADMultipleAdsAdLoaderOptions: {}
     GADMuteThisAdReason: {}
     GADNativeAd:
@@ -162,6 +172,8 @@ classes:
                 name: present
             '+loadWithAdUnitID:request:completionHandler:':
                 name: load
+            '+loadWithAdResponseString:completionHandler:':
+                name: load
     GADSearchBannerView: {}
     GADServerSideVerificationOptions: {}
     GADVideoController: {}
@@ -175,6 +187,8 @@ classes:
                 name: present
             '+loadWithAdUnitID:request:completionHandler:':
                 name: load
+            '+loadWithAdResponseString:completionHandler:':
+                name: load
     GADCustomNativeAd:
         methods:
             '-performClickOnAssetWithKey:':
@@ -184,6 +198,8 @@ classes:
             '-canPresentFromRootViewController:error:':
                 name: canPresentFromRootViewController
             '+loadWithAdUnitID:request:completionHandler:':
+                name: load
+            '+loadWithAdResponseString:completionHandler:':
                 name: load
     GADNativeAdView: {}
     GAMBannerView: {}
@@ -204,6 +220,34 @@ classes:
             '+createQueryInfoWithRequest:adFormat:adUnitID:completionHandler:':
                 name: createQueryInfo
     GADMediationAppOpenAdConfiguration: { }
+    GADAppOpenSignalRequest:
+        methods:
+            '-initWithSignalType:':
+                name: init
+    GADBannerSignalRequest:
+        methods:
+            '-initWithSignalType:':
+                name: init
+    GADInterstitialSignalRequest:
+        methods:
+            '-initWithSignalType:':
+                name: init
+    GADNativeSignalRequest:
+        methods:
+            '-enableSwipeGestureDirection:tapsAllowed:':
+                name: enableSwipeGestureDirection
+            '-initWithSignalType:':
+                name: init
+    GADRewardedInterstitialSignalRequest:
+        methods:
+            '-initWithSignalType:':
+                name: init
+    GADRewardedSignalRequest:
+        methods:
+            '-initWithSignalType:':
+                name: init
+    GADSignal: { }
+    GADSignalRequest: { }
 protocols:
     GADAdLoaderDelegate:
         methods:

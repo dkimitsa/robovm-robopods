@@ -60,10 +60,6 @@ import org.robovm.apple.webkit.*;
     public native NSArray<NSString> getCategoryExclusions();
     @Property(selector = "setCategoryExclusions:")
     public native void setCategoryExclusions(NSArray<NSString> v);
-    @Property(selector = "customTargeting")
-    public native NSDictionary<NSString, NSString> getCustomTargeting();
-    @Property(selector = "setCustomTargeting:")
-    public native void setCustomTargeting(NSDictionary<NSString, NSString> v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

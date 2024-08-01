@@ -1039,7 +1039,31 @@ fun registerFirebase(frameworkRegistry: MutableMap<String, (String) -> Unit>, gr
             frameworkLocation = pickLocation("FirebaseCore", "FirebaseAnalytics"))
     }
     registry["FirebaseAnalytics"] = { framework -> action(framework, "firebase/ios-analytics", "firebase-analytics.yaml") }
-    registry["FirebaseAuth"] = { framework -> action(framework, "firebase/ios-auth", "firebaseauth.yaml") }
+    registry["FirebaseAuth"] = { framework ->
+        action(framework,
+            moduleFolder = "firebase/ios-auth",
+            yaml = "firebaseauth.yaml",
+            destinationHeadersDir = Path.of("firebase", "ios-auth", "src", "main", "bro-gen").toFile(),
+            headerFolderCleaner = { _, dst ->
+                cleanUpHeaders("FirebaseAuth", dst.extend("FirebaseAuth.framework"))
+                cleanUpHeaders("FirebaseAuthInterop", dst.extend("FirebaseAuthInterop.framework"))
+            },
+            headersCopier = { _, _, dst ->
+                copyHeaders("FirebaseAuth.framework",
+                    pickLocation("FirebaseAuth", "FirebaseAuth").extend("Headers"),
+                    dst.extend("FirebaseAuth.framework/Headers"))
+                copyHeaders("FirebaseAuthInterop.framework",
+                    pickLocation("FirebaseAuthInterop", "FirebaseAuth").extend("Headers"),
+                    dst.extend("FirebaseAuthInterop.framework/Headers"))
+            } ,
+            interactiveValidateHeaderFolder = { _, _, instruction, optional ->
+                interactiveValidateHeaderFolder("FirebaseAuth.framework",
+                    pickLocation("FirebaseAuth").extend("Headers"), instruction, optional)
+                interactiveValidateHeaderFolder("FirebaseAuthInterop.framework",
+                    pickLocation("FirebaseAuthInterop", "FirebaseAuth").extend("Headers"), instruction, optional)
+            }
+        )
+    }
     registry["FirebaseCrashlytics"] = { framework ->
         action(framework,
             moduleFolder = "firebase/ios-crashlytics",

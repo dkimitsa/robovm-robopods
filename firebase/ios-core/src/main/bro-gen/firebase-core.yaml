@@ -23,6 +23,19 @@ classes:
                 name: init
     FIRAnalyticsConfiguration: {}
     FIRConfiguration: {}
+    FIRTimestamp:
+        skip_def_constructor: true
+        methods:
+            '-initWithSeconds:nanoseconds:':
+                name: init
+            '+timestampWithSeconds:nanoseconds:':
+                exclude: true
+            '+timestampWithDate:':
+                name: create
+                constructor: true
+            '+timestamp':
+                name: create
+                constructor: true
 
 protocols: {}
 

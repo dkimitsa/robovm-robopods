@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.robovm.pods.firebase.appcheck;
+package org.robovm.pods.google.mobileads;
 
 /*<imports>*/
 import java.io.*;
@@ -28,29 +28,35 @@ import org.robovm.rt.bro.*;
 import org.robovm.rt.bro.annotation.*;
 import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
+import org.robovm.apple.coregraphics.*;
+import org.robovm.apple.storekit.*;
+import org.robovm.apple.uikit.*;
+import org.robovm.apple.coreanimation.*;
+import org.robovm.apple.webkit.*;
 /*</imports>*/
 
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*//*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ interface /*<name>*/FIRAppCheckTokenProtocol/*</name>*/ 
-    /*<implements>*/extends NSObjectProtocol/*</implements>*/ {
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/GADSignal/*</name>*/ 
+    extends /*<extends>*/NSObject/*</extends>*/ 
+    /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/
-    /*</ptr>*/
-    /*<bind>*/
-    /*</bind>*/
+    /*<ptr>*/public static class GADSignalPtr extends Ptr<GADSignal, GADSignalPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(GADSignal.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
+    /*<constructors>*/
+    protected GADSignal() {}
+    protected GADSignal(Handle h, long handle) { super(h, handle); }
+    protected GADSignal(SkipInit skipInit) { super(skipInit); }
+    /*</constructors>*/
     /*<properties>*/
-    @Property(selector = "token")
-    String getToken();
-    @Property(selector = "expirationDate")
-    NSDate getExpirationDate();
+    @Property(selector = "signalString")
+    public native String getSignalString();
     /*</properties>*/
+    /*<members>*//*</members>*/
     /*<methods>*/
     
     /*</methods>*/
-    /*<adapter>*/
-    /*</adapter>*/
 }

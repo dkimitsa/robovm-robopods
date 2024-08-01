@@ -32,7 +32,9 @@ import org.robovm.apple.uikit.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
+/**
+ * @since Available in iOS 13.0 and later.
+ */
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/FIRGoogleAuthProvider/*</name>*/ 
@@ -55,7 +57,9 @@ import org.robovm.apple.uikit.*;
     @GlobalValue(symbol="FIRGoogleAuthProviderID", optional=true)
     public static native NSString getProviderID();
     
+    @Method(selector = "id")
+    public static native String id();
     @Method(selector = "credentialWithIDToken:accessToken:")
-    public static native FIRAuthCredential createCredentialUsingIDToken(String IDToken, String accessToken);
+    public static native FIRAuthCredential createCredentialUsingIDToken(String idToken, String accessToken);
     /*</methods>*/
 }

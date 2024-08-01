@@ -32,7 +32,9 @@ import org.robovm.apple.uikit.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
+/**
+ * @since Available in iOS 13.0 and later.
+ */
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/FIRMultiFactorResolver/*</name>*/ 
@@ -43,7 +45,7 @@ import org.robovm.apple.uikit.*;
     /*<bind>*/static { ObjCRuntime.bind(FIRMultiFactorResolver.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public FIRMultiFactorResolver() {}
+    protected FIRMultiFactorResolver() {}
     protected FIRMultiFactorResolver(Handle h, long handle) { super(h, handle); }
     protected FIRMultiFactorResolver(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/

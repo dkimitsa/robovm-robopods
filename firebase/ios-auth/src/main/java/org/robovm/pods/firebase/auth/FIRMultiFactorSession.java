@@ -32,7 +32,9 @@ import org.robovm.apple.uikit.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
+/**
+ * @since Available in iOS 13.0 and later.
+ */
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/FIRMultiFactorSession/*</name>*/ 
@@ -43,7 +45,7 @@ import org.robovm.apple.uikit.*;
     /*<bind>*/static { ObjCRuntime.bind(FIRMultiFactorSession.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public FIRMultiFactorSession() {}
+    protected FIRMultiFactorSession() {}
     protected FIRMultiFactorSession(Handle h, long handle) { super(h, handle); }
     protected FIRMultiFactorSession(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/

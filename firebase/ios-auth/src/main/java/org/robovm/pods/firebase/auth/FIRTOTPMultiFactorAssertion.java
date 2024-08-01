@@ -43,7 +43,7 @@ import org.robovm.apple.uikit.*;
     /*<bind>*/static { ObjCRuntime.bind(FIRTOTPMultiFactorAssertion.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public FIRTOTPMultiFactorAssertion() {}
+    protected FIRTOTPMultiFactorAssertion() {}
     protected FIRTOTPMultiFactorAssertion(Handle h, long handle) { super(h, handle); }
     protected FIRTOTPMultiFactorAssertion(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/

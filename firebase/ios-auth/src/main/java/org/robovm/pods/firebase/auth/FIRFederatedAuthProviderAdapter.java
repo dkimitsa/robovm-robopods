@@ -49,7 +49,10 @@ import org.robovm.apple.uikit.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
+    /**
+     * @since Available in iOS 13.0 and later.
+     */
     @NotImplemented("getCredentialWithUIDelegate:completion:")
-    public void getCredential(FIRAuthUIDelegate UIDelegate, @Block VoidBlock2<FIRAuthCredential, NSError> completion) {}
+    public void getCredential(FIRAuthUIDelegate uiDelegate, @Block VoidBlock2<FIRAuthCredential, NSError> completionHandler) {}
     /*</methods>*/
 }

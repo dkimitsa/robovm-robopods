@@ -104,6 +104,8 @@ import org.robovm.apple.webkit.*;
     protected native @Pointer long init(@ByVal GADAdSize adSize);
     @Method(selector = "loadRequest:")
     public native void loadRequest(GADRequest request);
+    @Method(selector = "loadWithAdResponseString:")
+    public native void load(String adResponseString);
     /**
      * @since Available in iOS 9.0 and later.
      */

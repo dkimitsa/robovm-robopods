@@ -32,7 +32,9 @@ import org.robovm.apple.dispatch.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
+/**
+ * @since Available in iOS 13.0 and later.
+ */
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/FIRStorage/*</name>*/ 
@@ -82,8 +84,14 @@ import org.robovm.apple.dispatch.*;
     @GlobalValue(symbol="FirebaseStorageVersionString", optional=true)
     public static native BytePtr VersionString();
     
+    /**
+     * @since Available in iOS 13.0 and later.
+     */
     @Method(selector = "reference")
     public native FIRStorageReference reference();
+    /**
+     * @since Available in iOS 13.0 and later.
+     */
     @Method(selector = "referenceForURL:")
     public native FIRStorageReference referenceForURL(String url);
     @Method(selector = "referenceWithPath:")

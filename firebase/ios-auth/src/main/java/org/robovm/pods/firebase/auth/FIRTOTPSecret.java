@@ -43,7 +43,7 @@ import org.robovm.apple.uikit.*;
     /*<bind>*/static { ObjCRuntime.bind(FIRTOTPSecret.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public FIRTOTPSecret() {}
+    protected FIRTOTPSecret() {}
     protected FIRTOTPSecret(Handle h, long handle) { super(h, handle); }
     protected FIRTOTPSecret(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
@@ -57,6 +57,6 @@ import org.robovm.apple.uikit.*;
     @Method(selector = "generateQRCodeURLWithAccountName:issuer:")
     public native String generateQRCode(String accountName, String issuer);
     @Method(selector = "openInOTPAppWithQRCodeURL:")
-    public native void openInOTPApp(String QRCodeURL);
+    public native void openInOTPApp(String qrCodeURL);
     /*</methods>*/
 }

@@ -57,8 +57,16 @@ import org.robovm.apple.webkit.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
+    /**
+     * @deprecated Use +[GADMobileAds generateSignal:completionHandler:] instead.
+     */
+    @Deprecated
     @Method(selector = "createQueryInfoWithRequest:adFormat:completionHandler:")
     public static native void createQueryInfo(GADRequest request, GADAdFormat adFormat, @Block VoidBlock2<GADQueryInfo, NSError> completionHandler);
+    /**
+     * @deprecated Use +[GADMobileAds generateSignal:completionHandler:] instead. Set adUnitID in the GADSignalRequest subclass.
+     */
+    @Deprecated
     @Method(selector = "createQueryInfoWithRequest:adFormat:adUnitID:completionHandler:")
     public static native void createQueryInfo(GADRequest request, GADAdFormat adFormat, String adUnitID, @Block VoidBlock2<GADQueryInfo, NSError> completionHandler);
     /*</methods>*/

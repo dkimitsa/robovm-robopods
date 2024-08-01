@@ -43,13 +43,15 @@ import org.robovm.apple.uikit.*;
     /*<bind>*/static { ObjCRuntime.bind(FIRMultiFactorAssertion.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public FIRMultiFactorAssertion() {}
+    protected FIRMultiFactorAssertion() {}
     protected FIRMultiFactorAssertion(Handle h, long handle) { super(h, handle); }
     protected FIRMultiFactorAssertion(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "factorID")
     public native String getFactorID();
+    @Property(selector = "setFactorID:")
+    public native void setFactorID(String v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

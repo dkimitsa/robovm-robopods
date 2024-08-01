@@ -1,15 +1,22 @@
 package: org.robovm.pods.firebase.auth
 include: [foundation, uikit]
 framework: FirebaseAuth
+internal_frameworks: [FirebaseAuthInterop]
 clang_args: ['-x', 'objective-c']
 headers:
+    - "#import <uikit/uikit.h>"
+    - "#import <FirebaseAuthInterop/FirebaseAuthInterop-umbrella.h>"
     - FirebaseAuth.h
+    - FirebaseAuth-Swift.h
 
 private_typedefs:
     "FIRApp *": org.robovm.pods.firebase.core.FIRApp
-    "UIViewController *": UIViewController
     FIRIDTokenDidChangeListenerHandle: NSObject
     FIRAuthStateDidChangeListenerHandle: NSObject
+    "CKShareMetadata *": org.robovm.apple.cloudkit.CKShareMetadata
+    "INIntent *": org.robovm.apple.intents.INIntent
+    "INIntentResponse *": org.robovm.apple.intents.INIntentResponse
+    CGRect: org.robovm.apple.coregraphics.CGRect
 
 typedefs: {}
 
@@ -27,9 +34,11 @@ classes:
                 name: setAndroidPackageName
     FIRActionCodeURL:
         methods:
-            '+actionCodeURLWithLink:':
-                constructor: true
-                name: create
+            '-actionCodeURLWithLink:':
+                # TODO: seems like should act as -init (based on comment)
+                visibility: protected
+                name: init
+                return_type: "@Pointer long"
     FIRAdditionalUserInfo: {}
     FIRAuth:
         methods:
@@ -85,10 +94,18 @@ classes:
                 name: revokeToken
             '-initializeRecaptchaConfigWithCompletion:':
                 name: initializeRecaptchaConfig
+            '-signInAnonymouslyWithCompletionHandler:':
+                exclude: true # seems to be duplicate
     FIRAuthCredential: {}
     FIRAuthDataResult: {}
     FIRAuthErrors: {exclude: true} # empty used only for aggregation
-    FIRAuthSettings: {}
+    FIRAuthSettings:
+        properties:
+            'appVerificationDisabledForTesting':
+                exclude: true # duplicates isAppVerificationDisabledForTesting
+        methods:
+            '-copyWithZone:':
+                exclude: true
     FIRAuthTokenResult: {}
     FIREmailAuthProvider:
         methods:
@@ -249,8 +266,15 @@ protocols:
             '-getCredentialWithUIDelegate:completion:':
                 name: getCredential
     FIRUserInfo: {}
-
+    FIRAuthInterop:
+        methods:
+            '-getTokenForcingRefresh:withCallback:':
+                name: getTokenForcingRefresh
 functions:
+    FIRRecaptchaGetToken:
+        class: FIRRecaptcha
+        name: getToken
+
     # Make sure we don't miss any functions if new ones are introduced in a later version
     (.*):
         class: __FixMe
@@ -317,13 +341,18 @@ values:
         class: FIRMultiFactor
         name: getTOTPFactorID
 
+    FirebaseAuthInteropVersion(.*):
+        exclude: true
+
     # Make sure we don't miss any values if new ones are introduced in a later version
     (.*):
         class: __FixMe
         name: 'Value_#{g[0]}'
 
 constants:
-    # Make sure we don't miss any constants if new ones are introduced in a later version
+    SWIFT_.*:
+        exclude: true
+        # Make sure we don't miss any constants if new ones are introduced in a later version
     (.*):
         class: __FixMe
         name: 'Constant__#{g[0]}'

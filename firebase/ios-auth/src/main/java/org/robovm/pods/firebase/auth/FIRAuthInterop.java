@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.robovm.pods.firebase.appcheck;
+package org.robovm.pods.firebase.auth;
 
 /*<imports>*/
 import java.io.*;
@@ -28,29 +28,30 @@ import org.robovm.rt.bro.*;
 import org.robovm.rt.bro.annotation.*;
 import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
+import org.robovm.apple.uikit.*;
 /*</imports>*/
 
 /*<javadoc>*/
+
 /*</javadoc>*/
 /*<annotations>*//*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/FIRAppCheckTokenProtocolAdapter/*</name>*/ 
-    extends /*<extends>*/NSObject/*</extends>*/ 
-    /*<implements>*/implements FIRAppCheckTokenProtocol/*</implements>*/ {
+/*<visibility>*/public/*</visibility>*/ interface /*<name>*/FIRAuthInterop/*</name>*/ 
+    /*<implements>*/extends NSObjectProtocol/*</implements>*/ {
 
     /*<ptr>*/
     /*</ptr>*/
     /*<bind>*/
     /*</bind>*/
     /*<constants>*//*</constants>*/
-    /*<constructors>*//*</constructors>*/
     /*<properties>*/
-    @NotImplemented("token")
-    public String getToken() { return null; }
-    @NotImplemented("expirationDate")
-    public NSDate getExpirationDate() { return null; }
-    /*</properties>*/
-    /*<members>*//*</members>*/
-    /*<methods>*/
     
+    /*</properties>*/
+    /*<methods>*/
+    @Method(selector = "getTokenForcingRefresh:withCallback:")
+    void getTokenForcingRefresh(boolean forceRefresh, @Block VoidBlock2<NSString, NSError> callback);
+    @Method(selector = "getUserID")
+    String getUserID();
     /*</methods>*/
+    /*<adapter>*/
+    /*</adapter>*/
 }

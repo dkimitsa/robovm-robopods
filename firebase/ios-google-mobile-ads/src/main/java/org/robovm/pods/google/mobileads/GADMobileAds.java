@@ -93,5 +93,7 @@ import org.robovm.apple.webkit.*;
     public native void registerWebView(WKWebView webView);
     @Method(selector = "sharedInstance")
     public static native GADMobileAds sharedInstance();
+    @Method(selector = "generateSignal:completionHandler:")
+    public static native void generateSignal(GADSignalRequest request, @Block VoidBlock2<GADSignal, NSError> completionHandler);
     /*</methods>*/
 }

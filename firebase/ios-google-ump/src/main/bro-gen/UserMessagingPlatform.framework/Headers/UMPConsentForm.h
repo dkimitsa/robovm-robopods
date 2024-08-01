@@ -40,7 +40,7 @@ typedef void (^UMPConsentFormPresentCompletionHandler)(NSError *_Nullable error)
                                           completionHandler;
 
 /// Unavailable. Use +loadWithCompletionHandler: instead.
-- (nullable instancetype)init NS_UNAVAILABLE;
+- (nonnull instancetype)init NS_UNAVAILABLE;
 
 /// Presents the full screen consent form over viewController. The form is dismissed and
 /// completionHandler is called after the user selects an option.

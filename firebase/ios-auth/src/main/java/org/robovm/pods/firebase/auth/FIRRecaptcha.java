@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.robovm.pods.firebase.appcheck;
+package org.robovm.pods.firebase.auth;
 
 /*<imports>*/
 import java.io.*;
@@ -28,29 +28,25 @@ import org.robovm.rt.bro.*;
 import org.robovm.rt.bro.annotation.*;
 import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
+import org.robovm.apple.uikit.*;
 /*</imports>*/
 
 /*<javadoc>*/
 /*</javadoc>*/
-/*<annotations>*//*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/FIRAppCheckProtocolAdapter/*</name>*/ 
-    extends /*<extends>*/NSObject/*</extends>*/ 
-    /*<implements>*/implements FIRAppCheckProtocol/*</implements>*/ {
+/*<annotations>*/@Library(Library.INTERNAL)/*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/FIRRecaptcha/*</name>*/ 
+    extends /*<extends>*/CocoaUtility/*</extends>*/ 
+    /*<implements>*//*</implements>*/ {
 
     /*<ptr>*/
     /*</ptr>*/
-    /*<bind>*/
-    /*</bind>*/
+    /*<bind>*/static { Bro.bind(FIRRecaptcha.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*//*</constructors>*/
-    /*<properties>*/
-    
-    /*</properties>*/
+    /*<properties>*//*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @NotImplemented("tokenForcingRefresh:completion:")
-    public void tokenForcingRefresh(boolean forcingRefresh, @Block VoidBlock2<FIRAppCheckTokenProtocol, NSError> handler) {}
-    @NotImplemented("limitedUseTokenWithCompletion:")
-    public void limitedUseToken(@Block VoidBlock2<FIRAppCheckTokenProtocol, NSError> handler) {}
+    @Bridge(symbol="FIRRecaptchaGetToken", optional=true)
+    public static native void getToken(String siteKey, String actionString, String fakeToken, @Block VoidBlock4<NSString, NSError, Boolean, Boolean> callback);
     /*</methods>*/
 }

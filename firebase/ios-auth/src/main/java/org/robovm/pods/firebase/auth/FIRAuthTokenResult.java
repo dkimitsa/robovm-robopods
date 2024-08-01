@@ -32,39 +32,62 @@ import org.robovm.apple.uikit.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
+/**
+ * @since Available in iOS 13.0 and later.
+ */
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/FIRAuthTokenResult/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
-    /*<implements>*//*</implements>*/ {
+    /*<implements>*/implements NSSecureCoding/*</implements>*/ {
 
     /*<ptr>*/public static class FIRAuthTokenResultPtr extends Ptr<FIRAuthTokenResult, FIRAuthTokenResultPtr> {}/*</ptr>*/
     /*<bind>*/static { ObjCRuntime.bind(FIRAuthTokenResult.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public FIRAuthTokenResult() {}
+    protected FIRAuthTokenResult() {}
     protected FIRAuthTokenResult(Handle h, long handle) { super(h, handle); }
     protected FIRAuthTokenResult(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithCoder:")
+    public FIRAuthTokenResult(NSCoder coder) { super((SkipInit) null); initObject(init(coder)); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "token")
     public native String getToken();
+    @Property(selector = "setToken:")
+    public native void setToken(String v);
     @Property(selector = "expirationDate")
     public native NSDate getExpirationDate();
+    @Property(selector = "setExpirationDate:")
+    public native void setExpirationDate(NSDate v);
     @Property(selector = "authDate")
     public native NSDate getAuthDate();
+    @Property(selector = "setAuthDate:")
+    public native void setAuthDate(NSDate v);
     @Property(selector = "issuedAtDate")
     public native NSDate getIssuedAtDate();
+    @Property(selector = "setIssuedAtDate:")
+    public native void setIssuedAtDate(NSDate v);
     @Property(selector = "signInProvider")
     public native String getSignInProvider();
+    @Property(selector = "setSignInProvider:")
+    public native void setSignInProvider(String v);
     @Property(selector = "signInSecondFactor")
     public native String getSignInSecondFactor();
+    @Property(selector = "setSignInSecondFactor:")
+    public native void setSignInSecondFactor(String v);
     @Property(selector = "claims")
     public native NSDictionary<NSString, ?> getClaims();
+    @Property(selector = "setClaims:")
+    public native void setClaims(NSDictionary<NSString, ?> v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    
+    @Method(selector = "encodeWithCoder:")
+    public native void encode(NSCoder coder);
+    @Method(selector = "initWithCoder:")
+    protected native @Pointer long init(NSCoder coder);
+    @Method(selector = "supportsSecureCoding")
+    public static native boolean supportsSecureCoding();
     /*</methods>*/
 }

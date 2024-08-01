@@ -32,24 +32,30 @@ import org.robovm.apple.uikit.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
+/**
+ * @since Available in iOS 13.0 and later.
+ */
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/FIRMultiFactor/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
-    /*<implements>*//*</implements>*/ {
+    /*<implements>*/implements NSSecureCoding/*</implements>*/ {
 
     /*<ptr>*/public static class FIRMultiFactorPtr extends Ptr<FIRMultiFactor, FIRMultiFactorPtr> {}/*</ptr>*/
     /*<bind>*/static { ObjCRuntime.bind(FIRMultiFactor.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public FIRMultiFactor() {}
+    protected FIRMultiFactor() {}
     protected FIRMultiFactor(Handle h, long handle) { super(h, handle); }
     protected FIRMultiFactor(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithCoder:")
+    public FIRMultiFactor(NSCoder coder) { super((SkipInit) null); initObject(init(coder)); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "enrolledFactors")
     public native NSArray<FIRMultiFactorInfo> getEnrolledFactors();
+    @Property(selector = "setEnrolledFactors:")
+    public native void setEnrolledFactors(NSArray<FIRMultiFactorInfo> v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
@@ -66,5 +72,11 @@ import org.robovm.apple.uikit.*;
     public native void unenroll(FIRMultiFactorInfo factorInfo, @Block VoidBlock1<NSError> completion);
     @Method(selector = "unenrollWithFactorUID:completion:")
     public native void unenroll(String factorUID, @Block VoidBlock1<NSError> completion);
+    @Method(selector = "encodeWithCoder:")
+    public native void encode(NSCoder coder);
+    @Method(selector = "initWithCoder:")
+    protected native @Pointer long init(NSCoder coder);
+    @Method(selector = "supportsSecureCoding")
+    public static native boolean supportsSecureCoding();
     /*</methods>*/
 }

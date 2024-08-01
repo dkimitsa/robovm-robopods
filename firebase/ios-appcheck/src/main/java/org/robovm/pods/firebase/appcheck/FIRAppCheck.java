@@ -36,7 +36,7 @@ import org.robovm.apple.foundation.*;
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/FIRAppCheck/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
-    /*<implements>*/implements FIRAppCheckProtocol/*</implements>*/ {
+    /*<implements>*//*</implements>*/ {
 
     /*<ptr>*/public static class FIRAppCheckPtr extends Ptr<FIRAppCheck, FIRAppCheckPtr> {}/*</ptr>*/
     /*<bind>*/static { ObjCRuntime.bind(FIRAppCheck.class); }/*</bind>*/
@@ -67,9 +67,9 @@ import org.robovm.apple.foundation.*;
     }
     
     @Method(selector = "tokenForcingRefresh:completion:")
-    public native void tokenForcingRefresh(boolean forcingRefresh, @Block VoidBlock2<FIRAppCheckTokenProtocol, NSError> handler);
+    public native void tokenForcingRefresh(boolean forcingRefresh, @Block VoidBlock2<FIRAppCheckToken, NSError> handler);
     @Method(selector = "limitedUseTokenWithCompletion:")
-    public native void limitedUseToken(@Block VoidBlock2<FIRAppCheckTokenProtocol, NSError> handler);
+    public native void limitedUseToken(@Block VoidBlock2<FIRAppCheckToken, NSError> handler);
     @Method(selector = "appCheck")
     public static native FIRAppCheck appCheck();
     @Method(selector = "appCheckWithApp:")

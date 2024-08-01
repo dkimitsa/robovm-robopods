@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.robovm.pods.firebase.appcheck;
+package org.robovm.pods.firebase.auth;
 
 /*<imports>*/
 import java.io.*;
@@ -28,29 +28,30 @@ import org.robovm.rt.bro.*;
 import org.robovm.rt.bro.annotation.*;
 import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
+import org.robovm.apple.uikit.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
 /*</javadoc>*/
 /*<annotations>*//*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ interface /*<name>*/FIRAppCheckProtocol/*</name>*/ 
-    /*<implements>*/extends NSObjectProtocol/*</implements>*/ {
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/FIRAuthInteropAdapter/*</name>*/ 
+    extends /*<extends>*/NSObject/*</extends>*/ 
+    /*<implements>*/implements FIRAuthInterop/*</implements>*/ {
 
     /*<ptr>*/
     /*</ptr>*/
     /*<bind>*/
     /*</bind>*/
     /*<constants>*//*</constants>*/
+    /*<constructors>*//*</constructors>*/
     /*<properties>*/
     
     /*</properties>*/
+    /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "tokenForcingRefresh:completion:")
-    void tokenForcingRefresh(boolean forcingRefresh, @Block VoidBlock2<FIRAppCheckTokenProtocol, NSError> handler);
-    @Method(selector = "limitedUseTokenWithCompletion:")
-    void limitedUseToken(@Block VoidBlock2<FIRAppCheckTokenProtocol, NSError> handler);
+    @NotImplemented("getTokenForcingRefresh:withCallback:")
+    public void getTokenForcingRefresh(boolean forceRefresh, @Block VoidBlock2<NSString, NSError> callback) {}
+    @NotImplemented("getUserID")
+    public String getUserID() { return null; }
     /*</methods>*/
-    /*<adapter>*/
-    /*</adapter>*/
 }

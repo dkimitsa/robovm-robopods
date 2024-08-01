@@ -73,5 +73,7 @@ import org.robovm.apple.webkit.*;
     public native void presentFromRootViewController(UIViewController rootViewController);
     @Method(selector = "loadWithAdUnitID:request:completionHandler:")
     public static native void load(String adUnitID, GADRequest request, @Block VoidBlock2<GADInterstitialAd, NSError> completionHandler);
+    @Method(selector = "loadWithAdResponseString:completionHandler:")
+    public static native void load(String adResponseString, @Block VoidBlock2<GADInterstitialAd, NSError> completionHandler);
     /*</methods>*/
 }

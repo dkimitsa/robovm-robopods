@@ -43,16 +43,29 @@ import org.robovm.apple.uikit.*;
     /*<bind>*/static { ObjCRuntime.bind(FIRPhoneMultiFactorInfo.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public FIRPhoneMultiFactorInfo() {}
+    protected FIRPhoneMultiFactorInfo() {}
     protected FIRPhoneMultiFactorInfo(Handle h, long handle) { super(h, handle); }
     protected FIRPhoneMultiFactorInfo(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithCoder:")
+    public FIRPhoneMultiFactorInfo(NSCoder coder) { super((SkipInit) null); initObject(init(coder)); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "phoneNumber")
     public native String getPhoneNumber();
+    @Property(selector = "setPhoneNumber:")
+    public native void setPhoneNumber(String v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    
+    @Method(selector = "initWithCoder:")
+    protected native @Pointer long init(NSCoder coder);
+    @Method(selector = "encodeWithCoder:")
+    public native void encode(NSCoder coder);
+    @Method(selector = "FIRPhoneMultiFactorID")
+    public static native String FIRPhoneMultiFactorID();
+    @Method(selector = "FIRTOTPMultiFactorID")
+    public static native String FIRTOTPMultiFactorID();
+    @Method(selector = "supportsSecureCoding")
+    public static native boolean supportsSecureCoding();
     /*</methods>*/
 }

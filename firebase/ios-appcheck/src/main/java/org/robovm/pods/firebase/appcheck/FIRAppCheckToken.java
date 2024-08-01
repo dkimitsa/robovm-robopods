@@ -36,7 +36,7 @@ import org.robovm.apple.foundation.*;
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/FIRAppCheckToken/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
-    /*<implements>*/implements FIRAppCheckTokenProtocol/*</implements>*/ {
+    /*<implements>*//*</implements>*/ {
 
     /*<ptr>*/public static class FIRAppCheckTokenPtr extends Ptr<FIRAppCheckToken, FIRAppCheckTokenPtr> {}/*</ptr>*/
     /*<bind>*/static { ObjCRuntime.bind(FIRAppCheckToken.class); }/*</bind>*/

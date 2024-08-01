@@ -61,5 +61,7 @@ import org.robovm.apple.webkit.*;
     /*<methods>*/
     @Method(selector = "loadWithAdManagerAdUnitID:request:completionHandler:")
     public static native void load(String adUnitID, GAMRequest request, @Block VoidBlock2<GAMInterstitialAd, NSError> completionHandler);
+    @Method(selector = "loadWithAdResponseString:completionHandler:")
+    public static native void load(String adResponseString, @Block VoidBlock2<GADInterstitialAd, NSError> completionHandler);
     /*</methods>*/
 }

@@ -52,7 +52,7 @@ import org.robovm.apple.coreanimation.*;
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "sharedInstance")
-    public static native GIDSignIn getSharedInstance();
+    public static native GIDSignIn sharedInstance();
     @Property(selector = "currentUser")
     public native GIDGoogleUser getCurrentUser();
     @Property(selector = "configuration")

@@ -35,7 +35,6 @@
 #import "FIRQuerySnapshot.h"
 #import "FIRSnapshotListenOptions.h"
 #import "FIRSnapshotMetadata.h"
-#import "FIRTimestamp.h"
 #import "FIRTransaction.h"
 #import "FIRTransactionOptions.h"
 #import "FIRWriteBatch.h"
