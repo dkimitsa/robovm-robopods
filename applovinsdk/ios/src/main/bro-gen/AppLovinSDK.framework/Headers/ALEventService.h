@@ -14,23 +14,6 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ALEventService : NSObject
 
 /**
- * Sets a super property that this service will record with all future events.
- *
- * If @c superProperty is @c nil, this method will remove the super property with key @c key from being recorded with all future events.
- *
- * @param superProperty The value to assign to the super property whose key is @c key. Valid types include @c NSString, @c NSNumber, @c NSSDate, @c NSURL,
- *                      @c NSArray, and @c NSDictionary. Set this to @c nil to remove the super property whose key is @c key from being recorded with all future
- *                      events.
- * @param key           The key that identifies the the super property whose value this method sets.
- */
-- (void)setSuperProperty:(nullable id)superProperty forKey:(NSString *)key;
-
-/**
- * NSDictionary that represents the currently-set super properties that this services records with events.
- */
-@property (nonatomic, copy, readonly) NSDictionary<NSString *, id> *superProperties;
-
-/**
  * Tracks an event without adding supplemental data.
  *
  * AppLovin recommends that you use one of the predefined strings provided in ALEventTypes.h for the event name, when those strings apply to the event.

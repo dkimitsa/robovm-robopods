@@ -37,8 +37,7 @@
 #import <AppLovinSDK/ALSdkConfiguration.h>
 #import <AppLovinSDK/ALSdkInitializationConfiguration.h>
 #import <AppLovinSDK/ALSdkSettings.h>
-#import <AppLovinSDK/ALTargetingData.h>
-#import <AppLovinSDK/ALUserSegment.h>
+#import <AppLovinSDK/ALUnowned.h>
 #import <AppLovinSDK/ALUtils.h>
 #import <AppLovinSDK/MAAd.h>
 #import <AppLovinSDK/MAAdapterError.h>
@@ -70,6 +69,8 @@
 #import <AppLovinSDK/MARewardedAdapter.h>
 #import <AppLovinSDK/MARewardedInterstitialAd.h>
 #import <AppLovinSDK/MARewardedInterstitialAdapter.h>
+#import <AppLovinSDK/MASegment.h>
+#import <AppLovinSDK/MASegmentCollection.h>
 #import <AppLovinSDK/MASignalCollectionParameters.h>
 #import <AppLovinSDK/MASignalProvider.h>
 #import <AppLovinSDK/MATableViewAdPlacer.h>

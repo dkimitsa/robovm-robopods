@@ -38,37 +38,26 @@ import org.robovm.apple.safariservices.*;
 
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/ALUserSegment/*</name>*/ 
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/MASegmentCollectionBuilder/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class ALUserSegmentPtr extends Ptr<ALUserSegment, ALUserSegmentPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(ALUserSegment.class); }/*</bind>*/
+    /*<ptr>*/public static class MASegmentCollectionBuilderPtr extends Ptr<MASegmentCollectionBuilder, MASegmentCollectionBuilderPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(MASegmentCollectionBuilder.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    protected ALUserSegment() {}
-    protected ALUserSegment(Handle h, long handle) { super(h, handle); }
-    protected ALUserSegment(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithName:")
-    public ALUserSegment(String name) { super((SkipInit) null); initObject(init(name)); }
+    protected MASegmentCollectionBuilder() {}
+    protected MASegmentCollectionBuilder(Handle h, long handle) { super(h, handle); }
+    protected MASegmentCollectionBuilder(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
-    /**
-     * @deprecated This method is deprecated and will be removed in a future SDK version. Please initialize a ALUserSegment instance in ALSdkInitializationConfiguration
-     */
-    @Deprecated
-    @Property(selector = "name")
-    public native String getName();
-    /**
-     * @deprecated This method is deprecated and will be removed in a future SDK version. Please initialize a ALUserSegment instance in ALSdkInitializationConfiguration
-     */
-    @Deprecated
-    @Property(selector = "setName:")
-    public native void setName(String v);
+    
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "initWithName:")
-    protected native @Pointer long init(String name);
+    @Method(selector = "addSegment:")
+    public native void addSegment(MASegment segment);
+    @Method(selector = "build")
+    public native MASegmentCollection build();
     /*</methods>*/
 }

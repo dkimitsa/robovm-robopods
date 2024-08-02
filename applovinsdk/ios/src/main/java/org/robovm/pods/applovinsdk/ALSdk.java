@@ -73,10 +73,8 @@ import org.robovm.apple.safariservices.*;
     @Deprecated
     @Property(selector = "setUserIdentifier:")
     public native void setUserIdentifier(String v);
-    @Property(selector = "userSegment")
-    public native ALUserSegment getUserSegment();
-    @Property(selector = "targetingData")
-    public native ALTargetingData getTargetingData();
+    @Property(selector = "segmentCollection")
+    public native MASegmentCollection getSegmentCollection();
     @Property(selector = "adService")
     public native ALAdService getAdService();
     @Property(selector = "eventService")

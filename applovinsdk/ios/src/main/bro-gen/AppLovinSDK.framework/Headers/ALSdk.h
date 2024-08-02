@@ -12,9 +12,8 @@
 @class ALSdkConfiguration;
 @class ALSdkInitializationConfiguration;
 @class ALSdkSettings;
-@class ALTargetingData;
-@class ALUserSegment;
 @class MAMediatedNetworkInfo;
+@class MASegmentCollection;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -57,14 +56,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy, nullable) NSString *userIdentifier __deprecated_msg("This property has been moved to @c ALSdkSettings and will be removed in a future SDK version.");
 
 /**
- * A user segment allows AppLovin to serve ads by using custom-defined rules that are based on which segment the user is in. The user segment is a custom string of 32 alphanumeric characters or less.
+ * The @c MASegmentCollection object that the SDK had been initialized with.
  */
-@property (nonatomic, strong, readonly, nullable) ALUserSegment *userSegment;
-
-/**
- * A class which allows you to send any demographic or interest-based targeting data.
- */
-@property (nonatomic, strong, readonly, nullable) ALTargetingData *targetingData;
+@property (nonatomic, strong, readonly, nullable) MASegmentCollection *segmentCollection;
 
 #pragma mark - SDK Services
 

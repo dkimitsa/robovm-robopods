@@ -38,30 +38,28 @@ import org.robovm.apple.safariservices.*;
 
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/ALEventService/*</name>*/ 
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/MASegmentCollection/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class ALEventServicePtr extends Ptr<ALEventService, ALEventServicePtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(ALEventService.class); }/*</bind>*/
+    /*<ptr>*/public static class MASegmentCollectionPtr extends Ptr<MASegmentCollection, MASegmentCollectionPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(MASegmentCollection.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    protected ALEventService() {}
-    protected ALEventService(Handle h, long handle) { super(h, handle); }
-    protected ALEventService(SkipInit skipInit) { super(skipInit); }
+    public MASegmentCollection() {}
+    protected MASegmentCollection(Handle h, long handle) { super(h, handle); }
+    protected MASegmentCollection(SkipInit skipInit) { super(skipInit); }
+    public MASegmentCollection(@Block VoidBlock1<MASegmentCollectionBuilder> builderBlock) { super((Handle) null, create(builderBlock)); retain(getHandle()); }
     /*</constructors>*/
     /*<properties>*/
-    
+    @Property(selector = "segments")
+    public native NSArray<MASegment> getSegments();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "trackEvent:")
-    public native void trackEvent(String eventName);
-    @Method(selector = "trackEvent:parameters:")
-    public native void trackEvent(String eventName, ALEventParameters parameters);
-    @Method(selector = "trackInAppPurchaseWithTransactionIdentifier:parameters:")
-    public native void trackInAppPurchase(String transactionIdentifier, ALEventParameters parameters);
-    @Method(selector = "trackCheckoutWithTransactionIdentifier:parameters:")
-    public native void trackCheckout(String transactionIdentifier, ALEventParameters parameters);
+    @Method(selector = "segmentCollectionWithBuilderBlock:")
+    protected static native @Pointer long create(@Block VoidBlock1<MASegmentCollectionBuilder> builderBlock);
+    @Method(selector = "builder")
+    public static native MASegmentCollectionBuilder builder();
     /*</methods>*/
 }

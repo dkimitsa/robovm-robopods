@@ -37,31 +37,29 @@ import org.robovm.apple.safariservices.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Marshaler(ValuedEnum.AsMachineSizedSIntMarshaler.class)/*</annotations>*/
-public enum /*<name>*/ALGender/*</name>*/ implements ValuedEnum {
-    /*<values>*/
-    Unknown(0L),
-    Female(1L),
-    Male(2L),
-    Other(3L);
-    /*</values>*/
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/ALUnowned<T extends NSObject>/*</name>*/ 
+    extends /*<extends>*/NSObject/*</extends>*/ 
+    /*<implements>*//*</implements>*/ {
 
-    /*<bind>*/
-    /*</bind>*/
+    /*<ptr>*/public static class ALUnownedPtr<T extends NSObject> extends Ptr<ALUnowned<T>, ALUnownedPtr<T>> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(ALUnowned.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
-    /*<methods>*//*</methods>*/
-
-    private final long n;
-
-    private /*<name>*/ALGender/*</name>*/(long n) { this.n = n; }
-    public long value() { return n; }
-    public static /*<name>*/ALGender/*</name>*/ valueOf(long n) {
-        for (/*<name>*/ALGender/*</name>*/ v : values()) {
-            if (v.n == n) {
-                return v;
-            }
-        }
-        throw new IllegalArgumentException("No constant with value " + n + " found in " 
-            + /*<name>*/ALGender/*</name>*/.class.getName());
-    }
+    /*<constructors>*/
+    protected ALUnowned() {}
+    protected ALUnowned(Handle h, long handle) { super(h, handle); }
+    protected ALUnowned(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithObject:source:")
+    public ALUnowned(T object, String source) { super((SkipInit) null); initObject(init(object, source)); }
+    /*</constructors>*/
+    /*<properties>*/
+    
+    /*</properties>*/
+    /*<members>*//*</members>*/
+    /*<methods>*/
+    @Method(selector = "initWithObject:source:")
+    protected native @Pointer long init(T object, String source);
+    @Method(selector = "let:")
+    public native void let(@Block VoidBlock1<T> block);
+    /*</methods>*/
 }

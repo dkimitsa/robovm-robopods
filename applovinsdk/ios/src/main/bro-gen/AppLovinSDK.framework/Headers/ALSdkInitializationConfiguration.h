@@ -5,8 +5,7 @@
 //  Created by Chris Cong on 1/22/24.
 //
 
-#import <AppLovinSDK/ALTargetingData.h>
-#import <AppLovinSDK/ALUserSegment.h>
+#import <AppLovinSDK/MASegmentCollection.h>
 
 @class ALSdkInitializationConfigurationBuilder;
 
@@ -28,8 +27,7 @@ typedef void (^ALSdkInitializationConfigurationBuilderBlock) (ALSdkInitializatio
 @property (nonatomic, copy, readonly, nullable) NSString *mediationProvider;
 @property (nonatomic, copy, readonly, nullable) NSString *pluginVersion;
 
-@property (nonatomic, strong, readonly, nullable) ALUserSegment *userSegment;
-@property (nonatomic, strong, readonly, nullable) ALTargetingData *targetingData;
+@property (nonatomic, strong, readonly, nullable) MASegmentCollection *segmentCollection;
 
 @property (nonatomic, copy, readonly) NSArray<NSString *> *testDeviceAdvertisingIdentifiers;
 @property (nonatomic, copy, readonly) NSArray<NSString *> *adUnitIdentifiers;
@@ -87,15 +85,9 @@ typedef void (^ALSdkInitializationConfigurationBuilderBlock) (ALSdkInitializatio
 @property (nonatomic, copy, nullable) NSString *pluginVersion;
 
 /**
- * A user segment allows AppLovin to serve ads by using custom-defined rules that are based on which segment the user is in. The user segment is a custom string
- * of 32 alphanumeric characters or less.
+ * A readonly property of a @c MASegmentCollection, representing a collection of segments.
  */
-@property (nonatomic, strong, nullable) ALUserSegment *userSegment;
-
-/**
- * A class which allows you to send any demographic or interest-based targeting data.
- */
-@property (nonatomic, strong, nullable) ALTargetingData *targetingData;
+@property (nonatomic, strong, nullable) MASegmentCollection *segmentCollection;
 
 /**
  * Enable devices to receive test ads by passing in the advertising identifier (IDFA or IDFV) of each test device.

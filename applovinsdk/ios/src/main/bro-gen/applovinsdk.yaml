@@ -14,8 +14,6 @@ enums:
     ALAppTrackingTransparencyStatus: {}
     MAAdLoadState: {}
     MAErrorCode: {}
-    ALAdContentRating: { }
-    ALGender: { }
     MAAdapterInitializationStatus: { }
     ALCMPErrorCode: { }
     ALConsentFlowUserGeography: { }
@@ -342,11 +340,6 @@ classes:
                 name: log
             '-addAppOpenAdapter:delegate:forPlacementIdentifier:':
                 name: addAppOpenAdapter
-    ALTargetingData:
-        methods:
-            '+dataWithBuilderBlock:':
-                name: create
-                constructor: true
     ALUtils: {}
     MAAdapterError:
         methods:
@@ -471,7 +464,20 @@ classes:
             '+builderWithSdkKey:':
                 name: builder
     ALSdkInitializationConfigurationBuilder: { }
-    ALTargetingDataBuilder: { }
+    ALUnowned:
+        methods:
+            '-initWithObject:source:':
+                name: init
+    MASegment:
+        methods:
+            '-initWithKey:values:':
+                name: init
+    MASegmentCollection:
+        methods:
+            '+segmentCollectionWithBuilderBlock:':
+                constructor: true
+                name: create
+    MASegmentCollectionBuilder: { }
 protocols:
     ALAdDisplayDelegate:
         methods:

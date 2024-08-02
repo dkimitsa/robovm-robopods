@@ -65,10 +65,6 @@ import org.robovm.apple.safariservices.*;
     public native boolean isCreativeDebuggerEnabled();
     @Property(selector = "setCreativeDebuggerEnabled:")
     public native void setCreativeDebuggerEnabled(boolean v);
-    @Property(selector = "isLocationCollectionEnabled")
-    public native boolean isLocationCollectionEnabled();
-    @Property(selector = "setLocationCollectionEnabled:")
-    public native void setLocationCollectionEnabled(boolean v);
     @Property(selector = "userIdentifier")
     public native String getUserIdentifier();
     @Property(selector = "setUserIdentifier:")

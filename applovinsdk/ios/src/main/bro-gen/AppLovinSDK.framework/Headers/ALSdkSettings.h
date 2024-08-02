@@ -47,11 +47,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign, getter=isCreativeDebuggerEnabled) BOOL creativeDebuggerEnabled;
 
 /**
- * Whether or not the AppLovin SDK will collect the device location from `CLLocationManager` if available. Defaults to @c YES.
- */
-@property (nonatomic, assign, getter=isLocationCollectionEnabled) BOOL locationCollectionEnabled;
-
-/**
  * An identifier for the current user. This identifier will be tied to SDK events and AppLovin’s optional S2S postbacks.
  *
  * If you use reward validation, you can optionally set an identifier that AppLovin will include with its currency validation postbacks (for example, a username

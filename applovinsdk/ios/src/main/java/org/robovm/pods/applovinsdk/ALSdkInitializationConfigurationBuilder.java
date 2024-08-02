@@ -61,14 +61,10 @@ import org.robovm.apple.safariservices.*;
     public native String getPluginVersion();
     @Property(selector = "setPluginVersion:")
     public native void setPluginVersion(String v);
-    @Property(selector = "userSegment")
-    public native ALUserSegment getUserSegment();
-    @Property(selector = "setUserSegment:")
-    public native void setUserSegment(ALUserSegment v);
-    @Property(selector = "targetingData")
-    public native ALTargetingData getTargetingData();
-    @Property(selector = "setTargetingData:")
-    public native void setTargetingData(ALTargetingData v);
+    @Property(selector = "segmentCollection")
+    public native MASegmentCollection getSegmentCollection();
+    @Property(selector = "setSegmentCollection:")
+    public native void setSegmentCollection(MASegmentCollection v);
     @Property(selector = "testDeviceAdvertisingIdentifiers")
     public native NSArray<NSString> getTestDeviceAdvertisingIdentifiers();
     @Property(selector = "setTestDeviceAdvertisingIdentifiers:")

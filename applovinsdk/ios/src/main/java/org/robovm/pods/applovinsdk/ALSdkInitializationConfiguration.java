@@ -59,10 +59,8 @@ import org.robovm.apple.safariservices.*;
     public native String getMediationProvider();
     @Property(selector = "pluginVersion")
     public native String getPluginVersion();
-    @Property(selector = "userSegment")
-    public native ALUserSegment getUserSegment();
-    @Property(selector = "targetingData")
-    public native ALTargetingData getTargetingData();
+    @Property(selector = "segmentCollection")
+    public native MASegmentCollection getSegmentCollection();
     @Property(selector = "testDeviceAdvertisingIdentifiers")
     public native NSArray<NSString> getTestDeviceAdvertisingIdentifiers();
     @Property(selector = "adUnitIdentifiers")

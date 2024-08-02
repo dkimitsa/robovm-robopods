@@ -37,31 +37,30 @@ import org.robovm.apple.safariservices.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Marshaler(ValuedEnum.AsMachineSizedSIntMarshaler.class)/*</annotations>*/
-public enum /*<name>*/ALAdContentRating/*</name>*/ implements ValuedEnum {
-    /*<values>*/
-    None(0L),
-    AllAudiences(1L),
-    EveryoneOverTwelve(2L),
-    MatureAudiences(3L);
-    /*</values>*/
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/MASegment/*</name>*/ 
+    extends /*<extends>*/NSObject/*</extends>*/ 
+    /*<implements>*//*</implements>*/ {
 
-    /*<bind>*/
-    /*</bind>*/
+    /*<ptr>*/public static class MASegmentPtr extends Ptr<MASegment, MASegmentPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(MASegment.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
-    /*<methods>*//*</methods>*/
-
-    private final long n;
-
-    private /*<name>*/ALAdContentRating/*</name>*/(long n) { this.n = n; }
-    public long value() { return n; }
-    public static /*<name>*/ALAdContentRating/*</name>*/ valueOf(long n) {
-        for (/*<name>*/ALAdContentRating/*</name>*/ v : values()) {
-            if (v.n == n) {
-                return v;
-            }
-        }
-        throw new IllegalArgumentException("No constant with value " + n + " found in " 
-            + /*<name>*/ALAdContentRating/*</name>*/.class.getName());
-    }
+    /*<constructors>*/
+    protected MASegment() {}
+    protected MASegment(Handle h, long handle) { super(h, handle); }
+    protected MASegment(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithKey:values:")
+    public MASegment(NSNumber key, NSArray<NSNumber> values) { super((SkipInit) null); initObject(init(key, values)); }
+    /*</constructors>*/
+    /*<properties>*/
+    @Property(selector = "key")
+    public native NSNumber getKey();
+    @Property(selector = "values")
+    public native NSArray<NSNumber> getValues();
+    /*</properties>*/
+    /*<members>*//*</members>*/
+    /*<methods>*/
+    @Method(selector = "initWithKey:values:")
+    protected native @Pointer long init(NSNumber key, NSArray<NSNumber> values);
+    /*</methods>*/
 }

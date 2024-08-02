@@ -53,6 +53,8 @@ import org.robovm.apple.safariservices.*;
     public ALMediationAdapter(ALSdk sdk) { super((SkipInit) null); initObject(init(sdk)); }
     /*</constructors>*/
     /*<properties>*/
+    @Property(selector = "mediationTag")
+    public static native String getMediationTag();
     @Property(selector = "sdk")
     public native ALSdk getSdk();
     @Property(selector = "tag")
