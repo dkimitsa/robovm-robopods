@@ -36,7 +36,7 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("_TtC6Lottie18MaskContainerLayer")/*</annotations>*/
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("Lottie.MaskContainerLayer")/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/MaskContainerLayer/*</name>*/ 
     extends /*<extends>*/CALayer/*</extends>*/ 
     /*<implements>*//*</implements>*/ {

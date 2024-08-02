@@ -36,7 +36,7 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("_TtC6Lottie13RepeaterLayer")/*</annotations>*/
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("Lottie.RepeaterLayer")/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/RepeaterLayer/*</name>*/ 
     extends /*<extends>*/BaseAnimationLayer/*</extends>*/ 
     /*<implements>*//*</implements>*/ {

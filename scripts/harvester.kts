@@ -169,8 +169,7 @@ val knownFrameworks = mutableMapOf<String, (String) -> Unit>(
             instruction = """
                 1. goto https://github.com/airbnb/lottie-ios/releases and download latest Lottie.xcframework.zip
                 2. unpack 
-                3. create a file ${downloadFolder.extend("Lottie.xcframework/version")} and put verions there, e.g. 4.0.0 
-                4. expected location ${downloadFolder.extend("Lottie.xcframework/ios-arm64/")}
+                3. expected location ${downloadFolder.extend("Lottie.xcframework/ios-arm64/")}
             """.trimIndent()
         )
     },

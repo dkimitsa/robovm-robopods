@@ -36,7 +36,7 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("_TtC6Lottie28InfiniteOpaqueAnimationLayer")/*</annotations>*/
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("Lottie.InfiniteOpaqueAnimationLayer")/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/InfiniteOpaqueAnimationLayer/*</name>*/ 
     extends /*<extends>*/BaseAnimationLayer/*</extends>*/ 
     /*<implements>*//*</implements>*/ {

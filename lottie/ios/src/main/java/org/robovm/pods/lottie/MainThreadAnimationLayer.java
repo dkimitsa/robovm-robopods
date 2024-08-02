@@ -36,7 +36,7 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("_TtC6Lottie24MainThreadAnimationLayer")/*</annotations>*/
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("Lottie.MainThreadAnimationLayer")/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/MainThreadAnimationLayer/*</name>*/ 
     extends /*<extends>*/CALayer/*</extends>*/ 
     /*<implements>*//*</implements>*/ {

@@ -36,7 +36,7 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("_TtC6Lottie19GradientRenderLayer")/*</annotations>*/
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("Lottie.GradientRenderLayer")/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/GradientRenderLayer/*</name>*/ 
     extends /*<extends>*/CAGradientLayer/*</extends>*/ 
     /*<implements>*//*</implements>*/ {

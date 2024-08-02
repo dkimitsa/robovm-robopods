@@ -36,7 +36,7 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("_TtC6Lottie10ShapeLayer")/*</annotations>*/
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("Lottie.ShapeLayer")/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/ShapeLayer/*</name>*/ 
     extends /*<extends>*/BaseCompositionLayer/*</extends>*/ 
     /*<implements>*//*</implements>*/ {

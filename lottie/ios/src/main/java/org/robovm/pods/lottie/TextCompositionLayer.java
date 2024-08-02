@@ -36,7 +36,7 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("_TtC6Lottie20TextCompositionLayer")/*</annotations>*/
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("Lottie.TextCompositionLayer")/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/TextCompositionLayer/*</name>*/ 
     extends /*<extends>*/CompositionLayer/*</extends>*/ 
     /*<implements>*//*</implements>*/ {

@@ -36,7 +36,7 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("_TtC6Lottie27AnimationCompletionDelegate")/*</annotations>*/
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("Lottie.AnimationCompletionDelegate")/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/AnimationCompletionDelegate/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*/implements CAAnimationDelegate/*</implements>*/ {

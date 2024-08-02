@@ -36,7 +36,7 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("_TtC6Lottie14AnimatedSwitch")/*</annotations>*/
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("Lottie.AnimatedSwitch")/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/AnimatedSwitch/*</name>*/ 
     extends /*<extends>*/AnimatedControl/*</extends>*/ 
     /*<implements>*//*</implements>*/ {

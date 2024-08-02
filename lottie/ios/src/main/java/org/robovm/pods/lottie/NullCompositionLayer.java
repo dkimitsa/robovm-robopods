@@ -36,7 +36,7 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("_TtC6Lottie20NullCompositionLayer")/*</annotations>*/
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("Lottie.NullCompositionLayer")/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/NullCompositionLayer/*</name>*/ 
     extends /*<extends>*/CompositionLayer/*</extends>*/ 
     /*<implements>*//*</implements>*/ {

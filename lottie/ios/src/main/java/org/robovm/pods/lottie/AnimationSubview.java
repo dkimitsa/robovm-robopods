@@ -36,7 +36,7 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("_TtC6Lottie16AnimationSubview")/*</annotations>*/
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("Lottie.AnimationSubview")/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/AnimationSubview/*</name>*/ 
     extends /*<extends>*/UIView/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
