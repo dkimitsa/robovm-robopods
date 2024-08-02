@@ -137,6 +137,10 @@ classes:
                 exclude: true # conflicts with property
             '-getInterstitialInterval':
                 exclude: true # conflicts with property
+            '-getVendorConsentWithVendorId:':
+                name: getVendorConsent
+            '-getAdditionalConsentWithProviderId:':
+                name: getAdditionalConsent
     CASSize:
         methods:
             '+getInlineBannerWithWidth:maxHeight:':

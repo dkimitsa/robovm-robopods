@@ -50,6 +50,10 @@ import org.robovm.apple.coreanimation.*;
     protected CASSettings(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
+    @Property(selector = "taggedAudience")
+    public native CASAudience getTaggedAudience();
+    @Property(selector = "setTaggedAudience:")
+    public native void setTaggedAudience(CASAudience v);
     @Property(selector = "userConsent")
     public native CASConsentStatus getUserConsent();
     @Property(selector = "setUserConsent:")
@@ -58,10 +62,6 @@ import org.robovm.apple.coreanimation.*;
     public native CASCCPAStatus getUserCCPAStatus();
     @Property(selector = "setUserCCPAStatus:")
     public native void setUserCCPAStatus(CASCCPAStatus v);
-    @Property(selector = "taggedAudience")
-    public native CASAudience getTaggedAudience();
-    @Property(selector = "setTaggedAudience:")
-    public native void setTaggedAudience(CASAudience v);
     @Property(selector = "trialAdFreeInterval")
     public native long getTrialAdFreeInterval();
     @Property(selector = "setTrialAdFreeInterval:")
@@ -89,6 +89,10 @@ import org.robovm.apple.coreanimation.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
+    @Method(selector = "getVendorConsentWithVendorId:")
+    public native CASConsentStatus getVendorConsent(@MachineSizedSInt long vendorId);
+    @Method(selector = "getAdditionalConsentWithProviderId:")
+    public native CASConsentStatus getAdditionalConsent(@MachineSizedSInt long providerId);
     /**
      * @deprecated Use CAS.targetingOptions.locationCollectionEnabled instead.
      */

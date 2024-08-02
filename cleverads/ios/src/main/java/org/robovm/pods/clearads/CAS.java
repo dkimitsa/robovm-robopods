@@ -44,8 +44,8 @@ import org.robovm.apple.coreanimation.*;
     /*<ptr>*/public static class CASPtr extends Ptr<CAS, CASPtr> {}/*</ptr>*/
     /*<bind>*/static { ObjCRuntime.bind(CAS.class); }/*</bind>*/
     /*<constants>*/
-    public static final String FRAMEWORK_VERSION = "3.8.1";
-    public static final int FRAMEWORK_CODE = 3801;
+    public static final String FRAMEWORK_VERSION = "3.9.2";
+    public static final int FRAMEWORK_CODE = 3902;
     /*</constants>*/
     /*<constructors>*/
     public CAS() {}

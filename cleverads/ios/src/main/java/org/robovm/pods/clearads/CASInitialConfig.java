@@ -58,6 +58,8 @@ import org.robovm.apple.coreanimation.*;
     public native String getCountryCode();
     @Property(selector = "isConsentRequired")
     public native boolean isConsentRequired();
+    @Property(selector = "isATTrackingAuthorized")
+    public native boolean isATTrackingAuthorized();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
