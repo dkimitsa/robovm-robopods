@@ -181,7 +181,7 @@ import org.robovm.apple.storekit.*;
     @Method(selector = "registerPluginName:version:")
     public native void registerPlugin(String name, String version);
     @Method(selector = "setRequestMetadataKey:value:")
-    public native void setRequestMetadata(String key, NSObject value);
+    public native void setRequestMetadata(String key, String value);
     @Method(selector = "getFirstReferringBranchUniversalObject")
     public native BranchUniversalObject getFirstReferringBranchUniversalObject();
     @Method(selector = "getFirstReferringBranchLinkProperties")

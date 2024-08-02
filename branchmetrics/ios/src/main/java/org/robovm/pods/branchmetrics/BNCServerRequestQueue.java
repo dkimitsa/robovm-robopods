@@ -54,7 +54,10 @@ import org.robovm.apple.storekit.*;
     protected BNCServerRequestQueue(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
-    
+    @Property(selector = "processArchivedOpens")
+    public native boolean isProcessArchivedOpens();
+    @Property(selector = "setProcessArchivedOpens:")
+    public native void setProcessArchivedOpens(boolean v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
