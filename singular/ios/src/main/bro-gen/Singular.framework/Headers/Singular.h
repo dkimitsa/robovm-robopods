@@ -82,11 +82,11 @@
 + (void)setAge:(id)age;
 
 #pragma mark - BATCHING
-+ (int)batchInterval;
-+ (void)setBatchInterval:(int)interval;
-+ (BOOL)batchesEvents;
-+ (void)setBatchesEvents:(BOOL)boolean;
-+ (void)sendAllBatches;
++ (int)batchInterval __attribute__((deprecated));
++ (void)setBatchInterval:(int)interval __attribute__((deprecated));
++ (BOOL)batchesEvents __attribute__((deprecated));
++ (void)setBatchesEvents:(BOOL)boolean __attribute__((deprecated));
++ (void)sendAllBatches __attribute__((deprecated));
 
 #pragma mark - ANIMESH UPDATE / REVENUE
 + (void)revenue:(id)transaction;
