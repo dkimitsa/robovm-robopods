@@ -10,15 +10,15 @@
 
 #import "ISLogDelegate.h"
 
-#define logInternal(tag2, format, ...)                                                      \
+#define ISLogInternal(tag2, format, ...)                                                    \
   [[ISLoggerManager sharedInstance] log:[NSString stringWithFormat:(format), ##__VA_ARGS__] \
                                   level:IS_LOG_INTERNAL                                     \
                                     tag:tag2]
-#define logInfo(tag2, format, ...)                                                          \
+#define ISLogInfo(tag2, format, ...)                                                        \
   [[ISLoggerManager sharedInstance] log:[NSString stringWithFormat:(format), ##__VA_ARGS__] \
                                   level:IS_LOG_INFO                                         \
                                     tag:tag2]
-#define logError(tag2, format, ...)                                                         \
+#define ISLogError(tag2, format, ...)                                                       \
   [[ISLoggerManager sharedInstance] log:[NSString stringWithFormat:(format), ##__VA_ARGS__] \
                                   level:IS_LOG_ERROR                                        \
                                     tag:tag2]

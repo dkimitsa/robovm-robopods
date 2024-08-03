@@ -10,6 +10,7 @@
 #import "ISAdapterConsentProtocol.h"
 #import "ISAdapterDebugProtocol.h"
 #import "ISAdapterMetaDataProtocol.h"
+#import "ISAdapterNetworkDataProtocol.h"
 #import "ISAdapterSettingsProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -18,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
                                             ISAdapterDebugProtocol,
                                             ISAdapterConsentProtocol,
                                             ISAdapterMetaDataProtocol,
+                                            ISAdapterNetworkDataProtocol,
                                             ISAdapterSettingsProtocol>
 
 @end

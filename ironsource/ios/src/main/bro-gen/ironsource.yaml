@@ -381,6 +381,8 @@ classes:
         methods:
             '+customSizeWithWidth:height:':
                 name: customSize
+            '+createAdaptiveAdSizeWithWidth:':
+                name: createAdaptiveAdSize
     LPMBannerAdView:
         methods:
             '-initWithAdUnitId:':
@@ -742,6 +744,8 @@ protocols:
                 name: didExpandAd
             '-didCollapseAdWithAdInfo:':
                 name: didCollapseAd
+    ISAdapterNetworkData: { }
+    ISAdapterNetworkDataProtocol: { }
 functions:
     # Make sure we don't miss any functions if new ones are introduced in a later version
     (.*):

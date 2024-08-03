@@ -39,7 +39,7 @@ import org.robovm.apple.coreanimation.*;
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/ISBaseAdapter/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
-    /*<implements>*/implements ISInterstitialAdapterProtocol, ISRewardedVideoAdapterProtocol, ISBannerAdapterProtocol, ISBiddingDataAdapterProtocol, ISNativeAdAdapterProtocol/*</implements>*/ {
+    /*<implements>*/implements ISInterstitialAdapterProtocol, ISRewardedVideoAdapterProtocol, ISBannerAdapterProtocol, ISAdapterNetworkDataProtocol, ISNativeAdAdapterProtocol/*</implements>*/ {
 
     /*<ptr>*/public static class ISBaseAdapterPtr extends Ptr<ISBaseAdapter, ISBaseAdapterPtr> {}/*</ptr>*/
     /*<bind>*/static { ObjCRuntime.bind(ISBaseAdapter.class); }/*</bind>*/
@@ -56,6 +56,10 @@ import org.robovm.apple.coreanimation.*;
     public native String getAdapterName();
     @Property(selector = "setAdapterName:")
     public native void setAdapterName(String v);
+    @Property(selector = "providerNetworkKey")
+    public native String getProviderNetworkKey();
+    @Property(selector = "setProviderNetworkKey:")
+    public native void setProviderNetworkKey(String v);
     @Property(selector = "pluginType")
     public native String getPluginType();
     @Property(selector = "setPluginType:")
@@ -83,6 +87,8 @@ import org.robovm.apple.coreanimation.*;
     public native String dynamicUserId();
     @Method(selector = "getLWSSupportState:")
     public native ISLoadWhileShowSupportState getLWSSupportState(ISAdapterConfig adapterConfig);
+    @Method(selector = "setNetworkData:")
+    public native void setNetworkData(ISAdapterNetworkData networkData);
     @Method(selector = "setRewardedVideoAdapter:")
     public native void setRewardedVideoAdapter(ISRewardedVideoAdapterProtocol rewardedVideoAdapter);
     @Method(selector = "setInterstitialAdapter:")
@@ -169,8 +175,6 @@ import org.robovm.apple.coreanimation.*;
     public native void initBannerForBidding(String userId, ISAdapterConfig adapterConfig, ISBannerAdapterDelegate delegate);
     @Method(selector = "loadBannerForBiddingWithAdapterConfig:adData:serverData:viewController:size:delegate:")
     public native void loadBannerForBidding(ISAdapterConfig adapterConfig, NSDictionary<?, ?> adData, String serverData, UIViewController viewController, ISBannerSize size, ISBannerAdapterDelegate delegate);
-    @Method(selector = "getPlayerBiddingData")
-    public native NSDictionary<?, ?> getPlayerBiddingData();
     @Method(selector = "initNativeAdsWithUserId:adapterConfig:delegate:")
     public native void initNativeAds(String userId, ISAdapterConfig adapterConfig, ISNativeAdAdapterDelegate delegate);
     @Method(selector = "initNativeAdForBiddingWithUserId:adapterConfig:delegate:")

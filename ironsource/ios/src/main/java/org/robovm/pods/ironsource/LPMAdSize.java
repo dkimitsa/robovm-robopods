@@ -58,6 +58,8 @@ import org.robovm.apple.coreanimation.*;
     public native @MachineSizedSInt long getHeight();
     @Property(selector = "sizeDescription")
     public native String getSizeDescription();
+    @Property(selector = "isAdaptive")
+    public native boolean isAdaptive();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
@@ -71,5 +73,9 @@ import org.robovm.apple.coreanimation.*;
     public static native LPMAdSize leaderBoardSize();
     @Method(selector = "customSizeWithWidth:height:")
     public static native LPMAdSize customSize(@MachineSizedSInt long width, @MachineSizedSInt long height);
+    @Method(selector = "createAdaptiveAdSizeWithWidth:")
+    public static native LPMAdSize createAdaptiveAdSize(@MachineSizedFloat double width);
+    @Method(selector = "createAdaptiveAdSize")
+    public static native LPMAdSize createAdaptiveAdSize();
     /*</methods>*/
 }

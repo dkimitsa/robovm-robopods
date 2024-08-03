@@ -39,7 +39,7 @@ import org.robovm.apple.coreanimation.*;
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/ISBaseNetworkAdapter/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
-    /*<implements>*/implements ISAdapterBaseProtocol, ISAdapterDebugProtocol, ISAdapterConsentProtocol, ISAdapterMetaDataProtocol, ISAdapterSettingsProtocol/*</implements>*/ {
+    /*<implements>*/implements ISAdapterBaseProtocol, ISAdapterDebugProtocol, ISAdapterConsentProtocol, ISAdapterMetaDataProtocol, ISAdapterNetworkDataProtocol, ISAdapterSettingsProtocol/*</implements>*/ {
 
     /*<ptr>*/public static class ISBaseNetworkAdapterPtr extends Ptr<ISBaseNetworkAdapter, ISBaseNetworkAdapterPtr> {}/*</ptr>*/
     /*<bind>*/static { ObjCRuntime.bind(ISBaseNetworkAdapter.class); }/*</bind>*/
@@ -64,6 +64,8 @@ import org.robovm.apple.coreanimation.*;
     public native void setConsent(boolean consent);
     @Method(selector = "setMetaDataWithKey:andValues:")
     public native void setMetaData(String key, NSMutableArray<?> values);
+    @Method(selector = "setNetworkData:")
+    public native void setNetworkData(ISAdapterNetworkData networkData);
     @Method(selector = "getLoadWhileShowSupportedStateWithAdapterConfig:")
     public native ISLoadWhileShowSupportState getLoadWhileShowSupportedState(ISAdapterConfig adapterConfig);
     /*</methods>*/

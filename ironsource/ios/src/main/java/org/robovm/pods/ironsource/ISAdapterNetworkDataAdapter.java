@@ -34,24 +34,26 @@ import org.robovm.apple.coreanimation.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
 /*</javadoc>*/
 /*<annotations>*//*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ interface /*<name>*/ISBiddingDataAdapterProtocol/*</name>*/ 
-    /*<implements>*/extends NSObjectProtocol/*</implements>*/ {
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/ISAdapterNetworkDataAdapter/*</name>*/ 
+    extends /*<extends>*/NSObject/*</extends>*/ 
+    /*<implements>*/implements ISAdapterNetworkData/*</implements>*/ {
 
     /*<ptr>*/
     /*</ptr>*/
     /*<bind>*/
     /*</bind>*/
     /*<constants>*//*</constants>*/
+    /*<constructors>*//*</constructors>*/
     /*<properties>*/
     
     /*</properties>*/
+    /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "getPlayerBiddingData")
-    NSDictionary<?, ?> getPlayerBiddingData();
+    @NotImplemented("networkDataByAdUnit:")
+    public NSDictionary<?, ?> networkDataByAdUnit(ISAdUnit adUnit) { return null; }
+    @NotImplemented("allData")
+    public NSDictionary<?, ?> allData() { return null; }
     /*</methods>*/
-    /*<adapter>*/
-    /*</adapter>*/
 }
