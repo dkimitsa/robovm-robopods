@@ -15,4 +15,4 @@ FOUNDATION_EXPORT const unsigned char HelpshiftXVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <HelpshiftX/PublicHeader.h>
 
-#import <HelpshiftX/Helpshift.h>
+#import "Helpshift.h"

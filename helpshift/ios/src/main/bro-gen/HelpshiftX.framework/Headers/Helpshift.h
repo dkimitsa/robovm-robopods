@@ -7,8 +7,8 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import <HelpshiftX/HelpshiftDelegate.h>
-#import <HelpshiftX/HelpshiftProactiveAPIConfigCollectorDelegate.h>
+#import "HelpshiftDelegate.h"
+#import "HelpshiftProactiveAPIConfigCollectorDelegate.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -253,7 +253,6 @@ __attribute__((deprecated("Use handleNotificationWithUserInfoDictionary:(NSDicti
 * Ex. 10.2.2
 * @return SDK version
 */
-
 + (NSString *) sdkVersion;
 
 /**
