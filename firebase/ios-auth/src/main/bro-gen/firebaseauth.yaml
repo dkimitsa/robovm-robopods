@@ -350,6 +350,9 @@ values:
         name: 'Value_#{g[0]}'
 
 constants:
+    FIRAuthErrorCodeDomain:
+        exclude: true # as there is FIRAuthErrorDomain in FIRAuthErrors.h
+
     SWIFT_.*:
         exclude: true
         # Make sure we don't miss any constants if new ones are introduced in a later version

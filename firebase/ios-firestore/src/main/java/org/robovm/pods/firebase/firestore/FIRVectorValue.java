@@ -35,36 +35,27 @@ import org.robovm.apple.dispatch.*;
 
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/FIRFieldValue/*</name>*/ 
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/FIRVectorValue/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class FIRFieldValuePtr extends Ptr<FIRFieldValue, FIRFieldValuePtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(FIRFieldValue.class); }/*</bind>*/
+    /*<ptr>*/public static class FIRVectorValuePtr extends Ptr<FIRVectorValue, FIRVectorValuePtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(FIRVectorValue.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    protected FIRFieldValue() {}
-    protected FIRFieldValue(Handle h, long handle) { super(h, handle); }
-    protected FIRFieldValue(SkipInit skipInit) { super(skipInit); }
+    protected FIRVectorValue() {}
+    protected FIRVectorValue(Handle h, long handle) { super(h, handle); }
+    protected FIRVectorValue(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithArray:")
+    public FIRVectorValue(NSArray<NSNumber> array) { super((SkipInit) null); initObject(init(array)); }
     /*</constructors>*/
     /*<properties>*/
-    
+    @Property(selector = "array")
+    public native NSArray<NSNumber> getArray();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "fieldValueForDelete")
-    public static native FIRFieldValue fieldValueForDelete();
-    @Method(selector = "fieldValueForServerTimestamp")
-    public static native FIRFieldValue fieldValueForServerTimestamp();
-    @Method(selector = "fieldValueForArrayUnion:")
-    public static native FIRFieldValue fieldValueForArrayUnion(NSArray<?> elements);
-    @Method(selector = "fieldValueForArrayRemove:")
-    public static native FIRFieldValue fieldValueForArrayRemove(NSArray<?> elements);
-    @Method(selector = "fieldValueForDoubleIncrement:")
-    public static native FIRFieldValue fieldValueForDoubleIncrement(double d);
-    @Method(selector = "fieldValueForIntegerIncrement:")
-    public static native FIRFieldValue fieldValueForIntegerIncrement(long l);
-    @Method(selector = "vectorWithArray:")
-    public static native FIRVectorValue vectorFromArray(NSArray<NSNumber> array);
+    @Method(selector = "initWithArray:")
+    protected native @Pointer long init(NSArray<NSNumber> array);
     /*</methods>*/
 }

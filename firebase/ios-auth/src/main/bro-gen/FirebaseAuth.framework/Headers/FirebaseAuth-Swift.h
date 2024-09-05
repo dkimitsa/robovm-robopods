@@ -1308,6 +1308,7 @@ typedef SWIFT_ENUM_NAMED(NSInteger, FIRAuthErrorCode, "AuthErrorCode", open) {
 /// describing which step of the JWT parsing process failed.
   FIRAuthErrorCodeMalformedJWT = 18000,
 };
+static NSString * _Nonnull const FIRAuthErrorCodeDomain = @"FirebaseAuth.AuthErrorCode";
 
 
 /// Error Codes common to all API Methods:

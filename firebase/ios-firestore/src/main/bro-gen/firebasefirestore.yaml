@@ -69,7 +69,10 @@ classes:
         methods:
             '-initWithFields:':
                 name: init
-    FIRFieldValue: {}
+    FIRFieldValue:
+        methods:
+            '+vectorWithArray:':
+                name: vectorFromArray
     FIRFirestore:
         methods:
             '-collectionWithPath:':
@@ -280,6 +283,10 @@ classes:
             '-optionsWithSource:':
                 name: create
                 constructor: true
+    FIRVectorValue:
+        methods:
+            '-initWithArray:':
+                name: init
 protocols:
     FIRListenerRegistration: { }
     FIRLocalCacheSettings: { }

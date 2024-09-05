@@ -37,6 +37,7 @@
 #import "FIRSnapshotMetadata.h"
 #import "FIRTransaction.h"
 #import "FIRTransactionOptions.h"
+#import "FIRVectorValue.h"
 #import "FIRWriteBatch.h"
 
 FOUNDATION_EXPORT double FirebaseFirestoreVersionNumber;

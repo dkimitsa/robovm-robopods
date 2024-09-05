@@ -307,11 +307,14 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 
 
 
+
 SWIFT_UNAVAILABLE
 @interface FIRFirestore (SWIFT_EXTENSION(FirebaseFirestore))
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) void (^ _Nonnull __no_op)(void);)
 + (void (^ _Nonnull)(void))__no_op SWIFT_WARN_UNUSED_RESULT;
 @end
+
+
 
 
 
