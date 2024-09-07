@@ -80,8 +80,6 @@ import org.robovm.apple.uikit.*;
     public static native void logout();
     @Method(selector = "Notifications")
     public static native Class<?> Notifications();
-    @Method(selector = "setLaunchOptions:")
-    public static native void setLaunchOptions(NSDictionary<?, ?> newLaunchOptions);
     @Method(selector = "initialize:withLaunchOptions:")
     public static native void initialize(String newAppId, NSDictionary<?, ?> launchOptions);
     @Method(selector = "setProvidesNotificationSettingsView:")
