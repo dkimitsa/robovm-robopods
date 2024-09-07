@@ -82,7 +82,7 @@ classes:
     CoreUIApplication: {}
     FBSDKAccessToken:
         properties:
-            tokenCache:
+            '+tokenCache':
                 exclude: true #INTERNAL - DO NOT USE
         methods:
             '-initWithTokenString:permissions:declinedPermissions:expiredPermissions:appID:userID:expirationDate:refreshDate:dataAccessExpirationDate:':
@@ -251,7 +251,7 @@ classes:
                 name: continueUserActivity
     FBSDKAuthenticationToken:
         properties:
-            tokenCache:
+            '+tokenCache':
                 exclude: true #INTERNAL - DO NOT USE
         methods:
             '-initWithTokenString:nonce:graphDomain:':

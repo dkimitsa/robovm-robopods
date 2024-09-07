@@ -6,6 +6,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+#import <FBAudienceNetwork/FBAdDefines.h>
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
@@ -18,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  This class is experimental and should not be used in production versions of your application
  */
+FB_CLASS_EXPORT
 @interface FBAdCompanionView : UIView
 
 @property (nonatomic, weak, nullable) id<FBAdCompanionViewDelegate> delegate;
