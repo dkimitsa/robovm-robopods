@@ -48,7 +48,7 @@ import org.robovm.apple.coreanimation.*;
     public static final String IS_INTERSTITIAL = "interstitial";
     public static final String IS_BANNER = "banner";
     public static final String IS_NATIVE_AD = "nativead";
-    public static final String getSdkVersion = "8.2.0";
+    public static final String getSdkVersion = "8.3.0";
     public static final String DataSource_MOPUB = "MoPub";
     /*</constants>*/
     /*<constructors>*/
@@ -95,6 +95,10 @@ import org.robovm.apple.coreanimation.*;
     public static native void init(String appKey, NSArray<NSString> adUnits);
     @Method(selector = "initWithAppKey:adUnits:delegate:")
     public static native void init(String appKey, NSArray<NSString> adUnits, ISInitializationDelegate delegate);
+    /**
+     * @deprecated This API has been deprecated. Please use [IronSourceAds initWithRequest:completion:] instead.
+     */
+    @Deprecated
     @Method(selector = "initISDemandOnly:adUnits:")
     public static native void initISDemandOnly(String appKey, NSArray<NSString> adUnits);
     @Method(selector = "setLevelPlayRewardedVideoDelegate:")
@@ -117,6 +121,10 @@ import org.robovm.apple.coreanimation.*;
     public static native void setISDemandOnlyRewardedVideoDelegate(ISDemandOnlyRewardedVideoDelegate delegate);
     @Method(selector = "loadISDemandOnlyRewardedVideo:")
     public static native void loadISDemandOnlyRewardedVideo(String instanceId);
+    /**
+     * @deprecated This API has been deprecated. Please use [ISARewardedAdLoader loadAdWithAdRequest:delegate:] instead.
+     */
+    @Deprecated
     @Method(selector = "loadISDemandOnlyRewardedVideoWithAdm:adm:")
     public static native void loadISDemandOnlyRewardedVideo(String instanceId, String adm);
     @Method(selector = "showISDemandOnlyRewardedVideo:instanceId:")
@@ -143,6 +151,10 @@ import org.robovm.apple.coreanimation.*;
     public static native void setISDemandOnlyInterstitialDelegate(ISDemandOnlyInterstitialDelegate delegate);
     @Method(selector = "loadISDemandOnlyInterstitial:")
     public static native void loadISDemandOnlyInterstitial(String instanceId);
+    /**
+     * @deprecated This API has been deprecated. Please use [ISAInterstitialAdLoader loadAdWithAdRequest:delegate:] instead.
+     */
+    @Deprecated
     @Method(selector = "loadISDemandOnlyInterstitialWithAdm:adm:")
     public static native void loadISDemandOnlyInterstitial(String instanceId, String adm);
     @Method(selector = "showISDemandOnlyInterstitial:instanceId:")

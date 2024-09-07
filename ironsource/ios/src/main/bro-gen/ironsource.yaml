@@ -402,6 +402,12 @@ classes:
         methods:
             '+initWithRequest:completion:':
                 name: init
+    LPMInterstitialAd:
+        methods:
+            '-initWithAdUnitId:':
+                name: init
+            '-showAdWithViewController:placementName:':
+                name: showAd
 protocols:
     ISAdapterAdDelegate:
         methods:
@@ -746,6 +752,28 @@ protocols:
                 name: didCollapseAd
     ISAdapterNetworkData: { }
     ISAdapterNetworkDataProtocol: { }
+    LPMConfigServiceEventSender:
+        methods:
+            '-sendAdUnitCappingParseFailedEventWithAdUnitId:error:':
+                name: sendAdUnitCappingParseFailedEvent
+            '-sendPlacementCappingParseFailedEventWithPlacementName:adFormat:error:':
+                name: sendPlacementCappingParseFailedEvent
+            '-sendConfigParseFailedEventWithError:':
+                name: sendConfigParseFailedEvent
+    LPMInterstitialAdDelegate:
+        methods:
+            '-didLoadAdWithAdInfo:':
+                name: didLoadAd
+            '-didFailToLoadAdWithAdUnitId:error:':
+                name: didFailToLoadAd
+            '-didDisplayAdWithAdInfo:':
+                name: didDisplayAd
+            '-didFailToDisplayAdWithAdInfo:error:':
+                name: didFailToDisplayAd
+            '-didClickAdWithAdInfo:':
+                name: didClickAd
+            '-didCloseAdWithAdInfo:':
+                name: didCloseAd
 functions:
     # Make sure we don't miss any functions if new ones are introduced in a later version
     (.*):

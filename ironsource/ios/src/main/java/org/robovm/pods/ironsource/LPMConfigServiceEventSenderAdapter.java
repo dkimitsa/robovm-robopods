@@ -34,33 +34,28 @@ import org.robovm.apple.coreanimation.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/ISDataKeys/*</name>*/ 
+/*<annotations>*//*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/LPMConfigServiceEventSenderAdapter/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
-    /*<implements>*//*</implements>*/ {
+    /*<implements>*/implements LPMConfigServiceEventSender/*</implements>*/ {
 
-    /*<ptr>*/public static class ISDataKeysPtr extends Ptr<ISDataKeys, ISDataKeysPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(ISDataKeys.class); }/*</bind>*/
+    /*<ptr>*/
+    /*</ptr>*/
+    /*<bind>*/
+    /*</bind>*/
     /*<constants>*//*</constants>*/
-    /*<constructors>*/
-    public ISDataKeys() {}
-    protected ISDataKeys(Handle h, long handle) { super(h, handle); }
-    protected ISDataKeys(SkipInit skipInit) { super(skipInit); }
-    /*</constructors>*/
+    /*<constructors>*//*</constructors>*/
     /*<properties>*/
     
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "USER_ID")
-    public static native String USER_ID();
-    @Method(selector = "AD_UNIT")
-    public static native String AD_UNIT();
-    @Method(selector = "AD_DATA_IS_MULTIPLE_AD_UNITS_FLOW")
-    public static native String AD_DATA_IS_MULTIPLE_AD_UNITS_FLOW();
-    @Method(selector = "AD_UNIT_ID")
-    public static native String AD_UNIT_ID();
+    @NotImplemented("sendAdUnitCappingParseFailedEventWithAdUnitId:error:")
+    public void sendAdUnitCappingParseFailedEvent(String adUnitId, NSError error) {}
+    @NotImplemented("sendPlacementCappingParseFailedEventWithPlacementName:adFormat:error:")
+    public void sendPlacementCappingParseFailedEvent(String placementName, ISAdUnit adFormat, NSError error) {}
+    @NotImplemented("sendConfigParseFailedEventWithError:")
+    public void sendConfigParseFailedEvent(NSError error) {}
     /*</methods>*/
 }

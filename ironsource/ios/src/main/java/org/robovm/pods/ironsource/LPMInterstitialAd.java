@@ -37,30 +37,36 @@ import org.robovm.apple.coreanimation.*;
 
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/ISDataKeys/*</name>*/ 
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/LPMInterstitialAd/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class ISDataKeysPtr extends Ptr<ISDataKeys, ISDataKeysPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(ISDataKeys.class); }/*</bind>*/
+    /*<ptr>*/public static class LPMInterstitialAdPtr extends Ptr<LPMInterstitialAd, LPMInterstitialAdPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(LPMInterstitialAd.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public ISDataKeys() {}
-    protected ISDataKeys(Handle h, long handle) { super(h, handle); }
-    protected ISDataKeys(SkipInit skipInit) { super(skipInit); }
+    protected LPMInterstitialAd() {}
+    protected LPMInterstitialAd(Handle h, long handle) { super(h, handle); }
+    protected LPMInterstitialAd(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithAdUnitId:")
+    public LPMInterstitialAd(String adUnitId) { super((SkipInit) null); initObject(init(adUnitId)); }
     /*</constructors>*/
     /*<properties>*/
     
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "USER_ID")
-    public static native String USER_ID();
-    @Method(selector = "AD_UNIT")
-    public static native String AD_UNIT();
-    @Method(selector = "AD_DATA_IS_MULTIPLE_AD_UNITS_FLOW")
-    public static native String AD_DATA_IS_MULTIPLE_AD_UNITS_FLOW();
-    @Method(selector = "AD_UNIT_ID")
-    public static native String AD_UNIT_ID();
+    @Method(selector = "initWithAdUnitId:")
+    protected native @Pointer long init(String adUnitId);
+    @Method(selector = "setDelegate:")
+    public native void setDelegate(LPMInterstitialAdDelegate delegate);
+    @Method(selector = "loadAd")
+    public native void loadAd();
+    @Method(selector = "showAdWithViewController:placementName:")
+    public native void showAd(UIViewController viewController, String placementName);
+    @Method(selector = "isAdReady")
+    public native boolean isAdReady();
+    @Method(selector = "isPlacementCapped:")
+    public static native boolean isPlacementCapped(String placementName);
     /*</methods>*/
 }

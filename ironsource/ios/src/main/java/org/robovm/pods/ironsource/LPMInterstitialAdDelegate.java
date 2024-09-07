@@ -36,31 +36,34 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/ISDataKeys/*</name>*/ 
-    extends /*<extends>*/NSObject/*</extends>*/ 
-    /*<implements>*//*</implements>*/ {
+/*<annotations>*//*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ interface /*<name>*/LPMInterstitialAdDelegate/*</name>*/ 
+    /*<implements>*/extends NSObjectProtocol/*</implements>*/ {
 
-    /*<ptr>*/public static class ISDataKeysPtr extends Ptr<ISDataKeys, ISDataKeysPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(ISDataKeys.class); }/*</bind>*/
+    /*<ptr>*/
+    /*</ptr>*/
+    /*<bind>*/
+    /*</bind>*/
     /*<constants>*//*</constants>*/
-    /*<constructors>*/
-    public ISDataKeys() {}
-    protected ISDataKeys(Handle h, long handle) { super(h, handle); }
-    protected ISDataKeys(SkipInit skipInit) { super(skipInit); }
-    /*</constructors>*/
     /*<properties>*/
     
     /*</properties>*/
-    /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "USER_ID")
-    public static native String USER_ID();
-    @Method(selector = "AD_UNIT")
-    public static native String AD_UNIT();
-    @Method(selector = "AD_DATA_IS_MULTIPLE_AD_UNITS_FLOW")
-    public static native String AD_DATA_IS_MULTIPLE_AD_UNITS_FLOW();
-    @Method(selector = "AD_UNIT_ID")
-    public static native String AD_UNIT_ID();
+    @Method(selector = "didLoadAdWithAdInfo:")
+    void didLoadAd(LPMAdInfo adInfo);
+    @Method(selector = "didFailToLoadAdWithAdUnitId:error:")
+    void didFailToLoadAd(String adUnitId, NSError error);
+    @Method(selector = "didDisplayAdWithAdInfo:")
+    void didDisplayAd(LPMAdInfo adInfo);
+    @Method(selector = "didFailToDisplayAdWithAdInfo:error:")
+    void didFailToDisplayAd(LPMAdInfo adInfo, NSError error);
+    @Method(selector = "didClickAdWithAdInfo:")
+    void didClickAd(LPMAdInfo adInfo);
+    @Method(selector = "didCloseAdWithAdInfo:")
+    void didCloseAd(LPMAdInfo adInfo);
+    @Method(selector = "didChangeAdInfo:")
+    void didChangeAdInfo(LPMAdInfo adInfo);
     /*</methods>*/
+    /*<adapter>*/
+    /*</adapter>*/
 }

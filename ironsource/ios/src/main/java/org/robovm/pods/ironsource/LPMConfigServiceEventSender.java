@@ -36,31 +36,26 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/ISDataKeys/*</name>*/ 
-    extends /*<extends>*/NSObject/*</extends>*/ 
-    /*<implements>*//*</implements>*/ {
+/*<annotations>*//*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ interface /*<name>*/LPMConfigServiceEventSender/*</name>*/ 
+    /*<implements>*/extends NSObjectProtocol/*</implements>*/ {
 
-    /*<ptr>*/public static class ISDataKeysPtr extends Ptr<ISDataKeys, ISDataKeysPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(ISDataKeys.class); }/*</bind>*/
+    /*<ptr>*/
+    /*</ptr>*/
+    /*<bind>*/
+    /*</bind>*/
     /*<constants>*//*</constants>*/
-    /*<constructors>*/
-    public ISDataKeys() {}
-    protected ISDataKeys(Handle h, long handle) { super(h, handle); }
-    protected ISDataKeys(SkipInit skipInit) { super(skipInit); }
-    /*</constructors>*/
     /*<properties>*/
     
     /*</properties>*/
-    /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "USER_ID")
-    public static native String USER_ID();
-    @Method(selector = "AD_UNIT")
-    public static native String AD_UNIT();
-    @Method(selector = "AD_DATA_IS_MULTIPLE_AD_UNITS_FLOW")
-    public static native String AD_DATA_IS_MULTIPLE_AD_UNITS_FLOW();
-    @Method(selector = "AD_UNIT_ID")
-    public static native String AD_UNIT_ID();
+    @Method(selector = "sendAdUnitCappingParseFailedEventWithAdUnitId:error:")
+    void sendAdUnitCappingParseFailedEvent(String adUnitId, NSError error);
+    @Method(selector = "sendPlacementCappingParseFailedEventWithPlacementName:adFormat:error:")
+    void sendPlacementCappingParseFailedEvent(String placementName, ISAdUnit adFormat, NSError error);
+    @Method(selector = "sendConfigParseFailedEventWithError:")
+    void sendConfigParseFailedEvent(NSError error);
     /*</methods>*/
+    /*<adapter>*/
+    /*</adapter>*/
 }
