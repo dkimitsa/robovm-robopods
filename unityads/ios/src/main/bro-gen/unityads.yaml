@@ -5,6 +5,7 @@ framework: UnityAds
 #exclude_deprecated: true
 headers:
     - UnityAds.h
+    - UnityAds-Swift.h
 
 typedefs: {}
 
@@ -126,6 +127,10 @@ classes:
                 name: initialize
             '+createExpectedParametersString:current:received:':
                 name: createExpectedParametersString
+            '+load:options:loadDelegate:':
+                name: load
+            '+show:placementId:options:showDelegate:':
+                name: show
     UnityServicesListener: { }
     USRVInitializeStateFactory:
         methods:
@@ -139,6 +144,8 @@ classes:
             '+newBannerLoadOptionsWith:size:':
                 name: create
                 constructor: true
+    LoggerWrapper: { }
+    SDKConfigurationStorageObjcBridge: { }
 protocols:
     UADSBannerAdRefreshViewDelegate:
         methods:
@@ -215,6 +222,9 @@ values:
         name: 'Value_#{g[0]}'
 
 constants:
+    SWIFT_TYPEDEFS:
+        exclude: true
+
     # Make sure we don't miss any constants if new ones are introduced in a later version
     (.*):
         class: __FixMe

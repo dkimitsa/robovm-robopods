@@ -7,7 +7,7 @@
     </parent>
 
     <artifactId>robopods-unityads-ios</artifactId>
-    <name>RoboPods Unity Ads iOS v4.12.1</name>
+    <name>RoboPods Unity Ads iOS v4.12.2</name>
     <packaging>jar</packaging>
 
     <licenses>

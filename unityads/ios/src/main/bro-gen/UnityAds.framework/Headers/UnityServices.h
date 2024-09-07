@@ -1,4 +1,13 @@
 #import <UnityAds/UnityAdsInitializationDelegate.h>
+#import <UnityAds/UnityAdsLoadDelegate.h>
+#import <UnityAds/UnityAdsShowDelegate.h>
+#import <UnityAds/UADSLoadOptions.h>
+#import <UnityAds/UADSShowOptions.h>
+#import <UIKit/UIKit.h>
+
+#ifdef UNITYADS_INTERNAL
+#import <OMIDImports.h>
+#endif
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -51,6 +60,13 @@ NS_ASSUME_NONNULL_BEGIN
  *  @return If `YES`, Unity Ads has been successfully initialized.
  */
 + (BOOL)      isInitialized;
+
++ (void)load: (NSString *)placementId options: (UADSLoadOptions *)options loadDelegate: (nullable id<UnityAdsLoadDelegate>)loadDelegate;
+
++ (void)show: (UIViewController *)viewController placementId: (NSString *)placementId options: (UADSShowOptions *)options showDelegate: (nullable id<UnityAdsShowDelegate>)showDelegate;
+
++ (NSString *__nullable)getToken;
++ (void)getToken: (void (^)(NSString *_Nullable))completion;
 
 @end
 

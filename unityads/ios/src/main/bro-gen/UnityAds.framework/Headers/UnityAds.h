@@ -12,7 +12,6 @@ FOUNDATION_EXPORT const unsigned char UnityAdsModuleVersionString[];
 
 #import <UnityAds/UnityAdsInitializationDelegate.h>
 #import <UnityAds/UnityServices.h>
-#import <UnityAds/UnityAdvertisement.h>
 #import <UnityAds/UADSBannerView.h>
 #import <UnityAds/UADSBannerViewDelegate.h>
 #import <UnityAds/UADSBannerError.h>

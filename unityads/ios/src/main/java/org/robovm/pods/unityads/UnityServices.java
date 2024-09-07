@@ -66,5 +66,13 @@ import org.robovm.apple.coreanimation.*;
     public static native String getVersion();
     @Method(selector = "isInitialized")
     public static native boolean isInitialized();
+    @Method(selector = "load:options:loadDelegate:")
+    public static native void load(String placementId, UADSLoadOptions options, UnityAdsLoadDelegate loadDelegate);
+    @Method(selector = "show:placementId:options:showDelegate:")
+    public static native void show(UIViewController viewController, String placementId, UADSShowOptions options, UnityAdsShowDelegate showDelegate);
+    @Method(selector = "getToken")
+    public static native String getToken();
+    @Method(selector = "getToken:")
+    public static native void getToken(@Block VoidBlock1<NSString> completion);
     /*</methods>*/
 }

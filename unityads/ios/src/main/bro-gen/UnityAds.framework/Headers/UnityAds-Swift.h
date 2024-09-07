@@ -355,6 +355,113 @@ SWIFT_CLASS("_TtC8UnityAds33SDKConfigurationStorageObjcBridge")
 
 
 
+@protocol UnityAdsInitializationDelegate;
+@protocol UnityAdsLoadDelegate;
+@class UADSLoadOptions;
+@class UIViewController;
+@protocol UnityAdsShowDelegate;
+@class UADSShowOptions;
+
+SWIFT_CLASS("_TtC8UnityAds8UnityAds")
+@interface UnityAds : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+/// Initializes UnityAds. UnityAds should be initialized when app starts.
+/// \param gameId Unique identifier for a game, given by Unity Ads admin tools or Unity editor.
+///
++ (void)initialize:(NSString * _Nonnull)gameId;
+/// Initializes UnityAds. UnityAds should be initialized when app starts.
+/// \param gameId Unique identifier for a game, given by Unity Ads admin tools or Unity editor.
+///
+/// \param initializationDelegate delegate for UnityAdsInitialization
+///
++ (void)initialize:(NSString * _Nonnull)gameId initializationDelegate:(id <UnityAdsInitializationDelegate> _Nullable)initializationDelegate;
+/// Initializes UnityAds. UnityAds should be initialized when app starts.
+/// \param gameId Unique identifier for a game, given by Unity Ads admin tools or Unity editor.
+///
+/// \param testMode Set this flag to <code>YES</code> to indicate test mode and show only test ads.
+///
++ (void)initialize:(NSString * _Nonnull)gameId testMode:(BOOL)testMode;
+/// Initializes UnityAds. UnityAds should be initialized when app starts.
+/// \param gameId Unique identifier for a game, given by Unity Ads admin tools or Unity editor.
+///
+/// \param testMode Set this flag to <code>YES</code> to indicate test mode and show only test ads.
+///
+/// \param initializationDelegate delegate for UnityAdsInitialization
+///
++ (void)initialize:(NSString * _Nonnull)gameId testMode:(BOOL)testMode initializationDelegate:(id <UnityAdsInitializationDelegate> _Nullable)initializationDelegate;
+/// Load a placement to make it available to show. Ads generally take a few seconds to finish loading before they can be shown.
+/// \param placementId The placement ID, as defined in Unity Ads admin tools.
+///
++ (void)load:(NSString * _Nonnull)placementId;
+/// Load a placement to make it available to show. Ads generally take a few seconds to finish loading before they can be shown.
+/// \param placementId The placement ID, as defined in Unity Ads admin tools.
+///
+/// \param loadDelegate The load delegate.
+///
++ (void)load:(NSString * _Nonnull)placementId loadDelegate:(id <UnityAdsLoadDelegate> _Nullable)loadDelegate;
+/// Load a placement to make it available to show. Ads generally take a few seconds to finish loading before they can be shown.
+/// \param placementId The placement ID, as defined in Unity Ads admin tools.
+///
+/// \param options The load options.
+///
+/// \param loadDelegate The load delegate.
+///
++ (void)load:(NSString * _Nonnull)placementId options:(UADSLoadOptions * _Nonnull)options loadDelegate:(id <UnityAdsLoadDelegate> _Nullable)loadDelegate;
+/// Show an ad using the provided placement ID.
+/// \param viewController The <code>UIViewController</code> that is to present the ad view controller.
+///
+/// \param placementId The placement ID, as defined in Unity Ads admin tools.
+///
+/// \param showDelegate The show delegate.
+///
++ (void)show:(UIViewController * _Nonnull)viewController placementId:(NSString * _Nonnull)placementId showDelegate:(id <UnityAdsShowDelegate> _Nullable)showDelegate;
+/// Show an ad using the provided placement ID.
+/// \param viewController The <code>UIViewController</code> that is to present the ad view controller.
+///
+/// \param placementId The placement ID, as defined in Unity Ads admin tools.
+///
+/// \param options Additional options
+///
+/// \param showDelegate The show delegate.
+///
++ (void)show:(UIViewController * _Nonnull)viewController placementId:(NSString * _Nonnull)placementId options:(UADSShowOptions * _Nonnull)options showDelegate:(id <UnityAdsShowDelegate> _Nullable)showDelegate;
++ (BOOL)getDebugMode SWIFT_WARN_UNUSED_RESULT;
+/// Set the logging verbosity of <code>UnityAds</code>. Debug mode indicates verbose logging.
+/// <blockquote>
+/// Warning:  Does not relate to test mode for ad content.
+///
+/// </blockquote>
+/// \param enableDebugMode <code>YES</code> for verbose logging.
+///
++ (void)setDebugMode:(BOOL)enableDebugMode;
+/// Check to see if the current device supports using Unity Ads.
+///
+/// returns:
+/// If <code>NO</code>, the current device cannot initialize <code>UnityAds</code> or show ads.
++ (BOOL)isSupported SWIFT_WARN_UNUSED_RESULT;
+/// Check the version of this <code>UnityAds</code> SDK
+///
+/// returns:
+/// String representing the current version name.
++ (NSString * _Nonnull)getVersion SWIFT_WARN_UNUSED_RESULT;
+/// Check that <code>UnityAds</code> has been initialized. This might be useful for debugging initialization problems.
+///
+/// returns:
+/// If <code>YES</code>, Unity Ads has been successfully initialized.
++ (BOOL)isInitialized SWIFT_WARN_UNUSED_RESULT;
+/// Get request token.
+///
+/// returns:
+/// Active token or null if no active token is available.
++ (NSString * _Nullable)getToken SWIFT_WARN_UNUSED_RESULT;
+/// Get request token.
+/// \param completion Active token or null if no active token is available.
+///
++ (void)getToken:(void (^ _Nonnull)(NSString * _Nullable))completion;
+@end
+
+
 
 
 
