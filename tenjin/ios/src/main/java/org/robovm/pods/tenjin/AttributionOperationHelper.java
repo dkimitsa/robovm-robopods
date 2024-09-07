@@ -37,31 +37,27 @@ import org.robovm.apple.dispatch.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("TenjinSDK.TenjinDatasource")/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/TenjinDatasource/*</name>*/ 
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("TenjinSDK.AttributionOperationHelper")/*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/AttributionOperationHelper/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class TenjinDatasourcePtr extends Ptr<TenjinDatasource, TenjinDatasourcePtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(TenjinDatasource.class); }/*</bind>*/
+    /*<ptr>*/public static class AttributionOperationHelperPtr extends Ptr<AttributionOperationHelper, AttributionOperationHelperPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(AttributionOperationHelper.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public TenjinDatasource() {}
-    protected TenjinDatasource(Handle h, long handle) { super(h, handle); }
-    protected TenjinDatasource(SkipInit skipInit) { super(skipInit); }
+    public AttributionOperationHelper() {}
+    protected AttributionOperationHelper(Handle h, long handle) { super(h, handle); }
+    protected AttributionOperationHelper(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
     
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "setBooleanValue:key:")
-    public static native void setBoolean(boolean value, String key);
-    @Method(selector = "setCacheEventsSetting:")
-    public static native void setCacheEventsSetting(boolean isCacheEventsEnabled);
-    @Method(selector = "getCacheEventsSetting")
-    public static native boolean getCacheEventsSetting();
-    @Method(selector = "getAnalyticsInstallationId")
-    public static native String getAnalyticsInstallationId();
+    @Method(selector = "getAttributionTokenWithCompletion:")
+    public native void getAttributionToken(@Block VoidBlock2<NSString, NSError> completion);
+    @Method(selector = "requestAttributionDetailsWithCompletion:")
+    public native void requestAttributionDetails(@Block VoidBlock2<NSDictionary<NSString, ?>, NSError> completion);
     /*</methods>*/
 }

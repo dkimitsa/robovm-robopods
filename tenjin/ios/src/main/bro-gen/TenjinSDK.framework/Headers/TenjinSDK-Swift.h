@@ -218,6 +218,14 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 
 @class NSString;
+
+SWIFT_CLASS("_TtC9TenjinSDK26AttributionOperationHelper")
+@interface AttributionOperationHelper : NSObject
+- (void)getAttributionTokenWithCompletion:(void (^ _Nonnull)(NSString * _Nullable, NSError * _Nullable))completion;
+- (void)requestAttributionDetailsWithCompletion:(void (^ _Nonnull)(NSDictionary<NSString *, id> * _Nullable, NSError * _Nullable))completion;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
 enum PurposeConsentStatus : NSInteger;
 
 SWIFT_CLASS("_TtC9TenjinSDK10GDPRHelper")
@@ -537,6 +545,14 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 
 @class NSString;
+
+SWIFT_CLASS("_TtC9TenjinSDK26AttributionOperationHelper")
+@interface AttributionOperationHelper : NSObject
+- (void)getAttributionTokenWithCompletion:(void (^ _Nonnull)(NSString * _Nullable, NSError * _Nullable))completion;
+- (void)requestAttributionDetailsWithCompletion:(void (^ _Nonnull)(NSDictionary<NSString *, id> * _Nullable, NSError * _Nullable))completion;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
 enum PurposeConsentStatus : NSInteger;
 
 SWIFT_CLASS("_TtC9TenjinSDK10GDPRHelper")

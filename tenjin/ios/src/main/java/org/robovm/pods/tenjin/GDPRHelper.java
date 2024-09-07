@@ -37,7 +37,7 @@ import org.robovm.apple.dispatch.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("_TtC9TenjinSDK10GDPRHelper")/*</annotations>*/
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("TenjinSDK.GDPRHelper")/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/GDPRHelper/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {

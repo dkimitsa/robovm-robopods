@@ -129,6 +129,12 @@ classes:
                 name: setBooleanValue
 
     GDPRHelper: {}
+    AttributionOperationHelper:
+        methods:
+            '-getAttributionTokenWithCompletion:':
+                name: getAttributionToken
+            '-requestAttributionDetailsWithCompletion:':
+                name: requestAttributionDetails
 protocols:
     TJNRequestSender:
         methods:

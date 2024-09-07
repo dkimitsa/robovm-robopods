@@ -37,7 +37,7 @@ import org.robovm.apple.dispatch.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("_TtC9TenjinSDK16TenjinRepository")/*</annotations>*/
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("TenjinSDK.TenjinRepository")/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/TenjinRepository/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
