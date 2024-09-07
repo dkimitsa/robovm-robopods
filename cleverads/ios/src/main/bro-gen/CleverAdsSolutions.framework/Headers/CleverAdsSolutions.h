@@ -10,5 +10,5 @@
 #import <CleverAdsSolutions/CASTypeFlags.h>
 #import <CleverAdsSolutions/CASInternalUtils.h>
 
-#define CAS_FRAMEWORK_VERSION @"3.9.2"
-#define CAS_FRAMEWORK_CODE 3902
+#define CAS_FRAMEWORK_VERSION @"3.9.3"
+#define CAS_FRAMEWORK_CODE 3903
