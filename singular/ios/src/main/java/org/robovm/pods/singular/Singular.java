@@ -199,14 +199,19 @@ import org.robovm.apple.uikit.*;
     public static native void setGender(String gender);
     @Method(selector = "setAge:")
     public static native void setAge(NSObject age);
+    @Deprecated
     @Method(selector = "batchInterval")
     public static native int batchInterval();
+    @Deprecated
     @Method(selector = "setBatchInterval:")
     public static native void setBatchInterval(int interval);
+    @Deprecated
     @Method(selector = "batchesEvents")
     public static native boolean batchesEvents();
+    @Deprecated
     @Method(selector = "setBatchesEvents:")
     public static native void setBatchesEvents(boolean v);
+    @Deprecated
     @Method(selector = "sendAllBatches")
     public static native void sendAllBatches();
     @Method(selector = "revenue:")
