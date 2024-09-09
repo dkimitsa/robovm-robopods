@@ -44,7 +44,7 @@ v1.44.0 - in development
 | [AppCenter](appcenter/)         | 5.0.5   |
 | [AppLovinSDK](applovinsdk/)     | 12.6.1  |
 | [Azure](azure/)                 | 3.1.4   |
-| [BranchMetrics](branchmetrics/) | 3.6.1   |
+| [BranchMetrics](branchmetrics/) | 3.6.2   |
 | [Charts](charts/)               | 5.1.0   |
 | [ClearAds](cleverads/)          | 3.9.3   |
 | [Facebook](facebook/)           | 17.1.0  |
