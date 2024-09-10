@@ -16,6 +16,7 @@ enums:
     # GTMSessionFetcher
     GTMSessionFetcherError: {nserror: true}
     GTMSessionFetcherStatus: {}
+    GIDAppCheckErrorCode: {}
 classes:
     GIDAuthentication:
         methods:
@@ -64,6 +65,10 @@ classes:
                 name: signIn
             '-signInWithPresentingViewController:hint:additionalScopes:completion:':
                 name: signIn
+            '-configureWithCompletion:':
+                name: configure
+            '-configureDebugProviderWithAPIKey:completion:':
+                name: configureDebug
     GIDSignInButton: {}
     GIDConfiguration:
         methods:
@@ -207,6 +212,9 @@ functions:
 values:
     kGIDSignInErrorDomain:
         class: GIDSignInErrorCode
+        name: getClassDomain
+    kGIDAppCheckErrorDomain:
+        class: GIDAppCheckErrorCode
         name: getClassDomain
 
     # GTMSessionFetcher

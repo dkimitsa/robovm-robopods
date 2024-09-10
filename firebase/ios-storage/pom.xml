@@ -7,7 +7,7 @@
     </parent>
 
     <artifactId>robopods-firebase-storage-ios</artifactId>
-    <name>RoboPods Cloud Storage iOS v11.1.0</name>
+    <name>RoboPods Cloud Storage iOS v11.2.0</name>
     <packaging>jar</packaging>
 
     <licenses>

@@ -62,6 +62,13 @@ import org.robovm.apple.coreanimation.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
+    @Method(selector = "configureWithCompletion:")
+    public native void configure(@Block VoidBlock1<NSError> completion);
+    /**
+     * @since Available in iOS 14.0 and later.
+     */
+    @Method(selector = "configureDebugProviderWithAPIKey:completion:")
+    public native void configureDebug(String APIKey, @Block VoidBlock1<NSError> completion);
     @Method(selector = "handleURL:")
     public native boolean handleURL(NSURL url);
     @Method(selector = "hasPreviousSignIn")

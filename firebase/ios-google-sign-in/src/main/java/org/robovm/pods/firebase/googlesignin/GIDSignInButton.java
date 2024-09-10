@@ -40,7 +40,7 @@ import org.robovm.apple.coreanimation.*;
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/GIDSignInButton/*</name>*/ 
     extends /*<extends>*/UIControl/*</extends>*/ 
-    /*<implements>*//*</implements>*/ {
+    /*<implements>*/implements NSSecureCoding/*</implements>*/ {
 
     /*<ptr>*/public static class GIDSignInButtonPtr extends Ptr<GIDSignInButton, GIDSignInButtonPtr> {}/*</ptr>*/
     /*<bind>*/static { ObjCRuntime.bind(GIDSignInButton.class); }/*</bind>*/
@@ -71,6 +71,8 @@ import org.robovm.apple.coreanimation.*;
     @WeaklyLinked
     @Property(selector = "layerClass")
     public static native Class<? extends CALayer> getLayerClass();
+    @Property(selector = "supportsSecureCoding")
+    public static native boolean supportsSecureCoding();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
