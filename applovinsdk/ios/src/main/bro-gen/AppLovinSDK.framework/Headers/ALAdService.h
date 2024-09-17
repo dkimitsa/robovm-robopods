@@ -43,11 +43,6 @@ typedef void (^ALBidTokenCollectionCompletionHandler)(NSString *_Nullable bidTok
 - (void)loadNextAdForZoneIdentifier:(NSString *)zoneIdentifier andNotify:(id<ALAdLoadDelegate>)delegate;
 
 /**
- * A token used for advanced header bidding.
- */
-@property (nonatomic, copy, readonly) NSString *bidToken;
-
-/**
  * Asynchronously generates a token used for advanced header bidding.
  *
  * @param completion A completion handler to notify whether or not the bid token collection was successful.
@@ -69,6 +64,10 @@ typedef void (^ALBidTokenCollectionCompletionHandler)(NSString *_Nullable bidTok
 - (instancetype)init __attribute__((unavailable("Access ALAdService through ALSdk's adService property.")));
 + (instancetype)new NS_UNAVAILABLE;
 
+@end
+
+@interface ALAdService(ALDeprecated)
+@property (nonatomic, copy, readonly) NSString *bidToken __deprecated_msg("This API has been deprecated and will be removed in a future release. Please use collectBidTokenWithCompletion: instead.");
 @end
 
 NS_ASSUME_NONNULL_END

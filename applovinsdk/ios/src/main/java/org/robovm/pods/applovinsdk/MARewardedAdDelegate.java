@@ -52,18 +52,6 @@ import org.robovm.apple.safariservices.*;
     /*<methods>*/
     @Method(selector = "didRewardUserForAd:withReward:")
     void didRewardUser(MAAd ad, MAReward reward);
-    /**
-     * @deprecated This API is deprecated because not all adapters support this callback. Please use -[MAAdDelegate didDisplayAd:] instead
-     */
-    @Deprecated
-    @Method(selector = "didStartRewardedVideoForAd:")
-    void didStartRewardedVideoForAd(MAAd ad);
-    /**
-     * @deprecated This API is deprecated because not all adapters support this callback. Please use -[MAAdDelegate didHideAd:] instead
-     */
-    @Deprecated
-    @Method(selector = "didCompleteRewardedVideoForAd:")
-    void didCompleteRewardedVideoForAd(MAAd ad);
     /*</methods>*/
     /*<adapter>*/
     /*</adapter>*/

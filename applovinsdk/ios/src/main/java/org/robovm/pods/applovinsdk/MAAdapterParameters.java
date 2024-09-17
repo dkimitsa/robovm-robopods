@@ -57,8 +57,6 @@ import org.robovm.apple.safariservices.*;
     NSDictionary<NSString, ?> getCustomParameters();
     @Property(selector = "hasUserConsent")
     NSNumber getUserConsent();
-    @Property(selector = "isAgeRestrictedUser")
-    NSNumber getAgeRestrictedUser();
     @Property(selector = "isDoNotSell")
     NSNumber getDoNotSell();
     @Property(selector = "consentString")

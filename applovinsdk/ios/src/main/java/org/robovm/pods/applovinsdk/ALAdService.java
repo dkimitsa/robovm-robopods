@@ -51,6 +51,10 @@ import org.robovm.apple.safariservices.*;
     protected ALAdService(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
+    /**
+     * @deprecated This API has been deprecated and will be removed in a future release. Please use collectBidTokenWithCompletion: instead.
+     */
+    @Deprecated
     @Property(selector = "bidToken")
     public native String getBidToken();
     /*</properties>*/

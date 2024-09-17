@@ -58,8 +58,6 @@ import org.robovm.apple.safariservices.*;
     public NSDictionary<NSString, ?> getCustomParameters() { return null; }
     @NotImplemented("hasUserConsent")
     public NSNumber getUserConsent() { return null; }
-    @NotImplemented("isAgeRestrictedUser")
-    public NSNumber getAgeRestrictedUser() { return null; }
     @NotImplemented("isDoNotSell")
     public NSNumber getDoNotSell() { return null; }
     @NotImplemented("consentString")

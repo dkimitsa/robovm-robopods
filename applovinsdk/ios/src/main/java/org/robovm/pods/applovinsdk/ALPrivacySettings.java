@@ -61,12 +61,6 @@ import org.robovm.apple.safariservices.*;
     public static native boolean hasUserConsent();
     @Method(selector = "isUserConsentSet")
     public static native boolean isUserConsentSet();
-    @Method(selector = "setIsAgeRestrictedUser:")
-    public static native void setIsAgeRestrictedUser(boolean isAgeRestrictedUser);
-    @Method(selector = "isAgeRestrictedUser")
-    public static native boolean isAgeRestrictedUser();
-    @Method(selector = "isAgeRestrictedUserSet")
-    public static native boolean isAgeRestrictedUserSet();
     @Method(selector = "setDoNotSell:")
     public static native void setDoNotSell(boolean doNotSell);
     @Method(selector = "isDoNotSell")

@@ -111,10 +111,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)didHideAdForPlacementIdentifier:(NSString *)placementIdentifier;
 
 // Rewarded delegate methods
-- (void)didStartRewardedVideoForPlacementIdentifier:(NSString *)placementIdentifier
-__deprecated_msg("This API is deprecated because not all adapters support this callback. Please use -[ALMediationAdapterRouter didDisplayAdForPlacementIdentifier:] instead");
-- (void)didCompleteRewardedVideoForPlacementIdentifier:(NSString *)placementIdentifier
-__deprecated_msg("This API is deprecated because not all adapters support this callback. Please use -[ALMediationAdapterRouter didHideAdForPlacementIdentifier:] instead");
 - (void)didRewardUserForPlacementIdentifier:(NSString *)placementIdentifier withReward:(MAReward *)reward;
 
 // AdView delegate methods

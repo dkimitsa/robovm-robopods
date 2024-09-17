@@ -110,18 +110,6 @@ import org.robovm.apple.safariservices.*;
     @Property(selector = "setExceptionHandlerEnabled:")
     public native void setExceptionHandlerEnabled(boolean v);
     /**
-     * @deprecated This property is deprecated and will be removed in a future SDK version. Please use `-[ALSdkSettings isVerboseLoggingEnabled]` instead.
-     */
-    @Deprecated
-    @Property(selector = "isVerboseLogging")
-    public native boolean isVerboseLogging();
-    /**
-     * @deprecated This property is deprecated and will be removed in a future SDK version. Please use `-[ALSdkSettings isVerboseLoggingEnabled]` instead.
-     */
-    @Deprecated
-    @Property(selector = "setIsVerboseLogging:")
-    public native void setIsVerboseLogging(boolean v);
-    /**
      * @deprecated This property is deprecated and will be removed in a future SDK version. Please use the new MAX Terms and Privacy Policy Flow instead (see ALSdkSettings.termsAndPrivacyPolicyFlowSettings)
      */
     @Deprecated

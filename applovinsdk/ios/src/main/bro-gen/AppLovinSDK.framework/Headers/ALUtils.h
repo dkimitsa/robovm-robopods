@@ -38,13 +38,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface ALUtils (ALDeprecated)
-+ (nullable NSNumber *)tcfConsentStatusForVendorIdentifier:(NSInteger)vendorIdentifier
-__deprecated_msg("This method has been deprecated and will be removed in a future SDK version. Please use -[ALPrivacySettings tcfVendorConsentStatusForIdentifier:] instead.");
-+ (nullable NSNumber *)additionalConsentStatusForATPIdentifier:(NSInteger)atpIdentifier
-__deprecated_msg("This method has been deprecated and will be removed in a future SDK version. Please use -[ALPrivacySettings additionalConsentStatusForIdentifier:] instead.");
-@end
-
 @interface NSString (ALSdk)
 @property (nonatomic, assign, readonly, getter=al_isValidString) BOOL al_validString;
 @property (nonatomic, assign, readonly, getter=al_isValidURL) BOOL al_validURL;

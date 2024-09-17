@@ -88,18 +88,6 @@ import org.robovm.apple.safariservices.*;
     public native void didClickAdForPlacementIdentifier(String placementIdentifier);
     @Method(selector = "didHideAdForPlacementIdentifier:")
     public native void didHideAdForPlacementIdentifier(String placementIdentifier);
-    /**
-     * @deprecated This API is deprecated because not all adapters support this callback. Please use -[ALMediationAdapterRouter didDisplayAdForPlacementIdentifier:] instead
-     */
-    @Deprecated
-    @Method(selector = "didStartRewardedVideoForPlacementIdentifier:")
-    public native void didStartRewardedVideoForPlacementIdentifier(String placementIdentifier);
-    /**
-     * @deprecated This API is deprecated because not all adapters support this callback. Please use -[ALMediationAdapterRouter didHideAdForPlacementIdentifier:] instead
-     */
-    @Deprecated
-    @Method(selector = "didCompleteRewardedVideoForPlacementIdentifier:")
-    public native void didCompleteRewardedVideoForPlacementIdentifier(String placementIdentifier);
     @Method(selector = "didRewardUserForPlacementIdentifier:withReward:")
     public native void didRewardUserForPlacementIdentifier(String placementIdentifier, MAReward reward);
     @Method(selector = "didExpandAdForPlacementIdentifier:")

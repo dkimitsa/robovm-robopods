@@ -75,8 +75,4 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface ALMediationAdapter (ALDeprecated)
-extern NSString *const kMAConfigKeyMuted __deprecated_msg("Adapters no longer support mute APIs.");
-@end
-
 NS_ASSUME_NONNULL_END

@@ -75,7 +75,6 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 @interface ALSdkSettings (ALDeprecated)
-@property (nonatomic, assign) BOOL isVerboseLogging __deprecated_msg("This property is deprecated and will be removed in a future SDK version. Please use `-[ALSdkSettings isVerboseLoggingEnabled]` instead.");
 @property (nonatomic, strong, readonly) ALConsentFlowSettings *consentFlowSettings __deprecated_msg("This property is deprecated and will be removed in a future SDK version. Please use the new MAX Terms and Privacy Policy Flow instead (see ALSdkSettings.termsAndPrivacyPolicyFlowSettings)");
 
 - (instancetype)init __deprecated_msg("This method is deprecated and will be removed in a future SDK version. Please use `ALSdk.shared.settings` instead");

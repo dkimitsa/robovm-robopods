@@ -62,13 +62,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readonly, nullable, getter=hasUserConsent) NSNumber *userConsent;
 
 /**
- * Current state of user age restrictions.
- *
- * @return @c 1 if the user is age restricted (i.e. under 16). @c nil if not set.
- */
-@property (nonatomic, strong, readonly, nullable, getter=isAgeRestrictedUser) NSNumber *ageRestrictedUser;
-
-/**
  * Current state of whether ot not the user has opted out of the sale of their personal information.
  *
  * @return @c 1 if the user has opted out of the sale of their personal information. @c nil if not set.

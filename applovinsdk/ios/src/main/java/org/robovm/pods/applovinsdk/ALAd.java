@@ -57,32 +57,9 @@ import org.robovm.apple.safariservices.*;
     public native ALAdType getType();
     @Property(selector = "zoneIdentifier")
     public native String getZoneIdentifier();
-    /**
-     * @deprecated This API has been deprecated and will be removed in a future release.
-     */
-    @Deprecated
-    @Property(selector = "adIdNumber")
-    public native NSNumber getAdIdNumber();
-    /**
-     * @deprecated This API has been deprecated and will be removed in a future release.
-     */
-    @Deprecated
-    @Property(selector = "isVideoAd")
-    public native boolean isVideoAd();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    /**
-     * @deprecated This API has been deprecated and will be removed in a future release.
-     */
-    @Deprecated
-    @Method(selector = "adValueForKey:")
-    public native String adValueForKey(String key);
-    /**
-     * @deprecated This API has been deprecated and will be removed in a future release.
-     */
-    @Deprecated
-    @Method(selector = "adValueForKey:defaultValue:")
-    public native String getAdValue(String key, String defaultValue);
+    
     /*</methods>*/
 }

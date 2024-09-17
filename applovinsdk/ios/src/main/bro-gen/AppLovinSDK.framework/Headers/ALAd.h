@@ -35,11 +35,4 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface ALAd (ALDeprecated)
-@property (nonatomic, strong, readonly) NSNumber *adIdNumber __deprecated_msg("This API has been deprecated and will be removed in a future release.");
-@property (nonatomic, assign, readonly, getter=isVideoAd) BOOL videoAd __deprecated_msg("This API has been deprecated and will be removed in a future release.");
-- (nullable NSString *)adValueForKey:(NSString *)key __deprecated_msg("This API has been deprecated and will be removed in a future release.");
-- (nullable NSString *)adValueForKey:(NSString *)key defaultValue:(nullable NSString *)defaultValue __deprecated_msg("This API has been deprecated and will be removed in a future release.");
-@end
-
 NS_ASSUME_NONNULL_END

@@ -39,31 +39,6 @@ NS_ASSUME_NONNULL_BEGIN
 + (BOOL)isUserConsentSet;
 
 /**
- * Marks the user as age-restricted (i.e. under 16).
- *
- * @param isAgeRestrictedUser @c YES if the user is age-restricted (i.e. under 16).
- *
- * @see <a href="https://developers.applovin.com/en/ios/overview/privacy#prohibition-on-ads-to-and-personal-information-from-children-and-apps-exclusively-designed-for-or-exclusively-directed-to-children">MAX Integration Guide ⇒ iOS ⇒ Privacy ⇒ Prohibition on Ads to, and Personal Information from, Children and Apps Exclusively Designed for, or Exclusively Directed to, Children</a>
- */
-+ (void)setIsAgeRestrictedUser:(BOOL)isAgeRestrictedUser;
-
-/**
- * Checks if the user is age-restricted.
- *
- * @return @c YES if the user is age-restricted. @c NO if the user is not age-restricted or the age-restriction value has not been set (see @c isAgeRestrictedUserSet).
- *
- * @see <a href="https://developers.applovin.com/en/ios/overview/privacy#prohibition-on-ads-to-and-personal-information-from-children-and-apps-exclusively-designed-for-or-exclusively-directed-to-children">MAX Integration Guide ⇒ iOS ⇒ Privacy ⇒ Prohibition on Ads to, and Personal Information from, Children and Apps Exclusively Designed for, or Exclusively Directed to, Children</a>
- */
-+ (BOOL)isAgeRestrictedUser;
-
-/**
- * Checks if user has set its age restricted settings.
- *
- * @return @c YES if user has set its age restricted settings.
- */
-+ (BOOL)isAgeRestrictedUserSet;
-
-/**
  * Sets whether or not the user has opted out of the sale of their personal information.
  *
  * @param doNotSell @c YES if the user opted out of the sale of their personal information.

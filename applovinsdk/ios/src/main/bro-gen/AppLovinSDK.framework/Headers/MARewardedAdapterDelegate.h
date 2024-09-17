@@ -103,14 +103,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)didRewardUserWithReward:(MAReward *)reward extraInfo:(nullable NSDictionary<NSString *, id> *)extraInfo;
 
-@optional
-
-- (void)didStartRewardedAdVideo
-__deprecated_msg("This API is deprecated because not all adapters support this callback. Please use -[MARewardedAdapterDelegate didDisplayRewardedAd:] instead");
-
-- (void)didCompleteRewardedAdVideo
-__deprecated_msg("This API is deprecated because not all adapters support this callback. Please use -[MARewardedAdapterDelegate didHideRewardedAd:] instead");
-
 @end
 
 NS_ASSUME_NONNULL_END

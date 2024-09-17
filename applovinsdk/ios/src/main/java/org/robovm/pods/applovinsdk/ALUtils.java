@@ -62,17 +62,5 @@ import org.robovm.apple.safariservices.*;
     public static native UIInterfaceOrientationMask currentOrientationMask();
     @Method(selector = "deviceSafeAreaDimensions")
     public static native @ByVal CGRect deviceSafeAreaDimensions();
-    /**
-     * @deprecated This method has been deprecated and will be removed in a future SDK version. Please use -[ALPrivacySettings tcfVendorConsentStatusForIdentifier:] instead.
-     */
-    @Deprecated
-    @Method(selector = "tcfConsentStatusForVendorIdentifier:")
-    public static native NSNumber tcfConsentStatusForVendorIdentifier(@MachineSizedSInt long vendorIdentifier);
-    /**
-     * @deprecated This method has been deprecated and will be removed in a future SDK version. Please use -[ALPrivacySettings additionalConsentStatusForIdentifier:] instead.
-     */
-    @Deprecated
-    @Method(selector = "additionalConsentStatusForATPIdentifier:")
-    public static native NSNumber additionalConsentStatusForATPIdentifier(@MachineSizedSInt long atpIdentifier);
     /*</methods>*/
 }

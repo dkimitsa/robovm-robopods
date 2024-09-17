@@ -78,17 +78,5 @@ import org.robovm.apple.safariservices.*;
     public void didRewardUser(MAReward reward) {}
     @NotImplemented("didRewardUserWithReward:extraInfo:")
     public void didRewardUser(MAReward reward, NSDictionary<NSString, ?> extraInfo) {}
-    /**
-     * @deprecated This API is deprecated because not all adapters support this callback. Please use -[MARewardedAdapterDelegate didDisplayRewardedAd:] instead
-     */
-    @Deprecated
-    @NotImplemented("didStartRewardedAdVideo")
-    public void didStartRewardedAdVideo() {}
-    /**
-     * @deprecated This API is deprecated because not all adapters support this callback. Please use -[MARewardedAdapterDelegate didHideRewardedAd:] instead
-     */
-    @Deprecated
-    @NotImplemented("didCompleteRewardedAdVideo")
-    public void didCompleteRewardedAdVideo() {}
     /*</methods>*/
 }
