@@ -219,6 +219,8 @@ classes:
                 name: navigateToURL
             '+navigateToURL:resolver:handler:':
                 name: navigateToURL
+            '+navigateToAppLink:handler:':
+                name: navigateToAppLink
             '+configureWithSettings:urlOpener:appLinkEventPoster:appLinkResolver:':
                 exclude: true #INTERNAL - DO NOT USE
     FBSDKAppLinkResolver:

@@ -7,7 +7,7 @@
     </parent>
 
     <artifactId>robopods-facebook-core-basics-ios</artifactId>
-    <name>RoboPods Facebook Core Basics iOS v17.1.0</name>
+    <name>RoboPods Facebook Core Basics iOS v17.3.0</name>
     <packaging>jar</packaging>
 
     <licenses>

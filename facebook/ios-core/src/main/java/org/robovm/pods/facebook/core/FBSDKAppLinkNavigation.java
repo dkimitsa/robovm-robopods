@@ -84,7 +84,7 @@ import org.robovm.pods.facebook.corebasics.*;
     @Method(selector = "initWithAppLink:extras:appLinkData:settings:")
     protected native @Pointer long init(FBSDKAppLink appLink, NSDictionary<NSString, ?> extras, NSDictionary<NSString, ?> appLinkData, FBSDKSettingsProtocol settings);
     @Method(selector = "navigate:")
-    public native FBSDKAppLinkNavigationType navigate(NSError.NSErrorPtr errorPointer);
+    public native void navigate(@Block VoidBlock2<FBSDKAppLinkNavigationType, NSError> handler);
     @Method(selector = "defaultResolver")
     public static native FBSDKAppLinkResolving defaultResolver();
     @Method(selector = "setDefaultResolver:")
@@ -95,14 +95,8 @@ import org.robovm.pods.facebook.corebasics.*;
     public static native void resolveAppLink(NSURL destination, @Block VoidBlock2<FBSDKAppLink, NSError> handler);
     @Method(selector = "resolveAppLink:resolver:handler:")
     public static native void resolveAppLink(NSURL destination, FBSDKAppLinkResolving resolver, @Block VoidBlock2<FBSDKAppLink, NSError> handler);
-    public static FBSDKAppLinkNavigationType navigateToAppLink(FBSDKAppLink appLink) throws NSErrorException {
-       NSError.NSErrorPtr ptr = new NSError.NSErrorPtr();
-       FBSDKAppLinkNavigationType result = navigateToAppLink(appLink, ptr);
-       if (ptr.get() != null) { throw new NSErrorException(ptr.get()); }
-       return result;
-    }
-    @Method(selector = "navigateToAppLink:error:")
-    private static native FBSDKAppLinkNavigationType navigateToAppLink(FBSDKAppLink appLink, NSError.NSErrorPtr errorPointer);
+    @Method(selector = "navigateToAppLink:handler:")
+    public static native void navigateToAppLink(FBSDKAppLink appLink, @Block VoidBlock2<FBSDKAppLinkNavigationType, NSError> handler);
     @Method(selector = "navigationTypeForLink:")
     public static native FBSDKAppLinkNavigationType navigationTypeForLink(FBSDKAppLink appLink);
     @Method(selector = "navigateToURL:handler:")

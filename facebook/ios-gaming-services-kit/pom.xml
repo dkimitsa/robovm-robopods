@@ -7,7 +7,7 @@
     </parent>
 
     <artifactId>robopods-facebook-gamingservicekit-ios</artifactId>
-    <name>RoboPods Facebook Gaming Service Kit iOS v17.1.0</name>
+    <name>RoboPods Facebook Gaming Service Kit iOS v17.3.0</name>
     <packaging>jar</packaging>
 
     <licenses>
