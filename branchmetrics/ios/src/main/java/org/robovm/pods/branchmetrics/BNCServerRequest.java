@@ -56,6 +56,14 @@ import org.robovm.apple.storekit.*;
     public BNCServerRequest(NSCoder coder) { super((SkipInit) null); initObject(init(coder)); }
     /*</constructors>*/
     /*<properties>*/
+    @Property(selector = "requestUUID")
+    public native String getRequestUUID();
+    @Property(selector = "setRequestUUID:")
+    public native void setRequestUUID(String v);
+    @Property(selector = "requestCreationTimeStamp")
+    public native NSNumber getRequestCreationTimeStamp();
+    @Property(selector = "setRequestCreationTimeStamp:")
+    public native void setRequestCreationTimeStamp(NSNumber v);
     @Property(selector = "supportsSecureCoding")
     public static native boolean supportsSecureCoding();
     /*</properties>*/
@@ -67,6 +75,8 @@ import org.robovm.apple.storekit.*;
     public native void processResponse(BNCServerResponse response, NSError error);
     @Method(selector = "safeSetValue:forKey:onDict:")
     public native void safeSetValue(NSObject value, String key, NSMutableDictionary<?, ?> dict);
+    @Method(selector = "generateRequestUUIDFromDate:")
+    public static native String generateRequestUUIDFromDate(NSDate localDate);
     @Method(selector = "encodeWithCoder:")
     public native void encode(NSCoder coder);
     @Method(selector = "initWithCoder:")

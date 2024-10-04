@@ -75,5 +75,7 @@ import org.robovm.apple.storekit.*;
     /*<methods>*/
     @Method(selector = "initWithServerURL:eventDictionary:completion:")
     protected native @Pointer long init(NSURL serverURL, NSDictionary<?, ?> eventDictionary, @Block VoidBlock2<NSDictionary<?, ?>, NSError> completion);
+    @Method(selector = "generateRequestUUIDFromDate:")
+    public static native String generateRequestUUIDFromDate(NSDate localDate);
     /*</methods>*/
 }
