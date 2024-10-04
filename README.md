@@ -58,7 +58,7 @@ v1.45.0 - in development
 | [Pollfish](pollfish/)           | 6.5.0   |
 | [SAMKeychain](samkeychain/)     | 1.5.3   |
 | [Singular](singular/)           | 12.5.0  |
-| [Tenjin](tenjin/)               | 1.14.4  |
+| [Tenjin](tenjin/)               | 1.14.5  |
 | [UnityAds](unityads/)           | 4.12.2  |
 | [YouTubePlayer](youtube/)       | 1.0.4   |
 
