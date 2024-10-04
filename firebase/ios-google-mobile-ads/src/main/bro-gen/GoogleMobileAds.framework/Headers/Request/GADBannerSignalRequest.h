@@ -9,6 +9,7 @@
 #import <GoogleMobileAds/GADVideoOptions.h>
 #import <GoogleMobileAds/Request/GADSignalRequest.h>
 
+/// A banner signal request that can be used as input in server-to-server signal generation.
 @interface GADBannerSignalRequest : GADSignalRequest
 
 /// Indicates that the publisher will record impressions manually when the ad becomes visible to the

@@ -8,6 +8,7 @@
 #import <GoogleMobileAds/GADAdNetworkExtras.h>
 #import <UIKit/UIKit.h>
 
+/// A signal request that can be used as input in server-to-server signal generation.
 @interface GADSignalRequest : NSObject <NSCopying>
 
 #pragma mark Additional Parameters For Ad Networks

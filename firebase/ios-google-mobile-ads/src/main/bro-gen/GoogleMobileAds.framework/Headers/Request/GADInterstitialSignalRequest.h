@@ -7,6 +7,8 @@
 
 #import <GoogleMobileAds/Request/GADSignalRequest.h>
 
+/// An interstitial signal request that can be used as input in server-to-server signal
+/// generation.
 @interface GADInterstitialSignalRequest : GADSignalRequest
 
 /// Returns an initialized interstitial signal request.

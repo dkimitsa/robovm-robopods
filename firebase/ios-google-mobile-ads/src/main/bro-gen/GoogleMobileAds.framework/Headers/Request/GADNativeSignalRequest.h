@@ -10,6 +10,7 @@
 #import <GoogleMobileAds/GADVideoOptions.h>
 #import <GoogleMobileAds/Request/GADSignalRequest.h>
 
+/// A native signal request that can be used as input in server-to-server signal generation.
 @interface GADNativeSignalRequest : GADSignalRequest
 
 /// Number of ads to request. By default, numberOfAds

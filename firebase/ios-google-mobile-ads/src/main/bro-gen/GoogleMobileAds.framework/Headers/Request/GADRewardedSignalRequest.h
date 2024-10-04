@@ -7,6 +7,7 @@
 
 #import <GoogleMobileAds/Request/GADSignalRequest.h>
 
+/// A rewarded signal request that can be used as input in server-to-server signal generation.
 @interface GADRewardedSignalRequest : GADSignalRequest
 
 /// Returns an initialized rewarded signal request.
