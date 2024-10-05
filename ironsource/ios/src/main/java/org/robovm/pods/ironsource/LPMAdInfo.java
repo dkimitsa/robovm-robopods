@@ -52,64 +52,78 @@ import org.robovm.apple.coreanimation.*;
     /*<properties>*/
     @Property(selector = "adUnitId")
     public native String getAdUnitId();
-    @Property(selector = "setAdUnitId:")
-    public native void setAdUnitId(String v);
+    @Property(selector = "adUnitName")
+    public native String getAdUnitName();
     @Property(selector = "placementName")
     public native String getPlacementName();
-    @Property(selector = "setPlacementName:")
-    public native void setPlacementName(String v);
     @Property(selector = "adSize")
     public native LPMAdSize getAdSize();
-    @Property(selector = "setAdSize:")
-    public native void setAdSize(LPMAdSize v);
     @Property(selector = "adFormat")
     public native String getAdFormat();
-    @Property(selector = "setAdFormat:")
-    public native void setAdFormat(String v);
+    /**
+     * @deprecated This parameter will be removed in version 9.0.0. Please use auctionId parameter instead.
+     */
+    @Deprecated
     @Property(selector = "auction_id")
     public native String getAuction_id();
-    @Property(selector = "setAuction_id:")
-    public native void setAuction_id(String v);
+    @Property(selector = "auctionId")
+    public native String getAuctionId();
     @Property(selector = "country")
     public native String getCountry();
-    @Property(selector = "setCountry:")
-    public native void setCountry(String v);
     @Property(selector = "ab")
     public native String getAb();
-    @Property(selector = "setAb:")
-    public native void setAb(String v);
+    /**
+     * @deprecated This parameter will be removed in version 9.0.0. Please use segmentName parameter instead.
+     */
+    @Deprecated
     @Property(selector = "segment_name")
     public native String getSegment_name();
-    @Property(selector = "setSegment_name:")
-    public native void setSegment_name(String v);
+    @Property(selector = "segmentName")
+    public native String getSegmentName();
+    /**
+     * @deprecated This parameter will be removed in version 9.0.0. Please use adNetwork parameter instead.
+     */
+    @Deprecated
     @Property(selector = "ad_network")
     public native String getAd_network();
-    @Property(selector = "setAd_network:")
-    public native void setAd_network(String v);
+    @Property(selector = "adNetwork")
+    public native String getAdNetwork();
+    /**
+     * @deprecated This parameter will be removed in version 9.0.0. Please use instanceName parameter instead.
+     */
+    @Deprecated
     @Property(selector = "instance_name")
     public native String getInstance_name();
-    @Property(selector = "setInstance_name:")
-    public native void setInstance_name(String v);
+    @Property(selector = "instanceName")
+    public native String getInstanceName();
+    /**
+     * @deprecated This parameter will be removed in version 9.0.0. Please use instanceId parameter instead.
+     */
+    @Deprecated
     @Property(selector = "instance_id")
     public native String getInstance_id();
-    @Property(selector = "setInstance_id:")
-    public native void setInstance_id(String v);
+    @Property(selector = "instanceId")
+    public native String getInstanceId();
     @Property(selector = "revenue")
     public native NSNumber getRevenue();
-    @Property(selector = "setRevenue:")
-    public native void setRevenue(NSNumber v);
     @Property(selector = "precision")
     public native String getPrecision();
-    @Property(selector = "setPrecision:")
-    public native void setPrecision(String v);
+    /**
+     * @deprecated This parameter will be removed in version 9.0.0. Please use encryptedCPM parameter instead.
+     */
+    @Deprecated
     @Property(selector = "encrypted_cpm")
     public native String getEncrypted_cpm();
-    @Property(selector = "setEncrypted_cpm:")
-    public native void setEncrypted_cpm(String v);
+    @Property(selector = "encryptedCPM")
+    public native String getEncryptedCPM();
+    /**
+     * @deprecated This parameter will be removed in version 9.0.0. Please use conversionValue parameter instead.
+     */
+    @Deprecated
     @Property(selector = "conversion_value")
     public native NSNumber getConversion_value();
-    @Property(selector = "setConversion_value:")
-    public native void setConversion_value(NSNumber v);
+    @Property(selector = "conversionValue")
+    public native NSNumber getConversionValue();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

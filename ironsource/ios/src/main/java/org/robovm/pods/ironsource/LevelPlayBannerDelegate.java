@@ -49,16 +49,40 @@ import org.robovm.apple.coreanimation.*;
     
     /*</properties>*/
     /*<methods>*/
+    /**
+     * @deprecated Use [LPMBannerAdViewDelegate didLoadAdWithAdInfo:] instead.
+     */
+    @Deprecated
     @Method(selector = "didLoad:withAdInfo:")
     void didLoad(ISBannerView bannerView, ISAdInfo adInfo);
+    /**
+     * @deprecated Use [LPMBannerAdViewDelegate didFailToLoadAdWithAdUnitId:errorId:] instead.
+     */
+    @Deprecated
     @Method(selector = "didFailToLoadWithError:")
     void didFailToLoad(NSError error);
+    /**
+     * @deprecated Use [LPMBannerAdViewDelegate didClickAdWithAdInfo:] instead.
+     */
+    @Deprecated
     @Method(selector = "didClickWithAdInfo:")
     void didClick(ISAdInfo adInfo);
+    /**
+     * @deprecated Use [LPMBannerAdViewDelegate didLeaveAppWithAdInfo:] instead.
+     */
+    @Deprecated
     @Method(selector = "didLeaveApplicationWithAdInfo:")
     void didLeaveApplication(ISAdInfo adInfo);
+    /**
+     * @deprecated Use [LPMBannerAdViewDelegate didExpandAdWithAdInfo:] instead.
+     */
+    @Deprecated
     @Method(selector = "didPresentScreenWithAdInfo:")
     void didPresentScreen(ISAdInfo adInfo);
+    /**
+     * @deprecated Use [LPMBannerAdViewDelegate didCollapseAdWithAdInfo:] instead.
+     */
+    @Deprecated
     @Method(selector = "didDismissScreenWithAdInfo:")
     void didDismissScreen(ISAdInfo adInfo);
     /*</methods>*/

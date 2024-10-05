@@ -98,8 +98,8 @@ NS_ASSUME_NONNULL_BEGIN
 #define IS_BANNER @"banner"
 #define IS_NATIVE_AD @"nativead"
 
-static NSString *const MEDIATION_SDK_VERSION = @"8.3.0";
-static NSString *GitHash = @"6a68001";
+static NSString *const MEDIATION_SDK_VERSION = @"8.4.0";
+static NSString *GitHash = @"917cac0";
 
 /*
     This constant is for sending an external impression data from mopub
@@ -289,8 +289,7 @@ static NSString *const DataSource_MOPUB = @"MoPub";
  */
 + (void)initISDemandOnly:(NSString *)appKey
                  adUnits:(NSArray<NSString *> *)adUnits
-    DEPRECATED_MSG_ATTRIBUTE("This API has been deprecated. Please use [IronSourceAds "
-                             "initWithRequest:completion:] instead.");
+    DEPRECATED_MSG_ATTRIBUTE("Use [IronSourceAds initWithRequest:completion:] instead.");
 
 #pragma mark - Rewarded Video
 
@@ -378,8 +377,7 @@ static NSString *const DataSource_MOPUB = @"MoPub";
  */
 + (void)loadISDemandOnlyRewardedVideoWithAdm:(NSString *)instanceId
                                          adm:(NSString *)adm
-    DEPRECATED_MSG_ATTRIBUTE("This API has been deprecated. Please use [ISARewardedAdLoader "
-                             "loadAdWithAdRequest:delegate:] instead.");
+    DEPRECATED_MSG_ATTRIBUTE("Use [ISARewardedAdLoader loadAdWithAdRequest:delegate:] instead.");
 
 /**
  @abstract Shows a demand only rewarded video using the default placement.
@@ -491,8 +489,8 @@ static NSString *const DataSource_MOPUB = @"MoPub";
  */
 + (void)loadISDemandOnlyInterstitialWithAdm:(NSString *)instanceId
                                         adm:(NSString *)adm
-    DEPRECATED_MSG_ATTRIBUTE("This API has been deprecated. Please use [ISAInterstitialAdLoader "
-                             "loadAdWithAdRequest:delegate:] instead.");
+    DEPRECATED_MSG_ATTRIBUTE(
+        "Use [ISAInterstitialAdLoader loadAdWithAdRequest:delegate:] instead.");
 
 /**
  @abstract Show a demand only interstitial using the default placement.
@@ -518,7 +516,8 @@ static NSString *const DataSource_MOPUB = @"MoPub";
 
  @param delegate The 'LevelPlayBannerDelegate' for IronSource to send callbacks to.
  */
-+ (void)setLevelPlayBannerDelegate:(nullable id<LevelPlayBannerDelegate>)delegate;
++ (void)setLevelPlayBannerDelegate:(nullable id<LevelPlayBannerDelegate>)delegate
+    DEPRECATED_MSG_ATTRIBUTE("Use [LPMBannerAdView setDelegate:] instead.");
 
 /**
  @abstract Loads a banner using the default placement.
@@ -535,7 +534,9 @@ static NSString *const DataSource_MOPUB = @"MoPub";
  @param viewController The UIViewController to display the banner within.
  @param size The required banner ad size
  */
-+ (void)loadBannerWithViewController:(UIViewController *)viewController size:(ISBannerSize *)size;
++ (void)loadBannerWithViewController:(UIViewController *)viewController
+                                size:(ISBannerSize *)size
+    DEPRECATED_MSG_ATTRIBUTE("Use [LPMBannerAdView loadAdWithViewController:] instead.");
 
 /**
  @abstract Loads a banner using the provided placement name.
@@ -557,13 +558,17 @@ static NSString *const DataSource_MOPUB = @"MoPub";
  */
 + (void)loadBannerWithViewController:(UIViewController *)viewController
                                 size:(ISBannerSize *)size
-                           placement:(nullable NSString *)placementName;
+                           placement:(nullable NSString *)placementName
+    DEPRECATED_MSG_ATTRIBUTE("Use [LPMBannerAdView setPlacementName:] with "
+                             "[LPMBannerAdView loadAdWithViewController:] instead.");
 
 /**
  @abstract Removes the banner from memory.
  @param banner The ISBannerView to remove.
  */
-+ (void)destroyBanner:(ISBannerView *)banner;
++ (void)destroyBanner:(ISBannerView *)banner
+    DEPRECATED_MSG_ATTRIBUTE("Use [LPMBannerAdView destroy] instead.");
+;
 
 /**
  @abstract Verify if a certain placement has reached its ad limit.
@@ -573,7 +578,8 @@ static NSString *const DataSource_MOPUB = @"MoPub";
  @param placementName The placement name as was defined in the platform.
  @return YES if capped or paced, NO otherwise.
  */
-+ (BOOL)isBannerCappedForPlacement:(NSString *)placementName;
++ (BOOL)isBannerCappedForPlacement:(NSString *)placementName
+    DEPRECATED_MSG_ATTRIBUTE("Capping is no longer supported for banners.");
 
 #pragma mark Demand Only Banner
 /**

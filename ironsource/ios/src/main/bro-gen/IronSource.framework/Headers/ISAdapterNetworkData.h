@@ -13,4 +13,6 @@
 
 - (NSDictionary *)allData;
 
+- (id)dataByKeyIgnoreCase:(NSString *)desiredKey valueType:(Class)valueType;
+
 @end

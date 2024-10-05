@@ -51,16 +51,40 @@ import org.robovm.apple.coreanimation.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
+    /**
+     * @deprecated Use [LPMBannerAdViewDelegate didLoadAdWithAdInfo:] instead.
+     */
+    @Deprecated
     @NotImplemented("didLoad:withAdInfo:")
     public void didLoad(ISBannerView bannerView, ISAdInfo adInfo) {}
+    /**
+     * @deprecated Use [LPMBannerAdViewDelegate didFailToLoadAdWithAdUnitId:errorId:] instead.
+     */
+    @Deprecated
     @NotImplemented("didFailToLoadWithError:")
     public void didFailToLoad(NSError error) {}
+    /**
+     * @deprecated Use [LPMBannerAdViewDelegate didClickAdWithAdInfo:] instead.
+     */
+    @Deprecated
     @NotImplemented("didClickWithAdInfo:")
     public void didClick(ISAdInfo adInfo) {}
+    /**
+     * @deprecated Use [LPMBannerAdViewDelegate didLeaveAppWithAdInfo:] instead.
+     */
+    @Deprecated
     @NotImplemented("didLeaveApplicationWithAdInfo:")
     public void didLeaveApplication(ISAdInfo adInfo) {}
+    /**
+     * @deprecated Use [LPMBannerAdViewDelegate didExpandAdWithAdInfo:] instead.
+     */
+    @Deprecated
     @NotImplemented("didPresentScreenWithAdInfo:")
     public void didPresentScreen(ISAdInfo adInfo) {}
+    /**
+     * @deprecated Use [LPMBannerAdViewDelegate didCollapseAdWithAdInfo:] instead.
+     */
+    @Deprecated
     @NotImplemented("didDismissScreenWithAdInfo:")
     public void didDismissScreen(ISAdInfo adInfo) {}
     /*</methods>*/

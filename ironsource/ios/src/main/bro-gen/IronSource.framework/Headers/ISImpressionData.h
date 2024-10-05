@@ -12,6 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #define kImpressionDataKeyAuctionId @"auctionId"
 #define kImpressionDataKeyAdUnit @"adUnit"
+#define kImpressionDataKeyMediationAdUnitName @"mediationAdUnitName"
+#define kImpressionDataKeyMediationAdUnitId @"mediationAdUnitId"
+#define kImpressionDataKeyAdFormat @"adFormat"
 #define kImpressionDataKeyCountry @"country"
 #define kImpressionDataKeyAb @"ab"
 #define kImpressionDataKeySegmentName @"segmentName"
@@ -28,7 +31,11 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ISImpressionData : NSObject
 
 @property(readonly, copy) NSString* _Nullable auction_id;
-@property(readonly, copy) NSString* _Nullable ad_unit;
+@property(readonly, copy) NSString* _Nullable ad_unit DEPRECATED_MSG_ATTRIBUTE(
+    "This parameter will be removed in version 9.0.0. Please use ad_format parameter instead.");
+@property(readonly, copy) NSString* _Nullable mediation_ad_unit_name;
+@property(readonly, copy) NSString* _Nullable mediation_ad_unit_id;
+@property(readonly, copy) NSString* _Nullable ad_format;
 @property(readonly, copy) NSString* _Nullable ad_network;
 @property(readonly, copy) NSString* _Nullable instance_name;
 @property(readonly, copy) NSString* _Nullable instance_id;
@@ -38,7 +45,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(readonly, copy) NSString* _Nullable precision;
 @property(readonly, copy) NSString* _Nullable ab;
 @property(readonly, copy) NSString* _Nullable segment_name;
-@property(readonly, copy) NSNumber* _Nullable lifetime_revenue;
+@property(readonly, copy) NSNumber* _Nullable lifetime_revenue DEPRECATED_MSG_ATTRIBUTE(
+    "This parameter will be removed in version 9.0.0.");
 @property(readonly, copy) NSString* _Nullable encrypted_cpm;
 @property(readonly, copy) NSNumber* _Nullable conversion_value;
 

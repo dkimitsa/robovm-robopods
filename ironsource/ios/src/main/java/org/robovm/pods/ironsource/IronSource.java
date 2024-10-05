@@ -48,7 +48,7 @@ import org.robovm.apple.coreanimation.*;
     public static final String IS_INTERSTITIAL = "interstitial";
     public static final String IS_BANNER = "banner";
     public static final String IS_NATIVE_AD = "nativead";
-    public static final String getSdkVersion = "8.3.0";
+    public static final String getSdkVersion = "8.4.0";
     public static final String DataSource_MOPUB = "MoPub";
     /*</constants>*/
     /*<constructors>*/
@@ -96,7 +96,7 @@ import org.robovm.apple.coreanimation.*;
     @Method(selector = "initWithAppKey:adUnits:delegate:")
     public static native void init(String appKey, NSArray<NSString> adUnits, ISInitializationDelegate delegate);
     /**
-     * @deprecated This API has been deprecated. Please use [IronSourceAds initWithRequest:completion:] instead.
+     * @deprecated Use [IronSourceAds initWithRequest:completion:] instead.
      */
     @Deprecated
     @Method(selector = "initISDemandOnly:adUnits:")
@@ -122,7 +122,7 @@ import org.robovm.apple.coreanimation.*;
     @Method(selector = "loadISDemandOnlyRewardedVideo:")
     public static native void loadISDemandOnlyRewardedVideo(String instanceId);
     /**
-     * @deprecated This API has been deprecated. Please use [ISARewardedAdLoader loadAdWithAdRequest:delegate:] instead.
+     * @deprecated Use [ISARewardedAdLoader loadAdWithAdRequest:delegate:] instead.
      */
     @Deprecated
     @Method(selector = "loadISDemandOnlyRewardedVideoWithAdm:adm:")
@@ -152,7 +152,7 @@ import org.robovm.apple.coreanimation.*;
     @Method(selector = "loadISDemandOnlyInterstitial:")
     public static native void loadISDemandOnlyInterstitial(String instanceId);
     /**
-     * @deprecated This API has been deprecated. Please use [ISAInterstitialAdLoader loadAdWithAdRequest:delegate:] instead.
+     * @deprecated Use [ISAInterstitialAdLoader loadAdWithAdRequest:delegate:] instead.
      */
     @Deprecated
     @Method(selector = "loadISDemandOnlyInterstitialWithAdm:adm:")
@@ -161,14 +161,34 @@ import org.robovm.apple.coreanimation.*;
     public static native void showISDemandOnlyInterstitial(UIViewController viewController, String instanceId);
     @Method(selector = "hasISDemandOnlyInterstitial:")
     public static native boolean hasISDemandOnlyInterstitial(String instanceId);
+    /**
+     * @deprecated Use [LPMBannerAdView setDelegate:] instead.
+     */
+    @Deprecated
     @Method(selector = "setLevelPlayBannerDelegate:")
     public static native void setLevelPlayBannerDelegate(LevelPlayBannerDelegate delegate);
+    /**
+     * @deprecated Use [LPMBannerAdView loadAdWithViewController:] instead.
+     */
+    @Deprecated
     @Method(selector = "loadBannerWithViewController:size:")
     public static native void loadBanner(UIViewController viewController, ISBannerSize size);
+    /**
+     * @deprecated Use [LPMBannerAdView setPlacementName:] with [LPMBannerAdView loadAdWithViewController:] instead.
+     */
+    @Deprecated
     @Method(selector = "loadBannerWithViewController:size:placement:")
     public static native void loadBanner(UIViewController viewController, ISBannerSize size, String placementName);
+    /**
+     * @deprecated Use [LPMBannerAdView destroy] instead.
+     */
+    @Deprecated
     @Method(selector = "destroyBanner:")
     public static native void destroyBanner(ISBannerView banner);
+    /**
+     * @deprecated Capping is no longer supported for banners.
+     */
+    @Deprecated
     @Method(selector = "isBannerCappedForPlacement:")
     public static native boolean isBannerCappedForPlacement(String placementName);
     @Method(selector = "setISDemandOnlyBannerDelegate:forInstanceId:")

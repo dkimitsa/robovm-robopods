@@ -53,6 +53,8 @@ import org.robovm.apple.coreanimation.*;
     NSDictionary<?, ?> networkDataByAdUnit(ISAdUnit adUnit);
     @Method(selector = "allData")
     NSDictionary<?, ?> allData();
+    @Method(selector = "dataByKeyIgnoreCase:valueType:")
+    NSObject getDataByKeyIgnoreCase(String desiredKey, Class<?> valueType);
     /*</methods>*/
     /*<adapter>*/
     /*</adapter>*/

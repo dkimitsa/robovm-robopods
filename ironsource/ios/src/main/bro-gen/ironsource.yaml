@@ -750,7 +750,10 @@ protocols:
                 name: didExpandAd
             '-didCollapseAdWithAdInfo:':
                 name: didCollapseAd
-    ISAdapterNetworkData: { }
+    ISAdapterNetworkData:
+        methods:
+            '-dataByKeyIgnoreCase:valueType:':
+                name: getDataByKeyIgnoreCase
     ISAdapterNetworkDataProtocol: { }
     LPMConfigServiceEventSender:
         methods:

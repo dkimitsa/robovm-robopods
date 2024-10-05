@@ -47,6 +47,9 @@ import org.robovm.apple.coreanimation.*;
     public static class Keys {
         public static final String AuctionId = "auctionId";
         public static final String AdUnit = "adUnit";
+        public static final String MediationAdUnitName = "mediationAdUnitName";
+        public static final String MediationAdUnitId = "mediationAdUnitId";
+        public static final String AdFormat = "adFormat";
         public static final String Country = "country";
         public static final String Ab = "ab";
         public static final String SegmentName = "segmentName";
@@ -73,8 +76,18 @@ import org.robovm.apple.coreanimation.*;
     /*<properties>*/
     @Property(selector = "auction_id")
     public native String getAuction_id();
+    /**
+     * @deprecated This parameter will be removed in version 9.0.0. Please use ad_format parameter instead.
+     */
+    @Deprecated
     @Property(selector = "ad_unit")
     public native String getAd_unit();
+    @Property(selector = "mediation_ad_unit_name")
+    public native String getMediation_ad_unit_name();
+    @Property(selector = "mediation_ad_unit_id")
+    public native String getMediation_ad_unit_id();
+    @Property(selector = "ad_format")
+    public native String getAd_format();
     @Property(selector = "ad_network")
     public native String getAd_network();
     @Property(selector = "instance_name")
@@ -93,6 +106,10 @@ import org.robovm.apple.coreanimation.*;
     public native String getAb();
     @Property(selector = "segment_name")
     public native String getSegment_name();
+    /**
+     * @deprecated This parameter will be removed in version 9.0.0.
+     */
+    @Deprecated
     @Property(selector = "lifetime_revenue")
     public native NSNumber getLifetime_revenue();
     @Property(selector = "encrypted_cpm")
