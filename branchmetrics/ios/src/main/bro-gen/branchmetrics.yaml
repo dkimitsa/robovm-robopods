@@ -35,6 +35,9 @@ classes:
                 name: setObject
     BNCLinkData: {}
     BNCPreferenceHelper:
+        properties:
+            '-attributionLevel':
+                type: NSString
         methods:
             '-setCreditCount:forBucket:':
                 trim_after_first_colon: true
@@ -291,6 +294,8 @@ classes:
                 name: enableLoggingAtLevel
             '-enableLogging':
                 exclude: true # This API is deprecated. Please use the static version.
+            '+enableLoggingAtLevel:withAdvancedCallback:':
+                name: enableLogging
     BranchActivityItemProvider:
         methods:
             '-initWithParams:andTags:andFeature:andStage:andAlias:':
@@ -437,6 +442,8 @@ classes:
                 name: logWarning
             '-logDebug:error:':
                 name: logDebug
+            '-logDebug:error:request:response:':
+                name: logDebug
             '-logVerbose:error:':
                 name: logVerbose
             '+formatMessage:logLevel:error:':
@@ -503,6 +510,10 @@ values:
         class: BranchEvents
         name: 'get#{g[0]}'
 
+    BranchAttributionLevel(.*):
+        class: BranchAttributionLevels
+        type: NSString
+        name: '#{g[0]}'
 
     BRANCH_(.*):
         class: BranchConstants

@@ -66,6 +66,10 @@ import org.robovm.apple.storekit.*;
     public native @Block VoidBlock3<NSString, BranchLogLevel, NSError> getLogCallback();
     @Property(selector = "setLogCallback:")
     public native void setLogCallback(@Block VoidBlock3<NSString, BranchLogLevel, NSError> v);
+    @Property(selector = "advancedLogCallback")
+    public native @Block VoidBlock5<NSString, BranchLogLevel, NSError, NSMutableURLRequest, BNCServerResponse> getAdvancedLogCallback();
+    @Property(selector = "setAdvancedLogCallback:")
+    public native void setAdvancedLogCallback(@Block VoidBlock5<NSString, BranchLogLevel, NSError, NSMutableURLRequest, BNCServerResponse> v);
     @Property(selector = "logLevelThreshold")
     public native BranchLogLevel getLogLevelThreshold();
     @Property(selector = "setLogLevelThreshold:")
@@ -83,6 +87,8 @@ import org.robovm.apple.storekit.*;
     public native void logWarning(String message, NSError error);
     @Method(selector = "logDebug:error:")
     public native void logDebug(String message, NSError error);
+    @Method(selector = "logDebug:error:request:response:")
+    public native void logDebug(String message, NSError error, NSMutableURLRequest request, BNCServerResponse response);
     @Method(selector = "logVerbose:error:")
     public native void logVerbose(String message, NSError error);
     @Method(selector = "shared")

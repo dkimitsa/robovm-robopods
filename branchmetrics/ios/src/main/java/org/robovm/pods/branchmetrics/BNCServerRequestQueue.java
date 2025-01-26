@@ -54,10 +54,7 @@ import org.robovm.apple.storekit.*;
     protected BNCServerRequestQueue(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
-    @Property(selector = "processArchivedOpens")
-    public native boolean isProcessArchivedOpens();
-    @Property(selector = "setProcessArchivedOpens:")
-    public native void setProcessArchivedOpens(boolean v);
+    
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
@@ -83,10 +80,6 @@ import org.robovm.apple.storekit.*;
     public native boolean containsInstallOrOpen();
     @Method(selector = "findExistingInstallOrOpen")
     public native NSObject findExistingInstallOrOpen();
-    @Method(selector = "persistEventually")
-    public native void persistEventually();
-    @Method(selector = "persistImmediately")
-    public native void persistImmediately();
     @Method(selector = "getInstance")
     public static native NSObject getInstance();
     /*</methods>*/

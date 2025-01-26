@@ -182,6 +182,8 @@ import org.robovm.apple.storekit.*;
     public native void registerPlugin(String name, String version);
     @Method(selector = "setRequestMetadataKey:value:")
     public native void setRequestMetadata(String key, String value);
+    @Method(selector = "setConsumerProtectionAttributionLevel:")
+    public native void setConsumerProtectionAttributionLevel(String level);
     @Method(selector = "getFirstReferringBranchUniversalObject")
     public native BranchUniversalObject getFirstReferringBranchUniversalObject();
     @Method(selector = "getFirstReferringBranchLinkProperties")
@@ -394,10 +396,16 @@ import org.robovm.apple.storekit.*;
     public static native void enableLogging();
     @Method(selector = "enableLoggingAtLevel:withCallback:")
     public static native void enableLoggingAtLevel(BranchLogLevel logLevel, @Block VoidBlock3<NSString, BranchLogLevel, NSError> callback);
+    @Method(selector = "enableLoggingAtLevel:withAdvancedCallback:")
+    public static native void enableLogging(BranchLogLevel logLevel, @Block VoidBlock5<NSString, BranchLogLevel, NSError, NSMutableURLRequest, BNCServerResponse> callback);
     @Method(selector = "setAPIUrl:")
     public static native void setAPIUrl(String url);
     @Method(selector = "isBranchLink:")
     public static native boolean isBranchLink(String urlString);
+    /**
+     * @deprecated This method has been deprecated. Use `setConsumerProtectionAttributionLevel:` with `BranchAttributionLevelNone` instead.
+     */
+    @Deprecated
     @Method(selector = "setTrackingDisabled:")
     public static native void setTrackingDisabled(boolean disabled);
     @Method(selector = "trackingDisabled")

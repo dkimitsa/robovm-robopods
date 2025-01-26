@@ -242,6 +242,10 @@ import org.robovm.apple.storekit.*;
     public native boolean isAdUserDataUsageConsent();
     @Property(selector = "setAdUserDataUsageConsent:")
     public native void setAdUserDataUsageConsent(boolean v);
+    @Property(selector = "attributionLevel")
+    public native String getAttributionLevel();
+    @Property(selector = "setAttributionLevel:", strongRef = true)
+    public native void setAttributionLevel(String v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
@@ -275,6 +279,8 @@ import org.robovm.apple.storekit.*;
     public native void synchronize();
     @Method(selector = "eeaRegionInitialized")
     public native boolean eeaRegionInitialized();
+    @Method(selector = "attributionLevelInitialized")
+    public native boolean attributionLevelInitialized();
     @Method(selector = "sharedInstance")
     public static native BNCPreferenceHelper sharedInstance();
     @Method(selector = "clearAll")
