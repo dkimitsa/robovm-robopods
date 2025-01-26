@@ -63,6 +63,8 @@ import org.robovm.apple.coreanimation.*;
     /*<methods>*/
     @Method(selector = "trackingAuthorizationRequest:")
     public static native void trackingAuthorizationRequest(@Block("(@MachineSizedUInt)") VoidBlock1<Long> completion);
+    @Method(selector = "configureFirebaseAppIfNeededWithCompletion:")
+    public static native void configureFirebaseAppIfNeeded(@Block Runnable handler);
     @Method(selector = "tryFirebaseLogEvent:map:")
     public static native boolean tryFirebaseLogEvent(String eventName, NSDictionary<NSString, ?> map);
     @Method(selector = "tryTenjinLogEvent:json:")

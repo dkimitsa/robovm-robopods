@@ -28,6 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (class, readonly) NSUInteger adTrackingStatus;
 + (void)trackingAuthorizationRequest:(nullable void (^)(NSUInteger))completion;
 
++ (void)configureFirebaseAppIfNeededWithCompletion:(void (^)(void))handler;
 + (BOOL)tryFirebaseLogEvent:(NSString *)eventName map:(NSDictionary<NSString *, id> *)map;
 + (BOOL)tryTenjinLogEvent:(NSString *)eventName json:(NSString *)eventJson;
 + (BOOL)tryTenjinLogImpressionEvent:(NSString *)eventJson;

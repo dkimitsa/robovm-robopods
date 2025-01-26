@@ -65,6 +65,8 @@ classes:
                 name: tryFirebaseLogEvent
             '+tryTenjinLogEvent:json:':
                 name: tryTenjinLogEvent
+            '+configureFirebaseAppIfNeededWithCompletion:':
+                name: configureFirebaseAppIfNeeded
     CASLastPageAdContent:
         methods:
             '-initWithHeadline:adText:destinationURL:imageURL:iconURL:':
@@ -234,6 +236,9 @@ constants:
     CAS_FRAMEWORK_(VERSION|CODE):
         class: CAS
         name: 'FRAMEWORK_#{g[0]}'
+    CAS_EXCHANGE_VERSION:
+        class: CAS
+        name: 'EXCHANGE_VERSION'
 
     # Make sure we don't miss any values if new ones are introduced in a later version
     (.*):
