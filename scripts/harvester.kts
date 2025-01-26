@@ -443,7 +443,6 @@ val knownFrameworks = mutableMapOf<String, (String) -> Unit>(
     registerAppCenter(it, knownGroups)
     registerFirebase(it, knownGroups)
     registerFacebook(it, knownGroups)
-    registerFlurry(it, knownGroups)
     registerMobileAdsMediationAdapters(it, knownGroups)
 }
 
@@ -1326,47 +1325,3 @@ fun registerFacebook(frameworkRegistry: MutableMap<String, (String) -> Unit>, gr
             })
     }
 }
-
-fun registerFlurry(frameworkRegistry: MutableMap<String, (String) -> Unit>, groupRegistry: MutableMap<String, MutableList<String>>) {
-    val registry = GroupFrameworkRegister("Flurry", frameworkRegistry, groupRegistry)
-    val flurryVersion: String by lazy {
-        val podspecFile = downloadFolder.extend("Flurry-iOS-SDK/Flurry-iOS-SDK.podspec")
-        var res: String? = null
-        podspecFile.readLines().forEach line@{
-            it.split('=').takeIf { chunks -> chunks.size == 2 && chunks[0].contains(".version") }
-                ?.get(1)?.let { version ->
-                    res = version.trim().substringAfter('\'').substringBefore('\'')
-                    return@line
-                }
-        }
-        res ?: error("Version not found in ${podspecFile.canonicalPath}")
-    }
-    val instruction = """
-        1. login to https://dev.flurry.com/admin/applications
-        2. download iOS SDK and unpack  
-        3. rename it to ${downloadFolder.extend("Flurry-iOS-SDK/")}
-    """.trimIndent()
-    val readmeUpdater = oneTimeReadmeUpdater { flurryVersion }
-    fun action(lib: String, moduleFolder: String, yaml: String) {
-        processFramework(
-            artifact = "$lib.lib",
-            moduleFolder = moduleFolder,
-            sourceHeadersDir = downloadFolder.extend("Flurry-iOS-SDK/$lib"),
-            yaml = yaml,
-            version = { flurryVersion },
-            readmeFileVersionUpdater = readmeUpdater,
-            headersCopier = { frm, sourceHeadersDir, destinationHeadersDir ->
-                copyHeadersFiltered(frm, sourceHeadersDir, destinationHeadersDir, flatten = true) {
-                    it.fileName.toString().endsWith(".h")
-                }
-            },
-            instruction = instruction
-        )
-    }
-
-    registry["FlurryAnalytics"] = { action("Flurry", "flurry/ios-analytics", "flurry.yaml") }
-    registry["FlurryAds"] = { lib -> action(lib, "flurry/ios-ads", "flurry_ads.yaml") }
-    registry["FlurryConfig"] = { lib -> action(lib, "flurry/ios-config", "flurry_config.yaml") }
-    registry["FlurryMessaging"] = { lib -> action(lib, "flurry/ios-messaging", "flurry_messaging.yaml") }
-}
-
