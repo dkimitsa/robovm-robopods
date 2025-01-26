@@ -135,6 +135,10 @@ classes:
                 name: getAttributionToken
             '-requestAttributionDetailsWithCompletion:':
                 name: requestAttributionDetails
+    AttributionOperationHelperMigration:
+        methods:
+            '-getAttributionTokenWithCompletion:':
+                name: getAttributionToken
 protocols:
     TJNRequestSender:
         methods:

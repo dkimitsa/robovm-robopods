@@ -37,18 +37,18 @@ import org.robovm.apple.dispatch.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("TenjinSDK.AttributionOperationHelper")/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/AttributionOperationHelper/*</name>*/ 
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("TenjinSDK.AttributionOperationHelperMigration")/*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/AttributionOperationHelperMigration/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class AttributionOperationHelperPtr extends Ptr<AttributionOperationHelper, AttributionOperationHelperPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(AttributionOperationHelper.class); }/*</bind>*/
+    /*<ptr>*/public static class AttributionOperationHelperMigrationPtr extends Ptr<AttributionOperationHelperMigration, AttributionOperationHelperMigrationPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(AttributionOperationHelperMigration.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public AttributionOperationHelper() {}
-    protected AttributionOperationHelper(Handle h, long handle) { super(h, handle); }
-    protected AttributionOperationHelper(SkipInit skipInit) { super(skipInit); }
+    public AttributionOperationHelperMigration() {}
+    protected AttributionOperationHelperMigration(Handle h, long handle) { super(h, handle); }
+    protected AttributionOperationHelperMigration(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
     
@@ -57,7 +57,5 @@ import org.robovm.apple.dispatch.*;
     /*<methods>*/
     @Method(selector = "getAttributionTokenWithCompletion:")
     public native void getAttributionToken(@Block VoidBlock2<NSString, NSError> completion);
-    @Method(selector = "requestAttributionDetailsWithCompletion:")
-    public native void requestAttributionDetails(@Block VoidBlock2<NSDictionary<NSString, ?>, NSError> completion);
     /*</methods>*/
 }
