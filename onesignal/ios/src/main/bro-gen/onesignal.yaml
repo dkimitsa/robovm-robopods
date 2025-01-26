@@ -481,6 +481,28 @@ classes:
             '+exit:withSuccess:withFailure:':
                 name: exit
     OSBundleUtils: {}
+    OSConsistencyManager:
+        methods:
+            '-getRywTokenFromAwaitableCondition:forId:':
+                name: getRywTokenFromAwaitableCondition
+            '-resolveConditionsWithIDWithId:':
+                name: resolveConditions
+    OSIamFetchReadyCondition:
+        methods:
+            '-isMetWithIndexedTokens:':
+                name: isMet
+            '-getNewestTokenWithIndexedTokens:':
+                name: getNewestToken
+            '+sharedInstanceWithId:':
+                name: sharedInstance
+    OSReadYourWriteData:
+        methods:
+            '-initWithRywToken:rywDelay:':
+                name: init
+    OneSignalClientError:
+        methods:
+            '-initWithCode:message:responseHeaders:response:underlyingError:':
+                name: init
 protocols:
     OSNotificationDisplayTypeDelegate:
         skip_adapter: true # only one method there
@@ -551,6 +573,12 @@ protocols:
             '-executeRequest:onSuccess:onFailure:':
                 name: executeRequest
     OSBackgroundTaskHandler: {}
+    OSCondition:
+        methods:
+            '-isMetWithIndexedTokens:':
+                name: isMet
+            '-getNewestTokenWithIndexedTokens:':
+                name: getNewestToken
 functions:
     injectSelector:
         exclude: true

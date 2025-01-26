@@ -35,27 +35,34 @@ import org.robovm.apple.uikit.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/OneSignalClient/*</name>*/ 
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("OneSignalOSCore.OSReadYourWriteData")/*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/OSReadYourWriteData/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
-    /*<implements>*/implements IOneSignalClient/*</implements>*/ {
+    /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class OneSignalClientPtr extends Ptr<OneSignalClient, OneSignalClientPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(OneSignalClient.class); }/*</bind>*/
+    /*<ptr>*/public static class OSReadYourWriteDataPtr extends Ptr<OSReadYourWriteData, OSReadYourWriteDataPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(OSReadYourWriteData.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public OneSignalClient() {}
-    protected OneSignalClient(Handle h, long handle) { super(h, handle); }
-    protected OneSignalClient(SkipInit skipInit) { super(skipInit); }
+    protected OSReadYourWriteData() {}
+    protected OSReadYourWriteData(Handle h, long handle) { super(h, handle); }
+    protected OSReadYourWriteData(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithRywToken:rywDelay:")
+    public OSReadYourWriteData(String rywToken, NSNumber rywDelay) { super((SkipInit) null); initObject(init(rywToken, rywDelay)); }
     /*</constructors>*/
     /*<properties>*/
-    
+    @Property(selector = "rywToken")
+    public native String getRywToken();
+    @Property(selector = "rywDelay")
+    public native NSNumber getRywDelay();
+    @Property(selector = "hash")
+    public native @MachineSizedUInt long getHash();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "sharedClient")
-    public static native OneSignalClient sharedClient();
-    @Method(selector = "executeRequest:onSuccess:onFailure:")
-    public native void executeRequest(OneSignalRequest request, @Block VoidBlock1<NSDictionary<?, ?>> successBlock, @Block VoidBlock1<OneSignalClientError> failureBlock);
+    @Method(selector = "initWithRywToken:rywDelay:")
+    protected native @Pointer long init(String rywToken, NSNumber rywDelay);
+    @Method(selector = "isEqual:")
+    public native boolean isEqual(NSObject object);
     /*</methods>*/
 }

@@ -35,27 +35,29 @@ import org.robovm.apple.uikit.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/OneSignalClient/*</name>*/ 
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("OneSignalOSCore.OSConsistencyManager")/*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/OSConsistencyManager/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
-    /*<implements>*/implements IOneSignalClient/*</implements>*/ {
+    /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class OneSignalClientPtr extends Ptr<OneSignalClient, OneSignalClientPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(OneSignalClient.class); }/*</bind>*/
+    /*<ptr>*/public static class OSConsistencyManagerPtr extends Ptr<OSConsistencyManager, OSConsistencyManagerPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(OSConsistencyManager.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public OneSignalClient() {}
-    protected OneSignalClient(Handle h, long handle) { super(h, handle); }
-    protected OneSignalClient(SkipInit skipInit) { super(skipInit); }
+    protected OSConsistencyManager() {}
+    protected OSConsistencyManager(Handle h, long handle) { super(h, handle); }
+    protected OSConsistencyManager(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
     
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "sharedClient")
-    public static native OneSignalClient sharedClient();
-    @Method(selector = "executeRequest:onSuccess:onFailure:")
-    public native void executeRequest(OneSignalRequest request, @Block VoidBlock1<NSDictionary<?, ?>> successBlock, @Block VoidBlock1<OneSignalClientError> failureBlock);
+    @Method(selector = "getRywTokenFromAwaitableCondition:forId:")
+    public native OSReadYourWriteData getRywTokenFromAwaitableCondition(OSCondition condition, String id);
+    @Method(selector = "resolveConditionsWithIDWithId:")
+    public native void resolveConditions(String id);
+    @Method(selector = "shared")
+    public static native OSConsistencyManager shared();
     /*</methods>*/
 }

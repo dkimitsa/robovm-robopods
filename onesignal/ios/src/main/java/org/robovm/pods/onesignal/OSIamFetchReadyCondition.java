@@ -35,27 +35,32 @@ import org.robovm.apple.uikit.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/OneSignalClient/*</name>*/ 
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("OneSignalOSCore.OSIamFetchReadyCondition")/*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/OSIamFetchReadyCondition/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
-    /*<implements>*/implements IOneSignalClient/*</implements>*/ {
+    /*<implements>*/implements OSCondition/*</implements>*/ {
 
-    /*<ptr>*/public static class OneSignalClientPtr extends Ptr<OneSignalClient, OneSignalClientPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(OneSignalClient.class); }/*</bind>*/
+    /*<ptr>*/public static class OSIamFetchReadyConditionPtr extends Ptr<OSIamFetchReadyCondition, OSIamFetchReadyConditionPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(OSIamFetchReadyCondition.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public OneSignalClient() {}
-    protected OneSignalClient(Handle h, long handle) { super(h, handle); }
-    protected OneSignalClient(SkipInit skipInit) { super(skipInit); }
+    protected OSIamFetchReadyCondition() {}
+    protected OSIamFetchReadyCondition(Handle h, long handle) { super(h, handle); }
+    protected OSIamFetchReadyCondition(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
-    
+    @Property(selector = "conditionId")
+    public native String getConditionId();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "sharedClient")
-    public static native OneSignalClient sharedClient();
-    @Method(selector = "executeRequest:onSuccess:onFailure:")
-    public native void executeRequest(OneSignalRequest request, @Block VoidBlock1<NSDictionary<?, ?>> successBlock, @Block VoidBlock1<OneSignalClientError> failureBlock);
+    @Method(selector = "isMetWithIndexedTokens:")
+    public native boolean isMet(NSDictionary<?, ?> indexedTokens);
+    @Method(selector = "getNewestTokenWithIndexedTokens:")
+    public native OSReadYourWriteData getNewestToken(NSDictionary<?, ?> indexedTokens);
+    @Method(selector = "sharedInstanceWithId:")
+    public static native OSIamFetchReadyCondition sharedInstance(String id);
+    @Method(selector = "CONDITIONID")
+    public static native String CONDITIONID();
     /*</methods>*/
 }

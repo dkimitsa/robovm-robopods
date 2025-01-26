@@ -51,6 +51,6 @@ import org.robovm.apple.uikit.*;
     /*<members>*//*</members>*/
     /*<methods>*/
     @NotImplemented("executeRequest:onSuccess:onFailure:")
-    public void executeRequest(OneSignalRequest request, @Block VoidBlock1<NSDictionary<?, ?>> successBlock, @Block VoidBlock1<NSError> failureBlock) {}
+    public void executeRequest(OneSignalRequest request, @Block VoidBlock1<NSDictionary<?, ?>> successBlock, @Block VoidBlock1<OneSignalClientError> failureBlock) {}
     /*</methods>*/
 }

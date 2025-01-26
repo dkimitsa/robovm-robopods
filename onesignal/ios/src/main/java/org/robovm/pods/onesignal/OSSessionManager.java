@@ -62,6 +62,10 @@ import org.robovm.apple.uikit.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
+    @Method(selector = "getTimeFocusedElapsed")
+    public native double getTimeFocusedElapsed();
+    @Method(selector = "setLastOpenedTime:")
+    public native void setLastOpenedTime(double lastOpened);
     @Method(selector = "init:withTrackerFactory:")
     protected native @Pointer long init(Class<?> delegate, OSTrackerFactory trackerFactory);
     @Method(selector = "getInfluences")

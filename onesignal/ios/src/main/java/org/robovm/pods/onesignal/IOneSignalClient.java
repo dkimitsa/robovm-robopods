@@ -49,7 +49,7 @@ import org.robovm.apple.uikit.*;
     /*</properties>*/
     /*<methods>*/
     @Method(selector = "executeRequest:onSuccess:onFailure:")
-    void executeRequest(OneSignalRequest request, @Block VoidBlock1<NSDictionary<?, ?>> successBlock, @Block VoidBlock1<NSError> failureBlock);
+    void executeRequest(OneSignalRequest request, @Block VoidBlock1<NSDictionary<?, ?>> successBlock, @Block VoidBlock1<OneSignalClientError> failureBlock);
     /*</methods>*/
     /*<adapter>*/
     /*</adapter>*/

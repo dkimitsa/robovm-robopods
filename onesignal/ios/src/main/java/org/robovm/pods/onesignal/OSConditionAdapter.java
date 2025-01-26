@@ -33,29 +33,27 @@ import org.robovm.apple.uikit.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/OneSignalClient/*</name>*/ 
+/*<annotations>*//*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/OSConditionAdapter/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
-    /*<implements>*/implements IOneSignalClient/*</implements>*/ {
+    /*<implements>*/implements OSCondition/*</implements>*/ {
 
-    /*<ptr>*/public static class OneSignalClientPtr extends Ptr<OneSignalClient, OneSignalClientPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(OneSignalClient.class); }/*</bind>*/
+    /*<ptr>*/
+    /*</ptr>*/
+    /*<bind>*/
+    /*</bind>*/
     /*<constants>*//*</constants>*/
-    /*<constructors>*/
-    public OneSignalClient() {}
-    protected OneSignalClient(Handle h, long handle) { super(h, handle); }
-    protected OneSignalClient(SkipInit skipInit) { super(skipInit); }
-    /*</constructors>*/
+    /*<constructors>*//*</constructors>*/
     /*<properties>*/
-    
+    @NotImplemented("conditionId")
+    public String getConditionId() { return null; }
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "sharedClient")
-    public static native OneSignalClient sharedClient();
-    @Method(selector = "executeRequest:onSuccess:onFailure:")
-    public native void executeRequest(OneSignalRequest request, @Block VoidBlock1<NSDictionary<?, ?>> successBlock, @Block VoidBlock1<OneSignalClientError> failureBlock);
+    @NotImplemented("isMetWithIndexedTokens:")
+    public boolean isMet(NSDictionary<?, ?> indexedTokens) { return false; }
+    @NotImplemented("getNewestTokenWithIndexedTokens:")
+    public OSReadYourWriteData getNewestToken(NSDictionary<?, ?> indexedTokens) { return null; }
     /*</methods>*/
 }
