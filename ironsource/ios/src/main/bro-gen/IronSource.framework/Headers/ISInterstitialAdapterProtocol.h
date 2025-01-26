@@ -25,6 +25,8 @@
 
 - (BOOL)hasInterstitialWithAdapterConfig:(ISAdapterConfig *)adapterConfig;
 
+- (void)disposeInterstitialAdWithAdapterConfig:(ISAdapterConfig *)adapterConfig;
+
 #pragma mark - for non bidders and demand only
 
 - (void)initInterstitialWithUserId:(NSString *)userId

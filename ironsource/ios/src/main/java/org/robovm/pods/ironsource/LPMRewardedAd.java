@@ -37,42 +37,36 @@ import org.robovm.apple.coreanimation.*;
 
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/ISConcurrentMutableDictionary/*</name>*/ 
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/LPMRewardedAd/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class ISConcurrentMutableDictionaryPtr extends Ptr<ISConcurrentMutableDictionary, ISConcurrentMutableDictionaryPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(ISConcurrentMutableDictionary.class); }/*</bind>*/
+    /*<ptr>*/public static class LPMRewardedAdPtr extends Ptr<LPMRewardedAd, LPMRewardedAdPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(LPMRewardedAd.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public ISConcurrentMutableDictionary() {}
-    protected ISConcurrentMutableDictionary(Handle h, long handle) { super(h, handle); }
-    protected ISConcurrentMutableDictionary(SkipInit skipInit) { super(skipInit); }
+    protected LPMRewardedAd() {}
+    protected LPMRewardedAd(Handle h, long handle) { super(h, handle); }
+    protected LPMRewardedAd(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithAdUnitId:")
+    public LPMRewardedAd(String adUnitId) { super((SkipInit) null); initObject(init(adUnitId)); }
     /*</constructors>*/
     /*<properties>*/
     
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "count")
-    public native @MachineSizedUInt long count();
-    @Method(selector = "objectForKey:")
-    public native NSObject objectForKey(NSObject key);
-    @Method(selector = "setObject:forKey:")
-    public native void setObject(NSObject object, NSObject key);
-    @Method(selector = "removeObjectForKey:")
-    public native void removeObjectForKey(NSObject key);
-    @Method(selector = "removeAllObjects")
-    public native void removeAllObjects();
-    @Method(selector = "allKeys")
-    public native NSArray<?> allKeys();
-    @Method(selector = "allValues")
-    public native NSArray<?> allValues();
-    @Method(selector = "allData")
-    public native NSDictionary<?, ?> allData();
-    @Method(selector = "hasObjectForKey:")
-    public native boolean hasObjectForKey(NSObject key);
-    @Method(selector = "dictionary")
-    public static native ISConcurrentMutableDictionary dictionary();
+    @Method(selector = "initWithAdUnitId:")
+    protected native @Pointer long init(String adUnitId);
+    @Method(selector = "setDelegate:")
+    public native void setDelegate(LPMRewardedAdDelegate delegate);
+    @Method(selector = "loadAd")
+    public native void loadAd();
+    @Method(selector = "showAdWithViewController:placementName:")
+    public native void showAd(UIViewController viewController, String placementName);
+    @Method(selector = "isAdReady")
+    public native boolean isAdReady();
+    @Method(selector = "isPlacementCapped:")
+    public static native boolean isPlacementCapped(String placementName);
     /*</methods>*/
 }

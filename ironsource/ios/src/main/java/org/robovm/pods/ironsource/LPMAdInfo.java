@@ -124,6 +124,8 @@ import org.robovm.apple.coreanimation.*;
     public native NSNumber getConversion_value();
     @Property(selector = "conversionValue")
     public native NSNumber getConversionValue();
+    @Property(selector = "creativeId")
+    public native String getCreativeId();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

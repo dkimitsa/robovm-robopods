@@ -25,6 +25,8 @@
                               adapterConfig:(ISAdapterConfig *)adapterConfig
                                    delegate:(id<ISRewardedVideoAdapterDelegate>)delegate;
 
+- (void)disposeRewardedVideoAdWithAdapterConfig:(ISAdapterConfig *)adapterConfig;
+
 #pragma mark - shared
 
 - (void)initAndLoadRewardedVideoWithUserId:(NSString *)userId

@@ -62,6 +62,7 @@ import org.robovm.apple.coreanimation.*;
         public static final String LifetimeRevenue = "lifetimeRevenue";
         public static final String EncryptedCPM = "encryptedCPM";
         public static final String ConversionValue = "conversionValue";
+        public static final String CreativeId = "creativeId";
     }
     /*</constants>*/
     /*<constructors>*/
@@ -116,6 +117,8 @@ import org.robovm.apple.coreanimation.*;
     public native String getEncrypted_cpm();
     @Property(selector = "conversion_value")
     public native NSNumber getConversion_value();
+    @Property(selector = "creative_id")
+    public native String getCreative_id();
     @Property(selector = "all_data")
     public native NSDictionary<?, ?> getAll_data();
     /*</properties>*/

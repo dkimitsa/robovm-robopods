@@ -64,5 +64,7 @@ import org.robovm.apple.coreanimation.*;
     public native void showAd(UIViewController viewController, ISAdData adData, ISAdapterAdInteractionDelegate delegate);
     @Method(selector = "isAdAvailableWithAdData:")
     public native boolean isAdAvailable(ISAdData adData);
+    @Method(selector = "disposeAd")
+    public native void disposeAd();
     /*</methods>*/
 }

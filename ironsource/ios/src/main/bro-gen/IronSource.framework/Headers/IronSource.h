@@ -35,6 +35,7 @@
 #import "ISAInterstitialAdRequestBuilder.h"
 #import "ISARewardedAdLoader.h"
 #import "ISARewardedAdRequestBuilder.h"
+#import "ISAdapterAdaptiveProtocol.h"
 #import "ISBannerSize.h"
 #import "ISConfigurations.h"
 #import "ISConsentViewDelegate.h"
@@ -55,6 +56,7 @@
 #import "ISWaterfallConfiguration.h"
 #import "IronSourceAds.h"
 #import "LPMConfigServiceEventSender.h"
+#import "LPMDispatcherProtocol.h"
 
 // imports used for custom adapters infra
 #import "ISAdapterErrors.h"
@@ -87,6 +89,8 @@
 #import "LPMInitRequestBuilder.h"
 #import "LPMInterstitialAd.h"
 #import "LPMInterstitialAdDelegate.h"
+#import "LPMRewardedAd.h"
+#import "LPMRewardedAdDelegate.h"
 #import "LevelPlay.h"
 
 #import "IronSourceNetworkSwiftBridge.h"
@@ -98,8 +102,8 @@ NS_ASSUME_NONNULL_BEGIN
 #define IS_BANNER @"banner"
 #define IS_NATIVE_AD @"nativead"
 
-static NSString *const MEDIATION_SDK_VERSION = @"8.4.0";
-static NSString *GitHash = @"917cac0";
+static NSString *const MEDIATION_SDK_VERSION = @"8.6.0";
+static NSString *GitHash = @"b145a0e";
 
 /*
     This constant is for sending an external impression data from mopub
@@ -429,24 +433,28 @@ static NSString *const DataSource_MOPUB = @"MoPub";
  @discussion This method will load interstitial ads from the underlying ad networks according to
  their priority.
  */
-+ (void)loadInterstitial;
++ (void)loadInterstitial DEPRECATED_MSG_ATTRIBUTE("Use [LPMInterstitialAd loadAd] instead.");
 
 /**
- @abstract Show a rewarded video using the default placement.
+ @abstract Show an interstitial ad using the default placement.
 
  @param viewController The UIViewController to display the interstitial within.
  */
-+ (void)showInterstitialWithViewController:(UIViewController *)viewController;
++ (void)showInterstitialWithViewController:(UIViewController *)viewController
+    DEPRECATED_MSG_ATTRIBUTE(
+        "Use [LPMInterstitialAd showAdWithViewController:placementName:] instead.");
 
 /**
- @abstract Show a rewarded video using the provided placement name.
+ @abstract Show an interstitial ad using the provided placement name.
 
  @param viewController The UIViewController to display the interstitial within.
  @param placementName The placement name as was defined in the platform. If nil is passed, a default
  placement will be used.
  */
 + (void)showInterstitialWithViewController:(UIViewController *)viewController
-                                 placement:(nullable NSString *)placementName;
+                                 placement:(nullable NSString *)placementName
+    DEPRECATED_MSG_ATTRIBUTE(
+        "Use [LPMInterstitialAd showAdWithViewController:placementName:] instead.");
 
 /**
  @abstract Determine if a locally cached interstitial exists on the mediation level.
@@ -455,7 +463,7 @@ static NSString *const DataSource_MOPUB = @"MoPub";
 
  @return YES if there is a locally cached interstitial, NO otherwise.
  */
-+ (BOOL)hasInterstitial;
++ (BOOL)hasInterstitial DEPRECATED_MSG_ATTRIBUTE("Use [LPMInterstitialAd isAdReady] instead.");
 
 /**
  @abstract Verify if a certain placement has reached its ad limit.
@@ -465,7 +473,8 @@ static NSString *const DataSource_MOPUB = @"MoPub";
  @param placementName The placement name as was defined in the platform.
  @return YES if capped or paced, NO otherwise.
  */
-+ (BOOL)isInterstitialCappedForPlacement:(NSString *)placementName;
++ (BOOL)isInterstitialCappedForPlacement:(NSString *)placementName
+    DEPRECATED_MSG_ATTRIBUTE("Use [LPMInterstitialAd isPlacementCapped:] instead.");
 
 #pragma mark - Demand Only Interstitial
 

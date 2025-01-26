@@ -44,6 +44,7 @@ NS_ASSUME_NONNULL_BEGIN
     "This parameter will be removed in version 9.0.0. Please use conversionValue parameter "
     "instead.");
 @property(readonly, copy) NSNumber *conversionValue;
+@property(readonly, copy) NSString *creativeId;
 
 @end
 

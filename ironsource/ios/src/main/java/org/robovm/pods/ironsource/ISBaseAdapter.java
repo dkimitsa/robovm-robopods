@@ -109,6 +109,10 @@ import org.robovm.apple.coreanimation.*;
     public native ISNativeAdAdapterProtocol getNativeAdAdapter();
     @Method(selector = "getAdaptiveHeightWithWidth:")
     public native @MachineSizedFloat double getAdaptiveHeight(@MachineSizedFloat double width);
+    @Method(selector = "disposeRewardedVideoAdWithAdapterConfig:")
+    public native void disposeRewardedVideoAd(ISAdapterConfig adapterConfig);
+    @Method(selector = "disposeInterstitialAdWithAdapterConfig:")
+    public native void disposeInterstitialAd(ISAdapterConfig adapterConfig);
     @Method(selector = "isConfigValueValid:")
     public native boolean isConfigValueValid(String value);
     @Method(selector = "errorForMissingCredentialFieldWithName:")

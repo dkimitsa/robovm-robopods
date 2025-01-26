@@ -37,7 +37,7 @@ import org.robovm.apple.coreanimation.*;
 
 /*</javadoc>*/
 /*<annotations>*//*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ interface /*<name>*/LPMConfigServiceEventSender/*</name>*/ 
+/*<visibility>*/public/*</visibility>*/ interface /*<name>*/LPMRewardedAdDelegate/*</name>*/ 
     /*<implements>*/extends NSObjectProtocol/*</implements>*/ {
 
     /*<ptr>*/
@@ -49,14 +49,22 @@ import org.robovm.apple.coreanimation.*;
     
     /*</properties>*/
     /*<methods>*/
-    @Method(selector = "sendAdUnitCappingParseFailedEventWithAdUnitId:error:")
-    void sendAdUnitCappingParseFailedEvent(String adUnitId, NSError error);
-    @Method(selector = "sendRewardParseFailedEventWithAdUnitId:error:")
-    void sendRewardParseFailedEvent(String adUnitId, NSError error);
-    @Method(selector = "sendPlacementCappingParseFailedEventWithPlacementName:adFormat:error:")
-    void sendPlacementCappingParseFailedEvent(String placementName, ISAdUnit adFormat, NSError error);
-    @Method(selector = "sendConfigParseFailedEventWithError:")
-    void sendConfigParseFailedEvent(NSError error);
+    @Method(selector = "didLoadAdWithAdInfo:")
+    void didLoadAd(LPMAdInfo adInfo);
+    @Method(selector = "didFailToLoadAdWithAdUnitId:error:")
+    void didFailToLoadAd(String adUnitId, NSError error);
+    @Method(selector = "didDisplayAdWithAdInfo:")
+    void didDisplayAd(LPMAdInfo adInfo);
+    @Method(selector = "didRewardAdWithAdInfo:reward:")
+    void didRewardAd(LPMAdInfo adInfo, LPMReward reward);
+    @Method(selector = "didFailToDisplayAdWithAdInfo:error:")
+    void didFailToDisplayAd(LPMAdInfo adInfo, NSError error);
+    @Method(selector = "didClickAdWithAdInfo:")
+    void didClickAd(LPMAdInfo adInfo);
+    @Method(selector = "didCloseAdWithAdInfo:")
+    void didCloseAd(LPMAdInfo adInfo);
+    @Method(selector = "didChangeAdInfo:")
+    void didChangeAdInfo(LPMAdInfo adInfo);
     /*</methods>*/
     /*<adapter>*/
     /*</adapter>*/

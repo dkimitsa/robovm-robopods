@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)sendAdUnitCappingParseFailedEventWithAdUnitId:(NSString *)adUnitId error:(NSError *)error;
 
+- (void)sendRewardParseFailedEventWithAdUnitId:(NSString *)adUnitId error:(NSError *)error;
+
 - (void)sendPlacementCappingParseFailedEventWithPlacementName:(NSString *)placementName
                                                      adFormat:(ISAdUnit *)adFormat
                                                         error:(NSError *)error;

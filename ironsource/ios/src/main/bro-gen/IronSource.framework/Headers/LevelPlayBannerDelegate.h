@@ -11,6 +11,7 @@
 #import "ISAdInfo.h"
 #import "ISBannerView.h"
 
+DEPRECATED_MSG_ATTRIBUTE("Use LPMBannerAdViewDelegate instead.")
 @protocol LevelPlayBannerDelegate <NSObject>
 
 @required

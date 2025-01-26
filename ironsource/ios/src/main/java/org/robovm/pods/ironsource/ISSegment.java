@@ -50,8 +50,10 @@ import org.robovm.apple.coreanimation.*;
     protected ISSegment(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
+    @Deprecated
     @Property(selector = "age")
     public native int getAge();
+    @Deprecated
     @Property(selector = "setAge:")
     public native void setAge(int v);
     @Property(selector = "level")
@@ -66,8 +68,10 @@ import org.robovm.apple.coreanimation.*;
     public native boolean isPaying();
     @Property(selector = "setPaying:")
     public native void setPaying(boolean v);
+    @Deprecated
     @Property(selector = "gender")
     public native ISGender getGender();
+    @Deprecated
     @Property(selector = "setGender:")
     public native void setGender(ISGender v);
     @Property(selector = "userCreationDate")

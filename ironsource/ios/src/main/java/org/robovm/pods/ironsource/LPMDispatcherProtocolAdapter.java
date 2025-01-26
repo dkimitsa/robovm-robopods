@@ -34,30 +34,24 @@ import org.robovm.apple.coreanimation.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
 /*</javadoc>*/
 /*<annotations>*//*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ interface /*<name>*/LPMConfigServiceEventSender/*</name>*/ 
-    /*<implements>*/extends NSObjectProtocol/*</implements>*/ {
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/LPMDispatcherProtocolAdapter/*</name>*/ 
+    extends /*<extends>*/NSObject/*</extends>*/ 
+    /*<implements>*/implements LPMDispatcherProtocol/*</implements>*/ {
 
     /*<ptr>*/
     /*</ptr>*/
     /*<bind>*/
     /*</bind>*/
     /*<constants>*//*</constants>*/
+    /*<constructors>*//*</constructors>*/
     /*<properties>*/
     
     /*</properties>*/
+    /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "sendAdUnitCappingParseFailedEventWithAdUnitId:error:")
-    void sendAdUnitCappingParseFailedEvent(String adUnitId, NSError error);
-    @Method(selector = "sendRewardParseFailedEventWithAdUnitId:error:")
-    void sendRewardParseFailedEvent(String adUnitId, NSError error);
-    @Method(selector = "sendPlacementCappingParseFailedEventWithPlacementName:adFormat:error:")
-    void sendPlacementCappingParseFailedEvent(String placementName, ISAdUnit adFormat, NSError error);
-    @Method(selector = "sendConfigParseFailedEventWithError:")
-    void sendConfigParseFailedEvent(NSError error);
+    @NotImplemented("dispatch:")
+    public void dispatch(@Block Runnable task) {}
     /*</methods>*/
-    /*<adapter>*/
-    /*</adapter>*/
 }

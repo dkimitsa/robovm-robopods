@@ -53,6 +53,8 @@ import org.robovm.apple.coreanimation.*;
     /*<methods>*/
     @NotImplemented("sendAdUnitCappingParseFailedEventWithAdUnitId:error:")
     public void sendAdUnitCappingParseFailedEvent(String adUnitId, NSError error) {}
+    @NotImplemented("sendRewardParseFailedEventWithAdUnitId:error:")
+    public void sendRewardParseFailedEvent(String adUnitId, NSError error) {}
     @NotImplemented("sendPlacementCappingParseFailedEventWithPlacementName:adFormat:error:")
     public void sendPlacementCappingParseFailedEvent(String placementName, ISAdUnit adFormat, NSError error) {}
     @NotImplemented("sendConfigParseFailedEventWithError:")

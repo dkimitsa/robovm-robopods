@@ -51,18 +51,46 @@ import org.robovm.apple.coreanimation.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
+    /**
+     * @deprecated Use [LPMInterstitialAdDelegate didLoadAdWithAdInfo:] instead.
+     */
+    @Deprecated
     @NotImplemented("didLoadWithAdInfo:")
     public void didLoad(ISAdInfo adInfo) {}
+    /**
+     * @deprecated Use [LPMInterstitialAdDelegate didFailToLoadAdWithAdUnitId:error:] instead.
+     */
+    @Deprecated
     @NotImplemented("didFailToLoadWithError:")
     public void didFailToLoad(NSError error) {}
+    /**
+     * @deprecated Use [LPMInterstitialAdDelegate didDisplayAdWithAdInfo:] instead.
+     */
+    @Deprecated
     @NotImplemented("didOpenWithAdInfo:")
     public void didOpen(ISAdInfo adInfo) {}
+    /**
+     * @deprecated No replacement available.
+     */
+    @Deprecated
     @NotImplemented("didShowWithAdInfo:")
     public void didShow(ISAdInfo adInfo) {}
+    /**
+     * @deprecated Use [LPMInterstitialAdDelegate didFailToDisplayAdWithAdInfo:error:] instead.
+     */
+    @Deprecated
     @NotImplemented("didFailToShowWithError:andAdInfo:")
     public void didFailToShow(NSError error, ISAdInfo adInfo) {}
+    /**
+     * @deprecated Use [LPMInterstitialAdDelegate didClickAdWithAdInfo:] instead.
+     */
+    @Deprecated
     @NotImplemented("didClickWithAdInfo:")
     public void didClick(ISAdInfo adInfo) {}
+    /**
+     * @deprecated Use [LPMInterstitialAdDelegate didCloseAdWithAdInfo:] instead.
+     */
+    @Deprecated
     @NotImplemented("didCloseWithAdInfo:")
     public void didClose(ISAdInfo adInfo) {}
     /*</methods>*/

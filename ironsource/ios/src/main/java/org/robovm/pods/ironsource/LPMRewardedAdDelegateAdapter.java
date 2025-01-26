@@ -34,30 +34,38 @@ import org.robovm.apple.coreanimation.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
 /*</javadoc>*/
 /*<annotations>*//*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ interface /*<name>*/LPMConfigServiceEventSender/*</name>*/ 
-    /*<implements>*/extends NSObjectProtocol/*</implements>*/ {
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/LPMRewardedAdDelegateAdapter/*</name>*/ 
+    extends /*<extends>*/NSObject/*</extends>*/ 
+    /*<implements>*/implements LPMRewardedAdDelegate/*</implements>*/ {
 
     /*<ptr>*/
     /*</ptr>*/
     /*<bind>*/
     /*</bind>*/
     /*<constants>*//*</constants>*/
+    /*<constructors>*//*</constructors>*/
     /*<properties>*/
     
     /*</properties>*/
+    /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "sendAdUnitCappingParseFailedEventWithAdUnitId:error:")
-    void sendAdUnitCappingParseFailedEvent(String adUnitId, NSError error);
-    @Method(selector = "sendRewardParseFailedEventWithAdUnitId:error:")
-    void sendRewardParseFailedEvent(String adUnitId, NSError error);
-    @Method(selector = "sendPlacementCappingParseFailedEventWithPlacementName:adFormat:error:")
-    void sendPlacementCappingParseFailedEvent(String placementName, ISAdUnit adFormat, NSError error);
-    @Method(selector = "sendConfigParseFailedEventWithError:")
-    void sendConfigParseFailedEvent(NSError error);
+    @NotImplemented("didLoadAdWithAdInfo:")
+    public void didLoadAd(LPMAdInfo adInfo) {}
+    @NotImplemented("didFailToLoadAdWithAdUnitId:error:")
+    public void didFailToLoadAd(String adUnitId, NSError error) {}
+    @NotImplemented("didDisplayAdWithAdInfo:")
+    public void didDisplayAd(LPMAdInfo adInfo) {}
+    @NotImplemented("didRewardAdWithAdInfo:reward:")
+    public void didRewardAd(LPMAdInfo adInfo, LPMReward reward) {}
+    @NotImplemented("didFailToDisplayAdWithAdInfo:error:")
+    public void didFailToDisplayAd(LPMAdInfo adInfo, NSError error) {}
+    @NotImplemented("didClickAdWithAdInfo:")
+    public void didClickAd(LPMAdInfo adInfo) {}
+    @NotImplemented("didCloseAdWithAdInfo:")
+    public void didCloseAd(LPMAdInfo adInfo) {}
+    @NotImplemented("didChangeAdInfo:")
+    public void didChangeAdInfo(LPMAdInfo adInfo) {}
     /*</methods>*/
-    /*<adapter>*/
-    /*</adapter>*/
 }

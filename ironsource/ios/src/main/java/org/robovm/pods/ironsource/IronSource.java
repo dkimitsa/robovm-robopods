@@ -48,7 +48,7 @@ import org.robovm.apple.coreanimation.*;
     public static final String IS_INTERSTITIAL = "interstitial";
     public static final String IS_BANNER = "banner";
     public static final String IS_NATIVE_AD = "nativead";
-    public static final String getSdkVersion = "8.4.0";
+    public static final String getSdkVersion = "8.6.0";
     public static final String DataSource_MOPUB = "MoPub";
     /*</constants>*/
     /*<constructors>*/
@@ -137,14 +137,34 @@ import org.robovm.apple.coreanimation.*;
     public static native void loadRewardedVideo();
     @Method(selector = "setLevelPlayInterstitialDelegate:")
     public static native void setLevelPlayInterstitialDelegate(LevelPlayInterstitialDelegate delegate);
+    /**
+     * @deprecated Use [LPMInterstitialAd loadAd] instead.
+     */
+    @Deprecated
     @Method(selector = "loadInterstitial")
     public static native void loadInterstitial();
+    /**
+     * @deprecated Use [LPMInterstitialAd showAdWithViewController:placementName:] instead.
+     */
+    @Deprecated
     @Method(selector = "showInterstitialWithViewController:")
     public static native void showInterstitial(UIViewController viewController);
+    /**
+     * @deprecated Use [LPMInterstitialAd showAdWithViewController:placementName:] instead.
+     */
+    @Deprecated
     @Method(selector = "showInterstitialWithViewController:placement:")
     public static native void showInterstitial(UIViewController viewController, String placementName);
+    /**
+     * @deprecated Use [LPMInterstitialAd isAdReady] instead.
+     */
+    @Deprecated
     @Method(selector = "hasInterstitial")
     public static native boolean hasInterstitial();
+    /**
+     * @deprecated Use [LPMInterstitialAd isPlacementCapped:] instead.
+     */
+    @Deprecated
     @Method(selector = "isInterstitialCappedForPlacement:")
     public static native boolean isInterstitialCappedForPlacement(String placementName);
     @Method(selector = "setISDemandOnlyInterstitialDelegate:")

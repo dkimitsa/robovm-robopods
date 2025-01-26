@@ -222,6 +222,10 @@ classes:
                 name: errorForMissingCredentialField
             '-setMetaDataWithKey:andValues:':
                 name: setMetaData
+            '-disposeRewardedVideoAdWithAdapterConfig:':
+                name: disposeRewardedVideoAd
+            '-disposeInterstitialAdWithAdapterConfig:':
+                name: disposeInterstitialAd
     ISBaseBannerAdapter: { }
     ISBaseInterstitialAdapter: { }
     ISBaseNativeAdAdapter:
@@ -403,6 +407,17 @@ classes:
             '+initWithRequest:completion:':
                 name: init
     LPMInterstitialAd:
+        methods:
+            '-initWithAdUnitId:':
+                name: init
+            '-showAdWithViewController:placementName:':
+                name: showAd
+    LPMReward:
+        methods:
+            '-initWithName:amount:':
+                #trim_after_first_colon: true
+                name: initWithName$amount$
+    LPMRewardedAd:
         methods:
             '-initWithAdUnitId:':
                 name: init
@@ -633,6 +648,8 @@ protocols:
                 name: initInterstitialForBidding
             '-loadInterstitialForBiddingWithAdapterConfig:adData:serverData:delegate:':
                 name: loadInterstitialForBidding
+            '-disposeInterstitialAdWithAdapterConfig:':
+                name: disposeInterstitialAd
     ISNAdViewsManagerSwiftFacade:
         name: ISNAdViewsManagerSwiftFacadeProtocol
     ISNAppStoreVCRootViewDelegate:
@@ -707,6 +724,8 @@ protocols:
                 name: loadRewardedVideoForDemandOnly
             '-loadRewardedVideoForDemandOnlyForBiddingWithAdapterConfig:serverData:delegate:':
                 name: loadRewardedVideoForDemandOnlyForBidding
+            '-disposeRewardedVideoAdWithAdapterConfig:':
+                name: disposeRewardedVideoAd
     ISSetAPSDataProtocol:
         methods:
             '-setAPSDataWithAdUnit:apsData:':
@@ -763,6 +782,8 @@ protocols:
                 name: sendPlacementCappingParseFailedEvent
             '-sendConfigParseFailedEventWithError:':
                 name: sendConfigParseFailedEvent
+            '-sendRewardParseFailedEventWithAdUnitId:error:':
+                name: sendRewardParseFailedEvent
     LPMInterstitialAdDelegate:
         methods:
             '-didLoadAdWithAdInfo:':
@@ -771,6 +792,27 @@ protocols:
                 name: didFailToLoadAd
             '-didDisplayAdWithAdInfo:':
                 name: didDisplayAd
+            '-didFailToDisplayAdWithAdInfo:error:':
+                name: didFailToDisplayAd
+            '-didClickAdWithAdInfo:':
+                name: didClickAd
+            '-didCloseAdWithAdInfo:':
+                name: didCloseAd
+    ISAdapterAdaptiveProtocol:
+        methods:
+            '-getAdaptiveHeightWithWidth:':
+                name: getAdaptiveHeightForWidth
+    LPMDispatcherProtocol: { }
+    LPMRewardedAdDelegate:
+        methods:
+            '-didLoadAdWithAdInfo:':
+                name: didLoadAd
+            '-didFailToLoadAdWithAdUnitId:error:':
+                name: didFailToLoadAd
+            '-didDisplayAdWithAdInfo:':
+                name: didDisplayAd
+            '-didRewardAdWithAdInfo:reward:':
+                name: didRewardAd
             '-didFailToDisplayAdWithAdInfo:error:':
                 name: didFailToDisplayAd
             '-didClickAdWithAdInfo:':

@@ -58,6 +58,8 @@ import org.robovm.apple.coreanimation.*;
     public native boolean hasRewardedVideo(ISAdapterConfig adapterConfig);
     @Method(selector = "showRewardedVideoWithViewController:adapterConfig:delegate:")
     public native void showRewardedVideo(UIViewController viewController, ISAdapterConfig adapterConfig, ISRewardedVideoAdapterDelegate delegate);
+    @Method(selector = "disposeRewardedVideoAdWithAdapterConfig:")
+    public native void disposeRewardedVideoAd(ISAdapterConfig adapterConfig);
     @Method(selector = "initAndLoadRewardedVideoWithUserId:adapterConfig:adData:delegate:")
     public native void initAndLoadRewardedVideo(String userId, ISAdapterConfig adapterConfig, NSDictionary<?, ?> adData, ISRewardedVideoAdapterDelegate delegate);
     @Method(selector = "initRewardedVideoForCallbacksWithUserId:adapterConfig:delegate:")

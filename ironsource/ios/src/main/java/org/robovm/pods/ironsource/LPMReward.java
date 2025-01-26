@@ -36,28 +36,30 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*//*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ interface /*<name>*/LPMConfigServiceEventSender/*</name>*/ 
-    /*<implements>*/extends NSObjectProtocol/*</implements>*/ {
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/LPMReward/*</name>*/ 
+    extends /*<extends>*/NSObject/*</extends>*/ 
+    /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/
-    /*</ptr>*/
-    /*<bind>*/
-    /*</bind>*/
+    /*<ptr>*/public static class LPMRewardPtr extends Ptr<LPMReward, LPMRewardPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(LPMReward.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
+    /*<constructors>*/
+    protected LPMReward() {}
+    protected LPMReward(Handle h, long handle) { super(h, handle); }
+    protected LPMReward(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithName:amount:")
+    public LPMReward(String name, @MachineSizedSInt long amount) { super((SkipInit) null); initObject(initWithName$amount$(name, amount)); }
+    /*</constructors>*/
     /*<properties>*/
-    
+    @Property(selector = "amount")
+    public native @MachineSizedSInt long getAmount();
+    @Property(selector = "name")
+    public native String getName();
     /*</properties>*/
+    /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "sendAdUnitCappingParseFailedEventWithAdUnitId:error:")
-    void sendAdUnitCappingParseFailedEvent(String adUnitId, NSError error);
-    @Method(selector = "sendRewardParseFailedEventWithAdUnitId:error:")
-    void sendRewardParseFailedEvent(String adUnitId, NSError error);
-    @Method(selector = "sendPlacementCappingParseFailedEventWithPlacementName:adFormat:error:")
-    void sendPlacementCappingParseFailedEvent(String placementName, ISAdUnit adFormat, NSError error);
-    @Method(selector = "sendConfigParseFailedEventWithError:")
-    void sendConfigParseFailedEvent(NSError error);
+    @Method(selector = "initWithName:amount:")
+    protected native @Pointer long initWithName$amount$(String name, @MachineSizedSInt long amount);
     /*</methods>*/
-    /*<adapter>*/
-    /*</adapter>*/
 }

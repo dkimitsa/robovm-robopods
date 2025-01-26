@@ -37,7 +37,7 @@ import org.robovm.apple.coreanimation.*;
 
 /*</javadoc>*/
 /*<annotations>*//*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ interface /*<name>*/LPMConfigServiceEventSender/*</name>*/ 
+/*<visibility>*/public/*</visibility>*/ interface /*<name>*/LPMDispatcherProtocol/*</name>*/ 
     /*<implements>*/extends NSObjectProtocol/*</implements>*/ {
 
     /*<ptr>*/
@@ -49,14 +49,8 @@ import org.robovm.apple.coreanimation.*;
     
     /*</properties>*/
     /*<methods>*/
-    @Method(selector = "sendAdUnitCappingParseFailedEventWithAdUnitId:error:")
-    void sendAdUnitCappingParseFailedEvent(String adUnitId, NSError error);
-    @Method(selector = "sendRewardParseFailedEventWithAdUnitId:error:")
-    void sendRewardParseFailedEvent(String adUnitId, NSError error);
-    @Method(selector = "sendPlacementCappingParseFailedEventWithPlacementName:adFormat:error:")
-    void sendPlacementCappingParseFailedEvent(String placementName, ISAdUnit adFormat, NSError error);
-    @Method(selector = "sendConfigParseFailedEventWithError:")
-    void sendConfigParseFailedEvent(NSError error);
+    @Method(selector = "dispatch:")
+    void dispatch(@Block Runnable task);
     /*</methods>*/
     /*<adapter>*/
     /*</adapter>*/

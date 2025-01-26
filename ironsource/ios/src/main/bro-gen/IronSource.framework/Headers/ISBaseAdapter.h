@@ -56,4 +56,7 @@
 
 - (CGFloat)getAdaptiveHeightWithWidth:(CGFloat)width;
 
+- (void)disposeRewardedVideoAdWithAdapterConfig:(ISAdapterConfig *)adapterConfig;
+- (void)disposeInterstitialAdWithAdapterConfig:(ISAdapterConfig *)adapterConfig;
+
 @end

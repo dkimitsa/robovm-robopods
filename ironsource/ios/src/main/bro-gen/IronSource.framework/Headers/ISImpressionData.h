@@ -27,6 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 #define kImpressionDataKeyLifetimeRevenue @"lifetimeRevenue"
 #define kImpressionDataKeyEncryptedCPM @"encryptedCPM"
 #define kImpressionDataKeyConversionValue @"conversionValue"
+#define kImpressionDataKeyCreativeId @"creativeId"
 
 @interface ISImpressionData : NSObject
 
@@ -49,6 +50,7 @@ NS_ASSUME_NONNULL_BEGIN
     "This parameter will be removed in version 9.0.0.");
 @property(readonly, copy) NSString* _Nullable encrypted_cpm;
 @property(readonly, copy) NSNumber* _Nullable conversion_value;
+@property(readonly, copy) NSString* _Nullable creative_id;
 
 @property(readonly, copy) NSDictionary* _Nullable all_data;
 

@@ -11,11 +11,11 @@
 
 @interface ISSegment : NSObject
 
-@property(nonatomic) int age;
+@property(nonatomic) int age DEPRECATED_MSG_ATTRIBUTE("");
 @property(nonatomic) int level;
 @property(nonatomic) double iapTotal;
 @property(nonatomic) BOOL paying;
-@property(nonatomic) ISGender gender;
+@property(nonatomic) ISGender gender DEPRECATED_MSG_ATTRIBUTE("");
 @property(nonatomic, strong) NSDate *userCreationDate;
 @property(nonatomic, strong) NSString *segmentName;
 @property(nonatomic, strong, readonly) NSDictionary *customKeys;
