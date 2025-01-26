@@ -68,6 +68,32 @@ FOUNDATION_EXPORT NSString *const HelpshiftEventDataSize;
 FOUNDATION_EXPORT NSString *const HelpshiftEventDataMessageTypeAppReviewRequest;
 FOUNDATION_EXPORT NSString *const HelpshiftEventDataMessageTypeScreenshotRequest;
 
+FOUNDATION_EXPORT NSString *const HelpshiftEventAttributesDataInvalid;
+FOUNDATION_EXPORT NSString *const HelpshiftEventUpdateMasterAttributesValidationFailed;
+FOUNDATION_EXPORT NSString *const HelpshiftEventUpdateMasterAttributesSyncFailed;
+FOUNDATION_EXPORT NSString *const HelpshiftEventAppAttributesLimitExceeded;
+FOUNDATION_EXPORT NSString *const HelpshiftEventUpdateAppAttributesValidationFailed;
+FOUNDATION_EXPORT NSString *const HelpshiftEventMasterAttributesLimitExceeded;
+FOUNDATION_EXPORT NSString *const HelpshiftEventUpdateAppAttributesSyncFailed;
+FOUNDATION_EXPORT NSString *const HelpshiftEventAddUserIdentitiesValidationFailed;
+FOUNDATION_EXPORT NSString *const HelpshiftEventAddUserIdentitiesSyncFailed;
+FOUNDATION_EXPORT NSString *const HelpshiftEventUserSessionExpired;
+FOUNDATION_EXPORT NSString *const HelpshiftEventUserIdentityNotEnabled;
+FOUNDATION_EXPORT NSString *const HelpshiftEventRefreshUserCredentials;
+
+/// Constants used for errors in user login failure and other identity related events
+FOUNDATION_EXPORT NSString *const HelpshiftLoginConfig;
+FOUNDATION_EXPORT NSString *const HelpshiftInvalidValueType;
+FOUNDATION_EXPORT NSString *const HelpshiftInvalidData;
+FOUNDATION_EXPORT NSString *const HelpshiftKeyLengthLimitExceeded;
+FOUNDATION_EXPORT NSString *const HelpshiftMetadataKeyLengthLimitExceeded;
+FOUNDATION_EXPORT NSString *const HelpshiftValueLengthLimitExceeded;
+FOUNDATION_EXPORT NSString *const HelpshiftMetadataValueLengthLimitExceeded;
+FOUNDATION_EXPORT NSString *const HelpshiftEmptyData;
+FOUNDATION_EXPORT NSString *const HelpshiftMetadataEmptyKeyOrValue;
+FOUNDATION_EXPORT NSString *const HelpshiftCountLimitExceeded;
+FOUNDATION_EXPORT NSString *const HelpshiftMetadataCountLimitExceeded;
+
 #pragma mark Authentication Failure Reasons
 
 /**

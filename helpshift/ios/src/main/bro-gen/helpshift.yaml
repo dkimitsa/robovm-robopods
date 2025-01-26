@@ -36,6 +36,8 @@ classes:
                 name: showSingleFAQ
             '+handleNotificationWithUserInfoDictionary:isAppLaunch:':
                 name: handleNotification
+            '+loginWithIdentity:config:success:failure:':
+                name: login
 protocols:
     HelpshiftDelegate:
         methods:
@@ -76,9 +78,33 @@ values:
         static_class: EventDataKeys
         type: NSString
         name: '#{g[0].downcase_first}'
+    HelpshiftEvent(.*):
+        class: HelpshiftDelegate
+        static_class: Events
+        type: NSString
+        name: '#{g[0]}'
     HelpshiftUser(.*):
         class: Helpshift
         static_class: UserDetailKeys
+        type: NSString
+        name: 'user#{g[0]}'
+
+    # Possible failure reasons for user login when using loginWithIdentity: method
+    Helpshift(LoginInProgress|LoginConfigInvalid|IdentityTokenInvalid|IdentitiesDataInvalid|LoginConfigSizeLimitExceeded):
+        class: Helpshift
+        static_class: LoginFailureReasons
+        type: NSString
+        name: 'user#{g[0]}'
+    Helpshift(IdentitiesSizeLimitExceeded|IdentityFeatureNotEnabled|UidOrEmailIsMandatory|IatIsMandatory|NetworkError|UnknownError):
+        class: Helpshift
+        static_class: LoginFailureReasons
+        type: NSString
+        name: 'user#{g[0]}'
+
+    # Constants used for errors in user login failure and other identity related events
+    Helpshift(LoginConfig|InvalidValueType|InvalidData|KeyLengthLimitExceeded|MetadataKeyLengthLimitExceeded|ValueLengthLimitExceeded|MetadataValueLengthLimitExceeded|EmptyData|MetadataEmptyKeyOrValue|CountLimitExceeded|MetadataCountLimitExceeded):
+        class: Helpshift
+        static_class: LoginFailureReasons
         type: NSString
         name: 'user#{g[0]}'
 

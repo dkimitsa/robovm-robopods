@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "HelpshiftDelegate.h"
 #import "HelpshiftProactiveAPIConfigCollectorDelegate.h"
+#import "HelpshiftUserLoginFailureReason.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -23,6 +24,14 @@ FOUNDATION_EXPORT NSString *const HelpshiftUserEmail;
 
 /// Key to be used for providing user's authentication token in the loginUser: method
 FOUNDATION_EXPORT NSString *const HelpshiftUserAuthToken;
+
+/// Callback invoked on login success when using `loginWithIdentity:` method is used.
+typedef void (^HelpshiftLoginSuccessCallback)(void);
+/// Callback invoked on login failure when using `loginWithIdentity:` method is used.
+/// `reason` indicates the failure reason. It can be one of `HelpshiftUserLoginFailureReason.h` values.
+/// `errors` is a optional dictionary containing extra details about the failure reason.
+typedef void (^HelpshiftLoginFailureCallback)(NSString *reason,
+                                              NSDictionary<NSString *, NSString *> * _Nullable errors);
 
 /// Classes which provides access to all Helpshift APIs
 @interface Helpshift : NSObject
@@ -73,6 +82,52 @@ FOUNDATION_EXPORT NSString *const HelpshiftUserAuthToken;
  * @return BOOL value indicating whether login was successful or not
  */
 + (BOOL) loginUser:(NSDictionary<NSString *, NSString *> *)userDetails;
+
+/**
+ * Logs in a given user. This method accepts JSON Web Token (JWT) string for user identities, and an additional
+ * `NSDictionary` for login config. The result is communicated via success and failure callbacks. For details on how
+ * to create the JWT to be passed to this method, please refer https://developers.helpshift.com/sdkx_ios/identity-users/
+ *
+ * @param identityJWT `NSString` JSON Web Token representing user identity to be logged in.
+ *
+ * @param loginConfig `NSDictionary` representing additional config to be passed.
+ *
+ * @param successCallback callback block that is executed when the loginWithIdentity is successful.
+ *
+ * @param failureCallback callback block that is executed when the loginWithIdentity fails.
+ *      * `reason` indicates the failure reason. It can be one of `HelpshiftUserLoginFailureReason.h` values.
+ *      * `errors` is a optional dictionary containing extra details about the failure reason. Can be nil.
+ */
++ (void) loginWithIdentity:(NSString *)identityJWT
+                    config:(NSDictionary<NSString *, id> *)loginConfig
+                   success:(HelpshiftLoginSuccessCallback)successCallback
+                   failure:(HelpshiftLoginFailureCallback)failureCallback;
+
+/**
+ * Adds identities for the current logged in user. This method accepts JSON Web Token (JWT) string for user identities.
+ * For details on how to create the JWT to be passed to this method, please refer
+ * https://developers.helpshift.com/sdkx_ios/identity-users/. Only applicable if the user has been logged in using the
+ * `loginWithIdentity:config:success:failure` method.
+ *
+ * @param identitiesJWT `NSString` JSON Web Token representing user identities to be logged in.
+ */
++ (void) addUserIdentities:(NSString *)identitiesJWT;
+
+/**
+ * Updates the master attributes for logged in user with the given dictionary of key-value pairs. Only applicable if the
+ * user has been logged in using the `loginWithIdentity:config:success:failure` method.
+ *
+ * @param attributes Dictionary containing the master attributes.
+ */
++ (void) updateMasterAttributes:(NSDictionary<NSString *, id> *)attributes;
+
+/**
+ * Updates the app attributes for logged in user with the given dictionary of key-value pairs. Only applicable if the
+ * user has been logged in using the `loginWithIdentity:config:success:failure` method.
+ *
+ * @param attributes Dictionary containing the app attributes.
+ */
++ (void) updateAppAttributes:(NSDictionary<NSString *, id> *)attributes;
 
 /**
  * Logs out the previously logged in user

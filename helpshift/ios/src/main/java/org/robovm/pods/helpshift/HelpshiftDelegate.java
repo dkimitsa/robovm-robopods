@@ -138,6 +138,36 @@ import org.robovm.apple.uikit.*;
         @GlobalValue(symbol="HelpshiftEventNameAgentMessageReceived", optional=true)
         public static native NSString agentMessageReceived();
     }
+
+    @Library(Library.INTERNAL)
+    public static class Events {
+        static { Bro.bind(Events.class); }
+
+        @GlobalValue(symbol="HelpshiftEventAttributesDataInvalid", optional=true)
+        public static native NSString AttributesDataInvalid();
+        @GlobalValue(symbol="HelpshiftEventUpdateMasterAttributesValidationFailed", optional=true)
+        public static native NSString UpdateMasterAttributesValidationFailed();
+        @GlobalValue(symbol="HelpshiftEventUpdateMasterAttributesSyncFailed", optional=true)
+        public static native NSString UpdateMasterAttributesSyncFailed();
+        @GlobalValue(symbol="HelpshiftEventAppAttributesLimitExceeded", optional=true)
+        public static native NSString AppAttributesLimitExceeded();
+        @GlobalValue(symbol="HelpshiftEventUpdateAppAttributesValidationFailed", optional=true)
+        public static native NSString UpdateAppAttributesValidationFailed();
+        @GlobalValue(symbol="HelpshiftEventMasterAttributesLimitExceeded", optional=true)
+        public static native NSString MasterAttributesLimitExceeded();
+        @GlobalValue(symbol="HelpshiftEventUpdateAppAttributesSyncFailed", optional=true)
+        public static native NSString UpdateAppAttributesSyncFailed();
+        @GlobalValue(symbol="HelpshiftEventAddUserIdentitiesValidationFailed", optional=true)
+        public static native NSString AddUserIdentitiesValidationFailed();
+        @GlobalValue(symbol="HelpshiftEventAddUserIdentitiesSyncFailed", optional=true)
+        public static native NSString AddUserIdentitiesSyncFailed();
+        @GlobalValue(symbol="HelpshiftEventUserSessionExpired", optional=true)
+        public static native NSString UserSessionExpired();
+        @GlobalValue(symbol="HelpshiftEventUserIdentityNotEnabled", optional=true)
+        public static native NSString UserIdentityNotEnabled();
+        @GlobalValue(symbol="HelpshiftEventRefreshUserCredentials", optional=true)
+        public static native NSString RefreshUserCredentials();
+    }
     
     @Method(selector = "handleHelpshiftEvent:withData:")
     void handleHelpshiftEvent(String eventName, NSDictionary<?, ?> data);

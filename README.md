@@ -50,7 +50,7 @@ v1.46.0 - in development
 | [Facebook](facebook/)           | 18.0.0  |
 | [Firebase](firebase/)           | 11.7.0  |
 | [Fyber](fyber/)                 | 8.3.4   |
-| [HelpShiftX](helpshift/)        | 10.3.1  |
+| [HelpShiftX](helpshift/)        | 10.4.0  |
 | [InMobi](inmobi/)               | 10.7.5  |
 | [IronSource](ironsource/)       | 8.4.0   |
 | [Lottie](lottie/)               | 4.5.0   |

@@ -60,6 +60,56 @@ import org.robovm.apple.uikit.*;
     /*<members>*//*</members>*/
     /*<methods>*/
     @Library(Library.INTERNAL)
+    public static class LoginFailureReasons {
+        static { Bro.bind(LoginFailureReasons.class); }
+
+        @GlobalValue(symbol="HelpshiftLoginConfig", optional=true)
+        public static native NSString userLoginConfig();
+        @GlobalValue(symbol="HelpshiftInvalidValueType", optional=true)
+        public static native NSString userInvalidValueType();
+        @GlobalValue(symbol="HelpshiftInvalidData", optional=true)
+        public static native NSString userInvalidData();
+        @GlobalValue(symbol="HelpshiftKeyLengthLimitExceeded", optional=true)
+        public static native NSString userKeyLengthLimitExceeded();
+        @GlobalValue(symbol="HelpshiftMetadataKeyLengthLimitExceeded", optional=true)
+        public static native NSString userMetadataKeyLengthLimitExceeded();
+        @GlobalValue(symbol="HelpshiftValueLengthLimitExceeded", optional=true)
+        public static native NSString userValueLengthLimitExceeded();
+        @GlobalValue(symbol="HelpshiftMetadataValueLengthLimitExceeded", optional=true)
+        public static native NSString userMetadataValueLengthLimitExceeded();
+        @GlobalValue(symbol="HelpshiftEmptyData", optional=true)
+        public static native NSString userEmptyData();
+        @GlobalValue(symbol="HelpshiftMetadataEmptyKeyOrValue", optional=true)
+        public static native NSString userMetadataEmptyKeyOrValue();
+        @GlobalValue(symbol="HelpshiftCountLimitExceeded", optional=true)
+        public static native NSString userCountLimitExceeded();
+        @GlobalValue(symbol="HelpshiftMetadataCountLimitExceeded", optional=true)
+        public static native NSString userMetadataCountLimitExceeded();
+        @GlobalValue(symbol="HelpshiftLoginInProgress", optional=true)
+        public static native NSString userLoginInProgress();
+        @GlobalValue(symbol="HelpshiftLoginConfigInvalid", optional=true)
+        public static native NSString userLoginConfigInvalid();
+        @GlobalValue(symbol="HelpshiftIdentityTokenInvalid", optional=true)
+        public static native NSString userIdentityTokenInvalid();
+        @GlobalValue(symbol="HelpshiftIdentitiesDataInvalid", optional=true)
+        public static native NSString userIdentitiesDataInvalid();
+        @GlobalValue(symbol="HelpshiftLoginConfigSizeLimitExceeded", optional=true)
+        public static native NSString userLoginConfigSizeLimitExceeded();
+        @GlobalValue(symbol="HelpshiftIdentitiesSizeLimitExceeded", optional=true)
+        public static native NSString userIdentitiesSizeLimitExceeded();
+        @GlobalValue(symbol="HelpshiftIdentityFeatureNotEnabled", optional=true)
+        public static native NSString userIdentityFeatureNotEnabled();
+        @GlobalValue(symbol="HelpshiftUidOrEmailIsMandatory", optional=true)
+        public static native NSString userUidOrEmailIsMandatory();
+        @GlobalValue(symbol="HelpshiftIatIsMandatory", optional=true)
+        public static native NSString userIatIsMandatory();
+        @GlobalValue(symbol="HelpshiftNetworkError", optional=true)
+        public static native NSString userNetworkError();
+        @GlobalValue(symbol="HelpshiftUnknownError", optional=true)
+        public static native NSString userUnknownError();
+    }
+
+    @Library(Library.INTERNAL)
     public static class UserDetailKeys {
         static { Bro.bind(UserDetailKeys.class); }
 
@@ -81,6 +131,14 @@ import org.robovm.apple.uikit.*;
     public static native void pauseDisplayOfInAppNotification(boolean shouldPauseInAppNotification);
     @Method(selector = "loginUser:")
     public static native boolean loginUser(NSDictionary<NSString, NSString> userDetails);
+    @Method(selector = "loginWithIdentity:config:success:failure:")
+    public static native void login(String identityJWT, NSDictionary<NSString, ?> loginConfig, @Block Runnable successCallback, @Block VoidBlock2<NSString, NSDictionary<NSString, NSString>> failureCallback);
+    @Method(selector = "addUserIdentities:")
+    public static native void addUserIdentities(String identitiesJWT);
+    @Method(selector = "updateMasterAttributes:")
+    public static native void updateMasterAttributes(NSDictionary<NSString, ?> attributes);
+    @Method(selector = "updateAppAttributes:")
+    public static native void updateAppAttributes(NSDictionary<NSString, ?> attributes);
     @Method(selector = "logout")
     public static native void logout();
     /**
