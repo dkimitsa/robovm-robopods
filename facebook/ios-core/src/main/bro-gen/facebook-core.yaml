@@ -1059,6 +1059,16 @@ protocols:
         exclude: true #INTERNAL - DO NOT USE
     FBSDKDomainConfigurationProviding:
         exclude: true #INTERNAL - DO NOT USE
+    FBSDKIAPDedupeProcessing:
+        exclude: true #INTERNAL - DO NOT USE
+    FBSDKIAPFailedTransactionLogging:
+        exclude: true #INTERNAL - DO NOT USE
+    FBSDKIAPFailedTransactionLoggingCreating:
+        exclude: true #INTERNAL - DO NOT USE
+    FBSDKIAPTransactionCaching:
+        exclude: true #INTERNAL - DO NOT USE
+    FBSDKTransactionObserving:
+        exclude: true #INTERNAL - DO NOT USE
 functions:
     fb_randomString:
         exclude: true
@@ -1163,6 +1173,8 @@ values:
     FBLinkable_NSProcessInfo_OperatingSystemVersionComparing:
         exclude: true
     FBLink_NSProcessInfo_OperatingSystemVersionComparing:
+        exclude: true
+    FBSDKAppOperationalDataTypeIAPParameters:
         exclude: true
 
     # Make sure we don't miss any values if new ones are introduced in a later version

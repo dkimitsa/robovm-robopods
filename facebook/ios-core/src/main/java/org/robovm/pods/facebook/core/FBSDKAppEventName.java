@@ -92,6 +92,16 @@ import org.robovm.pods.facebook.corebasics.*;
     public static native NSString InitiatedCheckout();
     @GlobalValue(symbol="FBSDKAppEventNamePurchased", optional=true)
     public static native NSString Purchased();
+    @GlobalValue(symbol="FBSDKAppEventNamePurchaseRestored", optional=true)
+    public static native NSString PurchaseRestored();
+    @GlobalValue(symbol="FBSDKAppEventNameSubscribeRestore", optional=true)
+    public static native NSString SubscribeRestore();
+    @GlobalValue(symbol="FBSDKAppEventNamePurchaseFailed", optional=true)
+    public static native NSString PurchaseFailed();
+    @GlobalValue(symbol="FBSDKAppEventNameSubscribeInitiatedCheckout", optional=true)
+    public static native NSString SubscribeInitiatedCheckout();
+    @GlobalValue(symbol="FBSDKAppEventNameSubscribeFailed", optional=true)
+    public static native NSString SubscribeFailed();
     @GlobalValue(symbol="FBSDKAppEventNameAchievedLevel", optional=true)
     public static native NSString AchievedLevel();
     @GlobalValue(symbol="FBSDKAppEventNameUnlockedAchievement", optional=true)

@@ -99,6 +99,11 @@ import org.robovm.pods.facebook.corebasics.*;
     public native void logPurchase(double purchaseAmount, String currency, NSDictionary<NSString, ?> parameters);
     @Method(selector = "logPurchase:currency:parameters:accessToken:")
     public native void logPurchase(double purchaseAmount, String currency, NSDictionary<NSString, ?> parameters, FBSDKAccessToken accessToken);
+    /**
+     * @since Available in iOS 15.0 and later.
+     */
+    @Method(selector = "logFailedStoreKit2Purchase:")
+    public native void logFailedStoreKit2Purchase(String productID);
     @Method(selector = "logPushNotificationOpen:")
     public native void logPushNotificationOpen(NSDictionary<NSString, ?> payload);
     @Method(selector = "logPushNotificationOpen:action:")

@@ -84,5 +84,41 @@ import org.robovm.pods.facebook.corebasics.*;
     public static native NSString EventName();
     @GlobalValue(symbol="FBSDKAppEventParameterNameLogTime", optional=true)
     public static native NSString LogTime();
+    @GlobalValue(symbol="FBSDKAppEventParameterNameImplicitlyLoggedPurchase", optional=true)
+    public static native NSString ImplicitlyLoggedPurchase();
+    @GlobalValue(symbol="FBSDKAppEventParameterNameTransactionDate", optional=true)
+    public static native NSString TransactionDate();
+    @GlobalValue(symbol="FBSDKAppEventParameterNameProductTitle", optional=true)
+    public static native NSString ProductTitle();
+    @GlobalValue(symbol="FBSDKAppEventParameterNameTransactionID", optional=true)
+    public static native NSString TransactionID();
+    @GlobalValue(symbol="FBSDKAppEventParameterNameInAppPurchaseType", optional=true)
+    public static native NSString InAppPurchaseType();
+    @GlobalValue(symbol="FBSDKAppEventParameterNameSubscriptionPeriod", optional=true)
+    public static native NSString SubscriptionPeriod();
+    @GlobalValue(symbol="FBSDKAppEventParameterNameIsStartTrial", optional=true)
+    public static native NSString IsStartTrial();
+    @GlobalValue(symbol="FBSDKAppEventParameterNameHasFreeTrial", optional=true)
+    public static native NSString HasFreeTrial();
+    @GlobalValue(symbol="FBSDKAppEventParameterNameTrialPeriod", optional=true)
+    public static native NSString TrialPeriod();
+    @GlobalValue(symbol="FBSDKAppEventParameterNameTrialPrice", optional=true)
+    public static native NSString TrialPrice();
+    @GlobalValue(symbol="FBSDKAppEventParameterNameValidationResult", optional=true)
+    public static native NSString ValidationResult();
+    @GlobalValue(symbol="FBSDKAppEventParameterNameIAPClientLibraryVersion", optional=true)
+    public static native NSString IAPClientLibraryVersion();
+    @GlobalValue(symbol="FBSDKAppEventParameterNameIAPSDKLibraryVersions", optional=true)
+    public static native NSString IAPSDKLibraryVersions();
+    @GlobalValue(symbol="FBSDKAppEventParameterNameIAPReceiptData", optional=true)
+    public static native NSString IAPReceiptData();
+    @GlobalValue(symbol="FBSDKAppEventParameterNameProductClassification", optional=true)
+    public static native NSString ProductClassification();
+    @GlobalValue(symbol="FBSDKAppEventParameterNameConsumablesInPurchaseHistory", optional=true)
+    public static native NSString ConsumablesInPurchaseHistory();
+    @GlobalValue(symbol="FBSDKAppEventParameterNameOriginalTransactionID", optional=true)
+    public static native NSString OriginalTransactionID();
+    @GlobalValue(symbol="FBSDKAppEventParameterNameOriginalTransactionDate", optional=true)
+    public static native NSString OriginalTransactionDate();
     /*</methods>*/
 }
