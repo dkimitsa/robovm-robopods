@@ -67,7 +67,5 @@ import org.robovm.apple.uikit.*;
     protected native @Pointer long init(NSCoder coder);
     @Method(selector = "supportsSecureCoding")
     public static native boolean supportsSecureCoding();
-    @Method(selector = "setSupportsSecureCoding:")
-    public static native void setSupportsSecureCoding(boolean value);
     /*</methods>*/
 }

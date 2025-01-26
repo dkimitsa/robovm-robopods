@@ -964,6 +964,8 @@ SWIFT_CLASS_NAMED("Auth") SWIFT_AVAILABILITY(watchos,introduced=7) SWIFT_AVAILAB
 /// Configures Firebase Auth to connect to an emulated host instead of the remote backend.
 - (void)useEmulatorWithHost:(NSString * _Nonnull)host port:(NSInteger)port;
 /// Revoke the users token with authorization code.
+/// \param authorizationCode The authorization code used to perform the revocation.
+///
 /// \param completion (Optional) the block invoked when the request to revoke the token is
 /// complete, or fails. Invoked asynchronously on the main thread in the future.
 ///
@@ -1086,9 +1088,8 @@ SWIFT_CLASS_NAMED("AuthDataResult") SWIFT_AVAILABILITY(watchos,introduced=7) SWI
 /// May be used to obtain the accessToken and/or IDToken
 /// pertaining to a recently signed-in user.
 @property (nonatomic, readonly, strong) FIROAuthCredential * _Nullable credential;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL supportsSecureCoding;)
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) BOOL supportsSecureCoding;)
 + (BOOL)supportsSecureCoding SWIFT_WARN_UNUSED_RESULT;
-+ (void)setSupportsSecureCoding:(BOOL)value;
 - (void)encodeWithCoder:(NSCoder * _Nonnull)coder;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
@@ -1275,7 +1276,7 @@ typedef SWIFT_ENUM_NAMED(NSInteger, FIRAuthErrorCode, "AuthErrorCode", open) {
   FIRAuthErrorCodeMissingClientIdentifier = 17093,
 /// Indicates that the nonce is missing or invalid.
   FIRAuthErrorCodeMissingOrInvalidNonce = 17094,
-/// Raised when n Cloud Function returns a blocking error. Will include a message returned from
+/// Raised when a Cloud Function returns a blocking error. Will include a message returned from
 /// the function.
   FIRAuthErrorCodeBlockingCloudFunctionError = 17105,
 /// Indicates that reCAPTCHA Enterprise integration is not enabled for this project.
@@ -1479,6 +1480,10 @@ SWIFT_PROTOCOL_NAMED("FederatedAuthProvider") SWIFT_AVAILABILITY(watchos,introdu
 /// This method is available on iOS only.
 /// \param uiDelegate An optional UI delegate used to present the mobile web flow.
 ///
+/// \param completionHandler Optionally; a block which is invoked
+/// asynchronously on the main thread when the mobile web flow is
+/// completed.
+///
 - (void)getCredentialWithUIDelegate:(id <FIRAuthUIDelegate> _Nullable)uiDelegate completion:(void (^ _Nonnull)(FIRAuthCredential * _Nullable, NSError * _Nullable))completionHandler SWIFT_AVAILABILITY(watchos,introduced=8) SWIFT_AVAILABILITY(macos,introduced=10.15) SWIFT_AVAILABILITY(tvos,introduced=13) SWIFT_AVAILABILITY(ios,introduced=13);
 @end
 
@@ -1558,11 +1563,16 @@ SWIFT_CLASS_NAMED("MultiFactor") SWIFT_AVAILABILITY(watchos,introduced=7) SWIFT_
 ///
 - (void)enrollWithAssertion:(FIRMultiFactorAssertion * _Nonnull)assertion displayName:(NSString * _Nullable)displayName completion:(void (^ _Nullable)(NSError * _Nullable))completion;
 /// Unenroll the given multi factor.
+/// \param factorInfo The second factor instance to unenroll.
+///
 /// \param completion The block invoked when the request to send the verification email is
 /// complete, or fails.
 ///
 - (void)unenrollWithInfo:(FIRMultiFactorInfo * _Nonnull)factorInfo completion:(void (^ _Nullable)(NSError * _Nullable))completion;
 /// Unenroll the given multi factor.
+/// \param factorUID The unique identifier corresponding to the
+/// second factor being unenrolled.
+///
 /// \param completion The block invoked when the request to send the verification email is
 /// complete, or fails.
 ///
@@ -1631,8 +1641,9 @@ SWIFT_CLASS_NAMED("MultiFactorResolver") SWIFT_AVAILABILITY(watchos,introduced=7
 /// The Auth reference for the current <code>MultiResolver</code>.
 @property (nonatomic, readonly, strong) FIRAuth * _Nonnull auth;
 /// A helper function to help users complete sign in with a second factor using a
-/// <code>MultiFactorAssertion</code> confirming the user successfully completed the second factor
-/// challenge.
+/// \param assertion The assertion confirming the user successfully
+/// completed the second factor challenge.
+///
 /// \param completion The block invoked when the request is complete, or fails.
 ///
 - (void)resolveSignInWithAssertion:(FIRMultiFactorAssertion * _Nonnull)assertion completion:(void (^ _Nullable)(FIRAuthDataResult * _Nullable, NSError * _Nullable))completion;
@@ -1665,9 +1676,8 @@ SWIFT_CLASS_NAMED("OAuthCredential") SWIFT_AVAILABILITY(watchos,introduced=7) SW
 /// OAuthCredential already exposes a <code>provider</code> getter. This will help the developer
 /// determine whether an access token / secret pair is needed.
 @property (nonatomic, readonly, copy) NSString * _Nullable secret;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL supportsSecureCoding;)
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) BOOL supportsSecureCoding;)
 + (BOOL)supportsSecureCoding SWIFT_WARN_UNUSED_RESULT;
-+ (void)setSupportsSecureCoding:(BOOL)value;
 - (void)encodeWithCoder:(NSCoder * _Nonnull)coder;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -1757,6 +1767,10 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 /// This method is available on iOS only.
 /// \param uiDelegate An optional UI delegate used to present the mobile web flow.
 ///
+/// \param completionHandler Optionally; a block which is invoked
+/// asynchronously on the main thread when the mobile web flow is
+/// completed.
+///
 - (void)getCredentialWithUIDelegate:(id <FIRAuthUIDelegate> _Nullable)uiDelegate completion:(void (^ _Nonnull)(FIRAuthCredential * _Nullable, NSError * _Nullable))completionHandler SWIFT_AVAILABILITY(watchos,introduced=8) SWIFT_AVAILABILITY(macos,introduced=10.15) SWIFT_AVAILABILITY(tvos,introduced=13) SWIFT_AVAILABILITY(ios,introduced=13);
 /// Creates an <code>AuthCredential</code> for the Sign in with Apple OAuth 2 provider identified by ID
 /// token, raw nonce, and full name.This method is specific to the Sign in with Apple OAuth 2
@@ -1783,9 +1797,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 /// This class is available on iOS only.
 SWIFT_CLASS_NAMED("PhoneAuthCredential") SWIFT_AVAILABILITY(watchos,introduced=7) SWIFT_AVAILABILITY(maccatalyst,introduced=13) SWIFT_AVAILABILITY(macos,introduced=10.15) SWIFT_AVAILABILITY(tvos,introduced=13) SWIFT_AVAILABILITY(ios,introduced=13)
 @interface FIRPhoneAuthCredential : FIRAuthCredential <NSSecureCoding>
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL supportsSecureCoding;)
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) BOOL supportsSecureCoding;)
 + (BOOL)supportsSecureCoding SWIFT_WARN_UNUSED_RESULT;
-+ (void)setSupportsSecureCoding:(BOOL)value;
 - (void)encodeWithCoder:(NSCoder * _Nonnull)coder;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end

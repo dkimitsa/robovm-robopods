@@ -95,6 +95,8 @@ import org.robovm.apple.foundation.*;
     public native FIRRemoteConfigValue defaultValueForKey(String key);
     @Method(selector = "addOnConfigUpdateListener:")
     public native FIRConfigUpdateListenerRegistration addOnConfigUpdateListener(@Block VoidBlock2<FIRRemoteConfigUpdate, NSError> listener);
+    @Method(selector = "setCustomSignals:withCompletion:")
+    public native void setCustomSignals(NSDictionary<NSString, ?> customSignals, @Block VoidBlock1<NSError> completionHandler);
     @Method(selector = "remoteConfig")
     public static native FIRRemoteConfig remoteConfig();
     @Method(selector = "remoteConfigWithApp:")

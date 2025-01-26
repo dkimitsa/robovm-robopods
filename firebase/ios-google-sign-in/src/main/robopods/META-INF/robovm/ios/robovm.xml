@@ -1,8 +1,11 @@
 <config>
     <frameworks>
         <framework>AppAuth</framework>
+        <framework>AppCheckCore</framework>
         <framework>GTMAppAuth</framework>
         <framework>GTMSessionFetcher</framework>
+        <framework>FBLPromises</framework>
+        <framework>GoogleUtilities</framework>
         <framework>GoogleSignIn</framework>
     </frameworks>
 </config>

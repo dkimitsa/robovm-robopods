@@ -14,6 +14,7 @@ enums:
     FIRRemoteConfigError: {nserror: true}
     FIRRemoteConfigSource: {}
     FIRRemoteConfigUpdateError: {nserror: true}
+    FIRRemoteConfigCustomSignalsError: {nserror: true}
 classes:
     FIRRemoteConfig:
         methods:
@@ -50,6 +51,8 @@ classes:
                 constructor: true
             '-activateWithCompletion:':
                 name: activate
+            '-setCustomSignals:withCompletion:':
+                name: setCustomSignals
     FIRRemoteConfigSettings:
         methods:
             '-initWithDeveloperModeEnabled:':
@@ -71,6 +74,9 @@ values:
         name: getClassDomain
     FIRRemoteConfigUpdateErrorDomain:
         class: FIRRemoteConfigUpdateError
+        name: getClassDomain
+    FIRRemoteConfigCustomSignalsErrorDomain:
+        class: FIRRemoteConfigCustomSignalsError
         name: getClassDomain
     FIRRemoteConfigThrottledEndTimeInSecondsKey:
         class: FIRRemoteConfigError

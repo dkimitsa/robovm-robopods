@@ -55,8 +55,6 @@ import org.robovm.apple.webkit.*;
     /*<methods>*/
     @NotImplemented("loadBannerForAdConfiguration:completionHandler:")
     public void loadBanner(GADMediationBannerAdConfiguration adConfiguration, @Block Block2<GADMediationBannerAd, NSError, GADMediationBannerAdEventDelegate> completionHandler) {}
-    @NotImplemented("loadInterscrollerAdForAdConfiguration:completionHandler:")
-    public void loadInterscrollerAd(GADMediationBannerAdConfiguration adConfiguration, @Block Block2<GADMediationInterscrollerAd, NSError, GADMediationBannerAdEventDelegate> completionHandler) {}
     @NotImplemented("loadInterstitialForAdConfiguration:completionHandler:")
     public void loadInterstitial(GADMediationInterstitialAdConfiguration adConfiguration, @Block Block2<GADMediationInterstitialAd, NSError, GADMediationInterstitialAdEventDelegate> completionHandler) {}
     @NotImplemented("loadNativeAdForAdConfiguration:completionHandler:")
@@ -67,5 +65,11 @@ import org.robovm.apple.webkit.*;
     public void loadRewardedInterstitialAd(GADMediationRewardedAdConfiguration adConfiguration, @Block Block2<GADMediationRewardedAd, NSError, GADMediationRewardedAdEventDelegate> completionHandler) {}
     @NotImplemented("loadAppOpenAdForAdConfiguration:completionHandler:")
     public void loadAppOpenAd(GADMediationAppOpenAdConfiguration adConfiguration, @Block Block2<GADMediationAppOpenAd, NSError, GADMediationAppOpenAdEventDelegate> completionHandler) {}
+    /**
+     * @deprecated Interscroller mediation is no longer supported. This API will be removed in a future release.
+     */
+    @Deprecated
+    @NotImplemented("loadInterscrollerAdForAdConfiguration:completionHandler:")
+    public void loadInterscrollerAd(GADMediationBannerAdConfiguration adConfiguration, @Block Block2<GADMediationInterscrollerAd, NSError, GADMediationBannerAdEventDelegate> completionHandler) {}
     /*</methods>*/
 }

@@ -97,9 +97,6 @@ import org.robovm.apple.usernotifications.*;
     public native void deleteData(@Block VoidBlock1<NSError> completion);
     @Method(selector = "messaging")
     public static native FIRMessaging messaging();
-    /**
-     * @since Available in iOS 10.0 and later.
-     */
     @Method(selector = "extensionHelper")
     public static native FIRMessagingExtensionHelper extensionHelper();
     /*</methods>*/

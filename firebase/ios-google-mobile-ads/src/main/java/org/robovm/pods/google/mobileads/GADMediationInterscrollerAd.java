@@ -36,9 +36,11 @@ import org.robovm.apple.webkit.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
+/**
+ * @deprecated Interscroller will not be supported.
+ */
 /*</javadoc>*/
-/*<annotations>*//*</annotations>*/
+/*<annotations>*/@Deprecated/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ interface /*<name>*/GADMediationInterscrollerAd/*</name>*/ 
     /*<implements>*/extends GADMediationBannerAd/*</implements>*/ {
 

@@ -54,5 +54,7 @@ import org.robovm.apple.foundation.*;
     /*<methods>*/
     @Method(selector = "setLoggerLevel:")
     public native void setLoggerLevel(FIRLoggerLevel loggerLevel);
+    @Method(selector = "loggerLevel")
+    public native FIRLoggerLevel loggerLevel();
     /*</methods>*/
 }

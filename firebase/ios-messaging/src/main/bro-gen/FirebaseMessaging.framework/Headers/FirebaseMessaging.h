@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 
+#import "FIRMessaging+ExtensionHelper.h"
 #import "FIRMessaging.h"
-#if __has_include("FIRMessagingExtensionHelper.h")
 #import "FIRMessagingExtensionHelper.h"
-#endif  // __has_include("FIRMessagingExtensionHelper.h")

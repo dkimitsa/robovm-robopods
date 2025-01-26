@@ -39,6 +39,12 @@ public enum /*<name>*/UMPDebugGeography/*</name>*/ implements ValuedEnum {
     /*<values>*/
     Disabled(0L),
     EEA(1L),
+    RegulatedUSState(3L),
+    Other(4L),
+    /**
+     * @deprecated Deprecated. Use UMPDebugGeographyOther.
+     */
+    @Deprecated
     NotEEA(2L);
     /*</values>*/
 

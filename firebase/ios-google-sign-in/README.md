@@ -2,8 +2,11 @@
 
 ### Frameworks required for this pod: 
 * AppAuth.xcframework (from Firebase.zip/GoogleSignIn/AppAuth.xcframework)
+* AppCheckCore.xcframework (from Firebase.zip/GoogleSignIn/AppCheckCore.xcframework)
 * GTMAppAuth.xcframework (from Firebase.zip/GoogleSignIn/GTMAppAuth.xcframework)
 * GTMSessionFetcher.xcframework (from Firebase.zip/GoogleSignIn/GTMSessionFetcher.xcframework)
+* FBLPromises.xcframework (from Firebase.zip/FirebaseAnalytics/FBLPromises.xcframework)
+* GoogleUtilities.xcframework (from Firebase.zip/FirebaseAnalytics/GoogleUtilities.xcframework)
 * GoogleSignIn.xcframework (from Firebase.zip/GoogleSignIn/GoogleSignIn.xcframework)
 
 ### to use this pod configure your `robovm.xml`

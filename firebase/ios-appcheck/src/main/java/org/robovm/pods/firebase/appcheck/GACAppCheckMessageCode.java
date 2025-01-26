@@ -44,7 +44,8 @@ public enum /*<name>*/GACAppCheckMessageCode/*</name>*/ implements ValuedEnum {
     DebugProviderFirebaseEnvironmentVariable(4003L),
     DebugProviderFailedExchange(4004L),
     CodeAppAttestNotSupported(7001L),
-    CodeAttestationRejected(7002L);
+    CodeAttestationRejected(7002L),
+    CodeAssertionRejected(7003L);
     /*</values>*/
 
     /*<bind>*/
