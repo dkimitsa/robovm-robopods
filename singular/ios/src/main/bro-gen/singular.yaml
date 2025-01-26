@@ -99,6 +99,8 @@ classes:
     SingularAdData:
         methods:
             '-initWithAdPlatfrom:withCurrency:withRevenue:':
+                exclude: true
+            '-initWithAdPlatform:withCurrency:withRevenue:':
                 name: init
     SingularConfig:
         methods:

@@ -2,7 +2,7 @@
 //  SingularLinkParams.h
 //  Singular
 //
-//  Copyright © 2010-2023 Singular Inc. All rights reserved.
+//  Copyright © 2010-2024 Singular Inc. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

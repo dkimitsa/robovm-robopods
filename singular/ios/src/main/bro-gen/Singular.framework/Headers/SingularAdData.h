@@ -2,7 +2,7 @@
 //  SingularAdData.h
 //  Singular
 //
-//  Copyright © 2010-2023 Singular Inc. All rights reserved.
+//  Copyright © 2010-2024 Singular Inc. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -11,7 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SingularAdData : NSMutableDictionary
 
-- (id)initWithAdPlatfrom:(NSString*)adPlatform withCurrency:(NSString*)currency withRevenue:(NSNumber*)revenue;
+- (id)initWithAdPlatfrom:(NSString*)adPlatform withCurrency:(NSString*)currency withRevenue:(NSNumber*)revenue __attribute__((deprecated));
+- (id)initWithAdPlatform:(NSString*)adPlatform withCurrency:(NSString*)currency withRevenue:(NSNumber*)revenue;
 
 - (void)setNetworkName:(NSString*)networkName;
 - (void)setAdType:(NSString*)adType;

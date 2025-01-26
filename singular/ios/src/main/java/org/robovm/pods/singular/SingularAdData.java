@@ -47,7 +47,7 @@ import org.robovm.apple.uikit.*;
     protected SingularAdData() {}
     protected SingularAdData(Handle h, long handle) { super(h, handle); }
     protected SingularAdData(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithAdPlatfrom:withCurrency:withRevenue:")
+    @Method(selector = "initWithAdPlatform:withCurrency:withRevenue:")
     public SingularAdData(String adPlatform, String currency, NSNumber revenue) { super((SkipInit) null); initObject(init(adPlatform, currency, revenue)); }
     @Method(selector = "initWithCapacity:")
     public SingularAdData(@MachineSizedUInt long numItems) { super(numItems); }
@@ -57,7 +57,7 @@ import org.robovm.apple.uikit.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "initWithAdPlatfrom:withCurrency:withRevenue:")
+    @Method(selector = "initWithAdPlatform:withCurrency:withRevenue:")
     protected native @Pointer long init(String adPlatform, String currency, NSNumber revenue);
     @Method(selector = "setNetworkName:")
     public native void setNetworkName(String networkName);

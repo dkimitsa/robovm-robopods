@@ -2,8 +2,7 @@
 //  Singular.js
 //  Singular js/SDK for iPhone/iOS public API
 //
-//  Created by Frank Ledo on 11/14/11
-//  Copyright © 2010-2011 Singular Inc. All rights reserved.
+//  Copyright © 2010-2024 Singular Inc. All rights reserved.
 //
 var Singular={
     AP_TRIGGER_RESULT:{
