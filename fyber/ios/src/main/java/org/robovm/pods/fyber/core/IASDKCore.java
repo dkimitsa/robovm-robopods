@@ -92,8 +92,16 @@ import org.robovm.apple.coregraphics.*;
     public native IAUserData getUserData();
     @Property(selector = "setUserData:")
     public native void setUserData(IAUserData v);
+    /**
+     * @deprecated This API is deprecated.
+     */
+    @Deprecated
     @Property(selector = "keywords")
     public native String getKeywords();
+    /**
+     * @deprecated This API is deprecated.
+     */
+    @Deprecated
     @Property(selector = "setKeywords:")
     public native void setKeywords(String v);
     @Property(selector = "muteAudio")
@@ -121,8 +129,6 @@ import org.robovm.apple.coregraphics.*;
     public native void clearGDPRConsentData();
     @Method(selector = "clearLGPDConsentData")
     public native void clearLGPDConsentData();
-    @Method(selector = "enableAutomaticAudioSessionManagement")
-    public native void enableAutomaticAudioSessionManagement();
     @Method(selector = "sharedInstance")
     public static native IASDKCore sharedInstance();
     /*</methods>*/

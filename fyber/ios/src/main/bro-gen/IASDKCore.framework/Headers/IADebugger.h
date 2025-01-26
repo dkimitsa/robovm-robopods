@@ -17,11 +17,8 @@
 @property (nonatomic, copy, nullable) NSString *server;
 @property (nonatomic, copy, nullable) NSString *database;
 @property (nonatomic, copy, nullable) NSString *mockResponsePath;
-@property (nonatomic, copy, nullable) NSString *localJSONResponsePath;
 
-@property (class, nonatomic, copy, nullable) NSString *localJSONConfigPath;
-@property (class, nonatomic, copy, nullable) NSString *globalConfigPath;
-@property (class, nonatomic) BOOL adReportingEnabled;
+@property (class, nonatomic) BOOL adReportingEnabled DEPRECATED_MSG_ATTRIBUTE("Deprecated, starting from 8.3.2");
 
 @end
 

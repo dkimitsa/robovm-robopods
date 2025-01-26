@@ -61,10 +61,6 @@ import org.robovm.apple.coregraphics.*;
     public String getMockResponsePath() { return null; }
     @NotImplemented("setMockResponsePath:")
     public void setMockResponsePath(String v) {}
-    @NotImplemented("localJSONResponsePath")
-    public String getLocalJSONResponsePath() { return null; }
-    @NotImplemented("setLocalJSONResponsePath:")
-    public void setLocalJSONResponsePath(String v) {}
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

@@ -64,20 +64,16 @@ import org.robovm.apple.coregraphics.*;
     public native String getMockResponsePath();
     @Property(selector = "setMockResponsePath:")
     public native void setMockResponsePath(String v);
-    @Property(selector = "localJSONResponsePath")
-    public native String getLocalJSONResponsePath();
-    @Property(selector = "setLocalJSONResponsePath:")
-    public native void setLocalJSONResponsePath(String v);
-    @Property(selector = "localJSONConfigPath")
-    public static native String getLocalJSONConfigPath();
-    @Property(selector = "setLocalJSONConfigPath:")
-    public static native void setLocalJSONConfigPath(String v);
-    @Property(selector = "globalConfigPath")
-    public static native String getGlobalConfigPath();
-    @Property(selector = "setGlobalConfigPath:")
-    public static native void setGlobalConfigPath(String v);
+    /**
+     * @deprecated Deprecated, starting from 8.3.2
+     */
+    @Deprecated
     @Property(selector = "adReportingEnabled")
     public static native boolean isAdReportingEnabled();
+    /**
+     * @deprecated Deprecated, starting from 8.3.2
+     */
+    @Deprecated
     @Property(selector = "setAdReportingEnabled:")
     public static native void setAdReportingEnabled(boolean v);
     /*</properties>*/

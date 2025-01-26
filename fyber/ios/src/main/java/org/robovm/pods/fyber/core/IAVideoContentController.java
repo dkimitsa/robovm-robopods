@@ -63,8 +63,16 @@ import org.robovm.apple.coregraphics.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
+    /**
+     * @deprecated This API is deprecated.
+     */
+    @Deprecated
     @Method(selector = "play")
     public native void play();
+    /**
+     * @deprecated This API is deprecated.
+     */
+    @Deprecated
     @Method(selector = "pause")
     public native void pause();
     @Method(selector = "build:")

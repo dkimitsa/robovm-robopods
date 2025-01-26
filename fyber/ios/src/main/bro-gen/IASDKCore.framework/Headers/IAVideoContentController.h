@@ -28,15 +28,13 @@
 @property (nonatomic, readwrite, getter=isMuted) BOOL muted;
 
 /**
- *  @brief Manual play.
- *  @discussion Use this API only if manual control is needed, since this API disables auto play/pause.
+ *  @brief Deprecated.
  */
-- (void)play;
+- (void)play DEPRECATED_MSG_ATTRIBUTE("This API is deprecated.");
 
 /**
- *  @brief Manual pause.
- *  @discussion Use this API only if manual control is needed, since this API disables auto play/pause.
+ *  @brief Deprecated.
  */
-- (void)pause;
+- (void)pause DEPRECATED_MSG_ATTRIBUTE("This API is deprecated.");
 
 @end

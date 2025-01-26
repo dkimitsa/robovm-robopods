@@ -60,10 +60,6 @@ import org.robovm.apple.coregraphics.*;
     String getMockResponsePath();
     @Property(selector = "setMockResponsePath:")
     void setMockResponsePath(String v);
-    @Property(selector = "localJSONResponsePath")
-    String getLocalJSONResponsePath();
-    @Property(selector = "setLocalJSONResponsePath:")
-    void setLocalJSONResponsePath(String v);
     /*</properties>*/
     /*<methods>*/
     
