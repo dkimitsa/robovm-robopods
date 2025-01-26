@@ -117,6 +117,10 @@ import org.robovm.apple.coreanimation.*;
     public native NSDictionary<NSString, ?> getAdMetaInfo();
     @Method(selector = "setWatermarkWith:")
     public native void setWatermarkWith(IMWatermark watermark);
+    /**
+     * @deprecated Deprecated with no replacement
+     */
+    @Deprecated
     @Method(selector = "cancel")
     public native void cancel();
     @Method(selector = "willMoveToWindow:")

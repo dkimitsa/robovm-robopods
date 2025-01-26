@@ -94,12 +94,20 @@ import org.robovm.apple.coreanimation.*;
     public native boolean isReady();
     @Method(selector = "showFrom:")
     public native void showFrom(UIViewController viewController);
+    /**
+     * @deprecated animationType will not be used anymore, please use show(from:)
+     */
+    @Deprecated
     @Method(selector = "showFrom:with:")
     public native void show(UIViewController viewController, IMInterstitialAnimationType animationType);
     @Method(selector = "getAdMetaInfo")
     public native NSDictionary<NSString, ?> getAdMetaInfo();
     @Method(selector = "setWatermarkWith:")
     public native void setWatermark(IMWatermark watermark);
+    /**
+     * @deprecated Deprecated with no replacement
+     */
+    @Deprecated
     @Method(selector = "cancel")
     public native void cancel();
     /*</methods>*/

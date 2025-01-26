@@ -85,6 +85,12 @@ import org.robovm.apple.coreanimation.*;
     public static native String getToken();
     @Method(selector = "getTokenWithExtras:andKeywords:")
     public static native String getToken(NSDictionary<NSString, ?> extras, String keywords);
+    @Method(selector = "putPublisherSignals:")
+    public static native void putPublisherSignals(NSDictionary<NSString, ?> signals);
+    @Method(selector = "getPublisherSignals")
+    public static native NSDictionary<NSString, ?> getPublisherSignals();
+    @Method(selector = "resetPublisherSignals")
+    public static native void resetPublisherSignals();
     @Method(selector = "shouldAutoManageAVAudioSession:")
     public static native void shouldAutoManageAVAudioSession(boolean value);
     @Method(selector = "setMute:")

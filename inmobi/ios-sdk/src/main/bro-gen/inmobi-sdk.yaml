@@ -17,6 +17,11 @@ enums:
     IMAudioStatus: { }
     IMBannerAudioStatus: { }
     IMRemoteLogLevel: {}
+    IMLandingPageFlowType: { }
+    IMSKANConfigRequestModeType: { }
+    IMSKANSourceName: { }
+    IMSessionSignalsType: { }
+    IMTelemetryLandingPageEventType: { }
 typed_enums:
 
 classes:
@@ -96,6 +101,82 @@ classes:
         methods:
             '-initWithWaterMarkImageData:':
                 name: init
+    AdQualityConfig: { }
+    AdReportConfig: { }
+    AdsAudioConfig: { }
+    AdsConfig: { }
+    AnyDictionary: { }
+    AssetCacheConfig: { }
+    AssetReportingConfig: { }
+    AudioImpressionConfig: { }
+    BaseConfig: { }
+    BitRateConfig: { }
+    BloomFilterServiceConfig: { }
+    CConfig: { }
+    ConfigManager:
+        methods:
+            '-updateConfigWith:':
+                name: updateConfig
+            '-validateConfigWithConfigType:dictionary:':
+                name: validateConfig
+    ConfigProvider: { }
+    ContextualDataConfig: { }
+    CrashConfig: { }
+    CrashNetworkConfig: { }
+    CrashNetworkTypeConfig: { }
+    CrashReportingConfig: { }
+    DatabaseConfig: { }
+    ErrorLogConfig: { }
+    IMCTServiceManager: { }
+    IMComponent: { }
+    IMConfigBase: { }
+    IMGDPR: { }
+    IMIncludeIds: { }
+    IMLandingPageInstrumentModel:
+        methods:
+            '-initWithFlowType:url:error:eventType:command:extraInfo:':
+                name: init
+    IMLatestSdkInfo: { }
+    IMSKANEventModel:
+        methods:
+            '-initWithSource:':
+                name: initWithSource$
+    IceConfig: { }
+    ImaiConfig: { }
+    ImpressionViewabilityConfig: { }
+    LPConfig: { }
+    LoggingConfig: { }
+    MediationConfig: { }
+    MediationFlowTypeConfig: { }
+    MediationRetriesConfig: { }
+    MediationRetryIntervalConfig: { }
+    MediationTimeoutConfig: { }
+    MraidConfig: { }
+    NetworkConfig: { }
+    NetworkTypeConfig: { }
+    NovatiqConfig: { }
+    OmidConfig: { }
+    PublisherConfig: { }
+    PurchasesConfig: { }
+    RenderingConfig: { }
+    RootConfig: { }
+    SaveContentConfig: { }
+    SdkLogAdTypeConfig: { }
+    SdkLogInfo: { }
+    SessionConfig: { }
+    SignalConfig: { }
+    SilenceDetectionConfig: { }
+    SkanConfig: { }
+    TelemetryConfig: { }
+    TimeoutsConfig: { }
+    UnifiedIdServiceConfig: { }
+    VastVideoConfig: { }
+    VideoImpressionConfig: { }
+    ViewabilityConfig: { }
+    WConfig: { }
+    WebImpressionConfig: { }
+    WebViewModeConfig: { }
+    WebViewModeDictionaryConfig: { }
 protocols:
     IMBannerDelegate:
         methods:
@@ -165,6 +246,7 @@ protocols:
         methods:
             '-logWithMessage:tag:logLevel:':
                 name: log
+    IMConfigP: {}
 functions:
     # Make sure we don't miss any functions if new ones are introduced in a later version
     (.*):

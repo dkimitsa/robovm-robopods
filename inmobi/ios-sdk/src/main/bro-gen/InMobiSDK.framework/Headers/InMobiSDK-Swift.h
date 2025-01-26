@@ -301,7 +301,259 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 
 #if defined(__OBJC__)
+
+SWIFT_CLASS("_TtC9InMobiSDK15AdQualityConfig")
+@interface AdQualityConfig : NSObject
+@property (nonatomic) NSInteger maxImageSize;
+@property (nonatomic) NSInteger resizedPercentage;
+@property (nonatomic) BOOL enabled;
+@property (nonatomic) NSInteger retryInterval;
+@property (nonatomic) NSInteger maxRetries;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9InMobiSDK14AdReportConfig")
+@interface AdReportConfig : NSObject
+@property (nonatomic) BOOL enabled;
+@property (nonatomic) NSInteger cridls;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9InMobiSDK14AdsAudioConfig")
+@interface AdsAudioConfig : NSObject
+@property (nonatomic) BOOL isAudioEnabled;
+@property (nonatomic) NSInteger minDeviceVolume;
+@property (nonatomic) NSInteger minRefreshInterval;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
 @class NSString;
+
+SWIFT_PROTOCOL("_TtP9InMobiSDK9IMConfigP_")
+@protocol IMConfigP <NSObject>
+- (NSString * _Nonnull)getType SWIFT_WARN_UNUSED_RESULT;
+- (NSDictionary<NSString *, id> * _Nullable)toDictionary SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+SWIFT_CLASS("_TtC9InMobiSDK12IMConfigBase")
+@interface IMConfigBase : NSObject <IMConfigP>
+- (NSDictionary<NSString *, id> * _Nullable)toDictionary SWIFT_WARN_UNUSED_RESULT;
+- (NSString * _Nonnull)getType SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class ContextualDataConfig;
+@class ImaiConfig;
+@class ViewabilityConfig;
+@class TimeoutsConfig;
+@class VastVideoConfig;
+@class AssetCacheConfig;
+@class IMIncludeIds;
+@class SkanConfig;
+@class RenderingConfig;
+@class SilenceDetectionConfig;
+@class MraidConfig;
+@class WebViewModeConfig;
+
+SWIFT_CLASS("_TtC9InMobiSDK9AdsConfig")
+@interface AdsConfig : IMConfigBase
+- (NSString * _Nonnull)getType SWIFT_WARN_UNUSED_RESULT;
+- (NSDictionary<NSString *, id> * _Nullable)toDictionary SWIFT_WARN_UNUSED_RESULT;
+@property (nonatomic) NSInteger minimumRefreshInterval;
+@property (nonatomic) NSInteger defaultRefreshInterval;
+@property (nonatomic, strong) ContextualDataConfig * _Nonnull contextualData;
+@property (nonatomic, strong) AdsAudioConfig * _Nonnull audio;
+@property (nonatomic, strong) AdReportConfig * _Nonnull adReport;
+@property (nonatomic, strong) ImaiConfig * _Nonnull imai;
+@property (nonatomic) BOOL mediaVolumeCollectionEnabled;
+@property (nonatomic) BOOL applyGzipReq;
+@property (nonatomic, strong) ViewabilityConfig * _Nonnull viewability;
+@property (nonatomic, strong) AdQualityConfig * _Nonnull adQuality;
+@property (nonatomic) BOOL watermarkEnabled;
+@property (nonatomic) BOOL showIntWithoutVC;
+@property (nonatomic, strong) TimeoutsConfig * _Nonnull timeouts;
+@property (nonatomic, strong) VastVideoConfig * _Nonnull vastVideo;
+@property (nonatomic, strong) AssetCacheConfig * _Nonnull assetCache;
+@property (nonatomic, strong) IMIncludeIds * _Nonnull includeIds;
+@property (nonatomic, strong) SkanConfig * _Nonnull skan;
+@property (nonatomic, strong) RenderingConfig * _Nonnull rendering;
+@property (nonatomic, strong) SilenceDetectionConfig * _Nonnull silenceDetection;
+@property (nonatomic, strong) MraidConfig * _Nonnull mraid;
+- (NSString * _Nonnull)getAdServerUrl SWIFT_WARN_UNUSED_RESULT;
+- (WebViewModeConfig * _Nonnull)getWebviewConfigFor:(NSString * _Nonnull)type SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9InMobiSDK13AnyDictionary")
+@interface AnyDictionary : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+
+SWIFT_CLASS("_TtC9InMobiSDK16AssetCacheConfig")
+@interface AssetCacheConfig : NSObject
+@property (nonatomic) double timeToLive;
+@property (nonatomic) double maxCacheSize;
+@property (nonatomic) NSInteger maxRetries;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9InMobiSDK20AssetReportingConfig")
+@interface AssetReportingConfig : NSObject
+@property (nonatomic) BOOL video;
+@property (nonatomic) BOOL image;
+@property (nonatomic) BOOL gif;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9InMobiSDK21AudioImpressionConfig")
+@interface AudioImpressionConfig : NSObject
+@property (nonatomic) NSInteger impressionMinPercentageViewed;
+@property (nonatomic) NSInteger impressionType;
+@property (nonatomic) NSInteger impressionMinTimeViewed;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9InMobiSDK10BaseConfig")
+@interface BaseConfig : NSObject
+@property (nonatomic) BOOL enabled;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9InMobiSDK13BitRateConfig")
+@interface BitRateConfig : NSObject
+@property (nonatomic) NSInteger headerTimeout;
+@property (nonatomic) BOOL bitrate_mandatory;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9InMobiSDK24BloomFilterServiceConfig")
+@interface BloomFilterServiceConfig : NSObject
+@property (nonatomic) NSInteger maxFetchPerDay;
+@property (nonatomic) NSInteger timeout;
+@property (nonatomic) BOOL enabled;
+@property (nonatomic, copy) NSString * _Nonnull url;
+@property (nonatomic) int64_t maxBloomFileSize;
+@property (nonatomic) int64_t hashIdMaxAge;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9InMobiSDK7CConfig")
+@interface CConfig : NSObject
+@property (nonatomic) NSInteger cof;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9InMobiSDK13ConfigManager")
+@interface ConfigManager : NSObject
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) ConfigManager * _Nonnull shared;)
++ (ConfigManager * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+- (void)updateConfigWith:(NSString * _Nonnull)configType;
+- (IMConfigBase * _Nullable)validateConfigWithConfigType:(NSString * _Nonnull)configType dictionary:(NSDictionary<NSString *, id> * _Nullable)dictionary SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@class RootConfig;
+@class TelemetryConfig;
+@class SignalConfig;
+@class CrashConfig;
+
+SWIFT_CLASS("_TtC9InMobiSDK14ConfigProvider")
+@interface ConfigProvider : NSObject
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) RootConfig * _Nonnull rootConfig;)
++ (RootConfig * _Nonnull)rootConfig SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TelemetryConfig * _Nonnull telemetryConfig;)
++ (TelemetryConfig * _Nonnull)telemetryConfig SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) AdsConfig * _Nonnull adsConfig;)
++ (AdsConfig * _Nonnull)adsConfig SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) SignalConfig * _Nonnull signalConfig;)
++ (SignalConfig * _Nonnull)signalConfig SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) CrashConfig * _Nonnull crashConfig;)
++ (CrashConfig * _Nonnull)crashConfig SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9InMobiSDK20ContextualDataConfig")
+@interface ContextualDataConfig : NSObject
+@property (nonatomic) NSInteger maxAdRecords;
+@property (nonatomic) NSInteger expiryTime;
+@property (nonatomic, copy) NSArray<NSString *> * _Nonnull skipFields;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class CrashNetworkTypeConfig;
+@class CrashReportingConfig;
+
+SWIFT_CLASS("_TtC9InMobiSDK11CrashConfig")
+@interface CrashConfig : IMConfigBase
+- (NSString * _Nonnull)getType SWIFT_WARN_UNUSED_RESULT;
+- (NSDictionary<NSString *, id> * _Nullable)toDictionary SWIFT_WARN_UNUSED_RESULT;
+@property (nonatomic, copy) NSString * _Nonnull url;
+@property (nonatomic) NSInteger maxRetryCount;
+@property (nonatomic) NSInteger eventTTL;
+@property (nonatomic) NSInteger maxEventsToPersist;
+@property (nonatomic, strong) CrashNetworkTypeConfig * _Nonnull networkType;
+@property (nonatomic, strong) CrashReportingConfig * _Nonnull crashConfig;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9InMobiSDK18CrashNetworkConfig")
+@interface CrashNetworkConfig : NSObject
+@property (nonatomic) NSInteger retryInterval;
+@property (nonatomic) NSInteger minBatchSize;
+@property (nonatomic) NSInteger maxBatchSize;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS("_TtC9InMobiSDK22CrashNetworkTypeConfig")
+@interface CrashNetworkTypeConfig : NSObject
+@property (nonatomic, strong) CrashNetworkConfig * _Nonnull wifi;
+@property (nonatomic, strong) CrashNetworkConfig * _Nonnull others;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9InMobiSDK20CrashReportingConfig")
+@interface CrashReportingConfig : NSObject
+@property (nonatomic) BOOL enabled;
+@property (nonatomic) float samplingPercent;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9InMobiSDK14DatabaseConfig")
+@interface DatabaseConfig : NSObject
+@property (nonatomic) NSInteger dbWALFrameSize;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9InMobiSDK14ErrorLogConfig")
+@interface ErrorLogConfig : NSObject
+@property (nonatomic) double samplePercent;
+@property (nonatomic) NSInteger maxEntries;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
 
 SWIFT_CLASS("_TtC9InMobiSDK12IMAdMetaInfo")
 @interface IMAdMetaInfo : NSObject
@@ -531,7 +783,7 @@ SWIFT_CLASS("_TtC9InMobiSDK8IMBanner")
 /// The watermark which is added as overlay in Ad
 - (void)setWatermarkWith:(IMWatermark * _Nonnull)watermark;
 /// Releases memory and remove ad from screen.
-- (void)cancel;
+- (void)cancel SWIFT_DEPRECATED_MSG("Deprecated with no replacement");
 /// overridden <code>UIView</code> method
 - (void)willMoveToWindow:(UIWindow * _Nullable)newWindow;
 @end
@@ -671,6 +923,18 @@ SWIFT_CLASS("_TtC9InMobiSDK22IMBannerPreloadManager")
 
 
 
+/// https://inmobi.atlassian.net/browse/DI-17445
+SWIFT_CLASS("_TtC9InMobiSDK18IMCTServiceManager")
+@interface IMCTServiceManager : NSObject
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) IMCTServiceManager * _Nonnull shared;)
++ (IMCTServiceManager * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+- (NSString * _Nullable)getConnectionTypeValue SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+
 SWIFT_CLASS("_TtC9InMobiSDK17IMCommonConstants")
 @interface IMCommonConstants : NSObject
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull IM_GDPR_CONSENT_AVAILABLE;)
@@ -683,6 +947,36 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 + (NSString * _Nonnull)IM_PARTNER_GDPR_CONSENT_AVAILABLE SWIFT_WARN_UNUSED_RESULT;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull IM_PARTNER_GDPR_APPLIES;)
 + (NSString * _Nonnull)IM_PARTNER_GDPR_APPLIES SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9InMobiSDK11IMComponent")
+@interface IMComponent : NSObject
+@property (nonatomic, copy) NSString * _Nonnull type;
+@property (nonatomic) int64_t expiry;
+@property (nonatomic, copy) NSString * _Nonnull url;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+
+
+SWIFT_CLASS("_TtC9InMobiSDK6IMGDPR")
+@interface IMGDPR : NSObject
+@property (nonatomic) BOOL transmitRequest;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9InMobiSDK12IMIncludeIds")
+@interface IMIncludeIds : NSObject
+@property (nonatomic) BOOL O1;
+@property (nonatomic) BOOL SO1;
+@property (nonatomic) BOOL IDA;
+@property (nonatomic) BOOL IDV;
+- (NSDictionary<NSString *, id> * _Nullable)toDictionary SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -749,13 +1043,13 @@ SWIFT_CLASS("_TtC9InMobiSDK14IMInterstitial")
 ///
 /// \param animationType The transition type for interstitial presentation.
 ///
-- (void)showFrom:(UIViewController * _Nonnull)viewController with:(enum IMInterstitialAnimationType)animationType;
+- (void)showFrom:(UIViewController * _Nonnull)viewController with:(enum IMInterstitialAnimationType)animationType SWIFT_DEPRECATED_MSG("animationType will not be used anymore, please use show(from:)");
 /// Contains additional information of ad.
 - (NSDictionary<NSString *, id> * _Nullable)getAdMetaInfo SWIFT_WARN_UNUSED_RESULT;
 /// The watermark which is added as overlay in Ad
 - (void)setWatermarkWith:(IMWatermark * _Nonnull)watermark;
 /// Releases memory and remove ad from screen.
-- (void)cancel;
+- (void)cancel SWIFT_DEPRECATED_MSG("Deprecated with no replacement");
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -947,6 +1241,48 @@ SWIFT_CLASS("_TtC9InMobiSDK28IMInterstitialPreloadManager")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+
+typedef SWIFT_ENUM(NSInteger, IMLandingPageFlowType, open) {
+  IMLandingPageFlowTypeCommandOpen = 1,
+  IMLandingPageFlowTypeCommandOpenWithoutTracker = 2,
+  IMLandingPageFlowTypeCommandOpenExternal = 3,
+  IMLandingPageFlowTypeCommandOpenExternalIntercepted = 4,
+  IMLandingPageFlowTypeShowCustomExpand = 5,
+  IMLandingPageFlowTypeShowSKStore = 6,
+  IMLandingPageFlowTypeShowSKStoreIntercepted = 7,
+  IMLandingPageFlowTypeOpenSKStore = 8,
+  IMLandingPageFlowTypeOpenSKStoreIntercepted = 9,
+  IMLandingPageFlowTypeCommandLoadSKStore = 10,
+  IMLandingPageFlowTypeNativeAdSKStore = 11,
+  IMLandingPageFlowTypeLoadSKStore = 12,
+  IMLandingPageFlowTypeSkStoreFromEmbededBrowser = 13,
+  IMLandingPageFlowTypeWindowOpen = 14,
+  IMLandingPageFlowTypeHref = 15,
+  IMLandingPageFlowTypeDefault = 16,
+};
+
+enum IMTelemetryLandingPageEventType : NSInteger;
+
+SWIFT_CLASS("_TtC9InMobiSDK28IMLandingPageInstrumentModel")
+@interface IMLandingPageInstrumentModel : NSObject
+@property (nonatomic) enum IMLandingPageFlowType flowType;
+@property (nonatomic, copy) NSString * _Nullable url;
+@property (nonatomic, copy) NSString * _Nullable command;
+@property (nonatomic) NSError * _Nullable error;
+@property (nonatomic) enum IMTelemetryLandingPageEventType eventType;
+@property (nonatomic, copy) NSDictionary<NSString *, id> * _Nullable extraInfo;
+- (nonnull instancetype)initWithFlowType:(enum IMLandingPageFlowType)flowType url:(NSString * _Nullable)url error:(NSError * _Nullable)error eventType:(enum IMTelemetryLandingPageEventType)eventType command:(NSString * _Nullable)command extraInfo:(NSDictionary<NSString *, id> * _Nullable)extraInfo OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS("_TtC9InMobiSDK15IMLatestSdkInfo")
+@interface IMLatestSdkInfo : NSObject
+@property (nonatomic, copy) NSString * _Nonnull version;
+@property (nonatomic, copy) NSString * _Nonnull url;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
 
 enum IMRemoteLogLevel : NSInteger;
 
@@ -1231,6 +1567,35 @@ typedef SWIFT_ENUM(NSInteger, IMSDKLogLevel, closed) {
   IMSDKLogLevelDebug = 2,
 };
 
+typedef SWIFT_ENUM(NSInteger, IMSKANConfigRequestModeType, open) {
+  IMSKANConfigRequestModeTypeDisabled = 0,
+  IMSKANConfigRequestModeTypeSkanList = 1,
+};
+
+enum IMSKANSourceName : NSInteger;
+
+SWIFT_CLASS("_TtC9InMobiSDK16IMSKANEventModel")
+@interface IMSKANEventModel : NSObject
+@property (nonatomic) enum IMSKANSourceName source;
+@property (nonatomic, copy) NSString * _Nullable url;
+@property (nonatomic, copy) NSString * _Nullable status;
+@property (nonatomic, copy) NSString * _Nullable skstoreid;
+- (nonnull instancetype)initWithSource:(enum IMSKANSourceName)source OBJC_DESIGNATED_INITIALIZER;
+- (void)setCallbackStatus:(NSString * _Nonnull)status;
+- (void)setCallbackSkstoreid:(NSString * _Nonnull)id;
+- (void)setCallbackurl:(NSString * _Nonnull)url;
+- (NSDictionary<NSString *, id> * _Nullable)toCallbackDictionary SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+typedef SWIFT_ENUM(NSInteger, IMSKANSourceName, open) {
+  IMSKANSourceNameSdk = 1,
+  IMSKANSourceNameTemplate = 2,
+  IMSKANSourceNameCreative = 3,
+  IMSKANSourceNameOthers = 4,
+};
+
 
 /// Use this class to set the user specific demographic info.
 /// As part of the General Data Protection Regulation (“GDPR”) publishers who collect data on their apps, are required to have a legal basis for collecting and processing the personal data of users in the European Economic Area (“EEA”).
@@ -1328,6 +1693,65 @@ SWIFT_CLASS("_TtC9InMobiSDK5IMSdk")
 
 
 @interface IMSdk (SWIFT_EXTENSION(InMobiSDK))
+/// Pass or update custom signals to InMobi.
+/// <ul>
+///   <li>
+///     Example:
+///   </li>
+/// </ul>
+/// \code
+/// let signals: [String: Any] = [
+///     "s_dep_ban": 1,
+///     "vcr_ban": 0.1,
+///     "iap": true,
+///     "iap_type": "minnow"
+/// ]
+/// IMSdk.putPublisherSignals(signals)
+///
+/// \endcode\param signals A <code>[String: Any]</code> dictionary containing key-value pairs of signals to be passed to InMobi SDK.
+/// Keys should be <code>String</code> and values can be of allowed data types, please refer documentation. Repeated keys will update existing values.
+/// Refer to the supporting document for the list of allowed keys and their expected data types.
+///
++ (void)putPublisherSignals:(NSDictionary<NSString *, id> * _Nonnull)signals;
+/// Retrieves the current set of signals previously passed to InMobi SDK.
+/// Only the supported keys, as defined in the supporting document, will be returned.
+/// If any unsupported or incorrect keys were passed during <code>putPublisherSignals</code>,
+/// they will not be included in the returned dictionary.
+/// <ul>
+///   <li>
+///     Example:
+///   </li>
+/// </ul>
+/// \code
+/// if let signals = IMSdk.getPublisherSignals() {
+///     print(signals)  // Only supported keys will be printed
+/// }
+///
+/// \endcode
+/// returns:
+/// A <code>[String: Any]?</code> dictionary containing the valid custom signals, if available.
+/// Refer to the supporting document for the list of supported keys and their expected data types.
++ (NSDictionary<NSString *, id> * _Nullable)getPublisherSignals SWIFT_WARN_UNUSED_RESULT;
+/// Resets all custom signals previously set for InMobi.
+/// This method clears all previously stored signals, reverting to the default state.
+/// After calling this method, any custom signals set using <code>putPublisherSignals</code> will be removed,
+/// and subsequent calls to <code>getPublisherSignals</code> will return <code>nil</code>.
+/// important:
+/// This action cannot be undone. Ensure you want to clear all custom signals before invoking this method.
+/// <ul>
+///   <li>
+///     Example:
+///   </li>
+/// </ul>
+/// \code
+/// IMSdk.resetPublisherSignals()
+///
+/// \endcode
++ (void)resetPublisherSignals;
+@end
+
+
+@interface IMSdk (SWIFT_EXTENSION(InMobiSDK))
 /// Enable or disable the AVAudioSession management by SDK
 /// Indicates whether the application wants to manage audio session. If set as NO, the InMobi SDK will stop managing AVAudioSession during the HTML video playback lifecycle. If set as YES,
 /// the InMobi SDK will manage AVAudioSession. That might set AVAudioSession’s category to AVAudioSessionCategoryAmbient and categoryOption to AVAudioSessionCategoryOptionMixWithOthers,
@@ -1407,6 +1831,16 @@ SWIFT_CLASS("_TtC9InMobiSDK5IMSdk")
 + (void)setPostalCode:(NSString * _Nullable)postalcode;
 @end
 
+typedef SWIFT_ENUM(NSInteger, IMSessionSignalsType, open) {
+  IMSessionSignalsTypeStartTimestamp = 0,
+  IMSessionSignalsTypeDepthBanner = 1,
+  IMSessionSignalsTypeDepthInt = 2,
+  IMSessionSignalsTypeDepthRewarded = 3,
+  IMSessionSignalsTypeDepthNative = 4,
+  IMSessionSignalsTypeCount = 5,
+  IMSessionSignalsTypeUserRetention = 6,
+};
+
 /// Enumeration for error codes
 /// Collection of codes indicating the status of an ad request.
 typedef SWIFT_ENUM(NSInteger, IMStatusCode, closed) {
@@ -1427,6 +1861,21 @@ typedef SWIFT_ENUM(NSInteger, IMStatusCode, closed) {
   IMStatusCodeInvalidAudioFrame = 14,
   IMStatusCodeAudioDisabled = 22,
   IMStatusCodeAudioDeviceVolumeLow = 23,
+};
+
+typedef SWIFT_ENUM(NSInteger, IMTelemetryLandingPageEventType, open) {
+  IMTelemetryLandingPageEventTypeClickStartCalled = 39,
+  IMTelemetryLandingPageEventTypeLandingStartSuccess = 40,
+  IMTelemetryLandingPageEventTypeLandingStartFailed = 41,
+  IMTelemetryLandingPageEventTypeLandingCompleteSuccess = 42,
+  IMTelemetryLandingPageEventTypeLandingCompleteFailed = 43,
+  IMTelemetryLandingPageEventTypeLandingBrowserOpenFailed = 44,
+  IMTelemetryLandingPageEventTypeLandingsPageStarted = 45,
+  IMTelemetryLandingPageEventTypeLandingUserClickReload = 46,
+  IMTelemetryLandingPageEventTypeLandingUserClickShare = 47,
+  IMTelemetryLandingPageEventTypeSkStoreLoadingStart = 48,
+  IMTelemetryLandingPageEventTypeSkStoreLoadingFailed = 49,
+  IMTelemetryLandingPageEventTypeSkStoreLoadingSuccess = 50,
 };
 
 
@@ -1569,8 +2018,413 @@ SWIFT_CLASS("_TtC9InMobiSDK11IMWatermark")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+@class WConfig;
+
+SWIFT_CLASS("_TtC9InMobiSDK9IceConfig")
+@interface IceConfig : NSObject
+@property (nonatomic) BOOL locationEnabled;
+@property (nonatomic, strong) WConfig * _Nonnull w;
+@property (nonatomic) BOOL sessionEnabled;
+@property (nonatomic, strong) CConfig * _Nonnull c;
+@property (nonatomic) NSInteger stopRequestTimeout;
+- (NSDictionary<NSString *, id> * _Nullable)toDictionary SWIFT_WARN_UNUSED_RESULT;
+@property (nonatomic, readonly) BOOL operatorInfoCollectionEnabled;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
 
 
+SWIFT_CLASS("_TtC9InMobiSDK10ImaiConfig")
+@interface ImaiConfig : NSObject
+@property (nonatomic) NSInteger pingTimeout;
+@property (nonatomic) NSInteger pingCacheExpiry;
+@property (nonatomic) NSInteger maxDbEvents;
+@property (nonatomic) NSInteger maxEventBatch;
+@property (nonatomic) NSInteger pingInterval;
+@property (nonatomic) NSInteger maxRetries;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9InMobiSDK27ImpressionViewabilityConfig")
+@interface ImpressionViewabilityConfig : NSObject
+@property (nonatomic) NSInteger impressionType;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS("_TtC9InMobiSDK8LPConfig")
+@interface LPConfig : NSObject
+@property (nonatomic) NSInteger maxFunnelsToTrackPerAd;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class SdkLogAdTypeConfig;
+@class SdkLogInfo;
+
+SWIFT_CLASS("_TtC9InMobiSDK13LoggingConfig")
+@interface LoggingConfig : NSObject
+@property (nonatomic) BOOL enabled;
+@property (nonatomic) NSInteger expiry;
+@property (nonatomic) NSInteger maxRetries;
+@property (nonatomic) NSInteger retryInterval;
+@property (nonatomic) NSInteger maxNoOfEntries;
+@property (nonatomic, copy) NSString * _Nonnull loggingUrl;
+@property (nonatomic, strong) ErrorLogConfig * _Nonnull errorLog;
+@property (nonatomic, strong) SdkLogAdTypeConfig * _Nonnull banner;
+@property (nonatomic, strong) SdkLogAdTypeConfig * _Nonnull audio;
+@property (nonatomic, strong) SdkLogAdTypeConfig * _Nonnull int_html;
+@property (nonatomic, strong) SdkLogAdTypeConfig * _Nonnull int_native;
+@property (nonatomic, strong) SdkLogAdTypeConfig * _Nonnull native;
+@property (nonatomic, strong) SdkLogInfo * _Nonnull getToken;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class MediationFlowTypeConfig;
+
+SWIFT_CLASS("_TtC9InMobiSDK15MediationConfig")
+@interface MediationConfig : NSObject
+@property (nonatomic, strong) MediationFlowTypeConfig * _Nonnull ab;
+@property (nonatomic, strong) MediationFlowTypeConfig * _Nonnull nonAb;
+@property (nonatomic, strong) MediationFlowTypeConfig * _Nonnull preload;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class MediationTimeoutConfig;
+
+SWIFT_CLASS("_TtC9InMobiSDK23MediationFlowTypeConfig")
+@interface MediationFlowTypeConfig : NSObject
+@property (nonatomic, strong) MediationTimeoutConfig * _Nonnull native;
+@property (nonatomic, strong) MediationTimeoutConfig * _Nonnull interstitial;
+@property (nonatomic, strong) MediationTimeoutConfig * _Nonnull audio;
+@property (nonatomic, strong) MediationTimeoutConfig * _Nonnull banner;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS("_TtC9InMobiSDK22MediationRetriesConfig")
+@interface MediationRetriesConfig : NSObject
+@property (nonatomic, getter=default, setter=setDefault:) NSInteger default_;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9InMobiSDK28MediationRetryIntervalConfig")
+@interface MediationRetryIntervalConfig : NSObject
+@property (nonatomic, getter=default, setter=setDefault:) NSInteger default_;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9InMobiSDK22MediationTimeoutConfig")
+@interface MediationTimeoutConfig : NSObject
+@property (nonatomic, strong) AnyDictionary * _Nullable loadRetryInterval;
+@property (nonatomic, strong) AnyDictionary * _Nullable loadTimeout;
+@property (nonatomic, strong) AnyDictionary * _Nullable maxLoadRetries;
+@property (nonatomic, strong) AnyDictionary * _Nullable muttTimeout;
+@property (nonatomic, strong) AnyDictionary * _Nullable preloadTimeout;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS("_TtC9InMobiSDK11MraidConfig")
+@interface MraidConfig : NSObject
+@property (nonatomic) NSInteger expiry;
+@property (nonatomic) NSInteger retryInterval;
+@property (nonatomic, copy) NSString * _Nonnull ios_url;
+@property (nonatomic) NSInteger maxRetries;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+
+SWIFT_CLASS("_TtC9InMobiSDK13NetworkConfig")
+@interface NetworkConfig : NSObject
+@property (nonatomic) NSInteger retryInterval;
+@property (nonatomic) NSInteger minBatchSize;
+@property (nonatomic) NSInteger maxBatchSize;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS("_TtC9InMobiSDK17NetworkTypeConfig")
+@interface NetworkTypeConfig : NSObject
+@property (nonatomic, strong) NetworkConfig * _Nonnull wifi;
+@property (nonatomic, strong) NetworkConfig * _Nonnull others;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9InMobiSDK13NovatiqConfig")
+@interface NovatiqConfig : NSObject
+@property (nonatomic, copy) NSString * _Nonnull beaconUrl;
+@property (nonatomic, copy) NSArray<NSString *> * _Nonnull carrierNames;
+@property (nonatomic) BOOL isNovatiqEnabled;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9InMobiSDK10OmidConfig")
+@interface OmidConfig : NSObject
+@property (nonatomic) NSInteger maxRetries;
+@property (nonatomic) NSInteger expiry;
+@property (nonatomic, copy) NSString * _Nonnull url;
+@property (nonatomic) int64_t webViewRetainTime;
+@property (nonatomic) NSInteger retryInterval;
+@property (nonatomic) BOOL omidEnabled;
+@property (nonatomic, copy) NSString * _Nonnull partnerKey;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9InMobiSDK15PublisherConfig")
+@interface PublisherConfig : NSObject
+@property (nonatomic, strong) AnyDictionary * _Nullable generalKeys;
+@property (nonatomic, strong) AnyDictionary * _Nullable adSpecificKeys;
+@property (nonatomic) BOOL enableMCO;
+@property (nonatomic) BOOL enableHB;
+@property (nonatomic) NSInteger payloadSize;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9InMobiSDK15PurchasesConfig")
+@interface PurchasesConfig : NSObject
+@property (nonatomic) BOOL inapp;
+@property (nonatomic) BOOL restore;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class SaveContentConfig;
+@class WebViewModeDictionaryConfig;
+
+SWIFT_CLASS("_TtC9InMobiSDK15RenderingConfig")
+@interface RenderingConfig : NSObject
+@property (nonatomic) NSInteger picHeight;
+@property (nonatomic, copy) NSArray<NSNumber *> * _Nonnull gestures;
+@property (nonatomic) BOOL autoRedirectionEnforcement;
+@property (nonatomic) BOOL enableImmersive;
+@property (nonatomic) NSInteger picQuality;
+@property (nonatomic, strong) SaveContentConfig * _Nonnull savecontent;
+@property (nonatomic) NSInteger delayedRedirection;
+@property (nonatomic) NSInteger userTouchResetTime;
+@property (nonatomic) BOOL shouldRenderPopup;
+@property (nonatomic) NSInteger picWidth;
+@property (nonatomic) BOOL enableSDKAVAudioSession;
+@property (nonatomic, strong) WebViewModeDictionaryConfig * _Nonnull webviewModeDictionary;
+- (BOOL)enablePubMuteControl_ SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9InMobiSDK10RootConfig")
+@interface RootConfig : IMConfigBase
+- (NSString * _Nonnull)getType SWIFT_WARN_UNUSED_RESULT;
+- (NSDictionary<NSString *, id> * _Nullable)toDictionary SWIFT_WARN_UNUSED_RESULT;
+@property (nonatomic, strong) IMIncludeIds * _Nonnull includeIds;
+@property (nonatomic) BOOL monetizationDisabled;
+@property (nonatomic) NSInteger maxRetries;
+@property (nonatomic) NSInteger retryInterval;
+@property (nonatomic) NSInteger waitTime;
+@property (nonatomic, strong) IMLatestSdkInfo * _Nonnull latestSdkInfo;
+@property (nonatomic, copy) NSArray<IMComponent *> * _Nonnull components;
+@property (nonatomic, strong) IMGDPR * _Nonnull gdpr;
+- (NSString * _Nonnull)urlForProductType:(NSString * _Nonnull)type SWIFT_WARN_UNUSED_RESULT;
+- (int64_t)expiryForProductType:(NSString * _Nonnull)type SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9InMobiSDK17SaveContentConfig")
+@interface SaveContentConfig : NSObject
+@property (nonatomic) NSInteger maxSaveSize;
+@property (nonatomic, copy) NSArray<NSString *> * _Nonnull allowedContentType;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9InMobiSDK18SdkLogAdTypeConfig")
+@interface SdkLogAdTypeConfig : NSObject
+@property (nonatomic, strong) SdkLogInfo * _Nonnull ab;
+@property (nonatomic, strong) SdkLogInfo * _Nonnull nonAb;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9InMobiSDK10SdkLogInfo")
+@interface SdkLogInfo : NSObject
+@property (nonatomic) double samplePercent;
+@property (nonatomic, copy) NSString * _Nonnull logLevel;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9InMobiSDK13SessionConfig")
+@interface SessionConfig : NSObject
+@property (nonatomic, copy) NSArray<NSNumber *> * _Nonnull control;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class UnifiedIdServiceConfig;
+
+SWIFT_CLASS("_TtC9InMobiSDK12SignalConfig")
+@interface SignalConfig : IMConfigBase
+- (NSString * _Nonnull)getType SWIFT_WARN_UNUSED_RESULT;
+- (NSDictionary<NSString *, id> * _Nullable)toDictionary SWIFT_WARN_UNUSED_RESULT;
+@property (nonatomic, copy) NSString * _Nonnull kA;
+@property (nonatomic, strong) BloomFilterServiceConfig * _Nonnull bloomFilterServiceConfig;
+@property (nonatomic, strong) AnyDictionary * _Nullable ext;
+@property (nonatomic, strong) SessionConfig * _Nonnull session;
+@property (nonatomic, strong) UnifiedIdServiceConfig * _Nonnull unifiedIdServiceConfig;
+@property (nonatomic, strong) IMIncludeIds * _Nonnull includeIds;
+@property (nonatomic, strong) NovatiqConfig * _Nonnull novatiqConfig;
+@property (nonatomic) NSInteger vAK;
+@property (nonatomic, strong) IceConfig * _Nonnull ice;
+@property (nonatomic, strong) PurchasesConfig * _Nonnull purchases;
+@property (nonatomic, strong) PublisherConfig * _Nonnull publisher;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9InMobiSDK22SilenceDetectionConfig")
+@interface SilenceDetectionConfig : NSObject
+@property (nonatomic) BOOL enabled;
+@property (nonatomic) NSInteger intervalOnAudioPlay;
+@property (nonatomic) NSInteger expiry;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9InMobiSDK10SkanConfig")
+@interface SkanConfig : NSObject
+@property (nonatomic) NSInteger requestMode;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9InMobiSDK15TelemetryConfig")
+@interface TelemetryConfig : IMConfigBase
+- (NSString * _Nonnull)getType SWIFT_WARN_UNUSED_RESULT;
+- (NSDictionary<NSString *, id> * _Nullable)toDictionary SWIFT_WARN_UNUSED_RESULT;
+@property (nonatomic) NSInteger txLatency;
+@property (nonatomic) NSInteger maxRetryCount;
+@property (nonatomic, strong) NetworkTypeConfig * _Nonnull networkType;
+@property (nonatomic, strong) BaseConfig * _Nonnull base;
+@property (nonatomic, copy) NSString * _Nonnull telemetryUrl;
+@property (nonatomic, strong) LoggingConfig * _Nonnull loggingConfig;
+@property (nonatomic, strong) AssetReportingConfig * _Nonnull assetReporting;
+@property (nonatomic) NSInteger processingInterval;
+@property (nonatomic) NSInteger eventTTL;
+@property (nonatomic) NSInteger maxTemplateEvents;
+@property (nonatomic, copy) NSArray<NSString *> * _Nonnull priorityEvents;
+@property (nonatomic) NSInteger maxEventsToPersist;
+@property (nonatomic, strong) LPConfig * _Nonnull lpConfig;
+@property (nonatomic) double samplingFactor;
+@property (nonatomic) BOOL disableAllGeneralEvents;
+@property (nonatomic, strong) IMIncludeIds * _Nonnull includeIds;
+@property (nonatomic, strong) DatabaseConfig * _Nonnull databaseConfig;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9InMobiSDK14TimeoutsConfig")
+@interface TimeoutsConfig : NSObject
+@property (nonatomic) NSInteger step2u;
+@property (nonatomic) NSInteger bitmap;
+@property (nonatomic) NSInteger step1b;
+@property (nonatomic) NSInteger step4s;
+@property (nonatomic) NSInteger request;
+@property (nonatomic, strong) MediationConfig * _Nonnull mediationConfig;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+
+SWIFT_CLASS("_TtC9InMobiSDK22UnifiedIdServiceConfig")
+@interface UnifiedIdServiceConfig : NSObject
+@property (nonatomic) BOOL enabled;
+@property (nonatomic) NSInteger retryInterval;
+@property (nonatomic, copy) NSString * _Nonnull url;
+@property (nonatomic) NSInteger timeout;
+@property (nonatomic) NSInteger maxRetries;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9InMobiSDK15VastVideoConfig")
+@interface VastVideoConfig : NSObject
+@property (nonatomic) NSInteger optimalVastVideoSize;
+@property (nonatomic) NSInteger maxWrapperLimit;
+@property (nonatomic) NSInteger vastMaxAssetSize;
+@property (nonatomic, strong) BitRateConfig * _Nonnull bitRate;
+@property (nonatomic, copy) NSArray<NSString *> * _Nonnull allowedContentType;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9InMobiSDK21VideoImpressionConfig")
+@interface VideoImpressionConfig : NSObject
+@property (nonatomic) NSInteger impressionMinTimeViewed;
+@property (nonatomic) NSInteger impressionMinPercentageViewed;
+@property (nonatomic) NSInteger videoMinPercentagePlay;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class WebImpressionConfig;
+
+SWIFT_CLASS("_TtC9InMobiSDK17ViewabilityConfig")
+@interface ViewabilityConfig : NSObject
+@property (nonatomic, strong) ImpressionViewabilityConfig * _Nonnull banner;
+@property (nonatomic, strong) ImpressionViewabilityConfig * _Nonnull interstitial;
+@property (nonatomic) NSInteger impressionPollIntervalMillis;
+@property (nonatomic, strong) AudioImpressionConfig * _Nonnull audio;
+@property (nonatomic, strong) OmidConfig * _Nonnull omidConfig;
+@property (nonatomic, strong) WebImpressionConfig * _Nonnull web;
+@property (nonatomic, strong) VideoImpressionConfig * _Nonnull video;
+@property (nonatomic) NSInteger impressionMinTimeViewed;
+@property (nonatomic) NSInteger impressionMinPercentageViewed;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9InMobiSDK7WConfig")
+@interface WConfig : NSObject
+@property (nonatomic) BOOL cwe;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9InMobiSDK19WebImpressionConfig")
+@interface WebImpressionConfig : NSObject
+@property (nonatomic) NSInteger impressionMinPercentageViewed;
+@property (nonatomic) NSInteger impressionPollIntervalMillis;
+@property (nonatomic) NSInteger impressionMinTimeViewed;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9InMobiSDK17WebViewModeConfig")
+@interface WebViewModeConfig : NSObject
+@property (nonatomic, copy) NSString * _Nonnull webviewBackground;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9InMobiSDK27WebViewModeDictionaryConfig")
+@interface WebViewModeDictionaryConfig : NSObject
+@property (nonatomic, strong) WebViewModeConfig * _Nonnull pingStore;
+@property (nonatomic, strong) WebViewModeConfig * _Nonnull native;
+@property (nonatomic, strong) WebViewModeConfig * _Nonnull interstitial;
+@property (nonatomic, strong) WebViewModeConfig * _Nonnull audio;
+@property (nonatomic, strong) WebViewModeConfig * _Nonnull base;
+@property (nonatomic, strong) WebViewModeConfig * _Nonnull banner;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
 
 #endif
 #if __has_attribute(external_source_symbol)
