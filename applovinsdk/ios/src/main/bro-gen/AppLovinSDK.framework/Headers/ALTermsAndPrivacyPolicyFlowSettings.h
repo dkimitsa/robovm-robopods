@@ -10,20 +10,9 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- * DEPRECATED. This property is deprecated and will be removed in a future SDK version. Use the new MAX Terms and Privacy Policy Flow instead (see @c ALSdkSettings.termsAndPrivacyPolicyFlowSettings).
- */
-@interface ALConsentFlowSettings : NSObject
-@property (nonatomic, assign, getter=isEnabled) BOOL enabled;
-@property (nonatomic, copy, nullable) NSURL *privacyPolicyURL;
-@property (nonatomic, copy, nullable) NSURL *termsOfServiceURL;
-- (instancetype)init NS_UNAVAILABLE;
-+ (instancetype)new NS_UNAVAILABLE;
-@end
-
-/**
  * This interface contains settings that enable the MAX Terms and Privacy Policy Flow.
  */
-@interface ALTermsAndPrivacyPolicyFlowSettings : ALConsentFlowSettings
+@interface ALTermsAndPrivacyPolicyFlowSettings : NSObject
 
 /**
  * Set this to @c YES to enable the Terms Flow. You must also provide your privacy policy and terms of service URLs in this object, and you must provide a @c NSUserTrackingUsageDescription string in your @code Info.plist @endcode file.
@@ -45,6 +34,13 @@ NS_ASSUME_NONNULL_BEGIN
  * This defaults to the value that you entered into your @code Info.plist @endcode file via @c AppLovinConsentFlowInfo ⇒ @c AppLovinConsentFlowTermsOfService.
  */
 @property (nonatomic, copy, nullable) NSURL *termsOfServiceURL;
+
+/**
+ * Set this to @c YES to show the Terms and Privacy Policy alert in GDPR regions prior to presenting the CMP prompt. The alert will show in non-GDPR regions regardless of this setting.
+ *
+ * This defaults to @c NO.
+ */
+@property (nonatomic, assign, getter=shouldShowTermsAndPrivacyPolicyAlertInGDPR) BOOL showTermsAndPrivacyPolicyAlertInGDPR;
 
 /**
  * Set debug user geography. You may use this to test CMP flow by setting this to @c ALConsentFlowUserGeographyGDPR.

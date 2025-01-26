@@ -34,6 +34,23 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (class, nonatomic, readonly, getter=isSimulator) BOOL simulator;
 
+/**
+ * Determines if a given version is within a specified range, inclusive of the range boundaries.
+ *
+ * This method compares a version string with optional minimum and maximum version strings.
+ * If the version is empty, the method returns @c YES. The method converts the version strings
+ * to version codes using a utility method for comparison.
+ *
+ * @param version The version string to check. If @c nil or empty, the method returns @c YES.
+ * @param minVersion The minimum version string (inclusive), or @c nil if no minimum version is specified.
+ * @param maxVersion The maximum version string (inclusive), or @c nil if no maximum version is specified.
+ *
+ * @return @c YES if the version is within the specified range (inclusive), or if no minimum/maximum version is specified. @c NO if the version is outside the range.
+ */
++ (BOOL)isInclusiveVersion:(NSString *)version
+             forMinVersion:(nullable NSString *)minVersion
+                maxVersion:(nullable NSString *)maxVersion;
+
 - (instancetype)init NS_UNAVAILABLE;
 
 @end

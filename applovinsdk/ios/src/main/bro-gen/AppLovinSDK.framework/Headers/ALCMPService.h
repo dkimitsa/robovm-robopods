@@ -5,8 +5,6 @@
 //  Created by Thomas So on 7/26/23.
 //
 
-#import <Foundation/Foundation.h>
-
 @class ALCMPError;
 
 NS_ASSUME_NONNULL_BEGIN

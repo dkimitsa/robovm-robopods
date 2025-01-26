@@ -57,8 +57,6 @@ import org.robovm.apple.safariservices.*;
     public static native ALAdType getAppOpen();
     @Property(selector = "incentivized")
     public static native ALAdType getIncentivized();
-    @Property(selector = "autoIncentivized")
-    public static native ALAdType getAutoIncentivized();
     @Property(selector = "native")
     public static native ALAdType getNative();
     /*</properties>*/

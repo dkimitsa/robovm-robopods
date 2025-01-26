@@ -35,26 +35,35 @@ import org.robovm.apple.safariservices.*;
 /*</imports>*/
 
 /*<javadoc>*/
-/*</javadoc>*/
-/*<annotations>*//*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/MARewardedInterstitialAdapterAdapter/*</name>*/ 
-    extends /*<extends>*/MAAdapterAdapter/*</extends>*/ 
-    /*<implements>*/implements MARewardedInterstitialAdapter/*</implements>*/ {
 
-    /*<ptr>*/
-    /*</ptr>*/
+/*</javadoc>*/
+/*<annotations>*/@Marshaler(ValuedEnum.AsMachineSizedSIntMarshaler.class)/*</annotations>*/
+public enum /*<name>*/MAMediatedNetworkInfoInitializationStatus/*</name>*/ implements ValuedEnum {
+    /*<values>*/
+    AdapterNotInitialized(-4L),
+    DoesNotApply(-3L),
+    Initializing(-2L),
+    InitializedUnknown(-1L),
+    InitializedFailure(0L),
+    InitializedSuccess(1L);
+    /*</values>*/
+
     /*<bind>*/
     /*</bind>*/
     /*<constants>*//*</constants>*/
-    /*<constructors>*//*</constructors>*/
-    /*<properties>*/
-    
-    /*</properties>*/
-    /*<members>*//*</members>*/
-    /*<methods>*/
-    @NotImplemented("loadRewardedInterstitialAdForParameters:andNotify:")
-    public void loadRewardedInterstitialAd(MAAdapterResponseParameters parameters, MARewardedInterstitialAdapterDelegate delegate) {}
-    @NotImplemented("showRewardedInterstitialAdForParameters:andNotify:")
-    public void showRewardedInterstitialAd(MAAdapterResponseParameters parameters, MARewardedInterstitialAdapterDelegate delegate) {}
-    /*</methods>*/
+    /*<methods>*//*</methods>*/
+
+    private final long n;
+
+    private /*<name>*/MAMediatedNetworkInfoInitializationStatus/*</name>*/(long n) { this.n = n; }
+    public long value() { return n; }
+    public static /*<name>*/MAMediatedNetworkInfoInitializationStatus/*</name>*/ valueOf(long n) {
+        for (/*<name>*/MAMediatedNetworkInfoInitializationStatus/*</name>*/ v : values()) {
+            if (v.n == n) {
+                return v;
+            }
+        }
+        throw new IllegalArgumentException("No constant with value " + n + " found in " 
+            + /*<name>*/MAMediatedNetworkInfoInitializationStatus/*</name>*/.class.getName());
+    }
 }

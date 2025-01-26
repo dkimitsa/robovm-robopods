@@ -109,12 +109,6 @@ import org.robovm.apple.safariservices.*;
     @Deprecated
     @Property(selector = "setExceptionHandlerEnabled:")
     public native void setExceptionHandlerEnabled(boolean v);
-    /**
-     * @deprecated This property is deprecated and will be removed in a future SDK version. Please use the new MAX Terms and Privacy Policy Flow instead (see ALSdkSettings.termsAndPrivacyPolicyFlowSettings)
-     */
-    @Deprecated
-    @Property(selector = "consentFlowSettings")
-    public native ALConsentFlowSettings getConsentFlowSettings();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

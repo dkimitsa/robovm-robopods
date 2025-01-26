@@ -17,6 +17,7 @@ enums:
     MAAdapterInitializationStatus: { }
     ALCMPErrorCode: { }
     ALConsentFlowUserGeography: { }
+    MAMediatedNetworkInfoInitializationStatus: {}
 classes:
     ALAd:
         methods:
@@ -340,7 +341,10 @@ classes:
                 name: log
             '-addAppOpenAdapter:delegate:forPlacementIdentifier:':
                 name: addAppOpenAdapter
-    ALUtils: {}
+    ALUtils:
+        methods:
+            '+isInclusiveVersion:forMinVersion:maxVersion:':
+                name: isInclusiveVersion
     MAAdapterError:
         methods:
             '+errorWithCode:':

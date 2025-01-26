@@ -63,8 +63,6 @@ import org.robovm.apple.safariservices.*;
     public native String getNetworkPlacement();
     @Property(selector = "creativeIdentifier")
     public native String getCreativeIdentifier();
-    @Property(selector = "adReviewCreativeIdentifier")
-    public native String getAdReviewCreativeIdentifier();
     @Property(selector = "revenue")
     public native double getRevenue();
     @Property(selector = "revenuePrecision")
@@ -81,6 +79,12 @@ import org.robovm.apple.safariservices.*;
     public native String getDSPName();
     @Property(selector = "DSPIdentifier")
     public native String getDSPIdentifier();
+    /**
+     * @deprecated This API is deprecated because the ID may not immediately be available when the ad is displayed. Please use -[MAAdReviewDelegate didGenerateCreativeIdentifier:forAd:] instead.
+     */
+    @Deprecated
+    @Property(selector = "adReviewCreativeIdentifier")
+    public native String getAdReviewCreativeIdentifier();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

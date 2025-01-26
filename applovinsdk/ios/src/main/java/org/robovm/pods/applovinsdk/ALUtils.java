@@ -62,5 +62,7 @@ import org.robovm.apple.safariservices.*;
     public static native UIInterfaceOrientationMask currentOrientationMask();
     @Method(selector = "deviceSafeAreaDimensions")
     public static native @ByVal CGRect deviceSafeAreaDimensions();
+    @Method(selector = "isInclusiveVersion:forMinVersion:maxVersion:")
+    public static native boolean isInclusiveVersion(String version, String minVersion, String maxVersion);
     /*</methods>*/
 }

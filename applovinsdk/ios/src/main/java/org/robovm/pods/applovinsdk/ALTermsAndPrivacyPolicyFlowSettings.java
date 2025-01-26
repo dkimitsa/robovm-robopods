@@ -39,14 +39,14 @@ import org.robovm.apple.safariservices.*;
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/ALTermsAndPrivacyPolicyFlowSettings/*</name>*/ 
-    extends /*<extends>*/ALConsentFlowSettings/*</extends>*/ 
+    extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
     /*<ptr>*/public static class ALTermsAndPrivacyPolicyFlowSettingsPtr extends Ptr<ALTermsAndPrivacyPolicyFlowSettings, ALTermsAndPrivacyPolicyFlowSettingsPtr> {}/*</ptr>*/
     /*<bind>*/static { ObjCRuntime.bind(ALTermsAndPrivacyPolicyFlowSettings.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    protected ALTermsAndPrivacyPolicyFlowSettings() {}
+    public ALTermsAndPrivacyPolicyFlowSettings() {}
     protected ALTermsAndPrivacyPolicyFlowSettings(Handle h, long handle) { super(h, handle); }
     protected ALTermsAndPrivacyPolicyFlowSettings(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
@@ -63,6 +63,10 @@ import org.robovm.apple.safariservices.*;
     public native NSURL getTermsOfServiceURL();
     @Property(selector = "setTermsOfServiceURL:")
     public native void setTermsOfServiceURL(NSURL v);
+    @Property(selector = "shouldShowTermsAndPrivacyPolicyAlertInGDPR")
+    public native boolean isShowTermsAndPrivacyPolicyAlertInGDPR();
+    @Property(selector = "setShowTermsAndPrivacyPolicyAlertInGDPR:")
+    public native void setShowTermsAndPrivacyPolicyAlertInGDPR(boolean v);
     @Property(selector = "debugUserGeography")
     public native ALConsentFlowUserGeography getDebugUserGeography();
     @Property(selector = "setDebugUserGeography:")

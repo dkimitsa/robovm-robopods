@@ -59,6 +59,8 @@ import org.robovm.apple.safariservices.*;
     public native String getAdapterVersion();
     @Property(selector = "sdkVersion")
     public native String getSdkVersion();
+    @Property(selector = "initializationStatus")
+    public native MAMediatedNetworkInfoInitializationStatus getInitializationStatus();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

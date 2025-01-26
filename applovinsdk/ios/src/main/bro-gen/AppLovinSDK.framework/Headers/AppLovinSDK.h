@@ -67,8 +67,6 @@
 #import <AppLovinSDK/MAReward.h>
 #import <AppLovinSDK/MARewardedAd.h>
 #import <AppLovinSDK/MARewardedAdapter.h>
-#import <AppLovinSDK/MARewardedInterstitialAd.h>
-#import <AppLovinSDK/MARewardedInterstitialAdapter.h>
 #import <AppLovinSDK/MASegment.h>
 #import <AppLovinSDK/MASegmentCollection.h>
 #import <AppLovinSDK/MASignalCollectionParameters.h>

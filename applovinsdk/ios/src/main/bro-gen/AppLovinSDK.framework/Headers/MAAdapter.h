@@ -124,6 +124,17 @@ typedef NS_ENUM(NSInteger, MAAdapterInitializationStatus)
 - (nullable NSNumber *)shouldShowAdsOnMainThreadForAdFormat:(MAAdFormat *)adFormat;
 
 /**
+ * *********************
+ * AVAILABLE IN v13.0.2+
+ * *********************
+ * <p>
+ * Whether or not to destroy adapter on UI thread
+ *
+ * @return @c 1 if the adapter should be destroyed on main thread. @c nil if we should fallback to default logic.
+ */
+- (nullable NSNumber *)shouldDestroyOnMainThread;
+
+/**
  * This method is called when an ad associated with this adapter should be destroyed. Necessary cleanup should be performed here.
  */
 - (void)destroy;

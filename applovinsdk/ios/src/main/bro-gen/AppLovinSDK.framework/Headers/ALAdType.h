@@ -28,11 +28,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (class, nonatomic, strong, readonly) ALAdType *incentivized;
 
 /**
- * A rewarded interstitial ad, which the user can skip or be granted a reward upon successful completion of the ad.
- */
-@property (class, nonatomic, strong, readonly) ALAdType *autoIncentivized;
-
-/**
  * Represents a native ad which can be integrated seemlessly into the environment of your app.
  */
 @property (class, nonatomic, strong, readonly) ALAdType *native;

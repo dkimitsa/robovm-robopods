@@ -44,14 +44,14 @@ NS_ASSUME_NONNULL_BEGIN
 @property (class, nonatomic, strong, readonly) MAAdFormat *rewarded;
 
 /**
- * Represents a fullscreen ad that the user can skip or be granted a reward upon successful completion of the ad.
- */
-@property (class, nonatomic, strong, readonly) MAAdFormat *rewardedInterstitial;
-
-/**
  * Represents a native advertisement.
  */
 @property (class, nonatomic, strong, readonly) MAAdFormat *native;
+
+/**
+ * @deprecated Rewarded interstitial ads have been removed and this property will be removed in a future SDK version.
+ */
+@property (class, nonatomic, strong, readonly) MAAdFormat *rewardedInterstitial __deprecated_msg("Rewarded interstitial ads have been removed and this property will be removed in a future SDK version.");
 
 /**
  * String representing the name of this ad format. Sample values include "BANNER", "MREC", "INTER", "REWARDED", etc.
@@ -90,7 +90,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (CGSize)adaptiveSizeForWidth:(CGFloat)width;
 
 /**
- * Whether or not the ad format is fullscreen: that is, an interstitial, rewarded, or rewarded interstitial.
+ * Whether or not the ad format is fullscreen: that is, an interstitial, or rewarded.
  */
 @property (nonatomic, assign, readonly, getter=isFullscreenAd) BOOL fullscreenAd;
 

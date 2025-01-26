@@ -63,10 +63,14 @@ import org.robovm.apple.safariservices.*;
     public static native MAAdFormat getAppOpen();
     @Property(selector = "rewarded")
     public static native MAAdFormat getRewarded();
-    @Property(selector = "rewardedInterstitial")
-    public static native MAAdFormat getRewardedInterstitial();
     @Property(selector = "native")
     public static native MAAdFormat getNative();
+    /**
+     * @deprecated Rewarded interstitial ads have been removed and this property will be removed in a future SDK version.
+     */
+    @Deprecated
+    @Property(selector = "rewardedInterstitial")
+    public static native MAAdFormat getRewardedInterstitial();
     @Property(selector = "label")
     public native String getLabel();
     @Property(selector = "size")

@@ -65,6 +65,8 @@ import org.robovm.apple.safariservices.*;
     NSNumber shouldLoadAdsOnMainThreadForAdFormat(MAAdFormat adFormat);
     @Method(selector = "shouldShowAdsOnMainThreadForAdFormat:")
     NSNumber shouldShowAdsOnMainThreadForAdFormat(MAAdFormat adFormat);
+    @Method(selector = "shouldDestroyOnMainThread")
+    NSNumber shouldDestroyOnMainThread();
     @Method(selector = "destroy")
     void destroy();
     @Method(selector = "initializeWithParameters:completionHandler:")
