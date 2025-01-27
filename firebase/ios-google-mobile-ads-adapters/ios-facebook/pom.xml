@@ -7,7 +7,7 @@
     </parent>
 
     <artifactId>robopods-firebase-google-mobile-ads-facebook-adapter-ios</artifactId>
-    <name>RoboPods FireBase Facebook Mediation Adapter iOS v6.15.0.0</name>
+    <name>RoboPods FireBase Facebook Mediation Adapter iOS v6.16.001</name>
     <packaging>jar</packaging>
 
     <dependencies>
