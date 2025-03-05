@@ -37,8 +37,8 @@ This is the list of currently available AltPods. Click them to get more informat
 
 ## Version of AltPods to framework version mapping
 
-v1.46.0 - in development
-| Name                            | 1.46.0  |
+v1.47.0 - in development
+| Name                            | 1.47.0  |
 |---------------------------------|---------|
 | [AdaptySDK](adapty/)            | 1.17.7  |
 | [AppCenter](appcenter/)         | 5.0.6   |
