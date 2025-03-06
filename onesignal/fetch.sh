@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e 
-VERSION=5.2.9
+VERSION=5.2.10
 BASE_URL=https://github.com/OneSignal/OneSignal-iOS-SDK/releases/download/$VERSION/
 
 curl --output-dir ~/Downloads -L -O $BASE_URL/OneSignalFramework.xcframework.zip

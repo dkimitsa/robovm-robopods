@@ -53,12 +53,12 @@ import org.robovm.apple.uikit.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
+    @Method(selector = "migrate")
+    public static native void migrate();
     @Method(selector = "requiresUserPrivacyConsent")
     public static native boolean requiresUserPrivacyConsent();
     @Method(selector = "consentGranted:")
     public static native void consentGranted(boolean granted);
-    @Method(selector = "getPrivacyConsent")
-    public static native boolean getPrivacyConsent();
     @Method(selector = "shouldLogMissingPrivacyConsentErrorWithMethodName:")
     public static native boolean shouldLogMissingPrivacyConsentError(String methodName);
     @Method(selector = "setRequiresPrivacyConsent:")
