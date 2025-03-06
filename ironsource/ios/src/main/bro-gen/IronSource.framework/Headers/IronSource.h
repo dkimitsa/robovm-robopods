@@ -5,6 +5,7 @@
 #ifndef IRONSOURCE_H
 #define IRONSOURCE_H
 
+
 // import core classes
 #import <AVFoundation/AVFoundation.h>
 #import <AdSupport/AdSupport.h>
@@ -102,8 +103,8 @@ NS_ASSUME_NONNULL_BEGIN
 #define IS_BANNER @"banner"
 #define IS_NATIVE_AD @"nativead"
 
-static NSString *const MEDIATION_SDK_VERSION = @"8.6.0";
-static NSString *GitHash = @"b145a0e";
+static NSString *const MEDIATION_SDK_VERSION = @"8.7.0";
+static NSString *GitHash = @"ffe83e8";
 
 /*
     This constant is for sending an external impression data from mopub

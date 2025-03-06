@@ -50,6 +50,8 @@ import org.robovm.apple.coreanimation.*;
     protected LPMAdInfo(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
+    @Property(selector = "adId")
+    public native String getAdId();
     @Property(selector = "adUnitId")
     public native String getAdUnitId();
     @Property(selector = "adUnitName")

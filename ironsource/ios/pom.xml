@@ -7,7 +7,7 @@
     </parent>
 
     <artifactId>robopods-ironsource-ios</artifactId>
-    <name>RoboPods IronSource SDK iOS v8.6.0</name>
+    <name>RoboPods IronSource SDK iOS v8.7.0</name>
     <packaging>jar</packaging>
 
     <licenses>
