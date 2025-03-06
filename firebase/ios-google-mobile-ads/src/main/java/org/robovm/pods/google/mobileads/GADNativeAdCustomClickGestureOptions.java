@@ -58,8 +58,8 @@ import org.robovm.apple.webkit.*;
     public native UISwipeGestureRecognizerDirection getSwipeGestureDirection();
     @Property(selector = "setSwipeGestureDirection:")
     public native void setSwipeGestureDirection(UISwipeGestureRecognizerDirection v);
-    @Property(selector = "tapsAllowed")
-    public native boolean isTapsAllowed();
+    @Property(selector = "areTapsAllowed")
+    public native boolean areTapsAllowed();
     @Property(selector = "setTapsAllowed:")
     public native void setTapsAllowed(boolean v);
     /*</properties>*/

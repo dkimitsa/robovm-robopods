@@ -101,15 +101,15 @@ import org.robovm.apple.webkit.*;
     public boolean equals(GADAdSize size2) { return equals(this, size2); }
     @Bridge(symbol="GADAdSizeEqualToSize", optional=true)
     private static native boolean equals(@ByVal GADAdSize size1, @ByVal GADAdSize size2);
-    public CGSize toCGSize() { return toCGSize(this); }
-    @Bridge(symbol="CGSizeFromGADAdSize", optional=true)
-    private static native @ByVal CGSize toCGSize(@ByVal GADAdSize size);
     public boolean isValid() { return isValid(this); }
     @Bridge(symbol="IsGADAdSizeValid", optional=true)
     private static native boolean isValid(@ByVal GADAdSize size);
     public boolean isFluid() { return isFluid(this); }
     @Bridge(symbol="GADAdSizeIsFluid", optional=true)
     private static native boolean isFluid(@ByVal GADAdSize size);
+    public CGSize toCGSize() { return toCGSize(this); }
+    @Bridge(symbol="CGSizeFromGADAdSize", optional=true)
+    private static native @ByVal CGSize toCGSize(@ByVal GADAdSize size);
     public String toString() { return toString(this); }
     @Bridge(symbol="NSStringFromGADAdSize", optional=true)
     private static native String toString(@ByVal GADAdSize size);

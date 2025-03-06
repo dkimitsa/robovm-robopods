@@ -28,10 +28,11 @@ typedef void (^GADAdInspectorCompletionHandler)(NSError *_Nullable error);
 typedef void (^GADSignalCompletionHandler)(GADSignal *_Nullable signal, NSError *_Nullable error);
 
 /// Google Mobile Ads SDK settings.
+NS_SWIFT_NAME(MobileAds)
 @interface GADMobileAds : NSObject
 
 /// Returns the shared GADMobileAds instance.
-+ (nonnull GADMobileAds *)sharedInstance;
+@property(class, nonatomic, readonly, nonnull) GADMobileAds *sharedInstance NS_SWIFT_NAME(shared);
 
 /// Returns the Google Mobile Ads SDK's version number.
 @property(nonatomic, readonly) GADVersionNumber versionNumber;
@@ -50,7 +51,8 @@ typedef void (^GADSignalCompletionHandler)(GADSignal *_Nullable signal, NSError 
 /// Warning: Muting your application reduces video ad eligibility and may reduce your app's ad
 /// revenue. You should only utilize this API if your app provides a custom mute control to the
 /// user, and you should reflect the user's mute decision in this API.
-@property(nonatomic, assign) BOOL applicationMuted;
+@property(nonatomic, assign, getter=isApplicationMuted)
+    BOOL applicationMuted NS_SWIFT_NAME(isApplicationMuted);
 
 /// Manages the Google Mobile Ads SDK's audio and video settings.
 @property(nonatomic, readonly, strong, nonnull) GADAudioVideoManager *audioVideoManager;
@@ -99,7 +101,8 @@ typedef void (^GADSignalCompletionHandler)(GADSignal *_Nullable signal, NSError 
 /// @param completionHandler A handler to execute when Ad Inspector is closed.
 - (void)presentAdInspectorFromViewController:(nullable UIViewController *)viewController
                            completionHandler:
-                               (nullable GADAdInspectorCompletionHandler)completionHandler;
+                               (nullable GADAdInspectorCompletionHandler)completionHandler
+    NS_SWIFT_NAME(presentAdInspector(from:completionHandler:));
 
 /// Registers a web view with the Google Mobile Ads SDK to improve in-app ad monetization of ads
 /// within this web view.

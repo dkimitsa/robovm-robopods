@@ -72,10 +72,22 @@ import org.robovm.apple.uikit.*;
     public native boolean isAndroidInstallIfNotAvailable();
     @Property(selector = "setAndroidInstallIfNotAvailable:")
     public native void setAndroidInstallIfNotAvailable(boolean v);
+    /**
+     * @deprecated Firebase Dynamic Links is deprecated. Migrate to use Firebase Hosting link and use `linkDomain` to set a custom domain instead.
+     */
+    @Deprecated
     @Property(selector = "dynamicLinkDomain")
     public native String getDynamicLinkDomain();
+    /**
+     * @deprecated Firebase Dynamic Links is deprecated. Migrate to use Firebase Hosting link and use `linkDomain` to set a custom domain instead.
+     */
+    @Deprecated
     @Property(selector = "setDynamicLinkDomain:")
     public native void setDynamicLinkDomain(String v);
+    @Property(selector = "linkDomain")
+    public native String getLinkDomain();
+    @Property(selector = "setLinkDomain:")
+    public native void setLinkDomain(String v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

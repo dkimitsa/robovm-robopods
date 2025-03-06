@@ -87,9 +87,9 @@ import org.robovm.apple.webkit.*;
     @Property(selector = "setCategoryExclusions:")
     public native void setCategoryExclusions(NSArray<NSString> v);
     @Property(selector = "customTargeting")
-    public native NSDictionary<NSString, NSString> getCustomTargeting();
+    public native NSDictionary<NSString, ?> getCustomTargeting();
     @Property(selector = "setCustomTargeting:")
-    public native void setCustomTargeting(NSDictionary<NSString, NSString> v);
+    public native void setCustomTargeting(NSDictionary<NSString, ?> v);
     @Property(selector = "adUnitID")
     public native String getAdUnitID();
     @Property(selector = "setAdUnitID:")

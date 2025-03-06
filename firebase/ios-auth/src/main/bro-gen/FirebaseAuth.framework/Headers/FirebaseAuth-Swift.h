@@ -358,7 +358,9 @@ SWIFT_CLASS_NAMED("ActionCodeSettings")
 /// Indicates whether the Android app should be installed on a device where it is not available.
 @property (nonatomic) BOOL androidInstallIfNotAvailable;
 /// The Firebase Dynamic Link domain used for out of band code flow.
-@property (nonatomic, copy) NSString * _Nullable dynamicLinkDomain;
+@property (nonatomic, copy) NSString * _Nullable dynamicLinkDomain SWIFT_DEPRECATED_MSG("Firebase Dynamic Links is deprecated. Migrate to use Firebase Hosting link and use `linkDomain` to set a custom domain instead.");
+/// The out of band custom domain for handling code in app.
+@property (nonatomic, copy) NSString * _Nullable linkDomain;
 /// Sets the iOS bundle ID.
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 /// Sets the Android package name, the flag to indicate whether or not to install the app,
@@ -374,6 +376,7 @@ SWIFT_CLASS_NAMED("ActionCodeSettings")
 ///
 - (void)setAndroidPackageName:(NSString * _Nonnull)androidPackageName installIfNotAvailable:(BOOL)installIfNotAvailable minimumVersion:(NSString * _Nullable)minimumVersion;
 @end
+
 
 
 /// This class will allow developers to easily extract information about out of band links.
@@ -1246,6 +1249,8 @@ typedef SWIFT_ENUM_NAMED(NSInteger, FIRAuthErrorCode, "AuthErrorCode", open) {
 /// Indicates that the Firebase Dynamic Link domain used is either not configured or is
 /// unauthorized for the current project.
   FIRAuthErrorCodeInvalidDynamicLinkDomain = 17074,
+/// Indicates that the provided Firebase Hosting Link domain is not owned by the current project.
+  FIRAuthErrorCodeInvalidHostingLinkDomain = 17214,
 /// Indicates that the credential is rejected because it’s malformed or mismatching.
   FIRAuthErrorCodeRejectedCredential = 17075,
 /// Indicates that the GameKit framework is not linked prior to attempting Game Center signin.

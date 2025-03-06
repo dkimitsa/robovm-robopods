@@ -7,10 +7,11 @@
 #import <UIKit/UIKit.h>
 
 /// A signal that can be used as input in a server-to-server ad request.
+NS_SWIFT_NAME(Signal)
 @interface GADSignal : NSObject
 
 /// Signal string used in a server-to-server ad request.
-@property(nonatomic, readonly, nonnull) NSString *signalString;
+@property(nonatomic, readonly, nonnull) NSString *signalString NS_SWIFT_NAME(signal);
 
 #pragma mark Initialization
 

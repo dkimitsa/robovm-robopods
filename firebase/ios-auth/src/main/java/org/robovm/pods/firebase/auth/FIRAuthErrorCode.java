@@ -98,6 +98,7 @@ public enum /*<name>*/FIRAuthErrorCode/*</name>*/ implements NSErrorCode {
     TenantIDMismatch(17072L),
     UnsupportedTenantOperation(17073L),
     InvalidDynamicLinkDomain(17074L),
+    InvalidHostingLinkDomain(17214L),
     RejectedCredential(17075L),
     GameKitNotLinked(17076L),
     SecondFactorRequired(17078L),

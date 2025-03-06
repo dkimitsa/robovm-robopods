@@ -79,9 +79,9 @@ import org.robovm.apple.webkit.*;
     @Property(selector = "setRequestAgent:")
     public native void setRequestAgent(String v);
     @Property(selector = "customTargeting")
-    public native NSDictionary<NSString, NSString> getCustomTargeting();
+    public native NSDictionary<NSString, ?> getCustomTargeting();
     @Property(selector = "setCustomTargeting:")
-    public native void setCustomTargeting(NSDictionary<NSString, NSString> v);
+    public native void setCustomTargeting(NSDictionary<NSString, ?> v);
     /**
      * @deprecated Use each ad format class's loadWithAdResponseString: instead.
      */
@@ -97,13 +97,6 @@ import org.robovm.apple.webkit.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    /**
-     * @deprecated Deprecated. Simulators are already in test mode by default.
-     */
-    @Deprecated
-    @GlobalValue(symbol="GADSimulatorID", optional=true)
-    public static native NSString GADSimulatorID();
-    
     @Method(selector = "registerAdNetworkExtras:")
     public native void registerAdNetworkExtras(GADAdNetworkExtras extras);
     @Method(selector = "adNetworkExtrasFor:")

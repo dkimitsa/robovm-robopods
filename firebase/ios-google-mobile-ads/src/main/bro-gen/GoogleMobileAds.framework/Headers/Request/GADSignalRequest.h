@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 /// A signal request that can be used as input in server-to-server signal generation.
+NS_SWIFT_NAME(SignalRequest)
 @interface GADSignalRequest : NSObject <NSCopying>
 
 #pragma mark Additional Parameters For Ad Networks
@@ -47,7 +48,8 @@
 /// URL strings for non-primary web content near an ad. Promotes brand safety and allows displayed
 /// ads to have an app level rating (MA, T, PG, etc) that is more appropriate to neighboring
 /// content.
-@property(nonatomic, copy, nullable) NSArray<NSString *> *neighboringContentURLStrings;
+@property(nonatomic, copy, nullable)
+    NSArray<NSString *> *neighboringContentURLStrings NS_SWIFT_NAME(neighboringContentURLs);
 
 #pragma mark Request Agent Information
 
@@ -66,7 +68,7 @@
 @property(nonatomic, copy, nullable) NSArray<NSString *> *categoryExclusions;
 
 /// Key-value pairs used for custom targeting.
-@property(nonatomic, copy, nullable) NSDictionary<NSString *, NSString *> *customTargeting;
+@property(nonatomic, copy, nullable) NSDictionary<NSString *, id> *customTargeting;
 
 #pragma mark Ad Unit ID
 

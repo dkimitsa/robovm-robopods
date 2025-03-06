@@ -52,13 +52,15 @@ import org.robovm.apple.webkit.*;
     protected GADMobileAds(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
+    @Property(selector = "sharedInstance")
+    public static native GADMobileAds sharedInstance();
     @Property(selector = "versionNumber")
     public native @ByVal GADVersionNumber getVersionNumber();
     @Property(selector = "applicationVolume")
     public native float getApplicationVolume();
     @Property(selector = "setApplicationVolume:")
     public native void setApplicationVolume(float v);
-    @Property(selector = "applicationMuted")
+    @Property(selector = "isApplicationMuted")
     public native boolean isApplicationMuted();
     @Property(selector = "setApplicationMuted:")
     public native void setApplicationMuted(boolean v);
@@ -91,8 +93,6 @@ import org.robovm.apple.webkit.*;
     public native void presentAdInspector(UIViewController viewController, @Block VoidBlock1<NSError> completionHandler);
     @Method(selector = "registerWebView:")
     public native void registerWebView(WKWebView webView);
-    @Method(selector = "sharedInstance")
-    public static native GADMobileAds sharedInstance();
     @Method(selector = "generateSignal:completionHandler:")
     public static native void generateSignal(GADSignalRequest request, @Block VoidBlock2<GADSignal, NSError> completionHandler);
     /*</methods>*/
