@@ -10,6 +10,6 @@
 #import <CleverAdsSolutions/CASTypeFlags.h>
 #import <CleverAdsSolutions/CASInternalUtils.h>
 
-#define CAS_FRAMEWORK_VERSION @"3.9.9"
-#define CAS_FRAMEWORK_CODE 3909
-#define CAS_EXCHANGE_VERSION @"3.9.7"
+#define CAS_FRAMEWORK_VERSION @"3.9.10"
+#define CAS_FRAMEWORK_CODE 3910
+#define CAS_EXCHANGE_VERSION @"3.9.10"
