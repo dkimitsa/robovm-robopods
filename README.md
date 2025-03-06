@@ -13,8 +13,9 @@ This is the list of currently available AltPods. Click them to get more informat
 | Name                             | Description                                                                                                                                                        |
 |----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [AdaptySDK](adapty/)             | Framework that makes implementing in-app subscriptions                                                                                                             |
-| [AppLovinSDK](applovinsdk/)      | An advertisement mediator SDK                                                                                                                                      |
 | [AppCenter](appcenter/)          | Visual Studio App Center SDK                                                                                                                                       |
+| [AppLovinSDK](applovinsdk/)      | An advertisement mediator SDK                                                                                                                                      |
+| [AppsFlyer](appsflyer/)          | Mobile Attribution — Reliable, stable and always up to date with the market                                                                                        |
 | [Azure](azure/)                  | Microsoft Azure SDKs                                                                                                                                               |
 | [BranchMetrics](branchmetrics/)  | The Branch Metrics iOS SDK for deferred and contextual mobile deep linking                                                                                         |
 | [Charts](charts/)                | Beautiful charts for iOS/tvOS/OSX! The Apple side of the crossplatform MPAndroidChart.                                                                             |
@@ -43,6 +44,7 @@ v1.47.0 - in development
 | [AdaptySDK](adapty/)            | 1.17.7  |
 | [AppCenter](appcenter/)         | 5.0.6   |
 | [AppLovinSDK](applovinsdk/)     | 13.1.0  |
+| [AppsFlyer](appsflyer/)         | 6.16.1  |
 | [Azure](azure/)                 | 3.1.4   |
 | [BranchMetrics](branchmetrics/) | 3.8.0   |
 | [Charts](charts/)               | 5.1.0   |

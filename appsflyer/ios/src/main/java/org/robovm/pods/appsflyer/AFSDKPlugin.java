@@ -1,0 +1,78 @@
+/*
+ * Copyright (C) 2013-2015 RoboVM AB
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package org.robovm.pods.appsflyer;
+
+/*<imports>*/
+import java.io.*;
+import java.nio.*;
+import java.util.*;
+import org.robovm.objc.*;
+import org.robovm.objc.annotation.*;
+import org.robovm.objc.block.*;
+import org.robovm.rt.*;
+import org.robovm.rt.annotation.*;
+import org.robovm.rt.bro.*;
+import org.robovm.rt.bro.annotation.*;
+import org.robovm.rt.bro.ptr.*;
+import org.robovm.apple.foundation.*;
+import org.robovm.apple.uikit.*;
+import org.robovm.apple.coregraphics.*;
+import org.robovm.apple.coreanimation.*;
+/*</imports>*/
+
+/*<javadoc>*/
+
+/*</javadoc>*/
+/*<annotations>*/@Marshaler(ValuedEnum.AsMachineSizedSIntMarshaler.class)/*</annotations>*/
+public enum /*<name>*/AFSDKPlugin/*</name>*/ implements ValuedEnum {
+    /*<values>*/
+    IOSNative(0L),
+    Unity(1L),
+    Flutter(2L),
+    ReactNative(3L),
+    AdobeAir(4L),
+    AdobeMobile(5L),
+    Cocos2dx(6L),
+    Cordova(7L),
+    Mparticle(8L),
+    NativeScript(9L),
+    Expo(10L),
+    Unreal(11L),
+    Xamarin(12L),
+    Capacitor(13L),
+    Segment(14L),
+    AdobeSwiftAEP(15L);
+    /*</values>*/
+
+    /*<bind>*/
+    /*</bind>*/
+    /*<constants>*//*</constants>*/
+    /*<methods>*//*</methods>*/
+
+    private final long n;
+
+    private /*<name>*/AFSDKPlugin/*</name>*/(long n) { this.n = n; }
+    public long value() { return n; }
+    public static /*<name>*/AFSDKPlugin/*</name>*/ valueOf(long n) {
+        for (/*<name>*/AFSDKPlugin/*</name>*/ v : values()) {
+            if (v.n == n) {
+                return v;
+            }
+        }
+        throw new IllegalArgumentException("No constant with value " + n + " found in " 
+            + /*<name>*/AFSDKPlugin/*</name>*/.class.getName());
+    }
+}

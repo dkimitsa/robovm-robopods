@@ -1,0 +1,150 @@
+package: org.robovm.pods.appsflyer
+include: [foundation, uikit, coregraphics, coreanimation]
+framework: AppsFlyerLib
+clang_args: ['-x', 'objective-c']
+headers:
+    - "#import <UIKit/UIKit.h>"
+    - AppsFlyerLib.h
+    - AppsFlyerLib-Swift.h
+
+private_typedefs: {}
+
+typedefs: {}
+
+enums:
+    AFSDKDeepLinkResultStatus: {}
+    AFSDKValidateAndLogStatus: {}
+    AppsFlyerAdRevenueMediationNetworkType: {}
+    EmailCryptType: {}
+    AFSDKPlugin: {}
+classes:
+    AFAdRevenueData:
+        methods:
+            '-initWithMonetizationNetwork:mediationNetwork:currencyIso4217Code:eventRevenue:':
+                name: init
+    AFSDKPurchaseDetails:
+        methods:
+            '-initWithProductId:price:currency:transactionId:':
+                name: init
+    AFSDKValidateAndLogResult:
+        methods:
+            '-initWithStatus:result:errorData:error:':
+                name: init
+    AppsFlyerConsent:
+        methods:
+            '-initWithNonGDPRUser':
+                static_constructor_name: createUsingNonGDPRUser
+                name: initWithNonGDPRUser
+            '-initForGDPRUserWithHasConsentForDataUsage:hasConsentForAdsPersonalization:':
+                name: init
+            '-encodeWithCoder:':
+                name: encode
+            '-initWithCoder:':
+                name: init
+    AppsFlyerCrossPromotionHelper:
+        methods:
+            '+logCrossPromoteImpression:campaign:parameters:':
+                name: logCrossPromoteImpression
+            '+logAndOpenStore:campaign:parameters:openStore:':
+                name: logAndOpenStore
+    AppsFlyerDeepLink: { }
+    AppsFlyerDeepLinkResult: { }
+    AppsFlyerLib:
+        methods:
+            '-waitForATTUserAuthorizationWithTimeoutInterval:':
+                name: waitForATTUserAuthorization
+            '-setPluginInfoWith:pluginVersion:additionalParams:':
+                name: setPluginInfo
+            '-enableFacebookDeferredApplinksWithClass:':
+                name: enableFacebookDeferredApplinks
+            '-setUserEmails:withCryptType:':
+                name: setUserEmails
+            '-startWithCompletionHandler:':
+                name: start
+            '-logEvent:withValues:':
+                name: logEvent
+            '-logEventWithEventName:eventValues:completionHandler:':
+                name: logEvent
+            '-validateAndLogInAppPurchase:price:currency:transactionId:additionalParameters:success:failure:':
+                name: validateAndLogInAppPurchase
+            '-validateAndLogInAppPurchase:extraEventValues:completionHandler:':
+                name: validateAndLogInAppPurchase
+            '-logAdRevenue:additionalParameters:':
+                name: logAdRevenue
+            '-logLocation:latitude:':
+                name: logLocation
+            '-handleOpenURL:sourceApplication:':
+                name: handleOpenURL
+            '-handleOpenURL:sourceApplication:withAnnotation:':
+                name: handleOpenURL
+            '-handleOpenUrl:options:':
+                name: handleOpenUrl
+            '-continueUserActivity:restorationHandler:':
+                name: continueUserActivity
+            '-remoteDebuggingCallWithData:':
+                name: remoteDebuggingCall
+            '-remoteDebuggingCallV2WithData:':
+                name: remoteDebuggingCallV2
+            '-performOnAppAttributionWithURL:':
+                name: performOnAppAttribution
+            '-setHost:withHostPrefix:':
+                name: setHost
+            '-appendParametersToDeepLinkingURLWithString:parameters:':
+                name: appendParametersToDeepLinkingURL
+            '-setPartnerDataWithPartnerId:partnerInfo:':
+                name: setPartnerData
+    AppsFlyerLinkGenerator:
+        methods:
+            '-addParameterValue:forKey:':
+                name: addParameter
+    AppsFlyerShareInviteHelper:
+        methods:
+            '+generateInviteUrlWithLinkGenerator:completionHandler:':
+                name: generateInviteUrl
+            '+logInvite:parameters:':
+                name: logInvite
+protocols:
+    AppsFlyerDeepLinkDelegate: { }
+    AppsFlyerLibDelegate: { }
+
+functions:
+    # Make sure we don't miss any functions if new ones are introduced in a later version
+    (.*):
+        class: __FixMe
+        name: 'Function_#{g[0]}'
+
+values:
+
+    # Make sure we don't miss any values if new ones are introduced in a later version
+    (.*):
+        class: __FixMe
+        name: 'Value_#{g[0]}'
+
+constants:
+    SWIFT_TYPEDEFS:
+        exclude: true
+
+    kAppsFlyerAdRevenue(.*):
+        class: AppsFlyerConsts
+        static_class: Revenue
+        name: '#{g[0]}'
+    AFEventParam(1|2|3|4|5|6|7|8|9|10):
+        class: AppsFlyerConsts
+        static_class: EventParams
+        name: 'Param#{g[0]}'
+    AFEventParam(.*):
+        class: AppsFlyerConsts
+        static_class: EventParams
+        name: '#{g[0]}'
+    AFEvent(.*):
+        class: AppsFlyerConsts
+        static_class: Events
+        name: '#{g[0]}'
+    kAFADRWrapperTypeGeneric:
+        class: AppsFlyerConsts
+        name: ADRWrapperTypeGeneric
+
+    # Make sure we don't miss any values if new ones are introduced in a later version
+    (.*):
+        class: __FixMe
+        name: '#{g[0]}'
