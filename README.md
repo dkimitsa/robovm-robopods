@@ -46,7 +46,7 @@ v1.47.0 - in development
 | [AppLovinSDK](applovinsdk/)     | 13.1.0  |
 | [AppsFlyer](appsflyer/)         | 6.16.1  |
 | [Azure](azure/)                 | 3.1.4   |
-| [BranchMetrics](branchmetrics/) | 3.9.1   |
+| [BranchMetrics](branchmetrics/) | 3.10.0  |
 | [Charts](charts/)               | 5.1.0   |
 | [ClearAds](cleverads/)          | 3.9.10  |
 | [Facebook](facebook/)           | 18.0.0  |
