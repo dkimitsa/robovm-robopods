@@ -44,7 +44,8 @@ public enum /*<name>*/LogLevelValues/*</name>*/ implements ValuedEnum {
     INFO(1L),
     WARNING(2L),
     ERROR(3L),
-    CRITICAL(4L);
+    GENERAL(4L),
+    CRITICAL(5L);
     /*</values>*/
 
     /*<bind>*/

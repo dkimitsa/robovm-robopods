@@ -12,6 +12,7 @@
 #import <UIKit/UIKit.h>
 
 /// Rendered banner ad. Provides a single subview to add to the banner view's view hierarchy.
+NS_SWIFT_NAME(MediationBannerAd)
 @protocol GADMediationBannerAd <GADMediationAd>
 
 /// The banner ad view.
@@ -34,6 +35,7 @@ GAD_DEPRECATED_MSG_ATTRIBUTE("Interscroller will not be supported.")
 @end
 
 /// Banner ad configuration.
+NS_SWIFT_NAME(MediationBannerAdConfiguration)
 @interface GADMediationBannerAdConfiguration : GADMediationAdConfiguration
 
 /// Banner ad size requested of the adapter.

@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface LPMAdInfo : NSObject
 
+@property(readonly, copy, nonnull) NSString *adId;
 @property(readonly, copy) NSString *adUnitId;
 @property(readonly, copy) NSString *adUnitName;
 @property(readonly, copy, nullable) NSString *placementName;

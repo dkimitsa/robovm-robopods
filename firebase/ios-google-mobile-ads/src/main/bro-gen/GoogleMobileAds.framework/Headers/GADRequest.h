@@ -12,6 +12,7 @@
 #import <UIKit/UIKit.h>
 
 /// Specifies optional parameters for ad requests.
+NS_SWIFT_NAME(Request)
 @interface GADRequest : NSObject <NSCopying>
 
 /// Returns a default request.
@@ -53,7 +54,8 @@
 /// URL strings for non-primary web content near an ad. Promotes brand safety and allows displayed
 /// ads to have an app level rating (MA, T, PG, etc) that is more appropriate to neighboring
 /// content.
-@property(nonatomic, copy, nullable) NSArray<NSString *> *neighboringContentURLStrings;
+@property(nonatomic, copy, nullable)
+    NSArray<NSString *> *neighboringContentURLStrings NS_SWIFT_NAME(neighboringContentURLs);
 
 #pragma mark Request Agent Information
 
@@ -66,6 +68,6 @@
 #pragma mark Optional Targeting Information
 
 /// Key-value pairs used for custom targeting.
-@property(nonatomic, copy, nullable) NSDictionary<NSString *, NSString *> *customTargeting;
+@property(nonatomic, copy, nullable) NSDictionary<NSString *, id> *customTargeting;
 
 @end

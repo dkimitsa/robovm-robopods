@@ -58,7 +58,7 @@ import org.robovm.apple.webkit.*;
     public native @MachineSizedSInt long getNumberOfAds();
     @Property(selector = "setNumberOfAds:")
     public native void setNumberOfAds(@MachineSizedSInt long v);
-    @Property(selector = "disableImageLoading")
+    @Property(selector = "isImageLoadingDisabled")
     public native boolean isDisableImageLoading();
     @Property(selector = "setDisableImageLoading:")
     public native void setDisableImageLoading(boolean v);
@@ -74,7 +74,7 @@ import org.robovm.apple.webkit.*;
     public native GADAdChoicesPosition getPreferredAdChoicesPosition();
     @Property(selector = "setPreferredAdChoicesPosition:")
     public native void setPreferredAdChoicesPosition(GADAdChoicesPosition v);
-    @Property(selector = "customMuteThisAdRequested")
+    @Property(selector = "isCustomMuteThisAdRequested")
     public native boolean isCustomMuteThisAdRequested();
     @Property(selector = "setCustomMuteThisAdRequested:")
     public native void setCustomMuteThisAdRequested(boolean v);

@@ -15,6 +15,7 @@ typedef void (^GADQueryInfoCreationCompletionHandler)(GADQueryInfo *_Nullable qu
                                                       NSError *_Nullable error);
 
 /// Query info used in requests.
+NS_SWIFT_NAME(QueryInfo)
 @interface GADQueryInfo : NSObject
 
 /// Query string used in requests.

@@ -13,7 +13,8 @@ typedef enum LogLevelValues {
   IS_LOG_INFO = 1,
   IS_LOG_WARNING = 2,
   IS_LOG_ERROR = 3,
-  IS_LOG_CRITICAL = 4,
+  IS_LOG_GENERAL = 4,  // Publisher log level, always visible
+  IS_LOG_CRITICAL = 5,
 
 } ISLogLevel;
 
@@ -26,7 +27,6 @@ typedef enum LogTagValue {
   TAG_NATIVE,
   TAG_INTERNAL,
   TAG_EVENT
-
 } LogTag;
 
 @protocol ISLogDelegate <NSObject>

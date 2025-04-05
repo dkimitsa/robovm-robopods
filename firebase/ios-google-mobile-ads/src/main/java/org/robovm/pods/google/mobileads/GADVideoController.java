@@ -58,20 +58,20 @@ import org.robovm.apple.webkit.*;
     public native void setDelegate(GADVideoControllerDelegate v);
     @Property(selector = "isMuted")
     public native boolean isMuted();
+    @Property(selector = "setMuted:")
+    public native void setMuted(boolean v);
+    @Property(selector = "areCustomControlsEnabled")
+    public native boolean areCustomControlsEnabled();
+    @Property(selector = "isClickToExpandEnabled")
+    public native boolean isClickToExpandEnabled();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "setMute:")
-    public native void setMute(boolean mute);
     @Method(selector = "play")
     public native void play();
     @Method(selector = "pause")
     public native void pause();
     @Method(selector = "stop")
     public native void stop();
-    @Method(selector = "customControlsEnabled")
-    public native boolean customControlsEnabled();
-    @Method(selector = "clickToExpandEnabled")
-    public native boolean clickToExpandEnabled();
     /*</methods>*/
 }

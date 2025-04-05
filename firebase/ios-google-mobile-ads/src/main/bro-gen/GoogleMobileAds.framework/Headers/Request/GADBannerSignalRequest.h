@@ -10,11 +10,12 @@
 #import <GoogleMobileAds/Request/GADSignalRequest.h>
 
 /// A banner signal request that can be used as input in server-to-server signal generation.
+NS_SWIFT_NAME(BannerSignalRequest)
 @interface GADBannerSignalRequest : GADSignalRequest
 
 /// Indicates that the publisher will record impressions manually when the ad becomes visible to the
 /// user.
-@property(nonatomic) BOOL enableManualImpressions;
+@property(nonatomic, getter=isManualImpressionEnabled) BOOL manualImpressionEnabled;
 
 /// The banner ad size. Use one of the predefined standard ad sizes (such as GADAdSizeBanner), or
 /// create one using the GADAdSizeFromCGSize method. Never create your own GADAdSize directly.

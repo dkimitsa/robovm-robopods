@@ -66,6 +66,7 @@ typedef void (^GADMediationAdapterSetUpCompletionBlock)(NSError *_Nullable error
 ///
 /// Adapters are initialized on a background queue and should avoid using the main queue until
 /// load time.
+NS_SWIFT_NAME(MediationAdapter)
 @protocol GADMediationAdapter <NSObject>
 /// Returns the adapter version.
 + (GADVersionNumber)adapterVersion;
@@ -86,7 +87,8 @@ typedef void (^GADMediationAdapterSetUpCompletionBlock)(NSError *_Nullable error
 /// or configuration work. The adapter must call completionHandler once the adapter can service ad
 /// requests, or if it encounters an error while setting up.
 + (void)setUpWithConfiguration:(nonnull GADMediationServerConfiguration *)configuration
-             completionHandler:(nonnull GADMediationAdapterSetUpCompletionBlock)completionHandler;
+             completionHandler:(nonnull GADMediationAdapterSetUpCompletionBlock)completionHandler
+    NS_SWIFT_NAME(setUp(with:completionHandler:));
 
 /// Asks the adapter to load a banner ad with the provided ad configuration. The adapter must call
 /// back completionHandler with the loaded ad, or it may call back with an error. This method is

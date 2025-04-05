@@ -56,6 +56,8 @@ import org.robovm.apple.coreanimation.*;
     public LPMBannerAdView(NSCoder coder) { super(coder); }
     /*</constructors>*/
     /*<properties>*/
+    @Property(selector = "adId")
+    public native String getAdId();
     @WeaklyLinked
     @Property(selector = "layerClass")
     public static native Class<? extends CALayer> getLayerClass();

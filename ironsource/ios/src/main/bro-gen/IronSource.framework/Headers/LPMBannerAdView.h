@@ -15,6 +15,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface LPMBannerAdView : UIView
 
+/**
+ * A unique identifier associated with the ad object.
+ */
+@property(nonatomic, strong, readonly) NSString *adId;
+
 - (instancetype)init NS_UNAVAILABLE;
 - (instancetype)new NS_UNAVAILABLE;
 

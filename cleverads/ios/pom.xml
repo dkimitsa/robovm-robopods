@@ -2,12 +2,12 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>io.github.dkimitsa.robovm</groupId>
-        <version>1.46.0-SNAPSHOT</version>
+        <version>1.47.0-SNAPSHOT</version>
         <artifactId>robopods-cleverads-parent</artifactId>
     </parent>
 
     <artifactId>robopods-cleverads-ios</artifactId>
-    <name>RoboPods Clever Ads Solutions iOS SDK iOS v3.9.9</name>
+    <name>RoboPods Clever Ads Solutions iOS SDK iOS v3.9.10</name>
     <packaging>jar</packaging>
 
     <licenses>

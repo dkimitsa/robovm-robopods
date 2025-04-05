@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.robovm.pods.firebase.auth;
+package org.robovm.pods.appsflyer;
 
 /*<imports>*/
 import java.io.*;
@@ -29,24 +29,29 @@ import org.robovm.rt.bro.annotation.*;
 import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
+import org.robovm.apple.coregraphics.*;
+import org.robovm.apple.coreanimation.*;
 /*</imports>*/
 
 /*<javadoc>*/
+
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL)/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/FIRRecaptcha/*</name>*/ 
-    extends /*<extends>*/CocoaUtility/*</extends>*/ 
-    /*<implements>*//*</implements>*/ {
+/*<annotations>*//*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ interface /*<name>*/AppsFlyerDeepLinkDelegate/*</name>*/ 
+    /*<implements>*/extends NSObjectProtocol/*</implements>*/ {
 
     /*<ptr>*/
     /*</ptr>*/
-    /*<bind>*/static { Bro.bind(FIRRecaptcha.class); }/*</bind>*/
+    /*<bind>*/
+    /*</bind>*/
     /*<constants>*//*</constants>*/
-    /*<constructors>*//*</constructors>*/
-    /*<properties>*//*</properties>*/
-    /*<members>*//*</members>*/
+    /*<properties>*/
+    
+    /*</properties>*/
     /*<methods>*/
-    @Bridge(symbol="FIRRecaptchaGetToken", optional=true)
-    public static native void getToken(String siteKey, String actionString, String fakeToken, @Block VoidBlock4<NSString, NSError, Boolean, Boolean> callback);
+    @Method(selector = "didResolveDeepLink:")
+    void didResolveDeepLink(AppsFlyerDeepLinkResult result);
     /*</methods>*/
+    /*<adapter>*/
+    /*</adapter>*/
 }

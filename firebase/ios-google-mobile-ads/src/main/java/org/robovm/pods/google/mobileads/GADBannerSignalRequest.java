@@ -54,10 +54,10 @@ import org.robovm.apple.webkit.*;
     public GADBannerSignalRequest(String signalType) { super((SkipInit) null); initObject(init(signalType)); }
     /*</constructors>*/
     /*<properties>*/
-    @Property(selector = "enableManualImpressions")
-    public native boolean isEnableManualImpressions();
-    @Property(selector = "setEnableManualImpressions:")
-    public native void setEnableManualImpressions(boolean v);
+    @Property(selector = "isManualImpressionEnabled")
+    public native boolean isManualImpressionEnabled();
+    @Property(selector = "setManualImpressionEnabled:")
+    public native void setManualImpressionEnabled(boolean v);
     @Property(selector = "adSize")
     public native @ByVal GADAdSize getAdSize();
     @Property(selector = "setAdSize:")

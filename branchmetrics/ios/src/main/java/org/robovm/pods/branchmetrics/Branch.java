@@ -400,6 +400,8 @@ import org.robovm.apple.storekit.*;
     public static native void enableLogging(BranchLogLevel logLevel, @Block VoidBlock5<NSString, BranchLogLevel, NSError, NSMutableURLRequest, BNCServerResponse> callback);
     @Method(selector = "setAPIUrl:")
     public static native void setAPIUrl(String url);
+    @Method(selector = "setSafetrackAPIURL:")
+    public static native void setSafetrackAPIURL(String url);
     @Method(selector = "isBranchLink:")
     public static native boolean isBranchLink(String urlString);
     /**

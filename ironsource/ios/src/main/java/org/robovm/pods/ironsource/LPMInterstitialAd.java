@@ -52,7 +52,8 @@ import org.robovm.apple.coreanimation.*;
     public LPMInterstitialAd(String adUnitId) { super((SkipInit) null); initObject(init(adUnitId)); }
     /*</constructors>*/
     /*<properties>*/
-    
+    @Property(selector = "adId")
+    public native String getAdId();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

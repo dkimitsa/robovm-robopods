@@ -2,12 +2,12 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>io.github.dkimitsa.robovm</groupId>
-        <version>1.46.0-SNAPSHOT</version>
+        <version>1.47.0-SNAPSHOT</version>
         <artifactId>robopods-ironsource-parent</artifactId>
     </parent>
 
     <artifactId>robopods-ironsource-ios</artifactId>
-    <name>RoboPods IronSource SDK iOS v8.6.0</name>
+    <name>RoboPods IronSource SDK iOS v8.7.0</name>
     <packaging>jar</packaging>
 
     <licenses>

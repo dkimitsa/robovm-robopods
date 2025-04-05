@@ -113,6 +113,9 @@ classes:
     GADMediationRewardedAdConfiguration: {}
     GADMediationServerConfiguration: {}
     GADMobileAds:
+        properties:
+            '+sharedInstance':
+                getter: sharedInstance
         methods:
             '-isSDKVersionAtLeastMajor:minor:patch:':
                 name: isSDKVersionAtLeast
@@ -176,7 +179,10 @@ classes:
                 name: load
     GADSearchBannerView: {}
     GADServerSideVerificationOptions: {}
-    GADVideoController: {}
+    GADVideoController:
+        properties:
+            customControlsEnabled:
+                getter: areCustomControlsEnabled
     GADVideoOptions: {}
     GADAdNetworkResponseInfo: {}
     GADRewardedInterstitialAd:
@@ -210,6 +216,9 @@ classes:
                 name: load
     GAMRequest: {}
     GADNativeAdCustomClickGestureOptions:
+        properties:
+            'tapsAllowed':
+                getter: areTapsAllowed
         methods:
             '-initWithSwipeGestureDirection:tapsAllowed:':
                 name: init
@@ -635,17 +644,6 @@ values:
         class: GADResponseInfo
         readonly: true
         name: getErrorUserInfoKey
-
-    GADSimulatorID:
-        class: GADRequest
-        name: GADSimulatorID
-        type: NSString
-    kGADSimulatorID:
-        exclude: true
-    kGAMSimulatorID:
-        class: GAMRequest
-        name: GAMSimulatorID
-        type: NSString
 
     GADCustomEventParametersServer:
         class: GADMobileAds  # have no better place for it for now

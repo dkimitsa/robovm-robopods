@@ -2,12 +2,12 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>io.github.dkimitsa.robovm</groupId>
-        <version>1.46.0-SNAPSHOT</version>
+        <version>1.47.0-SNAPSHOT</version>
         <artifactId>robopods-firebase-parent</artifactId>
     </parent>
 
     <artifactId>robopods-firebase-crashlytics-ios</artifactId>
-    <name>RoboPods FireBase Crashlytics iOS v11.7.0</name>
+    <name>RoboPods FireBase Crashlytics iOS v11.9.0</name>
     <packaging>jar</packaging>
 
     <dependencies>

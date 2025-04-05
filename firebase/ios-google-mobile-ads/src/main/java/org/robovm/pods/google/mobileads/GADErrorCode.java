@@ -52,14 +52,9 @@ public enum /*<name>*/GADErrorCode/*</name>*/ implements NSErrorCode {
     MediationInvalidAdSize(10L),
     InternalError(11L),
     InvalidArgument(12L),
-    ReceivedInvalidResponse(13L),
-    /**
-     * @deprecated This error will be replaced with GADErrorNoFill in a future version
-     */
-    @Deprecated
-    MediationNoFill(9L),
     AdAlreadyUsed(19L),
-    ApplicationIdentifierMissing(20L);
+    ApplicationIdentifierMissing(20L),
+    ReceivedInvalidAdString(21L);
     /*</values>*/
 
     /*<bind>*/static { Bro.bind(GADErrorCode.class); }/*</bind>*/

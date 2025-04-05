@@ -8,7 +8,7 @@
 #import <UIKit/UIKit.h>
 
 /// Project version string for GoogleMobileAds.
-FOUNDATION_EXPORT const unsigned char GoogleMobileAdsVersionString[];
+FOUNDATION_EXPORT const unsigned char GoogleMobileAdsVersionString[] NS_SWIFT_NAME(GoogleMobileAdsVersion);
 
 // Header files.
 #import <GoogleMobileAds/GADAdChoicesPosition.h>
@@ -43,7 +43,6 @@ FOUNDATION_EXPORT const unsigned char GoogleMobileAdsVersionString[];
 #import <GoogleMobileAds/GADCustomNativeAdDelegate.h>
 #import <GoogleMobileAds/GADDebugOptionsViewController.h>
 #import <GoogleMobileAds/GADDisplayAdMeasurement.h>
-#import <GoogleMobileAds/GADDynamicHeightSearchRequest.h>
 #import <GoogleMobileAds/GADExtras.h>
 #import <GoogleMobileAds/GADFullScreenContentDelegate.h>
 #import <GoogleMobileAds/GADInitializationStatus.h>
@@ -75,7 +74,6 @@ FOUNDATION_EXPORT const unsigned char GoogleMobileAdsVersionString[];
 #import <GoogleMobileAds/GADResponseInfo.h>
 #import <GoogleMobileAds/GADRewardedAd.h>
 #import <GoogleMobileAds/GADRewardedInterstitialAd.h>
-#import <GoogleMobileAds/GADSearchBannerView.h>
 #import <GoogleMobileAds/GADServerSideVerificationOptions.h>
 #import <GoogleMobileAds/GADVideoController.h>
 #import <GoogleMobileAds/GADVideoControllerDelegate.h>

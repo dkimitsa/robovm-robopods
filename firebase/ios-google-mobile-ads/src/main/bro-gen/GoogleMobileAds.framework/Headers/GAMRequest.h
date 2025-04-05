@@ -9,6 +9,7 @@
 #import <GoogleMobileAds/GADRequest.h>
 
 /// Specifies optional parameters for ad requests.
+NS_SWIFT_NAME(AdManagerRequest)
 @interface GAMRequest : GADRequest
 
 /// Publisher provided user ID.

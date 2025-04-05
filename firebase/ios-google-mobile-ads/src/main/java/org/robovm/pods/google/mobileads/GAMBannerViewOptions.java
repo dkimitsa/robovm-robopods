@@ -52,10 +52,10 @@ import org.robovm.apple.webkit.*;
     protected GAMBannerViewOptions(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
-    @Property(selector = "enableManualImpressions")
-    public native boolean isEnableManualImpressions();
-    @Property(selector = "setEnableManualImpressions:")
-    public native void setEnableManualImpressions(boolean v);
+    @Property(selector = "isManualImpressionEnabled")
+    public native boolean isManualImpressionEnabled();
+    @Property(selector = "setManualImpressionEnabled:")
+    public native void setManualImpressionEnabled(boolean v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

@@ -59,7 +59,7 @@ val knownFrameworks = mutableMapOf<String, (String) -> Unit>(
             version = { artifactLocation.infoPlist.extractVersion() },
             instruction = """
                 0. run applovinsdk/cocoatouch/fetch.sh to fetch and build from cocotouch 
-                1. expected location ${artifactLocation} 
+                1. expected location $artifactLocation 
             """.trimIndent()
         )
     },
@@ -356,7 +356,7 @@ val knownFrameworks = mutableMapOf<String, (String) -> Unit>(
             instruction = """
                 0. download latest version from https://developers.is.com/ironsource-mobile/ios/ios-sdk/#step-1
                 1. unpack
-                2. expected location ${artifactLocation}
+                2. expected location $artifactLocation
             """.trimIndent(),
         )
     },
@@ -383,7 +383,7 @@ val knownFrameworks = mutableMapOf<String, (String) -> Unit>(
             },
             instruction = """
                 0. run adapty/cocoatouch/fetch.sh to fetch and build from cocotouch 
-                1. expected location ${artifactLocation}
+                1. expected location $artifactLocation
             """.trimIndent(),
         )
     },
@@ -413,7 +413,7 @@ val knownFrameworks = mutableMapOf<String, (String) -> Unit>(
             instruction = """
                 0. download latest version from https://github.com/tenjin/tenjin-ios-sdk/releases
                 1. unpack and rename to ${downloadFolder.extend("tenjin-ios-sdk")}
-                1. expected location ${artifactLocation}
+                1. expected location $artifactLocation
             """.trimIndent()
         )
     },
@@ -433,7 +433,22 @@ val knownFrameworks = mutableMapOf<String, (String) -> Unit>(
             instruction = """
                 0. download latest CleverAdsSolutionsBase.tar.gz from https://github.com/cleveradssolutions/CAS-iOS/releases/
                 1. unpack
-                2. expected location ${artifactLocation}
+                2. expected location $artifactLocation
+            """.trimIndent(),
+        )
+    },
+    "AppsFlyerLib" to { framework ->
+        val artifactLocation = downloadFolder.extend("AppsFlyerLib.xcframework/ios-arm64/$framework.framework")
+        processFramework(
+            artifact = "$framework.framework",
+            moduleFolder = "appsflyer/ios",
+            sourceHeadersDir = artifactLocation.headers,
+            yaml = "appsflyer.yaml",
+            version = { artifactLocation.infoPlist.extractVersion(versionKey = "CFBundleVersion") },
+            instruction = """
+                0. download latest AppsFlyerLib.xcframework.zip from  https://github.com/AppsFlyerSDK/AppsFlyerFramework/releases
+                1. unpack
+                2. expected location $artifactLocation
             """.trimIndent(),
         )
     },
