@@ -140,6 +140,10 @@
 
 + (BOOL)isSingularLink:(id)linkHolder;
 
+#pragma mark - Push Notifications
+
++ (BOOL)handlePushNotification:(NSDictionary *)pushNotificationPayload;
+
 #pragma mark - Admon Methods
 
 + (void)adRevenue:(SingularAdData *)adData;

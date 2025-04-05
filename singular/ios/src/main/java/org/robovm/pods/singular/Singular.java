@@ -280,6 +280,8 @@ import org.robovm.apple.uikit.*;
     public static native NSNumber skanGetConversionValue();
     @Method(selector = "isSingularLink:")
     public static native boolean isSingularLink(NSObject linkHolder);
+    @Method(selector = "handlePushNotification:")
+    public static native boolean handlePushNotification(NSDictionary<?, ?> pushNotificationPayload);
     @Method(selector = "adRevenue:")
     public static native void adRevenue(SingularAdData adData);
     @Method(selector = "createReferrerShortLink:referrerName:referrerId:completionHandler:")

@@ -18,6 +18,7 @@
 @property NSString* apikey;
 @property NSString* secret;
 @property BOOL clipboardAttribution;
+@property BOOL limitedIdentifiersEnabled;
 
 // Singular Links fields
 @property NSDictionary *launchOptions;
@@ -44,6 +45,10 @@ typedef void (^SdidAccessorHandler)(NSString* result);
 @property NSString *customSdid;
 @property SdidAccessorHandler didSetSdidHandler;
 @property SdidAccessorHandler sdidReceivedHandler;
+
+// Push Notifications fields
+@property NSDictionary* pushNotificationPayload;
+@property NSArray<NSArray<NSString*>*>* pushNotificationLinkPath;
 
 -(id)initWithApiKey:(NSString*)apikey andSecret:(NSString*)secret;
 
