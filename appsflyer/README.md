@@ -4,6 +4,7 @@
 
 | RoboPods Version | CleverAds Version |
 |------------------|-------------------|
+| 1.48.0           | 6.16.2            |
 | 1.47.0           | 6.16.1            |
 
 ## Official website

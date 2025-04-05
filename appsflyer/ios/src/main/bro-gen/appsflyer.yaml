@@ -41,6 +41,8 @@ classes:
                 name: encode
             '-initWithCoder:':
                 name: init
+            '-initWithIsUserSubjectToGDPR:hasConsentForDataUsage:hasConsentForAdsPersonalization:hasConsentForAdStorage:':
+                name: init
     AppsFlyerCrossPromotionHelper:
         methods:
             '+logCrossPromoteImpression:campaign:parameters:':

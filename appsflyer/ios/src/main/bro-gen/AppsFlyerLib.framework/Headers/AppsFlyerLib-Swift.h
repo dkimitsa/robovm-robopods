@@ -299,6 +299,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 
 #if defined(__OBJC__)
+@class NSNumber;
 @class NSCoder;
 
 SWIFT_CLASS("_TtC12AppsFlyerLib16AppsFlyerConsent")
@@ -306,9 +307,11 @@ SWIFT_CLASS("_TtC12AppsFlyerLib16AppsFlyerConsent")
 @property (nonatomic, readonly) BOOL isUserSubjectToGDPR;
 @property (nonatomic, readonly) BOOL hasConsentForDataUsage;
 @property (nonatomic, readonly) BOOL hasConsentForAdsPersonalization;
+@property (nonatomic, readonly, strong) NSNumber * _Nullable hasConsentForAdStorage;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 - (nonnull instancetype)initWithNonGDPRUser SWIFT_DEPRECATED_MSG("Use init(isUserSubjectToGDPR:, hasConsentForDataUsage:, hasConsentForAdsPersonalization:, hasConsentForAdStorage:) instead");
+- (nonnull instancetype)initWithIsUserSubjectToGDPR:(NSNumber * _Nullable)isUserSubjectToGDPR hasConsentForDataUsage:(NSNumber * _Nullable)hasConsentForDataUsage hasConsentForAdsPersonalization:(NSNumber * _Nullable)hasConsentForAdsPersonalization hasConsentForAdStorage:(NSNumber * _Nullable)hasConsentForAdStorage;
 - (nonnull instancetype)initForGDPRUserWithHasConsentForDataUsage:(BOOL)forGDPRUserWithHasConsentForDataUsage hasConsentForAdsPersonalization:(BOOL)hasConsentForAdsPersonalization SWIFT_DEPRECATED_MSG("Use init(isUserSubjectToGDPR:, hasConsentForDataUsage:, hasConsentForAdsPersonalization:, hasConsentForAdStorage:) instead");
 - (void)encodeWithCoder:(NSCoder * _Nonnull)coder;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder;

@@ -58,6 +58,8 @@ import org.robovm.apple.coreanimation.*;
        res.initObject(res.initWithNonGDPRUser());
        return res;
     }
+    @Method(selector = "initWithIsUserSubjectToGDPR:hasConsentForDataUsage:hasConsentForAdsPersonalization:hasConsentForAdStorage:")
+    public AppsFlyerConsent(NSNumber isUserSubjectToGDPR, NSNumber hasConsentForDataUsage, NSNumber hasConsentForAdsPersonalization, NSNumber hasConsentForAdStorage) { super((SkipInit) null); initObject(init(isUserSubjectToGDPR, hasConsentForDataUsage, hasConsentForAdsPersonalization, hasConsentForAdStorage)); }
     /**
      * @deprecated Use init(isUserSubjectToGDPR:, hasConsentForDataUsage:, hasConsentForAdsPersonalization:, hasConsentForAdStorage:) instead
      */
@@ -74,6 +76,8 @@ import org.robovm.apple.coreanimation.*;
     public native boolean hasConsentForDataUsage();
     @Property(selector = "hasConsentForAdsPersonalization")
     public native boolean hasConsentForAdsPersonalization();
+    @Property(selector = "hasConsentForAdStorage")
+    public native NSNumber getHasConsentForAdStorage();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
@@ -83,6 +87,8 @@ import org.robovm.apple.coreanimation.*;
     @Deprecated
     @Method(selector = "initWithNonGDPRUser")
     protected native @Pointer long initWithNonGDPRUser();
+    @Method(selector = "initWithIsUserSubjectToGDPR:hasConsentForDataUsage:hasConsentForAdsPersonalization:hasConsentForAdStorage:")
+    protected native @Pointer long init(NSNumber isUserSubjectToGDPR, NSNumber hasConsentForDataUsage, NSNumber hasConsentForAdsPersonalization, NSNumber hasConsentForAdStorage);
     /**
      * @deprecated Use init(isUserSubjectToGDPR:, hasConsentForDataUsage:, hasConsentForAdsPersonalization:, hasConsentForAdStorage:) instead
      */
