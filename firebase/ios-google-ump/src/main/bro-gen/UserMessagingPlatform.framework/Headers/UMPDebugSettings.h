@@ -8,9 +8,10 @@ typedef NS_ENUM(NSInteger, UMPDebugGeography) {
   UMPDebugGeographyOther = 4,  ///< Geography appears as in a region with no regulation in force.
   UMPDebugGeographyNotEEA
   __attribute__((deprecated("Deprecated. Use UMPDebugGeographyOther."))) = 2,  ///< Deprecated.
-};
+} NS_SWIFT_NAME(DebugGeography);
 
 /// Overrides settings for debugging or testing.
+NS_SWIFT_NAME(DebugSettings)
 @interface UMPDebugSettings : NSObject <NSCopying>
 
 /// Array of device identifier strings. Debug features are enabled for devices with these

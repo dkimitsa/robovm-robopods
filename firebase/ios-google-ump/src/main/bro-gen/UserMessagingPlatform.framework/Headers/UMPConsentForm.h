@@ -11,10 +11,13 @@ typedef void (^UMPConsentFormLoadCompletionHandler)(UMPConsentForm *_Nullable co
 typedef void (^UMPConsentFormPresentCompletionHandler)(NSError *_Nullable error);
 
 /// A single use consent form object.
+NS_SWIFT_NAME(ConsentForm)
 @interface UMPConsentForm : NSObject
+
 /// Loads a consent form and calls completionHandler on completion. Must be called on the
 /// main queue.
-+ (void)loadWithCompletionHandler:(nonnull UMPConsentFormLoadCompletionHandler)completionHandler;
++ (void)loadWithCompletionHandler:(nonnull UMPConsentFormLoadCompletionHandler)completionHandler
+    NS_SWIFT_NAME(load(with:));
 
 /// Loads a consent form and immediately presents it from the provided viewController if
 /// UMPConsentInformation.sharedInstance.consentStatus is UMPConsentStatusRequired. Calls
@@ -23,7 +26,8 @@ typedef void (^UMPConsentFormPresentCompletionHandler)(NSError *_Nullable error)
 /// the top view controller of the application's main window.
 + (void)loadAndPresentIfRequiredFromViewController:(nullable UIViewController *)viewController
                                  completionHandler:(nullable UMPConsentFormPresentCompletionHandler)
-                                                       completionHandler;
+                                                       completionHandler
+    NS_SWIFT_NAME(loadAndPresentIfRequired(from:completionHandler:));
 
 /// Presents a privacy options form from the provided viewController if
 /// UMPConsentInformation.sharedInstance.privacyOptionsRequirementStatus is
@@ -39,7 +43,8 @@ typedef void (^UMPConsentFormPresentCompletionHandler)(NSError *_Nullable error)
 + (void)presentPrivacyOptionsFormFromViewController:(nullable UIViewController *)viewController
                                   completionHandler:
                                       (nullable UMPConsentFormPresentCompletionHandler)
-                                          completionHandler;
+                                          completionHandler
+    NS_SWIFT_NAME(presentPrivacyOptionsForm(from:completionHandler:));
 
 /// Unavailable. Use +loadWithCompletionHandler: instead.
 - (nonnull instancetype)init NS_UNAVAILABLE;
@@ -50,6 +55,6 @@ typedef void (^UMPConsentFormPresentCompletionHandler)(NSError *_Nullable error)
 /// called. completionHandler is called on the main queue. If viewController is nil, uses the top
 /// view controller of the application's main window.
 - (void)presentFromViewController:(nullable UIViewController *)viewController
-                completionHandler:
-                    (nullable UMPConsentFormPresentCompletionHandler)completionHandler;
+                completionHandler:(nullable UMPConsentFormPresentCompletionHandler)completionHandler
+    NS_SWIFT_NAME(present(from:completionHandler:));
 @end

@@ -50,7 +50,7 @@ v1.48.0 - in development
 | [Charts](charts/)               | 5.1.0   |
 | [ClearAds](cleverads/)          | 3.9.10  |
 | [Facebook](facebook/)           | 18.0.0  |
-| [Firebase](firebase/)           | 11.9.0  |
+| [Firebase](firebase/)           | 11.11.0 |
 | [Fyber](fyber/)                 | 8.3.4   |
 | [HelpShiftX](helpshift/)        | 10.4.0  |
 | [InMobi](inmobi/)               | 10.8.0  |
