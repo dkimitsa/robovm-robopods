@@ -119,6 +119,10 @@ import org.robovm.apple.coregraphics.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
+    /**
+     * @deprecated This API is deprecated, please use `initWithAppID:completionBlock:completionQueue:` instead
+     */
+    @Deprecated
     @Method(selector = "initWithAppID:")
     public native void init(String appID);
     @Method(selector = "initWithAppID:completionBlock:completionQueue:")

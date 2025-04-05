@@ -43,6 +43,7 @@ public enum /*<name>*/IASDKCoreInitErrorType/*</name>*/ implements ValuedEnum {
     /*<values>*/
     Unknown(0L),
     FailedToDownloadMandatoryData(1L),
+    @Deprecated
     MissingModules(2L),
     InvalidAppID(3L),
     Cancelled(4L);

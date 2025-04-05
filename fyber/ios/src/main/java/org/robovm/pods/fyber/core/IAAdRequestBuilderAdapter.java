@@ -49,8 +49,16 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*//*</constructors>*/
     /*<properties>*/
+    /**
+     * @deprecated This API is deprecated as of version 8.3.5 and will be removed in a future release.
+     */
+    @Deprecated
     @NotImplemented("useSecureConnections")
     public boolean isUseSecureConnections() { return false; }
+    /**
+     * @deprecated This API is deprecated as of version 8.3.5 and will be removed in a future release.
+     */
+    @Deprecated
     @NotImplemented("setUseSecureConnections:")
     public void setUseSecureConnections(boolean v) {}
     @NotImplemented("spotID")

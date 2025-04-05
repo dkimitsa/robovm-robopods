@@ -20,7 +20,7 @@
 
 @required
 
-@property (nonatomic) BOOL useSecureConnections;
+@property (nonatomic) BOOL useSecureConnections DEPRECATED_MSG_ATTRIBUTE("This API is deprecated as of version 8.3.5 and will be removed in a future release.");
 
 /**
  *  @brief A mandatory parameter.

@@ -54,8 +54,16 @@ import org.robovm.apple.coregraphics.*;
     /*<properties>*/
     @Property(selector = "unitID")
     public native String getUnitID();
+    /**
+     * @deprecated This API is deprecated as of version 8.3.5 and will be removed in a future release.
+     */
+    @Deprecated
     @Property(selector = "useSecureConnections")
     public native boolean isUseSecureConnections();
+    /**
+     * @deprecated This API is deprecated as of version 8.3.5 and will be removed in a future release.
+     */
+    @Deprecated
     @Property(selector = "setUseSecureConnections:")
     public native void setUseSecureConnections(boolean v);
     @Property(selector = "spotID")
