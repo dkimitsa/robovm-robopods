@@ -53,16 +53,28 @@ import org.robovm.apple.safariservices.*;
     public ALAdView(ALAdSize size) { super((SkipInit) null); initObject(init(size)); }
     @Method(selector = "initWithSize:zoneIdentifier:")
     public ALAdView(ALAdSize size, String zoneIdentifier) { super((SkipInit) null); initObject(init(size, zoneIdentifier)); }
-    @Method(selector = "initWithSdk:size:")
-    public ALAdView(ALSdk sdk, ALAdSize size) { super((SkipInit) null); initObject(init(sdk, size)); }
-    @Method(selector = "initWithSdk:size:zoneIdentifier:")
-    public ALAdView(ALSdk sdk, ALAdSize size, String zoneIdentifier) { super((SkipInit) null); initObject(init(sdk, size, zoneIdentifier)); }
-    @Method(selector = "initWithFrame:size:sdk:")
-    public ALAdView(@ByVal CGRect frame, ALAdSize size, ALSdk sdk) { super((SkipInit) null); initObject(init(frame, size, sdk)); }
     @Method(selector = "initWithFrame:")
     public ALAdView(@ByVal CGRect frame) { super(frame); }
     @Method(selector = "initWithCoder:")
     public ALAdView(NSCoder coder) { super(coder); }
+    /**
+     * @deprecated This API is deprecated and will be removed in a future SDK version. Please use `-[ALAdView initWithSize:]` instead.
+     */
+    @Deprecated
+    @Method(selector = "initWithSdk:size:")
+    public ALAdView(ALSdk sdk, ALAdSize size) { super((SkipInit) null); initObject(init(sdk, size)); }
+    /**
+     * @deprecated This API is deprecated and will be removed in a future SDK version. Please use `-[ALAdView initWithSize:zoneIdentifier:]` instead.
+     */
+    @Deprecated
+    @Method(selector = "initWithSdk:size:zoneIdentifier:")
+    public ALAdView(ALSdk sdk, ALAdSize size, String zoneIdentifier) { super((SkipInit) null); initObject(init(sdk, size, zoneIdentifier)); }
+    /**
+     * @deprecated This API is deprecated and will be removed in a future SDK version. Please use `-[ALAdView initWithSize:]` instead.
+     */
+    @Deprecated
+    @Method(selector = "initWithFrame:size:sdk:")
+    public ALAdView(@ByVal CGRect frame, ALAdSize size, ALSdk sdk) { super((SkipInit) null); initObject(init(frame, size, sdk)); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "adLoadDelegate")
@@ -87,20 +99,6 @@ import org.robovm.apple.safariservices.*;
     public native boolean isAutoload();
     @Property(selector = "setAutoloadEnabled:")
     public native void setAutoload(boolean v);
-    /**
-     * @since Available in iOS 15.0 and later.
-     */
-    @Property(selector = "prewarmingToken")
-    public native SFSafariViewControllerPrewarmingToken getPrewarmingToken();
-    /**
-     * @since Available in iOS 15.0 and later.
-     */
-    @Property(selector = "setPrewarmingToken:")
-    public native void setPrewarmingToken(SFSafariViewControllerPrewarmingToken v);
-    @Property(selector = "safariViewControllerDelegate")
-    public native SFSafariViewControllerDelegate getSafariViewControllerDelegate();
-    @Property(selector = "setSafariViewControllerDelegate:")
-    public native void setSafariViewControllerDelegate(SFSafariViewControllerDelegate v);
     @WeaklyLinked
     @Property(selector = "layerClass")
     public static native Class<? extends CALayer> getLayerClass();
@@ -117,12 +115,6 @@ import org.robovm.apple.safariservices.*;
     protected native @Pointer long init(ALAdSize size);
     @Method(selector = "initWithSize:zoneIdentifier:")
     protected native @Pointer long init(ALAdSize size, String zoneIdentifier);
-    @Method(selector = "initWithSdk:size:")
-    protected native @Pointer long init(ALSdk sdk, ALAdSize size);
-    @Method(selector = "initWithSdk:size:zoneIdentifier:")
-    protected native @Pointer long init(ALSdk sdk, ALAdSize size, String zoneIdentifier);
-    @Method(selector = "initWithFrame:size:sdk:")
-    protected native @Pointer long init(@ByVal CGRect frame, ALAdSize size, ALSdk sdk);
     /**
      * @since Available in iOS 9.0 and later.
      */
@@ -133,5 +125,23 @@ import org.robovm.apple.safariservices.*;
      */
     @Method(selector = "userInterfaceLayoutDirectionForSemanticContentAttribute:relativeToLayoutDirection:")
     public static native UIUserInterfaceLayoutDirection getUserInterfaceLayoutDirection(UISemanticContentAttribute semanticContentAttribute, UIUserInterfaceLayoutDirection layoutDirection);
+    /**
+     * @deprecated This API is deprecated and will be removed in a future SDK version. Please use `-[ALAdView initWithSize:]` instead.
+     */
+    @Deprecated
+    @Method(selector = "initWithSdk:size:")
+    protected native @Pointer long init(ALSdk sdk, ALAdSize size);
+    /**
+     * @deprecated This API is deprecated and will be removed in a future SDK version. Please use `-[ALAdView initWithSize:zoneIdentifier:]` instead.
+     */
+    @Deprecated
+    @Method(selector = "initWithSdk:size:zoneIdentifier:")
+    protected native @Pointer long init(ALSdk sdk, ALAdSize size, String zoneIdentifier);
+    /**
+     * @deprecated This API is deprecated and will be removed in a future SDK version. Please use `-[ALAdView initWithSize:]` instead.
+     */
+    @Deprecated
+    @Method(selector = "initWithFrame:size:sdk:")
+    protected native @Pointer long init(@ByVal CGRect frame, ALAdSize size, ALSdk sdk);
     /*</methods>*/
 }

@@ -46,9 +46,13 @@ import org.robovm.apple.safariservices.*;
     /*<bind>*/static { ObjCRuntime.bind(ALMediationAdapter.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    protected ALMediationAdapter() {}
+    public ALMediationAdapter() {}
     protected ALMediationAdapter(Handle h, long handle) { super(h, handle); }
     protected ALMediationAdapter(SkipInit skipInit) { super(skipInit); }
+    /**
+     * @deprecated This API is deprecated and will be removed in a future SDK version. Please use `-[ALMediationAdapter init] instead.
+     */
+    @Deprecated
     @Method(selector = "initWithSdk:")
     public ALMediationAdapter(ALSdk sdk) { super((SkipInit) null); initObject(init(sdk)); }
     /*</constructors>*/
@@ -72,10 +76,22 @@ import org.robovm.apple.safariservices.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
+    /**
+     * @deprecated This API is deprecated and will be removed in a future SDK version. Please use `-[ALMediationAdapter init] instead.
+     */
+    @Deprecated
     @Method(selector = "initWithSdk:")
     protected native @Pointer long init(ALSdk sdk);
     @Method(selector = "configureRewardForParameters:")
     public native void configureRewardForParameters(MAAdapterResponseParameters parameters);
+    @Method(selector = "isAdaptiveAdViewFormat:forParameters:")
+    public native boolean isAdaptive(MAAdFormat adFormat, MAAdapterParameters parameters);
+    @Method(selector = "isInlineAdaptiveAdViewForParameters:")
+    public native boolean isInlineAdaptiveAdViewForParameters(MAAdapterParameters parameters);
+    @Method(selector = "inlineAdaptiveAdViewMaximumHeightFromParameters:")
+    public native @MachineSizedFloat double inlineAdaptiveAdViewMaximumHeightFromParameters(MAAdapterParameters parameters);
+    @Method(selector = "adaptiveAdViewWidthFromParameters:")
+    public native @MachineSizedFloat double adaptiveAdViewWidthFromParameters(MAAdapterParameters parameters);
     @Method(selector = "e:becauseOf:")
     public native void e(String message, NSException ex);
     @Method(selector = "userError:becauseOf:")

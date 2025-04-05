@@ -15,8 +15,6 @@
 @class ALSdk;
 @class ALAdSize;
 @class ALAdType;
-@class ALSFSafariViewControllerDelegate;
-@class SFSafariViewControllerPrewarmingToken;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -75,16 +73,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign, getter=isAutoloadEnabled, setter=setAutoloadEnabled:) BOOL autoload;
 
 /**
- * @c SFSafariViewControllerPrewarmingToken object that corresponds to prewarmed URLs. Must keep a strong reference to this token as long as we expect the prewarmed connections to remain open.
- */
-@property (nonatomic, strong, nullable) SFSafariViewControllerPrewarmingToken *prewarmingToken API_AVAILABLE(ios(15.0));
-
-/**
- * @c ALSFSafariViewControllerDelegate object for @c SFSafariViewController callbacks.
- */
-@property (nonatomic, strong, nullable) ALSFSafariViewControllerDelegate *safariViewControllerDelegate;
-
-/**
  * Sets extra info to pass to the SDK.
  *
  * @param key   Parameter key.
@@ -134,40 +122,19 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (instancetype)initWithSize:(ALAdSize *)size zoneIdentifier:(nullable NSString *)zoneIdentifier;
 
-/**
- * Initializes the ad view with a given SDK and size.
- *
- * @param sdk  Instance of @c ALSdk to use.
- * @param size @c ALAdSize that represents the size of this ad. For example, @code +[ALAdSize banner] @endcode.
- *
- * @return A new instance of @c ALAdView.
- */
-- (instancetype)initWithSdk:(ALSdk *)sdk size:(ALAdSize *)size;
-
-/**
- * Initializes the ad view with a given SDK, size, and zone.
- *
- * @param sdk            Instance of @c ALSdk to use.
- * @param size           @c ALAdSize that represents the size of this ad. For example, @code +[ALAdSize banner] @endcode.
- * @param zoneIdentifier Identifier for the zone that this @c ALAdView should load ads for.
- *
- * @return A new instance of @c ALAdView.
- */
-- (instancetype)initWithSdk:(ALSdk *)sdk size:(ALAdSize *)size zoneIdentifier:(nullable NSString *)zoneIdentifier;
-
-/**
- * Initializes the ad view with a given frame, ad size, and SDK instance.
- *
- * @param frame  Describes the position and dimensions of the ad.
- * @param size   @c ALAdSize that represents the size of this ad. For example, @code +[ALAdSize banner] @endcode.
- * @param sdk    Instance of @c ALSdk to use.
- *
- * @return A new instance of @c ALAdView.
- */
-- (instancetype)initWithFrame:(CGRect)frame size:(ALAdSize *)size sdk:(ALSdk *)sdk;
-
 - (instancetype)init NS_UNAVAILABLE;
 + (instancetype)new NS_UNAVAILABLE;
+
+@end
+
+@interface ALAdView(ALDeprecated)
+
+- (instancetype)initWithSdk:(ALSdk *)sdk size:(ALAdSize *)size
+__deprecated_msg("This API is deprecated and will be removed in a future SDK version. Please use `-[ALAdView initWithSize:]` instead.");
+- (instancetype)initWithSdk:(ALSdk *)sdk size:(ALAdSize *)size zoneIdentifier:(nullable NSString *)zoneIdentifier
+__deprecated_msg("This API is deprecated and will be removed in a future SDK version. Please use `-[ALAdView initWithSize:zoneIdentifier:]` instead.");
+- (instancetype)initWithFrame:(CGRect)frame size:(ALAdSize *)size sdk:(ALSdk *)sdk
+__deprecated_msg("This API is deprecated and will be removed in a future SDK version. Please use `-[ALAdView initWithSize:]` instead.");
 
 @end
 

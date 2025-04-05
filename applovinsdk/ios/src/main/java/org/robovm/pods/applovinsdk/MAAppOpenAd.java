@@ -51,6 +51,10 @@ import org.robovm.apple.safariservices.*;
     protected MAAppOpenAd(SkipInit skipInit) { super(skipInit); }
     @Method(selector = "initWithAdUnitIdentifier:")
     public MAAppOpenAd(String adUnitIdentifier) { super((SkipInit) null); initObject(initWithAdUnitIdentifier$(adUnitIdentifier)); }
+    /**
+     * @deprecated This API is deprecated and will be removed in a future SDK version. Please use `-[MAAppOpenAd initWithAdUnitIdentifier:]` instead.
+     */
+    @Deprecated
     @Method(selector = "initWithAdUnitIdentifier:sdk:")
     public MAAppOpenAd(String adUnitIdentifier, ALSdk sdk) { super((SkipInit) null); initObject(initWithAdUnitIdentifier$sdk$(adUnitIdentifier, sdk)); }
     /*</constructors>*/
@@ -84,8 +88,6 @@ import org.robovm.apple.safariservices.*;
     /*<methods>*/
     @Method(selector = "initWithAdUnitIdentifier:")
     protected native @Pointer long initWithAdUnitIdentifier$(String adUnitIdentifier);
-    @Method(selector = "initWithAdUnitIdentifier:sdk:")
-    protected native @Pointer long initWithAdUnitIdentifier$sdk$(String adUnitIdentifier, ALSdk sdk);
     @Method(selector = "loadAd")
     public native void loadAd();
     @Method(selector = "showAd")
@@ -98,5 +100,11 @@ import org.robovm.apple.safariservices.*;
     public native void setExtraParameterForKey$value$(String key, String value);
     @Method(selector = "setLocalExtraParameterForKey:value:")
     public native void setLocalExtraParameterForKey$value$(String key, NSObject value);
+    /**
+     * @deprecated This API is deprecated and will be removed in a future SDK version. Please use `-[MAAppOpenAd initWithAdUnitIdentifier:]` instead.
+     */
+    @Deprecated
+    @Method(selector = "initWithAdUnitIdentifier:sdk:")
+    protected native @Pointer long initWithAdUnitIdentifier$sdk$(String adUnitIdentifier, ALSdk sdk);
     /*</methods>*/
 }

@@ -46,9 +46,13 @@ import org.robovm.apple.safariservices.*;
     /*<bind>*/static { ObjCRuntime.bind(ALInterstitialAd.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    protected ALInterstitialAd() {}
+    public ALInterstitialAd() {}
     protected ALInterstitialAd(Handle h, long handle) { super(h, handle); }
     protected ALInterstitialAd(SkipInit skipInit) { super(skipInit); }
+    /**
+     * @deprecated This API is deprecated and will be removed in a future SDK version. Please use `-[ALInterstitialAd init]` instead.
+     */
+    @Deprecated
     @Method(selector = "initWithSdk:")
     public ALInterstitialAd(ALSdk sdk) { super((SkipInit) null); initObject(init(sdk)); }
     /*</constructors>*/
@@ -68,16 +72,32 @@ import org.robovm.apple.safariservices.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "show")
-    public native void show();
-    @Method(selector = "showAd:")
-    public native void showAd(ALAd ad);
     @Method(selector = "setExtraInfoForKey:value:")
     public native void setExtraInfo(String key, NSObject value);
+    @Method(selector = "showAd:")
+    public native void showAd(ALAd ad);
+    /**
+     * @deprecated This API is deprecated and will be removed in a future SDK version. Please use `-[ALInterstitialAd init]` instead.
+     */
+    @Deprecated
     @Method(selector = "initWithSdk:")
     protected native @Pointer long init(ALSdk sdk);
+    /**
+     * @deprecated This API is deprecated and will be removed in a future SDK version. Please load an ad using `-[ALAdService loadNextAdForZoneIdentifier:]` and show the loaded `ALAd` using `-[ALInterstitialAd showAd:]` instead.
+     */
+    @Deprecated
+    @Method(selector = "show")
+    public native void show();
+    /**
+     * @deprecated This API is deprecated and will be removed in a future SDK version. Please load an ad using `-[ALAdService loadNextAdForZoneIdentifier:]` and show the loaded `ALAd` using `-[ALInterstitialAd showAd:]` instead.
+     */
+    @Deprecated
     @Method(selector = "show")
     public static native ALInterstitialAd Show();
+    /**
+     * @deprecated This API is deprecated and will be removed in a future SDK version. Please use `-[ALInterstitialAd init]` instead.
+     */
+    @Deprecated
     @Method(selector = "shared")
     public static native ALInterstitialAd shared();
     /*</methods>*/

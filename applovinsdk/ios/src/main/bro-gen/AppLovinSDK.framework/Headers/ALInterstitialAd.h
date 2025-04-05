@@ -17,9 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
  * This class displays full-screen ads to the user.
  */
 @interface ALInterstitialAd : NSObject
-    
-#pragma mark - Ad Delegates
-    
+
 /**
  * An object that conforms to the @c ALAdLoadDelegate protocol. If you provide a value for @c adLoadDelegate in your instance, the SDK will notify
  * this delegate of ad load events.
@@ -38,36 +36,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, strong, nullable) id<ALAdVideoPlaybackDelegate> adVideoPlaybackDelegate;
 
-#pragma mark - Loading and Showing Ads, Class Methods
-
-/**
- * Shows an interstitial over the application’s key window. This loads the next interstitial and displays it.
- */
-+ (instancetype)show;
-
-/**
- * Gets a reference to the shared singleton instance.
- *
- * This method calls @code +[ALSdk shared] @endcode which requires that you have an SDK key defined in @code Info.plist @endcode.
- *
- * @warning If you use @code +[ALSdk sharedWithKey:] @endcode then you will need to use the instance methods instead.
- */
-+ (instancetype)shared;
-
-#pragma mark - Loading and Showing Ads, Instance Methods
-
-/**
- * Shows an interstitial over the application’s key window. This loads the next interstitial and displays it.
- */
-- (void)show;
-
-/**
- * Shows the current interstitial over a given window and renders a specified ad loaded by @c ALAdService.
- *
- * @param ad The ad to render into this interstitial.
- */
-- (void)showAd:(ALAd *)ad;
-
 /**
  * Sets extra info to pass to the SDK.
  *
@@ -76,18 +44,24 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)setExtraInfoForKey:(NSString *)key value:(nullable id)value;
 
-#pragma mark - Initialization
-
 /**
- * Initializes an instance of this class with an SDK instance.
+ * Shows the current interstitial over a given window and renders a specified ad loaded by @c ALAdService.
  *
- * @param sdk The AppLovin SDK instance to use.
+ * @param ad The ad to render into this interstitial.
  */
-- (instancetype)initWithSdk:(ALSdk *)sdk;
+- (void)showAd:(ALAd *)ad;
 
-- (instancetype)init NS_UNAVAILABLE;
-+ (instancetype)new NS_UNAVAILABLE;
+@end
 
+@interface ALInterstitialAd(ALDeprecated)
+- (instancetype)initWithSdk:(ALSdk *)sdk
+__deprecated_msg("This API is deprecated and will be removed in a future SDK version. Please use `-[ALInterstitialAd init]` instead.");
++ (instancetype)show
+__deprecated_msg("This API is deprecated and will be removed in a future SDK version. Please load an ad using `-[ALAdService loadNextAdForZoneIdentifier:]` and show the loaded `ALAd` using `-[ALInterstitialAd showAd:]` instead.");
++ (instancetype)shared
+__deprecated_msg("This API is deprecated and will be removed in a future SDK version. Please use `-[ALInterstitialAd init]` instead.");
+- (void)show
+__deprecated_msg("This API is deprecated and will be removed in a future SDK version. Please load an ad using `-[ALAdService loadNextAdForZoneIdentifier:]` and show the loaded `ALAd` using `-[ALInterstitialAd showAd:]` instead.");
 @end
 
 NS_ASSUME_NONNULL_END

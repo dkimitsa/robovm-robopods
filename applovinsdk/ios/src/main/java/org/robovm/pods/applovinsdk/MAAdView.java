@@ -51,10 +51,22 @@ import org.robovm.apple.safariservices.*;
     protected MAAdView(SkipInit skipInit) { super(skipInit); }
     @Method(selector = "initWithAdUnitIdentifier:")
     public MAAdView(String adUnitIdentifier) { super((SkipInit) null); initObject(init(adUnitIdentifier)); }
-    @Method(selector = "initWithAdUnitIdentifier:sdk:")
-    public MAAdView(String adUnitIdentifier, ALSdk sdk) { super((SkipInit) null); initObject(init(adUnitIdentifier, sdk)); }
+    @Method(selector = "initWithAdUnitIdentifier:configuration:")
+    public MAAdView(String adUnitIdentifier, MAAdViewConfiguration configuration) { super((SkipInit) null); initObject(init(adUnitIdentifier, configuration)); }
     @Method(selector = "initWithAdUnitIdentifier:adFormat:")
     public MAAdView(String adUnitIdentifier, MAAdFormat adFormat) { super((SkipInit) null); initObject(init(adUnitIdentifier, adFormat)); }
+    @Method(selector = "initWithAdUnitIdentifier:adFormat:configuration:")
+    public MAAdView(String adUnitIdentifier, MAAdFormat adFormat, MAAdViewConfiguration configuration) { super((SkipInit) null); initObject(init(adUnitIdentifier, adFormat, configuration)); }
+    /**
+     * @deprecated This API is deprecated and will be removed in a future SDK version. Please use one of the other initializers instead.
+     */
+    @Deprecated
+    @Method(selector = "initWithAdUnitIdentifier:sdk:")
+    public MAAdView(String adUnitIdentifier, ALSdk sdk) { super((SkipInit) null); initObject(init(adUnitIdentifier, sdk)); }
+    /**
+     * @deprecated This API is deprecated and will be removed in a future SDK version. Please use one of the other initializers instead.
+     */
+    @Deprecated
     @Method(selector = "initWithAdUnitIdentifier:adFormat:sdk:")
     public MAAdView(String adUnitIdentifier, MAAdFormat adFormat, ALSdk sdk) { super((SkipInit) null); initObject(init(adUnitIdentifier, adFormat, sdk)); }
     /*</constructors>*/
@@ -95,12 +107,12 @@ import org.robovm.apple.safariservices.*;
     /*<methods>*/
     @Method(selector = "initWithAdUnitIdentifier:")
     protected native @Pointer long init(String adUnitIdentifier);
-    @Method(selector = "initWithAdUnitIdentifier:sdk:")
-    protected native @Pointer long init(String adUnitIdentifier, ALSdk sdk);
+    @Method(selector = "initWithAdUnitIdentifier:configuration:")
+    protected native @Pointer long init(String adUnitIdentifier, MAAdViewConfiguration configuration);
     @Method(selector = "initWithAdUnitIdentifier:adFormat:")
     protected native @Pointer long init(String adUnitIdentifier, MAAdFormat adFormat);
-    @Method(selector = "initWithAdUnitIdentifier:adFormat:sdk:")
-    protected native @Pointer long init(String adUnitIdentifier, MAAdFormat adFormat, ALSdk sdk);
+    @Method(selector = "initWithAdUnitIdentifier:adFormat:configuration:")
+    protected native @Pointer long init(String adUnitIdentifier, MAAdFormat adFormat, MAAdViewConfiguration configuration);
     @Method(selector = "loadAd")
     public native void loadAd();
     @Method(selector = "startAutoRefresh")
@@ -121,5 +133,17 @@ import org.robovm.apple.safariservices.*;
      */
     @Method(selector = "userInterfaceLayoutDirectionForSemanticContentAttribute:relativeToLayoutDirection:")
     public static native UIUserInterfaceLayoutDirection getUserInterfaceLayoutDirection(UISemanticContentAttribute semanticContentAttribute, UIUserInterfaceLayoutDirection layoutDirection);
+    /**
+     * @deprecated This API is deprecated and will be removed in a future SDK version. Please use one of the other initializers instead.
+     */
+    @Deprecated
+    @Method(selector = "initWithAdUnitIdentifier:sdk:")
+    protected native @Pointer long init(String adUnitIdentifier, ALSdk sdk);
+    /**
+     * @deprecated This API is deprecated and will be removed in a future SDK version. Please use one of the other initializers instead.
+     */
+    @Deprecated
+    @Method(selector = "initWithAdUnitIdentifier:adFormat:sdk:")
+    protected native @Pointer long init(String adUnitIdentifier, MAAdFormat adFormat, ALSdk sdk);
     /*</methods>*/
 }

@@ -34,16 +34,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (instancetype)sharedWithAdUnitIdentifier:(NSString *)adUnitIdentifier;
 
-/**
- * Get an instance of a MAX rewarded ad.
- *
- * @param adUnitIdentifier Ad unit ID for which to get the ad instance.
- * @param sdk              SDK to use.
- *
- * @return An instance of a rewarded ad tied to the specified ad unit ID.
- */
-+ (instancetype)sharedWithAdUnitIdentifier:(NSString *)adUnitIdentifier sdk:(ALSdk *)sdk;
-
 - (instancetype)init NS_UNAVAILABLE;
 + (instancetype)new NS_UNAVAILABLE;
 
@@ -158,6 +148,11 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)setLocalExtraParameterForKey:(NSString *)key value:(nullable id)value;
 
+@end
+
+@interface MARewardedAd(ALDeprecated)
++ (instancetype)sharedWithAdUnitIdentifier:(NSString *)adUnitIdentifier sdk:(ALSdk *)sdk
+__deprecated_msg("This API is deprecated and will be removed in a future SDK version. Please use `+[MARewardedAd sharedWithAdUnitIdentifier:]` instead.");
 @end
 
 NS_ASSUME_NONNULL_END

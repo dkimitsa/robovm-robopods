@@ -94,6 +94,10 @@ import org.robovm.apple.safariservices.*;
     public native void setLocalExtraParameter(String key, NSObject value);
     @Method(selector = "sharedWithAdUnitIdentifier:")
     public static native MARewardedAd getShared(String adUnitIdentifier);
+    /**
+     * @deprecated This API is deprecated and will be removed in a future SDK version. Please use `+[MARewardedAd sharedWithAdUnitIdentifier:]` instead.
+     */
+    @Deprecated
     @Method(selector = "sharedWithAdUnitIdentifier:sdk:")
     public static native MARewardedAd getShared(String adUnitIdentifier, ALSdk sdk);
     /*</methods>*/

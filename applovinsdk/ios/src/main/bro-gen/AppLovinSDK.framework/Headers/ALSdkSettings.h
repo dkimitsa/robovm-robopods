@@ -69,15 +69,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)setExtraParameterForKey:(NSString *)key value:(nullable NSString *)value;
 
-@property (nonatomic, copy) NSArray<NSString *> *testDeviceAdvertisingIdentifiers __deprecated_msg("This property is deprecated and will be removed in a future SDK version. Please use the new ALSdkInitializationConfiguration (see ALSdkInitializationConfiguration.testDeviceAdvertisingIdentifiers)");
-@property (nonatomic, copy) NSArray<NSString *> *initializationAdUnitIdentifiers __deprecated_msg("This property is deprecated and will be removed in a future SDK version. version. Please use the new ALSdkInitializationConfiguration (see ALSdkInitializationConfiguration.initializationAdUnitIdentifiers");
-@property (nonatomic, assign, getter=isExceptionHandlerEnabled) BOOL exceptionHandlerEnabled __deprecated_msg("This property is deprecated and will be removed in a future SDK version. Please use the new ALSdkInitializationConfiguration (see ALSdkInitializationConfiguration.exceptionHandlerEnabled)");
-@end
-
-@interface ALSdkSettings (ALDeprecated)
-
-- (instancetype)init __deprecated_msg("This method is deprecated and will be removed in a future SDK version. Please use `ALSdk.shared.settings` instead");
-+ (instancetype)new __deprecated_msg("This method is deprecated and will be removed in a future SDK version. Please use ` ALSdk.shared.settings` instead");
 @end
 
 NS_ASSUME_NONNULL_END

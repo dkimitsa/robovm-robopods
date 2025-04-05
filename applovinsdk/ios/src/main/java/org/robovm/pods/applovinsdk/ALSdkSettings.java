@@ -73,42 +73,6 @@ import org.robovm.apple.safariservices.*;
     public native NSDictionary<NSString, NSString> getExtraParameters();
     @Property(selector = "setExtraParameters:")
     public native void setExtraParameters(NSDictionary<NSString, NSString> v);
-    /**
-     * @deprecated This property is deprecated and will be removed in a future SDK version. Please use the new ALSdkInitializationConfiguration (see ALSdkInitializationConfiguration.testDeviceAdvertisingIdentifiers)
-     */
-    @Deprecated
-    @Property(selector = "testDeviceAdvertisingIdentifiers")
-    public native NSArray<NSString> getTestDeviceAdvertisingIdentifiers();
-    /**
-     * @deprecated This property is deprecated and will be removed in a future SDK version. Please use the new ALSdkInitializationConfiguration (see ALSdkInitializationConfiguration.testDeviceAdvertisingIdentifiers)
-     */
-    @Deprecated
-    @Property(selector = "setTestDeviceAdvertisingIdentifiers:")
-    public native void setTestDeviceAdvertisingIdentifiers(NSArray<NSString> v);
-    /**
-     * @deprecated This property is deprecated and will be removed in a future SDK version. version. Please use the new ALSdkInitializationConfiguration (see ALSdkInitializationConfiguration.initializationAdUnitIdentifiers
-     */
-    @Deprecated
-    @Property(selector = "initializationAdUnitIdentifiers")
-    public native NSArray<NSString> getInitializationAdUnitIdentifiers();
-    /**
-     * @deprecated This property is deprecated and will be removed in a future SDK version. version. Please use the new ALSdkInitializationConfiguration (see ALSdkInitializationConfiguration.initializationAdUnitIdentifiers
-     */
-    @Deprecated
-    @Property(selector = "setInitializationAdUnitIdentifiers:")
-    public native void setInitializationAdUnitIdentifiers(NSArray<NSString> v);
-    /**
-     * @deprecated This property is deprecated and will be removed in a future SDK version. Please use the new ALSdkInitializationConfiguration (see ALSdkInitializationConfiguration.exceptionHandlerEnabled)
-     */
-    @Deprecated
-    @Property(selector = "isExceptionHandlerEnabled")
-    public native boolean isExceptionHandlerEnabled();
-    /**
-     * @deprecated This property is deprecated and will be removed in a future SDK version. Please use the new ALSdkInitializationConfiguration (see ALSdkInitializationConfiguration.exceptionHandlerEnabled)
-     */
-    @Deprecated
-    @Property(selector = "setExceptionHandlerEnabled:")
-    public native void setExceptionHandlerEnabled(boolean v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

@@ -27,14 +27,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (instancetype)initWithAdUnitIdentifier:(NSString *)adUnitIdentifier;
 
-/**
- * Creates a new MAX native ad loader.
- *
- * @param adUnitIdentifier Ad unit ID to load ads for.
- * @param sdk              SDK to use. You can obtain an instance of the SDK by calling @code +[ALSdk shared] @endcode.
- */
-- (instancetype)initWithAdUnitIdentifier:(NSString *)adUnitIdentifier sdk:(ALSdk *)sdk;
-
 - (instancetype)init NS_UNAVAILABLE;
 + (instancetype)new NS_UNAVAILABLE;
 
@@ -113,6 +105,11 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, copy, nullable) NSString *customData;
 
+@end
+
+@interface MANativeAdLoader(ALDeprecated)
+- (instancetype)initWithAdUnitIdentifier:(NSString *)adUnitIdentifier sdk:(ALSdk *)sdk
+__deprecated_msg("This API is deprecated and will be removed in a future SDK version. Please use `-[MANativeAdLoader initWithAdUnitIdentifier:]` instead.");
 @end
 
 NS_ASSUME_NONNULL_END

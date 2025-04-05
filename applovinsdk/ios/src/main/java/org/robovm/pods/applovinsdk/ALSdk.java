@@ -61,18 +61,6 @@ import org.robovm.apple.safariservices.*;
     public native ALSdkSettings getSettings();
     @Property(selector = "configuration")
     public native ALSdkConfiguration getConfiguration();
-    /**
-     * @deprecated This property has been moved to @c ALSdkSettings and will be removed in a future SDK version.
-     */
-    @Deprecated
-    @Property(selector = "userIdentifier")
-    public native String getUserIdentifier();
-    /**
-     * @deprecated This property has been moved to @c ALSdkSettings and will be removed in a future SDK version.
-     */
-    @Deprecated
-    @Property(selector = "setUserIdentifier:")
-    public native void setUserIdentifier(String v);
     @Property(selector = "segmentCollection")
     public native MASegmentCollection getSegmentCollection();
     @Property(selector = "adService")
@@ -81,18 +69,6 @@ import org.robovm.apple.safariservices.*;
     public native ALEventService getEventService();
     @Property(selector = "cmpService")
     public native ALCMPService getCmpService();
-    /**
-     * @deprecated This setter has been moved to @c ALSdkInitializationConfiguration and will be removed in a future SDK version.
-     */
-    @Deprecated
-    @Property(selector = "mediationProvider")
-    public native String getMediationProvider();
-    /**
-     * @deprecated This setter has been moved to @c ALSdkInitializationConfiguration and will be removed in a future SDK version.
-     */
-    @Deprecated
-    @Property(selector = "setMediationProvider:")
-    public native void setMediationProvider(String v);
     @Property(selector = "availableMediatedNetworks")
     public native NSArray<MAMediatedNetworkInfo> getAvailableMediatedNetworks();
     @Property(selector = "isInitialized")
@@ -110,53 +86,5 @@ import org.robovm.apple.safariservices.*;
     public native void initialize(ALSdkInitializationConfiguration initializationConfiguration, @Block VoidBlock1<ALSdkConfiguration> completionHandler);
     @Method(selector = "shared")
     public static native ALSdk shared();
-    /**
-     * @deprecated This method is deprecated and will be removed in a future SDK version. (see ALSdkInitializationConfiguration.pluginVersion)
-     */
-    @Deprecated
-    @Method(selector = "setPluginVersion:")
-    public native void setPluginVersion(String pluginVersion);
-    /**
-     * @deprecated This method is deprecated and will be removed in a future SDK version. Please use `-[[ALSdk shared] initializeWithConfiguration:completionHandler:]` instead.
-     */
-    @Deprecated
-    @Method(selector = "initializeSdk")
-    public native void initializeSdk();
-    /**
-     * @deprecated This method is deprecated and will be removed in a future SDK version. Please use `-[[ALSdk shared] initializeWithConfiguration:completionHandler:]` instead.
-     */
-    @Deprecated
-    @Method(selector = "initializeSdkWithCompletionHandler:")
-    public native void initializeSdk(@Block VoidBlock1<ALSdkConfiguration> completionHandler);
-    /**
-     * @deprecated This method is deprecated and will be removed in a future SDK version. Please use `-[[ALSdk shared] initializeWithConfiguration:completionHandler:]` instead.
-     */
-    @Deprecated
-    @Method(selector = "initializeSdk")
-    public static native void InitializeSdk();
-    /**
-     * @deprecated This method is deprecated and will be removed in a future SDK version. Please use `-[[ALSdk shared] initializeWithConfiguration:completionHandler:]` instead.
-     */
-    @Deprecated
-    @Method(selector = "initializeSdkWithCompletionHandler:")
-    public static native void InitializeSdk(@Block VoidBlock1<ALSdkConfiguration> completionHandler);
-    /**
-     * @deprecated This method is deprecated and will be removed in a future SDK version. Please use `+[ALSdk shared]` and initialize with `-[[ALSdk shared] initializeWithConfiguration:completionHandler:]` as soon as possible
-     */
-    @Deprecated
-    @Method(selector = "sharedWithSettings:")
-    public static native ALSdk getShared(ALSdkSettings settings);
-    /**
-     * @deprecated This method is deprecated and will be removed in a future SDK version. Please use `+[ALSdk shared]` and initialize with `-[[ALSdk shared] initializeWithConfiguration:completionHandler:]` as soon as possible
-     */
-    @Deprecated
-    @Method(selector = "sharedWithKey:")
-    public static native ALSdk getShared(String key);
-    /**
-     * @deprecated This method is deprecated and will be removed in a future SDK version. Please use `+[ALSdk shared]` and initialize with `-[[ALSdk shared] initializeWithConfiguration:completionHandler:]` as soon as possible
-     */
-    @Deprecated
-    @Method(selector = "sharedWithKey:settings:")
-    public static native ALSdk getShared(String key, ALSdkSettings settings);
     /*</methods>*/
 }

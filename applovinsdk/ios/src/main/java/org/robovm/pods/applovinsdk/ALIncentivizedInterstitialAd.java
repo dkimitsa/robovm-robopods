@@ -46,13 +46,21 @@ import org.robovm.apple.safariservices.*;
     /*<bind>*/static { ObjCRuntime.bind(ALIncentivizedInterstitialAd.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    protected ALIncentivizedInterstitialAd() {}
+    public ALIncentivizedInterstitialAd() {}
     protected ALIncentivizedInterstitialAd(Handle h, long handle) { super(h, handle); }
     protected ALIncentivizedInterstitialAd(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithSdk:")
-    public ALIncentivizedInterstitialAd(ALSdk sdk) { super((SkipInit) null); initObject(init(sdk)); }
     @Method(selector = "initWithZoneIdentifier:")
     public ALIncentivizedInterstitialAd(String zoneIdentifier) { super((SkipInit) null); initObject(init(zoneIdentifier)); }
+    /**
+     * @deprecated This API is deprecated and will be removed in a future SDK version. Please use `-[ALIncentivizedInterstitialAd init]` instead.
+     */
+    @Deprecated
+    @Method(selector = "initWithSdk:")
+    public ALIncentivizedInterstitialAd(ALSdk sdk) { super((SkipInit) null); initObject(init(sdk)); }
+    /**
+     * @deprecated This API is deprecated and will be removed in a future SDK version. Please use `-[ALIncentivizedInterstitialAd initWithZoneIdentifier:]` instead.
+     */
+    @Deprecated
     @Method(selector = "initWithZoneIdentifier:sdk:")
     public ALIncentivizedInterstitialAd(String zoneIdentifier, ALSdk sdk) { super((SkipInit) null); initObject(init(zoneIdentifier, sdk)); }
     /*</constructors>*/
@@ -67,35 +75,79 @@ import org.robovm.apple.safariservices.*;
     public native void setAdVideoPlaybackDelegate(ALAdVideoPlaybackDelegate v);
     @Property(selector = "zoneIdentifier")
     public native String getZoneIdentifier();
+    /**
+     * @deprecated This API is deprecated and will be removed in a future SDK version. Please load an ad using `ALAdService` and show the loaded `ALAd` using `-[ALIncentivizedInterstitialAd showAd:andNotify:]` instead.
+     */
+    @Deprecated
     @Property(selector = "isReadyForDisplay")
     public native boolean isReadyForDisplay();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "initWithSdk:")
-    protected native @Pointer long init(ALSdk sdk);
-    @Method(selector = "initWithZoneIdentifier:")
-    protected native @Pointer long init(String zoneIdentifier);
-    @Method(selector = "initWithZoneIdentifier:sdk:")
-    protected native @Pointer long init(String zoneIdentifier, ALSdk sdk);
-    @Method(selector = "preloadAndNotify:")
-    public native void preload(ALAdLoadDelegate adLoadDelegate);
-    @Method(selector = "show")
-    public native void show();
-    @Method(selector = "showAndNotify:")
-    public native void show(ALAdRewardDelegate adRewardDelegate);
-    @Method(selector = "showAd:andNotify:")
-    public native void showAd(ALAd ad, ALAdRewardDelegate adRewardDelegate);
     @Method(selector = "setExtraInfoForKey:value:")
     public native void setExtraInfo(String key, NSObject value);
+    @Method(selector = "showAd:andNotify:")
+    public native void showAd(ALAd ad, ALAdRewardDelegate adRewardDelegate);
+    @Method(selector = "initWithZoneIdentifier:")
+    protected native @Pointer long init(String zoneIdentifier);
+    /**
+     * @deprecated This API is deprecated and will be removed in a future SDK version. Please use `-[ALIncentivizedInterstitialAd init]` instead.
+     */
+    @Deprecated
+    @Method(selector = "initWithSdk:")
+    protected native @Pointer long init(ALSdk sdk);
+    /**
+     * @deprecated This API is deprecated and will be removed in a future SDK version. Please use `-[ALIncentivizedInterstitialAd initWithZoneIdentifier:]` instead.
+     */
+    @Deprecated
+    @Method(selector = "initWithZoneIdentifier:sdk:")
+    protected native @Pointer long init(String zoneIdentifier, ALSdk sdk);
+    /**
+     * @deprecated This API is deprecated and will be removed in a future SDK version. Please load an ad using `ALAdService` and show the loaded `ALAd` using `-[ALIncentivizedInterstitialAd showAd:andNotify:]` instead.
+     */
+    @Deprecated
+    @Method(selector = "preloadAndNotify:")
+    public native void preload(ALAdLoadDelegate adLoadDelegate);
+    /**
+     * @deprecated This API is deprecated and will be removed in a future SDK version. Please load an ad using `ALAdService` and show the loaded `ALAd` using `-[ALIncentivizedInterstitialAd showAd:andNotify:]` instead.
+     */
+    @Deprecated
+    @Method(selector = "show")
+    public native void show();
+    /**
+     * @deprecated This API is deprecated and will be removed in a future SDK version. Please load an ad using `ALAdService` and show the loaded `ALAd` using `-[ALIncentivizedInterstitialAd showAd:andNotify:]` instead.
+     */
+    @Deprecated
+    @Method(selector = "showAndNotify:")
+    public native void show(ALAdRewardDelegate adRewardDelegate);
+    /**
+     * @deprecated This API is deprecated and will be removed in a future SDK version. Please use `-[ALIncentivizedInterstitialAd init]` instead.
+     */
+    @Deprecated
     @Method(selector = "shared")
     public static native ALIncentivizedInterstitialAd shared();
+    /**
+     * @deprecated This API is deprecated and will be removed in a future SDK version. Please load an ad using `-[ALAdService loadNextAdForZoneIdentifier:]` and show the loaded `ALAd` using `-[ALIncentivizedInterstitialAd showAd:andNotify:]` instead.
+     */
+    @Deprecated
     @Method(selector = "preloadAndNotify:")
     public static native void Preload(ALAdLoadDelegate adLoadDelegate);
+    /**
+     * @deprecated This API is deprecated and will be removed in a future SDK version. Please load an ad using `ALAdService` and show the loaded `ALAd` using `-[ALIncentivizedInterstitialAd showAd:andNotify:]` instead.
+     */
+    @Deprecated
     @Method(selector = "isReadyForDisplay")
     public static native boolean IsReadyForDisplay();
+    /**
+     * @deprecated This API is deprecated and will be removed in a future SDK version. Please load an ad using `ALAdService` and show the loaded `ALAd` using `-[ALIncentivizedInterstitialAd showAd:andNotify:]` instead.
+     */
+    @Deprecated
     @Method(selector = "show")
     public static native void Show();
+    /**
+     * @deprecated This API is deprecated and will be removed in a future SDK version. Please load an ad using `ALAdService` and show the loaded `ALAd` using `-[ALIncentivizedInterstitialAd showAd:andNotify:]` instead.
+     */
+    @Deprecated
     @Method(selector = "showAndNotify:")
     public static native void Show(ALAdRewardDelegate adRewardDelegate);
     /*</methods>*/

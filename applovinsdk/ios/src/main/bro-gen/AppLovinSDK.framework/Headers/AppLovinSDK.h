@@ -47,6 +47,7 @@
 #import <AppLovinSDK/MAAdFormat.h>
 #import <AppLovinSDK/MAAdView.h>
 #import <AppLovinSDK/MAAdViewAdapter.h>
+#import <AppLovinSDK/MAAdViewConfiguration.h>
 #import <AppLovinSDK/MAAdWaterfallInfo.h>
 #import <AppLovinSDK/MAAppOpenAd.h>
 #import <AppLovinSDK/MAAppOpenAdapter.h>

@@ -14,6 +14,7 @@
 
 @class ALSdk;
 @class MAAdFormat;
+@class MAAdViewConfiguration;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -32,12 +33,12 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithAdUnitIdentifier:(NSString *)adUnitIdentifier;
 
 /**
- * Creates a new ad view for a given ad unit ID.
+ * Creates a new ad view for a given ad unit ID and configuration.
  *
  * @param adUnitIdentifier Ad unit ID to load ads for.
- * @param sdk              SDK to use. You can obtain an instance of the SDK by calling @code +[ALSdk shared] @endcode.
+ * @param configuration    Configuration object for customizing the ad view's properties.
  */
-- (instancetype)initWithAdUnitIdentifier:(NSString *)adUnitIdentifier sdk:(ALSdk *)sdk;
+- (instancetype)initWithAdUnitIdentifier:(NSString *)adUnitIdentifier configuration:(nullable MAAdViewConfiguration *)configuration;
 
 /**
  * Creates a new ad view for a given ad unit ID and ad format.
@@ -48,13 +49,13 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithAdUnitIdentifier:(NSString *)adUnitIdentifier adFormat:(MAAdFormat *)adFormat;
 
 /**
- * Create a new ad view for a given ad unit ID, ad format, and SDK.
+ * Creates a new ad view for a given ad unit ID, ad format, and configuration.
  *
- * @param adUnitIdentifier Ad unit id to load ads for.
+ * @param adUnitIdentifier Ad unit ID to load ads for.
  * @param adFormat         Ad format to load ads for.
- * @param sdk              SDK to use. You can obtain an instance of the SDK by calling @code +[ALSdk shared] @endcode.
+ * @param configuration    Configuration object for customizing the ad view's properties.
  */
-- (instancetype)initWithAdUnitIdentifier:(NSString *)adUnitIdentifier adFormat:(MAAdFormat *)adFormat sdk:(ALSdk *)sdk;
+- (instancetype)initWithAdUnitIdentifier:(NSString *)adUnitIdentifier adFormat:(MAAdFormat *)adFormat configuration:(nullable MAAdViewConfiguration *)configuration;
 
 - (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithFrame:(CGRect)frame NS_UNAVAILABLE;
@@ -138,6 +139,13 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, copy, nullable) NSString *customData;
 
+@end
+
+@interface MAAdView(ALDeprecated)
+- (instancetype)initWithAdUnitIdentifier:(NSString *)adUnitIdentifier sdk:(ALSdk *)sdk
+__deprecated_msg("This API is deprecated and will be removed in a future SDK version. Please use one of the other initializers instead.");
+- (instancetype)initWithAdUnitIdentifier:(NSString *)adUnitIdentifier adFormat:(MAAdFormat *)adFormat sdk:(ALSdk *)sdk
+__deprecated_msg("This API is deprecated and will be removed in a future SDK version. Please use one of the other initializers instead.");
 @end
 
 NS_ASSUME_NONNULL_END

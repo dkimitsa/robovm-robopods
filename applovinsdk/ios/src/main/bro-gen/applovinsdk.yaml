@@ -18,6 +18,7 @@ enums:
     ALCMPErrorCode: { }
     ALConsentFlowUserGeography: { }
     MAMediatedNetworkInfoInitializationStatus: {}
+    MAAdViewAdaptiveType: {}
 classes:
     ALAd:
         methods:
@@ -214,6 +215,10 @@ classes:
                 name: setExtraParameter
             '-setLocalExtraParameterForKey:value:':
                 name: setLocalExtraParameter
+            '-initWithAdUnitIdentifier:configuration:':
+                name: init
+            '-initWithAdUnitIdentifier:adFormat:configuration:':
+                name: init
     MAInterstitialAd:
         methods:
             '-initWithAdUnitIdentifier:':
@@ -315,6 +320,8 @@ classes:
                 name: e
             '-userError:becauseOf:':
                 name: userError
+            '-isAdaptiveAdViewFormat:forParameters:':
+                name: isAdaptive
     ALMediationAdapterRouter:
         methods:
             '-addInterstitialAdapter:delegate:forPlacementIdentifier:':
@@ -482,6 +489,12 @@ classes:
                 constructor: true
                 name: create
     MASegmentCollectionBuilder: { }
+    MAAdViewConfiguration:
+        methods:
+            '+configurationWithBuilderBlock:':
+                constructor: true
+                name: create
+    MAAdViewConfigurationBuilder: { }
 protocols:
     ALAdDisplayDelegate:
         methods:

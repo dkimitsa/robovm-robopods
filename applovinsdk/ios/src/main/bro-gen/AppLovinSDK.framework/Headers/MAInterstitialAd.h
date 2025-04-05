@@ -31,14 +31,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (instancetype)initWithAdUnitIdentifier:(NSString *)adUnitIdentifier;
 
-/**
- * Creates a new mediation interstitial.
- *
- * @param adUnitIdentifier Ad unit ID to load ads for.
- * @param sdk              SDK to use. You can obtain an instance of the SDK by calling @code +[ALSdk shared] @endcode.
- */
-- (instancetype)initWithAdUnitIdentifier:(NSString *)adUnitIdentifier sdk:(ALSdk *)sdk;
-
 - (instancetype)init NS_UNAVAILABLE;
 + (instancetype)new NS_UNAVAILABLE;
 
@@ -149,6 +141,11 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)setLocalExtraParameterForKey:(NSString *)key value:(nullable id)value;
 
+@end
+
+@interface MAInterstitialAd(ALDeprecated)
+- (instancetype)initWithAdUnitIdentifier:(NSString *)adUnitIdentifier sdk:(ALSdk *)sdk
+__deprecated_msg("This API is deprecated and will be removed in a future SDK version. Please use `-[MAInterstitialAd initWithAdUnitIdentifier:]` instead.");
 @end
 
 NS_ASSUME_NONNULL_END
