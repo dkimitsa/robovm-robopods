@@ -83,6 +83,10 @@ import org.robovm.apple.coreanimation.*;
     public native IMGDPR getGdpr();
     @Property(selector = "setGdpr:")
     public native void setGdpr(IMGDPR v);
+    @Property(selector = "ipAddrTPSupport")
+    public native NSArray<NSString> getIpAddrTPSupport();
+    @Property(selector = "setIpAddrTPSupport:")
+    public native void setIpAddrTPSupport(NSArray<NSString> v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

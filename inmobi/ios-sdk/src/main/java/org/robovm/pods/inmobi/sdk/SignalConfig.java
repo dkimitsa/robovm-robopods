@@ -95,6 +95,10 @@ import org.robovm.apple.coreanimation.*;
     public native PublisherConfig getPublisher();
     @Property(selector = "setPublisher:")
     public native void setPublisher(PublisherConfig v);
+    @Property(selector = "experiments")
+    public native ExperimentsConfig getExperiments();
+    @Property(selector = "setExperiments:")
+    public native void setExperiments(ExperimentsConfig v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

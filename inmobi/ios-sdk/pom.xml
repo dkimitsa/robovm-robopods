@@ -7,7 +7,7 @@
     </parent>
 
     <artifactId>robopods-inmobi-sdk-ios</artifactId>
-    <name>RoboPods InMobi SDK iOS v10.8.0</name>
+    <name>RoboPods InMobi SDK iOS v10.8.2</name>
     <packaging>jar</packaging>
 
     <licenses>

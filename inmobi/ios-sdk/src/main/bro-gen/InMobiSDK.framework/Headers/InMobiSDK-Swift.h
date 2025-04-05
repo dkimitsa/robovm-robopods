@@ -555,6 +555,13 @@ SWIFT_CLASS("_TtC9InMobiSDK14ErrorLogConfig")
 @end
 
 
+SWIFT_CLASS("_TtC9InMobiSDK17ExperimentsConfig")
+@interface ExperimentsConfig : NSObject
+@property (nonatomic) BOOL networkRevamp;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
 SWIFT_CLASS("_TtC9InMobiSDK12IMAdMetaInfo")
 @interface IMAdMetaInfo : NSObject
 /// CreativeID of the ad.
@@ -1521,6 +1528,13 @@ SWIFT_CLASS("_TtC9InMobiSDK19IMPrivacyCompliance")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
+
+SWIFT_CLASS("_TtC9InMobiSDK23IMPublisherProvidedInfo")
+@interface IMPublisherProvidedInfo : NSObject
++ (BOOL)getIsAgeRestricted SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
 typedef SWIFT_ENUM(NSInteger, IMRemoteLogLevel, open) {
   IMRemoteLogLevelError = 0,
   IMRemoteLogLevelDebug = 1,
@@ -1693,6 +1707,34 @@ SWIFT_CLASS("_TtC9InMobiSDK5IMSdk")
 
 
 @interface IMSdk (SWIFT_EXTENSION(InMobiSDK))
+/// Enable or disable the AVAudioSession management by SDK
+/// Indicates whether the application wants to manage audio session. If set as NO, the InMobi SDK will stop managing AVAudioSession during the HTML video playback lifecycle. If set as YES,
+/// the InMobi SDK will manage AVAudioSession. That might set AVAudioSession’s category to AVAudioSessionCategoryAmbient and categoryOption to AVAudioSessionCategoryOptionMixWithOthers,
+/// when HTML video is rendering. This setting will not stop the app audio from playing in an app. It will mix with ad audio and if any sound playing in another app, it will stop that sound and play the ads’
+/// sound and once the ad is dismissed it notifies another app.
+/// \param value Boolean depicting enable or disable the AVAudioSession management by SDK
+///
++ (void)shouldAutoManageAVAudioSession:(BOOL)value;
+/// Use this to set the global state of the SDK to mute.
+/// \param shouldMute Boolean depicting the mute state of the SDK
+///
++ (void)setMute:(BOOL)shouldMute;
+/// Set Unified Id procured from vendors directly.
+/// The ids are to be submitted in the following format.
+/// key would be the vendor and value would be the identifier.
+/// \code
+/// {
+/// "id5" :  "jkfid3ufolkb89hgvhb@$dj!@?#",
+/// "live Ramp":  "$fvjk@kjfsk%$nfkvd9008jkf"
+/// }
+///
+/// \endcode\param ids Represents the unified ids in dictionary format.
+///
++ (void)setPublisherProvidedUnifiedId:(NSDictionary<NSString *, id> * _Nonnull)ids;
+@end
+
+
+@interface IMSdk (SWIFT_EXTENSION(InMobiSDK))
 /// Pass or update custom signals to InMobi.
 /// <ul>
 ///   <li>
@@ -1748,34 +1790,6 @@ SWIFT_CLASS("_TtC9InMobiSDK5IMSdk")
 ///
 /// \endcode
 + (void)resetPublisherSignals;
-@end
-
-
-@interface IMSdk (SWIFT_EXTENSION(InMobiSDK))
-/// Enable or disable the AVAudioSession management by SDK
-/// Indicates whether the application wants to manage audio session. If set as NO, the InMobi SDK will stop managing AVAudioSession during the HTML video playback lifecycle. If set as YES,
-/// the InMobi SDK will manage AVAudioSession. That might set AVAudioSession’s category to AVAudioSessionCategoryAmbient and categoryOption to AVAudioSessionCategoryOptionMixWithOthers,
-/// when HTML video is rendering. This setting will not stop the app audio from playing in an app. It will mix with ad audio and if any sound playing in another app, it will stop that sound and play the ads’
-/// sound and once the ad is dismissed it notifies another app.
-/// \param value Boolean depicting enable or disable the AVAudioSession management by SDK
-///
-+ (void)shouldAutoManageAVAudioSession:(BOOL)value;
-/// Use this to set the global state of the SDK to mute.
-/// \param shouldMute Boolean depicting the mute state of the SDK
-///
-+ (void)setMute:(BOOL)shouldMute;
-/// Set Unified Id procured from vendors directly.
-/// The ids are to be submitted in the following format.
-/// key would be the vendor and value would be the identifier.
-/// \code
-/// {
-/// "id5" :  "jkfid3ufolkb89hgvhb@$dj!@?#",
-/// "live Ramp":  "$fvjk@kjfsk%$nfkvd9008jkf"
-/// }
-///
-/// \endcode\param ids Represents the unified ids in dictionary format.
-///
-+ (void)setPublisherProvidedUnifiedId:(NSDictionary<NSString *, id> * _Nonnull)ids;
 @end
 
 @class CLLocation;
@@ -2233,6 +2247,7 @@ SWIFT_CLASS("_TtC9InMobiSDK10RootConfig")
 @property (nonatomic, strong) IMLatestSdkInfo * _Nonnull latestSdkInfo;
 @property (nonatomic, copy) NSArray<IMComponent *> * _Nonnull components;
 @property (nonatomic, strong) IMGDPR * _Nonnull gdpr;
+@property (nonatomic, copy) NSArray<NSString *> * _Nonnull ipAddrTPSupport;
 - (NSString * _Nonnull)urlForProductType:(NSString * _Nonnull)type SWIFT_WARN_UNUSED_RESULT;
 - (int64_t)expiryForProductType:(NSString * _Nonnull)type SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
@@ -2286,6 +2301,7 @@ SWIFT_CLASS("_TtC9InMobiSDK12SignalConfig")
 @property (nonatomic, strong) IceConfig * _Nonnull ice;
 @property (nonatomic, strong) PurchasesConfig * _Nonnull purchases;
 @property (nonatomic, strong) PublisherConfig * _Nonnull publisher;
+@property (nonatomic, strong) ExperimentsConfig * _Nonnull experiments;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 

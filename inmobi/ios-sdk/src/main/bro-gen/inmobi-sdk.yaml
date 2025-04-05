@@ -177,6 +177,8 @@ classes:
     WebImpressionConfig: { }
     WebViewModeConfig: { }
     WebViewModeDictionaryConfig: { }
+    ExperimentsConfig: { }
+    IMPublisherProvidedInfo: { }
 protocols:
     IMBannerDelegate:
         methods:
