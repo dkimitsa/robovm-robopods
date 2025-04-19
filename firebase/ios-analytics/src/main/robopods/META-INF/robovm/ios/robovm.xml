@@ -4,4 +4,7 @@
 
         <framework>StoreKit</framework>
     </frameworks>
+    <exportedSymbols>
+        <symbol>FIRConsent*</symbol>
+    </exportedSymbols>
 </config>
