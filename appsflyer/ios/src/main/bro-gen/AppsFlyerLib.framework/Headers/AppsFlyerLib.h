@@ -2,7 +2,7 @@
 //  AppsFlyerLib.h
 //  AppsFlyerLib
 //
-//  AppsFlyer iOS SDK 6.16.2 (230)
+//  AppsFlyer iOS SDK 6.12.2 (999)
 //  Copyright (c) 2012-2023 AppsFlyer Ltd. All rights reserved.
 //
 
@@ -689,6 +689,14 @@ typedef void (^AFSDKValidateAndLogCompletion)(AFSDKValidateAndLogResult * _Nulla
  */
 - (void)setSharingFilterForPartners:(NSArray<NSString *> * _Nullable)sharingFilter;
 
+
+/**
+    Sets Custom Install Id - this overrides the default AppsFlyer Install ID.
+    Only effective if Info.plist has `AppsFlyerAllowCustomInstallId=YES`
+     * Must be called before calling set appsFlyerDevKey and appleAppID
+    @param customID the customId.
+    */
+- (void)setInstallId:(NSString *)customID;
 
 /**
     Sets or updates the user consent data related to GDPR and DMA regulations for advertising and data usage

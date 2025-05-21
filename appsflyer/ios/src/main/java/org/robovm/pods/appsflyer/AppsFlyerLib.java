@@ -236,6 +236,8 @@ import org.robovm.apple.coreanimation.*;
     public native void setSharingFilterForAllPartners();
     @Method(selector = "setSharingFilterForPartners:")
     public native void setSharingFilterForPartners(NSArray<NSString> sharingFilter);
+    @Method(selector = "setInstallId:")
+    public native void setInstallId(String customID);
     @Method(selector = "setConsentData:")
     public native void setConsentData(AppsFlyerConsent consent);
     @Method(selector = "enableTCFDataCollection:")
