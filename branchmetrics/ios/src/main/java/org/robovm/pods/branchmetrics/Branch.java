@@ -35,6 +35,7 @@ import org.robovm.apple.linkpresentation.*;
 import org.robovm.apple.coregraphics.*;
 import org.robovm.apple.coreanimation.*;
 import org.robovm.apple.storekit.*;
+import org.robovm.apple.intents.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -83,25 +84,27 @@ import org.robovm.apple.storekit.*;
     public static native BytePtr getVersionString();
     
     @Method(selector = "initSessionWithLaunchOptions:")
-    public native void init(NSDictionary<?, ?> options);
+    public native void initSession(NSDictionary<?, ?> options);
     @Method(selector = "initSessionWithLaunchOptions:isReferrable:")
-    public native void init(NSDictionary<?, ?> options, boolean isReferrable);
+    public native void initSessionReferrable(NSDictionary<?, ?> options, boolean isReferrable);
     @Method(selector = "initSessionWithLaunchOptions:andRegisterDeepLinkHandler:")
-    public native void init(NSDictionary<?, ?> options, @Block VoidBlock2<NSDictionary<?, ?>, NSError> callback);
+    public native void initSession(NSDictionary<?, ?> options, @Block VoidBlock2<NSDictionary<?, ?>, NSError> callback);
     @Method(selector = "initSessionWithLaunchOptions:andRegisterDeepLinkHandlerUsingBranchUniversalObject:")
-    public native void init(NSDictionary<?, ?> options, @Block VoidBlock3<BranchUniversalObject, BranchLinkProperties, NSError> callback);
+    public native void initSession(NSDictionary<?, ?> options, @Block VoidBlock3<BranchUniversalObject, BranchLinkProperties, NSError> callback);
     @Method(selector = "initSessionWithLaunchOptions:automaticallyDisplayDeepLinkController:")
-    public native void initWithAutomaticallyDisplayDeepLinkController(NSDictionary<?, ?> options, boolean automaticallyDisplayController);
+    public native void initSession(NSDictionary<?, ?> options, boolean automaticallyDisplayController);
     @Method(selector = "initSessionWithLaunchOptions:isReferrable:andRegisterDeepLinkHandler:")
-    public native void init(NSDictionary<?, ?> options, boolean isReferrable, @Block VoidBlock2<NSDictionary<?, ?>, NSError> callback);
+    public native void initSessionReferrable(NSDictionary<?, ?> options, boolean isReferrable, @Block VoidBlock2<NSDictionary<?, ?>, NSError> callback);
     @Method(selector = "initSessionWithLaunchOptions:isReferrable:automaticallyDisplayDeepLinkController:")
-    public native void init(NSDictionary<?, ?> options, boolean isReferrable, boolean automaticallyDisplayController);
+    public native void initSessionReferrable(NSDictionary<?, ?> options, boolean isReferrable, boolean automaticallyDisplayController);
     @Method(selector = "initSessionWithLaunchOptions:automaticallyDisplayDeepLinkController:deepLinkHandler:")
-    public native void initWithAutomaticallyDisplayDeepLinkControllerAndHandler(NSDictionary<?, ?> options, boolean automaticallyDisplayController, @Block VoidBlock2<NSDictionary<?, ?>, NSError> callback);
+    public native void initSession(NSDictionary<?, ?> options, boolean automaticallyDisplayController, @Block VoidBlock2<NSDictionary<?, ?>, NSError> callback);
     @Method(selector = "initSessionWithLaunchOptions:automaticallyDisplayDeepLinkController:isReferrable:deepLinkHandler:")
-    public native void init(NSDictionary<?, ?> options, boolean automaticallyDisplayController, boolean isReferrable, @Block VoidBlock2<NSDictionary<?, ?>, NSError> callback);
+    public native void initSessionReferrable(NSDictionary<?, ?> options, boolean automaticallyDisplayController, boolean isReferrable, @Block VoidBlock2<NSDictionary<?, ?>, NSError> callback);
     @Method(selector = "initSceneSessionWithLaunchOptions:isReferrable:explicitlyRequestedReferrable:automaticallyDisplayController:registerDeepLinkHandler:")
-    public native void init(NSDictionary<?, ?> options, boolean isReferrable, boolean explicitlyRequestedReferrable, boolean automaticallyDisplayController, @Block VoidBlock2<BNCInitSessionResponse, NSError> callback);
+    public native void initSceneSession(NSDictionary<?, ?> options, boolean isReferrable, boolean explicitlyRequestedReferrable, boolean automaticallyDisplayController, @Block VoidBlock2<BNCInitSessionResponse, NSError> callback);
+    @Method(selector = "initUserSessionAndCallCallback:sceneIdentifier:urlString:reset:")
+    public native void initUserSession(boolean callCallback, String sceneIdentifier, String urlString, boolean reset);
     @Method(selector = "handleDeepLink:")
     public native boolean handleDeepLink(NSURL url);
     @Method(selector = "handleDeepLink:sceneIdentifier:")
@@ -416,5 +419,7 @@ import org.robovm.apple.storekit.*;
     public static native void setReferrerGbraidValidityWindow(double validityWindow);
     @Method(selector = "setDMAParamsForEEA:AdPersonalizationConsent:AdUserDataUsageConsent:")
     public static native void setDMAParamsForEEA(boolean eeaRegion, boolean adPersonalizationConsent, boolean adUserDataUsageConsent);
+    @Method(selector = "setODMInfo:andFirstOpenTimestamp:")
+    public static native void setODMInfo(String odmInfo, NSDate firstOpenTimestamp);
     /*</methods>*/
 }

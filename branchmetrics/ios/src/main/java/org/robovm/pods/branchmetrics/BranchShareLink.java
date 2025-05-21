@@ -35,6 +35,7 @@ import org.robovm.apple.linkpresentation.*;
 import org.robovm.apple.coregraphics.*;
 import org.robovm.apple.coreanimation.*;
 import org.robovm.apple.storekit.*;
+import org.robovm.apple.intents.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -135,5 +136,10 @@ import org.robovm.apple.storekit.*;
      */
     @Method(selector = "activityViewControllerLinkMetadata:")
     public native LPLinkMetadata activityViewControllerLinkMetadata(UIActivityViewController activityViewController);
+    /**
+     * @since Available in iOS 18.0 and later.
+     */
+    @Method(selector = "activityViewControllerShareRecipients:")
+    public native NSArray<INPerson> activityViewControllerShareRecipients(UIActivityViewController activityViewController);
     /*</methods>*/
 }

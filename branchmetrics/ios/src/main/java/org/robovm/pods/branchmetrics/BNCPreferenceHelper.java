@@ -35,6 +35,7 @@ import org.robovm.apple.linkpresentation.*;
 import org.robovm.apple.coregraphics.*;
 import org.robovm.apple.coreanimation.*;
 import org.robovm.apple.storekit.*;
+import org.robovm.apple.intents.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -214,6 +215,18 @@ import org.robovm.apple.storekit.*;
     public native NSMutableDictionary<?, ?> getReferringURLQueryParameters();
     @Property(selector = "setReferringURLQueryParameters:")
     public native void setReferringURLQueryParameters(NSMutableDictionary<?, ?> v);
+    @Property(selector = "odmInfo")
+    public native String getOdmInfo();
+    @Property(selector = "setOdmInfo:")
+    public native void setOdmInfo(String v);
+    @Property(selector = "odmInfoValidityWindow")
+    public native double getOdmInfoValidityWindow();
+    @Property(selector = "setOdmInfoValidityWindow:")
+    public native void setOdmInfoValidityWindow(double v);
+    @Property(selector = "odmInfoInitDate")
+    public native NSDate getOdmInfoInitDate();
+    @Property(selector = "setOdmInfoInitDate:")
+    public native void setOdmInfoInitDate(NSDate v);
     @Property(selector = "skanCurrentWindow")
     public native @MachineSizedSInt long getSkanCurrentWindow();
     @Property(selector = "setSkanCurrentWindow:")
@@ -246,6 +259,14 @@ import org.robovm.apple.storekit.*;
     public native String getAttributionLevel();
     @Property(selector = "setAttributionLevel:", strongRef = true)
     public native void setAttributionLevel(String v);
+    @Property(selector = "uxType")
+    public native String getUxType();
+    @Property(selector = "setUxType:")
+    public native void setUxType(String v);
+    @Property(selector = "urlLoadMs")
+    public native NSDate getUrlLoadMs();
+    @Property(selector = "setUrlLoadMs:")
+    public native void setUrlLoadMs(NSDate v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

@@ -8,6 +8,7 @@ include:
     - coregraphics
     - coreanimation
     - storekit
+    - intents
 framework: BranchSDK
 clang_args: ['-x', 'objective-c']
 headers:
@@ -71,29 +72,29 @@ classes:
     Branch:
         methods:
             '-initSessionWithLaunchOptions:':
-                name: init
+                name: initSession
             '-initSessionWithLaunchOptions:isReferrable:':
-                name: init
+                name: initSessionReferrable
             '-initSessionWithLaunchOptions:andRegisterDeepLinkHandler:':
-                name: init
+                name: initSession
             '-initSessionWithLaunchOptions:andRegisterDeepLinkHandlerUsingBranchUniversalObject:':
-                name: init
+                name: initSession
             '-initSessionWithLaunchOptions:automaticallyDisplayDeepLinkController:':
-                # to static constructor as conflicts with '-initSessionWithLaunchOptions:isReferrable:':
-                name: initWithAutomaticallyDisplayDeepLinkController
-                static_constructor_name: createWithAutomaticallyDisplayDeepLinkController
+                name: initSession
             '-initSessionWithLaunchOptions:isReferrable:andRegisterDeepLinkHandler:':
-                name: init
+                name: initSessionReferrable
             '-initSessionWithLaunchOptions:isReferrable:automaticallyDisplayDeepLinkController:':
-                name: init
+                name: initSessionReferrable
             '-initSessionWithLaunchOptions:automaticallyDisplayDeepLinkController:deepLinkHandler:':
-                # to static constructor as conflicts with '-initSessionWithLaunchOptions:isReferrable:andRegisterDeepLinkHandler:'
-                name: initWithAutomaticallyDisplayDeepLinkControllerAndHandler
-                static_constructor_name: createWithAutomaticallyDisplayDeepLinkControllerAndHandler
+                name: initSession
             '-initSessionWithLaunchOptions:automaticallyDisplayDeepLinkController:isReferrable:deepLinkHandler:':
-                name: init
+                name: initSessionReferrable
             '-initSceneSessionWithLaunchOptions:isReferrable:explicitlyRequestedReferrable:automaticallyDisplayController:registerDeepLinkHandler:':
-                name: init
+                name: initSceneSession
+            '-initUserSessionAndCallCallback:sceneIdentifier:urlString:reset:':
+                name: initUserSession
+            '+setODMInfo:andFirstOpenTimestamp:':
+                name: setODMInfo
             '-handleDeepLinkWithNewSession:':
                 name: handleDeepLinkWithNewSession
             '-application:openURL:sourceApplication:annotation:':
