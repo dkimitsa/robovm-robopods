@@ -6,8 +6,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-#import <FBAudienceNetwork/FBAdDefines.h>
 #import <UIKit/UIKit.h>
+#import "FBAdDefines.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

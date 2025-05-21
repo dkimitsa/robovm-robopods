@@ -48,4 +48,4 @@
 // NOTE: Any changes should also be made to the module.modulemap
 // to ensure comptability with Swift apps using Cocoapods
 
-#define FB_AD_SDK_VERSION @"6.16.0"
+#define FB_AD_SDK_VERSION @"6.17.1"

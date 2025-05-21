@@ -6,9 +6,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-#import <FBAudienceNetwork/FBAdDefines.h>
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "FBAdDefines.h"
 
 @class FBDisplayAdController;
 

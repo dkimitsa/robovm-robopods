@@ -48,7 +48,7 @@ import org.robovm.apple.avfoundation.*;
     /*<ptr>*/public static class FBAudienceNetworkAdsPtr extends Ptr<FBAudienceNetworkAds, FBAudienceNetworkAdsPtr> {}/*</ptr>*/
     /*<bind>*/static { ObjCRuntime.bind(FBAudienceNetworkAds.class); }/*</bind>*/
     /*<constants>*/
-    public static final String getVersion = "6.16.0";
+    public static final String getVersion = "6.17.1";
     /*</constants>*/
     /*<constructors>*/
     public FBAudienceNetworkAds() {}
