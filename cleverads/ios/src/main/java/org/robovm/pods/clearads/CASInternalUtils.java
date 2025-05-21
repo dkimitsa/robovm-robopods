@@ -31,6 +31,7 @@ import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.coregraphics.*;
 import org.robovm.apple.coreanimation.*;
+import org.robovm.apple.corelocation.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -63,13 +64,5 @@ import org.robovm.apple.coreanimation.*;
     /*<methods>*/
     @Method(selector = "trackingAuthorizationRequest:")
     public static native void trackingAuthorizationRequest(@Block("(@MachineSizedUInt)") VoidBlock1<Long> completion);
-    @Method(selector = "configureFirebaseAppIfNeededWithCompletion:")
-    public static native void configureFirebaseAppIfNeeded(@Block Runnable handler);
-    @Method(selector = "tryFirebaseLogEvent:map:")
-    public static native boolean tryFirebaseLogEvent(String eventName, NSDictionary<NSString, ?> map);
-    @Method(selector = "tryTenjinLogEvent:json:")
-    public static native boolean tryTenjinLogEvent(String eventName, String eventJson);
-    @Method(selector = "tryTenjinLogImpressionEvent:")
-    public static native boolean tryTenjinLogImpressionEvent(String eventJson);
     /*</methods>*/
 }

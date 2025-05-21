@@ -31,6 +31,7 @@ import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.coregraphics.*;
 import org.robovm.apple.coreanimation.*;
+import org.robovm.apple.corelocation.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -62,8 +63,6 @@ import org.robovm.apple.coreanimation.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "layoutSubviews")
-    public native void layoutSubviews();
     @Method(selector = "initWithFrame:")
     protected native @Pointer long init(@ByVal CGRect frame);
     @Method(selector = "initWithCoder:")

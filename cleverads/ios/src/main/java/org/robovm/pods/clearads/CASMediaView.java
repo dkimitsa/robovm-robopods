@@ -31,6 +31,7 @@ import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.coregraphics.*;
 import org.robovm.apple.coreanimation.*;
+import org.robovm.apple.corelocation.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -54,12 +55,12 @@ import org.robovm.apple.coreanimation.*;
     public CASMediaView(NSCoder coder) { super((SkipInit) null); initObject(init(coder)); }
     /*</constructors>*/
     /*<properties>*/
-    @Property(selector = "intrinsicContentSize")
-    public native @ByVal CGSize getIntrinsicContentSize();
     @Property(selector = "contentMode")
     public native UIViewContentMode getContentMode();
     @Property(selector = "setContentMode:")
     public native void setContentMode(UIViewContentMode v);
+    @Property(selector = "intrinsicContentSize")
+    public native @ByVal CGSize getIntrinsicContentSize();
     @WeaklyLinked
     @Property(selector = "layerClass")
     public static native Class<? extends CALayer> getLayerClass();
@@ -70,6 +71,8 @@ import org.robovm.apple.coreanimation.*;
     protected native @Pointer long init(@ByVal CGRect frame);
     @Method(selector = "initWithCoder:")
     protected native @Pointer long init(NSCoder coder);
+    @Method(selector = "layoutSubviews")
+    public native void layoutSubviews();
     /**
      * @since Available in iOS 9.0 and later.
      */

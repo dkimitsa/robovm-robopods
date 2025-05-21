@@ -31,6 +31,7 @@ import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.coregraphics.*;
 import org.robovm.apple.coreanimation.*;
+import org.robovm.apple.corelocation.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -41,7 +42,9 @@ public enum /*<name>*/CASUserDebugGeography/*</name>*/ implements ValuedEnum {
     /*<values>*/
     Disabled(0L),
     EEA(1L),
-    NotEEA(2L);
+    NotEEA(2L),
+    RegulatedUSState(3L),
+    Other(4L);
     /*</values>*/
 
     /*<bind>*/

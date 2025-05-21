@@ -31,14 +31,15 @@ import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.coregraphics.*;
 import org.robovm.apple.coreanimation.*;
+import org.robovm.apple.corelocation.*;
 /*</imports>*/
 
 /*<javadoc>*/
 /*</javadoc>*/
 /*<annotations>*//*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/CASAdapterFactoryAdapter/*</name>*/ 
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/CASNativeAdAssetViewsAdapter/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
-    /*<implements>*/implements CASAdapterFactory/*</implements>*/ {
+    /*<implements>*/implements CASNativeAdAssetViews/*</implements>*/ {
 
     /*<ptr>*/
     /*</ptr>*/
@@ -47,13 +48,37 @@ import org.robovm.apple.coreanimation.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*//*</constructors>*/
     /*<properties>*/
-    
+    @NotImplemented("adChoicesView")
+    public CASChoicesView getAdChoicesView() { return null; }
+    @NotImplemented("setAdChoicesView:")
+    public void setAdChoicesView(CASChoicesView v) {}
+    @NotImplemented("mediaView")
+    public CASMediaView getMediaView() { return null; }
+    @NotImplemented("headlineView")
+    public UILabel getHeadlineView() { return null; }
+    @NotImplemented("callToActionView")
+    public UIButton getCallToActionView() { return null; }
+    @NotImplemented("iconView")
+    public UIImageView getIconView() { return null; }
+    @NotImplemented("bodyView")
+    public UILabel getBodyView() { return null; }
+    @NotImplemented("priceView")
+    public UILabel getPriceView() { return null; }
+    @NotImplemented("advertiserView")
+    public UILabel getAdvertiserView() { return null; }
+    @NotImplemented("storeView")
+    public UILabel getStoreView() { return null; }
+    @NotImplemented("starRatingView")
+    public UIView getStarRatingView() { return null; }
+    @NotImplemented("reviewCountView")
+    public UILabel getReviewCountView() { return null; }
+    @NotImplemented("adLabelView")
+    public UILabel getAdLabelView() { return null; }
+    @NotImplemented("clickableViews")
+    public NSArray<UIView> getClickableViews() { return null; }
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @NotImplemented("create")
-    public CASMediationAdapter create() { return null; }
-    @NotImplemented("createCMP")
-    public CASConsentPlatform createCMP() { return null; }
+    
     /*</methods>*/
 }

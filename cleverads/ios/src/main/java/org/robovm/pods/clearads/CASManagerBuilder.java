@@ -31,6 +31,7 @@ import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.coregraphics.*;
 import org.robovm.apple.coreanimation.*;
+import org.robovm.apple.corelocation.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -58,10 +59,6 @@ import org.robovm.apple.coreanimation.*;
     public native CASManagerBuilder withCompletionHandler(@Block VoidBlock1<CASInitialConfig> handler);
     @Method(selector = "withTestAdMode:")
     public native CASManagerBuilder withTestAdMode(boolean test);
-    @Method(selector = "withAdFlags:")
-    public native CASManagerBuilder withAdFlags(CASTypeFlags adTypes);
-    @Method(selector = "withUserID:")
-    public native CASManagerBuilder withUserID(String userID);
     @Method(selector = "withConsentFlow:")
     public native CASManagerBuilder withConsentFlow(CASConsentFlow flow);
     @Method(selector = "withMediationExtras:forKey:")
@@ -70,5 +67,19 @@ import org.robovm.apple.coreanimation.*;
     public native CASManagerBuilder withFramework(String name, String version);
     @Method(selector = "createWithCasId:")
     public native CASMediationManager createMediationManager(String identifier);
+    @Method(selector = "createFor:")
+    public native CASMediationManager createFor(long casID);
+    /**
+     * @deprecated Use CAS.targetingOptions.userId property instead.
+     */
+    @Deprecated
+    @Method(selector = "withUserID:")
+    public native CASManagerBuilder withUserID(String userID);
+    /**
+     * @deprecated Use `withAdFlags()` only if you continue to use `CASMediationManager` for ad requests. For the new `CASInterstitial` and `CASRewarded` implementations, you should skip this function call.
+     */
+    @Deprecated
+    @Method(selector = "withAdFlags:")
+    public native CASManagerBuilder withAdFlags(CASTypeFlags adTypes);
     /*</methods>*/
 }

@@ -31,6 +31,7 @@ import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.coregraphics.*;
 import org.robovm.apple.coreanimation.*;
+import org.robovm.apple.corelocation.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -38,7 +39,7 @@ import org.robovm.apple.coreanimation.*;
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass("CleverAdsSolutions.CASBannerView")/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/CASBannerView/*</name>*/ 
-    extends /*<extends>*/CASBannerInternal/*</extends>*/ 
+    extends /*<extends>*/UIView/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
     /*<ptr>*/public static class CASBannerViewPtr extends Ptr<CASBannerView, CASBannerViewPtr> {}/*</ptr>*/
@@ -48,16 +49,40 @@ import org.robovm.apple.coreanimation.*;
     public CASBannerView() {}
     protected CASBannerView(Handle h, long handle) { super(h, handle); }
     protected CASBannerView(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithAdSize:manager:")
-    public CASBannerView(CASSize adSize, CASMediationManager manager) { super((SkipInit) null); initObject(init(adSize, manager)); }
-    @Method(selector = "initWithAdSize:origin:manager:")
-    public CASBannerView(CASSize adSize, @ByVal CGPoint origin, CASMediationManager manager) { super((SkipInit) null); initObject(init(adSize, origin, manager)); }
+    @Method(selector = "initWithCasID:size:origin:")
+    public CASBannerView(String casID, CASSize size, @ByVal CGPoint origin) { super((SkipInit) null); initObject(init(casID, size, origin)); }
+    @Method(selector = "initWithFrame:")
+    public CASBannerView(@ByVal CGRect frame) { super((SkipInit) null); initObject(init(frame)); }
     @Method(selector = "initWithCoder:")
     public CASBannerView(NSCoder coder) { super((SkipInit) null); initObject(init(coder)); }
+    /**
+     * @deprecated Use constructor with CAS identifier parameter instead.
+     */
+    @Deprecated
+    @Method(selector = "initWithAdSize:manager:")
+    public CASBannerView(CASSize adSize, CASMediationManager manager) { super((SkipInit) null); initObject(init(adSize, manager)); }
+    /**
+     * @deprecated Use constructor with CAS identifier parameter instead.
+     */
+    @Deprecated
+    @Method(selector = "initWithAdSize:origin:manager:")
+    public CASBannerView(CASSize adSize, @ByVal CGPoint origin, CASMediationManager manager) { super((SkipInit) null); initObject(init(adSize, origin, manager)); }
     /*</constructors>*/
     /*<properties>*/
+    @Property(selector = "casID")
+    public native String getCasID();
+    @Property(selector = "setCasID:")
+    public native void setCasID(String v);
+    /**
+     * @deprecated Please use just casID instead.
+     */
+    @Deprecated
     @Property(selector = "manager")
     public native CASMediationManager getManager();
+    /**
+     * @deprecated Please use just casID instead.
+     */
+    @Deprecated
     @Property(selector = "setManager:")
     public native void setManager(CASMediationManager v);
     @Property(selector = "adSize")
@@ -68,12 +93,18 @@ import org.robovm.apple.coreanimation.*;
     public native UIViewController getRootViewController();
     @Property(selector = "setRootViewController:", strongRef = true)
     public native void setRootViewController(UIViewController v);
-    @Property(selector = "adDelegate")
-    public native CASBannerDelegate getAdDelegate();
-    @Property(selector = "setAdDelegate:", strongRef = true)
-    public native void setAdDelegate(CASBannerDelegate v);
-    @Property(selector = "isAdReady")
-    public native boolean isAdReady();
+    @Property(selector = "delegate")
+    public native CASBannerDelegate getDelegate();
+    @Property(selector = "setDelegate:", strongRef = true)
+    public native void setDelegate(CASBannerDelegate v);
+    @Property(selector = "impressionDelegate")
+    public native CASImpressionDelegate getImpressionDelegate();
+    @Property(selector = "setImpressionDelegate:", strongRef = true)
+    public native void setImpressionDelegate(CASImpressionDelegate v);
+    @Property(selector = "isAdLoaded")
+    public native boolean isAdLoaded();
+    @Property(selector = "contentInfo")
+    public native CASContentInfo getContentInfo();
     @Property(selector = "isAutoloadEnabled")
     public native boolean isAutoloadEnabled();
     @Property(selector = "setIsAutoloadEnabled:")
@@ -82,24 +113,70 @@ import org.robovm.apple.coreanimation.*;
     public native @MachineSizedSInt long getRefreshInterval();
     @Property(selector = "setRefreshInterval:")
     public native void setRefreshInterval(@MachineSizedSInt long v);
+    /**
+     * @deprecated Renamed to `delegate`. Use delegate
+     */
+    @Deprecated
+    @Property(selector = "adDelegate")
+    public native CASBannerDelegate getAdDelegate();
+    /**
+     * @deprecated Renamed to `delegate`. Use delegate
+     */
+    @Deprecated
+    @Property(selector = "setAdDelegate:", strongRef = true)
+    public native void setAdDelegate(CASBannerDelegate v);
+    /**
+     * @deprecated Renamed to isAdLoaded. Use isAdLoaded
+     */
+    @Deprecated
+    @Property(selector = "isAdReady")
+    public native boolean isAdReady();
+    @Property(selector = "intrinsicContentSize")
+    public native @ByVal CGSize getIntrinsicContentSize();
+    @Property(selector = "isHidden")
+    public native boolean isHidden();
+    @Property(selector = "setHidden:")
+    public native void setHidden(boolean v);
     @WeaklyLinked
     @Property(selector = "layerClass")
     public static native Class<? extends CALayer> getLayerClass();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "initWithAdSize:manager:")
-    protected native @Pointer long init(CASSize adSize, CASMediationManager manager);
-    @Method(selector = "initWithAdSize:origin:manager:")
-    protected native @Pointer long init(CASSize adSize, @ByVal CGPoint origin, CASMediationManager manager);
+    @Method(selector = "initWithCasID:size:origin:")
+    protected native @Pointer long init(String casID, CASSize size, @ByVal CGPoint origin);
+    @Method(selector = "initWithFrame:")
+    protected native @Pointer long init(@ByVal CGRect frame);
     @Method(selector = "initWithCoder:")
     protected native @Pointer long init(NSCoder coder);
+    @Method(selector = "loadAd")
+    public native void loadAd();
     @Method(selector = "disableAdRefresh")
     public native void disableAdRefresh();
-    @Method(selector = "loadNextAd")
-    public native void loadNextAd();
     @Method(selector = "destroy")
     public native void destroy();
+    /**
+     * @deprecated Use constructor with CAS identifier parameter instead.
+     */
+    @Deprecated
+    @Method(selector = "initWithAdSize:manager:")
+    protected native @Pointer long init(CASSize adSize, CASMediationManager manager);
+    /**
+     * @deprecated Use constructor with CAS identifier parameter instead.
+     */
+    @Deprecated
+    @Method(selector = "initWithAdSize:origin:manager:")
+    protected native @Pointer long init(CASSize adSize, @ByVal CGPoint origin, CASMediationManager manager);
+    /**
+     * @deprecated Renamed to loadAd(). Use loadAd
+     */
+    @Deprecated
+    @Method(selector = "loadNextAd")
+    public native void loadNextAd();
+    @Method(selector = "didMoveToWindow")
+    public native void didMoveToWindow();
+    @Method(selector = "didMoveToSuperview")
+    public native void didMoveToSuperview();
     /**
      * @since Available in iOS 9.0 and later.
      */

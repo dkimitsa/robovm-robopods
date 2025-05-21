@@ -31,30 +31,30 @@ import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.coregraphics.*;
 import org.robovm.apple.coreanimation.*;
+import org.robovm.apple.corelocation.*;
 /*</imports>*/
 
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/CASBridgeToBUnit/*</name>*/ 
-    extends /*<extends>*/CASBiddingUnit/*</extends>*/ 
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("CleverAdsSolutions.MediationRtbAdapter")/*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/MediationRtbAdapter/*</name>*/ 
+    extends /*<extends>*/CASMAdapterBase/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class CASBridgeToBUnitPtr extends Ptr<CASBridgeToBUnit, CASBridgeToBUnitPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(CASBridgeToBUnit.class); }/*</bind>*/
+    /*<ptr>*/public static class MediationRtbAdapterPtr extends Ptr<MediationRtbAdapter, MediationRtbAdapterPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(MediationRtbAdapter.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    protected CASBridgeToBUnit() {}
-    protected CASBridgeToBUnit(Handle h, long handle) { super(h, handle); }
-    protected CASBridgeToBUnit(SkipInit skipInit) { super(skipInit); }
+    public MediationRtbAdapter() {}
+    protected MediationRtbAdapter(Handle h, long handle) { super(h, handle); }
+    protected MediationRtbAdapter(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
     
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "isAdCached")
-    public native boolean isAdCached();
+    
     /*</methods>*/
 }

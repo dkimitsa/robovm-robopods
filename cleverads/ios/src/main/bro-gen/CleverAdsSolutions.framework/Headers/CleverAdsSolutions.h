@@ -2,7 +2,7 @@
 //  CleverAdsSolutions.h
 //  CleverAdsSolutions
 //
-//  Copyright © 2024 CleverAdsSolutions LTD, CAS.AI. All rights reserved.
+//  Copyright © 2025 CleverAdsSolutions LTD, CAS.AI. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -10,6 +10,18 @@
 #import <CleverAdsSolutions/CASTypeFlags.h>
 #import <CleverAdsSolutions/CASInternalUtils.h>
 
-#define CAS_FRAMEWORK_VERSION @"3.9.10"
-#define CAS_FRAMEWORK_CODE 3910
-#define CAS_EXCHANGE_VERSION @"3.9.10"
+#define CAS_FRAMEWORK_VERSION @"4.0.2.1"
+#define CAS_FRAMEWORK_CODE 4002
+
+@class CASContentInfo;
+
+/**
+ * Called when the user successfully earns a reward by interacting with the ad.
+ *
+ * This method provides an opportunity to handle the reward event, such as updating the user's rewards balance,
+ * unlocking features, or displaying a confirmation message to the user. It is triggered once the user has
+ * completed the required interaction (e.g., watching the ad).
+ *
+ * - Parameter adContent: The ad content associated with the reward, typically the rewarded ad that the user interacted with.
+ */
+typedef void (^CASUserDidEarnRewardHandler)(CASContentInfo * _Nonnull info);

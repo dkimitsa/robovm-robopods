@@ -31,29 +31,30 @@ import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.coregraphics.*;
 import org.robovm.apple.coreanimation.*;
+import org.robovm.apple.corelocation.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/CASMediationAdapter/*</name>*/ 
+/*<annotations>*//*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/CASNativeLoaderDelegateAdapter/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
-    /*<implements>*//*</implements>*/ {
+    /*<implements>*/implements CASNativeLoaderDelegate/*</implements>*/ {
 
-    /*<ptr>*/public static class CASMediationAdapterPtr extends Ptr<CASMediationAdapter, CASMediationAdapterPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(CASMediationAdapter.class); }/*</bind>*/
+    /*<ptr>*/
+    /*</ptr>*/
+    /*<bind>*/
+    /*</bind>*/
     /*<constants>*//*</constants>*/
-    /*<constructors>*/
-    public CASMediationAdapter() {}
-    protected CASMediationAdapter(Handle h, long handle) { super(h, handle); }
-    protected CASMediationAdapter(SkipInit skipInit) { super(skipInit); }
-    /*</constructors>*/
+    /*<constructors>*//*</constructors>*/
     /*<properties>*/
     
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    
+    @NotImplemented("nativeAdDidLoadContent:")
+    public void nativeAdDidLoadContent(CASNativeAdContent ad) {}
+    @NotImplemented("nativeAdDidFailToLoadWithError:")
+    public void nativeAdDidFailToLoad(CASError error) {}
     /*</methods>*/
 }

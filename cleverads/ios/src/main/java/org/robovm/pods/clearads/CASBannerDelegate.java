@@ -31,6 +31,7 @@ import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.coregraphics.*;
 import org.robovm.apple.coreanimation.*;
+import org.robovm.apple.corelocation.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -53,10 +54,14 @@ import org.robovm.apple.coreanimation.*;
     void bannerAdViewDidLoad(CASBannerView view);
     @Method(selector = "bannerAdView:didFailWith:")
     void didFail(CASBannerView adView, CASError error);
-    @Method(selector = "bannerAdView:willPresent:")
-    void willPresent(CASBannerView adView, CASStatusHandler impression);
     @Method(selector = "bannerAdViewDidRecordClick:")
     void bannerAdViewDidRecordClick(CASBannerView adView);
+    /**
+     * @deprecated Use CASBannerView.impressionDelegate and CASImpressionDelegate to get impression info.
+     */
+    @Deprecated
+    @Method(selector = "bannerAdView:willPresent:")
+    void willPresent(CASBannerView adView, CASStatusHandler impression);
     /*</methods>*/
     /*<adapter>*/
     /*</adapter>*/

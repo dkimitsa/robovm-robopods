@@ -31,6 +31,7 @@ import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.coregraphics.*;
 import org.robovm.apple.coreanimation.*;
+import org.robovm.apple.corelocation.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -39,6 +40,7 @@ import org.robovm.apple.coreanimation.*;
 /*<annotations>*/@Marshaler(ValuedEnum.AsMachineSizedSIntMarshaler.class)/*</annotations>*/
 public enum /*<name>*/CASConsentFlowStatus/*</name>*/ implements ValuedEnum {
     /*<values>*/
+    Unknown(0L),
     Obtained(3L),
     NotRequired(4L),
     Unavailable(5L),

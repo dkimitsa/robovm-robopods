@@ -31,55 +31,45 @@ import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.coregraphics.*;
 import org.robovm.apple.coreanimation.*;
+import org.robovm.apple.corelocation.*;
 /*</imports>*/
 
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Marshaler(ValuedEnum.AsMachineSizedSIntMarshaler.class)/*</annotations>*/
-public enum /*<name>*/CASNetworkId/*</name>*/ implements ValuedEnum {
-    /*<values>*/
-    GoogleAds(0L),
-    LiftoffMonetize(1L),
-    Kidoz(2L),
-    Chartboost(3L),
-    UnityAds(4L),
-    AppLovin(5L),
-    SuperAwesome(6L),
-    StartIO(7L),
-    AudienceNetwork(9L),
-    InMobi(10L),
-    DTExchange(11L),
-    MyTarget(12L),
-    Crosspromo(13L),
-    IronSource(14L),
-    YandexAds(15L),
-    HyprMX(16L),
-    Smaato(18L),
-    Bigo(19L),
-    Madex(21L),
-    Mintegral(23L),
-    Pangle(24L),
-    DSPExchange(30L),
-    LastPageAd(31L);
-    /*</values>*/
+/*<annotations>*//*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ interface /*<name>*/CASScreenContent/*</name>*/ 
+    /*<implements>*/extends NSObjectProtocol/*</implements>*/ {
 
+    /*<ptr>*/
+    /*</ptr>*/
     /*<bind>*/
     /*</bind>*/
     /*<constants>*//*</constants>*/
-    /*<methods>*//*</methods>*/
-
-    private final long n;
-
-    private /*<name>*/CASNetworkId/*</name>*/(long n) { this.n = n; }
-    public long value() { return n; }
-    public static /*<name>*/CASNetworkId/*</name>*/ valueOf(long n) {
-        for (/*<name>*/CASNetworkId/*</name>*/ v : values()) {
-            if (v.n == n) {
-                return v;
-            }
-        }
-        throw new IllegalArgumentException("No constant with value " + n + " found in " 
-            + /*<name>*/CASNetworkId/*</name>*/.class.getName());
-    }
+    /*<properties>*/
+    @Property(selector = "delegate")
+    CASScreenContentDelegate getDelegate();
+    @Property(selector = "setDelegate:", strongRef = true)
+    void setDelegate(CASScreenContentDelegate v);
+    @Property(selector = "impressionDelegate")
+    CASImpressionDelegate getImpressionDelegate();
+    @Property(selector = "setImpressionDelegate:", strongRef = true)
+    void setImpressionDelegate(CASImpressionDelegate v);
+    @Property(selector = "isAutoloadEnabled")
+    boolean isAutoloadEnabled();
+    @Property(selector = "setIsAutoloadEnabled:")
+    void setIsAutoloadEnabled(boolean v);
+    @Property(selector = "isAdLoaded")
+    boolean isAdLoaded();
+    @Property(selector = "contentInfo")
+    CASContentInfo getContentInfo();
+    /*</properties>*/
+    /*<methods>*/
+    @Method(selector = "loadAd")
+    void loadAd();
+    @Method(selector = "destroy")
+    void destroy();
+    /*</methods>*/
+    /*<adapter>*/
+    /*</adapter>*/
 }

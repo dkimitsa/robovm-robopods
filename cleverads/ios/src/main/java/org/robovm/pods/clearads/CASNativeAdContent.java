@@ -31,6 +31,7 @@ import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.coregraphics.*;
 import org.robovm.apple.coreanimation.*;
+import org.robovm.apple.corelocation.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -74,14 +75,24 @@ import org.robovm.apple.coreanimation.*;
     public native String getAdLabel();
     @Property(selector = "hasVideoContent")
     public native boolean hasVideoContent();
-    @Property(selector = "hasMediaContent")
-    public native boolean hasMediaContent();
     @Property(selector = "mediaContentAspectRatio")
     public native @MachineSizedFloat double getMediaContentAspectRatio();
     @Property(selector = "mediaImage")
     public native UIImage getMediaImage();
     @Property(selector = "mediaImageURL")
     public native NSURL getMediaImageURL();
+    @Property(selector = "isExpired")
+    public native boolean isExpired();
+    @Property(selector = "contentInfo")
+    public native CASContentInfo getContentInfo();
+    @Property(selector = "delegate")
+    public native CASNativeAdContentDelegate getDelegate();
+    @Property(selector = "setDelegate:", strongRef = true)
+    public native void setDelegate(CASNativeAdContentDelegate v);
+    @Property(selector = "impressionDelegate")
+    public native CASImpressionDelegate getImpressionDelegate();
+    @Property(selector = "setImpressionDelegate:", strongRef = true)
+    public native void setImpressionDelegate(CASImpressionDelegate v);
     @Property(selector = "rootViewController")
     public native UIViewController getRootViewController();
     @Property(selector = "setRootViewController:", strongRef = true)
@@ -89,6 +100,7 @@ import org.robovm.apple.coreanimation.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    
+    @Method(selector = "destroy")
+    public native void destroy();
     /*</methods>*/
 }

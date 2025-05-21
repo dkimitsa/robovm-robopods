@@ -31,6 +31,7 @@ import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.coregraphics.*;
 import org.robovm.apple.coreanimation.*;
+import org.robovm.apple.corelocation.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -52,22 +53,10 @@ import org.robovm.apple.coreanimation.*;
     public CASConsentFlow(boolean isEnabled) { super((SkipInit) null); initObject(init(isEnabled)); }
     /*</constructors>*/
     /*<properties>*/
-    @Property(selector = "requestGDPR")
-    public native boolean isRequestGDPR();
-    @Property(selector = "setRequestGDPR:")
-    public native void setRequestGDPR(boolean v);
-    /**
-     * @deprecated The GDPR and ATT request does not support partial activation. Use requestGDPR instead.
-     */
-    @Deprecated
-    @Property(selector = "requestATT")
-    public native boolean isRequestATT();
-    /**
-     * @deprecated The GDPR and ATT request does not support partial activation. Use requestGDPR instead.
-     */
-    @Deprecated
-    @Property(selector = "setRequestATT:")
-    public native void setRequestATT(boolean v);
+    @Property(selector = "isEnabled")
+    public native boolean isEnabled();
+    @Property(selector = "setIsEnabled:")
+    public native void setIsEnabled(boolean v);
     @Property(selector = "forceTesting")
     public native boolean isForceTesting();
     @Property(selector = "setForceTesting:")
@@ -93,8 +82,6 @@ import org.robovm.apple.coreanimation.*;
     /*<methods>*/
     @Method(selector = "initWithEnabled:")
     protected native @Pointer long init(boolean isEnabled);
-    @Method(selector = "withViewControllerToPresent:")
-    public native CASConsentFlow withViewControllerToPresent(UIViewController controller);
     @Method(selector = "presentIfRequired")
     public native void presentIfRequired();
     @Method(selector = "present")

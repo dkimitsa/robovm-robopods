@@ -31,6 +31,7 @@ import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.coregraphics.*;
 import org.robovm.apple.coreanimation.*;
+import org.robovm.apple.corelocation.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -45,38 +46,45 @@ import org.robovm.apple.coreanimation.*;
     /*<bind>*/static { ObjCRuntime.bind(CASTargetingOptions.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public CASTargetingOptions() {}
+    protected CASTargetingOptions() {}
     protected CASTargetingOptions(Handle h, long handle) { super(h, handle); }
     protected CASTargetingOptions(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
-    
+    @Property(selector = "userID")
+    public native String getUserID();
+    @Property(selector = "setUserID:")
+    public native void setUserID(String v);
+    @Property(selector = "gender")
+    public native CASGender getGender();
+    @Property(selector = "setGender:")
+    public native void setGender(CASGender v);
+    @Property(selector = "age")
+    public native @MachineSizedSInt long getAge();
+    @Property(selector = "setAge:")
+    public native void setAge(@MachineSizedSInt long v);
+    @Property(selector = "locationCollectionEnabled")
+    public native boolean isLocationCollectionEnabled();
+    @Property(selector = "setLocationCollectionEnabled:")
+    public native void setLocationCollectionEnabled(boolean v);
+    @Property(selector = "keywords")
+    public native NSArray<NSString> getKeywords();
+    @Property(selector = "setKeywords:")
+    public native void setKeywords(NSArray<NSString> v);
+    @Property(selector = "contentUrl")
+    public native String getContentUrl();
+    @Property(selector = "setContentUrl:")
+    public native void setContentUrl(String v);
+    @Property(selector = "location")
+    public native CLLocation getLocation();
+    @Property(selector = "setLocation:")
+    public native void setLocation(CLLocation v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "setGender:")
-    public native void setGender(CASGender gender);
-    @Method(selector = "getGender")
-    public native CASGender getGender();
-    @Method(selector = "setAge:")
-    public native void setAge(@MachineSizedSInt long age);
-    @Method(selector = "getAge")
-    public native @MachineSizedSInt long getAge();
     @Method(selector = "setLocationWithLatitude:longitude:")
     public native void setLocation(double latitude, double longitude);
     @Method(selector = "clearLocation")
     public native void clearLocation();
-    @Method(selector = "setLocationCollectionEnabled:")
-    public native void setLocationCollectionEnabled(boolean enabled);
-    @Method(selector = "getLocationCollectionEnabled")
-    public native boolean getLocationCollectionEnabled();
-    @Method(selector = "setKeywords:")
-    public native void setKeywords(NSArray<NSString> keywords);
-    @Method(selector = "getKeywords")
-    public native NSArray<NSString> getKeywords();
-    @Method(selector = "setContentUrl:")
-    public native void setContentUrl(String url);
-    @Method(selector = "getContentUrl")
-    public native String getContentUrl();
     /*</methods>*/
 }

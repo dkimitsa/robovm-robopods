@@ -31,6 +31,7 @@ import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.coregraphics.*;
 import org.robovm.apple.coreanimation.*;
+import org.robovm.apple.corelocation.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -50,8 +51,16 @@ import org.robovm.apple.coreanimation.*;
     protected CASMediationManager(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
+    /**
+     * @deprecated If you want to receive convenient ad loading callbacks, you should switch to using the new CAS classes for each format.
+     */
+    @Deprecated
     @Property(selector = "adLoadDelegate")
     public native CASLoadDelegate getAdLoadDelegate();
+    /**
+     * @deprecated If you want to receive convenient ad loading callbacks, you should switch to using the new CAS classes for each format.
+     */
+    @Deprecated
     @Property(selector = "setAdLoadDelegate:", strongRef = true)
     public native void setAdLoadDelegate(CASLoadDelegate v);
     @Property(selector = "managerID")
@@ -81,10 +90,22 @@ import org.robovm.apple.coreanimation.*;
     public native void presentRewardedAd(UIViewController controller, CASCallback callback);
     @Method(selector = "isEnabledWithType:")
     public native boolean isEnabled(CASType type);
+    /**
+     * @deprecated If you want more precise control over ad memory, you should switch to using the new CAS classes for each format.
+     */
+    @Deprecated
     @Method(selector = "setEnabled:type:")
     public native void setEnabled(boolean enabled, CASType type);
+    /**
+     * @deprecated Please migrate to new `CASAppOpen` or `CASInterstitial` to enable this feature with the `isAutoshowEnabled` property.
+     */
+    @Deprecated
     @Method(selector = "enableAppReturnAdsWith:")
     public native void enableAppReturnAds(CASAppReturnDelegate delegate);
+    /**
+     * @deprecated Please migrate to new `CASAppOpen` or `CASInterstitial` to enable this feature with the `isAutoshowEnabled` property.
+     */
+    @Deprecated
     @Method(selector = "disableAppReturnAds")
     public native void disableAppReturnAds();
     @Method(selector = "skipNextAppReturnAds")

@@ -2,15 +2,13 @@
 //  CASInternalUtils.h
 //  CleverAdsSolutions
 //
-//  Copyright © 2024 CleverAdsSolutions LTD, CAS.AI. All rights reserved.
+//  Copyright © 2025 CleverAdsSolutions LTD, CAS.AI. All rights reserved.
 //
 
 #ifndef CASInternalUtils_h
 #define CASInternalUtils_h
 
 #import <Foundation/Foundation.h>
-
-NS_ASSUME_NONNULL_BEGIN
 
 @interface CASInternalUtils : NSObject
 @property (class, readonly, nullable) NSString *adId;
@@ -28,12 +26,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (class, readonly) NSUInteger adTrackingStatus;
 + (void)trackingAuthorizationRequest:(nullable void (^)(NSUInteger))completion;
 
-+ (void)configureFirebaseAppIfNeededWithCompletion:(void (^)(void))handler;
-+ (BOOL)tryFirebaseLogEvent:(NSString *)eventName map:(NSDictionary<NSString *, id> *)map;
-+ (BOOL)tryTenjinLogEvent:(NSString *)eventName json:(NSString *)eventJson;
-+ (BOOL)tryTenjinLogImpressionEvent:(NSString *)eventJson;
++ (id _Nullable)tryPerformSelector:(NSString *_Nonnull)selector forClass:(Class _Nonnull)clazz error:(NSError *_Nullable *_Nullable)error;
++ (id _Nullable)tryPerformSelector:(NSString *_Nonnull)selector forClass:(Class _Nonnull)clazz arg:(id _Nullable)object error:(NSError *_Nullable *_Nullable)error;
+
++ (BOOL)doTryBlock:(void (^_Nonnull)(void))block error:(NSError *_Nullable *_Nullable)err;
 @end
 
-NS_ASSUME_NONNULL_END
 
 #endif /* ifndef CASInternalUtils_h */

@@ -31,6 +31,7 @@ import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.coregraphics.*;
 import org.robovm.apple.coreanimation.*;
+import org.robovm.apple.corelocation.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -39,7 +40,7 @@ import org.robovm.apple.coreanimation.*;
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/CASAppOpen/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
-    /*<implements>*//*</implements>*/ {
+    /*<implements>*/implements CASScreenContent/*</implements>*/ {
 
     /*<ptr>*/public static class CASAppOpenPtr extends Ptr<CASAppOpen, CASAppOpenPtr> {}/*</ptr>*/
     /*<bind>*/static { ObjCRuntime.bind(CASAppOpen.class); }/*</bind>*/
@@ -48,19 +49,63 @@ import org.robovm.apple.coreanimation.*;
     protected CASAppOpen() {}
     protected CASAppOpen(Handle h, long handle) { super(h, handle); }
     protected CASAppOpen(SkipInit skipInit) { super(skipInit); }
-    public CASAppOpen(String managerId) { super((Handle) null, create(managerId)); retain(getHandle()); }
-    public CASAppOpen(CASMediationManager manager) { super((Handle) null, create(manager)); retain(getHandle()); }
+    @Method(selector = "initWithCasID:")
+    public CASAppOpen(String casID) { super((SkipInit) null); initObject(init(casID)); }
     /*</constructors>*/
     /*<properties>*/
+    @Property(selector = "delegate")
+    public native CASScreenContentDelegate getDelegate();
+    @Property(selector = "setDelegate:", strongRef = true)
+    public native void setDelegate(CASScreenContentDelegate v);
+    @Property(selector = "impressionDelegate")
+    public native CASImpressionDelegate getImpressionDelegate();
+    @Property(selector = "setImpressionDelegate:", strongRef = true)
+    public native void setImpressionDelegate(CASImpressionDelegate v);
+    @Property(selector = "isAutoloadEnabled")
+    public native boolean isAutoloadEnabled();
+    @Property(selector = "setIsAutoloadEnabled:")
+    public native void setIsAutoloadEnabled(boolean v);
+    @Property(selector = "isAutoshowEnabled")
+    public native boolean isAutoshowEnabled();
+    @Property(selector = "setIsAutoshowEnabled:")
+    public native void setIsAutoshowEnabled(boolean v);
+    @Property(selector = "isAdLoaded")
+    public native boolean isAdLoaded();
+    @Property(selector = "contentInfo")
+    public native CASContentInfo getContentInfo();
+    /**
+     * @deprecated Will be removed in feature updates.
+     */
+    @Deprecated
     @Property(selector = "managerId")
     public native String getManagerId();
+    /**
+     * @deprecated Use adDelegate and implement ScreenAdContentDelegate instead.
+     */
+    @Deprecated
     @Property(selector = "contentCallback")
     public native CASCallback getContentCallback();
+    /**
+     * @deprecated Use adDelegate and implement ScreenAdContentDelegate instead.
+     */
+    @Deprecated
     @Property(selector = "setContentCallback:", strongRef = true)
     public native void setContentCallback(CASCallback v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
+    @Method(selector = "initWithCasID:")
+    protected native @Pointer long init(String casID);
+    @Method(selector = "loadAd")
+    public native void loadAd();
+    @Method(selector = "presentFromViewController:")
+    public native void presentFromViewController(UIViewController viewController);
+    @Method(selector = "destroy")
+    public native void destroy();
+    /**
+     * @deprecated Use simple load() function and adDelegate instead.
+     */
+    @Deprecated
     @Method(selector = "loadAdWithCompletionHandler:")
     public native void loadAd(@Block VoidBlock2<CASAppOpen, NSError> completionHandler);
     /**
@@ -69,13 +114,17 @@ import org.robovm.apple.coreanimation.*;
     @Deprecated
     @Method(selector = "loadAdWithOrientation:completionHandler:")
     public native void loadAd(UIInterfaceOrientation orientation, @Block VoidBlock2<CASAppOpen, NSError> completionHandler);
+    /**
+     * @deprecated Use isAdLoaded
+     */
+    @Deprecated
     @Method(selector = "isAdAvailable")
     public native boolean isAdAvailable();
+    /**
+     * @deprecated Use presentFromViewController:
+     */
+    @Deprecated
     @Method(selector = "presentFromRootViewController:")
     public native void presentFromRootViewController(UIViewController controller);
-    @Method(selector = "createWithManagerId:")
-    protected static native @Pointer long create(String managerId);
-    @Method(selector = "createWithManager:")
-    protected static native @Pointer long create(CASMediationManager manager);
     /*</methods>*/
 }

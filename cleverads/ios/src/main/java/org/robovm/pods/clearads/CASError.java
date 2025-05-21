@@ -31,72 +31,58 @@ import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.coregraphics.*;
 import org.robovm.apple.coreanimation.*;
+import org.robovm.apple.corelocation.*;
 /*</imports>*/
 
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Marshaler(ValuedEnum.AsMachineSizedSIntMarshaler.class)/*</annotations>*/
-public enum /*<name>*/CASError/*</name>*/ implements NSErrorCode {
-    /*<values>*/
-    InternalError(0L),
-    NoConnection(2L),
-    NoFill(3L),
-    ConfigurationError(6L),
-    NotReady(1001L),
-    ManagerIsDisabled(1002L),
-    ReachedCap(1004L),
-    NotEnoughSpace(1005L),
-    IntervalNotYetPassed(2001L),
-    AlreadyDisplayed(2002L),
-    AppIsPaused(2003L),
-    InvalidUIViewController(3001L);
-    /*</values>*/
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/CASError/*</name>*/ 
+    extends /*<extends>*/NSObject/*</extends>*/ 
+    /*<implements>*//*</implements>*/ {
 
-    /*<bind>*/
-    /*</bind>*/
-    /*<constants>*/
-    public static final String ErrorDomain = "CleverAdsSolutions.CASError";
-    /*</constants>*/
+    /*<ptr>*/public static class CASErrorPtr extends Ptr<CASError, CASErrorPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(CASError.class); }/*</bind>*/
+    /*<constants>*//*</constants>*/
+    /*<constructors>*/
+    protected CASError() {}
+    protected CASError(Handle h, long handle) { super(h, handle); }
+    protected CASError(SkipInit skipInit) { super(skipInit); }
+    /*</constructors>*/
+    /*<properties>*/
+    @Property(selector = "code")
+    public native CASErrorCode getCode();
+    @Property(selector = "description")
+    public native String getDescription();
+    @Property(selector = "toError")
+    public native NSError getToError();
+    /*</properties>*/
     /*<members>*//*</members>*/
-    /*<methods>*//*</methods>*/
-
-    // dkimitsa: manually added code
-    private static String getClassDomain() {
-        return ErrorDomain;
-    }
-
-    private final long n;
-
-    private /*<name>*/CASError/*</name>*/(long n) { this.n = n; }
-    public long value() { return n; }
-    public static /*<name>*/CASError/*</name>*/ valueOf(long n) {
-        for (/*<name>*/CASError/*</name>*/ v : values()) {
-            if (v.n == n) {
-                return v;
-            }
-        }
-        throw new IllegalArgumentException("No constant with value " + n + " found in "
-            + /*<name>*/CASError/*</name>*/.class.getName());
-    }
-
-    // bind wrap to include it in compilation as long as nserror enum is used 
-    static { Bro.bind(NSErrorWrap.class); }
-    @StronglyLinked
-    public static class NSErrorWrap extends NSError {
-        protected NSErrorWrap(SkipInit skipInit) {super(skipInit);}
-
-        @Override public NSErrorCode getErrorCode() {
-             try {
-                 return  /*<name>*/CASError/*</name>*/.valueOf(getCode());
-             } catch (IllegalArgumentException e) {
-                 return null;
-             }
-         }
-
-        public static String getClassDomain() {
-            /** must be inserted in value section */
-            return /*<name>*/CASError/*</name>*/.getClassDomain();
-        }
-    }
+    /*<methods>*/
+    @Method(selector = "isEqual:")
+    public native boolean isEqual(NSObject object);
+    @Method(selector = "noConnection")
+    public static native CASError noConnection();
+    @Method(selector = "noFill")
+    public static native CASError noFill();
+    @Method(selector = "timeout")
+    public static native CASError timeout();
+    @Method(selector = "notReady")
+    public static native CASError notReady();
+    @Method(selector = "notInitialized")
+    public static native CASError notInitialized();
+    @Method(selector = "expired")
+    public static native CASError expired();
+    @Method(selector = "reachedCap")
+    public static native CASError reachedCap();
+    @Method(selector = "fromCode:")
+    public static native CASError fromCode(@MachineSizedSInt long code);
+    /**
+     * @deprecated Not recomended to use
+     */
+    @Deprecated
+    @Method(selector = "fromMessage:")
+    public static native CASError fromMessage(String message);
+    /*</methods>*/
 }

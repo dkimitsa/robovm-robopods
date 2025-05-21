@@ -31,6 +31,7 @@ import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.coregraphics.*;
 import org.robovm.apple.coreanimation.*;
+import org.robovm.apple.corelocation.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -86,6 +87,8 @@ import org.robovm.apple.coreanimation.*;
     public static native String mintegral();
     @Method(selector = "pangle")
     public static native String pangle();
+    @Method(selector = "prado")
+    public static native String prado();
     @Method(selector = "dtExchange")
     public static native String dtExchange();
     @Method(selector = "bigo")
@@ -96,36 +99,20 @@ import org.robovm.apple.coreanimation.*;
     public static native String smaato();
     @Method(selector = "startio")
     public static native String startio();
-    @Method(selector = "loopMe")
-    public static native String loopMe();
     @Method(selector = "madex")
     public static native String madex();
     @Method(selector = "ogury")
     public static native String ogury();
+    @Method(selector = "ysoNetwork")
+    public static native String ysoNetwork();
     @Method(selector = "lastPageAd")
     public static native String lastPageAd();
-    @Method(selector = "adMob")
-    public static native String adMob();
-    @Method(selector = "facebookAN")
-    public static native String facebookAN();
-    @Method(selector = "fyber")
-    public static native String fyber();
-    @Method(selector = "digitalTurbine")
-    public static native String digitalTurbine();
-    @Method(selector = "myTarget")
-    public static native String myTarget();
-    @Method(selector = "bidMachine")
-    public static native String bidMachine();
-    @Method(selector = "adColony")
-    public static native String adColony();
-    @Method(selector = "tapjoy")
-    public static native String tapjoy();
     @Method(selector = "facebookAdvertiserTracking")
     public static native String facebookAdvertiserTracking();
     @Method(selector = "facebookDataProcessing")
     public static native String facebookDataProcessing();
-    @Method(selector = "vunglePublishIDFV")
-    public static native String vunglePublishIDFV();
+    @Method(selector = "getDisplayNameWithId:")
+    public static native String getDisplayName(CASSourceId id);
     @Method(selector = "getDisplayName:")
     public static native String getDisplayName(String net);
     @Method(selector = "getActiveNetworkPattern")

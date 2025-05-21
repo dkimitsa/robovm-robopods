@@ -31,12 +31,15 @@ import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.coregraphics.*;
 import org.robovm.apple.coreanimation.*;
+import org.robovm.apple.corelocation.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
+/**
+ * @deprecated Please init CASInterstitial instance and set isAutoshowEnabled = true.
+ */
 /*</javadoc>*/
-/*<annotations>*//*</annotations>*/
+/*<annotations>*/@Deprecated/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ interface /*<name>*/CASAppReturnDelegate/*</name>*/ 
     /*<implements>*/extends CASCallback/*</implements>*/ {
 

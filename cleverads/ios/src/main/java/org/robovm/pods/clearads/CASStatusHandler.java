@@ -31,6 +31,7 @@ import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.coregraphics.*;
 import org.robovm.apple.coreanimation.*;
+import org.robovm.apple.corelocation.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -64,16 +65,9 @@ import org.robovm.apple.coreanimation.*;
     @MachineSizedSInt long getImpressionDepth();
     @Property(selector = "lifetimeRevenue")
     double getLifetimeRevenue();
-    @Property(selector = "status")
-    String getStatus();
-    @Property(selector = "error")
-    String getError();
     /*</properties>*/
     /*<methods>*/
-    @Method(selector = "isAdCached")
-    boolean isAdCached();
-    @Method(selector = "toggleIgnoreMode")
-    void toggleIgnoreMode();
+    
     /*</methods>*/
     /*<adapter>*/
     /*</adapter>*/

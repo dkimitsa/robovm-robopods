@@ -31,6 +31,7 @@ import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.coregraphics.*;
 import org.robovm.apple.coreanimation.*;
+import org.robovm.apple.corelocation.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -60,6 +61,8 @@ import org.robovm.apple.coreanimation.*;
     public native boolean isConsentRequired();
     @Property(selector = "isATTrackingAuthorized")
     public native boolean isATTrackingAuthorized();
+    @Property(selector = "consentFlowStatus")
+    public native CASConsentFlowStatus getConsentFlowStatus();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

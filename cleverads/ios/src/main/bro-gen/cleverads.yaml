@@ -1,5 +1,5 @@
 package: org.robovm.pods.clearads
-include: [foundation, uikit, coregraphics, coreanimation]
+include: [foundation, uikit, coregraphics, coreanimation, corelocation]
 framework: CleverAdsSolutions
 clang_args: ['-x', 'objective-c']
 headers:
@@ -16,14 +16,16 @@ enums:
     CASAudience: { }
     CASCCPAStatus: { }
     CASConsentStatus: { }
-    CASError: { nserror: true }
     CASLoadingManagerMode: { }
     CASPriceAccuracy: { }
     CASType: { }
     CASConsentFlowStatus: {}
-    CASNetworkId: {}
     CASUserDebugGeography: { }
     CASGender: { }
+    CASChoicesPlacement: { }
+    CASErrorCode: { }
+    CASRevenuePrecision: { }
+    CASSourceId: { }
 classes:
     CAS:
         methods:
@@ -36,17 +38,16 @@ classes:
     CASAnalytics: { }
     CASAppOpen:
         methods:
+            '-initWithCasID:':
+                name: init
             '-loadAdWithOrientation:completionHandler:':
                 name: loadAd
             '+createWithManagerId:':
-                name: create
-                constructor: true
+                exclude: true # as deprecated
             '+createWithManager:':
-                name: create
-                constructor: true
+                exclude: true # as deprecated
             '-loadAdWithCompletionHandler:':
                 name: loadAd
-    CASBannerInternal: { }
     CASBannerView:
         methods:
             '-initWithAdSize:manager:':
@@ -55,7 +56,8 @@ classes:
                 name: init
             '-initWithManager:':
                 name: init
-    CASBridgeToBUnit: { }
+            '-initWithCasID:size:origin:':
+                name: init
     CASException:
         skip_def_constructor: true
     CASInitialConfig: { }
@@ -67,6 +69,12 @@ classes:
                 name: tryTenjinLogEvent
             '+configureFirebaseAppIfNeededWithCompletion:':
                 name: configureFirebaseAppIfNeeded
+            '+tryPerformSelector:forClass:error:':
+                exclude: true
+            '+tryPerformSelector:forClass:arg:error:':
+                exclude: true
+            '+doTryBlock:error:':
+                exclude: true
     CASLastPageAdContent:
         methods:
             '-initWithHeadline:adText:destinationURL:imageURL:iconURL:':
@@ -79,7 +87,6 @@ classes:
                 name: withFramework
             '-createWithCasId:':
                 name: createMediationManager
-    CASMediationAdapter: { }
     CASMediationManager:
         methods:
             '-presentInterstitialFromRootViewController:callback:':
@@ -101,7 +108,10 @@ classes:
             '-isValidCallbackWithType:callback:':
                 name: isValidCallback
     CASMediationUnit: { }
-    CASNetwork: { }
+    CASNetwork:
+        methods:
+            '+getDisplayNameWithId:':
+                name: getDisplayName
     CASRequestUnit: { }
     CASSettings:
         methods:
@@ -167,17 +177,71 @@ classes:
             '-setNativeAd:error:':
                 name: setNativeAd
                 throws: NSErrorException
+            '-registerMediaViewWithTag:':
+                name: registerMediaView
+            '-registerAdChoicesViewWithTag:':
+                name: registerAdChoicesView
+            '-registerHeadlineViewWithTag:':
+                name: registerHeadlineView
+            '-registerCallToActionViewWithTag:':
+                name: registerCallToActionView
+            '-registerIconViewWithTag:':
+                name: registerIconView
+            '-registerBodyViewWithTag:':
+                name: registerBodyView
+            '-registerPriceViewWithTag:':
+                name: registerPriceView
+            '-registerAdvertiserViewWithTag:':
+                name: registerAdvertiserView
+            '-registerStoreViewWithTag:':
+                name: registerStoreView
+            '-registerStarRatingViewWithTag:':
+                name: registerStarRatingView
+            '-registerReviewCountViewWithTag:':
+                name: registerReviewCountView
+            '-registerAdLabelViewWithTag:':
+                name: registerAdLabelView
+            '-setNativeAd:templateSize:':
+                name: setNativeAdTemplateSize
 
     CASBiddingUnit: { }
     CASChoicesView: { }
     CASMediaView: { }
     CASMediationAgent: { }
     CASMediationBannerAgent: { }
-    CASMediationNativeAdContent: { }
     CASStarRatingView: { }
     CASConsentPlatform: { }
+    CASContentInfo: { }
+    CASError: { }
+    CASFormat:
+        methods:
+            '+native':
+                name: nativeFormat
+    CASInitializationError: { }
+    CASInterstitial:
+        methods:
+            '-initWithCasID:':
+                name: initWithCasID$
+    CASMAdapterBase: { }
+    CASNativeLoader:
+        methods:
+            '-initWithCasID:':
+                name: initWithCasID$
+            '-loadWithMaxNumberOfAds:':
+                name: loadWithMaxNumberOfAds$
+    CASRewarded:
+        methods:
+            '-initWithCasID:':
+                name: initWithCasID$
+            '-presentFromViewController:userDidEarnRewardHandler:':
+                #trim_after_first_colon: true
+                name: presentFromViewController$userDidEarnRewardHandler$
+    MediationAdBase: { }
+    MediationAdapter: { }
+    MediationNativeAdContent: { }
+    MediationRtbAdapter: { }
+    MediationSingleAdBase: { }
 protocols:
-    CASAdapterFactory: { }
     CASAnalyticsDelegate:
         methods:
             '-analyticsEvent:map:':
@@ -207,6 +271,27 @@ protocols:
     CASStatusHandler: { }
     CASPaidCallback: {}
     CASNativeAdStarRating: {}
+    CASImpressionDelegate:
+        methods:
+            '-adDidRecordImpressionWithInfo:':
+                name: adDidRecordImpression
+    CASMediationProvider: { }
+    CASNativeAdAssetViews: { }
+    CASNativeAdContentDelegate:
+        methods:
+            '-nativeAd:didFailToPresentWithError:':
+                name: nativeAdDidFailToPresent
+    CASNativeLoaderDelegate:
+        methods:
+            '-nativeAdDidFailToLoadWithError:':
+                name: nativeAdDidFailToLoad
+    CASScreenContent: { }
+    CASScreenContentDelegate:
+        methods:
+            '-screenAd:didFailToLoadWithError:':
+                name: screenAdDidFailToLoad
+            '-screenAd:didFailToPresentWithError:':
+                name: screenAdDidFailToPresent
 functions:
     # Make sure we don't miss any functions if new ones are introduced in a later version
     (.*):

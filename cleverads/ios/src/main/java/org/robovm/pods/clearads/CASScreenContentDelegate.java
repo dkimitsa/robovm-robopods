@@ -31,32 +31,38 @@ import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.coregraphics.*;
 import org.robovm.apple.coreanimation.*;
+import org.robovm.apple.corelocation.*;
 /*</imports>*/
 
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/CASMediationNativeAdContent/*</name>*/ 
-    extends /*<extends>*/CASNativeAdContent/*</extends>*/ 
-    /*<implements>*//*</implements>*/ {
+/*<annotations>*//*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ interface /*<name>*/CASScreenContentDelegate/*</name>*/ 
+    /*<implements>*/extends NSObjectProtocol/*</implements>*/ {
 
-    /*<ptr>*/public static class CASMediationNativeAdContentPtr extends Ptr<CASMediationNativeAdContent, CASMediationNativeAdContentPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(CASMediationNativeAdContent.class); }/*</bind>*/
+    /*<ptr>*/
+    /*</ptr>*/
+    /*<bind>*/
+    /*</bind>*/
     /*<constants>*//*</constants>*/
-    /*<constructors>*/
-    public CASMediationNativeAdContent() {}
-    protected CASMediationNativeAdContent(Handle h, long handle) { super(h, handle); }
-    protected CASMediationNativeAdContent(SkipInit skipInit) { super(skipInit); }
-    /*</constructors>*/
     /*<properties>*/
-    @Property(selector = "rootViewController")
-    public native UIViewController getRootViewController();
-    @Property(selector = "setRootViewController:")
-    public native void setRootViewController(UIViewController v);
-    /*</properties>*/
-    /*<members>*//*</members>*/
-    /*<methods>*/
     
+    /*</properties>*/
+    /*<methods>*/
+    @Method(selector = "screenAdDidLoadContent:")
+    void screenAdDidLoadContent(CASScreenContent ad);
+    @Method(selector = "screenAd:didFailToLoadWithError:")
+    void screenAdDidFailToLoad(CASScreenContent ad, CASError error);
+    @Method(selector = "screenAdWillPresentContent:")
+    void screenAdWillPresentContent(CASScreenContent ad);
+    @Method(selector = "screenAd:didFailToPresentWithError:")
+    void screenAdDidFailToPresent(CASScreenContent ad, CASError error);
+    @Method(selector = "screenAdDidClickContent:")
+    void screenAdDidClickContent(CASScreenContent ad);
+    @Method(selector = "screenAdDidDismissContent:")
+    void screenAdDidDismissContent(CASScreenContent ad);
     /*</methods>*/
+    /*<adapter>*/
+    /*</adapter>*/
 }

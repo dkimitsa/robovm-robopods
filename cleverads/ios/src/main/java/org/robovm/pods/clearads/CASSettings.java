@@ -31,6 +31,7 @@ import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.coregraphics.*;
 import org.robovm.apple.coreanimation.*;
+import org.robovm.apple.corelocation.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -93,6 +94,14 @@ import org.robovm.apple.coreanimation.*;
     public native CASConsentStatus getVendorConsent(@MachineSizedSInt long vendorId);
     @Method(selector = "getAdditionalConsentWithProviderId:")
     public native CASConsentStatus getAdditionalConsent(@MachineSizedSInt long providerId);
+    @Method(selector = "restartInterstitialInterval")
+    public native void restartInterstitialInterval();
+    @Method(selector = "setTestDeviceWithIds:")
+    public native void setTestDevice(NSArray<NSString> ids);
+    @Method(selector = "setInterstitialAdsWhenVideoCostAreLowerWithAllow:")
+    public native void setInterstitialAdsWhenVideoCostAreLower(boolean allow);
+    @Method(selector = "isInterstitialAdsWhenVideoCostAreLowerAllowed")
+    public native boolean isInterstitialAdsWhenVideoCostAreLowerAllowed();
     /**
      * @deprecated Use CAS.targetingOptions.locationCollectionEnabled instead.
      */
@@ -105,67 +114,9 @@ import org.robovm.apple.coreanimation.*;
     @Deprecated
     @Method(selector = "setTrackLocationWithEnabled:")
     public native void setTrackLocation(boolean enabled);
-    @Method(selector = "restartInterstitialInterval")
-    public native void restartInterstitialInterval();
-    @Method(selector = "setTestDeviceWithIds:")
-    public native void setTestDevice(NSArray<NSString> ids);
-    @Method(selector = "setInterstitialAdsWhenVideoCostAreLowerWithAllow:")
-    public native void setInterstitialAdsWhenVideoCostAreLower(boolean allow);
-    @Method(selector = "isInterstitialAdsWhenVideoCostAreLowerAllowed")
-    public native boolean isInterstitialAdsWhenVideoCostAreLowerAllowed();
     @Method(selector = "getLoadingMode")
     public native CASLoadingManagerMode getLoadingMode();
     @Method(selector = "setLoadingWithMode:")
     public native void setLoading(CASLoadingManagerMode mode);
-    /**
-     * @deprecated Use bannerRefreshInterval property instead
-     */
-    @Deprecated
-    @Method(selector = "setBannerRefreshWithInterval:")
-    public native void setBannerRefresh(@MachineSizedSInt long interval);
-    /**
-     * @deprecated Use interstitialInterval property instead
-     */
-    @Deprecated
-    @Method(selector = "setInterstitialWithInterval:")
-    public native void setInterstitial(@MachineSizedSInt long interval);
-    @Method(selector = "setMuteAdSoundsTo:")
-    public native void setMuteAdSoundsTo(boolean muted);
-    /**
-     * @deprecated Use userConsent property instead
-     */
-    @Deprecated
-    @Method(selector = "updateUserWithConsent:")
-    public native void updateUser(CASConsentStatus consent);
-    /**
-     * @deprecated Use userCCPAStatus property instead
-     */
-    @Deprecated
-    @Method(selector = "getCCPAStatus")
-    public native CASCCPAStatus getCCPAStatus();
-    /**
-     * @deprecated Use userCCPAStatus property instead
-     */
-    @Deprecated
-    @Method(selector = "updateCCPAWithStatus:")
-    public native void updateCCPA(CASCCPAStatus status);
-    /**
-     * @deprecated Use taggedAudience property instead
-     */
-    @Deprecated
-    @Method(selector = "setTaggedWithAudience:")
-    public native void setTagged(CASAudience audience);
-    /**
-     * @deprecated No longer in use
-     */
-    @Deprecated
-    @Method(selector = "isAnalyticsCollectionEnabled")
-    public native boolean isAnalyticsCollectionEnabled();
-    /**
-     * @deprecated No longer in use
-     */
-    @Deprecated
-    @Method(selector = "setAnalyticsCollectionWithEnabled:")
-    public native void setAnalyticsCollection(boolean enabled);
     /*</methods>*/
 }

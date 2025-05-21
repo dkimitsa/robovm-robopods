@@ -31,6 +31,7 @@ import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.coregraphics.*;
 import org.robovm.apple.coreanimation.*;
+import org.robovm.apple.corelocation.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -39,7 +40,7 @@ import org.robovm.apple.coreanimation.*;
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/CASNativeView/*</name>*/ 
     extends /*<extends>*/UIView/*</extends>*/ 
-    /*<implements>*//*</implements>*/ {
+    /*<implements>*/implements CASNativeAdAssetViews/*</implements>*/ {
 
     /*<ptr>*/public static class CASNativeViewPtr extends Ptr<CASNativeView, CASNativeViewPtr> {}/*</ptr>*/
     /*<bind>*/static { ObjCRuntime.bind(CASNativeView.class); }/*</bind>*/
@@ -54,10 +55,6 @@ import org.robovm.apple.coreanimation.*;
     public CASNativeView(NSCoder coder) { super((SkipInit) null); initObject(init(coder)); }
     /*</constructors>*/
     /*<properties>*/
-    @Property(selector = "mainView")
-    public native UIView getMainView();
-    @Property(selector = "setMainView:", strongRef = true)
-    public native void setMainView(UIView v);
     @Property(selector = "mediaView")
     public native CASMediaView getMediaView();
     @Property(selector = "setMediaView:", strongRef = true)
@@ -108,24 +105,54 @@ import org.robovm.apple.coreanimation.*;
     public native void setAdLabelView(UILabel v);
     @Property(selector = "clickableViews")
     public native NSArray<UIView> getClickableViews();
+    @Property(selector = "intrinsicContentSize")
+    public native @ByVal CGSize getIntrinsicContentSize();
     @WeaklyLinked
     @Property(selector = "layerClass")
     public static native Class<? extends CALayer> getLayerClass();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    public boolean setNativeAd(CASNativeAdContent ad) throws NSErrorException {
-       NSError.NSErrorPtr ptr = new NSError.NSErrorPtr();
-       boolean result = setNativeAd(ad, ptr);
-       if (ptr.get() != null) { throw new NSErrorException(ptr.get()); }
-       return result;
-    }
-    @Method(selector = "setNativeAd:error:")
-    private native boolean setNativeAd(CASNativeAdContent ad, NSError.NSErrorPtr error);
     @Method(selector = "initWithFrame:")
     protected native @Pointer long init(@ByVal CGRect frame);
     @Method(selector = "initWithCoder:")
     protected native @Pointer long init(NSCoder coder);
+    @Method(selector = "registerMediaViewWithTag:")
+    public native void registerMediaView(@MachineSizedSInt long tag);
+    @Method(selector = "registerAdChoicesViewWithTag:")
+    public native void registerAdChoicesView(@MachineSizedSInt long tag);
+    @Method(selector = "registerHeadlineViewWithTag:")
+    public native void registerHeadlineView(@MachineSizedSInt long tag);
+    @Method(selector = "registerCallToActionViewWithTag:")
+    public native void registerCallToActionView(@MachineSizedSInt long tag);
+    @Method(selector = "registerIconViewWithTag:")
+    public native void registerIconView(@MachineSizedSInt long tag);
+    @Method(selector = "registerBodyViewWithTag:")
+    public native void registerBodyView(@MachineSizedSInt long tag);
+    @Method(selector = "registerPriceViewWithTag:")
+    public native void registerPriceView(@MachineSizedSInt long tag);
+    @Method(selector = "registerAdvertiserViewWithTag:")
+    public native void registerAdvertiserView(@MachineSizedSInt long tag);
+    @Method(selector = "registerStoreViewWithTag:")
+    public native void registerStoreView(@MachineSizedSInt long tag);
+    @Method(selector = "registerStarRatingViewWithTag:")
+    public native void registerStarRatingView(@MachineSizedSInt long tag);
+    @Method(selector = "registerReviewCountViewWithTag:")
+    public native void registerReviewCountView(@MachineSizedSInt long tag);
+    @Method(selector = "registerAdLabelViewWithTag:")
+    public native void registerAdLabelView(@MachineSizedSInt long tag);
+    @Method(selector = "setNativeAd:")
+    public native void setNativeAd(CASNativeAdContent content);
+    @Method(selector = "setAdTemplateSize:")
+    public native void setAdTemplateSize(CASSize size);
+    /**
+     * @deprecated To improve performance, please call setTemplateSize(_:) once to create layout and setNativeAd(_:) for each new NativeAdContent.
+     */
+    @Deprecated
+    @Method(selector = "setNativeAd:templateSize:")
+    public native void setNativeAdTemplateSize(CASNativeAdContent ad, CASSize templateSize);
+    @Method(selector = "didMoveToWindow")
+    public native void didMoveToWindow();
     /**
      * @since Available in iOS 9.0 and later.
      */

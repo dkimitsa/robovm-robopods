@@ -31,6 +31,7 @@ import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.coregraphics.*;
 import org.robovm.apple.coreanimation.*;
+import org.robovm.apple.corelocation.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -65,16 +66,9 @@ import org.robovm.apple.coreanimation.*;
     public @MachineSizedSInt long getImpressionDepth() { return 0; }
     @NotImplemented("lifetimeRevenue")
     public double getLifetimeRevenue() { return 0; }
-    @NotImplemented("status")
-    public String getStatus() { return null; }
-    @NotImplemented("error")
-    public String getError() { return null; }
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @NotImplemented("isAdCached")
-    public boolean isAdCached() { return false; }
-    @NotImplemented("toggleIgnoreMode")
-    public void toggleIgnoreMode() {}
+    
     /*</methods>*/
 }

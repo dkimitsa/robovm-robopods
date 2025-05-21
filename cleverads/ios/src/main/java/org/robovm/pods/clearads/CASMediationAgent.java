@@ -31,12 +31,15 @@ import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.coregraphics.*;
 import org.robovm.apple.coreanimation.*;
+import org.robovm.apple.corelocation.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
+/**
+ * @deprecated Use new MediationAd implementation
+ */
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass @Deprecated/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/CASMediationAgent/*</name>*/ 
     extends /*<extends>*/CASMediationUnit/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
@@ -54,9 +57,6 @@ import org.robovm.apple.coreanimation.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "isAdCached")
-    public native boolean isAdCached();
-    @Method(selector = "toggleIgnoreMode")
-    public native void toggleIgnoreMode();
+    
     /*</methods>*/
 }

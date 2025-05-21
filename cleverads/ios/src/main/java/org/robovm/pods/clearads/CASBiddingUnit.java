@@ -31,12 +31,15 @@ import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.coregraphics.*;
 import org.robovm.apple.coreanimation.*;
+import org.robovm.apple.corelocation.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
+/**
+ * @deprecated Use new MediationAd implementation
+ */
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass @Deprecated/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/CASBiddingUnit/*</name>*/ 
     extends /*<extends>*/CASMediationUnit/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
@@ -50,20 +53,10 @@ import org.robovm.apple.coreanimation.*;
     protected CASBiddingUnit(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
-    @Property(selector = "cpm")
-    public native double getCpm();
-    @Property(selector = "setCpm:")
-    public native void setCpm(double v);
-    @Property(selector = "adType")
-    public native CASType getAdType();
-    @Property(selector = "setAdType:")
-    public native void setAdType(CASType v);
+    
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "isAdCached")
-    public native boolean isAdCached();
-    @Method(selector = "toggleIgnoreMode")
-    public native void toggleIgnoreMode();
+    
     /*</methods>*/
 }

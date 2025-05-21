@@ -307,1028 +307,167 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 
 #if defined(__OBJC__)
-typedef SWIFT_ENUM_NAMED(NSInteger, CASNetworkId, "AdNetworkId", open) {
-  CASNetworkIdGoogleAds = 0,
-  CASNetworkIdLiftoffMonetize = 1,
-  CASNetworkIdKidoz = 2,
-  CASNetworkIdChartboost = 3,
-  CASNetworkIdUnityAds = 4,
-  CASNetworkIdAppLovin = 5,
-  CASNetworkIdSuperAwesome = 6,
-  CASNetworkIdStartIO = 7,
-  CASNetworkIdAudienceNetwork = 9,
-  CASNetworkIdInMobi = 10,
-  CASNetworkIdDTExchange = 11,
-  CASNetworkIdMyTarget = 12,
-  CASNetworkIdCrosspromo = 13,
-  CASNetworkIdIronSource = 14,
-  CASNetworkIdYandexAds = 15,
-  CASNetworkIdHyprMX = 16,
-  CASNetworkIdSmaato = 18,
-  CASNetworkIdBigo = 19,
-  CASNetworkIdMadex = 21,
-  CASNetworkIdMintegral = 23,
-  CASNetworkIdPangle = 24,
-  CASNetworkIdDSPExchange = 30,
-  CASNetworkIdLastPageAd = 31,
+typedef SWIFT_ENUM_NAMED(NSInteger, CASChoicesPlacement, "AdChoicesPlacement", open) {
+  CASChoicesPlacementTopLeft = 0,
+  CASChoicesPlacementTopRight = 1,
+  CASChoicesPlacementBottomRight = 2,
+  CASChoicesPlacementBottomLeft = 3,
 };
 
-enum CASType : NSInteger;
+@class CASFormat;
 @class NSString;
-enum CASPriceAccuracy : NSInteger;
+enum CASSourceId : NSInteger;
+enum CASRevenuePrecision : NSInteger;
 
-SWIFT_PROTOCOL_NAMED("CASImpression")
-@protocol CASStatusHandler <NSObject>
-/// The Format Type of the impression
-@property (nonatomic, readonly) enum CASType adType;
-/// The mediated network’s name that purchased the impression.
-/// All mediation network constants from <code>CASNetwork</code>.
-@property (nonatomic, readonly, copy) NSString * _Nonnull network;
-/// The Cost Per Mille estimated impressions of the ad in USD.
-/// The value accuracy is returned in the <code>priceAccuracy</code> property.
-@property (nonatomic, readonly) double cpm;
-/// Accuracy of the cpm value. May return one of the following:
-@property (nonatomic, readonly) enum CASPriceAccuracy priceAccuracy;
-/// Version of the network SDK rendering the ad.
-@property (nonatomic, readonly, copy) NSString * _Nonnull versionInfo;
-/// The creative id tied to the ad, if available. May be nil.
-/// You can report creative issues to our Ad review team using this id.
-@property (nonatomic, readonly, copy) NSString * _Nullable creativeIdentifier;
-/// The placement ID from the network that showed the ad
-@property (nonatomic, readonly, copy) NSString * _Nonnull identifier;
-/// The amount of impressions of all ad formats to the current user for all sessions.
+SWIFT_CLASS_NAMED("AdContentInfo")
+@interface CASContentInfo : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+/// Gets the format of the ad that is shown.
+@property (nonatomic, readonly, strong) CASFormat * _Nonnull format;
+/// Gets the display name of the mediated network that purchased the impression.
+@property (nonatomic, readonly, copy) NSString * _Nonnull sourceName;
+/// Gets the ID of the mediated network that purchased the impression.
+@property (nonatomic, readonly) enum CASSourceId sourceID;
+/// Gets the Ad Unit identifier from the mediated network that purchased the impression.
+@property (nonatomic, readonly, copy) NSString * _Nonnull sourceUnitID;
+/// Gets the Creative identifier associated with the ad, if available. May be <code>nil</code>.
+/// You can use this identifier to report creative issues to the Ad review team.
+@property (nonatomic, readonly, copy) NSString * _Nullable creativeID;
+/// Gets the revenue generated from the impression, in USD.
+/// The revenue value may be either estimated or exact, depending on the precision specified by [revenuePrecision].
+@property (nonatomic, readonly) double revenue;
+/// Gets the precision type of the revenue field.
+@property (nonatomic, readonly) enum CASRevenuePrecision revenuePrecision;
+/// Gets the total number of impressions across all ad formats for the current user, across all sessions.
 @property (nonatomic, readonly) NSInteger impressionDepth;
-/// The total revenue in USD from impressions of all ad formats to the current user for all sessions.
-@property (nonatomic, readonly) double lifetimeRevenue;
-/// Not used deprecated API
-@property (nonatomic, readonly, copy) NSString * _Nonnull status;
-/// Not used deprecated API
-@property (nonatomic, readonly, copy) NSString * _Nonnull error;
-/// Not used deprecated API
-- (BOOL)isAdCached SWIFT_WARN_UNUSED_RESULT;
-/// Not used deprecated API
-- (void)toggleIgnoreMode;
+/// Gets the accumulated value of user ad revenue in USD from all ad format impressions.
+@property (nonatomic, readonly) double revenueTotal;
 @end
 
+enum CASErrorCode : NSInteger;
 
-SWIFT_CLASS_NAMED("MediationUnit")
-@interface CASMediationUnit : NSObject <CASStatusHandler>
-@property (nonatomic, copy) NSString * _Nullable creativeIdentifier;
-@property (nonatomic) double cpm;
-@property (nonatomic, readonly, copy) NSString * _Nonnull network;
-@property (nonatomic, readonly, copy) NSString * _Nonnull identifier;
-@property (nonatomic, copy) NSString * _Nonnull error;
-@property (nonatomic) enum CASPriceAccuracy priceAccuracy;
-@property (nonatomic, readonly, copy) NSString * _Nonnull status;
-@property (nonatomic, readonly) enum CASType adType;
-@property (nonatomic, readonly, copy) NSString * _Nonnull versionInfo;
-@property (nonatomic, readonly) NSInteger impressionDepth;
-@property (nonatomic, readonly) double lifetimeRevenue;
-- (BOOL)isAdCached SWIFT_WARN_UNUSED_RESULT;
-- (void)toggleIgnoreMode;
+SWIFT_CLASS_NAMED("AdError")
+@interface CASError : NSObject
+@property (nonatomic, readonly) enum CASErrorCode code;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) CASError * _Nonnull noConnection;)
++ (CASError * _Nonnull)noConnection SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) CASError * _Nonnull noFill;)
++ (CASError * _Nonnull)noFill SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) CASError * _Nonnull timeout;)
++ (CASError * _Nonnull)timeout SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) CASError * _Nonnull notReady;)
++ (CASError * _Nonnull)notReady SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) CASError * _Nonnull notInitialized;)
++ (CASError * _Nonnull)notInitialized SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) CASError * _Nonnull expired;)
++ (CASError * _Nonnull)expired SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) CASError * _Nonnull reachedCap;)
++ (CASError * _Nonnull)reachedCap SWIFT_WARN_UNUSED_RESULT;
+@property (nonatomic, readonly, copy) NSString * _Nonnull description;
+/// Same Ad error in NSError implementation
+@property (nonatomic, readonly) NSError * _Nonnull toError;
+- (BOOL)isEqual:(id _Nullable)object SWIFT_WARN_UNUSED_RESULT;
++ (CASError * _Nonnull)fromCode:(NSInteger)code SWIFT_WARN_UNUSED_RESULT;
++ (CASError * _Nonnull)fromMessage:(NSString * _Nullable)message SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_MSG("Not recomended to use");
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 
-SWIFT_CLASS_NAMED("BiddingUnit")
-@interface CASBiddingUnit : CASMediationUnit
-@property (nonatomic) double cpm;
-@property (nonatomic) enum CASType adType;
-- (BOOL)isAdCached SWIFT_WARN_UNUSED_RESULT;
-- (void)toggleIgnoreMode;
-@end
-
-@class CASSettings;
-@class CASTargetingOptions;
-@class CASMediationManager;
-@class CASManagerBuilder;
-enum CASError : NSInteger;
-
-SWIFT_CLASS_NAMED("CAS")
-@interface CAS : NSObject
-/// Get singleton instance to configure all mediation managers
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) CASSettings * _Nonnull settings;)
-+ (CASSettings * _Nonnull)settings SWIFT_WARN_UNUSED_RESULT;
-/// You can now easily tailor the way you serve your ads to fit a specific audience!
-/// You’ll need to inform our servers of the users details
-/// so the SDK will know to serve ads according to the segment the user belongs to.
-/// <em>Attention:</em> Must be set before initializing the SDK
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) CASTargetingOptions * _Nonnull targetingOptions;)
-+ (CASTargetingOptions * _Nonnull)targetingOptions SWIFT_WARN_UNUSED_RESULT;
-/// Get last created <code>CASMediationManager</code> by <code>CAS.create()</code>
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) CASMediationManager * _Nullable manager;)
-+ (CASMediationManager * _Nullable)manager SWIFT_WARN_UNUSED_RESULT;
-+ (void)setManager:(CASMediationManager * _Nullable)value;
-/// Create <code>CASMediationManager</code> builder.
-/// Don’t forget to call the <code>ManagerBuilder.create</code> method to create manager instance.
-+ (CASManagerBuilder * _Nonnull)buildManager SWIFT_WARN_UNUSED_RESULT;
-+ (NSString * _Nonnull)getSDKVersion SWIFT_WARN_UNUSED_RESULT;
-/// Call Integration Helper and check current integration in console.
-/// Log tag: [CASIntegrationHelper]
-+ (void)validateIntegration;
-+ (NSString * _Nonnull)getMessageOf:(enum CASError)error SWIFT_WARN_UNUSED_RESULT;
-+ (enum CASError)getErrorFor:(NSString * _Nullable)message SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-@class CASMediationAdapter;
-@class CASConsentPlatform;
-
-SWIFT_PROTOCOL_NAMED("CASAdapterFactory")
-@protocol CASAdapterFactory <NSObject>
-- (nonnull instancetype)init;
-- (CASMediationAdapter * _Nonnull)create SWIFT_WARN_UNUSED_RESULT;
-@optional
-- (CASConsentPlatform * _Nonnull)createCMP SWIFT_WARN_UNUSED_RESULT;
-@end
-
-@protocol CASAnalyticsDelegate;
-
-SWIFT_CLASS("_TtC18CleverAdsSolutions12CASAnalytics")
-@interface CASAnalytics : NSObject
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, weak) id <CASAnalyticsDelegate> _Nullable delegate;)
-+ (id <CASAnalyticsDelegate> _Nullable)delegate SWIFT_WARN_UNUSED_RESULT;
-+ (void)setDelegate:(id <CASAnalyticsDelegate> _Nullable)value;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, copy) NSString * _Nonnull eventNameForCrossPromo;)
-+ (NSString * _Nonnull)eventNameForCrossPromo SWIFT_WARN_UNUSED_RESULT;
-+ (void)setEventNameForCrossPromo:(NSString * _Nonnull)value;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, copy) NSString * _Nonnull eventNameForImpressions;)
-+ (NSString * _Nonnull)eventNameForImpressions SWIFT_WARN_UNUSED_RESULT;
-+ (void)setEventNameForImpressions:(NSString * _Nonnull)value;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, copy) NSString * _Nonnull eventNameForErrors;)
-+ (NSString * _Nonnull)eventNameForErrors SWIFT_WARN_UNUSED_RESULT;
-+ (void)setEventNameForErrors:(NSString * _Nonnull)value;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, copy) NSString * _Nonnull eventNameForMediation;)
-+ (NSString * _Nonnull)eventNameForMediation SWIFT_WARN_UNUSED_RESULT;
-+ (void)setEventNameForMediation:(NSString * _Nonnull)value;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
 
 
-SWIFT_PROTOCOL("_TtP18CleverAdsSolutions20CASAnalyticsDelegate_")
-@protocol CASAnalyticsDelegate
-- (void)analyticsEvent:(NSString * _Nonnull)eventName map:(NSDictionary<NSString *, id> * _Nonnull)map;
-@end
+typedef SWIFT_ENUM_NAMED(NSInteger, CASErrorCode, "AdErrorCode", open) {
+/// Indicates an internal error occurred.
+  CASErrorCodeInternalError = 0,
+/// Indicates that ads are not ready to be shown.
+/// Ensure to call the appropriate ad loading method or use automatic cache mode.
+/// If using automatic load mode, wait a little longer for ads to be ready.
+  CASErrorCodeNotReady = 1,
+/// Indicates that the device is rejected for services.
+/// Services may not be available for some devices that do not meet the requirements.
+/// For example, the country or version of the OS.
+  CASErrorCodeRejected = 2,
+/// Indicates that no ads are available to be served.
+/// If ads are visible in demo mode, your implementation is correct, and ads will be served once live.
+  CASErrorCodeNoFill = 3,
+/// Indicates that the ad creative has reached its daily cap for the user.
+/// This is typically relevant for cross-promotion ads only.
+  CASErrorCodeReachedCap = 6,
+/// Indicates that the CAS SDK is not initialized.
+/// Ensure to add initialization code <code>CAS.buildManager().create()</code> in your App delegate.
+  CASErrorCodeNotInitialized = 7,
+/// Indicates a timeout error occurred because the advertising source did not respond in time.
+/// The system will continue waiting for a response, which may delay ad loading or cause a loading error.
+  CASErrorCodeTimeout = 8,
+/// Indicates that there is no internet connection available, which prevents ads from loading.
+  CASErrorCodeNoConnection = 9,
+/// Indicates that there is a configuration error in one of the mediation ad sources.
+/// Report this error to your support manager for further assistance.
+  CASErrorCodeConfigurationError = 10,
+/// Indicates that the interval between impressions of interstitial ads has not yet passed.
+/// To change the interval, use the AdsSettings.interstitialInterval method.
+/// This error may also occur if a trial ad-free interval has been defined and has not yet passed since app start.
+  CASErrorCodeNotPassedInterval = 11,
+/// Indicates that another fullscreen ad is currently being displayed, preventing new ads from showing.
+/// Review your ad display logic to avoid duplicate impressions.
+  CASErrorCodeAlreadyDisplayed = 12,
+/// Indicates that ads cannot be shown because the application is not currently in the foreground.
+  CASErrorCodeNotForeground = 13,
+};
 
-@protocol CASCallback;
-@class UIViewController;
 
-SWIFT_CLASS_NAMED("CASAppOpen")
-@interface CASAppOpen : NSObject
-/// Returns the ad manager ID.
-@property (nonatomic, readonly, copy) NSString * _Nonnull managerId;
-/// Registers a weak delegate to be invoked when ads show and dismiss full screen content.
-@property (nonatomic, weak) id <CASCallback> _Nullable contentCallback;
-+ (CASAppOpen * _Nonnull)createWithManagerId:(NSString * _Nonnull)managerId SWIFT_WARN_UNUSED_RESULT;
-+ (CASAppOpen * _Nonnull)createWithManager:(CASMediationManager * _Nonnull)manager SWIFT_WARN_UNUSED_RESULT;
-/// Loads an AppOpenAd.
-/// Note: You must keep a strong link throughout the ad’s lifecycle.
-/// \param completionHandler An object that handles events for loading an app open ad
-///
-- (void)loadAdWithCompletionHandler:(void (^ _Nonnull)(CASAppOpen * _Nonnull, NSError * _Nullable))completionHandler;
-/// Loads an AppOpenAd.
-/// Note: You must keep a strong link throughout the ad’s lifecycle.
-/// \param orientation The orientation that the ad will be presented in.
-///
-/// \param completionHandler An object that handles events for loading an app open ad
-///
-- (void)loadAdWithOrientation:(UIInterfaceOrientation)orientation completionHandler:(void (^ _Nonnull)(CASAppOpen * _Nonnull, NSError * _Nullable))completionHandler SWIFT_DEPRECATED_MSG("Loading app open ads now assumes the current orientation of the device, matching other full-screen formats.");
-- (BOOL)isAdAvailable SWIFT_WARN_UNUSED_RESULT;
-- (void)presentFromRootViewController:(UIViewController * _Nonnull)controller;
+/// This class defines a format of an ad.
+SWIFT_CLASS_NAMED("AdFormat")
+@interface CASFormat : NSObject
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) CASFormat * _Nonnull appOpen;)
++ (CASFormat * _Nonnull)appOpen SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) CASFormat * _Nonnull banner;)
++ (CASFormat * _Nonnull)banner SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) CASFormat * _Nonnull inlineBanner;)
++ (CASFormat * _Nonnull)inlineBanner SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) CASFormat * _Nonnull mediumRectangle;)
++ (CASFormat * _Nonnull)mediumRectangle SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) CASFormat * _Nonnull interstitial;)
++ (CASFormat * _Nonnull)interstitial SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) CASFormat * _Nonnull rewarded;)
++ (CASFormat * _Nonnull)rewarded SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) CASFormat * _Nonnull native;)
++ (CASFormat * _Nonnull)native SWIFT_WARN_UNUSED_RESULT;
+@property (nonatomic, readonly) BOOL isAdView;
+@property (nonatomic, readonly, copy) NSString * _Nonnull description;
+- (BOOL)isEqual:(id _Nullable)object SWIFT_WARN_UNUSED_RESULT;
+@property (nonatomic, readonly) NSUInteger hash;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-
-/// The CAS can execute callbacks on the UI or background thread.
-SWIFT_PROTOCOL_NAMED("CASCallback")
-@protocol CASCallback
-@optional
-/// Executed when the ad is displayed.
-/// \param adStatus Information of displayed ad
-///
-- (void)willShownWithAd:(id <CASStatusHandler> _Nonnull)adStatus;
-/// Executed when the ad is failed to display.
-/// The Banner may automatically appear when the Ad is ready again.
-/// This will trigger the <code>willShown(ad:)</code> callback again.
-/// \param error Error message
-///
-- (void)didShowAdFailedWithError:(NSString * _Nonnull)error;
-/// Executed when the user clicks on an Ad.
-- (void)didClickedAd;
-/// Executed when the Ad is completed.
-/// Banner Ad does not use this callback.
-- (void)didCompletedAd;
-/// Executed when the ad is closed.
-/// The Banner Ad cannot be displayed automatically after this callback for the current view.
-/// If you decide to show the Banner Ad on this view then you need refresh view visibility.
-- (void)didClosedAd;
-@end
-
-
-SWIFT_PROTOCOL("_TtP18CleverAdsSolutions20CASAppReturnDelegate_")
-@protocol CASAppReturnDelegate <CASCallback>
-- (UIViewController * _Nonnull)viewControllerForPresentingAppReturnAd SWIFT_WARN_UNUSED_RESULT;
-@end
-
-typedef SWIFT_ENUM_NAMED(NSInteger, CASAudience, "CASAudience", open) {
-/// The user’s age has not been determined.
-  CASAudienceUndefined = 0,
-/// Audiences under the age of 13 who subject of COPPA.
-/// When using this feature, a Tag For Users under the Age of Consent in Europe (TFUA) parameter
-/// will be included in the ad request.
-/// Also the state of GDPR and CCPA will be overridden automatically
-/// to <code>CASConsentStatus.denied</code> and  <code>CASCCPAStatus.optOutSale</code>
-  CASAudienceChildren = 1,
-/// Audiences over the age of 13 NOT subject to the restrictions of child protection laws.
-  CASAudienceNotChildren = 2,
+/// Defines the precision levels for ad revenue calculations.
+/// These levels indicate the accuracy or source of the revenue data provided by the system.
+typedef SWIFT_ENUM_NAMED(NSInteger, CASRevenuePrecision, "AdRevenuePrecision", open) {
+/// Indicates that the revenue precision is unknown.
+/// This occurs when there is insufficient data available for CAS to calculate a revenue value.
+/// In such cases, CAS returns $0 in revenue.
+  CASRevenuePrecisionUnknown = 0,
+/// Indicates that the revenue value is provided as part of a real-time auction.
+/// This value represents the most accurate revenue figure available at the time.
+  CASRevenuePrecisionPrecise = 1,
+/// Indicates that the revenue is based on the manual CPM (Cost Per Mille) value entered
+/// for the waterfall ad network instance in mediation.
+/// note:
+/// Actual ad revenue is expected to be 10-20% higher than this minimum (floor) value.
+  CASRevenuePrecisionFloor = 2,
+/// Indicates that the revenue calculation is based on historical performance data
+/// as analyzed by the CAS platform.
+/// note:
+/// Estimated ad revenue may have discrepancies of up to 10% compared to actual values.
+  CASRevenuePrecisionEstimated = 3,
 };
 
-@class CASBannerView;
-
-/// The CAS can execute callbacks on the UI or background thread.
-SWIFT_PROTOCOL_NAMED("CASBannerDelegate")
-@protocol CASBannerDelegate
-@optional
-/// Invokes this callback when ad loaded and ready to present.
-- (void)bannerAdViewDidLoad:(CASBannerView * _Nonnull)view;
-/// Invokes this callback when an error occurred with the ad.
-/// <ul>
-///   <li>
-///     To see a description of the error, see <code>AdError.message</code>.
-///   </li>
-/// </ul>
-- (void)bannerAdView:(CASBannerView * _Nonnull)adView didFailWith:(enum CASError)error;
-/// Invokes this callback when the new ad will presenting for user with info about the impression.
-- (void)bannerAdView:(CASBannerView * _Nonnull)adView willPresent:(id <CASStatusHandler> _Nonnull)impression;
-/// Invokes this callback when a user clicks the ad.
-- (void)bannerAdViewDidRecordClick:(CASBannerView * _Nonnull)adView;
-@end
-
-@class NSCoder;
-
-SWIFT_CLASS("_TtC18CleverAdsSolutions17CASBannerInternal")
-@interface CASBannerInternal : UIView
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
-@property (nonatomic, getter=isHidden) BOOL hidden;
-@property (nonatomic) CGFloat alpha;
-@property (nonatomic, readonly) CGSize intrinsicContentSize;
-- (void)didMoveToWindow;
-- (void)didMoveToSuperview;
-- (nonnull instancetype)initWithFrame:(CGRect)frame SWIFT_UNAVAILABLE;
-@end
-
-@class CASSize;
-
-SWIFT_CLASS("_TtC18CleverAdsSolutions13CASBannerView")
-@interface CASBannerView : CASBannerInternal
-/// Initializes and returns a banner view with the specified ad size placed at its superview’s
-/// origin.
-- (nonnull instancetype)initWithAdSize:(CASSize * _Nonnull)adSize manager:(CASMediationManager * _Nullable)manager;
-/// Initializes and returns a banner view with the specified ad size and origin relative to the
-/// banner’s superview.
-- (nonnull instancetype)initWithAdSize:(CASSize * _Nonnull)adSize origin:(CGPoint)origin manager:(CASMediationManager * _Nullable)manager OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
-/// Active <code>CASMediationManager</code> to this banner view.
-/// It can be automatically selected as the last active <code>CAS.manager</code> if it is NIL.
-@property (nonatomic, strong) CASMediationManager * _Nullable manager;
-/// Current banner ad size.
-/// If autoload disabled (<code>isAutoloadEnabled = false</code>) then please call <code>loadNextAd</code> after banner size changed.
-@property (nonatomic, strong) CASSize * _Nonnull adSize;
-/// This view controller is used to present an overlay when the ad is clicked.
-/// It should normally be set to the view controller that contains the <code>CASBannerView</code>
-@property (nonatomic, weak) UIViewController * _Nullable rootViewController;
-/// Through the use of <code>CASBannerDelegate</code>, you can listen for banner ads events.
-@property (nonatomic, weak) id <CASBannerDelegate> _Nullable adDelegate;
-/// Check ready banner ads
-@property (nonatomic, readonly) BOOL isAdReady;
-/// A Boolean value that determines whether autoloading of ads in the receiver is enabled.
-/// If enabled, you do not need to call the <code>loadNextAd</code> method to load ads.
-/// This value will override global state of <code>CASSettings.loadingMode</code>.
-/// By default enabled if global state is NOT <code>CASSettings.setLoadingMode(CASLoadingManagerMode.Manual)</code>.
-@property (nonatomic) BOOL isAutoloadEnabled;
-/// Set the number of seconds an ad is displayed before a new ad is shown.
-/// After the interval has passed, a new advertisement will be automatically loaded.
-/// This value will override global <code>CASSettings.setBannerRefreshInterval</code>
-@property (nonatomic) NSInteger refreshInterval;
-/// Disable auto refresh ads.
-- (void)disableAdRefresh;
-/// Manual load Banner Ad or reload current loaded Ad for cancel impression.
-/// If autoload disabled (<code>isAutoloadEnabled = false</code>) then you should use <code>loadNextAd</code> before present ad.
-/// You can get a callback for the successful loading of an ad when set <code>adDelegate</code>
-/// attention:
-/// This functionality is available only after <code>CAS.create</code>
-- (void)loadNextAd;
-/// Destroy ad in the Banner View.
-/// Call when banner ad is no longer needed.
-- (void)destroy;
-@end
-
-
-SWIFT_CLASS_NAMED("CASBridgeToBUnit")
-@interface CASBridgeToBUnit : CASBiddingUnit
-- (BOOL)isAdCached SWIFT_WARN_UNUSED_RESULT;
-@end
-
-typedef SWIFT_ENUM_NAMED(NSInteger, CASCCPAStatus, "CASCCPAStatus", open) {
-/// Mediation ads network behavior
-  CASCCPAStatusUndefined = 0,
-/// User does not consent to the sale of his or her personal information in compliance with CCPA.
-  CASCCPAStatusOptOutSale = 1,
-/// User consents to the sale of his or her personal information in compliance with CCPA.
-  CASCCPAStatusOptInSale = 2,
-};
-
-
-
-SWIFT_CLASS_NAMED("CASChoicesView")
-@interface CASChoicesView : UIView
-@property (nonatomic, readonly) CGSize intrinsicContentSize;
-- (void)layoutSubviews;
-- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
-@end
-
-enum CASConsentFlowStatus : NSInteger;
-enum CASUserDebugGeography : NSInteger;
-
-/// Use this object for configure Consent flow dialogs for GDPR and Apple ATT request.
-/// Create and attach the object to CAS initialization.
-/// \code
-/// CAS.buildManager()
-///    .withConsentFlow(
-///         CASConsentFlow()
-///             .withPrivacyPolicy("https://url_to_privacy_policy")
-///    )
-///    .create()
-///
-/// \endcodeBy default, the consent flow will be shown to users who are protected by laws.
-/// You can prevent us from showing the consent dialog to the user ussing followed lines:
-/// \code
-/// CAS.buildManager()
-///     .withConsentFlow(
-///         CASConsentFlow(isEnabled: false)
-///     )
-///     .create()
-///
-/// \endcode
-SWIFT_CLASS_NAMED("CASConsentFlow")
-@interface CASConsentFlow : NSObject
-@property (nonatomic) BOOL requestGDPR;
-@property (nonatomic) BOOL requestATT SWIFT_DEPRECATED_MSG("The GDPR and ATT request does not support partial activation. Use requestGDPR instead.");
-@property (nonatomic) BOOL forceTesting;
-@property (nonatomic, copy) NSString * _Nullable privacyPolicyUrl;
-@property (nonatomic, copy) void (^ _Nullable completionHandler)(enum CASConsentFlowStatus);
-@property (nonatomic, strong) UIViewController * _Nullable viewControllerToPresent;
-@property (nonatomic) enum CASUserDebugGeography debugGeography;
-/// Create Consent flow configuration
-/// \param isEnabled If enabled then the consent flow will be shown to users who are protected by laws.
-///
-- (nonnull instancetype)initWithEnabled:(BOOL)isEnabled OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-/// Override the UI context in which the form should run.
-/// If you do not define a context, it will be determined automatically.
-/// The form can open on each new UIViewController until the user closes it.
-- (CASConsentFlow * _Nonnull)withViewControllerToPresent:(UIViewController * _Nullable)controller;
-/// Shows the consent form only if it is required and the user has not responded previously.
-/// If the consent status is required, the SDK loads a form and immediately presents it.
-- (void)presentIfRequired;
-/// Force shows the form to modify user  consent at any time.
-/// When a user interacts with your UI element, call function to show the form
-/// so the user can update their privacy options at any time.
-- (void)present;
-@end
-
-typedef SWIFT_ENUM_NAMED(NSInteger, CASUserDebugGeography, "DebugGeography", open) {
-/// Debug geography disabled.
-  CASUserDebugGeographyDisabled = 0,
-/// Geography appears as in EEA.
-  CASUserDebugGeographyEEA = 1,
-/// Geography appears as not in EEA.
-  CASUserDebugGeographyNotEEA = 2,
-};
-
-typedef SWIFT_ENUM_NAMED(NSInteger, CASConsentFlowStatus, "CASConsentFlowStatus", open) {
-/// User consent obtained. Personalized vs non-personalized undefined.
-  CASConsentFlowStatusObtained = 3,
-/// User consent not required.
-  CASConsentFlowStatusNotRequired = 4,
-/// User consent unavailable.
-  CASConsentFlowStatusUnavailable = 5,
-/// There was an internal error.
-  CASConsentFlowStatusInternalError = 10,
-/// There was an error loading data from the network.
-  CASConsentFlowStatusNetworkError = 11,
-/// There was an error with the UI context is passed in.
-  CASConsentFlowStatusViewControllerInvalid = 12,
-/// There was an error with another form is still being displayed.
-  CASConsentFlowStatusFlowStillPresenting = 13,
-};
-
-
-SWIFT_CLASS("_TtC18CleverAdsSolutions18CASConsentPlatform")
-@interface CASConsentPlatform : NSObject
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-typedef SWIFT_ENUM_NAMED(NSInteger, CASConsentStatus, "CASConsentStatus", open) {
-/// Mediation ads network behavior
-  CASConsentStatusUndefined = 0,
-/// User consents to behavioral targeting in compliance with GDPR.
-  CASConsentStatusAccepted = 1,
-/// User does not consent to behavioral targeting in compliance with GDPR.
-  CASConsentStatusDenied = 2,
-};
-
-typedef SWIFT_ENUM_NAMED(NSInteger, CASError, "CASError", open) {
-  CASErrorInternalError = 0,
-/// Loading ads cannot be successful without an internet connection.
-  CASErrorNoConnection = 2,
-/// This means we are not able to serve ads to this person.
-/// Note that if you can see ads while you are testing with enabled <code>CAS.create(demoAdMode: true)</code>,
-/// your implementation works correctly and people will be able to see ads in your app once it’s live.
-  CASErrorNoFill = 3,
-/// A configuration error has been detected in one of the mediation ad networks.
-/// Please report error message to your manager support.
-  CASErrorConfigurationError = 6,
-/// Ad are not ready to show.
-/// You need to call Load ads or use one of the automatic cache mode.
-/// If you are already using automatic cache mode then just wait a little longer.
-/// You can always check if ad is ready to show using methods:
-/// \code
-/// CASMediationManager.isInterstitialReady
-/// CASMediationManager.isRewardedReady
-/// CASBannerView.isAdReady
-///
-/// \endcode
-  CASErrorNotReady = 1001,
-/// The manager you want to use is not active at the moment.
-/// To change the state of the manager, use method:
-/// \code
-/// CASMediationManager.setEnabled
-///
-/// \endcode
-  CASErrorManagerIsDisabled = 1002,
-/// Ad creative has reached its daily cap for user.
-  CASErrorReachedCap = 1004,
-/// There is not enough space in the current view for the selected <code>CASSize</code>.
-/// Please make sure that the size of the banner container has enough free space.
-/// You can choose a smaller size if necessary using  property:
-/// \code
-/// CASBannerView.adSize
-///
-/// \endcode
-  CASErrorNotEnoughSpace = 1005,
-/// The interval between impressions of Interstitial Ad has not yet passed.
-/// To change the interval, use  method:
-/// \code
-/// CASSettings.setInterstitial(interval:)
-///
-/// \endcode
-  CASErrorIntervalNotYetPassed = 2001,
-/// You can not show ads because another fullscreen ad is being displayed at the moment.
-/// Please check your ad call logic to eliminate duplicate impressions.
-  CASErrorAlreadyDisplayed = 2002,
-/// Ads cannot be shown as the application is currently not visible to the user.
-  CASErrorAppIsPaused = 2003,
-/// All the rootViewController parameters in Ad APIs must be provided to process ad redirects.
-/// In the SDK, all redirects use the present method.
-/// Therefore, make sure that the passed rootViewController parameters are not null and do not have other present controllers.
-/// Otherwise the present will fail because presentedViewController already exists.
-  CASErrorInvalidUIViewController = 3001,
-};
-static NSString * _Nonnull const CASErrorDomain = @"CleverAdsSolutions.CASError";
-
-
-
-SWIFT_CLASS_NAMED("CASInitialConfig")
-@interface CASInitialConfig : NSObject
-/// Get the CAS manager initialization error message or NULL if initialization is successful.
-/// Check errors constants from CASInitializationError class.
-@property (nonatomic, readonly, copy) NSString * _Nullable error;
-/// Get the initialized CAS manager.
-@property (nonatomic, readonly, strong) CASMediationManager * _Nonnull manager;
-/// Get the user’s ISO-2 country code.
-@property (nonatomic, readonly, copy) NSString * _Nullable countryCode;
-/// The consent must be requested from the user.
-@property (nonatomic, readonly) BOOL isConsentRequired;
-/// Returns true if the user authorizes access to app-related data for tracking the user or the device.
-/// seealso:
-/// <a href="https://developer.apple.com/documentation/apptrackingtransparency/attrackingmanager">App Tracking Transparency</a>
-@property (nonatomic, readonly) BOOL isATTrackingAuthorized;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
-SWIFT_CLASS_NAMED("CASLastPageAdContent")
-@interface CASLastPageAdContent : NSObject
-/// Create Ad content to use in Last Page
-/// The latest free ad page for your own promotion
-/// This ad page will be displayed when there is no paid ad to show or internet availability.
-/// Apply this content to <code>MediationManager.lastPageAdContent</code>
-/// \param headline Enter the message that you want users to see.
-///
-/// \param adText Enter a description for the app being promoted. Optional property.
-///
-/// \param destinationURL Enter the URL that CAS will direct users to when they click the ad. This URL is not visible in the ad.
-///
-/// \param imageURL Enter the direct URL of the image to be used as the ad file. Optional property.
-///
-/// \param iconURL Enter the direct URL of the icon or logo (Small square picture). Optional property.
-///
-- (nonnull instancetype)initWithHeadline:(NSString * _Nonnull)headline adText:(NSString * _Nonnull)adText destinationURL:(NSString * _Nonnull)destinationURL imageURL:(NSString * _Nonnull)imageURL iconURL:(NSString * _Nonnull)iconURL OBJC_DESIGNATED_INITIALIZER;
-+ (CASLastPageAdContent * _Nullable)createFrom:(NSString * _Nullable)json SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
-SWIFT_PROTOCOL_NAMED("CASLoadDelegate")
-@protocol CASLoadDelegate
-/// Executed when the ad loaded and ready to present.
-/// attention:
-/// Can be called from ANY Thread and not UI Thread safe.
-- (void)onAdLoaded:(enum CASType)adType;
-/// Executed when the ad failed to load.
-/// attention:
-/// Can be called from ANY Thread and not UI Thread safe.
-- (void)onAdFailedToLoad:(enum CASType)adType withError:(NSString * _Nullable)error;
-@end
-
-typedef SWIFT_ENUM_NAMED(NSInteger, CASLoadingManagerMode, "CASLoadingManagerMode", open) {
-/// Automatic control loading mediation ads.
-/// Provides frequent polling of mediation networks for advertising content.
-/// May increase coverage with more expensive ads.
-/// But this will run more background processes that slow down the application.
-  CASLoadingManagerModeFastestRequests = 0,
-/// Automatic control loading mediation ads.
-/// Provides frequent polling of mediation networks for advertising content.
-/// May increase coverage with more expensive ads.
-/// But this will run more background processes that slow down the application.
-  CASLoadingManagerModeFastRequests = 1,
-/// Automatic control loading mediation ads.
-/// Provides balanced polling rate of mediation networks for advertising content.
-/// Doesn’t significantly affect application performance.
-  CASLoadingManagerModeOptimal = 2,
-/// Automatic control loading mediation ads.
-/// Provides slow polling of mediation networks for advertising content.
-/// This helps to reduce the impact of background processes on the application.
-/// At the same time, do not lose much of the relevance of the high cost of advertising content.
-/// Reduces memory reservations for advertising content.
-  CASLoadingManagerModeHighePerformance = 3,
-/// Automatic control loading mediation ads.
-/// Provides slow polling of mediation networks for advertising content.
-/// This helps to reduce the impact of background processes on the application.
-/// At the same time, do not lose much of the relevance of the high cost of advertising content.
-/// Reduces memory reservations for advertising content.
-  CASLoadingManagerModeHighestPerformance = 4,
-/// Manual control loading mediation ads.
-/// Provides minimal impact on application performance.
-/// But it requires manual preparation of advertising content for display.
-/// Use ad loading methods before trying to show:
-/// <code>CASMediationManager.loadInterstitial()</code>, <code>CASMediationManager.loadRewardedVideo()</code>, <code>CASBannerView.loadNextAd()</code>
-/// Reduces memory reservations for advertising content.
-  CASLoadingManagerModeManual = 5,
-};
-
-
-SWIFT_CLASS_NAMED("CASManagerBuilder")
-@interface CASManagerBuilder : NSObject
-/// Set handler to receive a callback after all CAS initialization processes have completed.
-- (CASManagerBuilder * _Nonnull)withCompletionHandler:(void (^ _Nonnull)(CASInitialConfig * _Nonnull))handler;
-/// Enable test ad mode that will always request test ads.
-/// <em>Attention</em> Don’t forget to set it to False after the tests are completed.
-- (CASManagerBuilder * _Nonnull)withTestAdMode:(BOOL)test;
-/// Using <code>CASTypeFlags</code> in current session.
-/// By default: All Ad types are used.
-/// Set <code>CASTypeFlags.none</code> to disable all ad types requests.
-- (CASManagerBuilder * _Nonnull)withAdFlags:(CASTypeFlags)adTypes;
-/// The userID is a unique identifier supplied by your application and must be static for each user across sessions.
-/// Your userID should not contain any personally identifiable information such as an email address, screen name.
-- (CASManagerBuilder * _Nonnull)withUserID:(NSString * _Nonnull)userID;
-/// Create and attach the Conset flow configuration for initialization.
-/// \code
-/// .withConsentFlow(
-///      CASConsentFlow()
-///          .withPrivacyPolicy("https://url_to_privacy_policy")
-/// )
-///
-/// \endcodeBy default, the consent flow will be shown to users who are protected by laws.
-/// You can prevent us from showing the consent dialog to the user ussing followed lines:
-/// \code
-/// .withConsentFlow(CASConsentFlow(isEnabled: false))
-///
-/// \endcode
-- (CASManagerBuilder * _Nonnull)withConsentFlow:(CASConsentFlow * _Nonnull)flow;
-/// Additional mediation settings.
-- (CASManagerBuilder * _Nonnull)withMediationExtras:(NSString * _Nonnull)value forKey:(NSString * _Nonnull)key;
-/// Information about the platform on which the application runs.
-/// Platforms such as Unity, Cordova, Flutter…
-/// If your app only uses native android then don’t call this function.
-- (CASManagerBuilder * _Nonnull)withFramework:(NSString * _Nonnull)name version:(NSString * _Nonnull)version;
-/// Create new or get valid <code>CASMediationManager</code>.
-/// Can be called for different identifiers to create different managers.
-/// An CAS ID is a unique ID number assigned to each of your ad placements when they’re created in CAS.
-/// <ul>
-///   <li>
-///     The CAS ID is added to your app’s code and used to identify ad requests.
-///     Often the CAS ID is the same as the Apple  ID.
-///   </li>
-///   <li>
-///     If you haven’t created an CAS account and registered an app yet, now’s a great time to do so at <a href="https://cleveradssolutions.com">cleveradssolutions.com</a>.
-///   </li>
-///   <li>
-///     In a real app, it is important that you use your actual CAS ID.
-///   </li>
-/// </ul>
-- (CASMediationManager * _Nonnull)createWithCasId:(NSString * _Nonnull)identifier SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-SWIFT_CLASS_NAMED("CASMediaView")
-@interface CASMediaView : UIView
-@property (nonatomic, readonly) CGSize intrinsicContentSize;
-@property (nonatomic) UIViewContentMode contentMode;
-- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-SWIFT_CLASS_NAMED("CASMediationManager")
-@interface CASMediationManager : NSObject
-/// Weak event on <code>CASType</code> load response.
-@property (nonatomic, weak) id <CASLoadDelegate> _Nullable adLoadDelegate;
-@property (nonatomic, readonly, copy) NSString * _Nonnull managerID;
-@property (nonatomic, readonly) BOOL isDemoAdMode;
-/// The latest free ad page to your own promotion.
-/// This ad page will be displayed when there is no paid ad to show or internet availability.
-/// By default, this page will not be displayed while the ad content is NIL.
-/// <code>CASLastPageAdContent.destinationURL</code> should always have a non-empty URL.
-/// attention:
-/// Impressions and clicks of this ad page will not be billed.
-@property (nonatomic, strong) CASLastPageAdContent * _Nullable lastPageAdContent;
-/// Check is visible <code>CASType.interstitial</code>or <code>CASType.Rewarded</code> right now.
-@property (nonatomic, readonly) BOOL isFullscreenAdVisible;
-/// Manual load Interstitial Ad.
-/// Please call load before each show ad.
-/// You can get a callback for the successful loading of an ad when set <code>adLoadDelegate</code>
-/// attention:
-/// You should only use this method <code>if CASSettings.getLoadingMode() == CASLoadingManagerMode.manual</code> is active.
-- (void)loadInterstitial;
-/// Check if Interstitial ad is ready to be shown.
-@property (nonatomic, readonly) BOOL isInterstitialReady;
-/// Shows the Interstitial ad if available.
-/// \param controller The controller from which the Interstitial ad should be shown.
-///
-/// \param callback The callback for Interstitial ad events.
-///
-- (void)presentInterstitialFromRootViewController:(UIViewController * _Nonnull)controller callback:(id <CASCallback> _Nullable)callback;
-/// Manual load Rewarded Video Ad.
-/// Please call load before each show ad.
-/// You can get a callback for the successful loading of an ad when set <code>adLoadDelegate</code>
-/// attention:
-/// You should only use this method <code>if CASSettings.getLoadingMode() == CASLoadingManagerMode.manual</code> is active.
-- (void)loadRewardedAd;
-/// Check if Rewarded ad is ready to be shown.
-@property (nonatomic, readonly) BOOL isRewardedAdReady;
-/// Shows the Rewarded video ad if available.
-/// \param controller The controller from which the Interstitial ad should be shown.
-///
-/// \param callback The callback for Interstitial ad events.
-///
-- (void)presentRewardedAdFromRootViewController:(UIViewController * _Nonnull)controller callback:(id <CASCallback> _Nullable)callback;
-/// Ad [type] is processing.
-- (BOOL)isEnabledWithType:(enum CASType)type SWIFT_WARN_UNUSED_RESULT;
-/// Set [enabled] ad [type] to processing.
-/// The state will not be saved between sessions.
-- (void)setEnabled:(BOOL)enabled type:(enum CASType)type;
-/// The Return Ad which is displayed once the user returns to your application after a certain period of time.
-/// To minimize the intrusiveness, short time periods are ignored.
-/// Return ads are disabled by default.
-- (void)enableAppReturnAdsWith:(id <CASAppReturnDelegate> _Nonnull)delegate;
-/// Disables App Return Ads
-- (void)disableAppReturnAds;
-/// Calling this method will indicate to skip one next ad impression when returning to the app.
-/// You can call this method when you intentionally redirect the user to another application (for example App Store)
-/// and do not want them to see ads when they return to your application.
-- (void)skipNextAppReturnAds;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
-@class UILabel;
-@class UIButton;
-@class UIImageView;
-@class CASNativeAdContent;
-
-SWIFT_CLASS_NAMED("CASNativeView")
-@interface CASNativeView : UIView
-@property (nonatomic, weak) IBOutlet UIView * _Nullable mainView;
-@property (nonatomic, weak) IBOutlet CASMediaView * _Nullable mediaView;
-@property (nonatomic, weak) IBOutlet CASChoicesView * _Nullable adChoicesView;
-@property (nonatomic, weak) IBOutlet UILabel * _Nullable headlineView;
-@property (nonatomic, weak) IBOutlet UIButton * _Nullable callToActionView;
-@property (nonatomic, weak) IBOutlet UIImageView * _Nullable iconView;
-@property (nonatomic, weak) IBOutlet UILabel * _Nullable bodyView;
-@property (nonatomic, weak) IBOutlet UILabel * _Nullable priceView;
-@property (nonatomic, weak) IBOutlet UILabel * _Nullable advertiserView;
-@property (nonatomic, weak) IBOutlet UILabel * _Nullable storeView;
-@property (nonatomic, weak) IBOutlet UIView * _Nullable starRatingView;
-@property (nonatomic, weak) IBOutlet UILabel * _Nullable reviewCountView;
-@property (nonatomic, weak) IBOutlet UILabel * _Nullable adLabelView;
-@property (nonatomic, readonly, copy) NSArray<UIView *> * _Nonnull clickableViews;
-- (BOOL)setNativeAd:(CASNativeAdContent * _Nullable)ad error:(NSError * _Nullable * _Nullable)error;
-- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-
-SWIFT_CLASS_NAMED("CASNetwork")
-@interface CASNetwork : NSObject
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull casExchange;)
-+ (NSString * _Nonnull)casExchange SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull dspExchange;)
-+ (NSString * _Nonnull)dspExchange SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull crossPromo;)
-+ (NSString * _Nonnull)crossPromo SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull googleAds;)
-+ (NSString * _Nonnull)googleAds SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull vungle;)
-+ (NSString * _Nonnull)vungle SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull kidoz;)
-+ (NSString * _Nonnull)kidoz SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull chartboost;)
-+ (NSString * _Nonnull)chartboost SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull unityAds;)
-+ (NSString * _Nonnull)unityAds SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull appLovin;)
-+ (NSString * _Nonnull)appLovin SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull superAwesome;)
-+ (NSString * _Nonnull)superAwesome SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull meta;)
-+ (NSString * _Nonnull)meta SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull inMobi;)
-+ (NSString * _Nonnull)inMobi SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull ironSource;)
-+ (NSString * _Nonnull)ironSource SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull yandexAds;)
-+ (NSString * _Nonnull)yandexAds SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull mintegral;)
-+ (NSString * _Nonnull)mintegral SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull pangle;)
-+ (NSString * _Nonnull)pangle SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull dtExchange;)
-+ (NSString * _Nonnull)dtExchange SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull bigo;)
-+ (NSString * _Nonnull)bigo SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull hyprMX;)
-+ (NSString * _Nonnull)hyprMX SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull smaato;)
-+ (NSString * _Nonnull)smaato SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull startio;)
-+ (NSString * _Nonnull)startio SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull loopMe;)
-+ (NSString * _Nonnull)loopMe SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull madex;)
-+ (NSString * _Nonnull)madex SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull ogury;)
-+ (NSString * _Nonnull)ogury SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull lastPageAd;)
-+ (NSString * _Nonnull)lastPageAd SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull adMob;)
-+ (NSString * _Nonnull)adMob SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull facebookAN;)
-+ (NSString * _Nonnull)facebookAN SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull fyber;)
-+ (NSString * _Nonnull)fyber SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull digitalTurbine;)
-+ (NSString * _Nonnull)digitalTurbine SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull myTarget SWIFT_DEPRECATED_MSG("No longer supported");)
-+ (NSString * _Nonnull)myTarget SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull bidMachine SWIFT_DEPRECATED_MSG("No longer supported");)
-+ (NSString * _Nonnull)bidMachine SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull adColony SWIFT_DEPRECATED_MSG("No longer supported");)
-+ (NSString * _Nonnull)adColony SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull tapjoy SWIFT_DEPRECATED_MSG("No longer supported");)
-+ (NSString * _Nonnull)tapjoy SWIFT_WARN_UNUSED_RESULT;
-/// Meta Audience Network  Advertising Tracking Enabled
-/// Set the <code>FBAdSettings.setAdvertiserTrackingEnabled</code> flag.
-/// The setAdvertiserTrackingEnabled “1” flag allows you to inform Audience Network whether to use the data to deliver personalized ads in line with your own legal obligations,
-/// platform terms, and commitments you’ve made to your users.
-/// If the flag is set to “0” we will not be able to deliver personalized ads.
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull facebookAdvertiserTracking;)
-+ (NSString * _Nonnull)facebookAdvertiserTracking SWIFT_WARN_UNUSED_RESULT;
-/// Meta Audience Network Data Processing Options for US Users
-/// Limited Data Use is a data processing option that gives you more control over how your data
-/// is used in Meta’s systems and better supports your compliance efforts with various US state
-/// privacy regulations. To utilize this feature, you must proactively enable Limited Data Use.
-/// Set the <code>FBAdSettings.setDataProcessingOptions</code> flag values:
-/// <ul>
-///   <li>
-///     “” (empty string)  - To explicitly not enable Limited Data Use (LDU) mode
-///   </li>
-///   <li>
-///     “LDU”  - To enable LDU mode using geolocation
-///   </li>
-/// </ul>
-/// Visit Meta’s developer documentation for details:
-/// https://developers.facebook.com/docs/marketing-apis/data-processing-options
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull facebookDataProcessing;)
-+ (NSString * _Nonnull)facebookDataProcessing SWIFT_WARN_UNUSED_RESULT;
-/// Sets the publish IDFV flag
-/// This value is persistent and so may be set once.
-/// Default value is “1”.
-/// if “0” no publish the IDFV value.
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull vunglePublishIDFV;)
-+ (NSString * _Nonnull)vunglePublishIDFV SWIFT_WARN_UNUSED_RESULT;
-+ (NSString * _Nonnull)getDisplayName:(NSString * _Nonnull)net SWIFT_WARN_UNUSED_RESULT;
-+ (NSString * _Nonnull)getActiveNetworkPattern SWIFT_WARN_UNUSED_RESULT;
-+ (NSArray<NSString *> * _Nonnull)getActiveNetworks SWIFT_WARN_UNUSED_RESULT;
-+ (BOOL)isActiveNetwork:(NSString * _Nonnull)network SWIFT_WARN_UNUSED_RESULT;
-+ (NSArray<NSString *> * _Nonnull)values SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-SWIFT_PROTOCOL_NAMED("CASPaidCallback")
-@protocol CASPaidCallback <CASCallback>
-- (void)didPayRevenueFor:(id <CASStatusHandler> _Nonnull)ad;
-@end
-
-typedef SWIFT_ENUM_NAMED(NSInteger, CASPriceAccuracy, "CASPriceAccuracy", open) {
-/// eCPM floor, also known as minimum eCPMs
-  CASPriceAccuracyFloor = 0,
-/// eCPM is the exact and committed value per 1000 impressions.
-  CASPriceAccuracyBid = 1,
-/// When the demand source does not agree to disclose the payout of every impression - in such cases the cpm is ‘0’
-  CASPriceAccuracyUndisclosed = 2,
-};
-
-
-SWIFT_CLASS_NAMED("CASSettings")
-@interface CASSettings : NSObject
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-/// Ad filters by Audience
-/// Default: undefined
-@property (nonatomic) enum CASAudience taggedAudience;
-/// GDPR user Consent to use personal data in Ads requests.
-/// Default CASConsentStatus undefined
-@property (nonatomic) enum CASConsentStatus userConsent;
-/// Parses the <code>UserDefaults</code> string with key <code>IABTCF_VendorConsents</code>
-/// to determine the consent status of the IAB vendor with the provided ID.
-/// \param vendorId Vendor ID as defined in the Global Vendor List.
-///
-///
-/// returns:
-/// <code>accepted</code> if the advertising entity has consent, <code>denied</code> if not, or <code>undefined</code> if VendorConsents is not available on disk.
-/// @see <a href="https://iabeurope.eu/vendor-list-tcf/">TCF Vendor List</a>
-- (enum CASConsentStatus)getVendorConsentWithVendorId:(NSInteger)vendorId SWIFT_WARN_UNUSED_RESULT;
-/// Parses the <code>UserDefaults</code> string with key <code>IABTCF_AddtlConsent</code>
-/// to determine the consent status of the advertising entity with the provided Ad Technology Provider (ATP) ID.
-/// seealso:
-/// <a href="https://support.google.com/admanager/answer/9681920">Google’s Additional Consent Mode technical specification</a>
-/// seealso:
-/// <a href="https://storage.googleapis.com/tcfac/additional-consent-providers.csv">List of Google ATPs and their IDs</a>
-/// \param providerId ATP ID of the advertising entity (e.g. 89 for Meta Audience Network).
-///
-///
-/// returns:
-/// <code>accepted</code> if the advertising entity has consent, <code>denied</code> if not, or <code>undefined</code> if AddtlConsent is not available on disk.
-- (enum CASConsentStatus)getAdditionalConsentWithProviderId:(NSInteger)providerId SWIFT_WARN_UNUSED_RESULT;
-/// Whether or not user has opted out of the sale of their personal information.
-/// Default CASCCPAStatus undefined
-@property (nonatomic) enum CASCCPAStatus userCCPAStatus;
-/// The SDK automatically collects location data if the user allowed the app to track the location.
-- (BOOL)isTrackLocationEnabled SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_MSG("Use CAS.targetingOptions.locationCollectionEnabled instead.");
-/// The SDK automatically collects location data if the user allowed the app to track the location.
-/// Disabled by default.
-- (void)setTrackLocationWithEnabled:(BOOL)enabled SWIFT_DEPRECATED_MSG("Use CAS.targetingOptions.locationCollectionEnabled instead.");
-/// Defines the time interval, in seconds, starting from the moment of the initial app installation,
-/// during which users can use the application without ads being displayed while still retaining
-/// access to the Rewarded Ads format.
-/// Within this interval, users enjoy privileged access to the application’s features without intrusive advertisements.
-/// <ul>
-///   <li>
-///     Default: 0 seconds
-///   </li>
-///   <li>
-///     Units: Seconds
-///   </li>
-/// </ul>
-@property (nonatomic) uint64_t trialAdFreeInterval;
-/// Set the number of seconds an ad is displayed before a new ad is shown.
-/// After the interval has passed, a new advertisement will be automatically loaded.
-/// <code>CASBannerView.refreshInterval</code> will override this value for a specific view.
-/// <ul>
-///   <li>
-///     Default: 30 seconds.
-///   </li>
-///   <li>
-///     Units: Seconds
-///   </li>
-/// </ul>
-@property (nonatomic) NSInteger bannerRefreshInterval;
-/// The interval between impressions Interstitial Ad in seconds.
-/// <ul>
-///   <li>
-///     Default: 0 seconds.
-///   </li>
-///   <li>
-///     Units: Seconds
-///   </li>
-/// </ul>
-/// Use <code>restartInterstitialInterval()</code> for restart interval until next Interstitial ad display.
-@property (nonatomic) NSInteger interstitialInterval;
-/// In Develop
-@property (nonatomic) BOOL audioSessionIsApplicationManaged;
-/// Restart interval until next Interstitial ad display.
-/// By default, the interval before first Interstitial Ad impression is ignored.
-/// You can use this method to delay displaying ad.
-- (void)restartInterstitialInterval;
-/// Indicates if the application’s audio is muted. Affects initial mute state for
-/// all ads. Use this method only if your application has its own volume controls
-/// (e.g., custom music or sound effect muting).
-/// Disabled by default.
-@property (nonatomic) BOOL mutedAdSounds;
-/// The enabled Debug Mode will display a lot of useful information for debugging about the states of the sdk with tag CAS.
-/// Disabling Debug Mode may improve application performance.
-/// Disabled by default.
-@property (nonatomic) BOOL debugMode;
-/// Identifiers corresponding to test devices which will always request test ads.
-/// List of test devices should be defined before first MediationManager initialized.
-/// <ol>
-///   <li>
-///     Run an app configured with the CAS SDK.
-///   </li>
-///   <li>
-///     Check the console or logcat output for a message that looks like this:
-///     “To get test ads on this device, set … “
-///   </li>
-///   <li>
-///     Copy your alphanumeric test device ID to your clipboard.
-///   </li>
-///   <li>
-///     Modify your code to set the test device ID before CAS manager initialize.
-///   </li>
-///   <li>
-///     Re-run your app.
-///   </li>
-///   <li>
-///     Well done, ads on this device are safe to click. Requests, impressions, and clicks on ads in test mode will not show up in your account’s reports.
-///   </li>
-/// </ol>
-- (void)setTestDeviceWithIds:(NSArray<NSString *> * _Nonnull)ids;
-/// This option will compare ad cost and serve regular interstitial ads
-/// when rewarded video ads are expected to generate less revenue.
-/// Enabled by default.
-/// attention:
-/// Interstitial Ads does not require to watch the video to the end,
-/// but the <code>CASCallback.didCompletedAd</code> callback will be triggered in any case.
-- (void)setInterstitialAdsWhenVideoCostAreLowerWithAllow:(BOOL)allow;
-/// This option will compare ad cost and serve regular interstitial ads
-/// when rewarded video ads are expected to generate less revenue.
-/// Enabled by default.
-/// attention:
-/// Interstitial Ads does not require to watch the video to the end,
-/// but the <code>CASCallback.didCompletedAd</code> callback will be triggered in any case.
-- (BOOL)isInterstitialAdsWhenVideoCostAreLowerAllowed SWIFT_WARN_UNUSED_RESULT;
-/// Mediation loading manager mode.
-/// Default: <code>CASLoadingManagerMode.optimal</code>
-- (enum CASLoadingManagerMode)getLoadingMode SWIFT_WARN_UNUSED_RESULT;
-/// Mediation loading manager mode.
-/// Default: <code>CASLoadingManagerMode.optimal</code>
-- (void)setLoadingWithMode:(enum CASLoadingManagerMode)mode;
-@end
-
-
-
-@interface CASSettings (SWIFT_EXTENSION(CleverAdsSolutions))
-- (NSInteger)getBannerRefreshInterval SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_MSG("Use bannerRefreshInterval property instead");
-- (void)setBannerRefreshWithInterval:(NSInteger)interval SWIFT_DEPRECATED_MSG("Use bannerRefreshInterval property instead");
-- (NSInteger)getInterstitialInterval SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_MSG("Use interstitialInterval property instead");
-- (void)setInterstitialWithInterval:(NSInteger)interval SWIFT_DEPRECATED_MSG("Use interstitialInterval property instead");
-- (BOOL)isDebugMode SWIFT_WARN_UNUSED_RESULT;
-- (BOOL)isMutedAdSounds SWIFT_WARN_UNUSED_RESULT;
-- (void)setMuteAdSoundsTo:(BOOL)muted;
-- (enum CASConsentStatus)getUserConsent SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_MSG("Use userConsent property instead");
-- (void)updateUserWithConsent:(enum CASConsentStatus)consent SWIFT_DEPRECATED_MSG("Use userConsent property instead");
-- (enum CASCCPAStatus)getCCPAStatus SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_MSG("Use userCCPAStatus property instead");
-- (void)updateCCPAWithStatus:(enum CASCCPAStatus)status SWIFT_DEPRECATED_MSG("Use userCCPAStatus property instead");
-- (enum CASAudience)getTaggedAudience SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_MSG("Use taggedAudience property instead");
-- (void)setTaggedWithAudience:(enum CASAudience)audience SWIFT_DEPRECATED_MSG("Use taggedAudience property instead");
-- (BOOL)isAnalyticsCollectionEnabled SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_MSG("No longer in use");
-- (void)setAnalyticsCollectionWithEnabled:(BOOL)enabled SWIFT_DEPRECATED_MSG("No longer in use");
-@end
-
+@class UIView;
 @class UIWindow;
 
-SWIFT_CLASS_NAMED("CASSize")
+SWIFT_CLASS_NAMED("AdSize")
 @interface CASSize : NSObject
 @property (nonatomic, readonly) CGFloat width;
 @property (nonatomic, readonly) CGFloat height;
@@ -1410,6 +549,1292 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) CASSize * _N
 @end
 
 
+typedef SWIFT_ENUM_NAMED(NSInteger, CASSourceId, "AdSourceId", open) {
+  CASSourceIdGoogleAds = 0,
+  CASSourceIdLiftoffMonetize = 1,
+  CASSourceIdKidoz = 2,
+  CASSourceIdChartboost = 3,
+  CASSourceIdUnityAds = 4,
+  CASSourceIdAppLovin = 5,
+  CASSourceIdSuperAwesome = 6,
+  CASSourceIdStartIO = 7,
+  CASSourceIdCasExchange = 8,
+  CASSourceIdAudienceNetwork = 9,
+  CASSourceIdInMobi = 10,
+  CASSourceIdDtExchange = 11,
+  CASSourceIdMyTarget = 12,
+  CASSourceIdCrosspromo = 13,
+  CASSourceIdIronSource = 14,
+  CASSourceIdYandexAds = 15,
+  CASSourceIdHyprMX = 16,
+  CASSourceIdSmaato = 18,
+  CASSourceIdBigo = 19,
+  CASSourceIdOgury = 20,
+  CASSourceIdMadex = 21,
+  CASSourceIdMintegral = 23,
+  CASSourceIdPangle = 24,
+  CASSourceIdYsoNetwork = 25,
+  CASSourceIdPrado = 26,
+  CASSourceIdDspExchange = 30,
+  CASSourceIdLastPageAd = 31,
+  CASSourceIdCustom = 32,
+  CASSourceIdUnknown = 33,
+};
+
+typedef SWIFT_ENUM_NAMED(NSInteger, CASAudience, "Audience", open) {
+/// The user’s age has not been determined.
+  CASAudienceUndefined = 0,
+/// Audiences under the age of 13 who subject of COPPA.
+/// When using this feature, a Tag For Users under the Age of Consent in Europe (TFUA) parameter
+/// will be included in the ad request.
+/// Also the state of GDPR and CCPA will be overridden automatically
+/// to <code>CASConsentStatus.denied</code> and  <code>CASCCPAStatus.optOutSale</code>
+  CASAudienceChildren = 1,
+/// Audiences over the age of 13 NOT subject to the restrictions of child protection laws.
+  CASAudienceNotChildren = 2,
+};
+
+
+SWIFT_CLASS_NAMED("MediationUnit") SWIFT_DEPRECATED_MSG("Migrate to new mediation")
+@interface CASMediationUnit : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS_NAMED("BiddingUnit") SWIFT_DEPRECATED_MSG("Use new MediationAd implementation")
+@interface CASBiddingUnit : CASMediationUnit
+@end
+
+@class CASSettings;
+@class CASTargetingOptions;
+@class CASMediationManager;
+@class CASManagerBuilder;
+
+SWIFT_CLASS_NAMED("CAS")
+@interface CAS : NSObject
+/// Get singleton instance to configure all mediation managers
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) CASSettings * _Nonnull settings;)
++ (CASSettings * _Nonnull)settings SWIFT_WARN_UNUSED_RESULT;
+/// You can now easily tailor the way you serve your ads to fit a specific audience!
+/// You’ll need to inform our servers of the users details
+/// so the SDK will know to serve ads according to the segment the user belongs to.
+/// <em>Attention:</em> Must be set before initializing the SDK
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) CASTargetingOptions * _Nonnull targetingOptions;)
++ (CASTargetingOptions * _Nonnull)targetingOptions SWIFT_WARN_UNUSED_RESULT;
+/// Get last created <code>CASMediationManager</code> by <code>CAS.create()</code>
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) CASMediationManager * _Nullable manager;)
++ (CASMediationManager * _Nullable)manager SWIFT_WARN_UNUSED_RESULT;
++ (void)setManager:(CASMediationManager * _Nullable)value;
+/// Create <code>CASMediationManager</code> builder.
+/// Don’t forget to call the <code>ManagerBuilder.create</code> method to create manager instance.
++ (CASManagerBuilder * _Nonnull)buildManager SWIFT_WARN_UNUSED_RESULT;
++ (NSString * _Nonnull)getSDKVersion SWIFT_WARN_UNUSED_RESULT;
+/// Call Integration Helper and check current integration in console.
+/// Log tag: [CASIntegrationHelper]
++ (void)validateIntegration;
++ (NSString * _Nonnull)getMessageOf:(CASError * _Nonnull)error SWIFT_WARN_UNUSED_RESULT SWIFT_AVAILABILITY(ios,deprecated=0.0.1,message="Use CASError.description instead");
++ (CASError * _Nonnull)getErrorFor:(NSString * _Nullable)message SWIFT_WARN_UNUSED_RESULT SWIFT_AVAILABILITY(ios,deprecated=0.0.1,message="Use [CASError fromMessage:message] instead");
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@protocol CASAnalyticsDelegate;
+
+SWIFT_CLASS("_TtC18CleverAdsSolutions12CASAnalytics")
+@interface CASAnalytics : NSObject
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, weak) id <CASAnalyticsDelegate> _Nullable delegate SWIFT_DEPRECATED_MSG("Not recommended to use");)
++ (id <CASAnalyticsDelegate> _Nullable)delegate SWIFT_WARN_UNUSED_RESULT;
++ (void)setDelegate:(id <CASAnalyticsDelegate> _Nullable)value;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, copy) NSString * _Nonnull eventNameForCrossPromo;)
++ (NSString * _Nonnull)eventNameForCrossPromo SWIFT_WARN_UNUSED_RESULT;
++ (void)setEventNameForCrossPromo:(NSString * _Nonnull)value;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, copy) NSString * _Nonnull eventNameForImpressions;)
++ (NSString * _Nonnull)eventNameForImpressions SWIFT_WARN_UNUSED_RESULT;
++ (void)setEventNameForImpressions:(NSString * _Nonnull)value;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, copy) NSString * _Nonnull eventNameForErrors;)
++ (NSString * _Nonnull)eventNameForErrors SWIFT_WARN_UNUSED_RESULT;
++ (void)setEventNameForErrors:(NSString * _Nonnull)value;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, copy) NSString * _Nonnull eventNameForMediation SWIFT_DEPRECATED_MSG("No longer support");)
++ (NSString * _Nonnull)eventNameForMediation SWIFT_WARN_UNUSED_RESULT;
++ (void)setEventNameForMediation:(NSString * _Nonnull)value;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_PROTOCOL("_TtP18CleverAdsSolutions20CASAnalyticsDelegate_") SWIFT_DEPRECATED_MSG("Not recommended to use")
+@protocol CASAnalyticsDelegate
+- (void)analyticsEvent:(NSString * _Nonnull)eventName map:(NSDictionary<NSString *, id> * _Nonnull)map;
+@end
+
+@protocol CASScreenContentDelegate;
+@protocol CASImpressionDelegate;
+
+SWIFT_PROTOCOL_NAMED("CASScreenContent")
+@protocol CASScreenContent <NSObject>
+/// The delegate for handling ad content events.
+/// This delegate is used to handle various ad content events, such as successful ad loading, failure to load,
+/// ad presentation, and click events.
+@property (nonatomic, weak) id <CASScreenContentDelegate> _Nullable delegate;
+/// The delegate for handling ad impression events.
+/// This listener is notified when an ad impression is successfully recorded, which may also be associated with
+/// a paid impression. This allows you to track when an impression has been accounted for, typically for
+/// analytics or reporting purposes.
+@property (nonatomic, weak) id <CASImpressionDelegate> _Nullable impressionDelegate;
+/// Enables or disables the autoload feature for ads.
+/// When enabled, the app will automatically load new content after an ad is dismissed or completed.
+/// Autoload will also retry loading the ad if it fails during the loading process.
+/// By default, autoloading is disabled.
+@property (nonatomic) BOOL isAutoloadEnabled;
+/// This property returns <code>true</code> if the ad content is successfully loaded and eady to be presented.
+@property (nonatomic, readonly) BOOL isAdLoaded;
+/// Loads the ad content.
+/// Call this function to load the ad before attempting to present it. The loading process may take some time,
+/// and you will be notified when the ad is successfully loaded or if the loading fails via the <code>delegate</code>.
+- (void)loadAd;
+/// Information about the currently loaded ad.
+/// This property is <code>nil</code> if the ad has not been loaded yet or has been destroyed.
+@property (nonatomic, readonly, strong) CASContentInfo * _Nullable contentInfo;
+/// Destroys the ad content and releases any associated resources.
+/// Call this function when the ad is no longer needed in order to clean up resources and prevent memory leaks.
+/// After calling this function, the ad content can no longer be shown.
+- (void)destroy;
+@end
+
+@class UIViewController;
+@protocol CASCallback;
+
+/// Manages an app open ad, allowing for loading, presenting, and destroying the ad content.
+/// This class facilitates the handling of app open ads, which are full-screen ads shown when the user opens or resumes the app.
+/// These ads are typically shown to capture user attention immediately after launching the app.
+/// note:
+/// Ensure you retain a reference to the <code>CASAppOpen</code> instance while the ad is in use. If the ad object is deallocated or lost, callbacks will no longer be triggered, and the ad may not function as expected.
+SWIFT_CLASS_NAMED("CASAppOpen")
+@interface CASAppOpen : NSObject <CASScreenContent>
+/// Initializes a <code>CASAppOpen</code> instance with a unique identifier.
+/// This identifier is typically the application iTunes ID, which helps uniquely identify the ad content
+/// being loaded and displayed.
+/// \param casID A unique identifier for the CAS content (usually the app’s iTunes ID).
+///
+- (nonnull instancetype)initWithCasID:(NSString * _Nonnull)casID OBJC_DESIGNATED_INITIALIZER;
+/// The delegate for handling ad content events.
+/// This delegate is used to handle various ad content events, such as successful ad loading, failure to load,
+/// ad presentation, and click events.
+@property (nonatomic, weak) id <CASScreenContentDelegate> _Nullable delegate;
+/// The delegate for handling ad impression events.
+/// This listener is notified when an ad impression is successfully recorded, which may also be associated with
+/// a paid impression. This allows you to track when an impression has been accounted for, typically for
+/// analytics or reporting purposes.
+@property (nonatomic, weak) id <CASImpressionDelegate> _Nullable impressionDelegate;
+/// Enables or disables the autoload feature for ads.
+/// When enabled, the app will automatically load new content after an ad is dismissed or completed.
+/// Autoload will also retry loading the ad if it fails during the loading process.
+/// By default, autoloading is disabled.
+@property (nonatomic) BOOL isAutoloadEnabled;
+/// Controls whether the ad should be automatically shown when the user returns to the app.
+/// If enabled, the app open ad will be presented automatically once the app is resumed. The ad must be ready for display at that point.
+/// By default, auto-show is disabled.
+@property (nonatomic) BOOL isAutoshowEnabled;
+/// Loads the app open ad content.
+/// Call this function to load the ad before attempting to present it. The loading process may take some time,
+/// and you will be notified when the ad is successfully loaded or if the loading fails via the <code>delegate</code>.
+- (void)loadAd;
+/// This property returns <code>true</code> if the ad content is successfully loaded and eady to be presented.
+@property (nonatomic, readonly) BOOL isAdLoaded;
+/// Information about the currently loaded ad.
+/// This property is <code>nil</code> if the ad has not been loaded yet or has been destroyed.
+@property (nonatomic, readonly, strong) CASContentInfo * _Nullable contentInfo;
+/// Presents the app open ad to the user.
+/// note:
+/// The ad must be loaded and ready for display before this function is called. If the ad is not yet loaded, the <code>adDidFailToPresentContent(format:error:)</code> delegate will be triggered with an <code>AdErrorCode.notReady</code> error, and the ad will not be shown.
+/// \param viewController A view controller to present the ad. If nil, attempts to present from the top view controller of the application’s main window.
+///
+- (void)presentFromViewController:(UIViewController * _Nullable)viewController;
+/// Destroys the ad content and releases any associated resources.
+/// Call this function when the ad is no longer needed. It ensures that any resources allocated for the ad are freed, preventing memory leaks.
+- (void)destroy;
++ (CASAppOpen * _Nonnull)createWithManagerId:(NSString * _Nonnull)managerId SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_MSG("Just create new CASAppOpen instance instead.");
++ (CASAppOpen * _Nonnull)createWithManager:(CASMediationManager * _Nonnull)manager SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_MSG("Just create new CASAppOpen instance instead.");
+@property (nonatomic, readonly, copy) NSString * _Nonnull managerId SWIFT_DEPRECATED_MSG("Will be removed in feature updates.");
+@property (nonatomic, weak) id <CASCallback> _Nullable contentCallback SWIFT_DEPRECATED_MSG("Use adDelegate and implement ScreenAdContentDelegate instead.");
+- (void)loadAdWithCompletionHandler:(void (^ _Nonnull)(CASAppOpen * _Nonnull, NSError * _Nullable))completionHandler SWIFT_DEPRECATED_MSG("Use simple load() function and adDelegate instead.");
+- (void)loadAdWithOrientation:(UIInterfaceOrientation)orientation completionHandler:(void (^ _Nonnull)(CASAppOpen * _Nonnull, NSError * _Nullable))completionHandler SWIFT_DEPRECATED_MSG("Loading app open ads now assumes the current orientation of the device, matching other full-screen formats.");
+- (BOOL)isAdAvailable SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_MSG("", "isAdLoaded");
+- (void)presentFromRootViewController:(UIViewController * _Nonnull)controller SWIFT_DEPRECATED_MSG("", "presentFromViewController:");
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+@protocol CASStatusHandler;
+
+/// The CAS can execute callbacks on the UI or background thread.
+SWIFT_PROTOCOL_NAMED("CASCallback")
+@protocol CASCallback
+@optional
+/// Executed when the ad is displayed.
+/// \param adStatus Information of displayed ad
+///
+- (void)willShownWithAd:(id <CASStatusHandler> _Nonnull)adStatus;
+/// Executed when the ad is failed to display.
+/// The Banner may automatically appear when the Ad is ready again.
+/// This will trigger the <code>willShown(ad:)</code> callback again.
+/// \param error Error message
+///
+- (void)didShowAdFailedWithError:(NSString * _Nonnull)error;
+/// Executed when the user clicks on an Ad.
+- (void)didClickedAd;
+/// Executed when the Ad is completed.
+/// Banner Ad does not use this callback.
+- (void)didCompletedAd;
+/// Executed when the ad is closed.
+/// The Banner Ad cannot be displayed automatically after this callback for the current view.
+/// If you decide to show the Banner Ad on this view then you need refresh view visibility.
+- (void)didClosedAd;
+@end
+
+
+SWIFT_PROTOCOL("_TtP18CleverAdsSolutions20CASAppReturnDelegate_") SWIFT_DEPRECATED_MSG("Please init CASInterstitial instance and set isAutoshowEnabled = true.")
+@protocol CASAppReturnDelegate <CASCallback>
+- (UIViewController * _Nonnull)viewControllerForPresentingAppReturnAd SWIFT_WARN_UNUSED_RESULT;
+@end
+
+@class CASBannerView;
+
+/// The CAS can execute callbacks on the UI or background thread.
+SWIFT_PROTOCOL_NAMED("CASBannerDelegate")
+@protocol CASBannerDelegate
+@optional
+/// Invokes this callback when ad loaded and ready to present.
+- (void)bannerAdViewDidLoad:(CASBannerView * _Nonnull)view;
+/// Invokes this callback when an error occurred with the ad.
+/// <ul>
+///   <li>
+///     To see a description of the error, see <code>AdError.message</code>.
+///   </li>
+/// </ul>
+- (void)bannerAdView:(CASBannerView * _Nonnull)adView didFailWith:(CASError * _Nonnull)error;
+/// Invokes this callback when a user clicks the ad.
+- (void)bannerAdViewDidRecordClick:(CASBannerView * _Nonnull)adView;
+/// Invokes this callback when the new ad will presenting for user with info about the impression.
+- (void)bannerAdView:(CASBannerView * _Nonnull)adView willPresent:(id <CASStatusHandler> _Nonnull)impression SWIFT_DEPRECATED_MSG("Use CASBannerView.impressionDelegate and CASImpressionDelegate to get impression info.");
+@end
+
+@class NSCoder;
+
+SWIFT_CLASS("_TtC18CleverAdsSolutions13CASBannerView")
+@interface CASBannerView : UIView
+/// Initializes and returns a banner view with the specified ad size and origin relative to the
+/// banner’s superview.
+/// This identifier is typically the application iTunes ID, which helps uniquely identify the ad content
+/// being loaded and displayed.
+/// \param casID A unique identifier for the CAS content (usually the app’s iTunes ID).
+///
+- (nonnull instancetype)initWithCasID:(NSString * _Nonnull)casID size:(CASSize * _Nonnull)size origin:(CGPoint)origin OBJC_DESIGNATED_INITIALIZER;
+/// Initializes and returns a banner view with the specified frame relative to the banner’s superview.
+/// It’s important to define the following properties when using this constructor, prior to loading the ad:
+/// <ul>
+///   <li>
+///     <code>adSize</code>
+///   </li>
+///   <li>
+///     <code>casID</code>
+///   </li>
+/// </ul>
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+/// The unique identifier for the CAS content, typically an application bundle name.
+@property (nonatomic, copy) NSString * _Nonnull casID;
+/// Active <code>CASMediationManager</code> to this banner view.
+/// It can be automatically selected as the last active <code>CAS.manager</code> if it is NIL.
+@property (nonatomic, strong) CASMediationManager * _Nullable manager SWIFT_DEPRECATED_MSG("Please use just casID instead.");
+/// Current banner ad size.
+/// If autoload disabled (<code>isAutoloadEnabled = false</code>) then please call <code>loadNextAd</code> after banner size changed.
+@property (nonatomic, strong) CASSize * _Nonnull adSize;
+/// This view controller is used to present an overlay when the ad is clicked.
+/// It should normally be set to the view controller that contains the <code>CASBannerView</code>
+@property (nonatomic, weak) UIViewController * _Nullable rootViewController;
+/// Through the use of <code>CASBannerDelegate</code>, you can listen for banner ads events.
+@property (nonatomic, weak) id <CASBannerDelegate> _Nullable delegate;
+/// Gets or sets the listener for ad impression events.
+/// This listener is notified when an ad impression is recorded and will be paid. It allows you to track when
+/// the ad has been successfully shown and the impression has been accounted for. You can use this to handle
+/// actions that should occur upon a successful ad impression, such as logging or updating analytics.
+@property (nonatomic, weak) id <CASImpressionDelegate> _Nullable impressionDelegate;
+/// This property returns <code>true</code> if the ad content is successfully loaded and eady to be presented.
+@property (nonatomic, readonly) BOOL isAdLoaded;
+/// Information about the currently loaded ad.
+/// This property is <code>nil</code> if the ad has not been loaded yet or has been destroyed.
+@property (nonatomic, readonly, strong) CASContentInfo * _Nullable contentInfo;
+/// A Boolean value that determines whether autoloading of ads in the receiver is enabled.
+/// If enabled, you do not need to call the <code>loadNextAd</code> method to load ads.
+/// <ul>
+///   <li>
+///     By default enabled if global state <code>AdsSettings.loadingMode</code> is NOT <code>LoadingManagerMode.Manual</code>.
+///   </li>
+///   <li>
+///     This value will override global state of <code>AdsSettings.loadingMode</code> for specific Banner View.
+///   </li>
+/// </ul>
+@property (nonatomic) BOOL isAutoloadEnabled;
+/// Manual load Banner Ad or reload current loaded Ad for cancel impression.
+/// If autoload disabled (<code>isAutoloadEnabled = false</code>) then you should use <code>loadNextAd</code> before present ad.
+/// You can get a callback for the successful loading of an ad when set <code>adDelegate</code>
+- (void)loadAd;
+/// Set the number of seconds an ad is displayed before a new ad is shown.
+/// After the interval has passed, a new advertisement will be automatically loaded.
+/// This value will override global <code>CASSettings.setBannerRefreshInterval</code>
+@property (nonatomic) NSInteger refreshInterval;
+/// Disable auto refresh ads.
+- (void)disableAdRefresh;
+/// Destroy ad in the Banner View.
+/// Call when banner ad is no longer needed.
+- (void)destroy;
+- (nonnull instancetype)initWithAdSize:(CASSize * _Nonnull)adSize manager:(CASMediationManager * _Nullable)manager SWIFT_DEPRECATED_MSG("Use constructor with CAS identifier parameter instead.");
+- (nonnull instancetype)initWithAdSize:(CASSize * _Nonnull)adSize origin:(CGPoint)origin manager:(CASMediationManager * _Nullable)manager SWIFT_DEPRECATED_MSG("Use constructor with CAS identifier parameter instead.");
+@property (nonatomic, weak) id <CASBannerDelegate> _Nullable adDelegate SWIFT_DEPRECATED_MSG("Renamed to `delegate`", "delegate");
+@property (nonatomic, readonly) BOOL isAdReady SWIFT_DEPRECATED_MSG("Renamed to isAdLoaded", "isAdLoaded");
+- (void)loadNextAd SWIFT_DEPRECATED_MSG("Renamed to loadAd()", "loadAd");
+@property (nonatomic, readonly) CGSize intrinsicContentSize;
+- (void)didMoveToWindow;
+- (void)didMoveToSuperview;
+@property (nonatomic, getter=isHidden) BOOL hidden;
+@end
+
+
+
+SWIFT_CLASS_NAMED("CASChoicesView")
+@interface CASChoicesView : UIView
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@property (nonatomic, readonly) CGSize intrinsicContentSize;
+@end
+
+
+SWIFT_CLASS("_TtC18CleverAdsSolutions18CASConsentPlatform")
+@interface CASConsentPlatform : NSObject
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+enum CASType : NSInteger;
+enum CASPriceAccuracy : NSInteger;
+
+SWIFT_PROTOCOL_NAMED("CASImpression")
+@protocol CASStatusHandler <NSObject>
+/// The Format Type of the impression
+@property (nonatomic, readonly) enum CASType adType;
+/// The mediated network’s name that purchased the impression.
+/// All mediation network constants from <code>CASNetwork</code>.
+@property (nonatomic, readonly, copy) NSString * _Nonnull network;
+/// The Cost Per Mille estimated impressions of the ad in USD.
+/// The value accuracy is returned in the <code>priceAccuracy</code> property.
+@property (nonatomic, readonly) double cpm;
+/// Accuracy of the cpm value. May return one of the following:
+@property (nonatomic, readonly) enum CASPriceAccuracy priceAccuracy;
+/// Version of the network SDK rendering the ad.
+@property (nonatomic, readonly, copy) NSString * _Nonnull versionInfo;
+/// The creative id tied to the ad, if available. May be nil.
+/// You can report creative issues to our Ad review team using this id.
+@property (nonatomic, readonly, copy) NSString * _Nullable creativeIdentifier;
+/// The placement ID from the network that showed the ad
+@property (nonatomic, readonly, copy) NSString * _Nonnull identifier;
+/// The amount of impressions of all ad formats to the current user for all sessions.
+@property (nonatomic, readonly) NSInteger impressionDepth;
+/// The total revenue in USD from impressions of all ad formats to the current user for all sessions.
+@property (nonatomic, readonly) double lifetimeRevenue;
+@end
+
+
+SWIFT_PROTOCOL_NAMED("CASImpressionDelegate")
+@protocol CASImpressionDelegate <NSObject>
+/// Called when an ad impression occurs.
+/// This method is guaranteed to be called on the main thread.
+/// \param info The ad response associated with the impression. This object contains details
+/// about the ad, including format, source, and revenue information.
+///
+- (void)adDidRecordImpressionWithInfo:(CASContentInfo * _Nonnull)info;
+@end
+
+enum CASConsentFlowStatus : NSInteger;
+
+SWIFT_CLASS_NAMED("CASInitialConfig")
+@interface CASInitialConfig : NSObject
+/// Get the CAS manager initialization error message or NULL if initialization is successful.
+/// Check errors constants from CASInitializationError class.
+@property (nonatomic, readonly, copy) NSString * _Nullable error;
+/// Get the initialized CAS manager.
+@property (nonatomic, readonly, strong) CASMediationManager * _Nonnull manager;
+/// Get the user’s ISO-2 country code.
+@property (nonatomic, readonly, copy) NSString * _Nullable countryCode;
+/// The consent must be requested from the user.
+@property (nonatomic, readonly) BOOL isConsentRequired;
+/// Returns true if the user authorizes access to app-related data for tracking the user or the device.
+/// seealso:
+/// <a href="https://developer.apple.com/documentation/apptrackingtransparency/attrackingmanager">App Tracking Transparency</a>
+@property (nonatomic, readonly) BOOL isATTrackingAuthorized;
+@property (nonatomic, readonly) enum CASConsentFlowStatus consentFlowStatus;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// Manages an interstitial ad, allowing for loading, presenting, and destroying the ad content.
+/// Interstitial ads are full-screen ads that typically appear at natural transition points within an app,
+/// such as between screen transitions or after completing a task. This class provides functions to load,
+/// show, and destroy interstitial ads, as well as manage automatic behaviors such as autoloading and autoshowing.
+/// note:
+/// Ensure you retain a reference to the <code>CASInterstitial</code> instance while the ad is in use. If the ad object is deallocated or lost, callbacks will no longer be triggered, and the ad may not function as expected.
+SWIFT_CLASS_NAMED("CASInterstitial")
+@interface CASInterstitial : NSObject <CASScreenContent>
+/// Initializes a new <code>CASInterstitial</code> instance with a unique CAS identifier.
+/// This identifier is typically the application iTunes ID, which helps uniquely identify the ad content
+/// being loaded and displayed.
+/// \param casID The unique identifier for the CAS content (usually the app iTunes ID).
+///
+- (nonnull instancetype)initWithCasID:(NSString * _Nonnull)casID OBJC_DESIGNATED_INITIALIZER;
+/// The delegate for handling ad content events.
+/// This delegate is used to handle various ad content events, such as successful ad loading, failure to load,
+/// ad presentation, and click events.
+@property (nonatomic, weak) id <CASScreenContentDelegate> _Nullable delegate;
+/// The delegate for handling ad impression events.
+/// This listener is notified when an ad impression is successfully recorded, which may also be associated with
+/// a paid impression. This allows you to track when an impression has been accounted for, typically for
+/// analytics or reporting purposes.
+@property (nonatomic, weak) id <CASImpressionDelegate> _Nullable impressionDelegate;
+/// Indicates whether auto-loading of ads is enabled.
+/// If enabled, a new ad will automatically load when the current ad is dismissed or completed. Additionally, the ad
+/// will automatically retry loading if an error occurs during the loading process.
+/// By default, auto-loading is disabled.
+@property (nonatomic) BOOL isAutoloadEnabled;
+/// Indicates whether the ad should be automatically shown when the user returns to the app.
+/// If enabled, the ad will be presented automatically when the user switches back to the app.
+/// Ensure that the ad is ready to be shown at the time of return. This feature is typically used for showing ads
+/// between app transitions or after specific events.
+/// By default, auto-show is disabled.
+@property (nonatomic) BOOL isAutoshowEnabled;
+/// Loads the interstitial ad content.
+/// Call this function to load the ad before attempting to present it. The loading process may take some time,
+/// and you will be notified when the ad is successfully loaded or if the loading fails via the <code>delegate</code>.
+- (void)loadAd;
+/// This property returns <code>true</code> if the ad content is successfully loaded and eady to be presented.
+@property (nonatomic, readonly) BOOL isAdLoaded;
+/// Information about the currently loaded ad.
+/// This property is <code>nil</code> if the ad has not been loaded yet or has been destroyed.
+@property (nonatomic, readonly, strong) CASContentInfo * _Nullable contentInfo;
+/// Presents the interstitial ad from the given view controller.
+/// note:
+/// The ad must be loaded and ready for display before this function is called. If the ad is not yet loaded, the <code>adDidFailToPresentContent(error:format:)</code> delegate will be triggered with an <code>AdErrorCode.notReady</code> error, and the ad will not be shown.
+/// \param viewController A view controller to present the ad. If nil, attempts to present from the top view controller of the application’s main window.
+///
+- (void)presentFromViewController:(UIViewController * _Nullable)viewController;
+/// Destroys the ad content and releases any associated resources.
+/// Call this function when the ad is no longer needed to free up resources and prevent memory leaks. This is especially
+/// important to call if the ad is no longer required or when transitioning to another ad.
+- (void)destroy;
+/// The minimum interval between showing interstitial ads, in seconds.
+/// If an attempt is made to show a new ad within this interval after the previous one was closed,
+/// the <code>adDidFailToPresentContent(error:format:)</code> delegate will be triggered with the <code>AdErrorCode.notPassedInterval</code> error.
+/// note:
+/// That the timer for the minimum interval is shared across all interstitial ad instances, but the minimum
+/// interval value may differ for each ad instance.
+/// If you need to reset the minimum interval timer after showing a Rewarded Ad or an AppOpen Ad, you can
+/// call the <code>restartInterval()</code> method in the <code>didDismissAdContent(_:)</code> for these ad formats.
+/// By default, this interval is set to 0 seconds.
+@property (nonatomic) NSInteger minInterval;
+/// Restarts the countdown for the interval between showing interstitial ads.
+/// This function allows you to delay showing the next ad by resetting the minimum interval countdown.
+/// By default, the interval before the first ad impression is ignored.
+- (void)restartInterval;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS_NAMED("CASLastPageAdContent")
+@interface CASLastPageAdContent : NSObject
+/// Create Ad content to use in Last Page
+/// The latest free ad page for your own promotion
+/// This ad page will be displayed when there is no paid ad to show or internet availability.
+/// Apply this content to <code>MediationManager.lastPageAdContent</code>
+/// \param headline Enter the message that you want users to see.
+///
+/// \param adText Enter a description for the app being promoted. Optional property.
+///
+/// \param destinationURL Enter the URL that CAS will direct users to when they click the ad. This URL is not visible in the ad.
+///
+/// \param imageURL Enter the direct URL of the image to be used as the ad file. Optional property.
+///
+/// \param iconURL Enter the direct URL of the icon or logo (Small square picture). Optional property.
+///
+- (nonnull instancetype)initWithHeadline:(NSString * _Nonnull)headline adText:(NSString * _Nonnull)adText destinationURL:(NSString * _Nonnull)destinationURL imageURL:(NSString * _Nonnull)imageURL iconURL:(NSString * _Nonnull)iconURL OBJC_DESIGNATED_INITIALIZER;
++ (CASLastPageAdContent * _Nullable)createFrom:(NSString * _Nullable)json SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+SWIFT_PROTOCOL_NAMED("CASLoadDelegate") SWIFT_DEPRECATED_MSG("Please migrate to new CASInterstitial and CASRewarded implementation.")
+@protocol CASLoadDelegate
+/// Executed when the ad loaded and ready to present.
+/// attention:
+/// Can be called from ANY Thread and not UI Thread safe.
+- (void)onAdLoaded:(enum CASType)adType;
+/// Executed when the ad failed to load.
+/// attention:
+/// Can be called from ANY Thread and not UI Thread safe.
+- (void)onAdFailedToLoad:(enum CASType)adType withError:(NSString * _Nullable)error;
+@end
+
+typedef SWIFT_ENUM_NAMED(NSInteger, CASLoadingManagerMode, "CASLoadingManagerMode", open) {
+  CASLoadingManagerModeFastestRequests = 0,
+  CASLoadingManagerModeFastRequests = 1,
+  CASLoadingManagerModeOptimal = 2,
+  CASLoadingManagerModeHighePerformance = 3,
+  CASLoadingManagerModeHighestPerformance = 4,
+  CASLoadingManagerModeManual = 5,
+};
+
+@class CASConsentFlow;
+
+SWIFT_CLASS_NAMED("CASManagerBuilder")
+@interface CASManagerBuilder : NSObject
+/// Sets a handler to receive a callback when CAS initialization is complete.
+- (CASManagerBuilder * _Nonnull)withCompletionHandler:(void (^ _Nonnull)(CASInitialConfig * _Nonnull))handler;
+/// Enables demo ad mode, which always requests test ads.
+/// <ul>
+///   <li>
+///     Note Remember to disable this mode (set to false) after testing is complete.
+///   </li>
+/// </ul>
+- (CASManagerBuilder * _Nonnull)withTestAdMode:(BOOL)test;
+/// Configures the consent flow for GDPR compliance and other privacy regulations.
+/// By default, the consent flow is shown to users as required by law.
+/// To disable the consent dialog:
+/// \code
+/// .withConsentFlow(CASConsentFlow(isEnabled: false))
+///
+/// \endcodeExample usage:
+/// \code
+/// .withConsentFlow(
+///      ConsentFlow()
+///          .withPrivacyPolicy("https://url_to_privacy_policy")
+/// )
+///
+/// \endcode
+- (CASManagerBuilder * _Nonnull)withConsentFlow:(CASConsentFlow * _Nonnull)flow;
+/// Sets additional mediation settings.
+- (CASManagerBuilder * _Nonnull)withMediationExtras:(NSString * _Nonnull)value forKey:(NSString * _Nonnull)key;
+/// Specifies the framework and version used by the application.
+/// <ul>
+///   <li>
+///     For example, Unity, Cordova, Flutter, etc.
+///   </li>
+///   <li>
+///     If your app uses only native Android, this method should not be called.
+///   </li>
+/// </ul>
+- (CASManagerBuilder * _Nonnull)withFramework:(NSString * _Nonnull)name version:(NSString * _Nonnull)version;
+/// Create new or get valid <code>CASMediationManager</code>.
+/// Can be called for different identifiers to create different managers.
+/// An CAS ID is a unique ID number assigned to each of your ad placements when they’re created in CAS.
+/// <ul>
+///   <li>
+///     The CAS ID is added to your app’s code and used to identify ad requests.
+///     Often the CAS ID is the same as the Apple ID.
+///   </li>
+///   <li>
+///     If you haven’t created an CAS account and registered an app yet, now’s a great time to do so at <a href="https://cas.ai">cas.ai</a>.
+///   </li>
+///   <li>
+///     In a real app, it is important that you use your actual CAS ID.
+///   </li>
+/// </ul>
+- (CASMediationManager * _Nonnull)createWithCasId:(NSString * _Nonnull)identifier;
+/// This is an alternative to <code>create(withCasId:)</code>
+- (CASMediationManager * _Nonnull)createFor:(uint64_t)casID;
+- (CASManagerBuilder * _Nonnull)withUserID:(NSString * _Nonnull)userID SWIFT_DEPRECATED_MSG("Use CAS.targetingOptions.userId property instead.");
+/// Configures autoload processing for specific ad formats.
+/// <ul>
+///   <li>
+///     This applies to [AdType.Interstitial] and [AdType.Rewarded] formats only.
+///   </li>
+///   <li>
+///     Autoload can be enabled or disabled manually after initialization using [MediationManager.setEnabled].
+///   </li>
+///   <li>
+///     Ensure that [LoadingManagerMode] is not set to Manual to enable autoload.
+///   </li>
+///   <li>
+///     By default, autoload is not enabled.
+///   </li>
+/// </ul>
+- (CASManagerBuilder * _Nonnull)withAdFlags:(CASTypeFlags)adTypes SWIFT_DEPRECATED_MSG("Use `withAdFlags()` only if you continue to use `CASMediationManager` for ad requests. For the new `CASInterstitial` and `CASRewarded` implementations, you should skip this function call.");
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS_NAMED("CASMediaView")
+@interface CASMediaView : UIView
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+/// The content mode specifies how the cached bitmap of the view’s layer is adjusted when the view’s bounds change.
+/// Should be set before <code>CASNativeView.setNativeAd(_:)</code>
+/// The default value of this property is <code>UIView.ContentMode.scaleAspectFit</code>.
+@property (nonatomic) UIViewContentMode contentMode;
+- (void)layoutSubviews;
+@property (nonatomic, readonly) CGSize intrinsicContentSize;
+@end
+
+
+SWIFT_CLASS_NAMED("CASMediationManager")
+@interface CASMediationManager : NSObject
+/// Weak event on <code>CASType</code> load response.
+@property (nonatomic, weak) id <CASLoadDelegate> _Nullable adLoadDelegate SWIFT_DEPRECATED_MSG("If you want to receive convenient ad loading callbacks, you should switch to using the new CAS classes for each format.");
+@property (nonatomic, readonly, copy) NSString * _Nonnull managerID;
+@property (nonatomic, readonly) BOOL isDemoAdMode;
+/// The latest free ad page to your own promotion.
+/// This ad page will be displayed when there is no paid ad to show or internet availability.
+/// By default, this page will not be displayed while the ad content is NIL.
+/// <code>CASLastPageAdContent.destinationURL</code> should always have a non-empty URL.
+/// attention:
+/// Impressions and clicks of this ad page will not be billed.
+@property (nonatomic, strong) CASLastPageAdContent * _Nullable lastPageAdContent;
+/// Check is visible <code>CASType.interstitial</code>or <code>CASType.Rewarded</code> right now.
+@property (nonatomic, readonly) BOOL isFullscreenAdVisible;
+/// Manual load Interstitial Ad.
+/// Please call load before each show ad.
+/// You can get a callback for the successful loading of an ad when set <code>adLoadDelegate</code>
+/// attention:
+/// You should only use this method <code>if CASSettings.getLoadingMode() == CASLoadingManagerMode.manual</code> is active.
+- (void)loadInterstitial;
+/// Check if Interstitial ad is ready to be shown.
+@property (nonatomic, readonly) BOOL isInterstitialReady;
+/// Shows the Interstitial ad if available.
+/// \param controller The controller from which the Interstitial ad should be shown.
+///
+/// \param callback The callback for Interstitial ad events.
+///
+- (void)presentInterstitialFromRootViewController:(UIViewController * _Nonnull)controller callback:(id <CASCallback> _Nullable)callback;
+/// Manual load Rewarded Video Ad.
+/// Please call load before each show ad.
+/// You can get a callback for the successful loading of an ad when set <code>adLoadDelegate</code>
+/// attention:
+/// You should only use this method <code>if CASSettings.getLoadingMode() == CASLoadingManagerMode.manual</code> is active.
+- (void)loadRewardedAd;
+/// Check if Rewarded ad is ready to be shown.
+@property (nonatomic, readonly) BOOL isRewardedAdReady;
+/// Shows the Rewarded video ad if available.
+/// \param controller The controller from which the Interstitial ad should be shown.
+///
+/// \param callback The callback for Interstitial ad events.
+///
+- (void)presentRewardedAdFromRootViewController:(UIViewController * _Nonnull)controller callback:(id <CASCallback> _Nullable)callback;
+/// See <code>setEnabled</code>
+- (BOOL)isEnabledWithType:(enum CASType)type SWIFT_WARN_UNUSED_RESULT;
+/// Set [enabled] ad [type] to processing.
+/// Allowed for [AdType.Interstitial] and [AdType.Rewarded] only.
+/// The state will not be saved between sessions.
+- (void)setEnabled:(BOOL)enabled type:(enum CASType)type SWIFT_DEPRECATED_MSG("If you want more precise control over ad memory, you should switch to using the new CAS classes for each format.");
+/// The Return Ad which is displayed once the user returns to your application after a certain period of time.
+/// To minimize the intrusiveness, short time periods are ignored.
+/// Return ads are disabled by default.
+- (void)enableAppReturnAdsWith:(id <CASAppReturnDelegate> _Nonnull)delegate SWIFT_DEPRECATED_MSG("Please migrate to new `CASAppOpen` or `CASInterstitial` to enable this feature with the `isAutoshowEnabled` property.");
+/// Disables App Return Ads
+- (void)disableAppReturnAds SWIFT_DEPRECATED_MSG("Please migrate to new `CASAppOpen` or `CASInterstitial` to enable this feature with the `isAutoshowEnabled` property.");
+/// Calling this method will indicate to skip one next ad impression when returning to the app.
+/// You can call this method when you intentionally redirect the user to another application (for example App Store)
+/// and do not want them to see ads when they return to your application.
+- (void)skipNextAppReturnAds;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+@class CASNativeAdContent;
+
+/// A protocol for handling events related to native ad content.
+/// Implement this protocol to respond to different states and actions associated with the native ad content,
+/// such as successful loading, failure to load, successful display, user interactions (clicks), etc.
+/// All methods in this protocol are called on the main thread.
+SWIFT_PROTOCOL_NAMED("CASNativeContentDelegate")
+@protocol CASNativeAdContentDelegate <NSObject>
+@optional
+/// Called when the native ad fails to show.
+/// This method is triggered if there is an issue displaying the ad, such as a display failure or an unsupported environment.
+/// \param ad The ad content instance that failed to show.
+///
+/// \param error The error that occurred while attempting to display the native ad.
+///
+- (void)nativeAd:(CASNativeAdContent * _Nonnull)ad didFailToPresentWithError:(CASError * _Nonnull)error;
+/// Called when the user clicks on the native ad.
+/// This method provides an opportunity to handle user interactions with the ad, such as tracking click events, analytics, or updating the UI.
+/// \param ad The ad content instance that was clicked.
+///
+- (void)nativeAdDidClickContent:(CASNativeAdContent * _Nonnull)ad;
+@end
+
+@protocol CASNativeLoaderDelegate;
+
+/// Manages the loading and configuration of native ads.
+/// The <code>CASNativeLoader</code> class handles loading native ad content with customizable configurations, including
+/// ad impression tracking, ad choices placement, and video mute state. It supports loading a single ad or
+/// multiple ads, depending on the method invoked.
+/// When you call the <code>load</code> method, the ad loader will continue running until the requested ad content has finished loading.
+/// It is essential to keep a reference to the <code>CASNativeLoader</code> instance for the duration of the loading process,
+/// as it may be deallocated if no longer in use, which would stop the loading and trigger failure callbacks.
+SWIFT_CLASS_NAMED("CASNativeLoader")
+@interface CASNativeLoader : NSObject
+/// Initializes the <code>CASNativeLoader</code> with a unique identifier.
+/// This identifier is typically the application iTunes ID, which helps uniquely identify the ad content
+/// being loaded and displayed.
+/// \param identifier The unique identifier for the CAS content (usually the app iTunes ID).
+///
+- (nonnull instancetype)initWithCasID:(NSString * _Nonnull)casID OBJC_DESIGNATED_INITIALIZER;
+/// A delegate for handling native ad content events.
+/// This delegate is used to receive updates on native ad loading, errors, and other related events.
+/// Since <code>delegate</code> is a weak reference, it may be deallocated if no longer used.
+/// note:
+/// It is important to ensure that the delegate is not deallocated before the ad content is loaded, as doing so may prevent the callbacks from being triggered.
+@property (nonatomic, weak) id <CASNativeLoaderDelegate> _Nullable delegate;
+/// Configures the placement of the AdChoices icon within the ad content.
+/// The <code>adChoicesPlacement</code> property allows you to define the location of the AdChoices icon, ensuring compliance
+/// with privacy and advertising regulations. Customize this property to align with your app’s design and user experience.
+@property (nonatomic) enum CASChoicesPlacement adChoicesPlacement;
+/// Sets the initial mute state for video ads.
+/// By default, video ads will start with the sound muted. You can modify this setting to ensure that the video
+/// starts with sound enabled or muted, depending on your app’s requirements.
+@property (nonatomic) BOOL isStartVideoMuted;
+/// Starts loading a single native ad.
+/// This method initiates the loading of a single native ad.
+/// note:
+/// Ensure that the <code>adDelegate</code> is set before calling this method, as it is required to receive the loaded native ad.
+- (void)loadAd;
+/// Starts loading multiple native ads with a specified maximum number.
+/// This method allows you to request multiple native ads in one load operation. It is not guaranteed that the exact
+/// number of ads requested will be returned.
+/// The <code>CASNativeContentDelegate.nativeAdDidLoadContent(_:from:)</code> callback
+/// will be invoked once for each successfully loaded ad, up to the requested maximum.
+/// If the loading operation fails, the <code>CASNativeContentDelegate.nativeAdDidFailToLoad(error:)</code> callback will be
+/// triggered with the error details.
+/// Apps requesting multiple ads should check the <code>isLoading</code> property in the
+/// delegate to determine if all ads have finished loading.
+/// note:
+/// The <code>delegate</code> must not be deallocated during the loading process, or the loading will fail.
+/// \param maxNumberOfAds The maximum number of ads to load.
+///
+- (void)loadWithMaxNumberOfAds:(NSInteger)maxNumberOfAds;
+/// Indicates whether native ad content is currently being loaded.
+/// This property returns <code>true</code> if at least one ad is still being loaded. If multiple ads are requested,
+/// this property will remain <code>true</code> until all requested ads are fully loaded. If no ads are being loaded, it
+/// returns <code>false</code>.
+///
+/// returns:
+/// <code>true</code> if ads are in the process of loading, otherwise <code>false</code>.
+@property (nonatomic, readonly) BOOL isAdLoading;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+SWIFT_PROTOCOL_NAMED("CASNativeLoaderDelegate")
+@protocol CASNativeLoaderDelegate <NSObject>
+/// Called when the native ad content has been successfully loaded.
+/// You should register the native ad object with the view responsible for displaying it using <code>CASNativeView.setNativeAd</code>.
+/// Always call the <code>NativeAdContent.destroy</code> method on all loaded native ads, even if they are not used or referenced. This ensures proper resource cleanup and prevents memory leaks.
+/// \param content The <code>NativeAdContent</code> instance that has been successfully loaded.
+///
+- (void)nativeAdDidLoadContent:(CASNativeAdContent * _Nonnull)ad;
+@optional
+/// Called when the native ad fails to load.
+/// This method provides an opportunity to handle loading failures, such as showing an error message or attempting a retry.
+/// \param error The error that occurred while attempting to load the native ad.
+///
+- (void)nativeAdDidFailToLoadWithError:(CASError * _Nonnull)error;
+@end
+
+@class UILabel;
+@class UIButton;
+@class UIImageView;
+
+SWIFT_PROTOCOL_NAMED("NativeAdAssetViews")
+@protocol CASNativeAdAssetViews <NSObject>
+@property (nonatomic, weak) CASChoicesView * _Nullable adChoicesView;
+@property (nonatomic, readonly, weak) CASMediaView * _Nullable mediaView;
+@property (nonatomic, readonly, weak) UILabel * _Nullable headlineView;
+@property (nonatomic, readonly, weak) UIButton * _Nullable callToActionView;
+@property (nonatomic, readonly, weak) UIImageView * _Nullable iconView;
+@property (nonatomic, readonly, weak) UILabel * _Nullable bodyView;
+@property (nonatomic, readonly, weak) UILabel * _Nullable priceView;
+@property (nonatomic, readonly, weak) UILabel * _Nullable advertiserView;
+@property (nonatomic, readonly, weak) UILabel * _Nullable storeView;
+@property (nonatomic, readonly, weak) UIView * _Nullable starRatingView;
+@property (nonatomic, readonly, weak) UILabel * _Nullable reviewCountView;
+@property (nonatomic, readonly, weak) UILabel * _Nullable adLabelView;
+@property (nonatomic, readonly, copy) NSArray<UIView *> * _Nonnull clickableViews;
+@end
+
+
+SWIFT_CLASS_NAMED("CASNativeView")
+@interface CASNativeView : UIView <CASNativeAdAssetViews>
+@property (nonatomic, weak) IBOutlet CASMediaView * _Nullable mediaView;
+@property (nonatomic, weak) IBOutlet CASChoicesView * _Nullable adChoicesView;
+@property (nonatomic, weak) IBOutlet UILabel * _Nullable headlineView;
+@property (nonatomic, weak) IBOutlet UIButton * _Nullable callToActionView;
+@property (nonatomic, weak) IBOutlet UIImageView * _Nullable iconView;
+@property (nonatomic, weak) IBOutlet UILabel * _Nullable bodyView;
+@property (nonatomic, weak) IBOutlet UILabel * _Nullable priceView;
+@property (nonatomic, weak) IBOutlet UILabel * _Nullable advertiserView;
+@property (nonatomic, weak) IBOutlet UILabel * _Nullable storeView;
+@property (nonatomic, weak) IBOutlet UIView * _Nullable starRatingView;
+@property (nonatomic, weak) IBOutlet UILabel * _Nullable reviewCountView;
+@property (nonatomic, weak) IBOutlet UILabel * _Nullable adLabelView;
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+/// Finds and registers <code>mediaView</code> in subviews with the specified tag.
+- (void)registerMediaViewWithTag:(NSInteger)tag;
+/// Finds and registers <code>adChoicesView</code> in subviews with the specified tag.
+- (void)registerAdChoicesViewWithTag:(NSInteger)tag;
+/// Finds and registers <code>headlineView</code> in subviews with the specified tag.
+- (void)registerHeadlineViewWithTag:(NSInteger)tag;
+/// Finds and registers <code>callToActionView</code> in subviews with the specified tag.
+- (void)registerCallToActionViewWithTag:(NSInteger)tag;
+/// Finds and registers <code>iconView</code> in subviews with the specified tag.
+- (void)registerIconViewWithTag:(NSInteger)tag;
+/// Finds and registers <code>bodyView</code> in subviews with the specified tag.
+- (void)registerBodyViewWithTag:(NSInteger)tag;
+/// Finds and registers <code>priceView</code> in subviews with the specified tag.
+- (void)registerPriceViewWithTag:(NSInteger)tag;
+/// Finds and registers <code>advertiserView</code> in subviews with the specified tag.
+- (void)registerAdvertiserViewWithTag:(NSInteger)tag;
+/// Finds and registers <code>storeView</code> in subviews with the specified tag.
+- (void)registerStoreViewWithTag:(NSInteger)tag;
+/// Finds and registers <code>starRatingView</code> in subviews with the specified tag.
+- (void)registerStarRatingViewWithTag:(NSInteger)tag;
+/// Finds and registers <code>reviewCountView</code> in subviews with the specified tag.
+- (void)registerReviewCountViewWithTag:(NSInteger)tag;
+/// Finds and registers <code>adLabelView</code> in subviews with the specified tag.
+- (void)registerAdLabelViewWithTag:(NSInteger)tag;
+/// Apply Native Ad to CASNativeView container.
+/// \param content The <code>NativeAdContent</code> object representing the ad to be displayed.
+///
+- (void)setNativeAd:(CASNativeAdContent * _Nullable)content;
+/// Integrates native ads into your app using predefined templates, simplifying the process of ad display.
+/// This method allows you to specify the size for the native ad template. It automatically replaces any previously
+/// registered native asset views and their child views with the corresponding template assets for the given size.
+/// <em>Important Considerations:</em>
+/// <ul>
+///   <li>
+///     Creating the layout may cause UI rendering to freeze briefly, so it is recommended to set the template size
+///     only once when initializing the view.
+///   </li>
+/// </ul>
+/// <em>Usage Instructions:</em>
+/// <ul>
+///   <li>
+///     Do not register any asset views.
+///   </li>
+///   <li>
+///     Set the template size once to inflate the layout.
+///   </li>
+///   <li>
+///     (Optional) Customizing the appearance of the view. Default values are shown below:
+///   </li>
+/// </ul>
+/// \code
+///     backgroundColor = UIColor.white
+///     callToActionView?.configuration?.baseBackgroundColor = UIColor.tintColor
+///     headlineView?.textColor = UIColor.darkText
+///     // Other asset views also allowed for customization
+///
+/// \endcode<ul>
+///   <li>
+///     Use [setNativeAd] for each new instance of [NativeAdContent] to update the ad content.
+///   </li>
+/// </ul>
+/// \param size The <code>AdSize</code> specifying the dimensions for displaying the native ad.
+///
+- (void)setAdTemplateSize:(CASSize * _Nonnull)size;
+/// Integrates native ads into your app using the templates, which simplifies the process.
+/// To use this method, specify the size for displaying the native ad.
+/// The function will automatically replace all registered native asset views
+/// and their child views with the corresponding template assets.
+/// \param ad The <code>NativeAdContent</code> object representing the ad to be displayed.
+///
+/// \param templateSize The <code>AdSize</code> specifying the dimensions for displaying the native ad.
+///
+- (void)setNativeAd:(CASNativeAdContent * _Nonnull)ad templateSize:(CASSize * _Nonnull)templateSize SWIFT_DEPRECATED_MSG("To improve performance, please call setTemplateSize(_:) once to create layout and setNativeAd(_:) for each new NativeAdContent.");
+@property (nonatomic, readonly, copy) NSArray<UIView *> * _Nonnull clickableViews;
+@property (nonatomic, readonly) CGSize intrinsicContentSize;
+- (void)didMoveToWindow;
+@end
+
+
+SWIFT_CLASS_NAMED("CASNetwork")
+@interface CASNetwork : NSObject
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull casExchange;)
++ (NSString * _Nonnull)casExchange SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull dspExchange;)
++ (NSString * _Nonnull)dspExchange SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull crossPromo;)
++ (NSString * _Nonnull)crossPromo SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull googleAds;)
++ (NSString * _Nonnull)googleAds SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull vungle;)
++ (NSString * _Nonnull)vungle SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull kidoz;)
++ (NSString * _Nonnull)kidoz SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull chartboost;)
++ (NSString * _Nonnull)chartboost SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull unityAds;)
++ (NSString * _Nonnull)unityAds SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull appLovin;)
++ (NSString * _Nonnull)appLovin SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull superAwesome;)
++ (NSString * _Nonnull)superAwesome SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull meta;)
++ (NSString * _Nonnull)meta SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull inMobi;)
++ (NSString * _Nonnull)inMobi SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull ironSource;)
++ (NSString * _Nonnull)ironSource SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull yandexAds;)
++ (NSString * _Nonnull)yandexAds SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull mintegral;)
++ (NSString * _Nonnull)mintegral SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull pangle;)
++ (NSString * _Nonnull)pangle SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull prado;)
++ (NSString * _Nonnull)prado SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull dtExchange;)
++ (NSString * _Nonnull)dtExchange SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull bigo;)
++ (NSString * _Nonnull)bigo SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull hyprMX;)
++ (NSString * _Nonnull)hyprMX SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull smaato;)
++ (NSString * _Nonnull)smaato SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull startio;)
++ (NSString * _Nonnull)startio SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull madex;)
++ (NSString * _Nonnull)madex SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull ogury;)
++ (NSString * _Nonnull)ogury SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull ysoNetwork;)
++ (NSString * _Nonnull)ysoNetwork SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull lastPageAd;)
++ (NSString * _Nonnull)lastPageAd SWIFT_WARN_UNUSED_RESULT;
+/// Meta Audience Network  Advertising Tracking Enabled
+/// Set the <code>FBAdSettings.setAdvertiserTrackingEnabled</code> flag.
+/// The setAdvertiserTrackingEnabled “1” flag allows you to inform Audience Network whether to use the data to deliver personalized ads in line with your own legal obligations,
+/// platform terms, and commitments you’ve made to your users.
+/// If the flag is set to “0” we will not be able to deliver personalized ads.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull facebookAdvertiserTracking;)
++ (NSString * _Nonnull)facebookAdvertiserTracking SWIFT_WARN_UNUSED_RESULT;
+/// Meta Audience Network Data Processing Options for US Users
+/// Limited Data Use is a data processing option that gives you more control over how your data
+/// is used in Meta’s systems and better supports your compliance efforts with various US state
+/// privacy regulations. To utilize this feature, you must proactively enable Limited Data Use.
+/// Set the <code>FBAdSettings.setDataProcessingOptions</code> flag values:
+/// <ul>
+///   <li>
+///     “” (empty string)  - To explicitly not enable Limited Data Use (LDU) mode
+///   </li>
+///   <li>
+///     “LDU”  - To enable LDU mode using geolocation
+///   </li>
+/// </ul>
+/// Visit Meta’s developer documentation for details:
+/// https://developers.facebook.com/docs/marketing-apis/data-processing-options
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull facebookDataProcessing;)
++ (NSString * _Nonnull)facebookDataProcessing SWIFT_WARN_UNUSED_RESULT;
++ (NSString * _Nonnull)getDisplayNameWithId:(enum CASSourceId)id SWIFT_WARN_UNUSED_RESULT;
++ (NSString * _Nonnull)getDisplayName:(NSString * _Nonnull)net SWIFT_WARN_UNUSED_RESULT;
++ (NSString * _Nonnull)getActiveNetworkPattern SWIFT_WARN_UNUSED_RESULT;
++ (NSArray<NSString *> * _Nonnull)getActiveNetworks SWIFT_WARN_UNUSED_RESULT;
++ (BOOL)isActiveNetwork:(NSString * _Nonnull)network SWIFT_WARN_UNUSED_RESULT;
++ (NSArray<NSString *> * _Nonnull)values SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_PROTOCOL_NAMED("CASPaidCallback")
+@protocol CASPaidCallback <CASCallback>
+- (void)didPayRevenueFor:(id <CASStatusHandler> _Nonnull)ad;
+@end
+
+typedef SWIFT_ENUM_NAMED(NSInteger, CASPriceAccuracy, "CASPriceAccuracy", open) {
+/// eCPM floor, also known as minimum eCPMs
+  CASPriceAccuracyFloor = 0,
+/// eCPM is the exact and committed value per 1000 impressions.
+  CASPriceAccuracyBid = 1,
+/// When the demand source does not agree to disclose the payout of every impression - in such cases the cpm is ‘0’
+  CASPriceAccuracyUndisclosed = 2,
+};
+
+
+/// Manages a rewarded ad, allowing for the loading, showing, and destroying of ad content.
+/// This class provides functionality to handle rewarded ads, which are ads that allow users to earn rewards
+/// (such as in-app currency, points, or items) in exchange for engaging with the ad content. A rewarded ad
+/// typically provides a reward once the user completes the required interaction, such as watching the ad or
+/// engaging with its content.
+/// note:
+/// Ensure you retain a reference to the <code>CASRewarded</code> instance while the ad is in use. If the ad object is deallocated or lost, callbacks will no longer be triggered, and the ad may not function as expected.
+SWIFT_CLASS_NAMED("CASRewarded")
+@interface CASRewarded : NSObject <CASScreenContent>
+/// Initializes the <code>CASRewarded</code> instance with a unique identifier.
+/// This identifier is typically the application iTunes ID, which helps uniquely identify the ad content
+/// being loaded and displayed.
+/// \param identifier The unique identifier for the CAS content (usually the app iTunes ID).
+///
+- (nonnull instancetype)initWithCasID:(NSString * _Nonnull)casID OBJC_DESIGNATED_INITIALIZER;
+/// The delegate for handling ad content events.
+/// This delegate is used to handle various ad content events, such as successful ad loading, failure to load,
+/// ad presentation, and click events.
+@property (nonatomic, weak) id <CASScreenContentDelegate> _Nullable delegate;
+/// The delegate for handling ad impression events.
+/// This listener is notified when an ad impression is successfully recorded, which may also be associated with
+/// a paid impression. This allows you to track when an impression has been accounted for, typically for
+/// analytics or reporting purposes.
+@property (nonatomic, weak) id <CASImpressionDelegate> _Nullable impressionDelegate;
+/// Enables or disables autoloading of ads.
+/// When enabled, the ad will automatically load new content after the current ad is dismissed or completed.
+/// Additionally, if an error occurs while loading an ad, the system will automatically attempt to load a new ad.
+/// By default, this feature is disabled.
+@property (nonatomic) BOOL isAutoloadEnabled;
+/// Controls whether interstitial ads are shown as a fallback when a rewarded video ad has no available fill.
+/// Interstitial ads do not require the user to watch the entire ad to completion. However, the
+/// <code>userDidEarnRewardHandler</code> will still be triggered as if the user completed the rewarded video.
+/// This option is enabled by default.
+@property (nonatomic) BOOL isExtraFillInterstitialAdEnabled;
+/// Loads the rewarded ad content.
+/// Call this function to load the ad before attempting to present it. The loading process may take some time,
+/// and you will be notified when the ad is successfully loaded or if the loading fails via the <code>delegate</code>.
+- (void)loadAd;
+/// This property returns <code>true</code> if the ad content is successfully loaded and eady to be presented.
+@property (nonatomic, readonly) BOOL isAdLoaded;
+/// Information about the currently loaded ad.
+/// This property is <code>nil</code> if the ad has not been loaded yet or has been destroyed.
+@property (nonatomic, readonly, strong) CASContentInfo * _Nullable contentInfo;
+/// Displays the rewarded ad to the user.
+/// note:
+/// The ad must be loaded and ready for display before this function is called. If the ad is not yet loaded, the <code>adDidFailToPresentContent(error:format:)</code> callback will be triggered with an <code>AdErrorCode.notReady</code> error, and the ad will not be shown.
+/// \param viewController A view controller to present the ad. If nil, attempts to present from the top view controller of the application’s main window.
+///
+/// \param userDidEarnRewardHandler A handler to execute when the user earns a reward.
+///
+- (void)presentFromViewController:(UIViewController * _Nullable)viewController userDidEarnRewardHandler:(CASUserDidEarnRewardHandler _Nonnull)userDidEarnRewardHandler;
+/// Destroys the ad content and releases any associated resources.
+/// Call this function when the ad is no longer needed in order to clean up resources and prevent memory leaks.
+/// After calling this function, the ad content can no longer be shown.
+- (void)destroy;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+
+/// A protocol for handling events related to ad content, such as loading, displaying, interacting with, and dismissing ads.
+/// Implement this protocol to respond to various states of ad content, including success or failure in loading,
+/// presenting, user interactions, and dismissal.
+/// All methods in this protocol are executed on the main thread.
+SWIFT_PROTOCOL_NAMED("CASScreenContentDelegate")
+@protocol CASScreenContentDelegate <NSObject>
+@optional
+/// Called when the ad content has been successfully loaded.
+/// This method is invoked after the ad content has been successfully loaded and is ready to be shown.
+/// You can use this delegate to prepare the ad for presentation, such as updating the UI or storing references
+/// to the content for later display.
+/// \param ad The loaded ad content that is ready for display.
+///
+- (void)screenAdDidLoadContent:(id <CASScreenContent> _Nonnull)ad;
+/// Called when the ad content fails to load.
+/// This method is triggered if the ad content fails to load, allowing you to handle errors or take corrective action.
+/// You can use this delegate to notify the user of the failure, attempt to load an alternative ad, or log the error.
+/// \param ad The ad content that was fail to load.
+///
+/// \param error The error that occurred while attempting to load the ad content.
+///
+- (void)screenAd:(id <CASScreenContent> _Nonnull)ad didFailToLoadWithError:(CASError * _Nonnull)error;
+/// Called when the ad content has been successfully presented (shown).
+/// This method is invoked when the ad content has been successfully displayed to the user.
+/// Use this method to trigger actions after the ad has been shown, such as logging impression data,
+/// updating the UI, or tracking the success of the presentation.
+/// \param ad The ad content that was successfully presented.
+///
+- (void)screenAdWillPresentContent:(id <CASScreenContent> _Nonnull)ad;
+/// Called when the ad content fails to be presented (shown).
+/// This method is triggered if there is an issue displaying the ad content, such as a failure to render
+/// the ad on the screen. Implement this method to handle presentation failures, retry the presentation,
+/// or notify the user of the issue.
+/// \param ad The ad content that was fail to present.
+///
+/// \param error The error that occurred while attempting to display the ad content.
+///
+- (void)screenAd:(id <CASScreenContent> _Nonnull)ad didFailToPresentWithError:(CASError * _Nonnull)error;
+/// Called when the ad content is clicked by the user.
+/// This method is triggered when the user interacts with the ad by clicking on it. Use this method to handle
+/// user interactions, such as tracking the click event, redirecting the user to a landing page, or updating
+/// analytics data.
+/// \param ad The ad content that was clicked by the user.
+///
+- (void)screenAdDidClickContent:(id <CASScreenContent> _Nonnull)ad;
+/// Called when the ad content is dismissed (closed) by the user.
+/// This method is triggered when the user dismisses the ad content, either by closing it manually or after
+/// the ad has finished. Use this method to perform any cleanup tasks, update the UI, or reload ad content
+/// for future use.
+/// \param ad The ad content that was dismissed by the user.
+///
+- (void)screenAdDidDismissContent:(id <CASScreenContent> _Nonnull)ad;
+@end
+
+enum CASConsentStatus : NSInteger;
+enum CASCCPAStatus : NSInteger;
+
+SWIFT_CLASS_NAMED("CASSettings")
+@interface CASSettings : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+/// Ad filters by Audience
+/// Default: undefined
+@property (nonatomic) enum CASAudience taggedAudience;
+/// GDPR user Consent to use personal data in Ads requests.
+/// Default CASConsentStatus undefined
+@property (nonatomic) enum CASConsentStatus userConsent;
+/// Parses the <code>UserDefaults</code> string with key <code>IABTCF_VendorConsents</code>
+/// to determine the consent status of the IAB vendor with the provided ID.
+/// \param vendorId Vendor ID as defined in the Global Vendor List.
+///
+///
+/// returns:
+/// <code>accepted</code> if the advertising entity has consent, <code>denied</code> if not, or <code>undefined</code> if VendorConsents is not available on disk.
+/// @see <a href="https://iabeurope.eu/vendor-list-tcf/">TCF Vendor List</a>
+- (enum CASConsentStatus)getVendorConsentWithVendorId:(NSInteger)vendorId SWIFT_WARN_UNUSED_RESULT;
+/// Parses the <code>UserDefaults</code> string with key <code>IABTCF_AddtlConsent</code>
+/// to determine the consent status of the advertising entity with the provided Ad Technology Provider (ATP) ID.
+/// seealso:
+/// <a href="https://support.google.com/admanager/answer/9681920">Google’s Additional Consent Mode technical specification</a>
+/// seealso:
+/// <a href="https://storage.googleapis.com/tcfac/additional-consent-providers.csv">List of Google ATPs and their IDs</a>
+/// \param providerId ATP ID of the advertising entity (e.g. 89 for Meta Audience Network).
+///
+///
+/// returns:
+/// <code>accepted</code> if the advertising entity has consent, <code>denied</code> if not, or <code>undefined</code> if AddtlConsent is not available on disk.
+- (enum CASConsentStatus)getAdditionalConsentWithProviderId:(NSInteger)providerId SWIFT_WARN_UNUSED_RESULT;
+/// Whether or not user has opted out of the sale of their personal information.
+/// Default CASCCPAStatus undefined
+@property (nonatomic) enum CASCCPAStatus userCCPAStatus;
+/// Defines the time interval, in seconds, starting from the moment of the initial app installation,
+/// during which users can use the application without ads being displayed while still retaining
+/// access to the Rewarded Ads format.
+/// Within this interval, users enjoy privileged access to the application’s features without intrusive advertisements.
+/// <ul>
+///   <li>
+///     Default: 0 seconds
+///   </li>
+///   <li>
+///     Units: Seconds
+///   </li>
+/// </ul>
+@property (nonatomic) uint64_t trialAdFreeInterval;
+/// Set the number of seconds an ad is displayed before a new ad is shown.
+/// After the interval has passed, a new advertisement will be automatically loaded.
+/// <code>CASBannerView.refreshInterval</code> will override this value for a specific view.
+/// <ul>
+///   <li>
+///     Default: 30 seconds.
+///   </li>
+///   <li>
+///     Units: Seconds
+///   </li>
+/// </ul>
+@property (nonatomic) NSInteger bannerRefreshInterval;
+/// The interval between impressions Interstitial Ad in seconds.
+/// <ul>
+///   <li>
+///     <code>CASInterstitial.minInterval</code> will override this value for a specific instance.
+///   </li>
+///   <li>
+///     Default: 0 seconds.
+///   </li>
+///   <li>
+///     Units: Seconds
+///   </li>
+/// </ul>
+/// Use <code>restartInterstitialInterval()</code> for restart interval until next Interstitial ad display.
+@property (nonatomic) NSInteger interstitialInterval;
+/// In Develop
+@property (nonatomic) BOOL audioSessionIsApplicationManaged;
+/// Restart interval until next Interstitial ad display.
+/// By default, the interval before first Interstitial Ad impression is ignored.
+/// You can use this method to delay displaying ad.
+- (void)restartInterstitialInterval;
+/// Indicates if the application’s audio is muted. Affects initial mute state for
+/// all ads. Use this method only if your application has its own volume controls
+/// (e.g., custom music or sound effect muting).
+/// Disabled by default.
+@property (nonatomic) BOOL mutedAdSounds;
+/// The enabled Debug Mode will display a lot of useful information for debugging about the states of the sdk with tag CAS.
+/// Disabling Debug Mode may improve application performance.
+/// Disabled by default.
+@property (nonatomic) BOOL debugMode;
+/// Identifiers corresponding to test devices which will always request test ads.
+/// List of test devices should be defined before first MediationManager initialized.
+/// <ol>
+///   <li>
+///     Run an app configured with the CAS SDK.
+///   </li>
+///   <li>
+///     Check the console or logcat output for a message that looks like this:
+///     “To get test ads on this device, set … “
+///   </li>
+///   <li>
+///     Copy your alphanumeric test device ID to your clipboard.
+///   </li>
+///   <li>
+///     Modify your code to set the test device ID before CAS manager initialize.
+///   </li>
+///   <li>
+///     Re-run your app.
+///   </li>
+///   <li>
+///     Well done, ads on this device are safe to click. Requests, impressions, and clicks on ads in test mode will not show up in your account’s reports.
+///   </li>
+/// </ol>
+- (void)setTestDeviceWithIds:(NSArray<NSString *> * _Nonnull)ids;
+/// This option will compare ad cost and serve regular interstitial ads
+/// when rewarded video ads are expected to generate less revenue.
+/// attention:
+/// Interstitial Ads does not require to watch the video to the end,
+/// but the <code>CASCallback.didCompletedAd</code> callback will be triggered in any case.
+/// <ul>
+///   <li>
+///     <code>CASRewarded.isExtraFillInterstitialAdEnabled</code> will override this value for a specific instance.
+///   </li>
+///   <li>
+///     Enabled by default.
+///   </li>
+/// </ul>
+- (void)setInterstitialAdsWhenVideoCostAreLowerWithAllow:(BOOL)allow;
+/// This option will compare ad cost and serve regular interstitial ads
+/// when rewarded video ads are expected to generate less revenue.
+/// Enabled by default.
+/// attention:
+/// Interstitial Ads does not require to watch the video to the end,
+/// but the <code>CASCallback.didCompletedAd</code> callback will be triggered in any case.
+- (BOOL)isInterstitialAdsWhenVideoCostAreLowerAllowed SWIFT_WARN_UNUSED_RESULT;
+/// The SDK automatically collects location data if the user allowed the app to track the location.
+- (BOOL)isTrackLocationEnabled SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_MSG("Use CAS.targetingOptions.locationCollectionEnabled instead.");
+/// The SDK automatically collects location data if the user allowed the app to track the location.
+/// Disabled by default.
+- (void)setTrackLocationWithEnabled:(BOOL)enabled SWIFT_DEPRECATED_MSG("Use CAS.targetingOptions.locationCollectionEnabled instead.");
+/// Mediation loading manager mode.
+/// Default: <code>CASLoadingManagerMode.optimal</code>
+- (enum CASLoadingManagerMode)getLoadingMode SWIFT_WARN_UNUSED_RESULT;
+/// Mediation loading manager mode.
+/// Default: <code>CASLoadingManagerMode.optimal</code>
+- (void)setLoadingWithMode:(enum CASLoadingManagerMode)mode;
+@end
+
+
 @class NSNumber;
 
 SWIFT_PROTOCOL_NAMED("NativeAdStarRating")
@@ -1428,19 +1853,39 @@ SWIFT_CLASS_NAMED("CASStarRatingView")
 @end
 
 enum CASGender : NSInteger;
+@class CLLocation;
 
 SWIFT_CLASS_NAMED("CASTargetingOptions")
 @interface CASTargetingOptions : NSObject
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+/// The userID is a unique identifier supplied by your application and must be static for each user across sessions.
+/// Your userID should not contain any personally identifiable information such as
+/// an email address, screen name, IDFV (identifier for vendor) or IDFA (Apple’s Advertising Identifier).
+@property (nonatomic, copy) NSString * _Nullable userID;
 /// The user’s gender
-- (void)setGender:(enum CASGender)gender;
-/// The user’s gender
-- (enum CASGender)getGender SWIFT_WARN_UNUSED_RESULT;
+@property (nonatomic) enum CASGender gender;
 /// The user’s age
 /// Limitation: 1-99 and 0 is ‘unknown’
-- (void)setAge:(NSInteger)age;
-/// The user’s age
-- (NSInteger)getAge SWIFT_WARN_UNUSED_RESULT;
+@property (nonatomic) NSInteger age;
+/// Collect from the device the latitude and longitude coordinated truncated to the
+/// hundredths decimal place.
+/// Collect only if your application already has the relevant end-user permissions.
+/// Does not collect if the target audience is children.
+/// Disabled by default.
+@property (nonatomic) BOOL locationCollectionEnabled;
+/// A list of keywords, interests, or intents related to your application.
+/// Words or phrase describing the current activity of the user for targeting purposes.
+@property (nonatomic, copy) NSArray<NSString *> * _Nullable keywords;
+/// Sets the content URL for a web site whose content matches the app’s primary content.
+/// This web site content is used for targeting and brand safety purposes.
+/// Limitation: max URL length 512
+@property (nonatomic, copy) NSString * _Nullable contentUrl;
+/// The user’s current location.
+/// Location data is not used to CAS; however, it may be used by 3rd party ad networks.
+/// Do not use Location just for advertising.
+/// Your app should have a valid use case for it as well.
+@property (nonatomic, strong) CLLocation * _Nullable location;
 /// The user’s current location.
 /// Location data is not used to CAS; however, it may be used by 3rd party ad networks.
 /// Do not use Location just for advertising.
@@ -1448,27 +1893,6 @@ SWIFT_CLASS_NAMED("CASTargetingOptions")
 - (void)setLocationWithLatitude:(double)latitude longitude:(double)longitude;
 /// Clear the user’s current location.
 - (void)clearLocation;
-/// Collect from the device the latitude and longitude coordinated truncated to the
-/// hundredths decimal place.
-/// Collect only if your application already has the relevant end-user permissions.
-/// Does not collect if the target audience is children.
-/// Disabled by default.
-- (void)setLocationCollectionEnabled:(BOOL)enabled;
-/// Collect from the device the latitude and longitude coordinated truncated to the
-/// hundredths decimal place.
-/// Collect only if your application already has the relevant end-user permissions.
-/// Does not collect if the target audience is children.
-/// Disabled by default.
-- (BOOL)getLocationCollectionEnabled SWIFT_WARN_UNUSED_RESULT;
-/// A list of keywords, interests, or intents related to your application.
-/// Words or phrase describing the current activity of the user for targeting purposes.
-- (void)setKeywords:(NSArray<NSString *> * _Nullable)keywords;
-- (NSArray<NSString *> * _Nullable)getKeywords SWIFT_WARN_UNUSED_RESULT;
-/// Sets the content URL for a web site whose content matches the app’s primary content.
-/// This web site content is used for targeting and brand safety purposes.
-/// Limitation: max URL length 512
-- (void)setContentUrl:(NSString * _Nullable)url;
-- (NSString * _Nullable)getContentUrl SWIFT_WARN_UNUSED_RESULT;
 @end
 
 typedef SWIFT_ENUM_NAMED(NSInteger, CASType, "CASType", open) {
@@ -1500,6 +1924,98 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) NSUInteger everythin
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
+typedef SWIFT_ENUM_NAMED(NSInteger, CASCCPAStatus, "CCPAStatus", open) {
+/// Mediation ads network behavior
+  CASCCPAStatusUndefined = 0,
+/// User does not consent to the sale of his or her personal information in compliance with CCPA.
+  CASCCPAStatusOptOutSale = 1,
+/// User consents to the sale of his or her personal information in compliance with CCPA.
+  CASCCPAStatusOptInSale = 2,
+};
+
+enum CASUserDebugGeography : NSInteger;
+
+/// Use this object for configure Consent flow dialogs for GDPR and Apple ATT request.
+/// Create and attach the object to CAS initialization.
+/// \code
+/// CAS.buildManager()
+///    .withConsentFlow(
+///         ConsentFlow()
+///             .withPrivacyPolicy("https://url_to_privacy_policy")
+///    )
+///    .create()
+///
+/// \endcodeBy default, the consent flow will be shown to users who are protected by laws.
+/// You can prevent us from showing the consent dialog to the user ussing followed lines:
+/// \code
+/// CAS.buildManager()
+///     .withConsentFlow(
+///         ConsentFlow(isEnabled: false)
+///     )
+///     .create()
+///
+/// \endcode
+SWIFT_CLASS_NAMED("ConsentFlow")
+@interface CASConsentFlow : NSObject
+@property (nonatomic) BOOL isEnabled;
+@property (nonatomic) BOOL forceTesting;
+@property (nonatomic, copy) NSString * _Nullable privacyPolicyUrl;
+@property (nonatomic, copy) void (^ _Nullable completionHandler)(enum CASConsentFlowStatus);
+@property (nonatomic, strong) UIViewController * _Nullable viewControllerToPresent;
+@property (nonatomic) enum CASUserDebugGeography debugGeography;
+/// Create Consent flow configuration
+/// \param isEnabled If enabled then the consent flow will be shown to users who are protected by laws.
+///
+- (nonnull instancetype)initWithEnabled:(BOOL)isEnabled OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+/// Shows the consent form only if it is required and the user has not responded previously.
+/// If the consent status is required, the SDK loads a form and immediately presents it.
+- (void)presentIfRequired;
+/// Force shows the form to modify user  consent at any time.
+/// When a user interacts with your UI element, call function to show the form
+/// so the user can update their privacy options at any time.
+- (void)present;
+@end
+
+typedef SWIFT_ENUM_NAMED(NSInteger, CASUserDebugGeography, "DebugGeography", open) {
+/// Debug geography disabled.
+  CASUserDebugGeographyDisabled = 0,
+/// Geography appears as in European Economic Area.
+  CASUserDebugGeographyEEA = 1,
+  CASUserDebugGeographyNotEEA = 2,
+/// Geography appears as in a regulated US State for debug devices.
+  CASUserDebugGeographyRegulatedUSState = 3,
+/// Geography appears as in a region with no regulation in force.
+  CASUserDebugGeographyOther = 4,
+};
+
+typedef SWIFT_ENUM_NAMED(NSInteger, CASConsentFlowStatus, "ConsentFlowStatus", open) {
+  CASConsentFlowStatusUnknown = 0,
+/// User consent obtained. Personalized vs non-personalized undefined.
+  CASConsentFlowStatusObtained = 3,
+/// User consent not required.
+  CASConsentFlowStatusNotRequired = 4,
+/// User consent unavailable.
+  CASConsentFlowStatusUnavailable = 5,
+/// There was an internal error.
+  CASConsentFlowStatusInternalError = 10,
+/// There was an error loading data from the network.
+  CASConsentFlowStatusNetworkError = 11,
+/// There was an error with the UI context is passed in.
+  CASConsentFlowStatusViewControllerInvalid = 12,
+/// There was an error with another form is still being displayed.
+  CASConsentFlowStatusFlowStillPresenting = 13,
+};
+
+typedef SWIFT_ENUM_NAMED(NSInteger, CASConsentStatus, "ConsentStatus", open) {
+/// Mediation ads network behavior
+  CASConsentStatusUndefined = 0,
+/// User consents to behavioral targeting in compliance with GDPR.
+  CASConsentStatusAccepted = 1,
+/// User does not consent to behavioral targeting in compliance with GDPR.
+  CASConsentStatusDenied = 2,
+};
+
 typedef SWIFT_ENUM_NAMED(NSInteger, CASGender, "Gender", open) {
   CASGenderUnknown = 0,
   CASGenderMale = 1,
@@ -1507,40 +2023,109 @@ typedef SWIFT_ENUM_NAMED(NSInteger, CASGender, "Gender", open) {
 };
 
 
-/// Adapter initialization stack trace:
+SWIFT_CLASS_NAMED("InitializationError")
+@interface CASInitializationError : NSObject
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+/// Indicates that device network connection is not stable enough.
+/// Your listener is stored in memory and will be called when initialization is successful.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull noConnection;)
++ (NSString * _Nonnull)noConnection SWIFT_WARN_UNUSED_RESULT;
+/// Indicates that the CAS ID is not registered in system.
+/// Contact support to clarify the reasons.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull notRegisteredId;)
++ (NSString * _Nonnull)notRegisteredId SWIFT_WARN_UNUSED_RESULT;
+/// Indicates that the SDK version is no longer compatible.
+/// Please update to the latest SDK.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull verificationError;)
++ (NSString * _Nonnull)verificationError SWIFT_WARN_UNUSED_RESULT;
+/// Indicates a temporary problem with the server.
+/// If the error could be 100% replicated, please give feedback to us.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull serverError;)
++ (NSString * _Nonnull)serverError SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+SWIFT_CLASS("_TtC18CleverAdsSolutions15MediationAdBase")
+@interface MediationAdBase : NSObject
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+/// Adapter should have <code>MediationProvider</code> implementation with Objective-C class name:
+/// \code
+/// CAS<AdNetwork>Provider
+///
+/// \endcodeExample implementation:
+/// \code
+/// @objc(CASAdMobProvider)
+/// final class CASAdMobProvider: NSObject, MediationProvider {
+///     public func create() -> MediationAdapterBase {
+///         return CASAdMobAdapter()
+///     }
+/// }
+///
+/// private final class CASAdMobAdapter: MediationAdapterBase { ... }
+///
+/// \endcodeThis instance created once from SDK and used as singleton.
+/// Adapter call flow:
 /// <ol>
 ///   <li>
-///     [getVersionAndVerify]
+///     [getAdapterVersion]
 ///   </li>
 ///   <li>
-///     [getRequiredVersion]
+///     [getSDKVersion]
 ///   </li>
 ///   <li>
-///     [prepareSettings] for each [MediationInfo] in waterfall
+///     [isInitialized]
 ///   </li>
 ///   <li>
-///     [isEarlyInit] when true call [initMain] immediately
+///     [initAds] if not initialized yet
 ///   </li>
 ///   <li>
-///     [initBidding] for each [MediationInfo] in waterfall or [onMigrateToMediation]
+///     result to [initRequest]
 ///   </li>
 ///   <li>
-///     [getVerifyError] stop flow if error returned
+///     [collectSignals]
 ///   </li>
 ///   <li>
-///     [initMain]
-///   </li>
-///   <li>
-///     [onInitialized] callback after initialization done
-///   </li>
-///   <li>
-///     [initBanner], [initInterstitial], [initRewarded] for each [MediationInfo] in waterfall
+///     [loadAd] for each ad unit
 ///   </li>
 /// </ol>
-SWIFT_CLASS_NAMED("MediationAdapter")
-@interface CASMediationAdapter : NSObject
+/// Update properties after initialization success:
+/// <ul>
+///   <li>
+///     [didChangeUserPrivacy]
+///   </li>
+///   <li>
+///     [didChangeAdSoundMute]
+///   </li>
+///   <li>
+///     [didChangeDebugMode]
+///   </li>
+/// </ul>
+/// Integration utility:
+/// <ul>
+///   <li>
+///     [getMinSDKVersion]
+///   </li>
+///   <li>
+///     [getNetworkClass]
+///   </li>
+///   <li>
+///     [getIntegrationError]
+///   </li>
+/// </ul>
+SWIFT_CLASS_NAMED("MediationAdapterBase")
+@interface CASMAdapterBase : NSObject
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC18CleverAdsSolutions16MediationAdapter") SWIFT_DEPRECATED_MSG("Use new MediationAdapterBase implementation")
+@interface MediationAdapter : CASMAdapterBase
 - (nonnull instancetype)init;
 @end
+
 
 
 /// Mediation agent request call stack
@@ -1567,7 +2152,7 @@ SWIFT_CLASS_NAMED("MediationAdapter")
 ///     Callback [onAdShown] OR [showFailed]
 ///   </li>
 ///   <li>
-///     Callback [onAdClicked] when ad clicked
+///     Callback [didClickAd] when ad clicked
 ///   </li>
 ///   <li>
 ///     Callback [onAdCompleted] when ad video completed
@@ -1579,55 +2164,133 @@ SWIFT_CLASS_NAMED("MediationAdapter")
 ///     [disposeAd]
 ///   </li>
 /// </ol>
-SWIFT_CLASS_NAMED("MediationAgent")
+SWIFT_CLASS_NAMED("MediationAgent") SWIFT_DEPRECATED_MSG("Use new MediationAd implementation")
 @interface CASMediationAgent : CASMediationUnit
-- (BOOL)isAdCached SWIFT_WARN_UNUSED_RESULT;
-- (void)toggleIgnoreMode;
 @end
 
 
-SWIFT_CLASS_NAMED("MediationBannerAgent")
+SWIFT_CLASS_NAMED("MediationBannerAgent") SWIFT_DEPRECATED_MSG("Use new MediationBannerAd implementation")
 @interface CASMediationBannerAgent : CASMediationAgent
-- (BOOL)isAdCached SWIFT_WARN_UNUSED_RESULT;
 @end
+
+
+SWIFT_CLASS("_TtC18CleverAdsSolutions24MediationNativeAdContent")
+@interface MediationNativeAdContent : MediationAdBase
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_PROTOCOL_NAMED("MediationProvider")
+@protocol CASMediationProvider <NSObject>
+- (nonnull instancetype)init;
+- (CASMAdapterBase * _Nonnull)create SWIFT_WARN_UNUSED_RESULT;
+@optional
+- (CASConsentPlatform * _Nonnull)createCMP SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+SWIFT_CLASS("_TtC18CleverAdsSolutions19MediationRtbAdapter")
+@interface MediationRtbAdapter : CASMAdapterBase
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+/// Represents a single-instance ad in the mediation process.
+/// This base class is used for ad instances that support only a single presentation.
+/// Ad instances extends this base class should manage their lifecycle to ensure
+/// they are not reused for loading additional ads while they are in use.
+/// If the ad instance is in use (<code>isInstanceInUse</code> is <code>true</code>), it should reject
+/// any attempts to load new ads.
+/// This instance must be returned as a loader from the adapter loading functions
+/// to ensure that <code>destroy</code> is called after the ad load fails.
+SWIFT_CLASS("_TtC18CleverAdsSolutions21MediationSingleAdBase")
+@interface MediationSingleAdBase : MediationAdBase
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
 
 @class UIImage;
 @class NSURL;
 
+/// Represents the content of a native ad.
+/// This class contains various properties related to the content of a native ad, including text, images,
+/// and metadata that describe the ad. You must pass an instance of this class to <code>CASNativeView.setNativeAd(_:)</code>
+/// to populate and display the ad content within the view.
 SWIFT_CLASS_NAMED("NativeAdContent")
 @interface CASNativeAdContent : NSObject
+/// The headline text of the native ad.
+/// Typically a short, attention-grabbing statement or title for the ad. It is displayed prominently to capture
+/// the user’s attention.
 @property (nonatomic, readonly, copy) NSString * _Nullable headline;
+/// The body text of the native ad.
+/// This text provides additional details or a description related to the ad content, such as an article excerpt
+/// or app description. This field may truncate after 90 characters if it exceeds the display limit.
 @property (nonatomic, readonly, copy) NSString * _Nullable body;
+/// The call-to-action (CTA) text of the ad.
+/// A short phrase (e.g., “Learn More”, “Install Now”) that encourages users to take an action, such as visiting
+/// a website or installing an app. This text may truncate after 15 characters.
 @property (nonatomic, readonly, copy) NSString * _Nullable callToAction;
+/// The icon image of the native ad, typically representing the app or advertiser.
+/// This is usually a small square image (1:1 aspect ratio) that visually identifies the brand or app.
 @property (nonatomic, readonly, strong) UIImage * _Nullable icon;
+/// The URI (Uniform Resource Identifier) pointing to the icon image for the native ad.
+/// This provides the location of the icon image if it is hosted remotely, allowing the image to be loaded dynamically.
 @property (nonatomic, readonly, copy) NSURL * _Nullable iconURL;
+/// The advertiser name or brand associated with the native ad.
+/// This could be the company name, product name, or a visible URL. It may truncate after 25 characters.
 @property (nonatomic, readonly, copy) NSString * _Nullable advertiser;
+/// The name of the store where the promoted product or service is available.
+/// This is relevant for ads promoting products or services available through specific stores (e.g., the App Store).
 @property (nonatomic, readonly, copy) NSString * _Nullable store;
+/// The price of the advertised product or service.
+/// Represents the cost of the product or service being promoted. This could be in a monetary format (e.g., “$19.99”).
 @property (nonatomic, readonly, copy) NSString * _Nullable price;
+/// The average star rating for the product or service advertised, ranging from 0 to 5 stars.
+/// Provides an indication of the product’s or app’s quality based on user reviews or ratings.
 @property (nonatomic, readonly, strong) NSNumber * _Nullable starRating;
+/// The number of reviews or ratings the product or service has received.
+/// This provides context about the app’s popularity or the product’s credibility by showing the volume of user feedback.
 @property (nonatomic, readonly, copy) NSString * _Nullable reviewCount;
+/// The ad label text (e.g., “Sponsored” or “Ad”).
+/// Indicates that the content is an advertisement. This label is typically displayed to distinguish ads from organic content.
 @property (nonatomic, readonly, copy) NSString * _Nullable adLabel;
+/// Indicates whether the native ad contains video content.
+/// Returns <code>true</code> if the ad includes video content (e.g., a promotional video). Otherwise, it will return <code>false</code>.
 @property (nonatomic, readonly) BOOL hasVideoContent;
-@property (nonatomic, readonly) BOOL hasMediaContent;
+/// The aspect ratio of the media content in the ad (width/height).
+/// This is calculated based on the dimensions of the media content, such as a video or image. For example, a 4:3 aspect ratio
 @property (nonatomic, readonly) CGFloat mediaContentAspectRatio;
+/// The media image associated with the native ad.
+/// This represents a larger visual element related to the ad, such as a banner image or promotional graphic.
 @property (nonatomic, readonly, strong) UIImage * _Nullable mediaImage;
+/// The URI of the media image associated with the native ad.
+/// Provides the location of the media image if it is hosted remotely, allowing dynamic image loading.
 @property (nonatomic, readonly, copy) NSURL * _Nullable mediaImageURL;
-/// Reference to a root view controller that is used by the ad to present full screen content after
-/// the user interacts with the ad. The root view controller is most commonly the view controller
-/// displaying the ad.
+/// Indicates whether the native ad has expired.
+/// Returns <code>true</code> if the ad has expired or is no longer valid (e.g., past its display window). An expired ad may not be shown
+/// and interactions with it may be restricted or disabled.
+@property (nonatomic, readonly) BOOL isExpired;
+/// Information about the currently loaded ad.
+@property (nonatomic, readonly, strong) CASContentInfo * _Nonnull contentInfo;
+/// The delegate for handling ad content events.
+/// This delegate is used to handle various ad content events, such as successful failure to present and click events.
+@property (nonatomic, weak) id <CASNativeAdContentDelegate> _Nullable delegate;
+/// A delegate for tracking ad impression events.
+/// This delegate is notified when a native ad impression is successfully recorded and will be paid. It allows
+/// you to track when the ad has been displayed and the impression has been counted. This is useful for logging,
+/// analytics, and other actions after a successful ad impression.
+@property (nonatomic, weak) id <CASImpressionDelegate> _Nullable impressionDelegate;
+/// The root view controller used to present full-screen content after the user interacts with the ad.
+/// This view controller is typically the one currently displaying the ad, and is used when transitioning to
+/// full-screen content, such as an in-app purchase or a video ad.
 @property (nonatomic, weak) UIViewController * _Nullable rootViewController;
+/// Cleans up and releases resources associated with the native ad content.
+/// This method should be called when the native ad is no longer needed, ensuring proper resource management
+/// and preventing memory leaks.
+- (void)destroy;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
-
-
-SWIFT_CLASS_NAMED("MediationNativeAdContent")
-@interface CASMediationNativeAdContent : CASNativeAdContent
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@property (nonatomic, strong) UIViewController * _Nullable rootViewController;
-@end
-
-
-
 
 
 

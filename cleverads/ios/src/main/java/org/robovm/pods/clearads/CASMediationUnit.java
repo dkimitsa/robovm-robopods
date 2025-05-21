@@ -31,15 +31,18 @@ import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.coregraphics.*;
 import org.robovm.apple.coreanimation.*;
+import org.robovm.apple.corelocation.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
+/**
+ * @deprecated Migrate to new mediation
+ */
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass @Deprecated/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/CASMediationUnit/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
-    /*<implements>*/implements CASStatusHandler/*</implements>*/ {
+    /*<implements>*//*</implements>*/ {
 
     /*<ptr>*/public static class CASMediationUnitPtr extends Ptr<CASMediationUnit, CASMediationUnitPtr> {}/*</ptr>*/
     /*<bind>*/static { ObjCRuntime.bind(CASMediationUnit.class); }/*</bind>*/
@@ -50,42 +53,10 @@ import org.robovm.apple.coreanimation.*;
     protected CASMediationUnit(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
-    @Property(selector = "creativeIdentifier")
-    public native String getCreativeIdentifier();
-    @Property(selector = "setCreativeIdentifier:")
-    public native void setCreativeIdentifier(String v);
-    @Property(selector = "cpm")
-    public native double getCpm();
-    @Property(selector = "setCpm:")
-    public native void setCpm(double v);
-    @Property(selector = "network")
-    public native String getNetwork();
-    @Property(selector = "identifier")
-    public native String getIdentifier();
-    @Property(selector = "error")
-    public native String getError();
-    @Property(selector = "setError:")
-    public native void setError(String v);
-    @Property(selector = "priceAccuracy")
-    public native CASPriceAccuracy getPriceAccuracy();
-    @Property(selector = "setPriceAccuracy:")
-    public native void setPriceAccuracy(CASPriceAccuracy v);
-    @Property(selector = "status")
-    public native String getStatus();
-    @Property(selector = "adType")
-    public native CASType getAdType();
-    @Property(selector = "versionInfo")
-    public native String getVersionInfo();
-    @Property(selector = "impressionDepth")
-    public native @MachineSizedSInt long getImpressionDepth();
-    @Property(selector = "lifetimeRevenue")
-    public native double getLifetimeRevenue();
+    
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "isAdCached")
-    public native boolean isAdCached();
-    @Method(selector = "toggleIgnoreMode")
-    public native void toggleIgnoreMode();
+    
     /*</methods>*/
 }
