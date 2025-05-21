@@ -61,6 +61,10 @@ import org.robovm.apple.dispatch.*;
     public static native void setCacheEventsSetting(boolean isCacheEventsEnabled);
     @Method(selector = "getCacheEventsSetting")
     public static native boolean getCacheEventsSetting();
+    @Method(selector = "setEncryptRequestsSetting:")
+    public static native void setEncryptRequestsSetting(boolean isEncryptRequestsEnabled);
+    @Method(selector = "getEncryptRequestsSetting")
+    public static native boolean getEncryptRequestsSetting();
     @Method(selector = "setODMInfo:")
     public static native void setODMInfo(String odmInfo);
     @Method(selector = "getODMInfo")

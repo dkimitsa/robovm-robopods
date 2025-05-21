@@ -184,6 +184,9 @@ andDeferredDeeplink:(NSURL *)url
 // Set the setting to enable/disable cache events and retrying, it's false by default
 + (void)setCacheEventSetting:(BOOL)isCacheEventsEnabled;
 
+// Set the setting to enable/disable ecrypting requests, it's false by default
++ (void)setEncryptRequestsSetting:(BOOL)isEncryptRequestsEnabled;
+
 // Get cached analytics_installation_id
 + (NSString*)getAnalyticsInstallationId;
 

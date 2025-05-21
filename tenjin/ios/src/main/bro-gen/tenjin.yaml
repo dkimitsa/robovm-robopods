@@ -139,6 +139,7 @@ classes:
         methods:
             '-getAttributionTokenWithCompletion:':
                 name: getAttributionToken
+    GoogleOnDeviceConversionManager: {}
 protocols:
     TJNRequestSender:
         methods:

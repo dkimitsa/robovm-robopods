@@ -186,6 +186,8 @@ import org.robovm.apple.dispatch.*;
     public static native String getCustomerUserId();
     @Method(selector = "setCacheEventSetting:")
     public static native void setCacheEventSetting(boolean isCacheEventsEnabled);
+    @Method(selector = "setEncryptRequestsSetting:")
+    public static native void setEncryptRequestsSetting(boolean isEncryptRequestsEnabled);
     @Method(selector = "getAnalyticsInstallationId")
     public static native String getAnalyticsInstallationId();
     @Method(selector = "verboseLogs")
