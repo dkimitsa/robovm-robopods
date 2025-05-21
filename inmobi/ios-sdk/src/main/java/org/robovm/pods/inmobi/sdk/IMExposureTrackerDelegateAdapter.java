@@ -35,33 +35,26 @@ import org.robovm.apple.coreanimation.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("InMobiSDK.SkanConfig")/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/SkanConfig/*</name>*/ 
+/*<annotations>*//*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/IMExposureTrackerDelegateAdapter/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
-    /*<implements>*//*</implements>*/ {
+    /*<implements>*/implements IMExposureTrackerDelegate/*</implements>*/ {
 
-    /*<ptr>*/public static class SkanConfigPtr extends Ptr<SkanConfig, SkanConfigPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(SkanConfig.class); }/*</bind>*/
+    /*<ptr>*/
+    /*</ptr>*/
+    /*<bind>*/
+    /*</bind>*/
     /*<constants>*//*</constants>*/
-    /*<constructors>*/
-    public SkanConfig() {}
-    protected SkanConfig(Handle h, long handle) { super(h, handle); }
-    protected SkanConfig(SkipInit skipInit) { super(skipInit); }
-    /*</constructors>*/
+    /*<constructors>*//*</constructors>*/
     /*<properties>*/
-    @Property(selector = "requestMode")
-    public native @MachineSizedSInt long getRequestMode();
-    @Property(selector = "setRequestMode:")
-    public native void setRequestMode(@MachineSizedSInt long v);
-    @Property(selector = "skanBitSet")
-    public native SkanBitSetConfig getSkanBitSet();
-    @Property(selector = "setSkanBitSet:")
-    public native void setSkanBitSet(SkanBitSetConfig v);
+    
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    
+    @NotImplemented("exposureDidChange:jsonString:")
+    public void exposureDidChange(IMExposureTracker tracker, String jsonString) {}
+    @NotImplemented("exposureTrackerDidDetachAdView:")
+    public void exposureTrackerDidDetachAdView(IMExposureTracker tracker) {}
     /*</methods>*/
 }

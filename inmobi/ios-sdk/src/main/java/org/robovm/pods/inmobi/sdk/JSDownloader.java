@@ -37,31 +37,29 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("InMobiSDK.SkanConfig")/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/SkanConfig/*</name>*/ 
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("InMobiSDK.JSDownloader")/*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/JSDownloader/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class SkanConfigPtr extends Ptr<SkanConfig, SkanConfigPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(SkanConfig.class); }/*</bind>*/
+    /*<ptr>*/public static class JSDownloaderPtr extends Ptr<JSDownloader, JSDownloaderPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(JSDownloader.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public SkanConfig() {}
-    protected SkanConfig(Handle h, long handle) { super(h, handle); }
-    protected SkanConfig(SkipInit skipInit) { super(skipInit); }
+    protected JSDownloader() {}
+    protected JSDownloader(Handle h, long handle) { super(h, handle); }
+    protected JSDownloader(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
-    @Property(selector = "requestMode")
-    public native @MachineSizedSInt long getRequestMode();
-    @Property(selector = "setRequestMode:")
-    public native void setRequestMode(@MachineSizedSInt long v);
-    @Property(selector = "skanBitSet")
-    public native SkanBitSetConfig getSkanBitSet();
-    @Property(selector = "setSkanBitSet:")
-    public native void setSkanBitSet(SkanBitSetConfig v);
+    
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    
+    @Method(selector = "fetchDataSyncFor:")
+    public native String fetchDataSyncFor(String urlString);
+    @Method(selector = "getContentFor:")
+    public native String getContentFor(String fileName);
+    @Method(selector = "shared")
+    public static native JSDownloader shared();
     /*</methods>*/
 }

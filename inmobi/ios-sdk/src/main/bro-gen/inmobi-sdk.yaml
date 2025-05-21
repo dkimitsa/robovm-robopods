@@ -179,6 +179,14 @@ classes:
     WebViewModeDictionaryConfig: { }
     ExperimentsConfig: { }
     IMPublisherProvidedInfo: { }
+    IMExposureTracker:
+        methods:
+            '-initWithAdView:':
+                name: init
+    JSDownloader: { }
+    JSDownloaderConfig: { }
+    Mraid3Config: { }
+    SkanBitSetConfig: { }
 protocols:
     IMBannerDelegate:
         methods:
@@ -249,6 +257,10 @@ protocols:
             '-logWithMessage:tag:logLevel:':
                 name: log
     IMConfigP: {}
+    IMExposureTrackerDelegate:
+        methods:
+            '-exposureDidChange:jsonString:':
+                name: exposureDidChange
 functions:
     # Make sure we don't miss any functions if new ones are introduced in a later version
     (.*):
