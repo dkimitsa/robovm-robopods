@@ -270,6 +270,8 @@ import org.robovm.apple.uikit.*;
     public static native void limitDataSharing(boolean shouldLimitDataSharing);
     @Method(selector = "getLimitDataSharing")
     public static native boolean getLimitDataSharing();
+    @Method(selector = "setLimitAdvertisingIdentifiers:")
+    public static native void setLimitAdvertisingIdentifiers(boolean enabled);
     @Method(selector = "skanRegisterAppForAdNetworkAttribution")
     public static native void skanRegisterAppForAdNetworkAttribution();
     @Method(selector = "skanUpdateConversionValue:")

@@ -18,7 +18,6 @@
 @property NSString* apikey;
 @property NSString* secret;
 @property BOOL clipboardAttribution;
-@property BOOL limitedIdentifiersEnabled;
 
 // Singular Links fields
 @property NSDictionary *launchOptions;
@@ -28,6 +27,7 @@
 @property long shortLinkResolveTimeOut;
 @property NSArray* supportedDomains __attribute__((deprecated));
 @property NSArray* espDomains;
+@property NSArray* brandedDomains;
 
 // Global Properties fields
 @property (readonly) NSMutableDictionary* globalProperties;
@@ -45,6 +45,9 @@ typedef void (^SdidAccessorHandler)(NSString* result);
 @property NSString *customSdid;
 @property SdidAccessorHandler didSetSdidHandler;
 @property SdidAccessorHandler sdidReceivedHandler;
+
+// Limit Advertising Identifiers
+@property BOOL limitAdvertisingIdentifiers;
 
 // Push Notifications fields
 @property NSDictionary* pushNotificationPayload;

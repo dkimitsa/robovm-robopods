@@ -128,6 +128,7 @@
 + (BOOL)isAllTrackingStopped;
 + (void)limitDataSharing:(BOOL)shouldLimitDataSharing;
 + (BOOL)getLimitDataSharing;
++ (void)setLimitAdvertisingIdentifiers:(BOOL)enabled;
 
 #pragma mark - SKAN Methods
 

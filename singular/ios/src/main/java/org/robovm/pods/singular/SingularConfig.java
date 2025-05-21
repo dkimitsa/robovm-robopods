@@ -63,10 +63,6 @@ import org.robovm.apple.uikit.*;
     public native boolean isClipboardAttribution();
     @Property(selector = "setClipboardAttribution:")
     public native void setClipboardAttribution(boolean v);
-    @Property(selector = "limitedIdentifiersEnabled")
-    public native boolean isLimitedIdentifiersEnabled();
-    @Property(selector = "setLimitedIdentifiersEnabled:")
-    public native void setLimitedIdentifiersEnabled(boolean v);
     @Property(selector = "launchOptions")
     public native NSDictionary<?, ?> getLaunchOptions();
     @Property(selector = "setLaunchOptions:")
@@ -97,6 +93,10 @@ import org.robovm.apple.uikit.*;
     public native NSArray<?> getEspDomains();
     @Property(selector = "setEspDomains:")
     public native void setEspDomains(NSArray<?> v);
+    @Property(selector = "brandedDomains")
+    public native NSArray<?> getBrandedDomains();
+    @Property(selector = "setBrandedDomains:")
+    public native void setBrandedDomains(NSArray<?> v);
     @Property(selector = "globalProperties")
     public native NSMutableDictionary<?, ?> getGlobalProperties();
     @Property(selector = "skAdNetworkEnabled")
@@ -135,6 +135,10 @@ import org.robovm.apple.uikit.*;
     public native @Block VoidBlock1<String> getSdidReceivedHandler();
     @Property(selector = "setSdidReceivedHandler:")
     public native void setSdidReceivedHandler(@Block VoidBlock1<String> v);
+    @Property(selector = "limitAdvertisingIdentifiers")
+    public native boolean isLimitAdvertisingIdentifiers();
+    @Property(selector = "setLimitAdvertisingIdentifiers:")
+    public native void setLimitAdvertisingIdentifiers(boolean v);
     @Property(selector = "pushNotificationPayload")
     public native NSDictionary<?, ?> getPushNotificationPayload();
     @Property(selector = "setPushNotificationPayload:")
