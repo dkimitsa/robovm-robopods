@@ -53,6 +53,8 @@ import org.robovm.apple.safariservices.*;
     /*<properties>*/
     @Property(selector = "sdkKey")
     public native String getSdkKey();
+    @Property(selector = "axonEventKey")
+    public native String getAxonEventKey();
     @Property(selector = "mediationProvider")
     public native String getMediationProvider();
     @Property(selector = "setMediationProvider:")

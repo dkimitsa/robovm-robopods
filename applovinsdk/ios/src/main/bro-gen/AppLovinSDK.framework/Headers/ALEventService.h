@@ -14,24 +14,34 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ALEventService : NSObject
 
 /**
- * Tracks an event without adding supplemental data.
+ * Tracks an event without any parameters.
  *
- * AppLovin recommends that you use one of the predefined strings provided in ALEventTypes.h for the event name, when those strings apply to the event.
+ * @param event The name of the event to track (e.g., "page_view", "purchase").
  *
- * @param eventName A string that represents the event to track.
+ * @discussion Use this method for simple events that do not require additional parameters.
+ *             If you need to provide additional data, use the `trackEvent:parameters:` variant.
  */
-- (void)trackEvent:(NSString *)eventName;
+- (void)trackEvent:(NSString *)event;
 
 /**
- * Tracks an event and adds supplemental data.
+ * Tracks an event with additional parameters.
  *
- * AppLovin recommends that you use one of the predefined strings provided in ALEventTypes.h for the event name and parameter keys, when those strings
- * apply to the event.
- *
- * @param eventName  A string that represents the event to track.
- * @param parameters A dictionary that contains key-value pairs that further describe this event.
+ * @param event The name of the event to track (e.g., "page_view", "purchase").
+ * @param parameters A dictionary of parameter key-value pairs providing additional information about the event.
  */
-- (void)trackEvent:(NSString *)eventName parameters:(nullable NSDictionary<NSString *, id> *)parameters;
+- (void)trackEvent:(NSString *)event parameters:(nullable NSDictionary<NSString *, id> *)parameters;
+
+/**
+ * Tracks an event with additional parameters and options.
+ *
+ * @param event The name of the event to track (e.g., "page_view", "purchase").
+ * @param parameters A dictionary of parameter key-value pairs providing additional information about the event.
+ * @param options A dictionary of additional options to be passed up with the event. Accepted options:
+ *  "dedupe_id" - A unique identifier used to uniquely identify and merge identical events occurring within a certain timeframe of each other—across both site-to-site and Axon Pixel integrations—so they’re only counted once.
+ */
+- (void)trackEvent:(NSString *)event
+        parameters:(NSDictionary<NSString *, id> *)parameters
+           options:(NSDictionary<NSString *, id> *)options;
 
 /**
  * Tracks an in-app purchase.

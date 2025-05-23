@@ -51,10 +51,14 @@ import org.robovm.apple.safariservices.*;
     protected ALSdkInitializationConfiguration(SkipInit skipInit) { super(skipInit); }
     public ALSdkInitializationConfiguration(String sdkKey) { super((Handle) null, create(sdkKey)); retain(getHandle()); }
     public ALSdkInitializationConfiguration(String sdkKey, @Block VoidBlock1<ALSdkInitializationConfigurationBuilder> builderBlock) { super((Handle) null, create(sdkKey, builderBlock)); retain(getHandle()); }
+    public ALSdkInitializationConfiguration(String sdkKey, String axonEventKey, @Block VoidBlock1<ALSdkInitializationConfigurationBuilder> builderBlock) { super((Handle) null, create(sdkKey, axonEventKey, builderBlock)); retain(getHandle()); }
+    public ALSdkInitializationConfiguration(String sdkKey, String axonEventKey) { super((Handle) null, create(sdkKey, axonEventKey)); retain(getHandle()); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "sdkKey")
     public native String getSdkKey();
+    @Property(selector = "axonEventKey")
+    public native String getAxonEventKey();
     @Property(selector = "mediationProvider")
     public native String getMediationProvider();
     @Property(selector = "pluginVersion")
@@ -74,7 +78,11 @@ import org.robovm.apple.safariservices.*;
     protected static native @Pointer long create(String sdkKey);
     @Method(selector = "configurationWithSdkKey:builderBlock:")
     protected static native @Pointer long create(String sdkKey, @Block VoidBlock1<ALSdkInitializationConfigurationBuilder> builderBlock);
+    @Method(selector = "configurationWithSdkKey:axonEventKey:builderBlock:")
+    protected static native @Pointer long create(String sdkKey, String axonEventKey, @Block VoidBlock1<ALSdkInitializationConfigurationBuilder> builderBlock);
     @Method(selector = "builderWithSdkKey:")
     public static native ALSdkInitializationConfigurationBuilder builder(String sdkKey);
+    @Method(selector = "builderWithSdkKey:axonEventKey:")
+    protected static native @Pointer long create(String sdkKey, String axonEventKey);
     /*</methods>*/
 }

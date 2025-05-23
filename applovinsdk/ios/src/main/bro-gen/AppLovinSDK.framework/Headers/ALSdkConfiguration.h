@@ -96,9 +96,6 @@ typedef NS_ENUM(NSInteger, ALAppTrackingTransparencyStatus)
  */
 @property (nonatomic, assign, readonly) ALAppTrackingTransparencyStatus appTrackingTransparencyStatus;
 
-- (instancetype)init NS_UNAVAILABLE;
-+ (instancetype)new NS_UNAVAILABLE;
-
 /**
  * Whether or not test mode is enabled for this session.
  *
@@ -111,6 +108,9 @@ typedef NS_ENUM(NSInteger, ALAppTrackingTransparencyStatus)
  * </ul>
  */
 @property (nonatomic, assign, readonly, getter=isTestModeEnabled) BOOL testModeEnabled;
+
+- (instancetype)init NS_UNAVAILABLE;
++ (instancetype)new NS_UNAVAILABLE;
 
 @end
 

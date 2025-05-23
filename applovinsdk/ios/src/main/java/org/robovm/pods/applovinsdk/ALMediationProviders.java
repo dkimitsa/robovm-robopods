@@ -49,29 +49,13 @@ import org.robovm.apple.safariservices.*;
     /*<properties>*//*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @GlobalValue(symbol="ALMediationProviderAdMarvel", optional=true)
-    public static native NSString AdMarvel();
     @GlobalValue(symbol="ALMediationProviderAdMob", optional=true)
     public static native NSString AdMob();
-    @GlobalValue(symbol="ALMediationProviderAerServ", optional=true)
-    public static native NSString AerServ();
-    @GlobalValue(symbol="ALMediationProviderAppodeal", optional=true)
-    public static native NSString Appodeal();
-    @GlobalValue(symbol="ALMediationProviderFusePowered", optional=true)
-    public static native NSString FusePowered();
     @GlobalValue(symbol="ALMediationProviderFyber", optional=true)
     public static native NSString Fyber();
-    @GlobalValue(symbol="ALMediationProviderHeyzap", optional=true)
-    public static native NSString Heyzap();
-    @GlobalValue(symbol="ALMediationProviderHyprMX", optional=true)
-    public static native NSString HyprMX();
     @GlobalValue(symbol="ALMediationProviderIronsource", optional=true)
     public static native NSString Ironsource();
     @GlobalValue(symbol="ALMediationProviderMAX", optional=true)
     public static native NSString MAX();
-    @GlobalValue(symbol="ALMediationProviderMoPub", optional=true)
-    public static native NSString MoPub();
-    @GlobalValue(symbol="ALMediationProviderTapdaq", optional=true)
-    public static native NSString Tapdaq();
     /*</methods>*/
 }

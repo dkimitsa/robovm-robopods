@@ -76,6 +76,11 @@ classes:
                 parameters:
                     1:
                         type: ALEventParameters
+            '-trackEvent:parameters:options:':
+                name: trackEvent
+                parameters:
+                    1:
+                        type: ALEventParameters
             '-trackInAppPurchaseWithTransactionIdentifier:parameters:':
                 name: trackInAppPurchase
                 parameters:
@@ -467,6 +472,12 @@ classes:
     ALSdkInitializationConfiguration:
         methods:
             '+configurationWithSdkKey:builderBlock:':
+                name: create
+                constructor: true
+            '+configurationWithSdkKey:axonEventKey:builderBlock:':
+                name: create
+                constructor: true
+            '+builderWithSdkKey:axonEventKey:':
                 name: create
                 constructor: true
             '+configurationWithSdkKey:':

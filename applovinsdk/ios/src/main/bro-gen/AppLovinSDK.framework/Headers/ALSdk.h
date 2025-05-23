@@ -18,10 +18,9 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- * This is a base class for the AppLovin iOS SDK.
+ * This is the base class for the AppLovin SDK.
  */
 @interface ALSdk : NSObject
-
 
 #pragma mark - High Level SDK Properties
 
@@ -107,6 +106,15 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)showCreativeDebugger;
 
+#pragma mark - Axon Advertiser Services
+
+/**
+ * Processes the incoming deep link / Universal Link.
+ *
+ * @param incomingURL The URL used to open or bring the app into the foreground. It may contain query parameters that need to be filtered and processed.
+ */
+- (void)processDeepLink:(NSURL *)incomingURL;
+
 #pragma mark - SDK Initialization
 
 /**
@@ -120,9 +128,7 @@ typedef void (^ALSdkInitializationCompletionHandler)(ALSdkConfiguration *configu
 @property (nonatomic, assign, readonly, getter=isInitialized) BOOL initialized;
 
 /**
- * Gets a shared instance of AppLovin SDK.
- *
- * @return The shared instance of AppLovin’s SDK, or @c nil (indicating an error) if the SDK key is not set in the application’s @code Info.plist @endcode.
+ * @return The shared instance of AppLovin’s SDK.
  */
 + (ALSdk *)shared;
 

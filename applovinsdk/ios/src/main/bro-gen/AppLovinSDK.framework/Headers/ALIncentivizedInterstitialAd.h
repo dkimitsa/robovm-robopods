@@ -16,8 +16,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- * This class shows rewarded videos to the user. These differ from regular interstitials in that they allow you to provide your user virtual currency in
- * exchange for watching a video.
+ * Rewarded ads let you offer users in-app items—such as continued gameplay, virtual currency, or other rewards—in exchange for their engagement with ads.
+ * Rewarded ads boost engagement because users receive a tangible benefit for their time.
  */
 @interface ALIncentivizedInterstitialAd : NSObject
 

@@ -19,7 +19,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- * This interface represents a view-based ad — i.e. banner, MREC, or leader.
+ * Banner and MREC ads are rectangular ad formats that occupy a portion of an app’s layout—often positioned at the top or bottom of the screen or placed inline within scrollable content.
+ * They remain visible as users interact with the app, allowing for uninterrupted gameplay or usage, and can be refreshed automatically after a set period.
  */
 @interface ALAdView : UIView
 

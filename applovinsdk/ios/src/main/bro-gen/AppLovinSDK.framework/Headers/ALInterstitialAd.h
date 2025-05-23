@@ -14,7 +14,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- * This class displays full-screen ads to the user.
+ * Interstitial ads are full-screen or full-page ads that temporarily cover an app’s interface.
+ * They’re typically shown at natural pauses or transition points—such as after completing a level in a game or when navigating between major views.
  */
 @interface ALInterstitialAd : NSObject
 

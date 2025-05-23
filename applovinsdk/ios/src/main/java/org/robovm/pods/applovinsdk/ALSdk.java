@@ -82,6 +82,8 @@ import org.robovm.apple.safariservices.*;
     public native void showMediationDebugger(NSDictionary<NSString, NSArray> amazonAdSizes);
     @Method(selector = "showCreativeDebugger")
     public native void showCreativeDebugger();
+    @Method(selector = "processDeepLink:")
+    public native void processDeepLink(NSURL incomingURL);
     @Method(selector = "initializeWithConfiguration:completionHandler:")
     public native void initialize(ALSdkInitializationConfiguration initializationConfiguration, @Block VoidBlock1<ALSdkConfiguration> completionHandler);
     @Method(selector = "shared")

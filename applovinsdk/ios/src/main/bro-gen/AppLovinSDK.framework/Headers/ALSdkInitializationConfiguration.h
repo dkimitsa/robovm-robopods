@@ -18,12 +18,13 @@ typedef void (^ALSdkInitializationConfigurationBuilderBlock) (ALSdkInitializatio
 
 /**
  * This class contains configurable properties for the initialization of the AppLovin SDK.
- * It also reads any values you have already configured in the application's @c Info.plist.
- * To be used in @code [[ALSdk shared] initializeWithConfiguration:completionHandler].
+ *
+ * To be used in @code [[ALSdk shared] initializeWithConfiguration:completionHandler:] @endcode.
  */
 @interface ALSdkInitializationConfiguration : NSObject
 
 @property (nonatomic, copy, readonly, nullable) NSString *sdkKey;
+@property (nonatomic, copy, readonly, nullable) NSString *axonEventKey;
 @property (nonatomic, copy, readonly, nullable) NSString *mediationProvider;
 @property (nonatomic, copy, readonly, nullable) NSString *pluginVersion;
 
@@ -43,18 +44,34 @@ typedef void (^ALSdkInitializationConfigurationBuilderBlock) (ALSdkInitializatio
 + (instancetype)configurationWithSdkKey:(NSString *)sdkKey;
 
 /**
- * Creates a SDK initialization configuration object constructed from the @c ALSdkInitializationConfigurationBuilder block.
+ * Creates a SDK initialization configuration object with the given SDK key, constructed from the @c ALSdkInitializationConfigurationBuilder block.
  * You may modify the configuration from within the block.
  */
 + (instancetype)configurationWithSdkKey:(NSString *)sdkKey builderBlock:(nullable NS_NOESCAPE ALSdkInitializationConfigurationBuilderBlock)builderBlock;
 
 /**
- * Creates a builder object for @c ALSdkInitializationConfiguration.
+ * Creates a SDK initialization configuration object with the given SDK key and Axon event key, constructed from the @c ALSdkInitializationConfigurationBuilder block.
+ * You may modify the configuration from within the block.
+ */
++ (instancetype)configurationWithSdkKey:(NSString *)sdkKey
+                           axonEventKey:(NSString *)axonEventKey
+                           builderBlock:(nullable NS_NOESCAPE ALSdkInitializationConfigurationBuilderBlock)builderBlock;
+
+/**
+ * Creates a builder object for @c ALSdkInitializationConfiguration with the given SDK key
  * Please call @c -build to create a @c ALSdkInitializationConfiguration object.
  *
  * @return a @c ALSdkInitializationConfigurationBuilder object.
  */
 + (ALSdkInitializationConfigurationBuilder *)builderWithSdkKey:(NSString *)sdkKey;
+
+/**
+ * Creates a builder object for @c ALSdkInitializationConfiguration with the given SDK key and Axon event key.
+ * Please call @c -build to create a @c ALSdkInitializationConfiguration object.
+ *
+ * @return a @c ALSdkInitializationConfigurationBuilder object.
+ */
++ (ALSdkInitializationConfigurationBuilder *)builderWithSdkKey:(NSString *)sdkKey axonEventKey:(NSString *)axonEventKey;
 
 - (instancetype)init NS_UNAVAILABLE;
 + (instancetype)new NS_UNAVAILABLE;
@@ -72,6 +89,11 @@ typedef void (^ALSdkInitializationConfigurationBuilderBlock) (ALSdkInitializatio
  * @return SDK key for the AppLovin SDK.
  */
 @property (nonatomic, copy, readonly) NSString *sdkKey;
+
+/**
+ * @return Axon event key for the AppLovin SDK.
+ */
+@property (nonatomic, copy, readonly, nullable) NSString *axonEventKey;
 
 /**
  * The mediation provider. Set this either by using one of the provided strings in ALMediationProvider.h, or your own string if you do not find an

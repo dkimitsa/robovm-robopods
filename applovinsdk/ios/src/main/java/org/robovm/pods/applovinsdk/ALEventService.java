@@ -56,9 +56,11 @@ import org.robovm.apple.safariservices.*;
     /*<members>*//*</members>*/
     /*<methods>*/
     @Method(selector = "trackEvent:")
-    public native void trackEvent(String eventName);
+    public native void trackEvent(String event);
     @Method(selector = "trackEvent:parameters:")
-    public native void trackEvent(String eventName, ALEventParameters parameters);
+    public native void trackEvent(String event, ALEventParameters parameters);
+    @Method(selector = "trackEvent:parameters:options:")
+    public native void trackEvent(String event, ALEventParameters parameters, NSDictionary<NSString, ?> options);
     @Method(selector = "trackInAppPurchaseWithTransactionIdentifier:parameters:")
     public native void trackInAppPurchase(String transactionIdentifier, ALEventParameters parameters);
     @Method(selector = "trackCheckoutWithTransactionIdentifier:parameters:")
