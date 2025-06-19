@@ -147,6 +147,10 @@ import org.robovm.apple.uikit.*;
     public native NSArray<?> getPushNotificationLinkPath();
     @Property(selector = "setPushNotificationLinkPath:")
     public native void setPushNotificationLinkPath(NSArray<?> v);
+    @Property(selector = "enableOdmWithTimeoutInterval")
+    public native @MachineSizedSInt long getEnableOdmWithTimeoutInterval();
+    @Property(selector = "setEnableOdmWithTimeoutInterval:")
+    public native void setEnableOdmWithTimeoutInterval(@MachineSizedSInt long v);
     @Property(selector = "supportAppExtension")
     public native boolean isSupportAppExtension();
     @Property(selector = "setSupportAppExtension:")
