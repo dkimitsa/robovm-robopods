@@ -7,7 +7,7 @@
     </parent>
 
     <artifactId>robopods-firebase-firestore-ios</artifactId>
-    <name>RoboPods Cloud Firestore flexible, scalable NoSQL cloud database iOS v11.13.0</name>
+    <name>RoboPods Cloud Firestore flexible, scalable NoSQL cloud database iOS v11.14.0</name>
     <packaging>jar</packaging>
 
     <licenses>

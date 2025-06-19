@@ -383,6 +383,7 @@ SWIFT_CLASS_NAMED("ActionCodeSettings")
 
 
 
+
 /// This class will allow developers to easily extract information about out of band links.
 SWIFT_CLASS_NAMED("ActionCodeURL")
 @interface FIRActionCodeURL : NSObject
