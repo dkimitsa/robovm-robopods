@@ -420,6 +420,17 @@ typedef SWIFT_ENUM_NAMED(NSInteger, CASErrorCode, "AdErrorCode", open) {
 /// This class defines a format of an ad.
 SWIFT_CLASS_NAMED("AdFormat")
 @interface CASFormat : NSObject
+/// Simple unique numeric representation of the format.
+@property (nonatomic, readonly) NSInteger value;
+/// Human-readable representation of the format. Same as <code>description</code>
+@property (nonatomic, readonly, copy) NSString * _Nonnull label;
+/// Field name in configuration for the format.
+/// For example:
+/// \code
+/// let parameterKey = AdFormat.appOpen.field + "_id"
+///
+/// \endcode
+@property (nonatomic, readonly, copy) NSString * _Nonnull field;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) CASFormat * _Nonnull appOpen;)
 + (CASFormat * _Nonnull)appOpen SWIFT_WARN_UNUSED_RESULT;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) CASFormat * _Nonnull banner;)
@@ -575,6 +586,7 @@ typedef SWIFT_ENUM_NAMED(NSInteger, CASSourceId, "AdSourceId", open) {
   CASSourceIdPangle = 24,
   CASSourceIdYsoNetwork = 25,
   CASSourceIdPrado = 26,
+  CASSourceIdMaticoo = 27,
   CASSourceIdDspExchange = 30,
   CASSourceIdLastPageAd = 31,
   CASSourceIdCustom = 32,
@@ -1507,6 +1519,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 + (NSString * _Nonnull)dtExchange SWIFT_WARN_UNUSED_RESULT;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull bigo;)
 + (NSString * _Nonnull)bigo SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull maticoo;)
++ (NSString * _Nonnull)maticoo SWIFT_WARN_UNUSED_RESULT;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull hyprMX;)
 + (NSString * _Nonnull)hyprMX SWIFT_WARN_UNUSED_RESULT;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull smaato;)
@@ -2207,6 +2221,7 @@ SWIFT_CLASS("_TtC18CleverAdsSolutions21MediationSingleAdBase")
 @interface MediationSingleAdBase : MediationAdBase
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
+
 
 
 

@@ -418,7 +418,7 @@ val knownFrameworks = mutableMapOf<String, (String) -> Unit>(
         )
     },
     "CleverAdsSolutions" to { framework ->
-        val artifactLocation = downloadFolder.extend("CleverAdsSolutionsBase/libs/CleverAdsSolutions.xcframework/ios-arm64/$framework.framework")
+        val artifactLocation = downloadFolder.extend("CleverAdsSolutions/CleverAdsSolutions.xcframework/ios-arm64/$framework.framework")
         processFramework(
             artifact = "$framework.framework",
             moduleFolder = "cleverads/ios",
@@ -431,8 +431,9 @@ val knownFrameworks = mutableMapOf<String, (String) -> Unit>(
                     ?: error("Filed to evaluate $framework version")
             },
             instruction = """
-                0. download latest CleverAdsSolutionsBase.tar.gz from https://github.com/cleveradssolutions/CAS-iOS/releases/
+                0. download latest CleverAdsSolutions-x.x.x.x.zip from https://github.com/cleveradssolutions/CAS-iOS/releases/
                 1. unpack
+                2. rename to CleverAdsSolutions
                 2. expected location $artifactLocation
             """.trimIndent(),
         )

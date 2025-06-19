@@ -65,6 +65,7 @@ public enum /*<name>*/CASSourceId/*</name>*/ implements ValuedEnum {
     Pangle(24L),
     YsoNetwork(25L),
     Prado(26L),
+    Maticoo(27L),
     DspExchange(30L),
     LastPageAd(31L),
     Custom(32L),

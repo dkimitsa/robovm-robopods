@@ -51,6 +51,12 @@ import org.robovm.apple.corelocation.*;
     protected CASFormat(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
+    @Property(selector = "value")
+    public native @MachineSizedSInt long getValue();
+    @Property(selector = "label")
+    public native String getLabel();
+    @Property(selector = "field")
+    public native String getField();
     @Property(selector = "isAdView")
     public native boolean isAdView();
     @Property(selector = "description")

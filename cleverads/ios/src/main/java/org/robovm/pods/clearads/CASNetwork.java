@@ -93,6 +93,8 @@ import org.robovm.apple.corelocation.*;
     public static native String dtExchange();
     @Method(selector = "bigo")
     public static native String bigo();
+    @Method(selector = "maticoo")
+    public static native String maticoo();
     @Method(selector = "hyprMX")
     public static native String hyprMX();
     @Method(selector = "smaato")
