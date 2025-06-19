@@ -503,6 +503,10 @@ classes:
         methods:
             '-initWithCode:message:responseHeaders:response:underlyingError:':
                 name: init
+    OneSignalBadgeHelpers:
+        methods:
+            '+updateCachedBadgeValue:usePreviousBadgeCount:':
+                name: updateCachedBadgeValue
 protocols:
     OSNotificationDisplayTypeDelegate:
         skip_adapter: true # only one method there

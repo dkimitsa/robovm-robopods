@@ -61,6 +61,8 @@ import org.robovm.apple.uikit.*;
     public native boolean isMutableContent();
     @Property(selector = "category")
     public native String getCategory();
+    @Property(selector = "hasBadge")
+    public native boolean hasBadge();
     @Property(selector = "badge")
     public native @MachineSizedSInt long getBadge();
     @Property(selector = "badgeIncrement")

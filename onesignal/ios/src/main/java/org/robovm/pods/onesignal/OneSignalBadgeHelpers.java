@@ -36,24 +36,24 @@ import org.robovm.apple.uikit.*;
 
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/OneSignalExtensionBadgeHandler/*</name>*/ 
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/OneSignalBadgeHelpers/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class OneSignalExtensionBadgeHandlerPtr extends Ptr<OneSignalExtensionBadgeHandler, OneSignalExtensionBadgeHandlerPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(OneSignalExtensionBadgeHandler.class); }/*</bind>*/
+    /*<ptr>*/public static class OneSignalBadgeHelpersPtr extends Ptr<OneSignalBadgeHelpers, OneSignalBadgeHelpersPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(OneSignalBadgeHelpers.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public OneSignalExtensionBadgeHandler() {}
-    protected OneSignalExtensionBadgeHandler(Handle h, long handle) { super(h, handle); }
-    protected OneSignalExtensionBadgeHandler(SkipInit skipInit) { super(skipInit); }
+    public OneSignalBadgeHelpers() {}
+    protected OneSignalBadgeHelpers(Handle h, long handle) { super(h, handle); }
+    protected OneSignalBadgeHelpers(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
     
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "handleBadgeCountWithNotificationRequest:withNotification:withMutableNotificationContent:")
-    public static native void handleBadgeCount(UNNotificationRequest request, OSNotification notification, UNMutableNotificationContent replacementContent);
+    @Method(selector = "updateCachedBadgeValue:usePreviousBadgeCount:")
+    public static native void updateCachedBadgeValue(@MachineSizedSInt long value, boolean usePrevious);
     /*</methods>*/
 }

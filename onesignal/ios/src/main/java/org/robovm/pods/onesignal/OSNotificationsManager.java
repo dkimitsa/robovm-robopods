@@ -97,7 +97,7 @@ import org.robovm.apple.uikit.*;
     @Method(selector = "handleNotificationActionWithUrl:actionID:")
     public static native void handleNotificationAction(String url, String actionID);
     @Method(selector = "clearBadgeCount:fromClearAll:")
-    public static native boolean clearBadgeCount(boolean fromNotifOpened, boolean fromClearAll);
+    public static native void clearBadgeCount(boolean fromNotifOpened, boolean fromClearAll);
     @Method(selector = "receiveRemoteNotification:UserInfo:completionHandler:")
     public static native boolean receiveRemoteNotification(UIApplication application, NSDictionary<?, ?> userInfo, @Block VoidBlock1<UIBackgroundFetchResult> completionHandler);
     @Method(selector = "notificationReceived:wasOpened:")
