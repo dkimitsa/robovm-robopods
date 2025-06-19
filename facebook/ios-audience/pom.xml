@@ -7,7 +7,7 @@
     </parent>
 
     <artifactId>robopods-facebook-audience-ios</artifactId>
-    <name>RoboPods Facebook Audience iOS v6.17.1</name>
+    <name>RoboPods Facebook Audience iOS v6.20.0</name>
     <packaging>jar</packaging>
 
     <licenses>

@@ -9,7 +9,7 @@
 | [ios-login](ios-login/)                             | Facebook iOS Login Kit           | 18.0.0  |
 | [ios-share](ios-share/)                             | Facebook iOS Share Kit           | 18.0.0  |
 | [ios-aem](ios-aem/)                                 | Facebook iOS AEM Kit             | 18.0.0  |
-| [ios-audience](ios-audience/)                       | Facebook iOS Audience Ad Network | 6.17.1  |
+| [ios-audience](ios-audience/)                       | Facebook iOS Audience Ad Network | 6.20.0  |
 | [ios-gaming-services-kit](ios-gaming-services-kit/) | Facebook iOS Gaming Service Kit  | 18.0.0  |
 
 ## Versions

@@ -54,10 +54,6 @@ import org.robovm.apple.avfoundation.*;
     protected FBAdSettings(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
-    @Property(selector = "isBackgroundVideoPlaybackAllowed")
-    public static native boolean isBackgroundVideoPlaybackAllowed();
-    @Property(selector = "setBackgroundVideoPlaybackAllowed:")
-    public static native void setBackgroundVideoPlaybackAllowed(boolean v);
     @Property(selector = "testAdType")
     public static native FBAdTestAdType getTestAdType();
     @Property(selector = "setTestAdType:")

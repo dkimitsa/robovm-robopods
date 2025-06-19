@@ -49,13 +49,13 @@ import org.robovm.apple.avfoundation.*;
     /*<bind>*/static { ObjCRuntime.bind(FBMediaViewVideoRenderer.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public FBMediaViewVideoRenderer() {}
+    protected FBMediaViewVideoRenderer() {}
     protected FBMediaViewVideoRenderer(Handle h, long handle) { super(h, handle); }
     protected FBMediaViewVideoRenderer(SkipInit skipInit) { super(skipInit); }
     @Method(selector = "initWithFrame:")
-    public FBMediaViewVideoRenderer(@ByVal CGRect frame) { super(frame); }
+    public FBMediaViewVideoRenderer(@ByVal CGRect frame) { super((SkipInit) null); initObject(init(frame)); }
     @Method(selector = "initWithCoder:")
-    public FBMediaViewVideoRenderer(NSCoder coder) { super(coder); }
+    public FBMediaViewVideoRenderer(NSCoder coder) { super((SkipInit) null); initObject(init(coder)); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "aspectRatio")
@@ -70,14 +70,24 @@ import org.robovm.apple.avfoundation.*;
     public native float getVolume();
     @Property(selector = "setVolume:")
     public native void setVolume(float v);
+    @Property(selector = "videoLoopTimes")
+    public native @MachineSizedUInt long getVideoLoopTimes();
+    @Property(selector = "setVideoLoopTimes:")
+    public native void setVideoLoopTimes(@MachineSizedUInt long v);
     @WeaklyLinked
     @Property(selector = "layerClass")
     public static native Class<? extends CALayer> getLayerClass();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
+    @Method(selector = "initWithFrame:")
+    protected native @Pointer long init(@ByVal CGRect frame);
+    @Method(selector = "initWithCoder:")
+    protected native @Pointer long init(NSCoder coder);
     @Method(selector = "playVideo")
     public native void playVideo();
+    @Method(selector = "replayOrStopVideo")
+    public native void replayOrStopVideo();
     @Method(selector = "pauseVideo")
     public native void pauseVideo();
     @Method(selector = "engageVideoSeek")
