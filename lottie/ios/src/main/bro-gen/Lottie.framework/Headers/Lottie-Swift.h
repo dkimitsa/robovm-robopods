@@ -420,8 +420,6 @@ SWIFT_CLASS("_TtC6Lottie20BaseCompositionLayer")
 
 
 
-
-
 @class NSString;
 @class NSBundle;
 
@@ -590,7 +588,6 @@ SWIFT_CLASS("_TtC6Lottie16CompositionLayer")
 @end
 
 
-
 /// The root <code>CALayer</code> of the Core Animation rendering engine
 SWIFT_CLASS("_TtC6Lottie18CoreAnimationLayer")
 @interface CoreAnimationLayer : BaseAnimationLayer
@@ -615,15 +612,6 @@ SWIFT_CLASS("_TtC6Lottie19CoreTextRenderLayer")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-SWIFT_CLASS("_TtC6Lottie10DebugLayer")
-@interface DebugLayer : CALayer
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)_ OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-- (nonnull instancetype)initWithLayer:(id _Nonnull)layer SWIFT_UNAVAILABLE;
 @end
 
 
@@ -785,7 +773,6 @@ SWIFT_CLASS("_TtC6Lottie24MainThreadAnimationLayer")
 @end
 
 
-
 /// The CALayer type responsible for rendering the <code>Mask</code> of a <code>BaseCompositionLayer</code>
 SWIFT_CLASS("_TtC6Lottie20MaskCompositionLayer")
 @interface MaskCompositionLayer : CALayer
@@ -819,7 +806,6 @@ SWIFT_CLASS("_TtC6Lottie20NullCompositionLayer")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)_ OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
 @end
-
 
 
 /// The <code>CALayer</code> type responsible for rendering <code>PreCompLayerModel</code>s
@@ -858,7 +844,6 @@ SWIFT_CLASS("_TtC6Lottie21ShapeCompositionLayer")
 - (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)_ OBJC_DESIGNATED_INITIALIZER;
 @end
-
 
 
 /// The base layer that holds Shapes and Shape Renderers
@@ -902,7 +887,6 @@ SWIFT_CLASS("_TtC6Lottie16ShapeRenderLayer")
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
-
 
 
 SWIFT_CLASS("_TtC6Lottie21SolidCompositionLayer")
