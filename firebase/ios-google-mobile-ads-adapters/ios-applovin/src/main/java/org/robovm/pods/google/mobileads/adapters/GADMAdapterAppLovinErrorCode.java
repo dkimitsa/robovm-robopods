@@ -45,8 +45,9 @@ public enum /*<name>*/GADMAdapterAppLovinErrorCode/*</name>*/ implements ValuedE
     MissingSDKKey(105L),
     EmptyBidToken(107L),
     UnsupportedAdFormat(108L),
-    NilAppLovinSDK(111L),
-    ChildUser(112L);
+    ChildUser(112L),
+    AppLovinSDKNotInitialized(113L),
+    FailedToReturnBidToken(114L);
     /*</values>*/
 
     /*<bind>*/

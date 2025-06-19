@@ -49,8 +49,16 @@ import org.robovm.pods.applovinsdk.*;
     protected GADMAdapterAppLovinExtras(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
+    /**
+     * @deprecated The `muteAudio` property is deprecated, use GADMobileAds.sharedInstance.applicationMuted instead.
+     */
+    @Deprecated
     @Property(selector = "muteAudio")
     public native boolean isMuteAudio();
+    /**
+     * @deprecated The `muteAudio` property is deprecated, use GADMobileAds.sharedInstance.applicationMuted instead.
+     */
+    @Deprecated
     @Property(selector = "setMuteAudio:")
     public native void setMuteAudio(boolean v);
     /*</properties>*/

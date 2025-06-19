@@ -7,7 +7,7 @@
     </parent>
 
     <artifactId>robopods-firebase-google-mobile-ads-inmobi-adapter-ios</artifactId>
-    <name>RoboPods FireBase InMobi Ads Mediation Adapter iOS v10.8.0</name>
+    <name>RoboPods FireBase InMobi Ads Mediation Adapter iOS v10.8.3</name>
     <packaging>jar</packaging>
 
     <dependencies>

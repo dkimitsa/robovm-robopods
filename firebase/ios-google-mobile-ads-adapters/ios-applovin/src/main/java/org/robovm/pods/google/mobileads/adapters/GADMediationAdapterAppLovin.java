@@ -49,8 +49,7 @@ import org.robovm.pods.applovinsdk.*;
     protected GADMediationAdapterAppLovin(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
-    @Property(selector = "SDKSettings")
-    public static native ALSdkSettings getSDKSettings();
+    
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
