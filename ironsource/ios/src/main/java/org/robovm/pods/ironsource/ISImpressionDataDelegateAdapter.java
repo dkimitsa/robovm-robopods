@@ -51,6 +51,10 @@ import org.robovm.apple.coreanimation.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
+    /**
+     * @deprecated Use [LPMImpressionDataDelegate impressionDataDidSucceed:] instead.
+     */
+    @Deprecated
     @NotImplemented("impressionDataDidSucceed:")
     public void impressionDataDidSucceed(ISImpressionData impressionData) {}
     /*</methods>*/

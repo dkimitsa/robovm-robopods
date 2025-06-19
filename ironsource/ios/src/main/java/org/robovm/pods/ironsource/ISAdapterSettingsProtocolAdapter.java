@@ -51,6 +51,10 @@ import org.robovm.apple.coreanimation.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
+    /**
+     * @deprecated This method is deprecated and will be removed in SDK version 9.0.0.
+     */
+    @Deprecated
     @NotImplemented("getLoadWhileShowSupportedStateWithAdapterConfig:")
     public ISLoadWhileShowSupportState getLoadWhileShowSupportedState(ISAdapterConfig adapterConfig) { return null; }
     /*</methods>*/

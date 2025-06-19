@@ -9,6 +9,7 @@
 #ifndef ISSegmentDelegate_h
 #define ISSegmentDelegate_h
 
+DEPRECATED_MSG_ATTRIBUTE("This protocol is deprecated and will be removed in version 9.0.0.")
 @protocol ISSegmentDelegate <NSObject>
 
 @required

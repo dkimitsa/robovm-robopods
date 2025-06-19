@@ -4,6 +4,7 @@
 
 #import <Foundation/Foundation.h>
 
+DEPRECATED_MSG_ATTRIBUTE("This class is deprecated and will be removed in version 9.0.0.")
 @interface ISPlacementInfo : NSObject
 
 - (instancetype)init NS_UNAVAILABLE;

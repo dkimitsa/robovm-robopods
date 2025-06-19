@@ -10,6 +10,7 @@
 
 #import <Foundation/Foundation.h>
 
+DEPRECATED_MSG_ATTRIBUTE("This class will be made private in version 9.0.0.")
 @interface ISContainerParams : NSObject
 
 @property(nonatomic, assign) CGFloat width;

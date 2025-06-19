@@ -34,9 +34,11 @@ import org.robovm.apple.coreanimation.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
+/**
+ * @deprecated This protocol is deprecated and will be removed in version 9.0.0.
+ */
 /*</javadoc>*/
-/*<annotations>*//*</annotations>*/
+/*<annotations>*/@Deprecated/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ interface /*<name>*/ISConsentViewDelegate/*</name>*/ 
     /*<implements>*/extends NSObjectProtocol/*</implements>*/ {
 
@@ -49,16 +51,40 @@ import org.robovm.apple.coreanimation.*;
     
     /*</properties>*/
     /*<methods>*/
+    /**
+     * @deprecated This method is deprecated and will be removed in version 9.0.0.
+     */
+    @Deprecated
     @Method(selector = "consentViewDidLoadSuccess:")
     void consentViewDidLoadSuccess(String consentViewType);
+    /**
+     * @deprecated This method is deprecated and will be removed in version 9.0.0.
+     */
+    @Deprecated
     @Method(selector = "consentViewDidFailToLoadWithError:consentViewType:")
     void consentViewDidFailToLoad(NSError error, String consentViewType);
+    /**
+     * @deprecated This method is deprecated and will be removed in version 9.0.0.
+     */
+    @Deprecated
     @Method(selector = "consentViewDidShowSuccess:")
     void consentViewDidShowSuccess(String consentViewType);
+    /**
+     * @deprecated This method is deprecated and will be removed in version 9.0.0.
+     */
+    @Deprecated
     @Method(selector = "consentViewDidFailToShowWithError:consentViewType:")
     void consentViewDidFailToShow(NSError error, String consentViewType);
+    /**
+     * @deprecated This method is deprecated and will be removed in version 9.0.0.
+     */
+    @Deprecated
     @Method(selector = "consentViewDidAccept:")
     void consentViewDidAccept(String consentViewType);
+    /**
+     * @deprecated This method is deprecated and will be removed in version 9.0.0.
+     */
+    @Deprecated
     @Method(selector = "consentViewDidDismiss:")
     void consentViewDidDismiss(String consentViewType);
     /*</methods>*/

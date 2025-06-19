@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "LPMRewardedAdDelegate.h"
 
+@class LPMRewardedAdConfig;
+
 NS_ASSUME_NONNULL_BEGIN
 
 /**
@@ -30,6 +32,14 @@ NS_ASSUME_NONNULL_BEGIN
  @param adUnitId The ad unit identifier.
  */
 - (instancetype)initWithAdUnitId:(NSString *)adUnitId;
+
+/**
+ Initializes a rewarded ad.
+
+ @param adUnitId The ad unit identifier.
+ @param config The ad configuration.
+ */
+- (instancetype)initWithAdUnitId:(NSString *)adUnitId config:(LPMRewardedAdConfig *)config;
 
 /**
  Sets a delegate for the ad callbacks.

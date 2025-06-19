@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "ISGender.h"
 
+DEPRECATED_MSG_ATTRIBUTE("Use LPMSegment instead.")
 @interface ISSegment : NSObject
 
 @property(nonatomic) int age DEPRECATED_MSG_ATTRIBUTE("");

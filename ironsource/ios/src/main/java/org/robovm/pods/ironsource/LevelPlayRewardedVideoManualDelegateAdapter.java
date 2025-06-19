@@ -51,8 +51,16 @@ import org.robovm.apple.coreanimation.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
+    /**
+     * @deprecated Use [LPMRewardedAdDelegate didLoadWithAdInfo:] instead.
+     */
+    @Deprecated
     @NotImplemented("didLoadWithAdInfo:")
     public void didLoad(ISAdInfo adInfo) {}
+    /**
+     * @deprecated Use [LPMRewardedAdDelegate didFailToLoadAdWithAdUnitId:error:] instead.
+     */
+    @Deprecated
     @NotImplemented("didFailToLoadWithError:")
     public void didFailToLoad(NSError error) {}
     /*</methods>*/

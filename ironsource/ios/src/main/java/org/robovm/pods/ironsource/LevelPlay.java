@@ -56,5 +56,29 @@ import org.robovm.apple.coreanimation.*;
     /*<methods>*/
     @Method(selector = "initWithRequest:completion:")
     public static native void init(LPMInitRequest request, @Block VoidBlock2<LPMConfiguration, NSError> completion);
+    @Method(selector = "sdkVersion")
+    public static native String sdkVersion();
+    @Method(selector = "addImpressionDataDelegate:")
+    public static native void addImpressionDataDelegate(LPMImpressionDataDelegate delegate);
+    @Method(selector = "removeImpressionDataDelegate:")
+    public static native void removeImpressionDataDelegate(LPMImpressionDataDelegate delegate);
+    @Method(selector = "setMetaDataWithKey:value:")
+    public static native void setMetaData(String key, String value);
+    @Method(selector = "setMetaDataWithKey:values:")
+    public static native void setMetaData(String key, NSMutableArray<?> values);
+    @Method(selector = "setNetworkDataWithNetworkKey:andNetworkData:")
+    public static native void setNetworkData(String networkKey, NSDictionary<?, ?> networkData);
+    @Method(selector = "setDynamicUserId:")
+    public static native boolean setDynamicUserId(String dynamicUserId);
+    @Method(selector = "setAdaptersDebug:")
+    public static native void setAdaptersDebug(boolean flag);
+    @Method(selector = "setSegment:")
+    public static native void setSegment(LPMSegment segment);
+    @Method(selector = "launchTestSuite:")
+    public static native void launchTestSuite(UIViewController viewController);
+    @Method(selector = "validateIntegration")
+    public static native void validateIntegration();
+    @Method(selector = "setConsent:")
+    public static native void setConsent(boolean consent);
     /*</methods>*/
 }

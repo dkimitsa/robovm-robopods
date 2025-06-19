@@ -50,6 +50,8 @@ import org.robovm.apple.coreanimation.*;
     protected LPMBannerAdView(SkipInit skipInit) { super(skipInit); }
     @Method(selector = "initWithAdUnitId:")
     public LPMBannerAdView(String adUnitId) { super((SkipInit) null); initObject(init(adUnitId)); }
+    @Method(selector = "initWithAdUnitId:config:")
+    public LPMBannerAdView(String adUnitId, LPMBannerAdViewConfig config) { super((SkipInit) null); initObject(init(adUnitId, config)); }
     @Method(selector = "initWithFrame:")
     public LPMBannerAdView(@ByVal CGRect frame) { super(frame); }
     @Method(selector = "initWithCoder:")
@@ -66,8 +68,18 @@ import org.robovm.apple.coreanimation.*;
     /*<methods>*/
     @Method(selector = "initWithAdUnitId:")
     protected native @Pointer long init(String adUnitId);
+    @Method(selector = "initWithAdUnitId:config:")
+    protected native @Pointer long init(String adUnitId, LPMBannerAdViewConfig config);
+    /**
+     * @deprecated Use LPMBannerAdViewConfig
+     */
+    @Deprecated
     @Method(selector = "setPlacementName:")
     public native void setPlacementName(String placementName);
+    /**
+     * @deprecated Use LPMBannerAdViewConfig
+     */
+    @Deprecated
     @Method(selector = "setAdSize:")
     public native void setAdSize(LPMAdSize adSize);
     @Method(selector = "setDelegate:")

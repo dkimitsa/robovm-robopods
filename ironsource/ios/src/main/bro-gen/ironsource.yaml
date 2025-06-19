@@ -380,6 +380,10 @@ classes:
         methods:
             '+initWithRequest:completion:':
                 name: init
+            '+setMetaDataWithKey:value:':
+                name: setMetaData
+            '+setMetaDataWithKey:values:':
+                name: setMetaData
     LPMAdInfo: { }
     LPMAdSize:
         methods:
@@ -390,6 +394,8 @@ classes:
     LPMBannerAdView:
         methods:
             '-initWithAdUnitId:':
+                name: init
+            '-initWithAdUnitId:config:':
                 name: init
             '-loadAdWithViewController:':
                 name: loadAd
@@ -406,9 +412,17 @@ classes:
         methods:
             '+initWithRequest:completion:':
                 name: init
+            '+setMetaDataWithKey:value:':
+                name: setMetaData
+            '+setMetaDataWithKey:values:':
+                name: setMetaData
+            '+setNetworkDataWithNetworkKey:andNetworkData:':
+                name: setNetworkData
     LPMInterstitialAd:
         methods:
             '-initWithAdUnitId:':
+                name: init
+            '-initWithAdUnitId:config:':
                 name: init
             '-showAdWithViewController:placementName:':
                 name: showAd
@@ -421,8 +435,41 @@ classes:
         methods:
             '-initWithAdUnitId:':
                 name: init
+            '-initWithAdUnitId:config:':
+                name: init
             '-showAdWithViewController:placementName:':
                 name: showAd
+    LPMBannerAdViewConfig: { }
+    LPMBannerAdViewConfigBuilder:
+        methods:
+            '-setWithAdSize:':
+                name: setAdSize
+            '-setWithBidFloor:':
+                name: setBidFloor
+            '-setWithPlacementName:':
+                name: setPlacementName
+    LPMImpressionData:
+        methods:
+            '-initWithDictionary:':
+                name: init
+            '-initWithImpressionData:':
+                name: init
+            '-replacePlacementMacro:value:':
+                name: replacePlacementMacro
+    LPMInterstitialAdConfig: { }
+    LPMInterstitialAdConfigBuilder:
+        methods:
+            '-setWithBidFloor:':
+                name: setBidFloor
+    LPMRewardedAdConfig: { }
+    LPMRewardedAdConfigBuilder:
+        methods:
+            '-setWithBidFloor:':
+                name: setBidFloor
+    LPMSegment:
+        methods:
+            '-setCustomValue:forKey:':
+                name: setCustomValue
 protocols:
     ISAdapterAdDelegate:
         methods:
@@ -819,6 +866,7 @@ protocols:
                 name: didClickAd
             '-didCloseAdWithAdInfo:':
                 name: didCloseAd
+    LPMImpressionDataDelegate: {}
 functions:
     # Make sure we don't miss any functions if new ones are introduced in a later version
     (.*):

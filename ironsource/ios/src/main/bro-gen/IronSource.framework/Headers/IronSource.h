@@ -58,6 +58,9 @@
 #import "IronSourceAds.h"
 #import "LPMConfigServiceEventSender.h"
 #import "LPMDispatcherProtocol.h"
+#import "LPMImpressionData.h"
+#import "LPMImpressionDataDelegate.h"
+#import "LPMSegment.h"
 
 // imports used for custom adapters infra
 #import "ISAdapterErrors.h"
@@ -87,10 +90,16 @@
 #import "LPMAdInfo.h"
 #import "LPMAdSize.h"
 #import "LPMBannerAdView.h"
+#import "LPMBannerAdViewConfig.h"
+#import "LPMBannerAdViewConfigBuilder.h"
 #import "LPMInitRequestBuilder.h"
 #import "LPMInterstitialAd.h"
+#import "LPMInterstitialAdConfig.h"
+#import "LPMInterstitialAdConfigBuilder.h"
 #import "LPMInterstitialAdDelegate.h"
 #import "LPMRewardedAd.h"
+#import "LPMRewardedAdConfig.h"
+#import "LPMRewardedAdConfigBuilder.h"
 #import "LPMRewardedAdDelegate.h"
 #import "LevelPlay.h"
 
@@ -103,13 +112,14 @@ NS_ASSUME_NONNULL_BEGIN
 #define IS_BANNER @"banner"
 #define IS_NATIVE_AD @"nativead"
 
-static NSString *const MEDIATION_SDK_VERSION = @"8.8.0";
-static NSString *GitHash = @"f988075";
+static NSString *const MEDIATION_SDK_VERSION = @"8.9.1";
+static NSString *GitHash = @"b69ddca";
 
 /*
     This constant is for sending an external impression data from mopub
 */
-static NSString *const DataSource_MOPUB = @"MoPub";
+static NSString *const DataSource_MOPUB DEPRECATED_MSG_ATTRIBUTE(
+    "The string is deprecated and will be removed in version 9.0.0.") = @"MoPub";
 
 @interface IronSource : NSObject
 
@@ -119,7 +129,8 @@ static NSString *const DataSource_MOPUB = @"MoPub";
 
  @return NSString representing the current IronSource SDK version.
  */
-+ (NSString *)sdkVersion;
++ (NSString *)sdkVersion DEPRECATED_MSG_ATTRIBUTE("For LevelPlay, use [LevelPlay sdkVersion]. For "
+                                                  "IronSourceAds, use [IronSourceAds sdkVersion].");
 
 /**
  @abstract Sets if IronSource SDK should track network changes.
@@ -130,7 +141,8 @@ static NSString *const DataSource_MOPUB = @"MoPub";
 
  @param flag YES if allowed to track network changes, NO otherwise.
  */
-+ (void)shouldTrackReachability:(BOOL)flag;
++ (void)shouldTrackReachability:(BOOL)flag
+    DEPRECATED_MSG_ATTRIBUTE("This method is deprecated and will be removed in version 9.0.0.");
 
 /**
  @abstract Sets if IronSource SDK should allow ad networks debug logs.
@@ -140,7 +152,9 @@ static NSString *const DataSource_MOPUB = @"MoPub";
 
  @param flag YES to allow ad networks debug logs, NO otherwise.
  */
-+ (void)setAdaptersDebug:(BOOL)flag;
++ (void)setAdaptersDebug:(BOOL)flag
+    DEPRECATED_MSG_ATTRIBUTE("For LevelPlay, use [LevelPlay setAdaptersDebug:]. For IronSourceAds, "
+                             "use [IronSourceAds enableDebugMode:].");
 
 /**
  @abstract Sets a dynamic identifier for the current user.
@@ -152,7 +166,8 @@ static NSString *const DataSource_MOPUB = @"MoPub";
  @param dynamicUserId Dynamic user identifier. Should be between 1-128 chars in length.
  @return BOOL that indicates if the dynamic identifier is valid.
  */
-+ (BOOL)setDynamicUserId:(NSString *)dynamicUserId;
++ (BOOL)setDynamicUserId:(NSString *)dynamicUserId
+    DEPRECATED_MSG_ATTRIBUTE("Use [LevelPlay setDynamicUserId:].");
 
 /**
  @abstract Retrieves the device's current advertising identifier.
@@ -160,7 +175,8 @@ static NSString *const DataSource_MOPUB = @"MoPub";
 
  @return The device's current advertising identifier.
  */
-+ (NSString *)advertiserId;
++ (NSString *)advertiserId DEPRECATED_MSG_ATTRIBUTE(
+    "This method is deprecated and will be removed in version 9.0.0.");
 
 /**
  @abstract Sets a mediation type.
@@ -177,14 +193,15 @@ static NSString *const DataSource_MOPUB = @"MoPub";
 
  @param segment A segment object.
  */
-+ (void)setSegment:(ISSegment *)segment;
++ (void)setSegment:(ISSegment *)segment DEPRECATED_MSG_ATTRIBUTE("Use [LevelPlay setSegment:].");
 
 /**
  @abstract Sets the delegate for segment callback.
 
  @param delegate The 'ISSegmentDelegate' for IronSource to send callbacks to.
  */
-+ (void)setSegmentDelegate:(id<ISSegmentDelegate>)delegate;
++ (void)setSegmentDelegate:(id<ISSegmentDelegate>)delegate
+    DEPRECATED_MSG_ATTRIBUTE("This method is deprecated and will be removed in version 9.0.0.");
 
 /**
 @abstact Sets the meta data with a key and value.
@@ -194,7 +211,10 @@ static NSString *const DataSource_MOPUB = @"MoPub";
 @param value The meta data value
 
 */
-+ (void)setMetaDataWithKey:(NSString *)key value:(NSString *)value;
++ (void)setMetaDataWithKey:(NSString *)key
+                     value:(NSString *)value
+    DEPRECATED_MSG_ATTRIBUTE("For LevelPlay, use [LevelPlay setMetaDataWithKey:value:]. For "
+                             "IronSourceAds, use [IronSourceAds setMetaDataWithKey:value:].");
 
 /**
  @abstact Sets the meta data with a key and values.
@@ -204,7 +224,10 @@ static NSString *const DataSource_MOPUB = @"MoPub";
  @param values The meta data values
 
  */
-+ (void)setMetaDataWithKey:(NSString *)key values:(NSMutableArray *)values;
++ (void)setMetaDataWithKey:(NSString *)key
+                    values:(NSMutableArray *)values
+    DEPRECATED_MSG_ATTRIBUTE("For LevelPlay, use [LevelPlay setMetaDataWithKey:values:]. For "
+                             "IronSourceAds, use [IronSourceAds setMetaDataWithKey:values:].");
 
 /**
 @abstract Sets the network data according to the network key.
@@ -214,7 +237,8 @@ static NSString *const DataSource_MOPUB = @"MoPub";
 
  */
 + (void)setNetworkDataWithNetworkKey:(NSString *)networkKey
-                      andNetworkData:(NSDictionary *)networkData;
+                      andNetworkData:(NSDictionary *)networkData
+    DEPRECATED_MSG_ATTRIBUTE("Use [LevelPlay setNetworkDataWithNetworkKey:andNetworkData:].");
 
 /**
 @abstact used for demand only API, return the bidding data token.
@@ -228,14 +252,17 @@ static NSString *const DataSource_MOPUB = @"MoPub";
 
  @param userId User identifier. Should be between 1-64 chars in length.
  */
-+ (void)setUserId:(NSString *)userId;
++ (void)setUserId:(NSString *)userId
+    DEPRECATED_MSG_ATTRIBUTE("Use [LevelPlay initWithRequest:completion:]. In this API, "
+                             "userId can be specified as part of the LPMInitRequest object.");
 
 /**
  @abstract Initializes IronSource's SDK with all the ad units that are defined in the platform.
 
  @param appKey Application key.
  */
-+ (void)initWithAppKey:(NSString *)appKey;
++ (void)initWithAppKey:(NSString *)appKey
+    DEPRECATED_MSG_ATTRIBUTE("Use [LevelPlay initWithRequest:completion:].");
 
 /**
  @abstract Initializes IronSource's SDK with all the ad units that are defined in the platform.
@@ -243,7 +270,9 @@ static NSString *const DataSource_MOPUB = @"MoPub";
  @param appKey Application key.
  @param delegate Init delegate.
  */
-+ (void)initWithAppKey:(NSString *)appKey delegate:(nullable id<ISInitializationDelegate>)delegate;
++ (void)initWithAppKey:(NSString *)appKey
+              delegate:(nullable id<ISInitializationDelegate>)delegate
+    DEPRECATED_MSG_ATTRIBUTE("Use [LevelPlay initWithRequest:completion:].");
 
 /**
  @abstract Initializes IronSource's SDK with the requested ad units.
@@ -262,7 +291,9 @@ static NSString *const DataSource_MOPUB = @"MoPub";
  @param appKey Application key.
  @param adUnits An array of ad units to initialize.
  */
-+ (void)initWithAppKey:(NSString *)appKey adUnits:(NSArray<NSString *> *)adUnits;
++ (void)initWithAppKey:(NSString *)appKey
+               adUnits:(NSArray<NSString *> *)adUnits
+    DEPRECATED_MSG_ATTRIBUTE("Use [LevelPlay initWithRequest:completion:].");
 
 /**
  @abstract Initializes IronSource's SDK with the requested ad units.
@@ -284,7 +315,8 @@ static NSString *const DataSource_MOPUB = @"MoPub";
  */
 + (void)initWithAppKey:(NSString *)appKey
                adUnits:(NSArray<NSString *> *)adUnits
-              delegate:(nullable id<ISInitializationDelegate>)delegate;
+              delegate:(nullable id<ISInitializationDelegate>)delegate
+    DEPRECATED_MSG_ATTRIBUTE("Use [LevelPlay initWithRequest:completion:].");
 
 /**
  @abstract Initializes ironSource SDK in demand only mode.
@@ -294,7 +326,7 @@ static NSString *const DataSource_MOPUB = @"MoPub";
  */
 + (void)initISDemandOnly:(NSString *)appKey
                  adUnits:(NSArray<NSString *> *)adUnits
-    DEPRECATED_MSG_ATTRIBUTE("Use [IronSourceAds initWithRequest:completion:] instead.");
+    DEPRECATED_MSG_ATTRIBUTE("Use [IronSourceAds initWithRequest:completion:].");
 
 #pragma mark - Rewarded Video
 
@@ -303,14 +335,16 @@ static NSString *const DataSource_MOPUB = @"MoPub";
 
  @param delegate The 'LevelPlayRewardedVideoDelegate' for IronSource to send callbacks to.
  */
-+ (void)setLevelPlayRewardedVideoDelegate:(nullable id<LevelPlayRewardedVideoDelegate>)delegate;
++ (void)setLevelPlayRewardedVideoDelegate:(nullable id<LevelPlayRewardedVideoDelegate>)delegate
+    DEPRECATED_MSG_ATTRIBUTE("Use [LPMRewardedAd setDelegate:].");
 
 /**
  @abstract Shows a rewarded video using the default placement.
 
  @param viewController The UIViewController to display the rewarded video within.
  */
-+ (void)showRewardedVideoWithViewController:(UIViewController *)viewController;
++ (void)showRewardedVideoWithViewController:(UIViewController *)viewController
+    DEPRECATED_MSG_ATTRIBUTE("Use [LPMRewardedAd showAdWithViewController:placementName:].");
 
 /**
  @abstract Shows a rewarded video using the provided placement name.
@@ -320,7 +354,8 @@ static NSString *const DataSource_MOPUB = @"MoPub";
  placement will be used.
  */
 + (void)showRewardedVideoWithViewController:(UIViewController *)viewController
-                                  placement:(nullable NSString *)placementName;
+                                  placement:(nullable NSString *)placementName
+    DEPRECATED_MSG_ATTRIBUTE("Use [LPMRewardedAd showAdWithViewController:placementName:].");
 
 /**
  @abstract Determine if a locally cached rewarded video exists on the mediation level.
@@ -329,7 +364,7 @@ static NSString *const DataSource_MOPUB = @"MoPub";
 
  @return YES if rewarded video is ready to be played, NO otherwise.
  */
-+ (BOOL)hasRewardedVideo;
++ (BOOL)hasRewardedVideo DEPRECATED_MSG_ATTRIBUTE("Use [LPMRewardedAd isAdReady].");
 
 /**
  @abstract Verify if a certain placement has reached its ad limit.
@@ -339,7 +374,8 @@ static NSString *const DataSource_MOPUB = @"MoPub";
  @param placementName The placement name as was defined in the platform.
  @return YES if capped or paced, NO otherwise.
  */
-+ (BOOL)isRewardedVideoCappedForPlacement:(NSString *)placementName;
++ (BOOL)isRewardedVideoCappedForPlacement:(NSString *)placementName
+    DEPRECATED_MSG_ATTRIBUTE("Use [LPMRewardedAd isPlacementCapped:].");
 
 /**
  @abstract Retrieve an object containing the placement's reward name and amount.
@@ -347,19 +383,22 @@ static NSString *const DataSource_MOPUB = @"MoPub";
  @param placementName The placement name as was defined in the platform.
  @return ISPlacementInfo representing the placement's information.
  */
-+ (ISPlacementInfo *)rewardedVideoPlacementInfo:(NSString *)placementName;
++ (ISPlacementInfo *)rewardedVideoPlacementInfo:(NSString *)placementName
+    DEPRECATED_MSG_ATTRIBUTE("This method is deprecated and will be removed in version 9.0.0.");
 
 /**
  @abstract Enables sending server side parameters on successful rewarded video
 
  @param parameters A dictionary containing the parameters.
  */
-+ (void)setRewardedVideoServerParameters:(NSDictionary *)parameters;
++ (void)setRewardedVideoServerParameters:(NSDictionary *)parameters
+    DEPRECATED_MSG_ATTRIBUTE("This method is deprecated and will be removed in version 9.0.0.");
 
 /**
  @abstract Disables sending server side parameters on successful rewarded video
   */
-+ (void)clearRewardedVideoServerParameters;
++ (void)clearRewardedVideoServerParameters DEPRECATED_MSG_ATTRIBUTE(
+    "This method is deprecated and will be removed in version 9.0.0.");
 
 #pragma mark - Demand Only Rewarded Video
 /**
@@ -382,7 +421,7 @@ static NSString *const DataSource_MOPUB = @"MoPub";
  */
 + (void)loadISDemandOnlyRewardedVideoWithAdm:(NSString *)instanceId
                                          adm:(NSString *)adm
-    DEPRECATED_MSG_ATTRIBUTE("Use [ISARewardedAdLoader loadAdWithAdRequest:delegate:] instead.");
+    DEPRECATED_MSG_ATTRIBUTE("Use [ISARewardedAdLoader loadAdWithAdRequest:delegate:].");
 
 /**
  @abstract Shows a demand only rewarded video using the default placement.
@@ -411,14 +450,15 @@ static NSString *const DataSource_MOPUB = @"MoPub";
  @param delegate The 'LevelPlayRewardedVideoManualDelegate' for IronSource to send callbacks to.
  */
 + (void)setLevelPlayRewardedVideoManualDelegate:
-    (nullable id<LevelPlayRewardedVideoManualDelegate>)delegate;
+    (nullable id<LevelPlayRewardedVideoManualDelegate>)delegate
+    DEPRECATED_MSG_ATTRIBUTE("Use [LPMRewardedAd setDelegate:].");
 
 /**
  @abstract Loads a Rewarded Video.
  @discussion This method will load Rewarded Video ads from the underlying ad networks according to
  their priority when in manual Rewarded Video mode.
  */
-+ (void)loadRewardedVideo;
++ (void)loadRewardedVideo DEPRECATED_MSG_ATTRIBUTE("Use [LPMRewardedAd loadAd].");
 
 #pragma mark - Interstitial
 
@@ -427,14 +467,15 @@ static NSString *const DataSource_MOPUB = @"MoPub";
 
  @param delegate The 'LevelPlayInterstitialDelegate' for IronSource to send callbacks to.
  */
-+ (void)setLevelPlayInterstitialDelegate:(nullable id<LevelPlayInterstitialDelegate>)delegate;
++ (void)setLevelPlayInterstitialDelegate:(nullable id<LevelPlayInterstitialDelegate>)delegate
+    DEPRECATED_MSG_ATTRIBUTE("Use [LPMInterstitialAd setDelegate:].");
 
 /**
  @abstract Loads an interstitial.
  @discussion This method will load interstitial ads from the underlying ad networks according to
  their priority.
  */
-+ (void)loadInterstitial DEPRECATED_MSG_ATTRIBUTE("Use [LPMInterstitialAd loadAd] instead.");
++ (void)loadInterstitial DEPRECATED_MSG_ATTRIBUTE("Use [LPMInterstitialAd loadAd].");
 
 /**
  @abstract Show an interstitial ad using the default placement.
@@ -442,8 +483,7 @@ static NSString *const DataSource_MOPUB = @"MoPub";
  @param viewController The UIViewController to display the interstitial within.
  */
 + (void)showInterstitialWithViewController:(UIViewController *)viewController
-    DEPRECATED_MSG_ATTRIBUTE(
-        "Use [LPMInterstitialAd showAdWithViewController:placementName:] instead.");
+    DEPRECATED_MSG_ATTRIBUTE("Use [LPMInterstitialAd showAdWithViewController:placementName:].");
 
 /**
  @abstract Show an interstitial ad using the provided placement name.
@@ -454,8 +494,7 @@ static NSString *const DataSource_MOPUB = @"MoPub";
  */
 + (void)showInterstitialWithViewController:(UIViewController *)viewController
                                  placement:(nullable NSString *)placementName
-    DEPRECATED_MSG_ATTRIBUTE(
-        "Use [LPMInterstitialAd showAdWithViewController:placementName:] instead.");
+    DEPRECATED_MSG_ATTRIBUTE("Use [LPMInterstitialAd showAdWithViewController:placementName:].");
 
 /**
  @abstract Determine if a locally cached interstitial exists on the mediation level.
@@ -464,7 +503,7 @@ static NSString *const DataSource_MOPUB = @"MoPub";
 
  @return YES if there is a locally cached interstitial, NO otherwise.
  */
-+ (BOOL)hasInterstitial DEPRECATED_MSG_ATTRIBUTE("Use [LPMInterstitialAd isAdReady] instead.");
++ (BOOL)hasInterstitial DEPRECATED_MSG_ATTRIBUTE("Use [LPMInterstitialAd isAdReady].");
 
 /**
  @abstract Verify if a certain placement has reached its ad limit.
@@ -475,7 +514,7 @@ static NSString *const DataSource_MOPUB = @"MoPub";
  @return YES if capped or paced, NO otherwise.
  */
 + (BOOL)isInterstitialCappedForPlacement:(NSString *)placementName
-    DEPRECATED_MSG_ATTRIBUTE("Use [LPMInterstitialAd isPlacementCapped:] instead.");
+    DEPRECATED_MSG_ATTRIBUTE("Use [LPMInterstitialAd isPlacementCapped:].");
 
 #pragma mark - Demand Only Interstitial
 
@@ -499,8 +538,7 @@ static NSString *const DataSource_MOPUB = @"MoPub";
  */
 + (void)loadISDemandOnlyInterstitialWithAdm:(NSString *)instanceId
                                         adm:(NSString *)adm
-    DEPRECATED_MSG_ATTRIBUTE(
-        "Use [ISAInterstitialAdLoader loadAdWithAdRequest:delegate:] instead.");
+    DEPRECATED_MSG_ATTRIBUTE("Use [ISAInterstitialAdLoader loadAdWithAdRequest:delegate:].");
 
 /**
  @abstract Show a demand only interstitial using the default placement.
@@ -527,7 +565,7 @@ static NSString *const DataSource_MOPUB = @"MoPub";
  @param delegate The 'LevelPlayBannerDelegate' for IronSource to send callbacks to.
  */
 + (void)setLevelPlayBannerDelegate:(nullable id<LevelPlayBannerDelegate>)delegate
-    DEPRECATED_MSG_ATTRIBUTE("Use [LPMBannerAdView setDelegate:] instead.");
+    DEPRECATED_MSG_ATTRIBUTE("Use [LPMBannerAdView setDelegate:].");
 
 /**
  @abstract Loads a banner using the default placement.
@@ -546,7 +584,7 @@ static NSString *const DataSource_MOPUB = @"MoPub";
  */
 + (void)loadBannerWithViewController:(UIViewController *)viewController
                                 size:(ISBannerSize *)size
-    DEPRECATED_MSG_ATTRIBUTE("Use [LPMBannerAdView loadAdWithViewController:] instead.");
+    DEPRECATED_MSG_ATTRIBUTE("Use [LPMBannerAdView loadAdWithViewController:].");
 
 /**
  @abstract Loads a banner using the provided placement name.
@@ -570,14 +608,14 @@ static NSString *const DataSource_MOPUB = @"MoPub";
                                 size:(ISBannerSize *)size
                            placement:(nullable NSString *)placementName
     DEPRECATED_MSG_ATTRIBUTE("Use [LPMBannerAdView setPlacementName:] with "
-                             "[LPMBannerAdView loadAdWithViewController:] instead.");
+                             "[LPMBannerAdView loadAdWithViewController:].");
 
 /**
  @abstract Removes the banner from memory.
  @param banner The ISBannerView to remove.
  */
 + (void)destroyBanner:(ISBannerView *)banner
-    DEPRECATED_MSG_ATTRIBUTE("Use [LPMBannerAdView destroy] instead.");
+    DEPRECATED_MSG_ATTRIBUTE("Use [LPMBannerAdView destroy].");
 ;
 
 /**
@@ -637,10 +675,12 @@ static NSString *const DataSource_MOPUB = @"MoPub";
 
  @param delegate The 'ISLogDelegate' for IronSource to send callbacks to.
  */
-+ (void)setLogDelegate:(id<ISLogDelegate>)delegate;
++ (void)setLogDelegate:(id<ISLogDelegate>)delegate
+    DEPRECATED_MSG_ATTRIBUTE("This method is deprecated and will be removed in version 9.0.0.");
 
-+ (void)setConsent:(BOOL)consent;
-
++ (void)setConsent:(BOOL)consent
+    DEPRECATED_MSG_ATTRIBUTE("For LevelPlay, use [LevelPlay setConsent:]. For IronSourceAds, "
+                             "use [IronSourceAds setConsent:].");
 #pragma mark - Impression Data
 
 /**
@@ -649,7 +689,8 @@ static NSString *const DataSource_MOPUB = @"MoPub";
  @param delegate The 'ISImpressionDataDelegate' for IronSource to send callbacks to.
  */
 
-+ (void)addImpressionDataDelegate:(id<ISImpressionDataDelegate>)delegate;
++ (void)addImpressionDataDelegate:(id<ISImpressionDataDelegate>)delegate
+    DEPRECATED_MSG_ATTRIBUTE("Use [LevelPlay addImpressionDataDelegate:].");
 
 /**
  @abstract Ad revenue data
@@ -667,7 +708,8 @@ static NSString *const DataSource_MOPUB = @"MoPub";
  @param delegate The 'ISImpressionDataDelegate' for IronSource to send callbacks to.
  */
 
-+ (void)removeImpressionDataDelegate:(id<ISImpressionDataDelegate>)delegate;
++ (void)removeImpressionDataDelegate:(id<ISImpressionDataDelegate>)delegate
+    DEPRECATED_MSG_ATTRIBUTE("Use [LevelPlay removeImpressionDataDelegate:].");
 
 #pragma mark - Consent View
 
@@ -676,14 +718,16 @@ static NSString *const DataSource_MOPUB = @"MoPub";
 
  @param delegate The 'ISConsentViewDelegate' for IronSource to send callbacks to.
  */
-+ (void)setConsentViewWithDelegate:(id<ISConsentViewDelegate>)delegate;
++ (void)setConsentViewWithDelegate:(id<ISConsentViewDelegate>)delegate
+    DEPRECATED_MSG_ATTRIBUTE("This method is deprecated and will be removed in version 9.0.0.");
 
 /**
  @abstract Load consent view.
 
  @param consentViewType The type of the view (pre/post).
  */
-+ (void)loadConsentViewWithType:(NSString *)consentViewType;
++ (void)loadConsentViewWithType:(NSString *)consentViewType
+    DEPRECATED_MSG_ATTRIBUTE("This method is deprecated and will be removed in version 9.0.0.");
 
 /**
  @abstract Show consent view after load.
@@ -691,14 +735,16 @@ static NSString *const DataSource_MOPUB = @"MoPub";
  @param consentViewType The type of the view (pre/post).
  */
 + (void)showConsentViewWithViewController:(UIViewController *)viewController
-                                  andType:(NSString *)consentViewType;
+                                  andType:(NSString *)consentViewType
+    DEPRECATED_MSG_ATTRIBUTE("This method is deprecated and will be removed in version 9.0.0.");
 
 #pragma mark - Conversion Value (CV)
 
 /**
  @abstract get current conversion value
 */
-+ (NSNumber *)getConversionValue;
++ (NSNumber *)getConversionValue DEPRECATED_MSG_ATTRIBUTE(
+    "This method is deprecated and will be removed in version 9.0.0.");
 
 #pragma mark - Test Suite
 
@@ -706,7 +752,8 @@ static NSString *const DataSource_MOPUB = @"MoPub";
  @abstract Launch the Test suite
  @param viewController The UIViewController to display the Test Suite within.
 */
-+ (void)launchTestSuite:(UIViewController *)viewController;
++ (void)launchTestSuite:(UIViewController *)viewController
+    DEPRECATED_MSG_ATTRIBUTE("Use [LevelPlay launchTestSuite:].");
 
 #pragma mark - Waterfall Configuration
 
@@ -737,7 +784,11 @@ static NSString *const DataSource_MOPUB = @"MoPub";
  * @param adUnit ISAdUnit that the ISWaterfallConfiguration should apply to.
  */
 + (void)setWaterfallConfiguration:(ISWaterfallConfiguration *)waterfallConfiguration
-                        forAdUnit:(ISAdUnit *)adUnit;
+                        forAdUnit:(ISAdUnit *)adUnit
+    DEPRECATED_MSG_ATTRIBUTE(
+        "For banner, use [LPMBannerAdView initWithAdUnitId:config:]. For interstitial, "
+        "use [LPMInterstitialAd initWithAdUnitId:config:]. For rewarded, use [LPMRewardedAd "
+        "initWithAdUnitId:config:]. In those APIs, the bidFloor can be specified via the config.");
 
 @end
 

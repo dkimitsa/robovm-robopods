@@ -10,6 +10,7 @@
 
 static NSString* const kBannerWillMoveToSuperView = @"ISBANNER_WILL_MOVE_TO_SUPERVIEW";
 
+DEPRECATED_MSG_ATTRIBUTE("Use LPMBannerAdView instead.")
 @interface ISBannerView : UIView {
 }
 

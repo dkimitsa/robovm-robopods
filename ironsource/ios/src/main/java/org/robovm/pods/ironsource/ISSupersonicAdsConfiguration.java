@@ -50,8 +50,16 @@ import org.robovm.apple.coreanimation.*;
     protected ISSupersonicAdsConfiguration(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
+    /**
+     * @deprecated This property is deprecated and will be removed in version 9.0.0.
+     */
+    @Deprecated
     @Property(selector = "useClientSideCallbacks")
     public native NSNumber getUseClientSideCallbacks();
+    /**
+     * @deprecated This property is deprecated and will be removed in version 9.0.0.
+     */
+    @Deprecated
     @Property(selector = "setUseClientSideCallbacks:")
     public native void setUseClientSideCallbacks(NSNumber v);
     @Property(selector = "language")

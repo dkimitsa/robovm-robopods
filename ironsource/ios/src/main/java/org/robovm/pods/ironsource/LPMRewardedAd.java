@@ -50,6 +50,8 @@ import org.robovm.apple.coreanimation.*;
     protected LPMRewardedAd(SkipInit skipInit) { super(skipInit); }
     @Method(selector = "initWithAdUnitId:")
     public LPMRewardedAd(String adUnitId) { super((SkipInit) null); initObject(init(adUnitId)); }
+    @Method(selector = "initWithAdUnitId:config:")
+    public LPMRewardedAd(String adUnitId, LPMRewardedAdConfig config) { super((SkipInit) null); initObject(init(adUnitId, config)); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "adId")
@@ -59,6 +61,8 @@ import org.robovm.apple.coreanimation.*;
     /*<methods>*/
     @Method(selector = "initWithAdUnitId:")
     protected native @Pointer long init(String adUnitId);
+    @Method(selector = "initWithAdUnitId:config:")
+    protected native @Pointer long init(String adUnitId, LPMRewardedAdConfig config);
     @Method(selector = "setDelegate:")
     public native void setDelegate(LPMRewardedAdDelegate delegate);
     @Method(selector = "loadAd")

@@ -11,11 +11,13 @@
 
 #import "ISImpressionData.h"
 
+DEPRECATED_MSG_ATTRIBUTE("Use LPMImpressionDataDelegate instead.")
 @protocol ISImpressionDataDelegate <NSObject>
 
 @required
 
-- (void)impressionDataDidSucceed:(ISImpressionData *)impressionData;
+- (void)impressionDataDidSucceed:(ISImpressionData *)impressionData
+    DEPRECATED_MSG_ATTRIBUTE("Use [LPMImpressionDataDelegate impressionDataDidSucceed:] instead.");
 
 @end
 

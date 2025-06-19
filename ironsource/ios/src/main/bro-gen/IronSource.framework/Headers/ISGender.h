@@ -7,6 +7,7 @@
 
 #import <Foundation/Foundation.h>
 
+DEPRECATED_MSG_ATTRIBUTE("This enum is deprecated and will be removed in version 9.0.0.")
 typedef NS_ENUM(NSInteger, ISGender) {
   IRONSOURCE_USER_UNKNOWN,
   IRONSOURCE_USER_MALE,

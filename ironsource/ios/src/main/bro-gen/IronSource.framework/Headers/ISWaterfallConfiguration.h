@@ -7,6 +7,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * Builder for creating an ISWaterfallConfiguration object.
  */
+DEPRECATED_MSG_ATTRIBUTE("This class is deprecated and will be removed in version 9.0.0.")
 @interface ISWaterfallConfigurationBuilder : NSObject
 
 /**
@@ -46,6 +47,8 @@ NS_ASSUME_NONNULL_BEGIN
  *   ISWaterfallConfiguration *configuration = [builder build];
  * </pre>
  */
+
+DEPRECATED_MSG_ATTRIBUTE("This class is deprecated and will be removed in version 9.0.0.")
 @interface ISWaterfallConfiguration : NSObject
 
 /**

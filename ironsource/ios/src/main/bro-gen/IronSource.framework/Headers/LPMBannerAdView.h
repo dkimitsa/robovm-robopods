@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "LPMBannerAdViewDelegate.h"
 
-@class LPMAdSize;
+@class LPMAdSize, LPMBannerAdViewConfig;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -25,9 +25,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithAdUnitId:(NSString *)adUnitId;
 
-- (void)setPlacementName:(NSString *)placementName;
+- (instancetype)initWithAdUnitId:(NSString *)adUnitId config:(LPMBannerAdViewConfig *)config;
 
-- (void)setAdSize:(LPMAdSize *)adSize;
+- (void)setPlacementName:(NSString *)placementName
+    DEPRECATED_MSG_ATTRIBUTE("Use LPMBannerAdViewConfig");
+
+- (void)setAdSize:(LPMAdSize *)adSize DEPRECATED_MSG_ATTRIBUTE("Use LPMBannerAdViewConfig");
 
 - (void)setDelegate:(id<LPMBannerAdViewDelegate>)delegate;
 

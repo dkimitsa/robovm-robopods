@@ -56,5 +56,15 @@ import org.robovm.apple.coreanimation.*;
     /*<methods>*/
     @Method(selector = "initWithRequest:completion:")
     public static native void init(ISAInitRequest request, @Block VoidBlock2<Boolean, NSError> completion);
+    @Method(selector = "sdkVersion")
+    public static native String sdkVersion();
+    @Method(selector = "enableDebugMode:")
+    public static native void enableDebugMode(boolean enable);
+    @Method(selector = "setMetaDataWithKey:value:")
+    public static native void setMetaData(String key, String value);
+    @Method(selector = "setMetaDataWithKey:values:")
+    public static native void setMetaData(String key, NSMutableArray<?> values);
+    @Method(selector = "setConsent:")
+    public static native void setConsent(boolean consent);
     /*</methods>*/
 }

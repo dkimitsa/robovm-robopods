@@ -29,6 +29,7 @@ typedef enum LogTagValue {
   TAG_EVENT
 } LogTag;
 
+DEPRECATED_MSG_ATTRIBUTE("This protocol is deprecated and will be removed in version 9.0.0.")
 @protocol ISLogDelegate <NSObject>
 
 @required

@@ -12,6 +12,7 @@
 @protocol ISAdapterSettingsProtocol <NSObject>
 
 - (ISLoadWhileShowSupportState)getLoadWhileShowSupportedStateWithAdapterConfig:
-    (ISAdapterConfig*)adapterConfig;
+    (ISAdapterConfig*)adapterConfig
+    DEPRECATED_MSG_ATTRIBUTE("This method is deprecated and will be removed in SDK version 9.0.0.");
 
 @end

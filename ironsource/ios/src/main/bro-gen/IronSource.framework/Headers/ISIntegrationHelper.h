@@ -4,6 +4,7 @@
 
 #import <Foundation/Foundation.h>
 
+DEPRECATED_MSG_ATTRIBUTE("This interface is deprecated and will be removed in version 9.0.0.")
 @interface ISIntegrationHelper : NSObject
 
 /**
@@ -16,6 +17,7 @@
  Once you have finished your integration, call the 'validateIntegration' function and confirm that
  everything in your integration is marked as VERIFIED.
  */
-+ (void)validateIntegration;
++ (void)
+    validateIntegration DEPRECATED_MSG_ATTRIBUTE("Use [LevelPlay validateIntegration] instead.");
 
 @end

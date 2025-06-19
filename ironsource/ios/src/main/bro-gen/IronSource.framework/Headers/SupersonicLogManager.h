@@ -31,6 +31,7 @@ typedef NS_ENUM(NSUInteger, ISNLogTag)
   ISN_TAG_CONTROLLER_DELEGATE,
   ISN_TAG_NATIVE_AD };
 
+DEPRECATED_MSG_ATTRIBUTE("This class will be made private in version 9.0.0.")
 @interface SupersonicLogManager : NSObject
 
 @property(assign) NSInteger requiredDebugMode;

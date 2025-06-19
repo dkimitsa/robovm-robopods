@@ -34,9 +34,11 @@ import org.robovm.apple.coreanimation.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
+/**
+ * @deprecated This protocol is deprecated and will be removed in version 9.0.0.
+ */
 /*</javadoc>*/
-/*<annotations>*//*</annotations>*/
+/*<annotations>*/@Deprecated/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ interface /*<name>*/LevelPlayRewardedVideoBaseDelegate/*</name>*/ 
     /*<implements>*/extends NSObjectProtocol/*</implements>*/ {
 
@@ -49,14 +51,34 @@ import org.robovm.apple.coreanimation.*;
     
     /*</properties>*/
     /*<methods>*/
+    /**
+     * @deprecated Use [LPMRewardedAdDelegate didRewardAdWithAdInfo:reward:] instead.
+     */
+    @Deprecated
     @Method(selector = "didReceiveRewardForPlacement:withAdInfo:")
     void didReceiveReward(ISPlacementInfo placementInfo, ISAdInfo adInfo);
+    /**
+     * @deprecated Use [LPMRewardedAdDelegate didFailToDisplayAdWithAdInfo:error:] instead.
+     */
+    @Deprecated
     @Method(selector = "didFailToShowWithError:andAdInfo:")
     void didFailToShow(NSError error, ISAdInfo adInfo);
+    /**
+     * @deprecated Use [LPMRewardedAdDelegate didDisplayAdWithAdInfo:] instead.
+     */
+    @Deprecated
     @Method(selector = "didOpenWithAdInfo:")
     void didOpen(ISAdInfo adInfo);
+    /**
+     * @deprecated Use [LPMRewardedAdDelegate didClickAdWithAdInfo:] instead.
+     */
+    @Deprecated
     @Method(selector = "didClick:withAdInfo:")
     void didClick(ISPlacementInfo placementInfo, ISAdInfo adInfo);
+    /**
+     * @deprecated Use [LPMRewardedAdDelegate didCloseAdWithAdInfo:] instead.
+     */
+    @Deprecated
     @Method(selector = "didCloseWithAdInfo:")
     void didClose(ISAdInfo adInfo);
     /*</methods>*/

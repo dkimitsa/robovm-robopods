@@ -29,6 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 #define kImpressionDataKeyConversionValue @"conversionValue"
 #define kImpressionDataKeyCreativeId @"creativeId"
 
+DEPRECATED_MSG_ATTRIBUTE("Use LPMImpressionData instead.")
 @interface ISImpressionData : NSObject
 
 @property(readonly, copy) NSString* _Nullable auction_id;

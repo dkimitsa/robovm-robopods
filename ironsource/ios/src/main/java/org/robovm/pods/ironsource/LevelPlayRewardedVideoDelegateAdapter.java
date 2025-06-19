@@ -51,8 +51,16 @@ import org.robovm.apple.coreanimation.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
+    /**
+     * @deprecated No replacement available.
+     */
+    @Deprecated
     @NotImplemented("hasAvailableAdWithAdInfo:")
     public void hasAvailableAd(ISAdInfo adInfo) {}
+    /**
+     * @deprecated No replacement available.
+     */
+    @Deprecated
     @NotImplemented("hasNoAvailableAd")
     public void hasNoAvailableAd() {}
     /*</methods>*/

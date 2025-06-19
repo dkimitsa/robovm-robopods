@@ -34,9 +34,11 @@ import org.robovm.apple.coreanimation.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
+/**
+ * @deprecated Use LPMRewardedAdDelegate instead.
+ */
 /*</javadoc>*/
-/*<annotations>*//*</annotations>*/
+/*<annotations>*/@Deprecated/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ interface /*<name>*/LevelPlayRewardedVideoDelegate/*</name>*/ 
     /*<implements>*/extends LevelPlayRewardedVideoBaseDelegate/*</implements>*/ {
 
@@ -49,8 +51,16 @@ import org.robovm.apple.coreanimation.*;
     
     /*</properties>*/
     /*<methods>*/
+    /**
+     * @deprecated No replacement available.
+     */
+    @Deprecated
     @Method(selector = "hasAvailableAdWithAdInfo:")
     void hasAvailableAd(ISAdInfo adInfo);
+    /**
+     * @deprecated No replacement available.
+     */
+    @Deprecated
     @Method(selector = "hasNoAvailableAd")
     void hasNoAvailableAd();
     /*</methods>*/

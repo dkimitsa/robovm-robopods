@@ -7,6 +7,7 @@
 
 #import <Foundation/Foundation.h>
 
+DEPRECATED_MSG_ATTRIBUTE("This class will be made private in version 9.0.0.")
 @interface ISEventsReporting : NSObject
 
 + (void)reportAppStarted DEPRECATED_MSG_ATTRIBUTE("");

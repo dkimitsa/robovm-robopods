@@ -8,6 +8,7 @@
 #import <Foundation/Foundation.h>
 NS_ASSUME_NONNULL_BEGIN
 
+DEPRECATED_MSG_ATTRIBUTE("This class is deprecated and will be removed in version 9.0.0.")
 @interface ISAdUnit : NSObject <NSCopying>
 
 @property(strong, nonatomic) NSString *value;

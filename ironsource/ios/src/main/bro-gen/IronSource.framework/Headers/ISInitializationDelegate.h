@@ -8,6 +8,7 @@
 #ifndef ISInitializationDelegate_h
 #define ISInitializationDelegate_h
 
+DEPRECATED_MSG_ATTRIBUTE("Use LPMInitCompletionHandler instead.")
 @protocol ISInitializationDelegate <NSObject>
 
 @required

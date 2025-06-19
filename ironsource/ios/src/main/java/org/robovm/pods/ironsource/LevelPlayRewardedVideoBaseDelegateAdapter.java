@@ -51,14 +51,34 @@ import org.robovm.apple.coreanimation.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
+    /**
+     * @deprecated Use [LPMRewardedAdDelegate didRewardAdWithAdInfo:reward:] instead.
+     */
+    @Deprecated
     @NotImplemented("didReceiveRewardForPlacement:withAdInfo:")
     public void didReceiveReward(ISPlacementInfo placementInfo, ISAdInfo adInfo) {}
+    /**
+     * @deprecated Use [LPMRewardedAdDelegate didFailToDisplayAdWithAdInfo:error:] instead.
+     */
+    @Deprecated
     @NotImplemented("didFailToShowWithError:andAdInfo:")
     public void didFailToShow(NSError error, ISAdInfo adInfo) {}
+    /**
+     * @deprecated Use [LPMRewardedAdDelegate didDisplayAdWithAdInfo:] instead.
+     */
+    @Deprecated
     @NotImplemented("didOpenWithAdInfo:")
     public void didOpen(ISAdInfo adInfo) {}
+    /**
+     * @deprecated Use [LPMRewardedAdDelegate didClickAdWithAdInfo:] instead.
+     */
+    @Deprecated
     @NotImplemented("didClick:withAdInfo:")
     public void didClick(ISPlacementInfo placementInfo, ISAdInfo adInfo) {}
+    /**
+     * @deprecated Use [LPMRewardedAdDelegate didCloseAdWithAdInfo:] instead.
+     */
+    @Deprecated
     @NotImplemented("didCloseWithAdInfo:")
     public void didClose(ISAdInfo adInfo) {}
     /*</methods>*/
