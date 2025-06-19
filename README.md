@@ -51,7 +51,7 @@ v1.50.0 - in development
 | [ClearAds](cleverads/)          | 4.1.0   |
 | [Facebook](facebook/)           | 18.0.0  |
 | [Firebase](firebase/)           | 11.14.0 |
-| [Fyber](fyber/)                 | 8.3.6   |
+| [Fyber](fyber/)                 | 8.3.7   |
 | [HelpShiftX](helpshift/)        | 10.4.0  |
 | [InMobi](inmobi/)               | 10.8.3  |
 | [IronSource](ironsource/)       | 8.8.0   |
