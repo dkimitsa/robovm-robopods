@@ -1,4 +1,3 @@
-
 @protocol UADSJsonStorageContentsReader <NSObject>
 - (NSDictionary *)getContents;
 @end

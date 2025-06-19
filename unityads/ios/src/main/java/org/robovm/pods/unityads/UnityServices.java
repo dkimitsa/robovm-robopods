@@ -66,6 +66,8 @@ import org.robovm.apple.coreanimation.*;
     public static native String getVersion();
     @Method(selector = "isInitialized")
     public static native boolean isInitialized();
+    @Method(selector = "adsGatewayEnabled")
+    public static native boolean adsGatewayEnabled();
     @Method(selector = "load:options:loadDelegate:")
     public static native void load(String placementId, UADSLoadOptions options, UnityAdsLoadDelegate loadDelegate);
     @Method(selector = "show:placementId:options:showDelegate:")
@@ -74,5 +76,7 @@ import org.robovm.apple.coreanimation.*;
     public static native String getToken();
     @Method(selector = "getToken:")
     public static native void getToken(@Block VoidBlock1<NSString> completion);
+    @Method(selector = "getToken:completion:")
+    public static native void getToken(UADSAdFormat adFormat, @Block VoidBlock1<NSString> completion);
     /*</methods>*/
 }

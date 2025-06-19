@@ -30,6 +30,8 @@ enums:
     UPURStore: { prefix: kUPURStore }
     UnityAdsPurchasingEvent: { prefix: kUnityAdsPurchasingEvent }
     USRVInitializeStateType: {}
+    UADSAdFormat: { }
+    UnityAdsAdFormat: { }
 classes:
     UADSBannerError:
         skip_def_constructor: true
@@ -94,6 +96,8 @@ classes:
                 name: show
             '+show:placementId:options:showDelegate:':
                 name: show
+            '+getTokenWith:completion:':
+                name: getToken
     UnityAdsBanner: { }
     UnityAdsDelegateUtil:
         methods:
@@ -131,6 +135,8 @@ classes:
                 name: load
             '+show:placementId:options:showDelegate:':
                 name: show
+            '+getToken:completion:':
+                name: getToken
     UnityServicesListener: { }
     USRVInitializeStateFactory:
         methods:
@@ -146,6 +152,15 @@ classes:
                 constructor: true
     LoggerWrapper: { }
     SDKConfigurationStorageObjcBridge: { }
+    UnityAdsTokenConfiguration:
+        methods:
+            '-initWithAdFormat:extras:':
+                name: init
+            '+newWithAdFormat:':
+                name: create
+                constructor: true
+            '+newWithAdFormat:extras:':
+                exclude: true
 protocols:
     UADSBannerAdRefreshViewDelegate:
         methods:
