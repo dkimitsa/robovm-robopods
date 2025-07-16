@@ -567,7 +567,6 @@ typedef SWIFT_ENUM_NAMED(NSInteger, CASSourceId, "AdSourceId", open) {
   CASSourceIdChartboost = 3,
   CASSourceIdUnityAds = 4,
   CASSourceIdAppLovin = 5,
-  CASSourceIdSuperAwesome = 6,
   CASSourceIdStartIO = 7,
   CASSourceIdCasExchange = 8,
   CASSourceIdAudienceNetwork = 9,
@@ -1499,8 +1498,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 + (NSString * _Nonnull)unityAds SWIFT_WARN_UNUSED_RESULT;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull appLovin;)
 + (NSString * _Nonnull)appLovin SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull superAwesome;)
-+ (NSString * _Nonnull)superAwesome SWIFT_WARN_UNUSED_RESULT;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull meta;)
 + (NSString * _Nonnull)meta SWIFT_WARN_UNUSED_RESULT;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull inMobi;)
