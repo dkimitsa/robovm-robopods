@@ -195,8 +195,8 @@ import org.robovm.apple.coreanimation.*;
     public native void logEvent(String eventName, NSDictionary<NSString, ?> eventValues, @Block VoidBlock2<NSDictionary<NSString, ?>, NSError> completionHandler);
     @Method(selector = "validateAndLogInAppPurchase:price:currency:transactionId:additionalParameters:success:failure:")
     public native void validateAndLogInAppPurchase(String productIdentifier, String price, String currency, String transactionId, NSDictionary<?, ?> params, @Block VoidBlock1<NSDictionary<?, ?>> successBlock, @Block VoidBlock2<NSError, NSObject> failedBlock);
-    @Method(selector = "validateAndLogInAppPurchase:extraEventValues:completionHandler:")
-    public native void validateAndLogInAppPurchase(AFSDKPurchaseDetails details, NSDictionary<?, ?> extraEventValues, @Block VoidBlock1<AFSDKValidateAndLogResult> completionHandler);
+    @Method(selector = "validateAndLogInAppPurchase:purchaseAdditionalDetails:completion:")
+    public native void validateAndLogInAppPurchase(AFSDKPurchaseDetails purchaseDetails, NSDictionary<?, ?> purchaseAdditionalDetails, @Block VoidBlock2<NSDictionary<?, ?>, NSError> completion);
     @Method(selector = "logAdRevenue:additionalParameters:")
     public native void logAdRevenue(AFAdRevenueData adRevenueData, NSDictionary<?, ?> additionalParameters);
     @Method(selector = "logLocation:latitude:")

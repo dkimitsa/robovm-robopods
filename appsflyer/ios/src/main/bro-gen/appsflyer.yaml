@@ -17,6 +17,7 @@ enums:
     AppsFlyerAdRevenueMediationNetworkType: {}
     EmailCryptType: {}
     AFSDKPlugin: {}
+    AFSDKPurchaseType: {}
 classes:
     AFAdRevenueData:
         methods:
@@ -25,6 +26,8 @@ classes:
     AFSDKPurchaseDetails:
         methods:
             '-initWithProductId:price:currency:transactionId:':
+                name: init
+            '-initWithProductId:transactionId:purchaseType:':
                 name: init
     AFSDKValidateAndLogResult:
         methods:
@@ -95,6 +98,8 @@ classes:
                 name: appendParametersToDeepLinkingURL
             '-setPartnerDataWithPartnerId:partnerInfo:':
                 name: setPartnerData
+            '-validateAndLogInAppPurchase:purchaseAdditionalDetails:completion:':
+                name: validateAndLogInAppPurchase
     AppsFlyerLinkGenerator:
         methods:
             '-addParameterValue:forKey:':
@@ -110,6 +115,9 @@ protocols:
     AppsFlyerLibDelegate: { }
 
 functions:
+    StringFromAFSDKPurchaseType:
+        class: AFSDKPurchaseType
+        name: toString
     # Make sure we don't miss any functions if new ones are introduced in a later version
     (.*):
         class: __FixMe

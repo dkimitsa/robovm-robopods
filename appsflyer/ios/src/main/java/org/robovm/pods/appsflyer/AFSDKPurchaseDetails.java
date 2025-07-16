@@ -48,30 +48,20 @@ import org.robovm.apple.coreanimation.*;
     protected AFSDKPurchaseDetails() {}
     protected AFSDKPurchaseDetails(Handle h, long handle) { super(h, handle); }
     protected AFSDKPurchaseDetails(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithProductId:price:currency:transactionId:")
-    public AFSDKPurchaseDetails(String productId, String price, String currency, String transactionId) { super((SkipInit) null); initObject(init(productId, price, currency, transactionId)); }
+    @Method(selector = "initWithProductId:transactionId:purchaseType:")
+    public AFSDKPurchaseDetails(String productId, String transactionId, AFSDKPurchaseType purchaseType) { super((SkipInit) null); initObject(init(productId, transactionId, purchaseType)); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "productId")
     public native String getProductId();
-    @Property(selector = "setProductId:")
-    public native void setProductId(String v);
-    @Property(selector = "price")
-    public native String getPrice();
-    @Property(selector = "setPrice:")
-    public native void setPrice(String v);
-    @Property(selector = "currency")
-    public native String getCurrency();
-    @Property(selector = "setCurrency:")
-    public native void setCurrency(String v);
     @Property(selector = "transactionId")
     public native String getTransactionId();
-    @Property(selector = "setTransactionId:")
-    public native void setTransactionId(String v);
+    @Property(selector = "purchaseType")
+    public native AFSDKPurchaseType getPurchaseType();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "initWithProductId:price:currency:transactionId:")
-    protected native @Pointer long init(String productId, String price, String currency, String transactionId);
+    @Method(selector = "initWithProductId:transactionId:purchaseType:")
+    protected native @Pointer long init(String productId, String transactionId, AFSDKPurchaseType purchaseType);
     /*</methods>*/
 }

@@ -13,6 +13,7 @@
 #import <AppsFlyerLib/AppsFlyerDeepLinkResult.h>
 #import <AppsFlyerLib/AppsFlyerDeepLink.h>
 #import <AppsFlyerLib/AFSDKPurchaseDetails.h>
+#import <AppsFlyerLib/AFSDKPurchaseType.h>
 #import <AppsFlyerLib/AFSDKValidateAndLogResult.h>
 #import <AppsFlyerLib/AFAdRevenueData.h>
 
@@ -491,16 +492,28 @@ NS_SWIFT_NAME(logEvent(name:values:completionHandler:));
 typedef void (^AFSDKValidateAndLogCompletion)(AFSDKValidateAndLogResult * _Nullable result);
 
 /**
- To log and validate in app purchases you can call this method from the completeTransaction: method on
- your `SKPaymentTransactionObserver`.
+ Validates and logs an in-app purchase using the updated VAL V2 flow.
+
+ This method should be called after a successful transaction, typically from:
+ - `paymentQueue:updatedTransactions:` in your `SKPaymentTransactionObserver` (StoreKit 1)
+ - `transaction.listener` or `.finishTransaction()` or  `VerificationResult<SignedType>` in StoreKit 2 (iOS 15+)
+
+ @param purchaseDetails a `AFSDKPurchaseDetails` object. Must include:
+    - `productId` (non-empty)
+    - `transactionId` (non-empty)
+    - `purchaseType` ( `.subscription`, `.oneTimePurchase`)
  
- @param details The product details
- @param extraEventValues The additional param, which you want to receive it in the raw reports
- @param completionHandler The callback
+ @param purchaseAdditionalDetails Optional metadata associated with the purchase
+ (previously known as `extraEventValues`). This can include custom app-level context.
+
+ @param completion Completion block with either a response dictionary or an NSError.
+ On success: `response` contains a parsed result.
+ On failure: `error` describes the reason (validation failure, networking issue...)
  */
-- (void)validateAndLogInAppPurchase:(AFSDKPurchaseDetails *)details
-                   extraEventValues:(NSDictionary * _Nullable)extraEventValues
-                  completionHandler:(AFSDKValidateAndLogCompletion)completionHandler NS_AVAILABLE(10_7, 7_0);
+- (void)validateAndLogInAppPurchase:(AFSDKPurchaseDetails *)purchaseDetails
+          purchaseAdditionalDetails:(NSDictionary * _Nullable)purchaseAdditionalDetails
+                         completion:(void (^)(NSDictionary * _Nullable response, NSError * _Nullable error))completion
+NS_SWIFT_NAME(validateAndLogInAppPurchase(purchaseDetails:purchaseAdditionalDetails:completion:));
 
 /**
  An API to provide the data from the impression payload to AdRevenue.
