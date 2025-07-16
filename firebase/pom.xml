@@ -26,7 +26,6 @@
         <module>ios-google-mobile-ads</module>
         <module>ios-crashlytics</module>
         <module>ios-auth</module>
-        <module>ios-dylinks</module>
         <module>ios-remoteconfig</module>
         <module>ios-google-sign-in</module>
         <module>ios-messaging</module>

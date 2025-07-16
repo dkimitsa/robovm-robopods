@@ -576,8 +576,6 @@ SWIFT_CLASS_NAMED("StorageMetadata") SWIFT_AVAILABILITY(watchos,introduced=7) SW
 @property (nonatomic, readonly, copy) NSDate * _Nullable timeCreated;
 /// The modification time of the object metadata in RFC 3339 format.
 @property (nonatomic, readonly, copy) NSDate * _Nullable updated;
-/// Never used API
-@property (nonatomic, readonly, strong) FIRStorageReference * _Nullable storageReference SWIFT_DEPRECATED;
 /// Creates a Dictionary from the contents of the metadata.
 /// @return A Dictionary that represents the contents of the metadata.
 - (NSDictionary<NSString *, NSObject *> * _Nonnull)dictionaryRepresentation SWIFT_WARN_UNUSED_RESULT;

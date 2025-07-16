@@ -65,6 +65,8 @@ classes:
                 name: signIn
             '-signInWithPresentingViewController:hint:additionalScopes:completion:':
                 name: signIn
+            '-signInWithPresentingViewController:hint:additionalScopes:nonce:completion:':
+                name: signIn
             '-configureWithCompletion:':
                 name: configure
             '-configureDebugProviderWithAPIKey:completion:':

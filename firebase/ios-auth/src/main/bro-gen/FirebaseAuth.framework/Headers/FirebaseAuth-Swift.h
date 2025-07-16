@@ -361,8 +361,6 @@ SWIFT_CLASS_NAMED("ActionCodeSettings")
 @property (nonatomic, copy) NSString * _Nullable androidMinimumVersion;
 /// Indicates whether the Android app should be installed on a device where it is not available.
 @property (nonatomic) BOOL androidInstallIfNotAvailable;
-/// The Firebase Dynamic Link domain used for out of band code flow.
-@property (nonatomic, copy) NSString * _Nullable dynamicLinkDomain SWIFT_DEPRECATED_MSG("Firebase Dynamic Links is deprecated. Migrate to use Firebase Hosting link and use `linkDomain` to set a custom domain instead.");
 /// The out of band custom domain for handling code in app.
 @property (nonatomic, copy) NSString * _Nullable linkDomain;
 /// Sets the iOS bundle ID.
@@ -380,7 +378,6 @@ SWIFT_CLASS_NAMED("ActionCodeSettings")
 ///
 - (void)setAndroidPackageName:(NSString * _Nonnull)androidPackageName installIfNotAvailable:(BOOL)installIfNotAvailable minimumVersion:(NSString * _Nullable)minimumVersion;
 @end
-
 
 
 
@@ -1241,8 +1238,6 @@ typedef SWIFT_ENUM_NAMED(NSInteger, FIRAuthErrorCode, "AuthErrorCode", open) {
 /// Indicates that a non-null user was expected as an argument to the operation but a null
 /// user was provided.
   FIRAuthErrorCodeNullUser = 17067,
-/// Indicates that a Firebase Dynamic Link is not activated.
-  FIRAuthErrorCodeDynamicLinkNotActivated = 17068,
 /// Represents the error code for when the given provider id for a web operation is invalid.
   FIRAuthErrorCodeInvalidProviderID = 17071,
 /// Represents the error code for when an attempt is made to update the current user with a
@@ -1251,9 +1246,6 @@ typedef SWIFT_ENUM_NAMED(NSInteger, FIRAuthErrorCode, "AuthErrorCode", open) {
 /// Represents the error code for when a request is made to the backend with an associated tenant
 /// ID for an operation that does not support multi-tenancy.
   FIRAuthErrorCodeUnsupportedTenantOperation = 17073,
-/// Indicates that the Firebase Dynamic Link domain used is either not configured or is
-/// unauthorized for the current project.
-  FIRAuthErrorCodeInvalidDynamicLinkDomain = 17074,
 /// Indicates that the provided Firebase Hosting Link domain is not owned by the current project.
   FIRAuthErrorCodeInvalidHostingLinkDomain = 17214,
 /// Indicates that the credential is rejected because it’s malformed or mismatching.

@@ -85,5 +85,7 @@ import org.robovm.apple.coreanimation.*;
     public native void signIn(UIViewController presentingViewController, String hint, @Block VoidBlock2<GIDSignInResult, NSError> completion);
     @Method(selector = "signInWithPresentingViewController:hint:additionalScopes:completion:")
     public native void signIn(UIViewController presentingViewController, String hint, NSArray<NSString> additionalScopes, @Block VoidBlock2<GIDSignInResult, NSError> completion);
+    @Method(selector = "signInWithPresentingViewController:hint:additionalScopes:nonce:completion:")
+    public native void signIn(UIViewController presentingViewController, String hint, NSArray<NSString> additionalScopes, String nonce, @Block VoidBlock2<GIDSignInResult, NSError> completion);
     /*</methods>*/
 }

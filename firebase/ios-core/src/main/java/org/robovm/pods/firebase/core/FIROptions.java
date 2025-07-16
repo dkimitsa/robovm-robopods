@@ -63,12 +63,6 @@ import org.robovm.apple.foundation.*;
     public native String getClientID();
     @Property(selector = "setClientID:")
     public native void setClientID(String v);
-    @Deprecated
-    @Property(selector = "trackingID")
-    public native String getTrackingID();
-    @Deprecated
-    @Property(selector = "setTrackingID:")
-    public native void setTrackingID(String v);
     @Property(selector = "GCMSenderID")
     public native String getGCMSenderID();
     @Property(selector = "setGCMSenderID:")
@@ -77,12 +71,6 @@ import org.robovm.apple.foundation.*;
     public native String getProjectID();
     @Property(selector = "setProjectID:")
     public native void setProjectID(String v);
-    @Deprecated
-    @Property(selector = "androidClientID")
-    public native String getAndroidClientID();
-    @Deprecated
-    @Property(selector = "setAndroidClientID:")
-    public native void setAndroidClientID(String v);
     @Property(selector = "googleAppID")
     public native String getGoogleAppID();
     @Property(selector = "setGoogleAppID:")
@@ -91,10 +79,6 @@ import org.robovm.apple.foundation.*;
     public native String getDatabaseURL();
     @Property(selector = "setDatabaseURL:")
     public native void setDatabaseURL(String v);
-    @Property(selector = "deepLinkURLScheme")
-    public native String getDeepLinkURLScheme();
-    @Property(selector = "setDeepLinkURLScheme:")
-    public native void setDeepLinkURLScheme(String v);
     @Property(selector = "storageBucket")
     public native String getStorageBucket();
     @Property(selector = "setStorageBucket:")

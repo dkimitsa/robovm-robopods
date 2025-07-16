@@ -94,9 +94,6 @@ import org.robovm.apple.dispatch.*;
     public native NSDate getTimeCreated();
     @Property(selector = "updated")
     public native NSDate getUpdated();
-    @Deprecated
-    @Property(selector = "storageReference")
-    public native FIRStorageReference getStorageReference();
     @Property(selector = "isFile")
     public native boolean isFile();
     @Property(selector = "isFolder")
