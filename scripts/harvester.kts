@@ -248,31 +248,6 @@ val knownFrameworks = mutableMapOf<String, (String) -> Unit>(
             """.trimIndent()
         )
     },
-    "GoogleMobileAdsMediationTestSuite" to { framework ->
-        val artifact = "$framework.framework"
-        val artifactLocation = downloadFolder.extend("googlemobileadsmediationtestsuiteios/GoogleMobileAdsMediationTestSuite.xcframework/ios-arm64_armv7/$artifact")
-        processFramework(
-            artifact = artifact,
-            moduleFolder = "firebase/ios-google-mobile-ads-mediation-testsuite",
-            sourceHeadersDir = artifactLocation.headers,
-            yaml = "gad-mediation-testsuite.yaml",
-            version = {
-                downloadFolder.extend("googlemobileadsmediationtestsuiteios/CHANGELOG.md").readLines()
-                    .find { it.contains("### ") }
-                    ?.let { it.substringAfter("### ") }
-                    ?: error("Failed to extract version from CHANGELOG.md!")
-            },
-            instruction = """
-                1. download iOS sdk from https://developers.google.com/admob/ios/mediation-test-suite
-                2. unpack 
-                3. expected location ${downloadFolder.extend("googlemobileadsmediationtestsuiteios")}
-            """.trimIndent(),
-            readmeFileVersionUpdater = { frm, modFolder, version ->
-                val moduleReadmeFile = Path.of("Firebase/README.md").toFile()
-                updateModuleReadmeFileVersionString(frm, moduleReadmeFile, modFolder, version)
-            }
-        )
-    },
     "IASDKCore" to { framework ->
         val artifactLocation = downloadFolder.extend("InneractiveAdSDK-iOS-master/$framework/$framework.xcframework/ios-arm64/$framework.framework")
         processFramework(
@@ -453,13 +428,11 @@ val knownFrameworks = mutableMapOf<String, (String) -> Unit>(
             """.trimIndent(),
         )
     },
-
-
-    ).also {
+).also {
     registerAppCenter(it, knownGroups)
     registerFirebase(it, knownGroups)
     registerFacebook(it, knownGroups)
-    registerMobileAdsMediationAdapters(it, knownGroups)
+    registerMobileAds(it, knownGroups)
 }
 
 
@@ -1104,7 +1077,6 @@ fun registerFirebase(frameworkRegistry: MutableMap<String, (String) -> Unit>, gr
         )
     }
     registry["FirebaseDatabase"] = { framework -> action(framework, "firebase/ios-database", "firebasedatabase.yaml") }
-    registry["FirebaseDynamicLinks"] = { framework -> action(framework, "firebase/ios-dylinks", "firebasedylinks.yaml") }
     registry["FirebaseFirestore"] = { framework ->
         action(framework,
             moduleFolder = "firebase/ios-firestore",
@@ -1133,11 +1105,6 @@ fun registerFirebase(frameworkRegistry: MutableMap<String, (String) -> Unit>, gr
     registry["FirebaseMessaging"] = { framework -> action(framework, "firebase/ios-messaging", "firebase-messaging.yaml") }
     registry["FirebaseRemoteConfig"] = { framework -> action(framework, "firebase/ios-remoteconfig", "firebase-remoteconfig.yaml") }
     registry["FirebaseStorage"] = { framework -> action(framework, "firebase/ios-storage", "firebasestorage.yaml") }
-    registry["GoogleMobileAds"] = { framework ->
-        action(framework, "firebase/ios-google-mobile-ads", "gad.yaml",
-            versionKey = "Google-Mobile-Ads-SDK",
-            frameworkLocation = pickLocation("GoogleMobileAds", "Google-Mobile-Ads-SDK"))
-    }
     registry["GoogleSignIn"] = { framework ->
         action(framework,
             moduleFolder = "firebase/ios-google-sign-in", "firebase-google-sign-in.yaml",
@@ -1162,11 +1129,6 @@ fun registerFirebase(frameworkRegistry: MutableMap<String, (String) -> Unit>, gr
                     pickLocation("GTMSessionFetcher", "GoogleSignIn").extend("Headers"), instruction, optional)
             },
         )
-    }
-    registry["UserMessagingPlatform"] = { framework ->
-        action(framework, "firebase/ios-google-ump", "firebase-ump.yaml",
-            versionKey = "GoogleUserMessagingPlatform",
-            frameworkLocation = pickLocation("UserMessagingPlatform", "Google-Mobile-Ads-SDK"))
     }
     registry["FirebaseAppCheck"] = { framework ->
         action(framework, "firebase/ios-appcheck", "firebase-appcheck.yaml",
@@ -1207,10 +1169,81 @@ fun registerFirebase(frameworkRegistry: MutableMap<String, (String) -> Unit>, gr
     }
 }
 
-fun registerMobileAdsMediationAdapters(frameworkRegistry: MutableMap<String, (String) -> Unit>, groupRegistry: MutableMap<String, MutableList<String>>) {
-    val registry = GroupFrameworkRegister("FirebaseAdsAdapters", frameworkRegistry, groupRegistry)
+fun registerMobileAds(frameworkRegistry: MutableMap<String, (String) -> Unit>, groupRegistry: MutableMap<String, MutableList<String>>) {
+    val adsRegistry = GroupFrameworkRegister("GAD", frameworkRegistry, groupRegistry)
+    fun instructions(location: String) = """
+                1. download iOS sdk from https://developers.google.com/admob/ios/download
+                2. unpack 
+                3. rename to GoogleMobileAdsSdkiOS
+                3. expected location $location}
+            """.trimIndent()
+    adsRegistry["GoogleMobileAds"] = { framework ->
+        val artifact = "$framework.framework"
+        val artifactLocation = downloadFolder.extend("GoogleMobileAdsSdkiOS/GoogleMobileAds.xcframework/ios-arm64/$artifact")
+        processFramework(
+            artifact = artifact,
+            moduleFolder = "google-mobile-ads/ios-google-mobile-ads",
+            sourceHeadersDir = artifactLocation.headers,
+            yaml = "gad.yaml",
+            version = { artifactLocation.infoPlist.extractVersion(versionKey = "CFBundleShortVersionString") },
+            instruction = instructions(artifactLocation.toString()),
+            readmeFileVersionUpdater = { frm, modFolder, version ->
+                val moduleReadmeFile = Path.of("google-mobile-ads/README.md").toFile()
+                updateModuleReadmeFileVersionString(frm, moduleReadmeFile, modFolder, version)
+                updateReadmeFileVersionString(frm, "google-mobile-ads", version)
+            }
+        )
+    }
+    adsRegistry["UserMessagingPlatform"] = { framework ->
+        val artifact = "$framework.framework"
+        val artifactLocation = downloadFolder.extend("GoogleMobileAdsSdkiOS/UserMessagingPlatform.xcframework/ios-arm64/$artifact")
+        processFramework(
+            artifact = artifact,
+            moduleFolder = "google-mobile-ads/ios-google-ump",
+            sourceHeadersDir = artifactLocation.headers,
+            yaml = "firebase-ump.yaml",
+            version = { artifactLocation.infoPlist.extractVersion(versionKey = "CFBundleShortVersionString") },
+            instruction = instructions(artifactLocation.toString()),
+            readmeFileVersionUpdater = { frm, modFolder, version ->
+                val moduleReadmeFile = Path.of("google-mobile-ads/README.md").toFile()
+                updateModuleReadmeFileVersionString(frm, moduleReadmeFile, modFolder, version)
+            }
+        )
+    }
+
+    /// test suite as single framework (without group)
+    frameworkRegistry["GoogleMobileAdsMediationTestSuite"] = { framework ->
+        val artifact = "$framework.framework"
+        val artifactLocation = downloadFolder.extend("googlemobileadsmediationtestsuiteios/GoogleMobileAdsMediationTestSuite.xcframework/ios-arm64_armv7/$artifact")
+        processFramework(
+            artifact = artifact,
+            moduleFolder = "firebase/ios-google-mobile-ads-mediation-testsuite",
+            sourceHeadersDir = artifactLocation.headers,
+            yaml = "gad-mediation-testsuite.yaml",
+            version = {
+                downloadFolder.extend("googlemobileadsmediationtestsuiteios/CHANGELOG.md").readLines()
+                    .find { it.contains("### ") }
+                    ?.let { it.substringAfter("### ") }
+                    ?: error("Failed to extract version from CHANGELOG.md!")
+            },
+            instruction = """
+                1. download iOS sdk from https://developers.google.com/admob/ios/mediation-test-suite
+                2. unpack 
+                3. expected location ${downloadFolder.extend("googlemobileadsmediationtestsuiteios")}
+            """.trimIndent(),
+            readmeFileVersionUpdater = { frm, modFolder, version ->
+                val moduleReadmeFile = Path.of("Firebase/README.md").toFile()
+                updateModuleReadmeFileVersionString(frm, moduleReadmeFile, modFolder, version)
+            }
+        )
+    }
+
+    ///
+    /// Register adapters as separate group
+    ///
+    val adaptersRegistry = GroupFrameworkRegister("FirebaseAdsAdapters", frameworkRegistry, groupRegistry)
     val moduleReadmeFile = Path.of("firebase/ios-google-mobile-ads-adapters/README.md").toFile()
-    registry["AppLovinAdapter"] = { framework ->
+    adaptersRegistry["AppLovinAdapter"] = { framework ->
         val artifact = "$framework.framework"
         val artifactLocation =
             downloadFolder.extend("AppLovinAdapter/AppLovinAdapter.xcframework/ios-arm64/$artifact")
@@ -1230,7 +1263,7 @@ fun registerMobileAdsMediationAdapters(frameworkRegistry: MutableMap<String, (St
             }
         )
     }
-    registry["MetaAdapter"] = { framework ->
+    adaptersRegistry["MetaAdapter"] = { framework ->
         val artifact = "$framework.framework"
         val artifactLocation =
             downloadFolder.extend("MetaAdapter/MetaAdapter.xcframework/ios-arm64/$artifact")
@@ -1250,7 +1283,7 @@ fun registerMobileAdsMediationAdapters(frameworkRegistry: MutableMap<String, (St
             },
         )
     }
-    registry["InMobiAdapter"] = { framework ->
+    adaptersRegistry["InMobiAdapter"] = { framework ->
         val artifact = "$framework.framework"
         val artifactLocation =
             downloadFolder.extend("InMobiAdapter/InMobiAdapter.xcframework/ios-arm64/$artifact")

@@ -4,10 +4,10 @@
     <parent>
         <groupId>io.github.dkimitsa.robovm</groupId>
         <version>1.51.0-SNAPSHOT</version>
-        <artifactId>robopods-parent</artifactId>
+        <artifactId>robopods-google-mobile-ads-parent</artifactId>
     </parent>
 
-    <artifactId>robopods-firebase-parent</artifactId>
+    <artifactId>robopods-google-mobile-ads-adapters-parent</artifactId>
     <name>RoboPods Firebase Parent</name>
     <packaging>pom</packaging>
 
@@ -20,17 +20,8 @@
     </licenses>
 
     <modules>
-        <module>ios-core</module>
-        <module>ios-analytics</module>
-        <module>ios-database</module>
-        <module>ios-crashlytics</module>
-        <module>ios-auth</module>
-        <module>ios-remoteconfig</module>
-        <module>ios-google-sign-in</module>
-        <module>ios-messaging</module>
-        <module>ios-firestore</module>
-        <module>ios-storage</module>
-        <module>ios-appcheck</module>
-        <module>ios-installations</module>
+        <module>ios-inmobi</module>
+        <module>ios-applovin</module>
+        <module>ios-facebook</module>
     </modules>
 </project>

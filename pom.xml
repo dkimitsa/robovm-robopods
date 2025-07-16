@@ -228,7 +228,7 @@
         <module>tenjin</module>
         <module>cleverads</module>
         <module>appsflyer</module>
-        <!-- Firebase to be kept last, as its Ads adapters depend on facebook/inmobi/applovinsdk -->
         <module>firebase</module>
+        <module>google-mobile-ads</module>
     </modules>
 </project>

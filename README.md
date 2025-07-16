@@ -39,29 +39,31 @@ This is the list of currently available AltPods. Click them to get more informat
 ## Version of AltPods to framework version mapping
 
 v1.51.0 - in development 
-| Name                            | 1.51.0  |
-|---------------------------------|---------|
-| [AdaptySDK](adapty/)            | 1.17.7  |
-| [AppCenter](appcenter/)         | 5.0.6   |
-| [AppLovinSDK](applovinsdk/)     | 13.3.1  |
-| [AppsFlyer](appsflyer/)         | 6.17.0  |
-| [Azure](azure/)                 | 3.1.4   |
-| [BranchMetrics](branchmetrics/) | 3.12.1  |
-| [Charts](charts/)               | 5.1.0   |
-| [ClearAds](cleverads/)          | 4.1.0   |
-| [Facebook](facebook/)           | 18.0.0  |
-| [Firebase](firebase/)           | 12.0.0  |
-| [Fyber](fyber/)                 | 8.3.7   |
-| [HelpShiftX](helpshift/)        | 10.4.0  |
-| [InMobi](inmobi/)               | 10.8.3  |
-| [IronSource](ironsource/)       | 8.9.1   |
-| [Lottie](lottie/)               | 4.5.2   |
-| [OneSignal](onesignal/)         | 5.2.14  |
-| [Pollfish](pollfish/)           | 6.5.0   |
-| [SAMKeychain](samkeychain/)     | 1.5.3   |
-| [Singular](singular/)           | 12.8.1  |
-| [Tenjin](tenjin/)               | 1.14.10 |
-| [UnityAds](unityads/)           | 4.15.0  |
-| [YouTubePlayer](youtube/)       | 1.0.4   |
+
+| Name                                     | 1.51.0  |
+|------------------------------------------|---------|
+| [AdaptySDK](adapty/)                     | 1.17.7  |
+| [AppCenter](appcenter/)                  | 5.0.6   |
+| [AppLovinSDK](applovinsdk/)              | 13.3.1  |
+| [AppsFlyer](appsflyer/)                  | 6.17.0  |
+| [Azure](azure/)                          | 3.1.4   |
+| [BranchMetrics](branchmetrics/)          | 3.12.1  |
+| [Charts](charts/)                        | 5.1.0   |
+| [ClearAds](cleverads/)                   | 4.1.0   |
+| [Facebook](facebook/)                    | 18.0.0  |
+| [Firebase](firebase/)                    | 12.0.0  |
+| [Fyber](fyber/)                          | 8.3.7   |
+| [Google Mobile Ads](google-mobile-ads/)  | 12.7.0  |
+| [HelpShiftX](helpshift/)                 | 10.4.0  |
+| [InMobi](inmobi/)                        | 10.8.3  |
+| [IronSource](ironsource/)                | 8.9.1   |
+| [Lottie](lottie/)                        | 4.5.2   |
+| [OneSignal](onesignal/)                  | 5.2.14  |
+| [Pollfish](pollfish/)                    | 6.5.0   |
+| [SAMKeychain](samkeychain/)              | 1.5.3   |
+| [Singular](singular/)                    | 12.8.1  |
+| [Tenjin](tenjin/)                        | 1.14.10 |
+| [UnityAds](unityads/)                    | 4.15.0  |
+| [YouTubePlayer](youtube/)                | 1.0.4   |
 
 [Older versions](CHANGELOG.md)

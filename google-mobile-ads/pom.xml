@@ -7,8 +7,8 @@
         <artifactId>robopods-parent</artifactId>
     </parent>
 
-    <artifactId>robopods-firebase-parent</artifactId>
-    <name>RoboPods Firebase Parent</name>
+    <artifactId>robopods-google-mobile-ads-parent</artifactId>
+    <name>RoboPods Google Mobile Ads Parent</name>
     <packaging>pom</packaging>
 
     <licenses>
@@ -20,17 +20,9 @@
     </licenses>
 
     <modules>
-        <module>ios-core</module>
-        <module>ios-analytics</module>
-        <module>ios-database</module>
-        <module>ios-crashlytics</module>
-        <module>ios-auth</module>
-        <module>ios-remoteconfig</module>
-        <module>ios-google-sign-in</module>
-        <module>ios-messaging</module>
-        <module>ios-firestore</module>
-        <module>ios-storage</module>
-        <module>ios-appcheck</module>
-        <module>ios-installations</module>
+        <module>ios-google-mobile-ads</module>
+        <module>ios-google-mobile-ads-adapters</module>
+        <module>ios-google-mobile-ads-mediation-testsuite</module>
+        <module>ios-google-ump</module>
     </modules>
 </project>
