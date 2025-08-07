@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>io.github.dkimitsa.robovm</groupId>
-        <version>1.51.0-SNAPSHOT</version>
+        <version>1.52.0-SNAPSHOT</version>
         <artifactId>robopods-google-mobile-ads-adapters-parent</artifactId>
     </parent>
 
@@ -13,7 +13,7 @@
     <dependencies>
         <dependency>
             <groupId>io.github.dkimitsa.robovm</groupId>
-            <artifactId>robopods-firebase-google-mobile-ads-ios</artifactId>
+            <artifactId>robopods-google-mobile-ads-ios</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
