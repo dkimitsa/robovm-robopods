@@ -66,6 +66,7 @@
 #import "ISAdapterErrors.h"
 #import "ISBaseBanner.h"
 #import "ISBaseInterstitial.h"
+#import "ISBaseNativeAd.h"
 #import "ISBaseNetworkAdapter.h"
 #import "ISBaseRewardedVideo.h"
 #import "ISDataKeys.h"
@@ -112,8 +113,8 @@ NS_ASSUME_NONNULL_BEGIN
 #define IS_BANNER @"banner"
 #define IS_NATIVE_AD @"nativead"
 
-static NSString *const MEDIATION_SDK_VERSION = @"8.9.1";
-static NSString *GitHash = @"b69ddca";
+static NSString *const MEDIATION_SDK_VERSION = @"8.10.0";
+static NSString *GitHash = @"61fa927";
 
 /*
     This constant is for sending an external impression data from mopub
