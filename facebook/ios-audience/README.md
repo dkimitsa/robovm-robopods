@@ -38,7 +38,7 @@ It is available for a download as `FacebookSDK_Dynamic.framework.zip` and allows
 
 | RoboPods Version | FBAudience Version |
 |------------------|--------------------|
-| 1.50.0           | 6.20.0             |
+| 1.50.0-1.52.0    | 6.20.0-6.20.1      |
 | 1.24.0           | 6.11.1             |
 | 1.19.0           | 6.9.0              |
 | 1.12.0           | 6.0.0              |
