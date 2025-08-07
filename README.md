@@ -51,9 +51,9 @@ v1.52.0 - in development
 | [Charts](charts/)                       | 5.1.0   |
 | [CleverAds](cleverads/)                 | 4.1.2   |
 | [Facebook](facebook/)                   | 18.0.0  |
-| [Firebase](firebase/)                   | 12.0.0  |
+| [Firebase](firebase/)                   | 12.1.0  |
 | [Fyber](fyber/)                         | 8.3.8   |
-| [Google Mobile Ads](google-mobile-ads/) | 12.7.0  |
+| [Google Mobile Ads](google-mobile-ads/) | 12.8.0  |
 | [HelpShiftX](helpshift/)                | 10.4.0  |
 | [InMobi](inmobi/)                       | 10.8.3  |
 | [IronSource](ironsource/)               | 8.9.1   |

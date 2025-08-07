@@ -83,3 +83,5 @@ UIApplicationDelegateAdapter:
 
 ## Official website
 https://firebase.google.com/docs/admob/ios/quick-start
+https://developers.google.com/admob/ios/quick-start
+https://developers.google.com/admob/ios/download
