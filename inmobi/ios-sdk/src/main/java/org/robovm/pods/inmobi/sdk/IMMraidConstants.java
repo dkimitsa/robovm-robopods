@@ -37,31 +37,31 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("InMobiSDK.LPConfig")/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/LPConfig/*</name>*/ 
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("InMobiSDK.IMMraidConstants")/*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/IMMraidConstants/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class LPConfigPtr extends Ptr<LPConfig, LPConfigPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(LPConfig.class); }/*</bind>*/
+    /*<ptr>*/public static class IMMraidConstantsPtr extends Ptr<IMMraidConstants, IMMraidConstantsPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(IMMraidConstants.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public LPConfig() {}
-    protected LPConfig(Handle h, long handle) { super(h, handle); }
-    protected LPConfig(SkipInit skipInit) { super(skipInit); }
+    public IMMraidConstants() {}
+    protected IMMraidConstants(Handle h, long handle) { super(h, handle); }
+    protected IMMraidConstants(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
-    @Property(selector = "maxFunnelsToTrackPerAd")
-    public native @MachineSizedSInt long getMaxFunnelsToTrackPerAd();
-    @Property(selector = "setMaxFunnelsToTrackPerAd:")
-    public native void setMaxFunnelsToTrackPerAd(@MachineSizedSInt long v);
-    @Property(selector = "enableOnLpLifeCycleEvent")
-    public native boolean isEnableOnLpLifeCycleEvent();
-    @Property(selector = "setEnableOnLpLifeCycleEvent:")
-    public native void setEnableOnLpLifeCycleEvent(boolean v);
+    
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    
+    @Method(selector = "COMMAND_LOAD_WEBVIEW")
+    public static native String COMMAND_LOAD_WEBVIEW();
+    @Method(selector = "COMMAND_SHOW_WEBVIEW")
+    public static native String COMMAND_SHOW_WEBVIEW();
+    @Method(selector = "COMMAND_DESTROY_WEBVIEW")
+    public static native String COMMAND_DESTROY_WEBVIEW();
+    @Method(selector = "COMMAND_SEND_MESSAGE")
+    public static native String COMMAND_SEND_MESSAGE();
     /*</methods>*/
 }

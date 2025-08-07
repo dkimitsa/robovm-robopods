@@ -107,6 +107,10 @@ import org.robovm.apple.coreanimation.*;
     public native double getSamplingFactor();
     @Property(selector = "setSamplingFactor:")
     public native void setSamplingFactor(double v);
+    @Property(selector = "pingSamplingFactor")
+    public native double getPingSamplingFactor();
+    @Property(selector = "setPingSamplingFactor:")
+    public native void setPingSamplingFactor(double v);
     @Property(selector = "disableAllGeneralEvents")
     public native boolean isDisableAllGeneralEvents();
     @Property(selector = "setDisableAllGeneralEvents:")

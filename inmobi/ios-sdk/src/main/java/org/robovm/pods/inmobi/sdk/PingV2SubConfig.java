@@ -37,28 +37,28 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("InMobiSDK.LPConfig")/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/LPConfig/*</name>*/ 
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("InMobiSDK.PingV2SubConfig")/*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/PingV2SubConfig/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class LPConfigPtr extends Ptr<LPConfig, LPConfigPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(LPConfig.class); }/*</bind>*/
+    /*<ptr>*/public static class PingV2SubConfigPtr extends Ptr<PingV2SubConfig, PingV2SubConfigPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(PingV2SubConfig.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public LPConfig() {}
-    protected LPConfig(Handle h, long handle) { super(h, handle); }
-    protected LPConfig(SkipInit skipInit) { super(skipInit); }
+    protected PingV2SubConfig() {}
+    protected PingV2SubConfig(Handle h, long handle) { super(h, handle); }
+    protected PingV2SubConfig(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
-    @Property(selector = "maxFunnelsToTrackPerAd")
-    public native @MachineSizedSInt long getMaxFunnelsToTrackPerAd();
-    @Property(selector = "setMaxFunnelsToTrackPerAd:")
-    public native void setMaxFunnelsToTrackPerAd(@MachineSizedSInt long v);
-    @Property(selector = "enableOnLpLifeCycleEvent")
-    public native boolean isEnableOnLpLifeCycleEvent();
-    @Property(selector = "setEnableOnLpLifeCycleEvent:")
-    public native void setEnableOnLpLifeCycleEvent(boolean v);
+    @Property(selector = "high")
+    public native double getHigh();
+    @Property(selector = "setHigh:")
+    public native void setHigh(double v);
+    @Property(selector = "normal")
+    public native double getNormal();
+    @Property(selector = "setNormal:")
+    public native void setNormal(double v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

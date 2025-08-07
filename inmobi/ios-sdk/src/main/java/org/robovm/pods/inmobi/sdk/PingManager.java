@@ -37,31 +37,34 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("InMobiSDK.LPConfig")/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/LPConfig/*</name>*/ 
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("InMobiSDK.PingManager")/*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/PingManager/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class LPConfigPtr extends Ptr<LPConfig, LPConfigPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(LPConfig.class); }/*</bind>*/
+    /*<ptr>*/public static class PingManagerPtr extends Ptr<PingManager, PingManagerPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(PingManager.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public LPConfig() {}
-    protected LPConfig(Handle h, long handle) { super(h, handle); }
-    protected LPConfig(SkipInit skipInit) { super(skipInit); }
+    protected PingManager() {}
+    protected PingManager(Handle h, long handle) { super(h, handle); }
+    protected PingManager(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
-    @Property(selector = "maxFunnelsToTrackPerAd")
-    public native @MachineSizedSInt long getMaxFunnelsToTrackPerAd();
-    @Property(selector = "setMaxFunnelsToTrackPerAd:")
-    public native void setMaxFunnelsToTrackPerAd(@MachineSizedSInt long v);
-    @Property(selector = "enableOnLpLifeCycleEvent")
-    public native boolean isEnableOnLpLifeCycleEvent();
-    @Property(selector = "setEnableOnLpLifeCycleEvent:")
-    public native void setEnableOnLpLifeCycleEvent(boolean v);
+    @Property(selector = "isTelemetryEnabled")
+    public native boolean isTelemetryEnabled();
+    @Property(selector = "setIsTelemetryEnabled:")
+    public native void setIsTelemetryEnabled(boolean v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    
+    @Method(selector = "removeRenderViewForUuid:")
+    public native void removeRenderViewForUuid(NSUUID uuid);
+    @Method(selector = "processWithPings:source:")
+    public native void process(NSArray<Ping> pings, PingSource source);
+    @Method(selector = "processPendingWithOnlyHighPriority:")
+    public native void processPending(boolean onlyHighPriority);
+    @Method(selector = "shared")
+    public static native PingManager shared();
     /*</methods>*/
 }

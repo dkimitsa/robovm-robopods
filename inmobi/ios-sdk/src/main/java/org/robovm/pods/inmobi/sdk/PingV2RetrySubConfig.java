@@ -37,28 +37,28 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("InMobiSDK.LPConfig")/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/LPConfig/*</name>*/ 
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("InMobiSDK.PingV2RetrySubConfig")/*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/PingV2RetrySubConfig/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class LPConfigPtr extends Ptr<LPConfig, LPConfigPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(LPConfig.class); }/*</bind>*/
+    /*<ptr>*/public static class PingV2RetrySubConfigPtr extends Ptr<PingV2RetrySubConfig, PingV2RetrySubConfigPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(PingV2RetrySubConfig.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public LPConfig() {}
-    protected LPConfig(Handle h, long handle) { super(h, handle); }
-    protected LPConfig(SkipInit skipInit) { super(skipInit); }
+    protected PingV2RetrySubConfig() {}
+    protected PingV2RetrySubConfig(Handle h, long handle) { super(h, handle); }
+    protected PingV2RetrySubConfig(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
-    @Property(selector = "maxFunnelsToTrackPerAd")
-    public native @MachineSizedSInt long getMaxFunnelsToTrackPerAd();
-    @Property(selector = "setMaxFunnelsToTrackPerAd:")
-    public native void setMaxFunnelsToTrackPerAd(@MachineSizedSInt long v);
-    @Property(selector = "enableOnLpLifeCycleEvent")
-    public native boolean isEnableOnLpLifeCycleEvent();
-    @Property(selector = "setEnableOnLpLifeCycleEvent:")
-    public native void setEnableOnLpLifeCycleEvent(boolean v);
+    @Property(selector = "maxRetries")
+    public native @MachineSizedSInt long getMaxRetries();
+    @Property(selector = "setMaxRetries:")
+    public native void setMaxRetries(@MachineSizedSInt long v);
+    @Property(selector = "retryInterval")
+    public native double getRetryInterval();
+    @Property(selector = "setRetryInterval:")
+    public native void setRetryInterval(double v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

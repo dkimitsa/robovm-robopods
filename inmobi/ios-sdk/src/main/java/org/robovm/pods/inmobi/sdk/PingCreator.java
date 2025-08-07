@@ -37,31 +37,27 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("InMobiSDK.LPConfig")/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/LPConfig/*</name>*/ 
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("InMobiSDK.PingCreator")/*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/PingCreator/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class LPConfigPtr extends Ptr<LPConfig, LPConfigPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(LPConfig.class); }/*</bind>*/
+    /*<ptr>*/public static class PingCreatorPtr extends Ptr<PingCreator, PingCreatorPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(PingCreator.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public LPConfig() {}
-    protected LPConfig(Handle h, long handle) { super(h, handle); }
-    protected LPConfig(SkipInit skipInit) { super(skipInit); }
+    public PingCreator() {}
+    protected PingCreator(Handle h, long handle) { super(h, handle); }
+    protected PingCreator(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
-    @Property(selector = "maxFunnelsToTrackPerAd")
-    public native @MachineSizedSInt long getMaxFunnelsToTrackPerAd();
-    @Property(selector = "setMaxFunnelsToTrackPerAd:")
-    public native void setMaxFunnelsToTrackPerAd(@MachineSizedSInt long v);
-    @Property(selector = "enableOnLpLifeCycleEvent")
-    public native boolean isEnableOnLpLifeCycleEvent();
-    @Property(selector = "setEnableOnLpLifeCycleEvent:")
-    public native void setEnableOnLpLifeCycleEvent(boolean v);
+    
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    
+    @Method(selector = "getPingsFrom:source:isTelemetryEnabledForPings:")
+    public static native NSArray<Ping> getPings(NSDictionary<NSString, ?> dictionary, PingSource source, boolean isTelemetryEnabledForPings);
+    @Method(selector = "pingsFrom:source:isTelemetryEnabledForPings:")
+    public static native NSArray<Ping> pings(NSData jsonData, PingSource source, boolean isTelemetryEnabledForPings);
     /*</methods>*/
 }

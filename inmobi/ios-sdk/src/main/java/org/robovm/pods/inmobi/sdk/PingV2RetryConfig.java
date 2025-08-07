@@ -37,28 +37,28 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("InMobiSDK.LPConfig")/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/LPConfig/*</name>*/ 
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("InMobiSDK.PingV2RetryConfig")/*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/PingV2RetryConfig/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class LPConfigPtr extends Ptr<LPConfig, LPConfigPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(LPConfig.class); }/*</bind>*/
+    /*<ptr>*/public static class PingV2RetryConfigPtr extends Ptr<PingV2RetryConfig, PingV2RetryConfigPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(PingV2RetryConfig.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public LPConfig() {}
-    protected LPConfig(Handle h, long handle) { super(h, handle); }
-    protected LPConfig(SkipInit skipInit) { super(skipInit); }
+    public PingV2RetryConfig() {}
+    protected PingV2RetryConfig(Handle h, long handle) { super(h, handle); }
+    protected PingV2RetryConfig(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
-    @Property(selector = "maxFunnelsToTrackPerAd")
-    public native @MachineSizedSInt long getMaxFunnelsToTrackPerAd();
-    @Property(selector = "setMaxFunnelsToTrackPerAd:")
-    public native void setMaxFunnelsToTrackPerAd(@MachineSizedSInt long v);
-    @Property(selector = "enableOnLpLifeCycleEvent")
-    public native boolean isEnableOnLpLifeCycleEvent();
-    @Property(selector = "setEnableOnLpLifeCycleEvent:")
-    public native void setEnableOnLpLifeCycleEvent(boolean v);
+    @Property(selector = "high")
+    public native PingV2RetrySubConfig getHigh();
+    @Property(selector = "setHigh:")
+    public native void setHigh(PingV2RetrySubConfig v);
+    @Property(selector = "normal")
+    public native PingV2RetrySubConfig getNormal();
+    @Property(selector = "setNormal:")
+    public native void setNormal(PingV2RetrySubConfig v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

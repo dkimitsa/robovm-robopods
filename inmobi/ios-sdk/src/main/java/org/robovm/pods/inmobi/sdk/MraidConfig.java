@@ -67,6 +67,10 @@ import org.robovm.apple.coreanimation.*;
     public native @MachineSizedSInt long getMaxRetries();
     @Property(selector = "setMaxRetries:")
     public native void setMaxRetries(@MachineSizedSInt long v);
+    @Property(selector = "injectMainFrameOnly")
+    public native boolean isInjectMainFrameOnly();
+    @Property(selector = "setInjectMainFrameOnly:")
+    public native void setInjectMainFrameOnly(boolean v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

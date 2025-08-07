@@ -139,6 +139,10 @@ import org.robovm.apple.coreanimation.*;
     public native Mraid3Config getMraid3();
     @Property(selector = "setMraid3:")
     public native void setMraid3(Mraid3Config v);
+    @Property(selector = "pingV2")
+    public native PingV2Config getPingV2();
+    @Property(selector = "setPingV2:")
+    public native void setPingV2(PingV2Config v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

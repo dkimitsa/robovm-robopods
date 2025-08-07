@@ -55,7 +55,7 @@ v1.52.0 - in development
 | [Fyber](fyber/)                         | 8.3.8   |
 | [Google Mobile Ads](google-mobile-ads/) | 12.8.0  |
 | [HelpShiftX](helpshift/)                | 10.4.0  |
-| [InMobi](inmobi/)                       | 10.8.3  |
+| [InMobi](inmobi/)                       | 10.8.6  |
 | [IronSource](ironsource/)               | 8.9.1   |
 | [Lottie](lottie/)                       | 4.5.2   |
 | [OneSignal](onesignal/)                 | 5.2.14  |
