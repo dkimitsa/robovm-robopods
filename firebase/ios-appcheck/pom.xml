@@ -7,7 +7,7 @@
     </parent>
 
     <artifactId>robopods-firebase-app-check-ios</artifactId>
-    <name>RoboPods FireBase App Check iOS v12.0.0</name>
+    <name>RoboPods FireBase App Check iOS v12.1.0</name>
     <packaging>jar</packaging>
 
     <licenses>
