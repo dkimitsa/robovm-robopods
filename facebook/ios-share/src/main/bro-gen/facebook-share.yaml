@@ -65,7 +65,11 @@ classes:
                 exclude: true
             '+showWithContent:delegate:':
                 name: show
-    FBSDKSendButton: {}
+    FBSDKSendButton:
+        properties:
+          'analyticsParameters': {} # property from excluded internal interface
+          'impressionTrackingIdentifier': {} # property from excluded internal interface
+          'impressionTrackingEventName': {} # property from excluded internal interface
     FBSDKShareAPI:
         methods:
             '+apiWithContent:delegate:':

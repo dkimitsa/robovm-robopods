@@ -84,6 +84,8 @@ classes:
         properties:
             '+tokenCache':
                 exclude: true #INTERNAL - DO NOT USE
+            '+currentAccessToken': {} # property from excluded internal protocol
+            '+currentAccessTokenIsActive': { } # property from excluded internal protocol
         methods:
             '-initWithTokenString:permissions:declinedPermissions:expiredPermissions:appID:userID:expirationDate:refreshDate:dataAccessExpirationDate:':
                 name: init
@@ -105,6 +107,8 @@ classes:
                 exclude: true
             '+anonymousID':
                 exclude: true
+            'flushBehavior': {} # property from excluded internal protocol
+            'userID': {} # property from excluded internal protocol
         methods:
             '+flush':
                 exclude: true # is deprecated and will be removed in the next major release
@@ -156,6 +160,7 @@ classes:
                 name: logInternalEvent
             '+logInternalEvent:parameters:isImplicitlyLogged:accessToken:':
                 name: logInternalEvent
+            '-activateApp': {} # property from excluded internal interface
             '+activateApp':
                 exclude: true # deprecated and conflicts with instance method
             '-setUserEmail:firstName:lastName:phone:dateOfBirth:gender:city:state:zip:country:':
@@ -189,6 +194,11 @@ classes:
             '-flushForReason:':
                 exclude: true # INTERNAL
     FBSDKAppLink:
+        properties:
+            'sourceURL': {}  # property from excluded internal FBSDKAppLink
+            'targets': {}    # property from excluded internal FBSDKAppLink
+            'webURL': {}     # property from excluded internal FBSDKAppLink
+            'backToReferrer': {} # property from excluded internal FBSDKAppLink
         methods:
             '+appLinkWithSourceURL:targets:webURL:':
                 exclude: true
@@ -255,6 +265,7 @@ classes:
         properties:
             '+tokenCache':
                 exclude: true #INTERNAL - DO NOT USE
+            '+currentAuthenticationToken': {} # property from excluded internal interface
         methods:
             '-initWithTokenString:nonce:graphDomain:':
                 exclude: true #INTERNAL - DO NOT USE
@@ -406,6 +417,7 @@ classes:
                 exclude: true # as deprecated
             advertisingTrackingStatus:
                 exclude: true # as using internal types
+            clientToken: {} # property from excluded internal protocol
         methods:
             '-setDataProcessingOptions:country:state:':
                 name: setDataProcessingOptions
@@ -424,6 +436,8 @@ classes:
             '-configureWithStore:appEventsConfigurationProvider:infoDictionaryProvider:eventLogger:':
                 exclude: true #INTERNAL - DO NOT USE
     FBSDKURL:
+        properties:
+            'appLinkExtras': {} # property from excluded internal protocol
         methods:
             '+URLWithURL:':
                 name: create

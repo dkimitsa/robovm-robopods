@@ -110,6 +110,8 @@ import org.robovm.pods.facebook.corebasics.*;
     public native void logPushNotificationOpen(NSDictionary<NSString, ?> payload, String action);
     @Method(selector = "logProductItem:availability:condition:description:imageLink:link:title:priceAmount:currency:gtin:mpn:brand:parameters:")
     public native void logProductItem(String itemID, FBSDKProductAvailability availability, FBSDKProductCondition condition, String description, String imageLink, String link, String title, double priceAmount, String currency, String gtin, String mpn, String brand, NSDictionary<NSString, ?> parameters);
+    @Method(selector = "activateApp")
+    public native void activateApp();
     @Method(selector = "setPushNotificationsDeviceToken:")
     public native void setPushNotificationsDeviceToken(NSData deviceToken);
     @Method(selector = "setPushNotificationsDeviceTokenString:")
