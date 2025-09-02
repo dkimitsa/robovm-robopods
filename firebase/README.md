@@ -6,24 +6,24 @@ Firebase gives you functionality like analytics, databases, messaging and crash 
 
 | RoboPod                                                                          | Description                                    | Version |
 |----------------------------------------------------------------------------------|------------------------------------------------|---------|
-| [ios-analytics](ios-analytics/)                                                  | Firebase iOS Analytics                         | 12.1.0  |
-| [ios-auth](ios-auth/)                                                            | Firebase iOS Authentication                    | 12.1.0  |
-| [ios-core](ios-core/)                                                            | Firebase iOS Core                              | 12.1.0  |
-| [ios-crashlytics](ios-crashlytics/)                                              | Firebase iOS Crashlytics                       | 12.1.0  |
-| [ios-database](ios-database/)                                                    | Firebase iOS DataBase                          | 12.1.0  |
-| [ios-firestore](ios-firestore/)                                                  | Firebase iOS Firestore                         | 12.1.0  |
+| [ios-analytics](ios-analytics/)                                                  | Firebase iOS Analytics                         | 12.2.0  |
+| [ios-auth](ios-auth/)                                                            | Firebase iOS Authentication                    | 12.2.0  |
+| [ios-core](ios-core/)                                                            | Firebase iOS Core                              | 12.2.0  |
+| [ios-crashlytics](ios-crashlytics/)                                              | Firebase iOS Crashlytics                       | 12.2.0  |
+| [ios-database](ios-database/)                                                    | Firebase iOS DataBase                          | 12.2.0  |
+| [ios-firestore](ios-firestore/)                                                  | Firebase iOS Firestore                         | 12.2.0  |
 | [ios-google-sign-in](ios-google-sign-in/)                                        | Firebase iOS Google Sign In                    | 9.0.0   |
-| [ios-messaging](ios-messaging/)                                                  | Firebase iOS Messaging                         | 12.1.0  |
-| [ios-installations](ios-installations/)                                          | Firebase iOS Installations                     | 12.1.0  |
-| [ios-remoteconfig](ios-remoteconfig/)                                            | Firebase iOS Remote Config                     | 12.1.0  |
-| [ios-storage](ios-storage/)                                                      | Firebase iOS Storage                           | 12.1.0  |
-| [ios-appcheck](ios-appcheck/)                                                    | Firebase iOS App Check                         | 12.1.0  |
+| [ios-messaging](ios-messaging/)                                                  | Firebase iOS Messaging                         | 12.2.0  |
+| [ios-installations](ios-installations/)                                          | Firebase iOS Installations                     | 12.2.0  |
+| [ios-remoteconfig](ios-remoteconfig/)                                            | Firebase iOS Remote Config                     | 12.2.0  |
+| [ios-storage](ios-storage/)                                                      | Firebase iOS Storage                           | 12.2.0  |
+| [ios-appcheck](ios-appcheck/)                                                    | Firebase iOS App Check                         | 12.2.0  |
 
 ## Versions
 
 | RoboPods Version | Firebase Version  |
 |------------------|-------------------|
-| 1.51.0 - 1.52.0  | 12.0.0 - 12.1.0   |
+| 1.51.0 - 1.53.0  | 12.0.0 - 12.2.0   |
 | 1.48.0 - 1.50.0  | 11.11.0 - 11.14.0 |
 | 1.47.0           | 11.9.0            |
 | 1.46.0           | 11.7.0            |
