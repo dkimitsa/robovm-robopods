@@ -405,6 +405,8 @@ import org.robovm.apple.intents.*;
     public static native void setAPIUrl(String url);
     @Method(selector = "setSafetrackAPIURL:")
     public static native void setSafetrackAPIURL(String url);
+    @Method(selector = "setSDKWaitTimeForThirdPartyAPIs:")
+    public static native void setSDKWaitTimeForThirdPartyAPIs(double waitTime);
     @Method(selector = "isBranchLink:")
     public static native boolean isBranchLink(String urlString);
     /**
@@ -421,5 +423,7 @@ import org.robovm.apple.intents.*;
     public static native void setDMAParamsForEEA(boolean eeaRegion, boolean adPersonalizationConsent, boolean adUserDataUsageConsent);
     @Method(selector = "setODMInfo:andFirstOpenTimestamp:")
     public static native void setODMInfo(String odmInfo, NSDate firstOpenTimestamp);
+    @Method(selector = "setAnonID:")
+    public static native void setAnonID(String anonID);
     /*</methods>*/
 }

@@ -147,6 +147,10 @@ import org.robovm.apple.intents.*;
     public native double getTimeout();
     @Property(selector = "setTimeout:")
     public native void setTimeout(double v);
+    @Property(selector = "thirdPartyAPIsWaitTime")
+    public native double getThirdPartyAPIsWaitTime();
+    @Property(selector = "setThirdPartyAPIsWaitTime:")
+    public native void setThirdPartyAPIsWaitTime(double v);
     @Property(selector = "externalIntentURI")
     public native String getExternalIntentURI();
     @Property(selector = "setExternalIntentURI:")
