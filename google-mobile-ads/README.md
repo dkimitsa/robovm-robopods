@@ -6,7 +6,7 @@ Firebase gives you functionality like analytics, databases, messaging and crash 
 
 | RoboPod                                                                          | Description                                    | Version |
 |----------------------------------------------------------------------------------|------------------------------------------------|---------|
-| [ios-mobile ads](ios-google-mobile-ads/)                                         | Firebase iOS Google Mobile Ads                 | 12.8.0  |
+| [ios-mobile ads](ios-google-mobile-ads/)                                         | Firebase iOS Google Mobile Ads                 | 12.9.0  |
 | [ios-mobile ads-adapters](ios-google-mobile-ads-adapters/)                       | Firebase iOS AdMob Adapters                    |         |
 | [ios-mobile ads-mediation-testsuite](ios-google-mobile-ads-mediation-testsuite/) | Firebase iOS Google AdMob Mediation Test Suite | 2.0.0   |
 | [ios-google-ump](ios-google-ump/)                                                | Firebase iOS Google UMP                        | 3.0.0   |
@@ -15,7 +15,7 @@ Firebase gives you functionality like analytics, databases, messaging and crash 
 
 | RoboPods Version | GAD Version     |
 |------------------|-----------------|
-| 1.51.0 - 1.52.0  | 12.7.0 - 12.8.0 |
+| 1.51.0 - 1.53.0  | 12.7.0 - 12.9.0 |
 
 ## Official website
 
