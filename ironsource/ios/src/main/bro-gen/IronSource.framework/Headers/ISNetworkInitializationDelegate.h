@@ -13,11 +13,19 @@ NS_ASSUME_NONNULL_BEGIN
 // mandatory callbacks
 
 - (void)onInitDidSucceed;
+- (void)onInitDidSucceedWithExtraData:(NSDictionary<NSString *, id> *)extraData;
 
 /// @param errorCode the error code if available, general ones in AdapterErrors
 /// @param errorMessage the error message if available
 - (void)onInitDidFailWithErrorCode:(NSInteger)errorCode
-                      errorMessage:(nullable NSString*)errorMessage;
+                      errorMessage:(nullable NSString *)errorMessage;
+
+/// @param errorCode the error code if available, general ones in AdapterErrors
+/// @param errorMessage the error message if available
+/// @param extraData custom data
+- (void)onInitDidFailWithErrorCode:(NSInteger)errorCode
+                      errorMessage:(nullable NSString *)errorMessage
+                         extraData:(NSDictionary<NSString *, id> *)extraData;
 
 @end
 

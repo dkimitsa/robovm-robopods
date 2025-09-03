@@ -15,6 +15,7 @@
 @property(nonatomic, assign, readonly) ISAdOptionsPosition adOptionsPosition;
 
 - (instancetype)initWithAdapterConfig:(ISAdapterConfig *)adapterConfig;
+- (instancetype)initWithServerConfig:(NSDictionary *)serverConfig;
 - (instancetype)init NS_UNAVAILABLE;
 - (instancetype)new NS_UNAVAILABLE;
 

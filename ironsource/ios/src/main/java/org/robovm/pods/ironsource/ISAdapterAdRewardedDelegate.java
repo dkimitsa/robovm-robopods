@@ -51,6 +51,8 @@ import org.robovm.apple.coreanimation.*;
     /*<methods>*/
     @Method(selector = "adRewarded")
     void adRewarded();
+    @Method(selector = "adRewardedWithExtraData:")
+    void adRewarded(NSDictionary<NSString, ?> extraData);
     /*</methods>*/
     /*<adapter>*/
     /*</adapter>*/

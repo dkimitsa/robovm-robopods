@@ -51,30 +51,56 @@ import org.robovm.apple.coreanimation.*;
     /*<methods>*/
     @Method(selector = "adapterRewardedVideoHasChangedAvailability:")
     void adapterRewardedVideoHasChangedAvailability(boolean available);
+    @Method(selector = "adapterRewardedVideoHasChangedAvailability:extraData:")
+    void adapterRewardedVideoHasChangedAvailability(boolean available, NSDictionary<NSString, ?> extraData);
     @Method(selector = "adapterRewardedVideoDidFailToLoadWithError:")
     void adapterRewardedVideoDidFailToLoad(NSError error);
+    @Method(selector = "adapterRewardedVideoDidFailToLoadWithError:extraData:")
+    void adapterRewardedVideoDidFailToLoad(NSError error, NSDictionary<NSString, ?> extraData);
     @Method(selector = "adapterRewardedVideoDidReceiveReward")
     void adapterRewardedVideoDidReceiveReward();
+    @Method(selector = "adapterRewardedVideoDidReceiveRewardWithExtraData:")
+    void adapterRewardedVideoDidReceiveReward(NSDictionary<NSString, ?> extraData);
     @Method(selector = "adapterRewardedVideoDidFailToShowWithError:")
     void adapterRewardedVideoDidFailToShow(NSError error);
+    @Method(selector = "adapterRewardedVideoDidFailToShowWithError:extraData:")
+    void adapterRewardedVideoDidFailToShow(NSError error, NSDictionary<NSString, ?> extraData);
     @Method(selector = "adapterRewardedVideoDidOpen")
     void adapterRewardedVideoDidOpen();
+    @Method(selector = "adapterRewardedVideoDidOpenWithExtraData:")
+    void adapterRewardedVideoDidOpen(NSDictionary<NSString, ?> extraData);
     @Method(selector = "adapterRewardedVideoDidClose")
     void adapterRewardedVideoDidClose();
+    @Method(selector = "adapterRewardedVideoDidCloseWithExtraData:")
+    void adapterRewardedVideoDidClose(NSDictionary<NSString, ?> extraData);
     @Method(selector = "adapterRewardedVideoDidLoad")
     void adapterRewardedVideoDidLoad();
+    @Method(selector = "adapterRewardedVideoDidLoadWithExtraData:")
+    void adapterRewardedVideoDidLoad(NSDictionary<NSString, ?> extraData);
     @Method(selector = "adapterRewardedVideoDidClick")
     void adapterRewardedVideoDidClick();
+    @Method(selector = "adapterRewardedVideoDidClickWithExtraData:")
+    void adapterRewardedVideoDidClick(NSDictionary<NSString, ?> extraData);
     @Method(selector = "adapterRewardedVideoDidStart")
     void adapterRewardedVideoDidStart();
+    @Method(selector = "adapterRewardedVideoDidStartWithExtraData:")
+    void adapterRewardedVideoDidStart(NSDictionary<NSString, ?> extraData);
     @Method(selector = "adapterRewardedVideoDidEnd")
     void adapterRewardedVideoDidEnd();
+    @Method(selector = "adapterRewardedVideoDidEndWithExtraData:")
+    void adapterRewardedVideoDidEnd(NSDictionary<NSString, ?> extraData);
     @Method(selector = "adapterRewardedVideoInitSuccess")
     void adapterRewardedVideoInitSuccess();
+    @Method(selector = "adapterRewardedVideoInitSuccessWithExtraData:")
+    void adapterRewardedVideoInitSuccess(NSDictionary<NSString, ?> extraData);
     @Method(selector = "adapterRewardedVideoInitFailed:")
     void adapterRewardedVideoInitFailed(NSError error);
+    @Method(selector = "adapterRewardedVideoInitFailed:extraData:")
+    void adapterRewardedVideoInitFailed(NSError error, NSDictionary<NSString, ?> extraData);
     @Method(selector = "adapterRewardedVideoDidBecomeVisible")
     void adapterRewardedVideoDidBecomeVisible();
+    @Method(selector = "adapterRewardedVideoDidBecomeVisibleWithExtraData:")
+    void adapterRewardedVideoDidBecomeVisible(NSDictionary<NSString, ?> extraData);
     /*</methods>*/
     /*<adapter>*/
     /*</adapter>*/

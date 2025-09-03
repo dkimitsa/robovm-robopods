@@ -53,13 +53,23 @@ import org.robovm.apple.coreanimation.*;
     /*<methods>*/
     @NotImplemented("adDidLoad")
     public void adDidLoad() {}
+    @NotImplemented("adDidLoadWithExtraData:")
+    public void adDidLoad(NSDictionary<NSString, ?> extraData) {}
     @NotImplemented("adDidFailToLoadWithErrorType:errorCode:errorMessage:")
     public void adDidFailToLoad(ISAdapterErrorType errorType, @MachineSizedSInt long errorCode, String errorMessage) {}
+    @NotImplemented("adDidFailToLoadWithErrorType:errorCode:errorMessage:extraData:")
+    public void adDidFailToLoad(ISAdapterErrorType errorType, @MachineSizedSInt long errorCode, String errorMessage, NSDictionary<NSString, ?> extraData) {}
     @NotImplemented("adDidOpen")
     public void adDidOpen() {}
+    @NotImplemented("adDidOpenWithExtraData:")
+    public void adDidOpen(NSDictionary<NSString, ?> extraData) {}
     @NotImplemented("adDidFailToShowWithErrorCode:errorMessage:")
     public void adDidFailToShow(@MachineSizedSInt long errorCode, String errorMessage) {}
+    @NotImplemented("adDidFailToShowWithErrorCode:errorMessage:extraData:")
+    public void adDidFailToShow(@MachineSizedSInt long errorCode, String errorMessage, NSDictionary<NSString, ?> extraData) {}
     @NotImplemented("adDidClick")
     public void adDidClick() {}
+    @NotImplemented("adDidClickWithExtraData:")
+    public void adDidClick(NSDictionary<NSString, ?> extraData) {}
     /*</methods>*/
 }

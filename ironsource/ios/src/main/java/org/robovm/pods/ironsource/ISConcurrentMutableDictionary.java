@@ -39,7 +39,7 @@ import org.robovm.apple.coreanimation.*;
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/ISConcurrentMutableDictionary/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
-    /*<implements>*//*</implements>*/ {
+    /*<implements>*/implements LPMThreadSafeDictionaryProtocol/*</implements>*/ {
 
     /*<ptr>*/public static class ISConcurrentMutableDictionaryPtr extends Ptr<ISConcurrentMutableDictionary, ISConcurrentMutableDictionaryPtr> {}/*</ptr>*/
     /*<bind>*/static { ObjCRuntime.bind(ISConcurrentMutableDictionary.class); }/*</bind>*/
@@ -54,25 +54,25 @@ import org.robovm.apple.coreanimation.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
+    @Method(selector = "dictionary")
+    public static native ISConcurrentMutableDictionary dictionary();
     @Method(selector = "count")
     public native @MachineSizedUInt long count();
     @Method(selector = "objectForKey:")
-    public native NSObject objectForKey(NSObject key);
+    public native NSObject objectForKey(String key);
     @Method(selector = "setObject:forKey:")
-    public native void setObject(NSObject object, NSObject key);
+    public native void setObject(NSObject object, String key);
+    @Method(selector = "hasObjectForKey:")
+    public native boolean hasObjectForKey(String key);
     @Method(selector = "removeObjectForKey:")
-    public native void removeObjectForKey(NSObject key);
+    public native void removeObjectForKey(String key);
     @Method(selector = "removeAllObjects")
     public native void removeAllObjects();
     @Method(selector = "allKeys")
-    public native NSArray<?> allKeys();
+    public native NSArray<NSString> allKeys();
     @Method(selector = "allValues")
     public native NSArray<?> allValues();
     @Method(selector = "allData")
-    public native NSDictionary<?, ?> allData();
-    @Method(selector = "hasObjectForKey:")
-    public native boolean hasObjectForKey(NSObject key);
-    @Method(selector = "dictionary")
-    public static native ISConcurrentMutableDictionary dictionary();
+    public native NSDictionary<NSString, ?> allData();
     /*</methods>*/
 }

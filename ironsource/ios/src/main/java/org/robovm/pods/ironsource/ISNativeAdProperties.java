@@ -50,6 +50,8 @@ import org.robovm.apple.coreanimation.*;
     protected ISNativeAdProperties(SkipInit skipInit) { super(skipInit); }
     @Method(selector = "initWithAdapterConfig:")
     public ISNativeAdProperties(ISAdapterConfig adapterConfig) { super((SkipInit) null); initObject(init(adapterConfig)); }
+    @Method(selector = "initWithServerConfig:")
+    public ISNativeAdProperties(NSDictionary<?, ?> serverConfig) { super((SkipInit) null); initObject(init(serverConfig)); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "adOptionsPosition")
@@ -59,5 +61,7 @@ import org.robovm.apple.coreanimation.*;
     /*<methods>*/
     @Method(selector = "initWithAdapterConfig:")
     protected native @Pointer long init(ISAdapterConfig adapterConfig);
+    @Method(selector = "initWithServerConfig:")
+    protected native @Pointer long init(NSDictionary<?, ?> serverConfig);
     /*</methods>*/
 }

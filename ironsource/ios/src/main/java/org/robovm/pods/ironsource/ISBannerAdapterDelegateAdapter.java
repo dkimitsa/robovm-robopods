@@ -53,23 +53,43 @@ import org.robovm.apple.coreanimation.*;
     /*<methods>*/
     @NotImplemented("adapterBannerInitSuccess")
     public void adapterBannerInitSuccess() {}
+    @NotImplemented("adapterBannerInitSuccessWithExtraData:")
+    public void adapterBannerInitSuccess(NSDictionary<NSString, ?> extraData) {}
     @NotImplemented("adapterBannerInitFailedWithError:")
     public void adapterBannerInitFailed(NSError error) {}
+    @NotImplemented("adapterBannerInitFailedWithError:extraData:")
+    public void adapterBannerInitFailed(NSError error, NSDictionary<NSString, ?> extraData) {}
     @NotImplemented("adapterBannerDidLoad:")
     public void adapterBannerDidLoad(UIView bannerView) {}
+    @NotImplemented("adapterBannerDidLoad:extraData:")
+    public void adapterBannerDidLoad(UIView bannerView, NSDictionary<NSString, ?> extraData) {}
     @NotImplemented("adapterBannerDidFailToLoadWithError:")
     public void adapterBannerDidFailToLoad(NSError error) {}
+    @NotImplemented("adapterBannerDidFailToLoadWithError:extraData:")
+    public void adapterBannerDidFailToLoad(NSError error, NSDictionary<NSString, ?> extraData) {}
     @NotImplemented("adapterBannerDidClick")
     public void adapterBannerDidClick() {}
+    @NotImplemented("adapterBannerDidClickWithExtraData:")
+    public void adapterBannerDidClick(NSDictionary<NSString, ?> extraData) {}
     @NotImplemented("adapterBannerWillPresentScreen")
     public void adapterBannerWillPresentScreen() {}
+    @NotImplemented("adapterBannerWillPresentScreenWithExtraData:")
+    public void adapterBannerWillPresentScreen(NSDictionary<NSString, ?> extraData) {}
     @NotImplemented("adapterBannerDidDismissScreen")
     public void adapterBannerDidDismissScreen() {}
+    @NotImplemented("adapterBannerDidDismissScreenWithExtraData:")
+    public void adapterBannerDidDismissScreen(NSDictionary<NSString, ?> extraData) {}
     @NotImplemented("adapterBannerWillLeaveApplication")
     public void adapterBannerWillLeaveApplication() {}
+    @NotImplemented("adapterBannerWillLeaveApplicationWithExtraData:")
+    public void adapterBannerWillLeaveApplication(NSDictionary<NSString, ?> extraData) {}
     @NotImplemented("adapterBannerDidShow")
     public void adapterBannerDidShow() {}
+    @NotImplemented("adapterBannerDidShowWithExtraData:")
+    public void adapterBannerDidShow(NSDictionary<NSString, ?> extraData) {}
     @NotImplemented("adapterBannerDidFailToShowWithError:")
     public void adapterBannerDidFailToShow(NSError error) {}
+    @NotImplemented("adapterBannerDidFailToShowWithError:extraData:")
+    public void adapterBannerDidFailToShow(NSError error, NSDictionary<NSString, ?> extraData) {}
     /*</methods>*/
 }

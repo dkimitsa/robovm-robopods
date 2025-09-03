@@ -51,8 +51,12 @@ import org.robovm.apple.coreanimation.*;
     /*<methods>*/
     @Method(selector = "onInitDidSucceed")
     void onInitDidSucceed();
+    @Method(selector = "onInitDidSucceedWithExtraData:")
+    void onInitDidSucceed(NSDictionary<NSString, ?> extraData);
     @Method(selector = "onInitDidFailWithErrorCode:errorMessage:")
     void onInitDidFail(@MachineSizedSInt long errorCode, String errorMessage);
+    @Method(selector = "onInitDidFailWithErrorCode:errorMessage:extraData:")
+    void onInitDidFail(@MachineSizedSInt long errorCode, String errorMessage, NSDictionary<NSString, ?> extraData);
     /*</methods>*/
     /*<adapter>*/
     /*</adapter>*/

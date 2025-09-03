@@ -51,24 +51,44 @@ import org.robovm.apple.coreanimation.*;
     /*<methods>*/
     @Method(selector = "adapterBannerInitSuccess")
     void adapterBannerInitSuccess();
+    @Method(selector = "adapterBannerInitSuccessWithExtraData:")
+    void adapterBannerInitSuccess(NSDictionary<NSString, ?> extraData);
     @Method(selector = "adapterBannerInitFailedWithError:")
     void adapterBannerInitFailed(NSError error);
+    @Method(selector = "adapterBannerInitFailedWithError:extraData:")
+    void adapterBannerInitFailed(NSError error, NSDictionary<NSString, ?> extraData);
     @Method(selector = "adapterBannerDidLoad:")
     void adapterBannerDidLoad(UIView bannerView);
+    @Method(selector = "adapterBannerDidLoad:extraData:")
+    void adapterBannerDidLoad(UIView bannerView, NSDictionary<NSString, ?> extraData);
     @Method(selector = "adapterBannerDidFailToLoadWithError:")
     void adapterBannerDidFailToLoad(NSError error);
+    @Method(selector = "adapterBannerDidFailToLoadWithError:extraData:")
+    void adapterBannerDidFailToLoad(NSError error, NSDictionary<NSString, ?> extraData);
     @Method(selector = "adapterBannerDidClick")
     void adapterBannerDidClick();
+    @Method(selector = "adapterBannerDidClickWithExtraData:")
+    void adapterBannerDidClick(NSDictionary<NSString, ?> extraData);
     @Method(selector = "adapterBannerWillPresentScreen")
     void adapterBannerWillPresentScreen();
+    @Method(selector = "adapterBannerWillPresentScreenWithExtraData:")
+    void adapterBannerWillPresentScreen(NSDictionary<NSString, ?> extraData);
     @Method(selector = "adapterBannerDidDismissScreen")
     void adapterBannerDidDismissScreen();
+    @Method(selector = "adapterBannerDidDismissScreenWithExtraData:")
+    void adapterBannerDidDismissScreen(NSDictionary<NSString, ?> extraData);
     @Method(selector = "adapterBannerWillLeaveApplication")
     void adapterBannerWillLeaveApplication();
+    @Method(selector = "adapterBannerWillLeaveApplicationWithExtraData:")
+    void adapterBannerWillLeaveApplication(NSDictionary<NSString, ?> extraData);
     @Method(selector = "adapterBannerDidShow")
     void adapterBannerDidShow();
+    @Method(selector = "adapterBannerDidShowWithExtraData:")
+    void adapterBannerDidShow(NSDictionary<NSString, ?> extraData);
     @Method(selector = "adapterBannerDidFailToShowWithError:")
     void adapterBannerDidFailToShow(NSError error);
+    @Method(selector = "adapterBannerDidFailToShowWithError:extraData:")
+    void adapterBannerDidFailToShow(NSError error, NSDictionary<NSString, ?> extraData);
     /*</methods>*/
     /*<adapter>*/
     /*</adapter>*/

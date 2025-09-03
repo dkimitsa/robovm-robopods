@@ -53,5 +53,7 @@ import org.robovm.apple.coreanimation.*;
     /*<methods>*/
     @NotImplemented("adRewarded")
     public void adRewarded() {}
+    @NotImplemented("adRewardedWithExtraData:")
+    public void adRewarded(NSDictionary<NSString, ?> extraData) {}
     /*</methods>*/
 }

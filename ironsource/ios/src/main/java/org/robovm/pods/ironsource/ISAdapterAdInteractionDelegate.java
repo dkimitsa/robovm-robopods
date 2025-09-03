@@ -51,14 +51,24 @@ import org.robovm.apple.coreanimation.*;
     /*<methods>*/
     @Method(selector = "adDidClose")
     void adDidClose();
+    @Method(selector = "adDidCloseWithExtraData:")
+    void adDidClose(NSDictionary<NSString, ?> extraData);
     @Method(selector = "adDidShowSucceed")
     void adDidShowSucceed();
+    @Method(selector = "adDidShowSucceedWithExtraData:")
+    void adDidShowSucceed(NSDictionary<NSString, ?> extraData);
     @Method(selector = "adDidBecomeVisible")
     void adDidBecomeVisible();
+    @Method(selector = "adDidBecomeVisibleWithExtraData:")
+    void adDidBecomeVisible(NSDictionary<NSString, ?> extraData);
     @Method(selector = "adDidStart")
     void adDidStart();
+    @Method(selector = "adDidStartWithExtraData:")
+    void adDidStart(NSDictionary<NSString, ?> extraData);
     @Method(selector = "adDidEnd")
     void adDidEnd();
+    @Method(selector = "adDidEndWithExtraData:")
+    void adDidEnd(NSDictionary<NSString, ?> extraData);
     /*</methods>*/
     /*<adapter>*/
     /*</adapter>*/

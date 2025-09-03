@@ -36,9 +36,9 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 /*</javadoc>*/
 /*<annotations>*//*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/ISAdapterAdInteractionDelegateAdapter/*</name>*/ 
-    extends /*<extends>*/ISAdapterAdDelegateAdapter/*</extends>*/ 
-    /*<implements>*/implements ISAdapterAdInteractionDelegate/*</implements>*/ {
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/LPMThreadSafeDictionaryProtocolAdapter/*</name>*/ 
+    extends /*<extends>*/NSObject/*</extends>*/ 
+    /*<implements>*/implements LPMThreadSafeDictionaryProtocol/*</implements>*/ {
 
     /*<ptr>*/
     /*</ptr>*/
@@ -51,25 +51,23 @@ import org.robovm.apple.coreanimation.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @NotImplemented("adDidClose")
-    public void adDidClose() {}
-    @NotImplemented("adDidCloseWithExtraData:")
-    public void adDidClose(NSDictionary<NSString, ?> extraData) {}
-    @NotImplemented("adDidShowSucceed")
-    public void adDidShowSucceed() {}
-    @NotImplemented("adDidShowSucceedWithExtraData:")
-    public void adDidShowSucceed(NSDictionary<NSString, ?> extraData) {}
-    @NotImplemented("adDidBecomeVisible")
-    public void adDidBecomeVisible() {}
-    @NotImplemented("adDidBecomeVisibleWithExtraData:")
-    public void adDidBecomeVisible(NSDictionary<NSString, ?> extraData) {}
-    @NotImplemented("adDidStart")
-    public void adDidStart() {}
-    @NotImplemented("adDidStartWithExtraData:")
-    public void adDidStart(NSDictionary<NSString, ?> extraData) {}
-    @NotImplemented("adDidEnd")
-    public void adDidEnd() {}
-    @NotImplemented("adDidEndWithExtraData:")
-    public void adDidEnd(NSDictionary<NSString, ?> extraData) {}
+    @NotImplemented("count")
+    public @MachineSizedUInt long count() { return 0; }
+    @NotImplemented("objectForKey:")
+    public NSObject objectForKey(String key) { return null; }
+    @NotImplemented("setObject:forKey:")
+    public void setObject(NSObject object, String key) {}
+    @NotImplemented("hasObjectForKey:")
+    public boolean hasObjectForKey(String key) { return false; }
+    @NotImplemented("removeObjectForKey:")
+    public void removeObjectForKey(String key) {}
+    @NotImplemented("removeAllObjects")
+    public void removeAllObjects() {}
+    @NotImplemented("allKeys")
+    public NSArray<NSString> allKeys() { return null; }
+    @NotImplemented("allValues")
+    public NSArray<?> allValues() { return null; }
+    @NotImplemented("allData")
+    public NSDictionary<NSString, ?> allData() { return null; }
     /*</methods>*/
 }

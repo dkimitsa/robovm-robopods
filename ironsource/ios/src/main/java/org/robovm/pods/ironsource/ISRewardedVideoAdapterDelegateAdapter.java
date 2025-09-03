@@ -53,29 +53,55 @@ import org.robovm.apple.coreanimation.*;
     /*<methods>*/
     @NotImplemented("adapterRewardedVideoHasChangedAvailability:")
     public void adapterRewardedVideoHasChangedAvailability(boolean available) {}
+    @NotImplemented("adapterRewardedVideoHasChangedAvailability:extraData:")
+    public void adapterRewardedVideoHasChangedAvailability(boolean available, NSDictionary<NSString, ?> extraData) {}
     @NotImplemented("adapterRewardedVideoDidFailToLoadWithError:")
     public void adapterRewardedVideoDidFailToLoad(NSError error) {}
+    @NotImplemented("adapterRewardedVideoDidFailToLoadWithError:extraData:")
+    public void adapterRewardedVideoDidFailToLoad(NSError error, NSDictionary<NSString, ?> extraData) {}
     @NotImplemented("adapterRewardedVideoDidReceiveReward")
     public void adapterRewardedVideoDidReceiveReward() {}
+    @NotImplemented("adapterRewardedVideoDidReceiveRewardWithExtraData:")
+    public void adapterRewardedVideoDidReceiveReward(NSDictionary<NSString, ?> extraData) {}
     @NotImplemented("adapterRewardedVideoDidFailToShowWithError:")
     public void adapterRewardedVideoDidFailToShow(NSError error) {}
+    @NotImplemented("adapterRewardedVideoDidFailToShowWithError:extraData:")
+    public void adapterRewardedVideoDidFailToShow(NSError error, NSDictionary<NSString, ?> extraData) {}
     @NotImplemented("adapterRewardedVideoDidOpen")
     public void adapterRewardedVideoDidOpen() {}
+    @NotImplemented("adapterRewardedVideoDidOpenWithExtraData:")
+    public void adapterRewardedVideoDidOpen(NSDictionary<NSString, ?> extraData) {}
     @NotImplemented("adapterRewardedVideoDidClose")
     public void adapterRewardedVideoDidClose() {}
+    @NotImplemented("adapterRewardedVideoDidCloseWithExtraData:")
+    public void adapterRewardedVideoDidClose(NSDictionary<NSString, ?> extraData) {}
     @NotImplemented("adapterRewardedVideoDidLoad")
     public void adapterRewardedVideoDidLoad() {}
+    @NotImplemented("adapterRewardedVideoDidLoadWithExtraData:")
+    public void adapterRewardedVideoDidLoad(NSDictionary<NSString, ?> extraData) {}
     @NotImplemented("adapterRewardedVideoDidClick")
     public void adapterRewardedVideoDidClick() {}
+    @NotImplemented("adapterRewardedVideoDidClickWithExtraData:")
+    public void adapterRewardedVideoDidClick(NSDictionary<NSString, ?> extraData) {}
     @NotImplemented("adapterRewardedVideoDidStart")
     public void adapterRewardedVideoDidStart() {}
+    @NotImplemented("adapterRewardedVideoDidStartWithExtraData:")
+    public void adapterRewardedVideoDidStart(NSDictionary<NSString, ?> extraData) {}
     @NotImplemented("adapterRewardedVideoDidEnd")
     public void adapterRewardedVideoDidEnd() {}
+    @NotImplemented("adapterRewardedVideoDidEndWithExtraData:")
+    public void adapterRewardedVideoDidEnd(NSDictionary<NSString, ?> extraData) {}
     @NotImplemented("adapterRewardedVideoInitSuccess")
     public void adapterRewardedVideoInitSuccess() {}
+    @NotImplemented("adapterRewardedVideoInitSuccessWithExtraData:")
+    public void adapterRewardedVideoInitSuccess(NSDictionary<NSString, ?> extraData) {}
     @NotImplemented("adapterRewardedVideoInitFailed:")
     public void adapterRewardedVideoInitFailed(NSError error) {}
+    @NotImplemented("adapterRewardedVideoInitFailed:extraData:")
+    public void adapterRewardedVideoInitFailed(NSError error, NSDictionary<NSString, ?> extraData) {}
     @NotImplemented("adapterRewardedVideoDidBecomeVisible")
     public void adapterRewardedVideoDidBecomeVisible() {}
+    @NotImplemented("adapterRewardedVideoDidBecomeVisibleWithExtraData:")
+    public void adapterRewardedVideoDidBecomeVisible(NSDictionary<NSString, ?> extraData) {}
     /*</methods>*/
 }

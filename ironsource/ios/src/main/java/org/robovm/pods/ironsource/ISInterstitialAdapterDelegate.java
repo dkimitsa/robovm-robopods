@@ -51,24 +51,44 @@ import org.robovm.apple.coreanimation.*;
     /*<methods>*/
     @Method(selector = "adapterInterstitialInitSuccess")
     void adapterInterstitialInitSuccess();
+    @Method(selector = "adapterInterstitialInitSuccessWithExtraData:")
+    void adapterInterstitialInitSuccess(NSDictionary<NSString, ?> extraData);
     @Method(selector = "adapterInterstitialInitFailedWithError:")
     void adapterInterstitialInitFailed(NSError error);
+    @Method(selector = "adapterInterstitialInitFailedWithError:extraData:")
+    void adapterInterstitialInitFailed(NSError error, NSDictionary<NSString, ?> extraData);
     @Method(selector = "adapterInterstitialDidLoad")
     void adapterInterstitialDidLoad();
+    @Method(selector = "adapterInterstitialDidLoadWithExtraData:")
+    void adapterInterstitialDidLoad(NSDictionary<NSString, ?> extraData);
     @Method(selector = "adapterInterstitialDidFailToLoadWithError:")
     void adapterInterstitialDidFailToLoad(NSError error);
+    @Method(selector = "adapterInterstitialDidFailToLoadWithError:extraData:")
+    void adapterInterstitialDidFailToLoad(NSError error, NSDictionary<NSString, ?> extraData);
     @Method(selector = "adapterInterstitialDidOpen")
     void adapterInterstitialDidOpen();
+    @Method(selector = "adapterInterstitialDidOpenWithExtraData:")
+    void adapterInterstitialDidOpen(NSDictionary<NSString, ?> extraData);
     @Method(selector = "adapterInterstitialDidClose")
     void adapterInterstitialDidClose();
+    @Method(selector = "adapterInterstitialDidCloseWithExtraData:")
+    void adapterInterstitialDidClose(NSDictionary<NSString, ?> extraData);
     @Method(selector = "adapterInterstitialDidShow")
     void adapterInterstitialDidShow();
+    @Method(selector = "adapterInterstitialDidShowWithExtraData:")
+    void adapterInterstitialDidShow(NSDictionary<NSString, ?> extraData);
     @Method(selector = "adapterInterstitialDidFailToShowWithError:")
     void adapterInterstitialDidFailToShow(NSError error);
+    @Method(selector = "adapterInterstitialDidFailToShowWithError:extraData:")
+    void adapterInterstitialDidFailToShow(NSError error, NSDictionary<NSString, ?> extraData);
     @Method(selector = "adapterInterstitialDidClick")
     void adapterInterstitialDidClick();
+    @Method(selector = "adapterInterstitialDidClickWithExtraData:")
+    void adapterInterstitialDidClick(NSDictionary<NSString, ?> extraData);
     @Method(selector = "adapterInterstitialDidBecomeVisible")
     void adapterInterstitialDidBecomeVisible();
+    @Method(selector = "adapterInterstitialDidBecomeVisibleWithExtraData:")
+    void adapterInterstitialDidBecomeVisible(NSDictionary<NSString, ?> extraData);
     /*</methods>*/
     /*<adapter>*/
     /*</adapter>*/

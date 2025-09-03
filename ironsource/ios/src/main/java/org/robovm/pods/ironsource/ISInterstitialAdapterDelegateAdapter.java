@@ -53,23 +53,43 @@ import org.robovm.apple.coreanimation.*;
     /*<methods>*/
     @NotImplemented("adapterInterstitialInitSuccess")
     public void adapterInterstitialInitSuccess() {}
+    @NotImplemented("adapterInterstitialInitSuccessWithExtraData:")
+    public void adapterInterstitialInitSuccess(NSDictionary<NSString, ?> extraData) {}
     @NotImplemented("adapterInterstitialInitFailedWithError:")
     public void adapterInterstitialInitFailed(NSError error) {}
+    @NotImplemented("adapterInterstitialInitFailedWithError:extraData:")
+    public void adapterInterstitialInitFailed(NSError error, NSDictionary<NSString, ?> extraData) {}
     @NotImplemented("adapterInterstitialDidLoad")
     public void adapterInterstitialDidLoad() {}
+    @NotImplemented("adapterInterstitialDidLoadWithExtraData:")
+    public void adapterInterstitialDidLoad(NSDictionary<NSString, ?> extraData) {}
     @NotImplemented("adapterInterstitialDidFailToLoadWithError:")
     public void adapterInterstitialDidFailToLoad(NSError error) {}
+    @NotImplemented("adapterInterstitialDidFailToLoadWithError:extraData:")
+    public void adapterInterstitialDidFailToLoad(NSError error, NSDictionary<NSString, ?> extraData) {}
     @NotImplemented("adapterInterstitialDidOpen")
     public void adapterInterstitialDidOpen() {}
+    @NotImplemented("adapterInterstitialDidOpenWithExtraData:")
+    public void adapterInterstitialDidOpen(NSDictionary<NSString, ?> extraData) {}
     @NotImplemented("adapterInterstitialDidClose")
     public void adapterInterstitialDidClose() {}
+    @NotImplemented("adapterInterstitialDidCloseWithExtraData:")
+    public void adapterInterstitialDidClose(NSDictionary<NSString, ?> extraData) {}
     @NotImplemented("adapterInterstitialDidShow")
     public void adapterInterstitialDidShow() {}
+    @NotImplemented("adapterInterstitialDidShowWithExtraData:")
+    public void adapterInterstitialDidShow(NSDictionary<NSString, ?> extraData) {}
     @NotImplemented("adapterInterstitialDidFailToShowWithError:")
     public void adapterInterstitialDidFailToShow(NSError error) {}
+    @NotImplemented("adapterInterstitialDidFailToShowWithError:extraData:")
+    public void adapterInterstitialDidFailToShow(NSError error, NSDictionary<NSString, ?> extraData) {}
     @NotImplemented("adapterInterstitialDidClick")
     public void adapterInterstitialDidClick() {}
+    @NotImplemented("adapterInterstitialDidClickWithExtraData:")
+    public void adapterInterstitialDidClick(NSDictionary<NSString, ?> extraData) {}
     @NotImplemented("adapterInterstitialDidBecomeVisible")
     public void adapterInterstitialDidBecomeVisible() {}
+    @NotImplemented("adapterInterstitialDidBecomeVisibleWithExtraData:")
+    public void adapterInterstitialDidBecomeVisible(NSDictionary<NSString, ?> extraData) {}
     /*</methods>*/
 }

@@ -53,11 +53,19 @@ import org.robovm.apple.coreanimation.*;
     /*<methods>*/
     @NotImplemented("adDidLoadWithView:")
     public void adDidLoad(UIView view) {}
+    @NotImplemented("adDidLoadWithView:extraData:")
+    public void adDidLoad(UIView view, NSDictionary<NSString, ?> extraData) {}
     @NotImplemented("adWillLeaveApplication")
     public void adWillLeaveApplication() {}
+    @NotImplemented("adWillLeaveApplicationWithExtraData:")
+    public void adWillLeaveApplication(NSDictionary<NSString, ?> extraData) {}
     @NotImplemented("adWillPresentScreen")
     public void adWillPresentScreen() {}
+    @NotImplemented("adWillPresentScreenWithExtraData:")
+    public void adWillPresentScreen(NSDictionary<NSString, ?> extraData) {}
     @NotImplemented("adDidDismissScreen")
     public void adDidDismissScreen() {}
+    @NotImplemented("adDidDismissScreenWithExtraData:")
+    public void adDidDismissScreen(NSDictionary<NSString, ?> extraData) {}
     /*</methods>*/
 }

@@ -69,9 +69,9 @@ import org.robovm.apple.coreanimation.*;
     @Property(selector = "setUserId:")
     public native void setUserId(String v);
     @Property(selector = "adUnitAdapters")
-    public native ISConcurrentMutableDictionary getAdUnitAdapters();
+    public native LPMThreadSafeDictionaryProtocol getAdUnitAdapters();
     @Property(selector = "setAdUnitAdapters:")
-    public native void setAdUnitAdapters(ISConcurrentMutableDictionary v);
+    public native void setAdUnitAdapters(LPMThreadSafeDictionaryProtocol v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

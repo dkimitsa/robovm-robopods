@@ -29,7 +29,7 @@
 @property(nonatomic, strong) NSString *providerNetworkKey;
 @property(strong, nonatomic) NSString *pluginType;
 @property(strong, nonatomic) NSString *userId;
-@property(strong, nonatomic) ISConcurrentMutableDictionary *adUnitAdapters;
+@property(strong, nonatomic) id<LPMThreadSafeDictionaryProtocol> adUnitAdapters;
 
 - (instancetype)initAdapter:(NSString *)name;
 - (void)earlyInitWithAdapterConfig:(ISAdapterConfig *)adapterConfig;

@@ -53,7 +53,11 @@ import org.robovm.apple.coreanimation.*;
     /*<methods>*/
     @NotImplemented("onInitDidSucceed")
     public void onInitDidSucceed() {}
+    @NotImplemented("onInitDidSucceedWithExtraData:")
+    public void onInitDidSucceed(NSDictionary<NSString, ?> extraData) {}
     @NotImplemented("onInitDidFailWithErrorCode:errorMessage:")
     public void onInitDidFail(@MachineSizedSInt long errorCode, String errorMessage) {}
+    @NotImplemented("onInitDidFailWithErrorCode:errorMessage:extraData:")
+    public void onInitDidFail(@MachineSizedSInt long errorCode, String errorMessage, NSDictionary<NSString, ?> extraData) {}
     /*</methods>*/
 }

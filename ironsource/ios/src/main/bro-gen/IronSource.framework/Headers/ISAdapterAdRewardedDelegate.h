@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 // mandatory callbacks
 
 - (void)adRewarded;
+- (void)adRewardedWithExtraData:(NSDictionary<NSString *, id> *)extraData;
 
 @end
 

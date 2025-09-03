@@ -326,6 +326,8 @@ classes:
         methods:
             '-initWithAdapterConfig:':
                 name: init
+            '-initWithServerConfig:':
+                name: init
     SupersonicLogManager:
         methods:
             '-log:withLevel:withTag:':
@@ -404,6 +406,8 @@ classes:
         methods:
             '-initWithAppKey:legacyAdFormats:userId:':
                 name: init
+            '-initWithAppKey:userId:':
+                name: init
     LPMInitRequestBuilder:
         methods:
             '-initWithAppKey:':
@@ -471,13 +475,13 @@ classes:
             '-setCustomValue:forKey:':
                 name: setCustomValue
     ISBaseNativeAd:
-      methods:
-        '-loadAdWithAdData:viewController:delegate:':
-          name: loadAd
-        '-destroyAdWithAdData:':
-          name: destroyAd
-        '-getNativeAdPropertiesWithAdData:':
-          name: getNativeAdProperties
+        methods:
+            '-loadAdWithAdData:viewController:delegate:':
+                name: loadAd
+            '-destroyAdWithAdData:':
+                name: destroyAd
+            '-getNativeAdPropertiesWithAdData:':
+                name: getNativeAdProperties
 protocols:
     ISAdapterAdDelegate:
         methods:
@@ -485,11 +489,34 @@ protocols:
                 name: adDidFailToLoad
             '-adDidFailToShowWithErrorCode:errorMessage:':
                 name: adDidFailToShow
+            '-adDidLoadWithExtraData:':
+              name: adDidLoad
+            '-adDidFailToLoadWithErrorType:errorCode:errorMessage:extraData:':
+              name: adDidFailToLoad
+            '-adDidOpenWithExtraData:':
+              name: adDidOpen
+            '-adDidFailToShowWithErrorCode:errorMessage:extraData:':
+              name: adDidFailToShow
+            '-adDidClickWithExtraData:':
+              name: adDidClick
     ISAdapterAdInteractionDelegate:
         methods:
             '-adDidFailToShowWithErrorCode:errorMessage:':
                 name: adDidFailToShow
-    ISAdapterAdRewardedDelegate: {}
+            '-adDidCloseWithExtraData:':
+                name: adDidClose
+            '-adDidShowSucceedWithExtraData:':
+                name: adDidShowSucceed
+            '-adDidBecomeVisibleWithExtraData:':
+                name: adDidBecomeVisible
+            '-adDidStartWithExtraData:':
+                name: adDidStart
+            '-adDidEndWithExtraData:':
+                name: adDidEnd
+    ISAdapterAdRewardedDelegate:
+        methods:
+            '-adRewardedWithExtraData:':
+                name: adRewarded
     ISAdapterBaseProtocol:
         methods:
             '-init:delegate:':
@@ -538,6 +565,10 @@ protocols:
     ISNetworkInitializationDelegate:
         methods:
             '-onInitDidFailWithErrorCode:errorMessage:':
+                name: onInitDidFail
+            '-onInitDidSucceedWithExtraData:':
+                name: onInitDidSucceed
+            '-onInitDidFailWithErrorCode:errorMessage:extraData:':
                 name: onInitDidFail
     ISRewardedVideoAdDelegate: {}
     ISSegmentDelegate: {}
@@ -619,6 +650,14 @@ protocols:
         methods:
             '-adDidLoadWithView:':
                 name: adDidLoad
+            '-adDidLoadWithView:extraData:':
+                name: adDidLoad
+            '-adWillLeaveApplicationWithExtraData:':
+                name: adWillLeaveApplication
+            '-adWillPresentScreenWithExtraData:':
+                name: adWillPresentScreen
+            '-adDidDismissScreenWithExtraData:':
+                name: adDidDismissScreen
     ISAdapterBannerProtocol:
         methods:
             '-loadAdWithAdData:viewController:size:delegate:':
@@ -651,6 +690,26 @@ protocols:
             '-adapterBannerDidFailToLoadWithError:':
                 name: adapterBannerDidFailToLoad
             '-adapterBannerDidFailToShowWithError:':
+                name: adapterBannerDidFailToShow
+            '-adapterBannerInitSuccessWithExtraData:':
+                name: adapterBannerInitSuccess
+            '-adapterBannerInitFailedWithError:extraData:':
+                name: adapterBannerInitFailed
+            '-adapterBannerDidLoad:extraData:':
+                name: adapterBannerDidLoad
+            '-adapterBannerDidFailToLoadWithError:extraData:':
+                name: adapterBannerDidFailToLoad
+            '-adapterBannerDidClickWithExtraData:':
+                name: adapterBannerDidClick
+            '-adapterBannerWillPresentScreenWithExtraData:':
+                name: adapterBannerWillPresentScreen
+            '-adapterBannerDidDismissScreenWithExtraData:':
+                name: adapterBannerDidDismissScreen
+            '-adapterBannerWillLeaveApplicationWithExtraData:':
+                name: adapterBannerWillLeaveApplication
+            '-adapterBannerDidShowWithExtraData:':
+                name: adapterBannerDidShow
+            '-adapterBannerDidFailToShowWithError:extraData:':
                 name: adapterBannerDidFailToShow
     ISBannerAdapterProtocol:
         methods:
@@ -685,6 +744,27 @@ protocols:
                 name: adapterInterstitialDidFailToLoad
             '-adapterInterstitialDidFailToShowWithError:':
                 name: adapterInterstitialDidFailToShow
+            '-adapterInterstitialInitSuccessWithExtraData:':
+                name: adapterInterstitialInitSuccess
+            '-adapterInterstitialInitFailedWithError:extraData:':
+                name: adapterInterstitialInitFailed
+            '-adapterInterstitialDidLoadWithExtraData:':
+                name: adapterInterstitialDidLoad
+            '-adapterInterstitialDidFailToLoadWithError:extraData:':
+                name: adapterInterstitialDidFailToLoad
+            '-adapterInterstitialDidOpenWithExtraData:':
+                name: adapterInterstitialDidOpen
+            '-adapterInterstitialDidCloseWithExtraData:':
+                name: adapterInterstitialDidClose
+            '-adapterInterstitialDidShowWithExtraData:':
+                name: adapterInterstitialDidShow
+            '-adapterInterstitialDidFailToShowWithError:extraData:':
+                name: adapterInterstitialDidFailToShow
+            '-adapterInterstitialDidClickWithExtraData:':
+                name: adapterInterstitialDidClick
+            '-adapterInterstitialDidBecomeVisibleWithExtraData:':
+                name: adapterInterstitialDidBecomeVisible
+
     ISInterstitialAdapterProtocol:
         methods:
             '-showInterstitialWithViewController:adapterConfig:delegate:':
@@ -755,6 +835,32 @@ protocols:
                 name: adapterRewardedVideoDidFailToLoad
             '-adapterRewardedVideoDidFailToShowWithError:':
                 name: adapterRewardedVideoDidFailToShow
+            '-adapterRewardedVideoHasChangedAvailability:extraData:':
+                name: adapterRewardedVideoHasChangedAvailability
+            '-adapterRewardedVideoDidFailToLoadWithError:extraData:':
+                name: adapterRewardedVideoDidFailToLoad
+            '-adapterRewardedVideoDidReceiveRewardWithExtraData:':
+                name: adapterRewardedVideoDidReceiveReward
+            '-adapterRewardedVideoDidFailToShowWithError:extraData:':
+                name: adapterRewardedVideoDidFailToShow
+            '-adapterRewardedVideoDidOpenWithExtraData:':
+                name: adapterRewardedVideoDidOpen
+            '-adapterRewardedVideoDidCloseWithExtraData:':
+                name: adapterRewardedVideoDidClose
+            '-adapterRewardedVideoDidLoadWithExtraData:':
+                name: adapterRewardedVideoDidLoad
+            '-adapterRewardedVideoDidClickWithExtraData:':
+                name: adapterRewardedVideoDidClick
+            '-adapterRewardedVideoDidStartWithExtraData:':
+                name: adapterRewardedVideoDidStart
+            '-adapterRewardedVideoDidEndWithExtraData:':
+                name: adapterRewardedVideoDidEnd
+            '-adapterRewardedVideoInitSuccessWithExtraData:':
+                name: adapterRewardedVideoInitSuccess
+            '-adapterRewardedVideoInitFailed:extraData:':
+                name: adapterRewardedVideoInitFailed
+            '-adapterRewardedVideoDidBecomeVisibleWithExtraData:':
+                name: adapterRewardedVideoDidBecomeVisible
     ISRewardedVideoAdapterProtocol:
         methods:
             '-hasRewardedVideoWithAdapterConfig:':
@@ -876,15 +982,19 @@ protocols:
                 name: didCloseAd
     LPMImpressionDataDelegate: {}
     ISAdapterNativeAdProtocol:
-      methods:
-        '-loadAdWithAdData:viewController:delegate:':
-          name: loadAd
-        '-destroyAdWithAdData:':
-          name: destroyAd
+        methods:
+            '-loadAdWithAdData:viewController:delegate:':
+                name: loadAd
+            '-destroyAdWithAdData:':
+                name: destroyAd
     ISNativeAdDelegate:
-      methods:
-        '-adDidLoadWithAdData:adViewBinder:':
-          name: adDidLoad
+        methods:
+            '-adDidLoadWithAdData:adViewBinder:':
+                name: adDidLoad
+    LPMThreadSafeDictionaryProtocol:
+        methods:
+            '-setObject:forKey:':
+                name: setObject
 functions:
     # Make sure we don't miss any functions if new ones are introduced in a later version
     (.*):

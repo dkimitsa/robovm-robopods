@@ -113,8 +113,8 @@ NS_ASSUME_NONNULL_BEGIN
 #define IS_BANNER @"banner"
 #define IS_NATIVE_AD @"nativead"
 
-static NSString *const MEDIATION_SDK_VERSION = @"8.10.0";
-static NSString *GitHash = @"61fa927";
+static NSString *const MEDIATION_SDK_VERSION = @"8.11.0";
+static NSString *GitHash = @"cfa6fb4";
 
 /*
     This constant is for sending an external impression data from mopub

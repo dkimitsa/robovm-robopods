@@ -51,14 +51,24 @@ import org.robovm.apple.coreanimation.*;
     /*<methods>*/
     @Method(selector = "adDidLoad")
     void adDidLoad();
+    @Method(selector = "adDidLoadWithExtraData:")
+    void adDidLoad(NSDictionary<NSString, ?> extraData);
     @Method(selector = "adDidFailToLoadWithErrorType:errorCode:errorMessage:")
     void adDidFailToLoad(ISAdapterErrorType errorType, @MachineSizedSInt long errorCode, String errorMessage);
+    @Method(selector = "adDidFailToLoadWithErrorType:errorCode:errorMessage:extraData:")
+    void adDidFailToLoad(ISAdapterErrorType errorType, @MachineSizedSInt long errorCode, String errorMessage, NSDictionary<NSString, ?> extraData);
     @Method(selector = "adDidOpen")
     void adDidOpen();
+    @Method(selector = "adDidOpenWithExtraData:")
+    void adDidOpen(NSDictionary<NSString, ?> extraData);
     @Method(selector = "adDidFailToShowWithErrorCode:errorMessage:")
     void adDidFailToShow(@MachineSizedSInt long errorCode, String errorMessage);
+    @Method(selector = "adDidFailToShowWithErrorCode:errorMessage:extraData:")
+    void adDidFailToShow(@MachineSizedSInt long errorCode, String errorMessage, NSDictionary<NSString, ?> extraData);
     @Method(selector = "adDidClick")
     void adDidClick();
+    @Method(selector = "adDidClickWithExtraData:")
+    void adDidClick(NSDictionary<NSString, ?> extraData);
     /*</methods>*/
     /*<adapter>*/
     /*</adapter>*/
