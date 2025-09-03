@@ -62,6 +62,14 @@ import org.robovm.pods.facebook.core.*;
     public native NSURL getContentURL();
     @Property(selector = "setContentURL:")
     public native void setContentURL(NSURL v);
+    @Property(selector = "entityURI")
+    public native String getEntityURI();
+    @Property(selector = "setEntityURI:")
+    public native void setEntityURI(String v);
+    @Property(selector = "isMusicAttachmentAllowed")
+    public native boolean isMusicAttachmentAllowed();
+    @Property(selector = "setIsMusicAttachmentAllowed:")
+    public native void setIsMusicAttachmentAllowed(boolean v);
     @Property(selector = "hashtag")
     public native FBSDKHashtag getHashtag();
     @Property(selector = "setHashtag:")
