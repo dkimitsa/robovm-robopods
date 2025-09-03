@@ -40,8 +40,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  * The desired size for the ad view.
- *
- * If you're using default templates and this value is not set, ad views automatically size to 360x120 for "Small" and 360x300 for "Medium".
  */
 @property (nonatomic, assign) CGSize adSize;
 
@@ -91,10 +89,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  * Returns the size for an ad at a given index path. If an ad is not ready for that index path, returns @c CGSizeZero.
- *
- * If you're using default templates and @c adSize is not set, ad views automatically size to 360x120 for "Small" and 360x300 for "Medium". If the desired width is larger than the @c maximumWidth, the @c maximumWidth will be used while preserving the height for "Small" templates and the aspect ratio for "Medium". The size for manual templates will not be resized to fit.
  */
-- (CGSize)sizeForAdAtIndexPath:(NSIndexPath *)indexPath withMaximumWidth:(CGFloat)maximumWidth;
+- (CGSize)sizeForAdAtIndexPath:(NSIndexPath *)indexPath;
 
 /**
  * Renders an ad into the provided container view if an ad is loaded for that index path.

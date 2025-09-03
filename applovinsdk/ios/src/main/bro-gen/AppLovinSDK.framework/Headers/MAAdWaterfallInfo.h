@@ -5,6 +5,7 @@
 //  Created by Thomas So on 10/30/21.
 //
 
+@class ALMediatedAdRequestParameters;
 @class MAAd;
 @class MANetworkResponseInfo;
 

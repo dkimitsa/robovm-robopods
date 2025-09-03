@@ -84,8 +84,8 @@ import org.robovm.apple.safariservices.*;
     public native boolean isAdIndexPath(NSIndexPath indexPath);
     @Method(selector = "isFilledIndexPath:")
     public native boolean isFilledIndexPath(NSIndexPath indexPath);
-    @Method(selector = "sizeForAdAtIndexPath:withMaximumWidth:")
-    public native @ByVal CGSize getSizeForAd(NSIndexPath indexPath, @MachineSizedFloat double maximumWidth);
+    @Method(selector = "sizeForAdAtIndexPath:")
+    public native @ByVal CGSize sizeForAdAtIndexPath(NSIndexPath indexPath);
     @Method(selector = "renderAdAtIndexPath:inView:")
     public native void renderAd(NSIndexPath indexPath, UIView view);
     @Method(selector = "updateFillableIndexPaths:")
