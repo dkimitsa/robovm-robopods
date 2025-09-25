@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>io.github.dkimitsa.robovm</groupId>
-        <version>1.53.0-SNAPSHOT</version>
+        <version>1.53.0</version>
         <artifactId>robopods-tenjin-parent</artifactId>
     </parent>
 
