@@ -19,7 +19,19 @@
         <name>Demyan Kimitsa</name>
         <url>https://dkimitsa.github.io</url>
     </organization>
-
+    <developers>
+        <developer>
+            <id>dkimitsa</id>
+            <name>Demyan Kimitsa</name>
+            <email>demyan.kimitsa@gmail.com</email>
+        </developer>
+    </developers>
+    <licenses>
+        <license>
+            <name>The Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
     <scm>
         <url>https://github.com/dkimitsa/robovm-robopods</url>
         <connection>scm:git:git://github.com/dkimitsa/robovm-robopods.git</connection>
@@ -34,11 +46,34 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <robovm.version>2.3.19</robovm.version>
+        <robovm.version>2.3.23</robovm.version>
         <robopods.version>${project.version}</robopods.version>
         <skipTests>true</skipTests>
     </properties>
 
+    <profiles>
+        <!-- profile that replaces oss-parent-7 functionality, being activated from release plugin -->
+        <profile>
+            <id>ossrh-release</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
     <distributionManagement>
         <snapshotRepository>
@@ -59,17 +94,6 @@
 
     <!-- sonatype to access snapshots -->
     <repositories>
-        <repository>
-            <id>sonatype-nexus-snapshots</id>
-            <name>Sonatype Nexus Snapshots</name>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
         <repository>
             <name>Central Portal Snapshots</name>
             <id>central-portal-snapshots</id>
@@ -165,16 +189,6 @@
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-release-plugin</artifactId>
-                    <version>2.5.3</version>
-                    <configuration>
-                        <mavenExecutorId>forked-path</mavenExecutorId>
-                        <useReleaseProfile>false</useReleaseProfile>
-                        <releaseProfiles>robovm-release</releaseProfiles>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-deploy-plugin</artifactId>
                     <version>3.0.0-M1</version>
                     <configuration>
@@ -185,8 +199,19 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-gpg-plugin</artifactId>
-                    <version>1.6</version>
+                    <version>3.2.4</version>
                 </plugin>
+                <!-- Central publishing -->
+                <plugin>
+                    <groupId>org.sonatype.central</groupId>
+                    <artifactId>central-publishing-maven-plugin</artifactId>
+                    <version>0.8.0</version>
+                    <extensions>true</extensions>
+                    <configuration>
+                       <publishingServerId>central dkimitsa</publishingServerId>
+                       <autoPublish>false</autoPublish>
+                    </configuration>
+                </plugin> 
             </plugins>
         </pluginManagement>
 
@@ -202,6 +227,14 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.sonatype.central</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
             </plugin>
         </plugins>
     </build>
