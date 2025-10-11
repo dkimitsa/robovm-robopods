@@ -32,15 +32,15 @@ This is the list of currently available AltPods. Click them to get more informat
 | [SAMKeychain](samkeychain/)      | SAMKeychain is a simple wrapper for accessing accounts, getting passwords, setting passwords, and deleting passwords using the system Keychain on Mac OS X and iOS |
 | [Singular](singular/)            | Singular iOS SDK                                                                                                                                                   |
 | [Tenjin](tenjin/)                | Tenjin iOS SDK                                                                                                                                                     |
-| [UnityAds](unitryads/)           | Unity Ads is a comprehensive monetization platform for Unity, iOS, and Android developers                                                                          |
+| [UnityAds](unityads/)            | Unity Ads is a comprehensive monetization platform for Unity, iOS, and Android developers                                                                          |
 | [YouTubePlayer](youtube/)        | Lightweight helper library that allows iOS developers to add inline playback of YouTube videos through a WebView                                                   |
 
 
 ## Version of AltPods to framework version mapping
 
-v1.53.0 - in development 
+v1.53.0 
 
-| Name                                    | 1.52.0  |
+| Name                                    | 1.53.0  |
 |-----------------------------------------|---------|
 | [AdaptySDK](adapty/)                    | 1.17.7  |
 | [AppCenter](appcenter/)                 | 5.0.6   |
