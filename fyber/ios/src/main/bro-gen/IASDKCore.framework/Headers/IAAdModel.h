@@ -19,4 +19,5 @@
  */
 @property (nonatomic, strong, nullable, readonly) id<IAInterfaceContentModel> contentModel;
 
+
 @end

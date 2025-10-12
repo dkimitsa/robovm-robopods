@@ -39,45 +39,31 @@ import org.robovm.apple.coregraphics.*;
 
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/IAVideoContentController/*</name>*/ 
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/DTXNativeImageContentController/*</name>*/ 
     extends /*<extends>*/IAContentController/*</extends>*/ 
-    /*<implements>*/implements IAInterfaceBuilder, IAVideoContentControllerBuilder/*</implements>*/ {
+    /*<implements>*/implements IAInterfaceBuilder, DTXNativeImageContentControllerBuilder/*</implements>*/ {
 
-    /*<ptr>*/public static class IAVideoContentControllerPtr extends Ptr<IAVideoContentController, IAVideoContentControllerPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(IAVideoContentController.class); }/*</bind>*/
+    /*<ptr>*/public static class DTXNativeImageContentControllerPtr extends Ptr<DTXNativeImageContentController, DTXNativeImageContentControllerPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(DTXNativeImageContentController.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public IAVideoContentController() {}
-    protected IAVideoContentController(Handle h, long handle) { super(h, handle); }
-    protected IAVideoContentController(SkipInit skipInit) { super(skipInit); }
+    public DTXNativeImageContentController() {}
+    protected DTXNativeImageContentController(Handle h, long handle) { super(h, handle); }
+    protected DTXNativeImageContentController(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
-    @Property(selector = "isMuted")
-    public native boolean isMuted();
-    @Property(selector = "setMuted:")
-    public native void setMuted(boolean v);
     @Property(selector = "mediaAspectRatio")
     public native @MachineSizedFloat double getMediaAspectRatio();
-    @Property(selector = "videoContentDelegate")
-    public native IAVideoContentDelegate getVideoContentDelegate();
-    @Property(selector = "setVideoContentDelegate:", strongRef = true)
-    public native void setVideoContentDelegate(IAVideoContentDelegate v);
+    @Property(selector = "setMediaAspectRatio:")
+    public native void setMediaAspectRatio(@MachineSizedFloat double v);
+    @Property(selector = "nativeImageContentDelegate")
+    public native DTXNativeImageContentDelegate getNativeImageContentDelegate();
+    @Property(selector = "setNativeImageContentDelegate:", strongRef = true)
+    public native void setNativeImageContentDelegate(DTXNativeImageContentDelegate v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    /**
-     * @deprecated This API is deprecated.
-     */
-    @Deprecated
-    @Method(selector = "play")
-    public native void play();
-    /**
-     * @deprecated This API is deprecated.
-     */
-    @Deprecated
-    @Method(selector = "pause")
-    public native void pause();
     @Method(selector = "build:")
-    public static native IAVideoContentController build(@Block VoidBlock1<IAVideoContentControllerBuilder> buildBlock);
+    public static native DTXNativeImageContentController build(@Block VoidBlock1<DTXNativeImageContentControllerBuilder> buildBlock);
     /*</methods>*/
 }

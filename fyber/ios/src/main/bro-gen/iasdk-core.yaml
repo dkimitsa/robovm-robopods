@@ -75,6 +75,7 @@ classes:
     IAVideoView: {}
     FMPLogger: {}
     DTXLogger: {}
+    DTXNativeImageContentController: {}
 protocols:
     IAAdRequestBuilder: {}
     IAAdSpotBuilder: {}
@@ -122,6 +123,13 @@ protocols:
                 name: videoDurationUpdated
             '-IAVideoContentController:videoProgressUpdatedWithCurrentTime:totalTime:':
                 name: videoProgressUpdated
+    DTXNativeImageContentControllerBuilder: {}
+    DTXNativeImageContentDelegate:
+        methods:
+            '-nativeImage:loadedImageFromURL:':
+                name: loadedImage
+            '-nativeImage:failedToLoadImageFromURL:error:':
+                name: failedToLoadImage
 functions:
     # Make sure we don't miss any functions if new ones are introduced in a later version
     (.*):

@@ -281,8 +281,11 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #if __has_warning("-Watimport-in-framework-header")
 #pragma clang diagnostic ignored "-Watimport-in-framework-header"
 #endif
+@import Foundation;
 @import ObjectiveC;
 #endif
+
+#import <IASDKCore/IASDKCore.h>
 
 #endif
 #pragma clang diagnostic ignored "-Wproperty-attribute-mismatch"
@@ -318,6 +321,229 @@ SWIFT_CLASS_NAMED("DTXLogger")
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
+@class NSString;
+@class UIView;
+@class NSNumber;
+SWIFT_CLASS("_TtC9IASDKCore16IANativeAdAssets")
+@interface IANativeAdAssets : NSObject
+@property (nonatomic, readonly, copy) NSString * _Nullable adTitle;
+@property (nonatomic, readonly, copy) NSString * _Nullable adDescription;
+@property (nonatomic, readonly, copy) NSString * _Nullable callToActionText;
+@property (nonatomic, readonly, strong) UIView * _Nullable appIcon;
+@property (nonatomic, readonly, strong) UIView * _Nonnull mediaView;
+@property (nonatomic, readonly, strong) NSNumber * _Nullable rating;
+@property (nonatomic, readonly, strong) NSNumber * _Nullable mediaAspectRatio;
+- (void)registerViewForInteraction:(UIView * _Nullable)rootView mediaView:(UIView * _Nullable)mediaView iconView:(UIView * _Nullable)iconView clickableViews:(NSArray<UIView *> * _Nullable)clickableViews;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+@class IANativeAdSpot;
+@class UIViewController;
+@class NSURL;
+/// Protocol for receiving NativeAd-related events from an <code>IANativeAdSpot</code>.
+SWIFT_PROTOCOL("_TtP9IASDKCore18IANativeAdDelegate_")
+@protocol IANativeAdDelegate
+/// Provides the parent view controller for presenting the native ad.
+/// note:
+/// This method is required and must be implemented.
+/// \param adSpot The <code>IANativeAdSpot</code> instance requesting the view controller.
+///
+///
+/// returns:
+/// A <code>UIViewController</code> to present the native ad, with its <code>modalPresentationStyle</code> set to <code>UIModalPresentationStyle.fullScreen</code>.
+- (UIViewController * _Nonnull)iaParentViewControllerForAdSpot:(IANativeAdSpot * _Nullable)adSpot SWIFT_WARN_UNUSED_RESULT;
+@optional
+/// Called when the native ad receives a click.
+/// note:
+/// This method is optional.
+/// \param adSpot The <code>IANativeAdSpot</code> instance that triggered the click event.
+///
+/// \param origin The source of the click, represented as a string constant. Possible values include:
+/// <ul>
+///   <li>
+///     <code>NATIVE_AD_TITLE</code>
+///   </li>
+///   <li>
+///     <code>NATIVE_AD_IMAGE</code>
+///   </li>
+///   <li>
+///     <code>NATIVE_AD_VIDEO</code>
+///   </li>
+///   <li>
+///     <code>NATIVE_AD_ICON</code>
+///   </li>
+///   <li>
+///     <code>NATIVE_AD_DESCRIPTION</code>
+///   </li>
+///   <li>
+///     <code>NATIVE_AD_RATING</code>
+///   </li>
+///   <li>
+///     <code>NATIVE_AD_CTA</code>
+///   </li>
+///   <li>
+///     <code>NATIVE_AD_ROOT</code>
+///   </li>
+///   <li>
+///     <code>NATIVE</code>
+///   </li>
+/// </ul>
+///
+- (void)iaNativeAdDidReceiveClick:(IANativeAdSpot * _Nullable)adSpot origin:(NSString * _Nullable)origin;
+/// Called when the native ad is about to log an impression.
+/// note:
+/// This method is optional.
+/// \param adSpot The <code>IANativeAdSpot</code> instance that triggered the impression event.
+///
+- (void)iaNativeAdWillLogImpression:(IANativeAdSpot * _Nullable)adSpot;
+/// Called when the native ad is about to open an external application.
+/// note:
+/// This method is optional.
+/// \param adSpot The <code>IANativeAdSpot</code> instance that triggered the event.
+///
+- (void)iaNativeAdWillOpenExternalApp:(IANativeAdSpot * _Nullable)adSpot;
+/// Called when the native ad expires.
+/// note:
+/// This method is optional.
+/// \param adSpot The <code>IANativeAdSpot</code> instance that triggered the expiration event.
+///
+- (void)iaNativeAdDidExpire:(IANativeAdSpot * _Nullable)adSpot;
+/// Called when the native ad is about to present a fullscreen view.
+/// note:
+/// This method is optional.
+/// \param adSpot The <code>IANativeAdSpot</code> instance that triggered the event.
+///
+- (void)iaNativeAdWillPresentFullscreen:(IANativeAdSpot * _Nullable)adSpot;
+/// Called when the native ad has presented a fullscreen view.
+/// note:
+/// This method is optional.
+/// \param adSpot The <code>IANativeAdSpot</code> instance that triggered the event.
+///
+- (void)iaNativeAdDidPresentFullscreen:(IANativeAdSpot * _Nullable)adSpot;
+/// Called when the native ad is about to dismiss a fullscreen view.
+/// note:
+/// This method is optional.
+/// \param adSpot The <code>IANativeAdSpot</code> instance that triggered the event.
+///
+- (void)iaNativeAdWillDismissFullscreen:(IANativeAdSpot * _Nullable)adSpot;
+/// Called when the native ad has dismissed a fullscreen view.
+/// note:
+/// This method is optional.
+/// \param adSpot The <code>IANativeAdSpot</code> instance that triggered the event.
+///
+- (void)iaNativeAdDidDismissFullscreen:(IANativeAdSpot * _Nullable)adSpot;
+/// Called when the native ad video completes playback.
+/// note:
+/// This method is optional.
+/// \param adSpot The <code>IANativeAdSpot</code> instance that triggered the event.
+///
+- (void)iaNativeAdVideoCompleted:(IANativeAdSpot * _Nullable)adSpot;
+/// Called when the native ad video is interrupted due to an error.
+/// note:
+/// This method is optional.
+/// \param adSpot The <code>IANativeAdSpot</code> instance that triggered the event.
+///
+/// \param error The <code>Error</code> object describing the cause of the interruption.
+///
+- (void)iaNativeAd:(IANativeAdSpot * _Nullable)adSpot videoInterruptedWithError:(NSError * _Nonnull)error;
+/// Called when the native ad video duration is updated for a video ad.
+/// note:
+/// This method is optional.
+/// \param adSpot The <code>IANativeAdSpot</code> instance that triggered the event.
+///
+/// \param videoDuration The duration of the video in seconds.
+///
+- (void)iaNativeAd:(IANativeAdSpot * _Nullable)adSpot videoDurationUpdated:(NSTimeInterval)videoDuration;
+/// Called to report the current progress of a playing video ad.
+/// note:
+/// This method is optional.
+/// \param adSpot The <code>IANativeAdSpot</code> instance that triggered the event.
+///
+/// \param currentTime The current playback time of the video in seconds.
+///
+/// \param totalTime The total duration of the video in seconds.
+///
+- (void)iaNativeAd:(IANativeAdSpot * _Nullable)adSpot videoProgressUpdatedWithCurrentTime:(NSTimeInterval)currentTime totalTime:(NSTimeInterval)totalTime;
+/// Called when a native ad image asset is successfully loaded.
+/// note:
+/// This method is optional.
+/// \param adSpot The <code>IANativeAdSpot</code> instance that triggered the event.
+///
+/// \param url The <code>URL</code> of the successfully loaded image.
+///
+- (void)iaNativeAd:(IANativeAdSpot * _Nullable)adSpot didLoadImageFromUrl:(NSURL * _Nonnull)url;
+/// Called when a native ad image asset fails to load.
+/// note:
+/// This method is optional .
+/// \param adSpot The <code>IANativeAdSpot</code> instance that triggered the event.
+///
+/// \param didFailToLoadImageFromUrl The <code>URL</code> of the image that failed to load.
+///
+/// \param error The <code>Error</code> object describing the cause of the failure.
+///
+- (void)iaNativeAdSpot:(IANativeAdSpot * _Nullable)adSpot didFailToLoadImageFromUrl:(NSURL * _Nonnull)didFailToLoadImageFromUrl with:(NSError * _Nonnull)error;
+@end
+
+@class IAAdRequest;
+@protocol IANativeAdSpotBuilder;
+SWIFT_CLASS("_TtC9IASDKCore14IANativeAdSpot")
+@interface IANativeAdSpot : NSObject
+@property (nonatomic, readonly, strong) IAAdRequest * _Nullable adRequest;
+@property (nonatomic, readonly, copy) NSDictionary<NSString *, id> * _Nullable userInfo;
+@property (nonatomic, weak) id <IANativeAdDelegate> _Nullable delegate;
+@property (nonatomic, readonly, copy) NSString * _Nullable spotId;
+@property (nonatomic) BOOL muteVideo;
++ (IANativeAdSpot * _Nonnull)build:(SWIFT_NOESCAPE void (^ _Nonnull)(id <IANativeAdSpotBuilder> _Nonnull))builder SWIFT_WARN_UNUSED_RESULT;
+- (void)loadAdWithMarkup:(NSString * _Nonnull)adMarkup withCompletion:(void (^ _Nonnull)(IANativeAdAssets * _Nullable, NSError * _Nullable))completion;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER SWIFT_UNAVAILABLE_MSG("Use build(_:) to create IANativeAdSpot");
+@end
+
+@class DTXNativeImageContentController;
+@interface IANativeAdSpot (SWIFT_EXTENSION(IASDKCore)) <DTXNativeImageContentDelegate>
+- (void)nativeImage:(DTXNativeImageContentController * _Nullable)nativeImageContentController loadedImageFromURL:(NSURL * _Nonnull)url;
+- (void)nativeImage:(DTXNativeImageContentController * _Nullable)nativeImageContentController failedToLoadImageFromURL:(NSURL * _Nonnull)url error:(NSError * _Nonnull)error;
+@end
+
+@class IAVideoContentController;
+@interface IANativeAdSpot (SWIFT_EXTENSION(IASDKCore)) <IAVideoContentDelegate>
+- (void)IAVideoCompleted:(IAVideoContentController * _Nullable)contentController;
+- (void)IAVideoContentController:(IAVideoContentController * _Nullable)contentController videoInterruptedWithError:(NSError * _Nonnull)error;
+- (void)IAVideoContentController:(IAVideoContentController * _Nullable)contentController videoDurationUpdated:(NSTimeInterval)videoDuration;
+- (void)IAVideoContentController:(IAVideoContentController * _Nullable)contentController videoProgressUpdatedWithCurrentTime:(NSTimeInterval)currentTime totalTime:(NSTimeInterval)totalTime;
+@end
+
+@class IAUnitController;
+@interface IANativeAdSpot (SWIFT_EXTENSION(IASDKCore)) <IAUnitDelegate>
+- (UIViewController * _Nonnull)IAParentViewControllerForUnitController:(IAUnitController * _Nullable)unitController SWIFT_WARN_UNUSED_RESULT;
+- (void)IAAdDidReceiveClick:(IAUnitController * _Nullable)unitController;
+- (void)IAAdWillLogImpression:(IAUnitController * _Nullable)unitController;
+- (void)IAUnitControllerWillOpenExternalApp:(IAUnitController * _Nullable)unitController;
+- (void)IAAdDidExpire:(IAUnitController * _Nullable)unitController;
+- (void)IAUnitControllerWillPresentFullscreen:(IAUnitController * _Nullable)unitController;
+- (void)IAUnitControllerDidPresentFullscreen:(IAUnitController * _Nullable)unitController;
+- (void)IAUnitControllerWillDismissFullscreen:(IAUnitController * _Nullable)unitController;
+- (void)IAUnitControllerDidDismissFullscreen:(IAUnitController * _Nullable)unitController;
+@end
+
+SWIFT_PROTOCOL("_TtP9IASDKCore21IANativeAdSpotBuilder_")
+@protocol IANativeAdSpotBuilder
+@property (nonatomic, strong) IAAdRequest * _Nullable adRequest;
+@property (nonatomic, copy) NSDictionary<NSString *, id> * _Nullable userInfo;
+@property (nonatomic, strong) id <IANativeAdDelegate> _Nullable delegate;
+@end
+
+/// /
+typedef SWIFT_ENUM(NSInteger, ViewTag, open) {
+  ViewTagTitle = 1,
+  ViewTagMediaView = 2,
+  ViewTagIcon = 4,
+  ViewTagDescription = 5,
+  ViewTagRating = 6,
+  ViewTagCta = 7,
+  ViewTagRoot = 8,
+};
 
 #endif
 #if __has_attribute(external_source_symbol)
