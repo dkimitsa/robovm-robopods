@@ -54,6 +54,14 @@ import org.robovm.apple.avfoundation.*;
     protected FBNativeBannerAd(SkipInit skipInit) { super(skipInit); }
     @Method(selector = "initWithPlacementID:")
     public FBNativeBannerAd(String placementID) { super((SkipInit) null); initObject(init(placementID)); }
+    public FBNativeBannerAd(String placementId, String bidPayload) throws NSErrorException {
+       this(placementId, bidPayload, new NSError.NSErrorPtr());
+    }
+    private FBNativeBannerAd(String placementId, String bidPayload, NSError.NSErrorPtr ptr) throws NSErrorException {
+       super((Handle) null, create(placementId, bidPayload, ptr));
+       retain(getHandle());
+       if (ptr.get() != null) { throw new NSErrorException(ptr.get()); }
+    }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "delegate")
@@ -75,5 +83,7 @@ import org.robovm.apple.avfoundation.*;
     public native void registerViewForInteraction(UIView view, UIImageView iconImageView, UIViewController viewController, NSArray<UIView> clickableViews);
     @Method(selector = "downloadMedia")
     public native void downloadMedia();
+    @Method(selector = "nativeAdWithPlacementId:bidPayload:error:")
+    protected static native @Pointer long create(String placementId, String bidPayload, NSError.NSErrorPtr error);
     /*</methods>*/
 }

@@ -125,6 +125,7 @@ classes:
             '+nativeAdWithPlacementId:bidPayload:error:':
                 constructor: true
                 name: create
+                throws: NSErrorException
     FBNativeAdBaseView: {}
     FBNativeAdCollectionViewAdProvider:
         methods:
