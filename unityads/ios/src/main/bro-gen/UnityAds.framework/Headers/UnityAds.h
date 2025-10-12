@@ -43,4 +43,9 @@ FOUNDATION_EXPORT const unsigned char UnityAdsModuleVersionString[];
 #import <UnityAds/UADSGMAScarAdsBridge.h>
 #import <UnityAds/GMAAdMetaData.h>
 #import <UnityAds/UADSWebViewEventSender.h>
+#import <UnityAds/UADSOfferwallVersionBridge.h>
+#import <UnityAds/UADSOfferwallAvailabilityBridge.h>
+#import <UnityAds/UADSOfferwallAdsBridge.h>
+
+#import <UnityAds/InternalAdFormat.h>
 #endif /* UnityAds_h */

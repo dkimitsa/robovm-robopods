@@ -30,7 +30,6 @@ enums:
     UPURStore: { prefix: kUPURStore }
     UnityAdsPurchasingEvent: { prefix: kUnityAdsPurchasingEvent }
     USRVInitializeStateType: {}
-    UADSAdFormat: { }
     UnityAdsAdFormat: { }
 classes:
     UADSBannerError:

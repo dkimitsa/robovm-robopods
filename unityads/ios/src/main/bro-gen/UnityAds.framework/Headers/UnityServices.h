@@ -3,11 +3,14 @@
 #import <UnityAds/UnityAdsShowDelegate.h>
 #import <UnityAds/UADSLoadOptions.h>
 #import <UnityAds/UADSShowOptions.h>
-#import <UnityAds/UADSAdFormat.h>
 #import <UIKit/UIKit.h>
 
 #ifdef UNITYADS_INTERNAL
 #import <OMIDImports.h>
+#endif
+
+#ifdef UNITYADS_INTERNAL_SWIFT
+#import <UnityAds/InternalAdFormat.h>
 #endif
 
 NS_ASSUME_NONNULL_BEGIN
@@ -29,8 +32,10 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)show: (UIViewController *)viewController placementId: (NSString *)placementId options: (UADSShowOptions *)options showDelegate: (nullable id<UnityAdsShowDelegate>)showDelegate;
 + (NSString *__nullable)getToken;
 + (void)getToken: (void (^)(NSString *_Nullable))completion;
-+ (void)getToken:(UADSAdFormat)adFormat completion:(void (^)(NSString *_Nullable))completion;
 
+#ifdef UNITYADS_INTERNAL_SWIFT
++ (void)getToken:(InternalAdFormat)adFormat completion:(void (^)(NSString *_Nullable))completion;
+#endif
 @end
 
 NS_ASSUME_NONNULL_END
