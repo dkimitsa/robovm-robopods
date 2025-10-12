@@ -54,7 +54,7 @@ v1.54.0 - in development
 | [Firebase](firebase/)                   | 12.4.0  |
 | [Fyber](fyber/)                         | 8.4.0   |
 | [Google Mobile Ads](google-mobile-ads/) | 12.12.0 |
-| [HelpShiftX](helpshift/)                | 10.4.0  |
+| [HelpShiftX](helpshift/)                | 10.4.1  |
 | [InMobi](inmobi/)                       | 10.8.6  |
 | [IronSource](ironsource/)               | 8.11.0  |
 | [Lottie](lottie/)                       | 4.5.2   |

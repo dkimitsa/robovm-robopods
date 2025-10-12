@@ -157,8 +157,6 @@ import org.robovm.apple.uikit.*;
         public static native NSString MasterAttributesLimitExceeded();
         @GlobalValue(symbol="HelpshiftEventUpdateAppAttributesSyncFailed", optional=true)
         public static native NSString UpdateAppAttributesSyncFailed();
-        @GlobalValue(symbol="HelpshiftEventAddUserIdentitiesValidationFailed", optional=true)
-        public static native NSString AddUserIdentitiesValidationFailed();
         @GlobalValue(symbol="HelpshiftEventAddUserIdentitiesSyncFailed", optional=true)
         public static native NSString AddUserIdentitiesSyncFailed();
         @GlobalValue(symbol="HelpshiftEventUserSessionExpired", optional=true)

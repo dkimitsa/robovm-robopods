@@ -63,8 +63,6 @@ import org.robovm.apple.uikit.*;
     public static class LoginFailureReasons {
         static { Bro.bind(LoginFailureReasons.class); }
 
-        @GlobalValue(symbol="HelpshiftLoginConfig", optional=true)
-        public static native NSString userLoginConfig();
         @GlobalValue(symbol="HelpshiftInvalidValueType", optional=true)
         public static native NSString userInvalidValueType();
         @GlobalValue(symbol="HelpshiftInvalidData", optional=true)
