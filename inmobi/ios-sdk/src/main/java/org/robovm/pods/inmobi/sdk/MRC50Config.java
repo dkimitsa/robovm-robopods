@@ -37,32 +37,28 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("InMobiSDK.BitRateConfig")/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/BitRateConfig/*</name>*/ 
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("InMobiSDK.MRC50Config")/*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/MRC50Config/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class BitRateConfigPtr extends Ptr<BitRateConfig, BitRateConfigPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(BitRateConfig.class); }/*</bind>*/
+    /*<ptr>*/public static class MRC50ConfigPtr extends Ptr<MRC50Config, MRC50ConfigPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(MRC50Config.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public BitRateConfig() {}
-    protected BitRateConfig(Handle h, long handle) { super(h, handle); }
-    protected BitRateConfig(SkipInit skipInit) { super(skipInit); }
+    public MRC50Config() {}
+    protected MRC50Config(Handle h, long handle) { super(h, handle); }
+    protected MRC50Config(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
-    @Property(selector = "headerTimeout")
-    public native @MachineSizedSInt long getHeaderTimeout();
-    @Property(selector = "setHeaderTimeout:")
-    public native void setHeaderTimeout(@MachineSizedSInt long v);
-    @Property(selector = "bitrate_mandatory")
-    public native boolean isBitrate_mandatory();
-    @Property(selector = "setBitrate_mandatory:")
-    public native void setBitrate_mandatory(boolean v);
-    @Property(selector = "useBitRate")
-    public native boolean isUseBitRate();
-    @Property(selector = "setUseBitRate:")
-    public native void setUseBitRate(boolean v);
+    @Property(selector = "minTimeViewed")
+    public native @MachineSizedSInt long getMinTimeViewed();
+    @Property(selector = "setMinTimeViewed:")
+    public native void setMinTimeViewed(@MachineSizedSInt long v);
+    @Property(selector = "videoMinTimeViewed")
+    public native @MachineSizedSInt long getVideoMinTimeViewed();
+    @Property(selector = "setVideoMinTimeViewed:")
+    public native void setVideoMinTimeViewed(@MachineSizedSInt long v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

@@ -131,6 +131,10 @@ import org.robovm.apple.coreanimation.*;
     public native MraidConfig getMraid();
     @Property(selector = "setMraid:")
     public native void setMraid(MraidConfig v);
+    @Property(selector = "native")
+    public native NativeConfig getNative();
+    @Property(selector = "setNative:")
+    public native void setNative(NativeConfig v);
     @Property(selector = "jsDownloader")
     public native JSDownloaderConfig getJsDownloader();
     @Property(selector = "setJsDownloader:")

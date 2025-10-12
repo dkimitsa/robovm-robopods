@@ -75,22 +75,20 @@ import org.robovm.apple.coreanimation.*;
     public native String getContentUrl();
     @Property(selector = "setContentUrl:")
     public native void setContentUrl(String v);
-    @Property(selector = "customAdContent")
-    public native String getCustomAdContent();
     @Property(selector = "adTitle")
     public native String getAdTitle();
     @Property(selector = "adDescription")
     public native String getAdDescription();
     @Property(selector = "adIcon")
-    public native UIImage getAdIcon();
+    public native IMNativeImage getAdIcon();
     @Property(selector = "adCtaText")
     public native String getAdCtaText();
     @Property(selector = "adRating")
     public native String getAdRating();
-    @Property(selector = "adLandingPageUrl")
-    public native NSURL getAdLandingPageUrl();
-    @Property(selector = "isAppDownload")
-    public native boolean isAppDownload();
+    @Property(selector = "advertiserName")
+    public native String getAdvertiserName();
+    @Property(selector = "adChoice")
+    public native UIImageView getAdChoice();
     @Property(selector = "creativeId")
     public native String getCreativeId();
     /*</properties>*/
@@ -100,18 +98,20 @@ import org.robovm.apple.coreanimation.*;
     protected native @Pointer long init(long placementId);
     @Method(selector = "initWithPlacementId:delegate:")
     protected native @Pointer long init(long placementId, IMNativeDelegate delegate);
-    @Method(selector = "primaryViewOfWidth:")
-    public native UIView primaryViewOfWidth(@MachineSizedFloat double width);
     @Method(selector = "load")
     public native void load();
     @Method(selector = "load:")
     public native void load(NSData response);
+    @Method(selector = "registerViewForTracking:")
+    public native void registerViewForTracking(IMNativeViewData view);
     @Method(selector = "isReady")
     public native boolean isReady();
-    @Method(selector = "reportAdClickAndOpenLandingPage")
-    public native void reportAdClickAndOpenLandingPage();
-    @Method(selector = "recyclePrimaryView")
-    public native void recyclePrimaryView();
+    @Method(selector = "getCustomAdContent")
+    public native NSDictionary<NSString, ?> getCustomAdContent();
+    @Method(selector = "getMediaView")
+    public native UIView getMediaView();
+    @Method(selector = "isVideoAd")
+    public native boolean isVideoAd();
     @Method(selector = "getAdMetaInfo")
     public native NSDictionary<NSString, ?> getAdMetaInfo();
     /*</methods>*/

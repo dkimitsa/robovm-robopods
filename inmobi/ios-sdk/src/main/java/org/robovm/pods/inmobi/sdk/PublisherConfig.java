@@ -71,6 +71,18 @@ import org.robovm.apple.coreanimation.*;
     public native @MachineSizedSInt long getPayloadSize();
     @Property(selector = "setPayloadSize:")
     public native void setPayloadSize(@MachineSizedSInt long v);
+    @Property(selector = "obj")
+    public native IMPPSSignalConfig getObj();
+    @Property(selector = "setObj:")
+    public native void setObj(IMPPSSignalConfig v);
+    @Property(selector = "auto")
+    public native IMPPSSignalConfig getAuto_();
+    @Property(selector = "setAuto:")
+    public native void setAuto_(IMPPSSignalConfig v);
+    @Property(selector = "direct")
+    public native IMPPSSignalConfig getDirect();
+    @Property(selector = "setDirect:")
+    public native void setDirect(IMPPSSignalConfig v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

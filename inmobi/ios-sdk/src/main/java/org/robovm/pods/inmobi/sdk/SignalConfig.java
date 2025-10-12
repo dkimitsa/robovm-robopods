@@ -99,6 +99,10 @@ import org.robovm.apple.coreanimation.*;
     public native ExperimentsConfig getExperiments();
     @Property(selector = "setExperiments:")
     public native void setExperiments(ExperimentsConfig v);
+    @Property(selector = "bts")
+    public native BTSConfig getBts();
+    @Property(selector = "setBts:")
+    public native void setBts(BTSConfig v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

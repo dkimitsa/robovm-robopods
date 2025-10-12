@@ -37,32 +37,32 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("InMobiSDK.BitRateConfig")/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/BitRateConfig/*</name>*/ 
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("InMobiSDK.BTSConfig")/*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/BTSConfig/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class BitRateConfigPtr extends Ptr<BitRateConfig, BitRateConfigPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(BitRateConfig.class); }/*</bind>*/
+    /*<ptr>*/public static class BTSConfigPtr extends Ptr<BTSConfig, BTSConfigPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(BTSConfig.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public BitRateConfig() {}
-    protected BitRateConfig(Handle h, long handle) { super(h, handle); }
-    protected BitRateConfig(SkipInit skipInit) { super(skipInit); }
+    public BTSConfig() {}
+    protected BTSConfig(Handle h, long handle) { super(h, handle); }
+    protected BTSConfig(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
-    @Property(selector = "headerTimeout")
-    public native @MachineSizedSInt long getHeaderTimeout();
-    @Property(selector = "setHeaderTimeout:")
-    public native void setHeaderTimeout(@MachineSizedSInt long v);
-    @Property(selector = "bitrate_mandatory")
-    public native boolean isBitrate_mandatory();
-    @Property(selector = "setBitrate_mandatory:")
-    public native void setBitrate_mandatory(boolean v);
-    @Property(selector = "useBitRate")
-    public native boolean isUseBitRate();
-    @Property(selector = "setUseBitRate:")
-    public native void setUseBitRate(boolean v);
+    @Property(selector = "enabled")
+    public native boolean isEnabled();
+    @Property(selector = "setEnabled:")
+    public native void setEnabled(boolean v);
+    @Property(selector = "expiry")
+    public native double getExpiry();
+    @Property(selector = "setExpiry:")
+    public native void setExpiry(double v);
+    @Property(selector = "maxEntries")
+    public native @MachineSizedSInt long getMaxEntries();
+    @Property(selector = "setMaxEntries:")
+    public native void setMaxEntries(@MachineSizedSInt long v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

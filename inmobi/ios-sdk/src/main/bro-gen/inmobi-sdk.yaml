@@ -22,6 +22,7 @@ enums:
     IMSKANSourceName: { }
     IMSessionSignalsType: { }
     IMTelemetryLandingPageEventType: { }
+    ConfigMuteIconPosition: { }
 typed_enums:
 
 classes:
@@ -205,6 +206,29 @@ classes:
     PingV2RetryConfig: { }
     PingV2RetrySubConfig: { }
     PingV2SubConfig: { }
+    AdChoiceConfig: { }
+    BTSConfig: { }
+    DimensionConfig: { }
+    GestureConfig: { }
+    IMDepthPPS: { }
+    IMNativeImage: { }
+    IMNativeViewData: { }
+    IMNativeViewDataBuilder:
+        methods:
+            '-initWithParentView:':
+                name: init
+    IMPPSSignalConfig: { }
+    IMSDKSwiftCommonUtil: { }
+    IconConfig: { }
+    ImpressionConfig: { }
+    MRC50Config: { }
+    NativeAssetConfig: { }
+    NativeConfig: { }
+    NativeViewabilityConfig: { }
+    VideoPlayerAudioConfig: { }
+    VideoPlayerConfig: { }
+    VideoPlayerProgressConfig: { }
+    VideoPlayerViewabilityConfig: { }
 protocols:
     IMBannerDelegate:
         methods:

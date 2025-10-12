@@ -37,32 +37,24 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("InMobiSDK.BitRateConfig")/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/BitRateConfig/*</name>*/ 
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("InMobiSDK.DimensionConfig")/*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/DimensionConfig/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class BitRateConfigPtr extends Ptr<BitRateConfig, BitRateConfigPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(BitRateConfig.class); }/*</bind>*/
+    /*<ptr>*/public static class DimensionConfigPtr extends Ptr<DimensionConfig, DimensionConfigPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(DimensionConfig.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public BitRateConfig() {}
-    protected BitRateConfig(Handle h, long handle) { super(h, handle); }
-    protected BitRateConfig(SkipInit skipInit) { super(skipInit); }
+    public DimensionConfig() {}
+    protected DimensionConfig(Handle h, long handle) { super(h, handle); }
+    protected DimensionConfig(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
-    @Property(selector = "headerTimeout")
-    public native @MachineSizedSInt long getHeaderTimeout();
-    @Property(selector = "setHeaderTimeout:")
-    public native void setHeaderTimeout(@MachineSizedSInt long v);
-    @Property(selector = "bitrate_mandatory")
-    public native boolean isBitrate_mandatory();
-    @Property(selector = "setBitrate_mandatory:")
-    public native void setBitrate_mandatory(boolean v);
-    @Property(selector = "useBitRate")
-    public native boolean isUseBitRate();
-    @Property(selector = "setUseBitRate:")
-    public native void setUseBitRate(boolean v);
+    @Property(selector = "dimensions")
+    public native NSArray<NSNumber> getDimensions();
+    @Property(selector = "setDimensions:")
+    public native void setDimensions(NSArray<NSNumber> v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

@@ -71,6 +71,10 @@ import org.robovm.apple.coreanimation.*;
     public native NSArray<NSString> getAllowedContentType();
     @Property(selector = "setAllowedContentType:")
     public native void setAllowedContentType(NSArray<NSString> v);
+    @Property(selector = "allowedCompanionType")
+    public native NSArray<NSString> getAllowedCompanionType();
+    @Property(selector = "setAllowedCompanionType:")
+    public native void setAllowedCompanionType(NSArray<NSString> v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

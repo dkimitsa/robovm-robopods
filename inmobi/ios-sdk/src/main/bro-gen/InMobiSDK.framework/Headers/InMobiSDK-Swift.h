@@ -305,6 +305,19 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 
 #if defined(__OBJC__)
+@class NSString;
+
+SWIFT_CLASS("_TtC9InMobiSDK14AdChoiceConfig")
+@interface AdChoiceConfig : NSObject
+@property (nonatomic) NSInteger width;
+@property (nonatomic) NSInteger height;
+@property (nonatomic, copy) NSString * _Nonnull url;
+@property (nonatomic, copy) NSString * _Nonnull landingPage;
+@property (nonatomic, copy) NSString * _Nonnull openMode;
+@property (nonatomic) NSInteger loadTimeout;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
 
 SWIFT_CLASS("_TtC9InMobiSDK15AdQualityConfig")
 @interface AdQualityConfig : NSObject
@@ -333,7 +346,6 @@ SWIFT_CLASS("_TtC9InMobiSDK14AdsAudioConfig")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@class NSString;
 
 SWIFT_PROTOCOL("_TtP9InMobiSDK9IMConfigP_")
 @protocol IMConfigP <NSObject>
@@ -360,6 +372,7 @@ SWIFT_CLASS("_TtC9InMobiSDK12IMConfigBase")
 @class RenderingConfig;
 @class SilenceDetectionConfig;
 @class MraidConfig;
+@class NativeConfig;
 @class JSDownloaderConfig;
 @class Mraid3Config;
 @class PingV2Config;
@@ -389,6 +402,7 @@ SWIFT_CLASS("_TtC9InMobiSDK9AdsConfig")
 @property (nonatomic, strong) RenderingConfig * _Nonnull rendering;
 @property (nonatomic, strong) SilenceDetectionConfig * _Nonnull silenceDetection;
 @property (nonatomic, strong) MraidConfig * _Nonnull mraid;
+@property (nonatomic, strong) NativeConfig * _Nonnull native;
 @property (nonatomic, strong) JSDownloaderConfig * _Nonnull jsDownloader;
 @property (nonatomic, strong) Mraid3Config * _Nonnull mraid3;
 @property (nonatomic, strong) PingV2Config * _Nonnull pingV2;
@@ -433,6 +447,15 @@ SWIFT_CLASS("_TtC9InMobiSDK21AudioImpressionConfig")
 @end
 
 
+SWIFT_CLASS("_TtC9InMobiSDK9BTSConfig")
+@interface BTSConfig : NSObject
+@property (nonatomic) BOOL enabled;
+@property (nonatomic) NSTimeInterval expiry;
+@property (nonatomic) NSInteger maxEntries;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
 SWIFT_CLASS("_TtC9InMobiSDK10BaseConfig")
 @interface BaseConfig : NSObject
 @property (nonatomic) BOOL enabled;
@@ -444,6 +467,7 @@ SWIFT_CLASS("_TtC9InMobiSDK13BitRateConfig")
 @interface BitRateConfig : NSObject
 @property (nonatomic) NSInteger headerTimeout;
 @property (nonatomic) BOOL bitrate_mandatory;
+@property (nonatomic) BOOL useBitRate;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -477,6 +501,13 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) ConfigManage
 - (IMConfigBase * _Nullable)validateConfigWithConfigType:(NSString * _Nonnull)configType dictionary:(NSDictionary<NSString *, id> * _Nullable)dictionary SWIFT_WARN_UNUSED_RESULT;
 @end
 
+
+typedef SWIFT_ENUM(NSInteger, ConfigMuteIconPosition, open) {
+  ConfigMuteIconPositionTopLeft = 0,
+  ConfigMuteIconPositionTopRight = 1,
+  ConfigMuteIconPositionBottomLeft = 2,
+  ConfigMuteIconPositionBottomRight = 3,
+};
 
 @class RootConfig;
 @class TelemetryConfig;
@@ -557,6 +588,13 @@ SWIFT_CLASS("_TtC9InMobiSDK14DatabaseConfig")
 @end
 
 
+SWIFT_CLASS("_TtC9InMobiSDK15DimensionConfig")
+@interface DimensionConfig : NSObject
+@property (nonatomic, copy) NSArray<NSNumber *> * _Nonnull dimensions;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
 SWIFT_CLASS("_TtC9InMobiSDK14ErrorLogConfig")
 @interface ErrorLogConfig : NSObject
 @property (nonatomic) double samplePercent;
@@ -568,6 +606,14 @@ SWIFT_CLASS("_TtC9InMobiSDK14ErrorLogConfig")
 SWIFT_CLASS("_TtC9InMobiSDK17ExperimentsConfig")
 @interface ExperimentsConfig : NSObject
 @property (nonatomic) BOOL networkRevamp;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9InMobiSDK13GestureConfig")
+@interface GestureConfig : NSObject
+@property (nonatomic) BOOL isHTEnable;
+@property (nonatomic) NSTimeInterval htThrottlingTime;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -978,6 +1024,13 @@ SWIFT_CLASS("_TtC9InMobiSDK11IMComponent")
 @end
 
 
+
+
+SWIFT_CLASS("_TtC9InMobiSDK10IMDepthPPS")
+@interface IMDepthPPS : NSObject
+@property (nonatomic) BOOL enabled;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
 
 @protocol IMExposureTrackerDelegate;
 
@@ -1405,8 +1458,9 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 @end
 
 @protocol IMNativeDelegate;
-@class UIImage;
-@class NSURL;
+@class IMNativeImage;
+@class UIImageView;
+@class IMNativeViewData;
 
 /// Class to integrate native ads in your application
 /// Adding native ads is demonstrated in the code fragment below.
@@ -1451,24 +1505,20 @@ SWIFT_CLASS("_TtC9InMobiSDK8IMNative")
 @property (nonatomic, copy) NSDictionary<NSString *, id> * _Nullable extras;
 /// contentUrl for OMSDK
 @property (nonatomic, copy) NSString * _Nullable contentUrl;
-/// The content of the native ad.
-@property (nonatomic, readonly, copy) NSString * _Nullable customAdContent;
 /// The title of the native ad.
 @property (nonatomic, readonly, copy) NSString * _Nullable adTitle;
 /// The description of the native ad.
 @property (nonatomic, readonly, copy) NSString * _Nullable adDescription;
 /// The icon url of the ad.
-@property (nonatomic, readonly, strong) UIImage * _Nullable adIcon;
+@property (nonatomic, readonly, strong) IMNativeImage * _Nullable adIcon;
 /// The text to be specified for the cta. Typically this should be the text of the button.
 @property (nonatomic, readonly, copy) NSString * _Nullable adCtaText;
 /// A custom rating field for the native ad.
 @property (nonatomic, readonly, copy) NSString * _Nullable adRating;
-/// The landing page url of the Native ad.
-@property (nonatomic, readonly, copy) NSURL * _Nullable adLandingPageUrl;
-/// Indicates if the ad is an app download ad.
-@property (nonatomic, readonly) BOOL isAppDownload;
-/// A unique identifier for the creative.
-@property (nonatomic, readonly, copy) NSString * _Nullable creativeId;
+/// The advertiser name for the ad.
+@property (nonatomic, readonly, copy) NSString * _Nullable advertiserName;
+/// The ad choice view for the ad.
+@property (nonatomic, readonly, strong) UIImageView * _Nullable adChoice;
 /// Initializes an IMNative instance with the specified placementId.
 /// \param placementId the placement Id registered on the InMobi portal.
 ///
@@ -1479,11 +1529,6 @@ SWIFT_CLASS("_TtC9InMobiSDK8IMNative")
 /// \param delegate the delegate to receive callbacks
 ///
 - (nonnull instancetype)initWithPlacementId:(int64_t)placementId delegate:(id <IMNativeDelegate> _Nullable)delegate OBJC_DESIGNATED_INITIALIZER;
-/// The primary view of the native ad.
-/// This view is rendered by InMobi and should be used by the publisher to display the ad. Impressions will be computed on this view.
-/// \param width The width of the primary view. Typically this should be the screen width.
-///
-- (UIView * _Nullable)primaryViewOfWidth:(CGFloat)width SWIFT_WARN_UNUSED_RESULT;
 /// Loads a Native ad
 - (void)load;
 /// Loads a Native Ad with a response Object.
@@ -1491,14 +1536,27 @@ SWIFT_CLASS("_TtC9InMobiSDK8IMNative")
 /// \param response A <code>Data</code> variable which contains the InMobi Native Ad.
 ///
 - (void)load:(NSData * _Nonnull)response;
+/// register views to the native ad for tracking
+- (void)registerViewForTracking:(IMNativeViewData * _Nonnull)view;
 /// Indicates if the native ad is ready to be displayed.
 - (BOOL)isReady SWIFT_WARN_UNUSED_RESULT;
-/// Reports the click action to the native ad and open the landing page.
-- (void)reportAdClickAndOpenLandingPage;
-/// Recycle the view that was presented by the native ad
-- (void)recyclePrimaryView;
-/// Contains additional information of ad.
+- (NSDictionary<NSString *, id> * _Nullable)getCustomAdContent SWIFT_WARN_UNUSED_RESULT;
+/// Returns the media view of the native ad.
+///
+/// returns:
+/// <code>UIView</code> instance of the media view.
+- (UIView * _Nullable)getMediaView SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)isVideoAd SWIFT_WARN_UNUSED_RESULT;
+/// Returns the Meta Info of the native ad.
+///
+/// returns:
+/// A dictionary containing the meta info of the native ad.
 - (NSDictionary<NSString *, id> * _Nullable)getAdMetaInfo SWIFT_WARN_UNUSED_RESULT;
+/// Returns the Creative Id of the native ad.
+///
+/// returns:
+/// <code>String</code> representing the creative Id of the native ad.
+@property (nonatomic, readonly, copy) NSString * _Nullable creativeId;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -1575,12 +1633,107 @@ SWIFT_PROTOCOL("_TtP9InMobiSDK16IMNativeDelegate_")
 - (void)native:(IMNative * _Nonnull)native didInteractWithParams:(NSDictionary<NSString *, id> * _Nullable)params;
 /// Notifies the delegate that the native ad has finished playing media.
 - (void)nativeDidFinishPlayingMedia:(IMNative * _Nonnull)native;
-/// Notifies the delegate that the user has skipped the playing media.
-- (void)userDidSkipPlayingMediaFromNative:(IMNative * _Nonnull)native;
 /// Notifies the delegate that the media audio state has been changed - mute/unmute.
 /// \param audioStateMuted is <code>YES</code> when audio is turned off and <code>NO</code> when audio is turned on.
 ///
 - (void)native:(IMNative * _Nonnull)native adAudioStateChanged:(BOOL)audioStateMuted;
+@end
+
+
+SWIFT_CLASS("_TtC9InMobiSDK13IMNativeImage")
+@interface IMNativeImage : NSObject
+@property (nonatomic, readonly, strong) UIImageView * _Nullable imageview;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// A class representing the data structure for a Publisher views used in Native Ad.
+/// Use the <code>Builder</code> class to create an instance of <code>IMNativeViewData</code>.
+SWIFT_CLASS("_TtC9InMobiSDK16IMNativeViewData")
+@interface IMNativeViewData : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// Builder class for creating <code>IMNativeViewData</code> instances.
+SWIFT_CLASS_NAMED("Builder")
+@interface IMNativeViewDataBuilder : NSObject
+/// Initializes the builder with the required parent view.
+/// \param parentView The parent view containing all other views.
+///
+- (nonnull instancetype)initWithParentView:(UIView * _Nonnull)parentView OBJC_DESIGNATED_INITIALIZER;
+/// Sets the title view.
+/// \param titleView A <code>UIView</code> representing the title.
+///
+///
+/// returns:
+/// The <code>Builder</code> instance for method chaining.
+- (IMNativeViewDataBuilder * _Nonnull)setTitleView:(UIView * _Nonnull)titleView;
+/// Sets the description view.
+/// \param descriptionView A <code>UIView</code> representing the description.
+///
+///
+/// returns:
+/// The <code>Builder</code> instance for method chaining.
+- (IMNativeViewDataBuilder * _Nonnull)setDescriptionView:(UIView * _Nonnull)descriptionView;
+/// Sets the CTA view.
+/// \param ctaView A <code>UIView</code> representing the CTA.
+///
+///
+/// returns:
+/// The <code>Builder</code> instance for method chaining.
+- (IMNativeViewDataBuilder * _Nonnull)setCTAView:(UIView * _Nonnull)ctaView;
+/// Sets the icon view.
+/// \param iconView A <code>UIImageView</code> representing the icon.
+///
+///
+/// returns:
+/// The <code>Builder</code> instance for method chaining.
+- (IMNativeViewDataBuilder * _Nonnull)setIconView:(UIImageView * _Nonnull)iconView;
+/// Sets the rating view.
+/// \param ratingView A <code>UIView</code> representing the rating.
+///
+///
+/// returns:
+/// The <code>Builder</code> instance for method chaining.
+- (IMNativeViewDataBuilder * _Nonnull)setRatingView:(UIView * _Nonnull)ratingView;
+/// Sets the advertiser view.
+/// \param advertiserView A <code>UIView</code> representing the advertiser name text.
+///
+///
+/// returns:
+/// The <code>Builder</code> instance for method chaining.
+- (IMNativeViewDataBuilder * _Nonnull)setAdvertiserView:(UIView * _Nonnull)advertiserView;
+/// Sets the clickable views.
+/// \param clickableViews An array of <code>UIView</code> representing the clickable views.
+///
+///
+/// returns:
+/// The <code>Builder</code> instance for method chaining.
+- (IMNativeViewDataBuilder * _Nonnull)setExtraViews:(NSArray<UIView *> * _Nonnull)extraViews;
+/// Builds the <code>IMNativeViewData</code> instance.
+///
+/// returns:
+/// The <code>IMNativeViewData</code> instance constructed with the provided data.
+- (IMNativeViewData * _Nonnull)build SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+
+SWIFT_CLASS("_TtC9InMobiSDK17IMPPSSignalConfig")
+@interface IMPPSSignalConfig : NSObject
+@property (nonatomic) BOOL enabled;
+@property (nonatomic) NSInteger expiry;
+@property (nonatomic) NSInteger count;
+@property (nonatomic) NSInteger precision;
+@property (nonatomic) NSInteger strLen;
+@property (nonatomic, strong) IMDepthPPS * _Nonnull depth;
+@property (nonatomic, strong) AnyDictionary * _Nullable allowedKeys;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
@@ -1652,6 +1805,13 @@ typedef SWIFT_ENUM(NSInteger, IMSDKLogLevel, closed) {
   IMSDKLogLevelError = 1,
   IMSDKLogLevelDebug = 2,
 };
+
+
+SWIFT_CLASS("_TtC9InMobiSDK20IMSDKSwiftCommonUtil")
+@interface IMSDKSwiftCommonUtil : NSObject
++ (NSString * _Nonnull)applicationDisplayName SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
 
 typedef SWIFT_ENUM(NSInteger, IMSKANConfigRequestModeType, open) {
   IMSKANConfigRequestModeTypeDisabled = 0,
@@ -2119,6 +2279,14 @@ SWIFT_CLASS("_TtC9InMobiSDK9IceConfig")
 @end
 
 
+SWIFT_CLASS("_TtC9InMobiSDK10IconConfig")
+@interface IconConfig : NSObject
+@property (nonatomic) NSInteger width;
+@property (nonatomic) NSInteger height;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
 SWIFT_CLASS("_TtC9InMobiSDK10ImaiConfig")
 @interface ImaiConfig : NSObject
 @property (nonatomic) NSInteger pingTimeout;
@@ -2127,6 +2295,17 @@ SWIFT_CLASS("_TtC9InMobiSDK10ImaiConfig")
 @property (nonatomic) NSInteger maxEventBatch;
 @property (nonatomic) NSInteger pingInterval;
 @property (nonatomic) NSInteger maxRetries;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9InMobiSDK16ImpressionConfig")
+@interface ImpressionConfig : NSObject
+@property (nonatomic) NSInteger impressionType;
+@property (nonatomic) NSInteger minPercentageViewed;
+@property (nonatomic) NSInteger minTimeViewed;
+@property (nonatomic) NSInteger videoMinTimeViewed;
+@property (nonatomic) NSInteger pollInterval;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -2207,6 +2386,14 @@ SWIFT_CLASS("_TtC9InMobiSDK13LoggingConfig")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
+
+SWIFT_CLASS("_TtC9InMobiSDK11MRC50Config")
+@interface MRC50Config : NSObject
+@property (nonatomic) NSInteger minTimeViewed;
+@property (nonatomic) NSInteger videoMinTimeViewed;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
 @class MediationFlowTypeConfig;
 
 SWIFT_CLASS("_TtC9InMobiSDK15MediationConfig")
@@ -2276,6 +2463,37 @@ SWIFT_CLASS("_TtC9InMobiSDK11MraidConfig")
 @end
 
 
+
+
+SWIFT_CLASS("_TtC9InMobiSDK17NativeAssetConfig")
+@interface NativeAssetConfig : NSObject
+@property (nonatomic) int64_t maxImageSize;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class VideoPlayerConfig;
+@class NativeViewabilityConfig;
+
+SWIFT_CLASS("_TtC9InMobiSDK12NativeConfig")
+@interface NativeConfig : NSObject
+@property (nonatomic, strong) AdChoiceConfig * _Nonnull adChoiceConfig;
+@property (nonatomic, strong) IconConfig * _Nonnull iconConfig;
+@property (nonatomic, strong) VideoPlayerConfig * _Nonnull videoPlayerConfig;
+@property (nonatomic, strong) NativeAssetConfig * _Nonnull assetConfig;
+@property (nonatomic, strong) NativeViewabilityConfig * _Nonnull viewabilityConfig;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9InMobiSDK23NativeViewabilityConfig")
+@interface NativeViewabilityConfig : NSObject
+@property (nonatomic, strong) ImpressionConfig * _Nonnull impressionConfig;
+@property (nonatomic, strong) MRC50Config * _Nonnull mrc50Config;
+@property (nonatomic, strong) DimensionConfig * _Nonnull parentMinDimension;
+@property (nonatomic, strong) DimensionConfig * _Nonnull iconMinDimension;
+@property (nonatomic, strong) DimensionConfig * _Nonnull mediaMinDimension;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
 
 
 SWIFT_CLASS("_TtC9InMobiSDK13NetworkConfig")
@@ -2407,6 +2625,9 @@ SWIFT_CLASS("_TtC9InMobiSDK15PublisherConfig")
 @property (nonatomic) BOOL enableMCO;
 @property (nonatomic) BOOL enableHB;
 @property (nonatomic) NSInteger payloadSize;
+@property (nonatomic, strong) IMPPSSignalConfig * _Nonnull obj;
+@property (nonatomic, strong, getter=auto, setter=setAuto:) IMPPSSignalConfig * _Nonnull auto_;
+@property (nonatomic, strong) IMPPSSignalConfig * _Nonnull direct;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -2435,6 +2656,7 @@ SWIFT_CLASS("_TtC9InMobiSDK15RenderingConfig")
 @property (nonatomic) NSInteger picWidth;
 @property (nonatomic) BOOL enableSDKAVAudioSession;
 @property (nonatomic, strong) WebViewModeDictionaryConfig * _Nonnull webviewModeDictionary;
+@property (nonatomic, strong) GestureConfig * _Nonnull gestureConfig;
 - (BOOL)enablePubMuteControl_ SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -2507,6 +2729,7 @@ SWIFT_CLASS("_TtC9InMobiSDK12SignalConfig")
 @property (nonatomic, strong) PurchasesConfig * _Nonnull purchases;
 @property (nonatomic, strong) PublisherConfig * _Nonnull publisher;
 @property (nonatomic, strong) ExperimentsConfig * _Nonnull experiments;
+@property (nonatomic, strong) BTSConfig * _Nonnull bts;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -2581,6 +2804,9 @@ SWIFT_CLASS("_TtC9InMobiSDK14TimeoutsConfig")
 
 
 
+
+
+
 SWIFT_CLASS("_TtC9InMobiSDK22UnifiedIdServiceConfig")
 @interface UnifiedIdServiceConfig : NSObject
 @property (nonatomic) BOOL enabled;
@@ -2599,6 +2825,7 @@ SWIFT_CLASS("_TtC9InMobiSDK15VastVideoConfig")
 @property (nonatomic) NSInteger vastMaxAssetSize;
 @property (nonatomic, strong) BitRateConfig * _Nonnull bitRate;
 @property (nonatomic, copy) NSArray<NSString *> * _Nonnull allowedContentType;
+@property (nonatomic, copy) NSArray<NSString *> * _Nonnull allowedCompanionType;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -2608,6 +2835,50 @@ SWIFT_CLASS("_TtC9InMobiSDK21VideoImpressionConfig")
 @property (nonatomic) NSInteger impressionMinTimeViewed;
 @property (nonatomic) NSInteger impressionMinPercentageViewed;
 @property (nonatomic) NSInteger videoMinPercentagePlay;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9InMobiSDK22VideoPlayerAudioConfig")
+@interface VideoPlayerAudioConfig : NSObject
+@property (nonatomic) BOOL startMuted;
+@property (nonatomic) NSInteger muteIconWidth;
+@property (nonatomic) NSInteger muteIconHeight;
+/// Margins for the mute icon; expected format is [left, top, right, bottom].
+@property (nonatomic, copy) NSArray<NSNumber *> * _Nonnull muteIconMargin;
+@property (nonatomic) enum ConfigMuteIconPosition muteIconPosition;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class VideoPlayerProgressConfig;
+@class VideoPlayerViewabilityConfig;
+
+SWIFT_CLASS("_TtC9InMobiSDK17VideoPlayerConfig")
+@interface VideoPlayerConfig : NSObject
+@property (nonatomic) BOOL loopVideoOnComplete;
+@property (nonatomic, strong) VideoPlayerProgressConfig * _Nonnull progressConfig;
+@property (nonatomic, strong) VideoPlayerAudioConfig * _Nonnull audioConfig;
+@property (nonatomic, strong) VideoPlayerViewabilityConfig * _Nonnull viewability;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9InMobiSDK25VideoPlayerProgressConfig")
+@interface VideoPlayerProgressConfig : NSObject
+@property (nonatomic) BOOL showProgress;
+@property (nonatomic, copy) NSArray<NSNumber *> * _Nonnull foregroundColor;
+@property (nonatomic, copy) NSArray<NSNumber *> * _Nonnull backgroundColor;
+@property (nonatomic) NSInteger height;
+@property (nonatomic) NSInteger progressPolling;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+/// Usecase - video play/pause basis viewability
+SWIFT_CLASS("_TtC9InMobiSDK28VideoPlayerViewabilityConfig")
+@interface VideoPlayerViewabilityConfig : NSObject
+@property (nonatomic) NSInteger minPercentageVisible;
+@property (nonatomic) NSInteger pollingInterval;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -2622,8 +2893,6 @@ SWIFT_CLASS("_TtC9InMobiSDK17ViewabilityConfig")
 @property (nonatomic, strong) OmidConfig * _Nonnull omidConfig;
 @property (nonatomic, strong) WebImpressionConfig * _Nonnull web;
 @property (nonatomic, strong) VideoImpressionConfig * _Nonnull video;
-@property (nonatomic) NSInteger impressionMinTimeViewed;
-@property (nonatomic) NSInteger impressionMinPercentageViewed;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
