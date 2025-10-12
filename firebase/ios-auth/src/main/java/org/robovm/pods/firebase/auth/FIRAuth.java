@@ -207,10 +207,26 @@ import org.robovm.apple.uikit.*;
     public native boolean willFinishLaunching(UIApplication application, UIApplicationLaunchOptions launchOptions);
     @Method(selector = "application:didFinishLaunchingWithOptions:")
     public native boolean didFinishLaunching(UIApplication application, UIApplicationLaunchOptions launchOptions);
+    /**
+     * @deprecated Deprecated in iOS 26.0. Use UIScene lifecycle and sceneDidBecomeActive(_:) from UISceneDelegate or the UIApplication.didBecomeActiveNotification instead.
+     */
+    @Deprecated
     @Method(selector = "applicationDidBecomeActive:")
     public native void didBecomeActive(UIApplication application);
+    /**
+     * @deprecated Deprecated in iOS 26.0. Use UIScene lifecycle and sceneWillResignActive(_:) from UISceneDelegate or the UIApplication.willResignActiveNotification instead.
+     */
+    @Deprecated
     @Method(selector = "applicationWillResignActive:")
     public native void willResignActive(UIApplication application);
+    @Method(selector = "applicationDidEnterBackground:")
+    public native void didEnterBackground(UIApplication application);
+    /**
+     * @deprecated Deprecated in iOS 26.0. Use UIScene lifecycle and sceneWillEnterForeground(_:) from UISceneDelegate or the UIApplication.willEnterForegroundNotification instead.
+     */
+    @Deprecated
+    @Method(selector = "applicationWillEnterForeground:")
+    public native void willEnterForeground(UIApplication application);
     /**
      * @deprecated Deprecated in iOS 9.0. Use application:openURL:options:
      */
@@ -305,7 +321,9 @@ import org.robovm.apple.uikit.*;
     public native void performFetch(UIApplication application, @Block VoidBlock1<UIBackgroundFetchResult> completionHandler);
     /**
      * @since Available in iOS 9.0 and later.
+     * @deprecated Deprecated in iOS 26.0. Use UIScene lifecycle and windowScene(_:performActionFor:completionHandler:) from UIWindowSceneDelegate instead.
      */
+    @Deprecated
     @Method(selector = "application:performActionForShortcutItem:completionHandler:")
     public native void performAction(UIApplication application, UIApplicationShortcutItem shortcutItem, @Block VoidBooleanBlock completionHandler);
     @Method(selector = "application:handleEventsForBackgroundURLSession:completionHandler:")
@@ -332,10 +350,6 @@ import org.robovm.apple.uikit.*;
     @Deprecated
     @Method(selector = "application:handleIntent:completionHandler:")
     public native void handleIntent(UIApplication application, org.robovm.apple.intents.INIntent intent, @Block VoidBlock1<org.robovm.apple.intents.INIntentResponse> completionHandler);
-    @Method(selector = "applicationDidEnterBackground:")
-    public native void didEnterBackground(UIApplication application);
-    @Method(selector = "applicationWillEnterForeground:")
-    public native void willEnterForeground(UIApplication application);
     @Method(selector = "applicationProtectedDataWillBecomeUnavailable:")
     public native void protectedDataWillBecomeUnavailable(UIApplication application);
     @Method(selector = "applicationProtectedDataDidBecomeAvailable:")
@@ -372,17 +386,35 @@ import org.robovm.apple.uikit.*;
     @Deprecated
     @Method(selector = "application:shouldRestoreApplicationState:")
     public native boolean shouldRestoreApplicationState(UIApplication application, NSCoder coder);
+    /**
+     * @deprecated Deprecated in iOS 26.0. Use UIScene lifecycle and scene(_:willContinueUserActivityWithType:) from UISceneDelegate instead.
+     */
+    @Deprecated
     @Method(selector = "application:willContinueUserActivityWithType:")
     public native boolean willContinueUserActivity(UIApplication application, String userActivityType);
+    /**
+     * @deprecated Deprecated in iOS 26.0. Use UIScene lifecycle and scene(_:continue:) from UISceneDelegate instead.
+     */
+    @Deprecated
     @Method(selector = "application:continueUserActivity:restorationHandler:")
     public native boolean continueUserActivity(UIApplication application, NSUserActivity userActivity, @Block VoidBlock1<NSArray<UIResponder>> restorationHandler);
+    /**
+     * @deprecated Deprecated in iOS 26.0. Use UIScene lifecycle and scene(_:didFailToContinueUserActivityWithType:error:) from UISceneDelegate instead.
+     */
+    @Deprecated
     @Method(selector = "application:didFailToContinueUserActivityWithType:error:")
     public native void didFailToContinueUserActivity(UIApplication application, String userActivityType, NSError error);
+    /**
+     * @deprecated Deprecated in iOS 26.0. Use UIScene lifecycle and scene(_:didUpdate) from UISceneDelegate instead.
+     */
+    @Deprecated
     @Method(selector = "application:didUpdateUserActivity:")
     public native void didUpdateUserActivity(UIApplication application, NSUserActivity userActivity);
     /**
      * @since Available in iOS 10.0 and later.
+     * @deprecated Deprecated in iOS 26.0. Use UIScene lifecycle and windowScene(_:userDidAcceptCloudKitShareWith:) from UIWindowSceneDelegate instead.
      */
+    @Deprecated
     @Method(selector = "application:userDidAcceptCloudKitShareWithMetadata:")
     public native void didAcceptCloudKitShare(UIApplication application, org.robovm.apple.cloudkit.CKShareMetadata cloudKitShareMetadata);
     /**

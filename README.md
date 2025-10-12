@@ -51,7 +51,7 @@ v1.54.0 - in development
 | [Charts](charts/)                       | 5.1.0   |
 | [CleverAds](cleverads/)                 | 4.3.0   |
 | [Facebook](facebook/)                   | 18.0.1  |
-| [Firebase](firebase/)                   | 12.2.0  |
+| [Firebase](firebase/)                   | 12.4.0  |
 | [Fyber](fyber/)                         | 8.3.8   |
 | [Google Mobile Ads](google-mobile-ads/) | 12.9.0  |
 | [HelpShiftX](helpshift/)                | 10.4.0  |
