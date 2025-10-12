@@ -57,7 +57,7 @@ import org.robovm.apple.intents.*;
      * @since Available in iOS 14.0 and later.
      */
     @Method(selector = "initWithContentType:")
-    public static  BranchCSSearchableItemAttributeSet createWithContentType(UTType contentType) {
+    public static BranchCSSearchableItemAttributeSet createWithContentType(UTType contentType) {
        BranchCSSearchableItemAttributeSet res = new BranchCSSearchableItemAttributeSet((SkipInit) null);
        res.initObject(res.initWithContentType(contentType));
        return res;

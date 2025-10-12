@@ -405,6 +405,8 @@ import org.robovm.apple.intents.*;
     public static native void setAPIUrl(String url);
     @Method(selector = "setSafetrackAPIURL:")
     public static native void setSafetrackAPIURL(String url);
+    @Method(selector = "setCallbackForTracingRequests:")
+    public static native void setCallbackForTracingRequests(@Block VoidBlock5<NSString, NSDictionary<?, ?>, NSDictionary<?, ?>, NSError, NSString> callback);
     @Method(selector = "setSDKWaitTimeForThirdPartyAPIs:")
     public static native void setSDKWaitTimeForThirdPartyAPIs(double waitTime);
     @Method(selector = "isBranchLink:")
