@@ -53,7 +53,7 @@ v1.54.0 - in development
 | [Facebook](facebook/)                   | 18.0.1  |
 | [Firebase](firebase/)                   | 12.4.0  |
 | [Fyber](fyber/)                         | 8.4.0   |
-| [Google Mobile Ads](google-mobile-ads/) | 12.9.0  |
+| [Google Mobile Ads](google-mobile-ads/) | 12.12.0 |
 | [HelpShiftX](helpshift/)                | 10.4.0  |
 | [InMobi](inmobi/)                       | 10.8.6  |
 | [IronSource](ironsource/)               | 8.11.0  |
