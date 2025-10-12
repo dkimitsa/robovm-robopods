@@ -36,7 +36,7 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("_TtC8DGCharts23XAxisRendererRadarChart")/*</annotations>*/
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("DGCharts.XAxisRendererRadarChart")/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/XAxisRendererRadarChart/*</name>*/ 
     extends /*<extends>*/ChartXAxisRenderer/*</extends>*/ 
     /*<implements>*//*</implements>*/ {

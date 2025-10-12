@@ -36,7 +36,7 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("_TtC8DGCharts20BarLineChartViewBase")/*</annotations>*/
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("DGCharts.BarLineChartViewBase")/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/BarLineChartViewBase/*</name>*/ 
     extends /*<extends>*/ChartViewBase/*</extends>*/ 
     /*<implements>*/implements BarLineScatterCandleBubbleChartDataProvider, UIGestureRecognizerDelegate/*</implements>*/ {

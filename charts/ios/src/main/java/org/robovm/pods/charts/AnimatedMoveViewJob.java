@@ -36,7 +36,7 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("_TtC8DGCharts19AnimatedMoveViewJob")/*</annotations>*/
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("DGCharts.AnimatedMoveViewJob")/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/AnimatedMoveViewJob/*</name>*/ 
     extends /*<extends>*/AnimatedViewPortJob/*</extends>*/ 
     /*<implements>*//*</implements>*/ {

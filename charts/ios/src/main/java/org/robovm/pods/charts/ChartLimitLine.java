@@ -36,7 +36,7 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("_TtC8DGCharts14ChartLimitLine")/*</annotations>*/
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("DGCharts.ChartLimitLine")/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/ChartLimitLine/*</name>*/ 
     extends /*<extends>*/ChartComponentBase/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
