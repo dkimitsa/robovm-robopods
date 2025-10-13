@@ -70,7 +70,5 @@ import org.robovm.apple.coreanimation.*;
     public native void initBannerForBidding(String userId, ISAdapterConfig adapterConfig, ISBannerAdapterDelegate delegate);
     @Method(selector = "loadBannerForBiddingWithAdapterConfig:adData:serverData:viewController:size:delegate:")
     public native void loadBannerForBidding(ISAdapterConfig adapterConfig, NSDictionary<?, ?> adData, String serverData, UIViewController viewController, ISBannerSize size, ISBannerAdapterDelegate delegate);
-    @Method(selector = "releaseMemoryWithAdapterConfig:")
-    public native void releaseMemory(ISAdapterConfig adapterConfig);
     /*</methods>*/
 }

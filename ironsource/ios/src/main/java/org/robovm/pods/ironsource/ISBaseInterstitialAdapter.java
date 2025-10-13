@@ -58,8 +58,8 @@ import org.robovm.apple.coreanimation.*;
     public native void showInterstitial(UIViewController viewController, ISAdapterConfig adapterConfig, ISInterstitialAdapterDelegate delegate);
     @Method(selector = "hasInterstitialWithAdapterConfig:")
     public native boolean hasInterstitial(ISAdapterConfig adapterConfig);
-    @Method(selector = "disposeInterstitialAdWithAdapterConfig:")
-    public native void disposeInterstitialAd(ISAdapterConfig adapterConfig);
+    @Method(selector = "destroyInterstitialAdWithAdapterConfig:")
+    public native void destroyInterstitialAd(ISAdapterConfig adapterConfig);
     @Method(selector = "initInterstitialWithUserId:adapterConfig:delegate:")
     public native void initInterstitial(String userId, ISAdapterConfig adapterConfig, ISInterstitialAdapterDelegate delegate);
     @Method(selector = "loadInterstitialWithAdapterConfig:adData:delegate:")
@@ -72,7 +72,5 @@ import org.robovm.apple.coreanimation.*;
     public native void initInterstitialForBidding(String userId, ISAdapterConfig adapterConfig, ISInterstitialAdapterDelegate delegate);
     @Method(selector = "loadInterstitialForBiddingWithAdapterConfig:adData:serverData:delegate:")
     public native void loadInterstitialForBidding(ISAdapterConfig adapterConfig, NSDictionary<?, ?> adData, String serverData, ISInterstitialAdapterDelegate delegate);
-    @Method(selector = "releaseMemoryWithAdapterConfig:")
-    public native void releaseMemory(ISAdapterConfig adapterConfig);
     /*</methods>*/
 }

@@ -109,10 +109,10 @@ import org.robovm.apple.coreanimation.*;
     public native ISNativeAdAdapterProtocol getNativeAdAdapter();
     @Method(selector = "getAdaptiveHeightWithWidth:")
     public native @MachineSizedFloat double getAdaptiveHeight(@MachineSizedFloat double width);
-    @Method(selector = "disposeRewardedVideoAdWithAdapterConfig:")
-    public native void disposeRewardedVideoAd(ISAdapterConfig adapterConfig);
-    @Method(selector = "disposeInterstitialAdWithAdapterConfig:")
-    public native void disposeInterstitialAd(ISAdapterConfig adapterConfig);
+    @Method(selector = "destroyRewardedVideoAdWithAdapterConfig:")
+    public native void destroyRewardedVideoAd(ISAdapterConfig adapterConfig);
+    @Method(selector = "destroyInterstitialAdWithAdapterConfig:")
+    public native void destroyInterstitialAd(ISAdapterConfig adapterConfig);
     @Method(selector = "isConfigValueValid:")
     public native boolean isConfigValueValid(String value);
     @Method(selector = "errorForMissingCredentialFieldWithName:")
@@ -137,8 +137,6 @@ import org.robovm.apple.coreanimation.*;
     public native void initInterstitialForBidding(String userId, ISAdapterConfig adapterConfig, ISInterstitialAdapterDelegate delegate);
     @Method(selector = "loadInterstitialForBiddingWithAdapterConfig:adData:serverData:delegate:")
     public native void loadInterstitialForBidding(ISAdapterConfig adapterConfig, NSDictionary<?, ?> adData, String serverData, ISInterstitialAdapterDelegate delegate);
-    @Method(selector = "releaseMemoryWithAdapterConfig:")
-    public native void releaseMemory(ISAdapterConfig adapterConfig);
     @Method(selector = "onNetworkInitCallbackSuccess")
     public native void onNetworkInitCallbackSuccess();
     @Method(selector = "onNetworkInitCallbackFailed:")

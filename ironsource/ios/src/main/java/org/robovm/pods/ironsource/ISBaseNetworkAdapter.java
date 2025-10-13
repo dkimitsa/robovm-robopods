@@ -39,7 +39,7 @@ import org.robovm.apple.coreanimation.*;
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/ISBaseNetworkAdapter/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
-    /*<implements>*/implements ISAdapterBaseProtocol, ISAdapterDebugProtocol, ISAdapterConsentProtocol, ISAdapterMetaDataProtocol, ISAdapterNetworkDataProtocol, ISAdapterSettingsProtocol/*</implements>*/ {
+    /*<implements>*/implements ISAdapterBaseProtocol, ISAdapterDebugProtocol, ISAdapterConsentProtocol, ISAdapterNetworkDataProtocol/*</implements>*/ {
 
     /*<ptr>*/public static class ISBaseNetworkAdapterPtr extends Ptr<ISBaseNetworkAdapter, ISBaseNetworkAdapterPtr> {}/*</ptr>*/
     /*<bind>*/static { ObjCRuntime.bind(ISBaseNetworkAdapter.class); }/*</bind>*/
@@ -62,19 +62,7 @@ import org.robovm.apple.coreanimation.*;
     public native void setAdapterDebug(boolean adapterDebug);
     @Method(selector = "setConsent:")
     public native void setConsent(boolean consent);
-    /**
-     * @deprecated This method is deprecated and will be removed in SDK version 9.0.0.
-     */
-    @Deprecated
-    @Method(selector = "setMetaDataWithKey:andValues:")
-    public native void setMetaData(String key, NSMutableArray<?> values);
     @Method(selector = "setNetworkData:")
     public native void setNetworkData(ISAdapterNetworkData networkData);
-    /**
-     * @deprecated This method is deprecated and will be removed in SDK version 9.0.0.
-     */
-    @Deprecated
-    @Method(selector = "getLoadWhileShowSupportedStateWithAdapterConfig:")
-    public native ISLoadWhileShowSupportState getLoadWhileShowSupportedState(ISAdapterConfig adapterConfig);
     /*</methods>*/
 }

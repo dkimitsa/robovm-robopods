@@ -25,7 +25,7 @@
 
 - (BOOL)hasInterstitialWithAdapterConfig:(ISAdapterConfig *)adapterConfig;
 
-- (void)disposeInterstitialAdWithAdapterConfig:(ISAdapterConfig *)adapterConfig;
+- (void)destroyInterstitialAdWithAdapterConfig:(ISAdapterConfig *)adapterConfig;
 
 #pragma mark - for non bidders and demand only
 

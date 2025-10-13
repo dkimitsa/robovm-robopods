@@ -37,7 +37,7 @@ import org.robovm.apple.coreanimation.*;
 /*</javadoc>*/
 /*<annotations>*//*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/ISAdUnitAdapterProtocolAdapter/*</name>*/ 
-    extends /*<extends>*/ISReleaseMemoryAdapterProtocolAdapter/*</extends>*/ 
+    extends /*<extends>*/ISNetworkInitCallbackProtocolAdapter/*</extends>*/ 
     /*<implements>*/implements ISAdUnitAdapterProtocol/*</implements>*/ {
 
     /*<ptr>*/
@@ -51,9 +51,6 @@ import org.robovm.apple.coreanimation.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @NotImplemented("onNetworkInitCallbackSuccess")
-    public void onNetworkInitCallbackSuccess() {}
-    @NotImplemented("onNetworkInitCallbackFailed:")
-    public void onNetworkInitCallbackFailed(String errorMessage) {}
+    
     /*</methods>*/
 }

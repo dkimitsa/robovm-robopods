@@ -19,8 +19,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (LPMInitRequest *)build;
 
-- (LPMInitRequestBuilder *)withLegacyAdFormats:(NSArray<NSString *> *)legacyAdFormats;
-
 - (LPMInitRequestBuilder *)withUserId:(NSString *)userId;
 
 @end

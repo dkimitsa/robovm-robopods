@@ -53,8 +53,8 @@ import org.robovm.apple.coreanimation.*;
     void showInterstitial(UIViewController viewController, ISAdapterConfig adapterConfig, ISInterstitialAdapterDelegate delegate);
     @Method(selector = "hasInterstitialWithAdapterConfig:")
     boolean hasInterstitial(ISAdapterConfig adapterConfig);
-    @Method(selector = "disposeInterstitialAdWithAdapterConfig:")
-    void disposeInterstitialAd(ISAdapterConfig adapterConfig);
+    @Method(selector = "destroyInterstitialAdWithAdapterConfig:")
+    void destroyInterstitialAd(ISAdapterConfig adapterConfig);
     @Method(selector = "initInterstitialWithUserId:adapterConfig:delegate:")
     void initInterstitial(String userId, ISAdapterConfig adapterConfig, ISInterstitialAdapterDelegate delegate);
     @Method(selector = "loadInterstitialWithAdapterConfig:adData:delegate:")

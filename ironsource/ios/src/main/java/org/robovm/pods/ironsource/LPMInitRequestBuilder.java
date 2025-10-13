@@ -60,8 +60,6 @@ import org.robovm.apple.coreanimation.*;
     protected native @Pointer long init(String appKey);
     @Method(selector = "build")
     public native LPMInitRequest build();
-    @Method(selector = "withLegacyAdFormats:")
-    public native LPMInitRequestBuilder withLegacyAdFormats(NSArray<NSString> legacyAdFormats);
     @Method(selector = "withUserId:")
     public native LPMInitRequestBuilder withUserId(String userId);
     /*</methods>*/

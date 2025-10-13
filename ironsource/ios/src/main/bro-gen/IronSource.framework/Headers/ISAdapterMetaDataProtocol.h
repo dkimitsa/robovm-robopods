@@ -11,9 +11,7 @@
 
 @protocol ISAdapterMetaDataProtocol <NSObject>
 
-- (void)setMetaDataWithKey:(NSString *)key
-                 andValues:(NSMutableArray *)values
-    DEPRECATED_MSG_ATTRIBUTE("This method is deprecated and will be removed in SDK version 9.0.0.");
+- (void)setMetaDataWithKey:(NSString *)key andValues:(NSMutableArray *)values;
 
 @end
 

@@ -38,7 +38,7 @@ import org.robovm.apple.coreanimation.*;
 /*</javadoc>*/
 /*<annotations>*//*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ interface /*<name>*/ISAdUnitAdapterProtocol/*</name>*/ 
-    /*<implements>*/extends ISReleaseMemoryAdapterProtocol, ISNetworkInitCallbackProtocol/*</implements>*/ {
+    /*<implements>*/extends ISNetworkInitCallbackProtocol/*</implements>*/ {
 
     /*<ptr>*/
     /*</ptr>*/

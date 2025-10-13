@@ -17,4 +17,3 @@
 #import "ISNEventTrackerInterface.h"
 #import "ISNEventTrackerWrapper.h"
 #import "ISNSupersonicAdsPublisherSwiftFacade.h"
-#import "SupersonicLogManager.h"

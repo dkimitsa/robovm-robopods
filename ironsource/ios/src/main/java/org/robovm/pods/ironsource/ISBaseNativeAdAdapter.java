@@ -70,7 +70,5 @@ import org.robovm.apple.coreanimation.*;
     public native NSDictionary<?, ?> getNativeAdBiddingData(ISAdapterConfig adapterConfig, NSDictionary<?, ?> adData);
     @Method(selector = "collectNativeAdBiddingDataWithAdapterConfig:adData:delegate:")
     public native void collectNativeAdBiddingData(ISAdapterConfig adapterConfig, NSDictionary<?, ?> adData, ISBiddingDataDelegate delegate);
-    @Method(selector = "releaseMemoryWithAdapterConfig:")
-    public native void releaseMemory(ISAdapterConfig adapterConfig);
     /*</methods>*/
 }

@@ -92,10 +92,10 @@ import org.robovm.apple.coreanimation.*;
     public native boolean isBidder();
     @Property(selector = "shouldEarlyInit")
     public native boolean shouldEarlyInit();
-    @Property(selector = "adUnit")
-    public native ISAdUnit getAdUnit();
-    @Property(selector = "setAdUnit:")
-    public native void setAdUnit(ISAdUnit v);
+    @Property(selector = "adFormat")
+    public native String getAdFormat();
+    @Property(selector = "setAdFormat:")
+    public native void setAdFormat(String v);
     @Property(selector = "appSettings")
     public native NSDictionary<?, ?> getAppSettings();
     @Property(selector = "setAppSettings:")
@@ -137,8 +137,8 @@ import org.robovm.apple.coreanimation.*;
     public native boolean isIronSource();
     @Method(selector = "setIsOneFlow:")
     public native void setIsOneFlow(boolean isOneFlow);
-    @Method(selector = "customNetworkAdapterNameForAdUnit:")
-    public native String customNetworkAdapterNameForAdUnit(ISAdUnit adUnit);
+    @Method(selector = "customNetworkAdapterNameForAdFormat:")
+    public native String customNetworkAdapterNameForAdFormat(String adFormat);
     @Method(selector = "adUnitSettings")
     public native NSDictionary<?, ?> adUnitSettings();
     @Method(selector = "demandSourceName")

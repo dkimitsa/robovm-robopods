@@ -50,10 +50,10 @@ import org.robovm.apple.coreanimation.*;
     protected ISBaseBanner(SkipInit skipInit) { super(skipInit); }
     @Method(selector = "init:")
     public ISBaseBanner(ISAdapterConfig providerConfig) { super((SkipInit) null); initObject(init(providerConfig)); }
-    @Method(selector = "initWithAdUnit:adapterConfig:")
-    public ISBaseBanner(ISAdUnit adUnit, ISAdapterConfig adapterConfig) { super(adUnit, adapterConfig); }
-    @Method(selector = "initWithAdUnit:adapterConfig:adUnitObjectId:")
-    public ISBaseBanner(ISAdUnit adUnit, ISAdapterConfig adapterConfig, NSUUID adUnitObjectId) { super(adUnit, adapterConfig, adUnitObjectId); }
+    @Method(selector = "initWithAdFormat:adapterConfig:")
+    public ISBaseBanner(String adFormat, ISAdapterConfig adapterConfig) { super(adFormat, adapterConfig); }
+    @Method(selector = "initWithAdFormat:adapterConfig:adUnitObjectId:")
+    public ISBaseBanner(String adFormat, ISAdapterConfig adapterConfig, NSUUID adUnitObjectId) { super(adFormat, adapterConfig, adUnitObjectId); }
     /*</constructors>*/
     /*<properties>*/
     

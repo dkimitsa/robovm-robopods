@@ -70,18 +70,6 @@ import org.robovm.apple.coreanimation.*;
     protected native @Pointer long init(String adUnitId);
     @Method(selector = "initWithAdUnitId:config:")
     protected native @Pointer long init(String adUnitId, LPMBannerAdViewConfig config);
-    /**
-     * @deprecated Use LPMBannerAdViewConfig
-     */
-    @Deprecated
-    @Method(selector = "setPlacementName:")
-    public native void setPlacementName(String placementName);
-    /**
-     * @deprecated Use LPMBannerAdViewConfig
-     */
-    @Deprecated
-    @Method(selector = "setAdSize:")
-    public native void setAdSize(LPMAdSize adSize);
     @Method(selector = "setDelegate:")
     public native void setDelegate(LPMBannerAdViewDelegate delegate);
     @Method(selector = "loadAdWithViewController:")

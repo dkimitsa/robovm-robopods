@@ -49,8 +49,6 @@ import org.robovm.apple.coreanimation.*;
     
     /*</properties>*/
     /*<methods>*/
-    @Method(selector = "networkDataByAdUnit:")
-    NSDictionary<?, ?> networkDataByAdUnit(ISAdUnit adUnit);
     @Method(selector = "allData")
     NSDictionary<?, ?> allData();
     @Method(selector = "dataByKeyIgnoreCase:valueType:")

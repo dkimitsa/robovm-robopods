@@ -18,6 +18,11 @@ NS_ASSUME_NONNULL_BEGIN
 typedef void (^LPMInitCompletionHandler)(LPMConfiguration *_Nullable config,
                                          NSError *_Nullable error);
 
+#define LEVEL_PLAY_REWARDED @"rewarded"
+#define LEVEL_PLAY_INTERSTITIAL @"interstitial"
+#define LEVEL_PLAY_BANNER @"banner"
+#define LEVEL_PLAY_NATIVE_AD @"nativead"
+
 @interface LevelPlay : NSObject
 
 - (instancetype)init NS_UNAVAILABLE;

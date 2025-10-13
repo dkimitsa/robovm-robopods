@@ -6,7 +6,6 @@
 //  Copyright (c) 2015 IronSource. All rights reserved.
 //
 #import <Foundation/Foundation.h>
-#import "ISAdUnit.h"
 
 #define DEFAULT_CAPPING_PER_DAY 99
 #define DEFAULT_CAPPING_PER_SESSION 99
@@ -31,7 +30,7 @@
     NSString *adSourceNameForEvent;  // name from adSourceName property on init
 @property(assign, nonatomic, readonly) BOOL isBidder;
 @property(assign, nonatomic, readonly) BOOL shouldEarlyInit;
-@property(strong, nonatomic, readonly) ISAdUnit *adUnit;
+@property(strong, nonatomic, readonly) NSString *adFormat;
 @property(strong, nonatomic, readonly) NSDictionary *appSettings;
 @property(strong, nonatomic, readonly) NSDictionary *interstitialSettings;
 @property(strong, nonatomic, readonly) NSDictionary *rewardedVideoSettings;
@@ -54,7 +53,7 @@
 - (void)setSettings:(NSDictionary *)settings;
 - (void)setReflectionName:(NSString *)reflectionName;
 - (void)setLoadTimeOut:(double)loadTimeOut;
-- (void)setAdUnit:(ISAdUnit *)adUnit;
+- (void)setAdFormat:(NSString *)adFormat;
 - (BOOL)isIronSource;
 - (void)setAppSettings:(NSDictionary *)appSettings;
 - (void)setInterstitialSettings:(NSDictionary *)interstitialSettings;
@@ -63,7 +62,7 @@
 - (void)setNativeAdSettings:(NSDictionary *)nativeAdSettings;
 - (void)setProviderDefaultInstance:(NSString *)providerDefaultInstance;
 - (void)setIsOneFlow:(BOOL)isOneFlow;
-- (NSString *)customNetworkAdapterNameForAdUnit:(ISAdUnit *)adUnit;
+- (NSString *_Nullable)customNetworkAdapterNameForAdFormat:(NSString *_Nullable)adFormat;
 - (NSDictionary *)adUnitSettings;
 - (NSString *)demandSourceName;
 - (NSNumber *)isOneFlow;

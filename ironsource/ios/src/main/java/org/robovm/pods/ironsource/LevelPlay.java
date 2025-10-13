@@ -43,7 +43,12 @@ import org.robovm.apple.coreanimation.*;
 
     /*<ptr>*/public static class LevelPlayPtr extends Ptr<LevelPlay, LevelPlayPtr> {}/*</ptr>*/
     /*<bind>*/static { ObjCRuntime.bind(LevelPlay.class); }/*</bind>*/
-    /*<constants>*//*</constants>*/
+    /*<constants>*/
+    public static final String REWARDED = "rewarded";
+    public static final String INTERSTITIAL = "interstitial";
+    public static final String BANNER = "banner";
+    public static final String NATIVE_AD = "nativead";
+    /*</constants>*/
     /*<constructors>*/
     protected LevelPlay() {}
     protected LevelPlay(Handle h, long handle) { super(h, handle); }

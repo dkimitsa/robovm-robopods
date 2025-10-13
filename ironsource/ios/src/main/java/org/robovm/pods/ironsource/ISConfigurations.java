@@ -67,9 +67,9 @@ import org.robovm.apple.coreanimation.*;
     @Property(selector = "setCustomSegmentParams:")
     public native void setCustomSegmentParams(NSDictionary<?, ?> v);
     @Property(selector = "segment")
-    public native ISSegment getSegment();
+    public native LPMSegment getSegment();
     @Property(selector = "setSegment:")
-    public native void setSegment(ISSegment v);
+    public native void setSegment(LPMSegment v);
     @Property(selector = "rewardedVideoCustomParameters")
     public native NSDictionary<?, ?> getRewardedVideoCustomParameters();
     @Property(selector = "setRewardedVideoCustomParameters:")
@@ -110,10 +110,6 @@ import org.robovm.apple.coreanimation.*;
     public native @MachineSizedSInt long getUserAge();
     @Property(selector = "setUserAge:")
     public native void setUserAge(@MachineSizedSInt long v);
-    @Property(selector = "userGender")
-    public native ISGender getUserGender();
-    @Property(selector = "setUserGender:")
-    public native void setUserGender(ISGender v);
     @Property(selector = "trackReachability")
     public native boolean isTrackReachability();
     @Property(selector = "setTrackReachability:")

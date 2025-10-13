@@ -21,10 +21,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)adDidCloseWithExtraData:(NSDictionary<NSString *, id> *)extraData;
 
 // Optional callbacks
-
-- (void)adDidShowSucceed;
-- (void)adDidShowSucceedWithExtraData:(NSDictionary<NSString *, id> *)extraData;
-
 - (void)adDidBecomeVisible;
 - (void)adDidBecomeVisibleWithExtraData:(NSDictionary<NSString *, id> *)extraData;
 

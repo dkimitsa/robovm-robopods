@@ -55,8 +55,8 @@ import org.robovm.apple.coreanimation.*;
     public void showInterstitial(UIViewController viewController, ISAdapterConfig adapterConfig, ISInterstitialAdapterDelegate delegate) {}
     @NotImplemented("hasInterstitialWithAdapterConfig:")
     public boolean hasInterstitial(ISAdapterConfig adapterConfig) { return false; }
-    @NotImplemented("disposeInterstitialAdWithAdapterConfig:")
-    public void disposeInterstitialAd(ISAdapterConfig adapterConfig) {}
+    @NotImplemented("destroyInterstitialAdWithAdapterConfig:")
+    public void destroyInterstitialAd(ISAdapterConfig adapterConfig) {}
     @NotImplemented("initInterstitialWithUserId:adapterConfig:delegate:")
     public void initInterstitial(String userId, ISAdapterConfig adapterConfig, ISInterstitialAdapterDelegate delegate) {}
     @NotImplemented("loadInterstitialWithAdapterConfig:adData:delegate:")

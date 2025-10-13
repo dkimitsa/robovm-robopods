@@ -48,16 +48,16 @@ import org.robovm.apple.coreanimation.*;
     public ISBaseAdAdapter() {}
     protected ISBaseAdAdapter(Handle h, long handle) { super(h, handle); }
     protected ISBaseAdAdapter(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithAdUnit:adapterConfig:")
-    public ISBaseAdAdapter(ISAdUnit adUnit, ISAdapterConfig adapterConfig) { super((SkipInit) null); initObject(init(adUnit, adapterConfig)); }
-    @Method(selector = "initWithAdUnit:adapterConfig:adUnitObjectId:")
-    public ISBaseAdAdapter(ISAdUnit adUnit, ISAdapterConfig adapterConfig, NSUUID adUnitObjectId) { super((SkipInit) null); initObject(init(adUnit, adapterConfig, adUnitObjectId)); }
+    @Method(selector = "initWithAdFormat:adapterConfig:")
+    public ISBaseAdAdapter(String adFormat, ISAdapterConfig adapterConfig) { super((SkipInit) null); initObject(init(adFormat, adapterConfig)); }
+    @Method(selector = "initWithAdFormat:adapterConfig:adUnitObjectId:")
+    public ISBaseAdAdapter(String adFormat, ISAdapterConfig adapterConfig, NSUUID adUnitObjectId) { super((SkipInit) null); initObject(init(adFormat, adapterConfig, adUnitObjectId)); }
     /*</constructors>*/
     /*<properties>*/
-    @Property(selector = "adUnit")
-    public native ISAdUnit getAdUnit();
-    @Property(selector = "setAdUnit:")
-    public native void setAdUnit(ISAdUnit v);
+    @Property(selector = "adFormat")
+    public native String getAdFormat();
+    @Property(selector = "setAdFormat:")
+    public native void setAdFormat(String v);
     @Property(selector = "adapterConfig")
     public native ISAdapterConfig getAdapterConfig();
     @Property(selector = "adUnitObjectId")
@@ -65,13 +65,13 @@ import org.robovm.apple.coreanimation.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "initWithAdUnit:adapterConfig:")
-    protected native @Pointer long init(ISAdUnit adUnit, ISAdapterConfig adapterConfig);
-    @Method(selector = "initWithAdUnit:adapterConfig:adUnitObjectId:")
-    protected native @Pointer long init(ISAdUnit adUnit, ISAdapterConfig adapterConfig, NSUUID adUnitObjectId);
+    @Method(selector = "initWithAdFormat:adapterConfig:")
+    protected native @Pointer long init(String adFormat, ISAdapterConfig adapterConfig);
+    @Method(selector = "initWithAdFormat:adapterConfig:adUnitObjectId:")
+    protected native @Pointer long init(String adFormat, ISAdapterConfig adapterConfig, NSUUID adUnitObjectId);
     @Method(selector = "getNetworkAdapter")
     public native ISAdapterBaseProtocol getNetworkAdapter();
-    @Method(selector = "releaseMemory")
-    public native void releaseMemory();
+    @Method(selector = "destroyAdWithAdData:")
+    public native void destroyAd(ISAdData adData);
     /*</methods>*/
 }
