@@ -79,14 +79,6 @@ import org.robovm.apple.coreanimation.*;
     public native VideoImpressionConfig getVideo();
     @Property(selector = "setVideo:")
     public native void setVideo(VideoImpressionConfig v);
-    @Property(selector = "impressionMinTimeViewed")
-    public native @MachineSizedSInt long getImpressionMinTimeViewed();
-    @Property(selector = "setImpressionMinTimeViewed:")
-    public native void setImpressionMinTimeViewed(@MachineSizedSInt long v);
-    @Property(selector = "impressionMinPercentageViewed")
-    public native @MachineSizedSInt long getImpressionMinPercentageViewed();
-    @Property(selector = "setImpressionMinPercentageViewed:")
-    public native void setImpressionMinPercentageViewed(@MachineSizedSInt long v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

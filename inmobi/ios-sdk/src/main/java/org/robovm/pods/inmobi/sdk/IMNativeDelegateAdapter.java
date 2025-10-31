@@ -72,8 +72,6 @@ import org.robovm.apple.coreanimation.*;
     public void didInteract(IMNative _native, NSDictionary<NSString, ?> params) {}
     @NotImplemented("nativeDidFinishPlayingMedia:")
     public void nativeDidFinishPlayingMedia(IMNative _native) {}
-    @NotImplemented("userDidSkipPlayingMediaFromNative:")
-    public void userDidSkipPlayingMediaFromNative(IMNative _native) {}
     @NotImplemented("native:adAudioStateChanged:")
     public void adAudioStateChanged(IMNative _native, boolean audioStateMuted) {}
     /*</methods>*/

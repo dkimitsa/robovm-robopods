@@ -2,12 +2,12 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>io.github.dkimitsa.robovm</groupId>
-        <version>1.53.0</version>
+        <version>1.54.0</version>
         <artifactId>robopods-google-mobile-ads-parent</artifactId>
     </parent>
 
     <artifactId>robopods-google-mobile-ads-ios</artifactId>
-    <name>RoboPods Google Mobile Ads iOS v12.9.0</name>
+    <name>RoboPods Google Mobile Ads iOS v12.12.0</name>
     <packaging>jar</packaging>
 
     <licenses>

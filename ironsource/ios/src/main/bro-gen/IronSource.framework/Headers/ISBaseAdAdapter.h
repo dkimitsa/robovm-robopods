@@ -7,37 +7,44 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ISAdData.h"
-#import "ISAdUnit.h"
 #import "ISAdapterAdDelegate.h"
 #import "ISAdapterBaseProtocol.h"
 #import "ISAdapterConfig.h"
+#import "LevelPlay.h"
+
+@class ISAdData;
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ISBaseAdAdapter : NSObject
 
-@property(nonatomic) ISAdUnit *adUnit;
+@property(nonatomic) NSString *adFormat;
 @property(nonatomic, readonly) ISAdapterConfig *adapterConfig;
 @property(nonatomic, readonly, nullable) NSUUID *adUnitObjectId;
 
-/// @param adUnit the ad unit represented by the adapter
+/// @param adFormat the ad format represented by the adapter
 /// @param adapterConfig the configuration relevant for the adapter instance
-- (instancetype)initWithAdUnit:(ISAdUnit *)adUnit adapterConfig:(ISAdapterConfig *)adapterConfig;
+- (instancetype)initWithAdFormat:(NSString *)adFormat
+                   adapterConfig:(ISAdapterConfig *)adapterConfig;
 
-/// @param adUnit the ad unit represented by the adapter
+/// @param adFormat the ad format represented by the adapter
 /// @param adapterConfig the configuration relevant for the adapter instance
 /// @param adUnitObjectId the object id for the ad loaded
 
-- (instancetype)initWithAdUnit:(ISAdUnit *)adUnit
-                 adapterConfig:(ISAdapterConfig *)adapterConfig
-                adUnitObjectId:(nullable NSUUID *)adUnitObjectId;
+- (instancetype)initWithAdFormat:(NSString *)adFormat
+                   adapterConfig:(ISAdapterConfig *)adapterConfig
+                  adUnitObjectId:(nullable NSUUID *)adUnitObjectId;
 
 /// the network sdk version
 - (nullable id<ISAdapterBaseProtocol>)getNetworkAdapter;
 
-/// When the adapter needs to release certain elements to avoid memory leaks before being destroyed
-- (void)releaseMemory;
+/**
+ * destroy the ad
+ *
+ * @param adData - data containing the configuration passed from the server and other related
+ * parameters passed from the publisher like userId
+ */
+- (void)destroyAdWithAdData:(ISAdData *)adData;
 
 @end
 

@@ -49,8 +49,15 @@ import org.robovm.apple.coreanimation.*;
     public GTMSessionUploadFetcher() {}
     protected GTMSessionUploadFetcher(Handle h, long handle) { super(h, handle); }
     protected GTMSessionUploadFetcher(SkipInit skipInit) { super(skipInit); }
+    public GTMSessionUploadFetcher(NSURLRequest request, String uploadMIMEType, long chunkSize, GTMSessionFetcherService fetcherServiceOrNil) { super((Handle) null, create(request, uploadMIMEType, chunkSize, fetcherServiceOrNil)); retain(getHandle()); }
+    public GTMSessionUploadFetcher(NSURL uploadLocationURL, String uploadMIMEType, long chunkSize, GTMSessionFetcherService fetcherServiceOrNil) { super((Handle) null, create(uploadLocationURL, uploadMIMEType, chunkSize, fetcherServiceOrNil)); retain(getHandle()); }
+    public GTMSessionUploadFetcher(NSURL uploadLocationURL, String uploadMIMEType, long chunkSize, boolean allowsCellularAccess, GTMSessionFetcherService fetcherServiceOrNil) { super((Handle) null, create(uploadLocationURL, uploadMIMEType, chunkSize, allowsCellularAccess, fetcherServiceOrNil)); retain(getHandle()); }
     @Method(selector = "initWithRequest:configuration:")
     public GTMSessionUploadFetcher(NSURLRequest request, NSURLSessionConfiguration configuration) { super(request, configuration); }
+    public GTMSessionUploadFetcher(NSURLRequest request) { super((Handle) null, create(request)); retain(getHandle()); }
+    public GTMSessionUploadFetcher(NSURL requestURL) { super((Handle) null, create(requestURL)); retain(getHandle()); }
+    public GTMSessionUploadFetcher(NSData resumeData) { super((Handle) null, create(resumeData)); retain(getHandle()); }
+    public GTMSessionUploadFetcher(String sessionIdentifier) { super((Handle) null, create(sessionIdentifier)); retain(getHandle()); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "uploadLocationURL")
@@ -137,17 +144,25 @@ import org.robovm.apple.coreanimation.*;
     @Method(selector = "isPaused")
     public native boolean isPaused();
     @Method(selector = "uploadFetcherWithRequest:uploadMIMEType:chunkSize:fetcherService:")
-    public static native GTMSessionUploadFetcher uploadFetcher(NSURLRequest request, String uploadMIMEType, long chunkSize, GTMSessionFetcherService fetcherServiceOrNil);
+    protected static native @Pointer long create(NSURLRequest request, String uploadMIMEType, long chunkSize, GTMSessionFetcherService fetcherServiceOrNil);
     @Method(selector = "uploadFetcherWithLocation:uploadMIMEType:chunkSize:fetcherService:")
-    public static native GTMSessionUploadFetcher uploadFetcher(NSURL uploadLocationURL, String uploadMIMEType, long chunkSize, GTMSessionFetcherService fetcherServiceOrNil);
+    protected static native @Pointer long create(NSURL uploadLocationURL, String uploadMIMEType, long chunkSize, GTMSessionFetcherService fetcherServiceOrNil);
     @Method(selector = "uploadFetcherWithLocation:uploadMIMEType:chunkSize:allowsCellularAccess:fetcherService:")
-    public static native GTMSessionUploadFetcher uploadFetcher(NSURL uploadLocationURL, String uploadMIMEType, long chunkSize, boolean allowsCellularAccess, GTMSessionFetcherService fetcherServiceOrNil);
+    protected static native @Pointer long create(NSURL uploadLocationURL, String uploadMIMEType, long chunkSize, boolean allowsCellularAccess, GTMSessionFetcherService fetcherServiceOrNil);
     @Method(selector = "uploadFetchersForBackgroundSessions")
     public static native NSArray<?> uploadFetchersForBackgroundSessions();
     @Method(selector = "uploadFetcherForSessionIdentifier:")
     public static native GTMSessionUploadFetcher uploadFetcherForSessionIdentifier(String sessionIdentifier);
+    @Method(selector = "fetcherWithRequest:")
+    protected static native @Pointer long create(NSURLRequest request);
+    @Method(selector = "fetcherWithURL:")
+    protected static native @Pointer long create(NSURL requestURL);
     @Method(selector = "fetcherWithURLString:")
     public static native GTMSessionUploadFetcher createFetcherUsingURLString(String requestURLString);
+    @Method(selector = "fetcherWithDownloadResumeData:")
+    protected static native @Pointer long create(NSData resumeData);
+    @Method(selector = "fetcherWithSessionIdentifier:")
+    protected static native @Pointer long create(String sessionIdentifier);
     @Method(selector = "fetchersForBackgroundSessions")
     public static native NSArray<GTMSessionFetcher> fetchersForBackgroundSessions();
     @Method(selector = "application:handleEventsForBackgroundURLSession:completionHandler:")

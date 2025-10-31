@@ -36,7 +36,7 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("_TtC8DGCharts8NSUIView")/*</annotations>*/
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("DGCharts.NSUIView")/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/NSUIView/*</name>*/ 
     extends /*<extends>*/UIView/*</extends>*/ 
     /*<implements>*//*</implements>*/ {

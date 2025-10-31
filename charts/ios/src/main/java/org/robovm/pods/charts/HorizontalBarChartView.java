@@ -36,7 +36,7 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("_TtC8DGCharts22HorizontalBarChartView")/*</annotations>*/
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("DGCharts.HorizontalBarChartView")/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/HorizontalBarChartView/*</name>*/ 
     extends /*<extends>*/BarChartView/*</extends>*/ 
     /*<implements>*//*</implements>*/ {

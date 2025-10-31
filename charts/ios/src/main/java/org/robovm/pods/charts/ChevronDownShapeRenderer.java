@@ -36,7 +36,7 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("_TtC8DGCharts24ChevronDownShapeRenderer")/*</annotations>*/
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("DGCharts.ChevronDownShapeRenderer")/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/ChevronDownShapeRenderer/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*/implements ShapeRenderer/*</implements>*/ {

@@ -36,7 +36,7 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("_TtC8DGCharts18CandleChartDataSet")/*</annotations>*/
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("DGCharts.CandleChartDataSet")/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/CandleChartDataSet/*</name>*/ 
     extends /*<extends>*/LineScatterCandleRadarChartDataSet/*</extends>*/ 
     /*<implements>*/implements CandleChartDataSetProtocol/*</implements>*/ {

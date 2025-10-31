@@ -50,8 +50,6 @@ import org.robovm.apple.coreanimation.*;
     protected ISAdData(SkipInit skipInit) { super(skipInit); }
     @Method(selector = "initWithServerData:configuration:adUnitData:")
     public ISAdData(String serverData, NSDictionary<?, ?> configuration, NSDictionary<?, ?> adUnitData) { super((SkipInit) null); initObject(init(serverData, configuration, adUnitData)); }
-    public ISAdData(ISAdapterConfig config, ISAdUnit adUnit, String userId) { super((Handle) null, create(config, adUnit, userId)); retain(getHandle()); }
-    public ISAdData(ISAdapterConfig config, ISAdUnit adUnit, String userId, ISBannerSize bannerSize) { super((Handle) null, create(config, adUnit, userId, bannerSize)); retain(getHandle()); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "serverData")
@@ -73,9 +71,5 @@ import org.robovm.apple.coreanimation.*;
     public native boolean getBoolean(String key);
     @Method(selector = "getNumber:")
     public native NSNumber getNumber(String key);
-    @Method(selector = "adDataWithAdapterConfiguration:adUnit:userId:")
-    protected static native @Pointer long create(ISAdapterConfig config, ISAdUnit adUnit, String userId);
-    @Method(selector = "adDataWithAdapterConfiguration:adUnit:userId:bannerSize:")
-    protected static native @Pointer long create(ISAdapterConfig config, ISAdUnit adUnit, String userId, ISBannerSize bannerSize);
     /*</methods>*/
 }

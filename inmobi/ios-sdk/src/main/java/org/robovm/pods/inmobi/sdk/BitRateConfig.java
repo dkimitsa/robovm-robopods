@@ -59,6 +59,10 @@ import org.robovm.apple.coreanimation.*;
     public native boolean isBitrate_mandatory();
     @Property(selector = "setBitrate_mandatory:")
     public native void setBitrate_mandatory(boolean v);
+    @Property(selector = "useBitRate")
+    public native boolean isUseBitRate();
+    @Property(selector = "setUseBitRate:")
+    public native void setUseBitRate(boolean v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

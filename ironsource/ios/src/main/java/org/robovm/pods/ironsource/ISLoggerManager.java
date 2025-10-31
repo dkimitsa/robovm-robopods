@@ -64,8 +64,6 @@ import org.robovm.apple.coreanimation.*;
     public native void log(NSException exception, LogLevelValues logLevel, LogTagValue logTag);
     @Method(selector = "logFromException:message:level:tag:")
     public native void log(NSException exception, String message, LogLevelValues logLevel, LogTagValue logTag);
-    @Method(selector = "addPublisherLogger:")
-    public native void addPublisherLogger(ISLogDelegate delegate);
     @Method(selector = "dynamicLog:message:level:withTag:")
     public native void dynamicLog(BytePtr calledFrom, String message, LogLevelValues logLevel, LogTagValue logTag);
     @Method(selector = "automationLog:level:withTag:")

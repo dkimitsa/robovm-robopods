@@ -55,10 +55,6 @@ import org.robovm.apple.coreanimation.*;
     public void adDidClose() {}
     @NotImplemented("adDidCloseWithExtraData:")
     public void adDidClose(NSDictionary<NSString, ?> extraData) {}
-    @NotImplemented("adDidShowSucceed")
-    public void adDidShowSucceed() {}
-    @NotImplemented("adDidShowSucceedWithExtraData:")
-    public void adDidShowSucceed(NSDictionary<NSString, ?> extraData) {}
     @NotImplemented("adDidBecomeVisible")
     public void adDidBecomeVisible() {}
     @NotImplemented("adDidBecomeVisibleWithExtraData:")

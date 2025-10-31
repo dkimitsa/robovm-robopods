@@ -56,6 +56,8 @@ import org.robovm.apple.coregraphics.*;
     public native boolean isMuted();
     @Property(selector = "setMuted:")
     public native void setMuted(boolean v);
+    @Property(selector = "mediaAspectRatio")
+    public native @MachineSizedFloat double getMediaAspectRatio();
     @Property(selector = "videoContentDelegate")
     public native IAVideoContentDelegate getVideoContentDelegate();
     @Property(selector = "setVideoContentDelegate:", strongRef = true)

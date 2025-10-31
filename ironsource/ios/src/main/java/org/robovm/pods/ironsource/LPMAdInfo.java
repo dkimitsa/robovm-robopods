@@ -62,68 +62,26 @@ import org.robovm.apple.coreanimation.*;
     public native LPMAdSize getAdSize();
     @Property(selector = "adFormat")
     public native String getAdFormat();
-    /**
-     * @deprecated This parameter will be removed in version 9.0.0. Please use auctionId parameter instead.
-     */
-    @Deprecated
-    @Property(selector = "auction_id")
-    public native String getAuction_id();
     @Property(selector = "auctionId")
     public native String getAuctionId();
     @Property(selector = "country")
     public native String getCountry();
     @Property(selector = "ab")
     public native String getAb();
-    /**
-     * @deprecated This parameter will be removed in version 9.0.0. Please use segmentName parameter instead.
-     */
-    @Deprecated
-    @Property(selector = "segment_name")
-    public native String getSegment_name();
     @Property(selector = "segmentName")
     public native String getSegmentName();
-    /**
-     * @deprecated This parameter will be removed in version 9.0.0. Please use adNetwork parameter instead.
-     */
-    @Deprecated
-    @Property(selector = "ad_network")
-    public native String getAd_network();
     @Property(selector = "adNetwork")
     public native String getAdNetwork();
-    /**
-     * @deprecated This parameter will be removed in version 9.0.0. Please use instanceName parameter instead.
-     */
-    @Deprecated
-    @Property(selector = "instance_name")
-    public native String getInstance_name();
     @Property(selector = "instanceName")
     public native String getInstanceName();
-    /**
-     * @deprecated This parameter will be removed in version 9.0.0. Please use instanceId parameter instead.
-     */
-    @Deprecated
-    @Property(selector = "instance_id")
-    public native String getInstance_id();
     @Property(selector = "instanceId")
     public native String getInstanceId();
     @Property(selector = "revenue")
     public native NSNumber getRevenue();
     @Property(selector = "precision")
     public native String getPrecision();
-    /**
-     * @deprecated This parameter will be removed in version 9.0.0. Please use encryptedCPM parameter instead.
-     */
-    @Deprecated
-    @Property(selector = "encrypted_cpm")
-    public native String getEncrypted_cpm();
     @Property(selector = "encryptedCPM")
     public native String getEncryptedCPM();
-    /**
-     * @deprecated This parameter will be removed in version 9.0.0. Please use conversionValue parameter instead.
-     */
-    @Deprecated
-    @Property(selector = "conversion_value")
-    public native NSNumber getConversion_value();
     @Property(selector = "conversionValue")
     public native NSNumber getConversionValue();
     @Property(selector = "creativeId")

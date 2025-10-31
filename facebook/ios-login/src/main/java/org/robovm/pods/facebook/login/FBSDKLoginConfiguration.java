@@ -58,7 +58,7 @@ import org.robovm.pods.facebook.corebasics.*;
     @Method(selector = "initWithPermissions:tracking:nonce:")
     public FBSDKLoginConfiguration(NSArray<NSString> permissions, FBSDKLoginTracking tracking, String nonce) { super((SkipInit) null); initObject(init(permissions, tracking, nonce)); }
     @Method(selector = "initWithPermissions:tracking:messengerPageId:")
-    public static  FBSDKLoginConfiguration createUsingMessengerPageId(NSArray<NSString> permissions, FBSDKLoginTracking tracking, String messengerPageId) {
+    public static FBSDKLoginConfiguration createUsingMessengerPageId(NSArray<NSString> permissions, FBSDKLoginTracking tracking, String messengerPageId) {
        FBSDKLoginConfiguration res = new FBSDKLoginConfiguration((SkipInit) null);
        res.initObject(res.initUsingMessengerPageId(permissions, tracking, messengerPageId));
        return res;

@@ -51,8 +51,6 @@ import org.robovm.apple.coreanimation.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @NotImplemented("networkDataByAdUnit:")
-    public NSDictionary<?, ?> networkDataByAdUnit(ISAdUnit adUnit) { return null; }
     @NotImplemented("allData")
     public NSDictionary<?, ?> allData() { return null; }
     @NotImplemented("dataByKeyIgnoreCase:valueType:")

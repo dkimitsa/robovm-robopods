@@ -23,15 +23,6 @@ NS_ASSUME_NONNULL_BEGIN
 // config
 @property(nonatomic, strong, readonly, nullable) NSDictionary *adUnitData;
 
-+ (instancetype)adDataWithAdapterConfiguration:(ISAdapterConfig *)config
-                                        adUnit:(ISAdUnit *)adUnit
-                                        userId:(NSString *)userId;
-
-+ (instancetype)adDataWithAdapterConfiguration:(ISAdapterConfig *)config
-                                        adUnit:(ISAdUnit *)adUnit
-                                        userId:(NSString *_Nullable)userId
-                                    bannerSize:(ISBannerSize *_Nullable)bannerSize;
-
 - (instancetype)initWithServerData:(nullable NSString *)serverData
                      configuration:(NSDictionary *)configuration
                         adUnitData:(nullable NSDictionary *)adUnitData;

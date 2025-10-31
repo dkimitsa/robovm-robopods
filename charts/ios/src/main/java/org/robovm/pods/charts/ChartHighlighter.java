@@ -36,7 +36,7 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("_TtC8DGCharts16ChartHighlighter")/*</annotations>*/
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("DGCharts.ChartHighlighter")/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/ChartHighlighter/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*/implements ChartHighlighterProtocol/*</implements>*/ {

@@ -6,8 +6,9 @@
 //  Copyright © 2018 IronSource. All rights reserved.
 //
 
+@class LPMAdSize;
+
 #import <Foundation/Foundation.h>
-#import "ISContainerParams.h"
 
 static NSString* const kSizeBanner = @"BANNER";
 static NSString* const kSizeLarge = @"LARGE";
@@ -33,6 +34,7 @@ static NSString* const kSizeCustom = @"CUSTOM";
                               width:(NSInteger)width
                              height:(NSInteger)height;
 - (BOOL)isSmart;
+- (LPMAdSize*)toLPMAdSize;
 
 /**
  Calculates and returns the maximum height of an adaptive banner for a given width.
@@ -48,7 +50,5 @@ static NSString* const kSizeCustom = @"CUSTOM";
 @property(readonly) NSInteger width;
 @property(readonly) NSInteger height;
 @property(readwrite, getter=isAdaptive) BOOL adaptive;
-
-@property(nonatomic, readwrite) ISContainerParams* containerParams;
 
 @end

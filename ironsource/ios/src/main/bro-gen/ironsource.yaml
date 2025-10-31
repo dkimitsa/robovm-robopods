@@ -8,7 +8,6 @@ headers:
 enums:
     LogLevelValues: {prefix: IS_LOG_}
     LogTagValue: {prefix: TAG_}
-    ISGender: {prefix: IRONSOURCE_USER_}
     DebugLevel: {}
     ISAdapterErrorType: {}
     ISLoadWhileShowSupportState: {prefix: LOAD_WHILE_SHOW_}
@@ -16,8 +15,6 @@ enums:
     ISErrorCode: {}
     ISAdOptionsPosition: { }
     ISMetaDataValueTypes: { prefix: META_DATA_VALUE_ }
-    ISNLogLevel: { prefix: ISNLog }
-    ISNLogTag: { prefix: ISN_TAG_ }
     ISAAdFormatType: { }
     ISALogLevel: { }
     LPMAdSizeType: { prefix: LPMAdSize }
@@ -45,10 +42,6 @@ classes:
             '+adDataWithAdapterConfiguration:adUnit:userId:bannerSize:':
                 name: create
                 constructor: true
-    ISAdUnit:
-        methods:
-            '-initWithValue:':
-                name: init
     ISAdapterConfig:
         methods:
             '-initWithProviderName:':
@@ -61,13 +54,18 @@ classes:
                 name: init
             '+getMaximalAdaptiveHeightWithWidth:':
                 name: getMaximalAdaptiveHeight
-    ISBannerView: {}
     ISBaseAdAdapter:
         methods:
             '-initWithAdUnit:adapterConfig:':
                 name: init
             '-initWithAdUnit:adapterConfig:adUnitObjectId:':
                 name: init
+            '-initWithAdFormat:adapterConfig:':
+                name: init
+            '-initWithAdFormat:adapterConfig:adUnitObjectId:':
+                name: init
+            '-destroyAdWithAdData:':
+                name: destroyAd
     ISBaseAdInteractionAdapter: {}
     ISBaseInterstitial:
         methods:
@@ -84,24 +82,6 @@ classes:
                 name: showAd
     ISConfigurations: {}
     ISDataKeys: {}
-    ISEventsReporting: {}
-    ISImpressionData:
-        methods:
-            '-initWithDictionary:':
-                name: init
-            '-initWithImpressionData:':
-                name: init
-            '-replacePlacementMacro:value:':
-                name: replacePlacementMacro
-    ISIntegrationHelper: {}
-    ISPlacementInfo:
-        methods:
-            '-initWithPlacement:reward:rewardAmount:':
-                name: init
-    ISSegment:
-        methods:
-            '-setCustomValue:forKey:':
-                name: setCustomValue
     ISSupersonicAdsConfiguration: {}
     IronSource:
         methods:
@@ -165,8 +145,6 @@ classes:
                 name: setISDemandOnlyBannerDelegate
             '+setWaterfallConfiguration:forAdUnit:':
                 name: setWaterfallConfiguration
-    ISWaterfallConfiguration: {}
-    ISWaterfallConfigurationBuilder: {}
     ISAdInfo:
         methods:
             '-initWithImpressionData:':
@@ -265,10 +243,6 @@ classes:
                 name: init
             '+setWithSet:':
                 exclude: true
-    ISContainerParams:
-        methods:
-            '-initWithWidth:height:':
-                name: init
     ISIronSourceAdapter: { }
     ISLog: { }
     ISLoggerManager:
@@ -328,12 +302,6 @@ classes:
                 name: init
             '-initWithServerConfig:':
                 name: init
-    SupersonicLogManager:
-        methods:
-            '-log:withLevel:withTag:':
-                name: log
-            '-logWithNetworkPrefix:withLevel:withTag:':
-                name: logWithNetworkPrefix
     ISMediationGlobalDataWriterFacade: {}
     ISAAdFormat:
         methods:
@@ -531,12 +499,6 @@ protocols:
         methods:
             '-getLoadWhileShowSupportedStateWithAdapterConfig:':
                 name: getLoadWhileShowSupportedState
-    ISConsentViewDelegate:
-        methods:
-            '-consentViewDidFailToLoadWithError:consentViewType:':
-                name: consentViewDidFailToLoad
-            '-consentViewDidFailToShowWithError:consentViewType:':
-                name: consentViewDidFailToShow
     ISDemandOnlyBannerDelegate:
         methods:
             '-bannerDidLoad:instanceId:':
@@ -555,13 +517,7 @@ protocols:
                 name: rewardedVideoDidFailToLoad
             '-rewardedVideoDidFailToShowWithError:instanceId:':
                 name: rewardedVideoDidFailToShow
-    ISImpressionDataDelegate: {}
-    ISInitializationDelegate: {}
     ISInterstitialAdDelegate: {}
-    ISLogDelegate:
-        methods:
-            '-sendLog:level:tag:':
-                name: sendLog
     ISNetworkInitializationDelegate:
         methods:
             '-onInitDidFailWithErrorCode:errorMessage:':
@@ -571,73 +527,10 @@ protocols:
             '-onInitDidFailWithErrorCode:errorMessage:extraData:':
                 name: onInitDidFail
     ISRewardedVideoAdDelegate: {}
-    ISSegmentDelegate: {}
-    LevelPlayBannerDelegate:
-        methods:
-            '-didLoad:withAdInfo:':
-                name: didLoad
-            '-didFailToLoadWithError:':
-                name: didFailToLoad
-            '-didClickWithAdInfo:':
-                name: didClick
-            '-didLeaveApplicationWithAdInfo:':
-                name: didLeaveApplication
-            '-didPresentScreenWithAdInfo:':
-                name: didPresentScreen
-            '-didDismissScreenWithAdInfo:':
-                name: didDismissScreen
-    LevelPlayInterstitialDelegate:
-        methods:
-            '-didLoadWithAdInfo:':
-                name: didLoad
-            '-didFailToLoadWithError:':
-                name: didFailToLoad
-            '-didOpenWithAdInfo:':
-                name: didOpen
-            '-didShowWithAdInfo:':
-                name: didShow
-            '-didFailToShowWithError:andAdInfo:':
-                name: didFailToShow
-            '-didClickWithAdInfo:':
-                name: didClick
-            '-didCloseWithAdInfo:':
-                name: didClose
     LevelPlayRewardedVideoAutomaticDelegate:
         methods:
             '-hasAdAvailableWithAdInfo:':
                 name: hasAdAvailable
-    LevelPlayRewardedVideoDelegate:
-        methods:
-            '-didReceiveRewardForPlacement:withAdInfo:':
-                name: didReceiveReward
-            '-didFailToShowWithError:andAdInfo:':
-                name: didFailToShow
-            '-didOpenWithAdInfo:':
-                name: didOpen
-            '-didClick:withAdInfo:':
-                name: didClick
-            '-didCloseWithAdInfo:':
-                name: didClose
-            '-hasAvailableAdWithAdInfo:':
-                name: hasAvailableAd
-    LevelPlayRewardedVideoManualDelegate:
-        methods:
-            '-didLoadWithAdInfo:':
-                name: didLoad
-            '-didFailToLoadWithError:':
-                name: didFailToLoad
-    LevelPlayRewardedVideoBaseDelegate:
-        methods:
-            '-didReceiveRewardForPlacement:withAdInfo:':
-                name: didReceiveReward
-            '-didFailToShowWithError:andAdInfo:':
-                name: didFailToShow
-            '-didOpenWithAdInfo:':
-                name: didOpen
-            '-didClick:withAdInfo:':
-                name: didClick
-            '-didCloseWithAdInfo:':
-                name: didClose
     ISAdapterAdFullscreenProtocol:
         methods:
             '-loadAdWithAdData:delegate:':
@@ -646,6 +539,8 @@ protocols:
                 name: showAd
             '-isAdAvailableWithAdData:':
                 name: isAdAvailable
+            '-destroyAdWithAdData:':
+                name: destroyAd
     ISAdapterAdViewDelegate:
         methods:
             '-adDidLoadWithView:':
@@ -785,6 +680,8 @@ protocols:
                 name: loadInterstitialForBidding
             '-disposeInterstitialAdWithAdapterConfig:':
                 name: disposeInterstitialAd
+            '-destroyInterstitialAdWithAdapterConfig:':
+                name: destroyInterstitialAd
     ISNAdViewsManagerSwiftFacade:
         name: ISNAdViewsManagerSwiftFacadeProtocol
     ISNAppStoreVCRootViewDelegate:
@@ -825,10 +722,6 @@ protocols:
                 name: collectNativeAdBiddingData
     ISNativeAdProtocol: { }
     ISNetworkInitCallbackProtocol: { }
-    ISReleaseMemoryAdapterProtocol:
-        methods:
-            '-releaseMemoryWithAdapterConfig:':
-                name: releaseMemory
     ISRewardedVideoAdapterDelegate:
         methods:
             '-adapterRewardedVideoDidFailToLoadWithError:':
@@ -887,6 +780,8 @@ protocols:
                 name: loadRewardedVideoForDemandOnlyForBidding
             '-disposeRewardedVideoAdWithAdapterConfig:':
                 name: disposeRewardedVideoAd
+            '-destroyRewardedVideoAdWithAdapterConfig:':
+                name: destroyRewardedVideoAd
     ISSetAPSDataProtocol:
         methods:
             '-setAPSDataWithAdUnit:apsData:':
@@ -935,16 +830,6 @@ protocols:
             '-dataByKeyIgnoreCase:valueType:':
                 name: getDataByKeyIgnoreCase
     ISAdapterNetworkDataProtocol: { }
-    LPMConfigServiceEventSender:
-        methods:
-            '-sendAdUnitCappingParseFailedEventWithAdUnitId:error:':
-                name: sendAdUnitCappingParseFailedEvent
-            '-sendPlacementCappingParseFailedEventWithPlacementName:adFormat:error:':
-                name: sendPlacementCappingParseFailedEvent
-            '-sendConfigParseFailedEventWithError:':
-                name: sendConfigParseFailedEvent
-            '-sendRewardParseFailedEventWithAdUnitId:error:':
-                name: sendRewardParseFailedEvent
     LPMInterstitialAdDelegate:
         methods:
             '-didLoadAdWithAdInfo:':
@@ -1037,6 +922,9 @@ constants:
     kAdOptionsPosKey:
         class: ISAdOptionsPosition
         name: getAdOptionsPosKey
+    LEVEL_PLAY_(.*):
+        class: LevelPlay
+        name: '#{g[0]}'
 
     kEmptyString:
         exclude: true

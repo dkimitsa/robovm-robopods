@@ -36,7 +36,7 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("_TtC8DGCharts12PieChartView")/*</annotations>*/
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("DGCharts.PieChartView")/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/PieChartView/*</name>*/ 
     extends /*<extends>*/PieRadarChartViewBase/*</extends>*/ 
     /*<implements>*//*</implements>*/ {

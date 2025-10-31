@@ -32,7 +32,9 @@
 /// parameters passed from the publisher like userId
 - (BOOL)isAdAvailableWithAdData:(ISAdData *)adData;
 
-/// dispose the ad
-- (void)disposeAd;
+/// destroy the ad
+/// @param adData data containing the configuration passed from the server and other related
+/// parameters passed from the publisher like userId
+- (void)destroyAdWithAdData:(ISAdData *)adData;
 
 @end

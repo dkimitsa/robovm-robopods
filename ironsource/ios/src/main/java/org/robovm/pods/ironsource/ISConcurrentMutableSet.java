@@ -49,7 +49,7 @@ import org.robovm.apple.coreanimation.*;
     protected ISConcurrentMutableSet(Handle h, long handle) { super(h, handle); }
     protected ISConcurrentMutableSet(SkipInit skipInit) { super(skipInit); }
     @Method(selector = "initCommon")
-    public static  ISConcurrentMutableSet createCommon() {
+    public static ISConcurrentMutableSet createCommon() {
        ISConcurrentMutableSet res = new ISConcurrentMutableSet((SkipInit) null);
        res.initObject(res.initCommon());
        return res;

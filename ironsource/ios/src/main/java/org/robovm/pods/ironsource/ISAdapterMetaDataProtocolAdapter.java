@@ -51,10 +51,6 @@ import org.robovm.apple.coreanimation.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    /**
-     * @deprecated This method is deprecated and will be removed in SDK version 9.0.0.
-     */
-    @Deprecated
     @NotImplemented("setMetaDataWithKey:andValues:")
     public void setMetaData(String key, NSMutableArray<?> values) {}
     /*</methods>*/

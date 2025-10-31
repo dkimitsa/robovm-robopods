@@ -75,14 +75,12 @@ FOUNDATION_EXPORT NSString *const HelpshiftEventAppAttributesLimitExceeded;
 FOUNDATION_EXPORT NSString *const HelpshiftEventUpdateAppAttributesValidationFailed;
 FOUNDATION_EXPORT NSString *const HelpshiftEventMasterAttributesLimitExceeded;
 FOUNDATION_EXPORT NSString *const HelpshiftEventUpdateAppAttributesSyncFailed;
-FOUNDATION_EXPORT NSString *const HelpshiftEventAddUserIdentitiesValidationFailed;
 FOUNDATION_EXPORT NSString *const HelpshiftEventAddUserIdentitiesSyncFailed;
 FOUNDATION_EXPORT NSString *const HelpshiftEventUserSessionExpired;
 FOUNDATION_EXPORT NSString *const HelpshiftEventUserIdentityNotEnabled;
 FOUNDATION_EXPORT NSString *const HelpshiftEventRefreshUserCredentials;
 
 /// Constants used for errors in user login failure and other identity related events
-FOUNDATION_EXPORT NSString *const HelpshiftLoginConfig;
 FOUNDATION_EXPORT NSString *const HelpshiftInvalidValueType;
 FOUNDATION_EXPORT NSString *const HelpshiftInvalidData;
 FOUNDATION_EXPORT NSString *const HelpshiftKeyLengthLimitExceeded;

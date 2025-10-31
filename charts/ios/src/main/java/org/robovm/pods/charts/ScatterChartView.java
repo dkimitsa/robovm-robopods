@@ -36,7 +36,7 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("_TtC8DGCharts16ScatterChartView")/*</annotations>*/
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("DGCharts.ScatterChartView")/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/ScatterChartView/*</name>*/ 
     extends /*<extends>*/BarLineChartViewBase/*</extends>*/ 
     /*<implements>*/implements ScatterChartDataProvider/*</implements>*/ {

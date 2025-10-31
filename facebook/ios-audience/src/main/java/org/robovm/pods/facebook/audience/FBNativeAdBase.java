@@ -52,7 +52,14 @@ import org.robovm.apple.avfoundation.*;
     public FBNativeAdBase() {}
     protected FBNativeAdBase(Handle h, long handle) { super(h, handle); }
     protected FBNativeAdBase(SkipInit skipInit) { super(skipInit); }
-    public FBNativeAdBase(String placementId, String bidPayload, NSError.NSErrorPtr error) { super((Handle) null, create(placementId, bidPayload, error)); retain(getHandle()); }
+    public FBNativeAdBase(String placementId, String bidPayload) throws NSErrorException {
+       this(placementId, bidPayload, new NSError.NSErrorPtr());
+    }
+    private FBNativeAdBase(String placementId, String bidPayload, NSError.NSErrorPtr ptr) throws NSErrorException {
+       super((Handle) null, create(placementId, bidPayload, ptr));
+       retain(getHandle());
+       if (ptr.get() != null) { throw new NSErrorException(ptr.get()); }
+    }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "placementID")

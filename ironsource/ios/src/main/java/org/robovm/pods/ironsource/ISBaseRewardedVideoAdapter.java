@@ -58,8 +58,8 @@ import org.robovm.apple.coreanimation.*;
     public native boolean hasRewardedVideo(ISAdapterConfig adapterConfig);
     @Method(selector = "showRewardedVideoWithViewController:adapterConfig:delegate:")
     public native void showRewardedVideo(UIViewController viewController, ISAdapterConfig adapterConfig, ISRewardedVideoAdapterDelegate delegate);
-    @Method(selector = "disposeRewardedVideoAdWithAdapterConfig:")
-    public native void disposeRewardedVideoAd(ISAdapterConfig adapterConfig);
+    @Method(selector = "destroyRewardedVideoAdWithAdapterConfig:")
+    public native void destroyRewardedVideoAd(ISAdapterConfig adapterConfig);
     @Method(selector = "initAndLoadRewardedVideoWithUserId:adapterConfig:adData:delegate:")
     public native void initAndLoadRewardedVideo(String userId, ISAdapterConfig adapterConfig, NSDictionary<?, ?> adData, ISRewardedVideoAdapterDelegate delegate);
     @Method(selector = "initRewardedVideoForCallbacksWithUserId:adapterConfig:delegate:")
@@ -78,7 +78,5 @@ import org.robovm.apple.coreanimation.*;
     public native void loadRewardedVideoForDemandOnly(ISAdapterConfig adapterConfig, ISRewardedVideoAdapterDelegate delegate);
     @Method(selector = "loadRewardedVideoForDemandOnlyForBiddingWithAdapterConfig:serverData:delegate:")
     public native void loadRewardedVideoForDemandOnlyForBidding(ISAdapterConfig adapterConfig, String serverData, ISRewardedVideoAdapterDelegate delegate);
-    @Method(selector = "releaseMemoryWithAdapterConfig:")
-    public native void releaseMemory(ISAdapterConfig adapterConfig);
     /*</methods>*/
 }

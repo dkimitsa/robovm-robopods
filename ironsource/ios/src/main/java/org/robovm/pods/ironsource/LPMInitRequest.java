@@ -50,20 +50,10 @@ import org.robovm.apple.coreanimation.*;
     protected LPMInitRequest(SkipInit skipInit) { super(skipInit); }
     @Method(selector = "initWithAppKey:userId:")
     public LPMInitRequest(String appKey, String userId) { super((SkipInit) null); initObject(init(appKey, userId)); }
-    /**
-     * @deprecated This method is deprecated and will be removed in version 9.0.0.
-     */
-    @Deprecated
-    @Method(selector = "initWithAppKey:legacyAdFormats:userId:")
-    public LPMInitRequest(String appKey, NSArray<NSString> legacyAdFormats, String userId) { super((SkipInit) null); initObject(init(appKey, legacyAdFormats, userId)); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "appKey")
     public native String getAppKey();
-    /**
-     * @deprecated This parameter will be removed in version 9.0.0.
-     */
-    @Deprecated
     @Property(selector = "legacyAdFormats")
     public native NSArray<NSString> getLegacyAdFormats();
     @Property(selector = "userId")
@@ -73,11 +63,5 @@ import org.robovm.apple.coreanimation.*;
     /*<methods>*/
     @Method(selector = "initWithAppKey:userId:")
     protected native @Pointer long init(String appKey, String userId);
-    /**
-     * @deprecated This method is deprecated and will be removed in version 9.0.0.
-     */
-    @Deprecated
-    @Method(selector = "initWithAppKey:legacyAdFormats:userId:")
-    protected native @Pointer long init(String appKey, NSArray<NSString> legacyAdFormats, String userId);
     /*</methods>*/
 }

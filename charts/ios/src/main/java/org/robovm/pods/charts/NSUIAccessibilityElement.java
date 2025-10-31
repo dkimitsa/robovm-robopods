@@ -36,7 +36,7 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("_TtC8DGCharts24NSUIAccessibilityElement")/*</annotations>*/
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("DGCharts.NSUIAccessibilityElement")/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/NSUIAccessibilityElement/*</name>*/ 
     extends /*<extends>*/UIAccessibilityElement/*</extends>*/ 
     /*<implements>*//*</implements>*/ {

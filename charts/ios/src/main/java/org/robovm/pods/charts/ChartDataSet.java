@@ -36,7 +36,7 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("_TtC8DGCharts12ChartDataSet")/*</annotations>*/
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("DGCharts.ChartDataSet")/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/ChartDataSet/*</name>*/ 
     extends /*<extends>*/ChartBaseDataSet/*</extends>*/ 
     /*<implements>*//*</implements>*/ {

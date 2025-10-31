@@ -36,7 +36,7 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("_TtC8DGCharts17CombinedChartView")/*</annotations>*/
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("DGCharts.CombinedChartView")/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/CombinedChartView/*</name>*/ 
     extends /*<extends>*/BarLineChartViewBase/*</extends>*/ 
     /*<implements>*/implements CombinedChartDataProvider/*</implements>*/ {

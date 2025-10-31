@@ -36,7 +36,7 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("_TtC8DGCharts31YAxisRendererHorizontalBarChart")/*</annotations>*/
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("DGCharts.YAxisRendererHorizontalBarChart")/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/YAxisRendererHorizontalBarChart/*</name>*/ 
     extends /*<extends>*/ChartYAxisRenderer/*</extends>*/ 
     /*<implements>*//*</implements>*/ {

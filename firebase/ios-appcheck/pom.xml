@@ -2,12 +2,12 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>io.github.dkimitsa.robovm</groupId>
-        <version>1.53.0</version>
+        <version>1.54.0</version>
         <artifactId>robopods-firebase-parent</artifactId>
     </parent>
 
     <artifactId>robopods-firebase-app-check-ios</artifactId>
-    <name>RoboPods FireBase App Check iOS v12.2.0</name>
+    <name>RoboPods FireBase App Check iOS v12.4.0</name>
     <packaging>jar</packaging>
 
     <licenses>

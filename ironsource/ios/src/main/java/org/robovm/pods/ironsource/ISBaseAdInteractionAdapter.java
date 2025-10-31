@@ -48,10 +48,10 @@ import org.robovm.apple.coreanimation.*;
     public ISBaseAdInteractionAdapter() {}
     protected ISBaseAdInteractionAdapter(Handle h, long handle) { super(h, handle); }
     protected ISBaseAdInteractionAdapter(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithAdUnit:adapterConfig:")
-    public ISBaseAdInteractionAdapter(ISAdUnit adUnit, ISAdapterConfig adapterConfig) { super(adUnit, adapterConfig); }
-    @Method(selector = "initWithAdUnit:adapterConfig:adUnitObjectId:")
-    public ISBaseAdInteractionAdapter(ISAdUnit adUnit, ISAdapterConfig adapterConfig, NSUUID adUnitObjectId) { super(adUnit, adapterConfig, adUnitObjectId); }
+    @Method(selector = "initWithAdFormat:adapterConfig:")
+    public ISBaseAdInteractionAdapter(String adFormat, ISAdapterConfig adapterConfig) { super(adFormat, adapterConfig); }
+    @Method(selector = "initWithAdFormat:adapterConfig:adUnitObjectId:")
+    public ISBaseAdInteractionAdapter(String adFormat, ISAdapterConfig adapterConfig, NSUUID adUnitObjectId) { super(adFormat, adapterConfig, adUnitObjectId); }
     /*</constructors>*/
     /*<properties>*/
     
@@ -64,7 +64,7 @@ import org.robovm.apple.coreanimation.*;
     public native void showAd(UIViewController viewController, ISAdData adData, ISAdapterAdInteractionDelegate delegate);
     @Method(selector = "isAdAvailableWithAdData:")
     public native boolean isAdAvailable(ISAdData adData);
-    @Method(selector = "disposeAd")
-    public native void disposeAd();
+    @Method(selector = "destroyAdWithAdData:")
+    public native void destroyAd(ISAdData adData);
     /*</methods>*/
 }

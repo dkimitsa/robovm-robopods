@@ -53,7 +53,7 @@ import org.robovm.apple.coreanimation.*;
      */
     @Deprecated
     @Method(selector = "initWithNonGDPRUser")
-    public static  AppsFlyerConsent createUsingNonGDPRUser() {
+    public static AppsFlyerConsent createUsingNonGDPRUser() {
        AppsFlyerConsent res = new AppsFlyerConsent((SkipInit) null);
        res.initObject(res.initWithNonGDPRUser());
        return res;

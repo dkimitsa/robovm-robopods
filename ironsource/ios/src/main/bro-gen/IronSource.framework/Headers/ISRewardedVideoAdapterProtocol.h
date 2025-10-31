@@ -25,7 +25,7 @@
                               adapterConfig:(ISAdapterConfig *)adapterConfig
                                    delegate:(id<ISRewardedVideoAdapterDelegate>)delegate;
 
-- (void)disposeRewardedVideoAdWithAdapterConfig:(ISAdapterConfig *)adapterConfig;
+- (void)destroyRewardedVideoAdWithAdapterConfig:(ISAdapterConfig *)adapterConfig;
 
 #pragma mark - shared
 

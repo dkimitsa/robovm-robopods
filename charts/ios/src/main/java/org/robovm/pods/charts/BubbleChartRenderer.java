@@ -36,7 +36,7 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("_TtC8DGCharts19BubbleChartRenderer")/*</annotations>*/
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("DGCharts.BubbleChartRenderer")/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/BubbleChartRenderer/*</name>*/ 
     extends /*<extends>*/BarLineScatterCandleBubbleChartRenderer/*</extends>*/ 
     /*<implements>*//*</implements>*/ {

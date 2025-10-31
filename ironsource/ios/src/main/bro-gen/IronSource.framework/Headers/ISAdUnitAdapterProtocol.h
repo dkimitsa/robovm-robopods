@@ -6,8 +6,7 @@
 //
 
 #import "ISNetworkInitCallbackProtocol.h"
-#import "ISReleaseMemoryAdapterProtocol.h"
 
-@protocol ISAdUnitAdapterProtocol <ISReleaseMemoryAdapterProtocol, ISNetworkInitCallbackProtocol>
+@protocol ISAdUnitAdapterProtocol <ISNetworkInitCallbackProtocol>
 
 @end

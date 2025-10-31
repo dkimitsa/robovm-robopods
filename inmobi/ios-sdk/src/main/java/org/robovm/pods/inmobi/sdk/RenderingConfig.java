@@ -99,6 +99,10 @@ import org.robovm.apple.coreanimation.*;
     public native WebViewModeDictionaryConfig getWebviewModeDictionary();
     @Property(selector = "setWebviewModeDictionary:")
     public native void setWebviewModeDictionary(WebViewModeDictionaryConfig v);
+    @Property(selector = "gestureConfig")
+    public native GestureConfig getGestureConfig();
+    @Property(selector = "setGestureConfig:")
+    public native void setGestureConfig(GestureConfig v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

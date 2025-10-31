@@ -48,14 +48,10 @@ import org.robovm.apple.coreanimation.*;
     public ISAdInfo() {}
     protected ISAdInfo(Handle h, long handle) { super(h, handle); }
     protected ISAdInfo(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithImpressionData:")
-    public ISAdInfo(ISImpressionData impressionData) { super((SkipInit) null); initObject(init(impressionData)); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "auction_id")
     public native String getAuction_id();
-    @Property(selector = "ad_unit")
-    public native String getAd_unit();
     @Property(selector = "ad_network")
     public native String getAd_network();
     @Property(selector = "instance_name")
@@ -72,8 +68,6 @@ import org.robovm.apple.coreanimation.*;
     public native String getAb();
     @Property(selector = "segment_name")
     public native String getSegment_name();
-    @Property(selector = "lifetime_revenue")
-    public native NSNumber getLifetime_revenue();
     @Property(selector = "encrypted_cpm")
     public native String getEncrypted_cpm();
     @Property(selector = "conversion_value")
@@ -81,7 +75,6 @@ import org.robovm.apple.coreanimation.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "initWithImpressionData:")
-    protected native @Pointer long init(ISImpressionData impressionData);
+    
     /*</methods>*/
 }

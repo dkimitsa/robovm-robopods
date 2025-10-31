@@ -27,11 +27,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithAdUnitId:(NSString *)adUnitId config:(LPMBannerAdViewConfig *)config;
 
-- (void)setPlacementName:(NSString *)placementName
-    DEPRECATED_MSG_ATTRIBUTE("Use LPMBannerAdViewConfig");
-
-- (void)setAdSize:(LPMAdSize *)adSize DEPRECATED_MSG_ATTRIBUTE("Use LPMBannerAdViewConfig");
-
 - (void)setDelegate:(id<LPMBannerAdViewDelegate>)delegate;
 
 - (void)loadAdWithViewController:(UIViewController *)viewController;

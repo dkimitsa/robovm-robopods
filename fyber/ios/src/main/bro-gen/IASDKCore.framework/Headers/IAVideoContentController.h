@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 #import <IASDKCore/IAInterfaceBuilder.h>
 #import <IASDKCore/IAContentController.h>
@@ -26,6 +27,7 @@
 + (instancetype _Nullable)build:(void(^ _Nonnull)(id<IAVideoContentControllerBuilder> _Nonnull builder))buildBlock;
 
 @property (nonatomic, readwrite, getter=isMuted) BOOL muted;
+@property (nonatomic, readonly) CGFloat mediaAspectRatio;
 
 /**
  *  @brief Deprecated.

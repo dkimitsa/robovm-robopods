@@ -58,6 +58,8 @@ FOUNDATION_EXPORT const unsigned char IASDKCoreVersionString[];
 #import <IASDKCore/IAVideoContentDelegate.h>
 #import <IASDKCore/IAVideoContentModel.h>
 
+#import <IASDKCore/DTXNativeImageContentController.h>
+
 typedef void (^IASDKCoreInitBlock)(BOOL success, NSError * _Nullable error);
 
 typedef NS_ENUM(NSInteger, IASDKCoreInitErrorType) {

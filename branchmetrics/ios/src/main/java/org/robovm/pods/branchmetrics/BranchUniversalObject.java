@@ -54,7 +54,7 @@ import org.robovm.apple.intents.*;
     protected BranchUniversalObject(Handle h, long handle) { super(h, handle); }
     protected BranchUniversalObject(SkipInit skipInit) { super(skipInit); }
     @Method(selector = "initWithCanonicalIdentifier:")
-    public static  BranchUniversalObject CreateWithCanonicalIdentifier(String canonicalIdentifier) {
+    public static BranchUniversalObject CreateWithCanonicalIdentifier(String canonicalIdentifier) {
        BranchUniversalObject res = new BranchUniversalObject((SkipInit) null);
        res.initObject(res.initWithCanonicalIdentifier(canonicalIdentifier));
        return res;

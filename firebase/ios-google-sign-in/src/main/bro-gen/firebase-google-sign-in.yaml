@@ -139,11 +139,14 @@ classes:
             '-setUploadDataLength:provider:':
                 name: setUploadDataLength
             '+uploadFetcherWithRequest:uploadMIMEType:chunkSize:fetcherService:':
-                name: uploadFetcher
+                name: create
+                constructor: true
             '+uploadFetcherWithLocation:uploadMIMEType:chunkSize:fetcherService:':
-                name: uploadFetcher
+                name: create
+                constructor: true
             '+uploadFetcherWithLocation:uploadMIMEType:chunkSize:allowsCellularAccess:fetcherService:':
-                name: uploadFetcher
+                name: create
+                constructor: true
     GTMStandardUserAgentProvider:
         methods:
             '-initWithBundle:':
