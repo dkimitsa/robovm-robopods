@@ -38,7 +38,7 @@ This is the list of currently available AltPods. Click them to get more informat
 
 ## Version of AltPods to framework version mapping
 
-v1.54.0 - in development 
+v1.54.0 
 
 | Name                                    | 1.54.0  |
 |-----------------------------------------|---------|
