@@ -507,6 +507,7 @@ classes:
         methods:
             '+updateCachedBadgeValue:usePreviousBadgeCount:':
                 name: updateCachedBadgeValue
+    OneSignalLogEvent: {}
 protocols:
     OSNotificationDisplayTypeDelegate:
         skip_adapter: true # only one method there
@@ -583,6 +584,7 @@ protocols:
                 name: isMet
             '-getNewestTokenWithIndexedTokens:':
                 name: getNewestToken
+    OSLogListener: {}
 functions:
     injectSelector:
         exclude: true

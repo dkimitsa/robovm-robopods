@@ -48,13 +48,13 @@ import org.robovm.apple.uikit.*;
     protected OSPermissionStateInternal(Handle h, long handle) { super(h, handle); }
     protected OSPermissionStateInternal(SkipInit skipInit) { super(skipInit); }
     @Method(selector = "initAsTo")
-    public static  OSPermissionStateInternal asTo() {
+    public static OSPermissionStateInternal asTo() {
        OSPermissionStateInternal res = new OSPermissionStateInternal((SkipInit) null);
        res.initObject(res.initAsTo());
        return res;
     }
     @Method(selector = "initAsFrom")
-    public static  OSPermissionStateInternal asFrom() {
+    public static OSPermissionStateInternal asFrom() {
        OSPermissionStateInternal res = new OSPermissionStateInternal((SkipInit) null);
        res.initObject(res.initAsFrom());
        return res;

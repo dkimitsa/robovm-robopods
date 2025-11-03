@@ -36,36 +36,26 @@ import org.robovm.apple.uikit.*;
 
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/OneSignalLog/*</name>*/ 
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/OneSignalLogEvent/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
-    /*<implements>*/implements OSDebug/*</implements>*/ {
+    /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class OneSignalLogPtr extends Ptr<OneSignalLog, OneSignalLogPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(OneSignalLog.class); }/*</bind>*/
+    /*<ptr>*/public static class OneSignalLogEventPtr extends Ptr<OneSignalLogEvent, OneSignalLogEventPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(OneSignalLogEvent.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public OneSignalLog() {}
-    protected OneSignalLog(Handle h, long handle) { super(h, handle); }
-    protected OneSignalLog(SkipInit skipInit) { super(skipInit); }
+    public OneSignalLogEvent() {}
+    protected OneSignalLogEvent(Handle h, long handle) { super(h, handle); }
+    protected OneSignalLogEvent(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
-    
+    @Property(selector = "level")
+    public native OSLogLevel getLevel();
+    @Property(selector = "entry")
+    public native String getEntry();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "Debug")
-    public static native Class<?> Debug();
-    @Method(selector = "onesignalLog:message:")
-    public static native void log(OSLogLevel logLevel, String message);
-    @Method(selector = "getLogLevel")
-    public static native OSLogLevel getLogLevel();
-    @Method(selector = "setLogLevel:")
-    public static native void setLogLevel(OSLogLevel logLevel);
-    @Method(selector = "setAlertLevel:")
-    public static native void setAlertLevel(OSLogLevel logLevel);
-    @Method(selector = "addLogListener:")
-    public static native void addLogListener(OSLogListener listener);
-    @Method(selector = "removeLogListener:")
-    public static native void removeLogListener(OSLogListener listener);
+    
     /*</methods>*/
 }
