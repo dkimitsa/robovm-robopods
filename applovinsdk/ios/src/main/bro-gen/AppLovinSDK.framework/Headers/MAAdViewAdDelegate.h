@@ -15,8 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * This delegate is notified about ad view events.
  *
- * @see <a href="https://developers.applovin.com/en/ios/ad-formats/banner-and-mrec-ads#banners">MAX Integration Guide ⇒ iOS ⇒ Ad Formats ⇒ Banners</a>
- * @see <a href="https://developers.applovin.com/en/ios/ad-formats/banner-and-mrec-ads#mrecs">MAX Integration Guide ⇒ iOS ⇒ Ad Formats ⇒ MRECs</a>
+ * @see <a href="https://support.axon.ai/en/max/ios/ad-formats/banner-and-mrec-ads#banners">MAX Integration Guide ⇒ iOS ⇒ Ad Formats ⇒ Banners</a>
+ * @see <a href="https://support.axon.ai/en/max/ios/ad-formats/banner-and-mrec-ads#mrecs">MAX Integration Guide ⇒ iOS ⇒ Ad Formats ⇒ MRECs</a>
  */
 @protocol MAAdViewAdDelegate <MAAdDelegate>
 

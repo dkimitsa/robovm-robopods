@@ -86,7 +86,7 @@ NS_ASSUME_NONNULL_BEGIN
  * Present the mediation debugger UI.
  * This debugger tool provides the status of your integration for each third-party ad network.
  *
- * @see <a href="https://developers.applovin.com/en/ios/testing-networks/mediation-debugger/">MAX Integration Guide ⇒ iOS ⇒ Testing Networks ⇒ Mediation Debugger</a>
+ * @see <a href="https://support.axon.ai/en/max/ios/testing-networks/mediation-debugger">MAX Integration Guide ⇒ iOS ⇒ Testing Networks ⇒ Mediation Debugger</a>
  */
 - (void)showMediationDebugger;
 
@@ -94,7 +94,7 @@ NS_ASSUME_NONNULL_BEGIN
  * Present the mediation debugger UI.
  * This debugger tool provides the status of your integration for each third-party ad network.
  *
- * @see <a href="https://developers.applovin.com/en/ios/testing-networks/mediation-debugger/">MAX Integration Guide ⇒ iOS ⇒ Testing Networks ⇒ Mediation Debugger</a>
+ * @see <a href="https://support.axon.ai/en/max/ios/testing-networks/mediation-debugger">MAX Integration Guide ⇒ iOS ⇒ Testing Networks ⇒ Mediation Debugger</a>
  *
  * @param amazonAdSizes A map of the MAX Ad Unit ID to Amazon Publisher Services' @c DTBAdSize.
  */
@@ -140,7 +140,7 @@ typedef void (^ALSdkInitializationCompletionHandler)(ALSdkConfiguration *configu
  * @param initializationConfiguration  The configuration to initialize the SDK with.
  * @param completionHandler                        The callback that the SDK will call when the SDK finishes initializing.
  *
- * @see <a href="https://developers.applovin.com/en/ios/overview/integration#initialize-the-sdk">MAX Integration Guide ⇒ iOS ⇒ Overview ⇒ Integration ⇒ Initialize the SDK</a>
+ * @see <a href="https://support.axon.ai/en/max/ios/overview/integration#initialize-the-sdk">MAX Integration Guide ⇒ iOS ⇒ Overview ⇒ Integration ⇒ Initialize the SDK</a>
  */
 - (void)initializeWithConfiguration:(ALSdkInitializationConfiguration *)initializationConfiguration completionHandler:(nullable ALSdkInitializationCompletionHandler)completionHandler;
 

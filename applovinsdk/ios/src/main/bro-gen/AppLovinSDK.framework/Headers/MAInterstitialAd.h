@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * This class represents a full-screen interstitial ad.
  *
- * @see <a href="https://developers.applovin.com/en/ios/ad-formats/interstitial-ads">MAX Integration Guide ⇒ iOS ⇒ Ad Formats ⇒ Interstitials</a>
+ * @see <a href="https://support.axon.ai/en/max/ios/ad-formats/interstitial-ads">MAX Integration Guide ⇒ iOS ⇒ Ad Formats ⇒ Interstitials</a>
  */
 @interface MAInterstitialAd : NSObject
 
@@ -62,7 +62,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * Load the ad for the current interstitial. Set @code -[MAInterstitialAd delegate] @endcode to assign a delegate that should be notified about ad load state.
  *
- * @see <a href="https://developers.applovin.com/en/ios/ad-formats/interstitial-ads#loading-an-interstitial-ad">MAX Integration Guide ⇒ iOS ⇒ Ad Formats ⇒ Interstitials ⇒ Loading an Interstitial Ad</a>
+ * @see <a href="https://support.axon.ai/en/max/ios/ad-formats/interstitial-ads#loading-an-interstitial-ad">MAX Integration Guide ⇒ iOS ⇒ Ad Formats ⇒ Interstitials ⇒ Loading an Interstitial Ad</a>
  */
 - (void)loadAd;
 
@@ -73,7 +73,7 @@ NS_ASSUME_NONNULL_BEGIN
  * <li>Use @code -[MAInterstitialAd ready] @endcode to check if an ad was successfully loaded.</li>
  * </ul>
  *
- * @see <a href="https://developers.applovin.com/en/ios/ad-formats/interstitial-ads#showing-an-interstitial-ad">MAX Integration Guide ⇒ iOS ⇒ Ad Formats ⇒ Interstitials ⇒ Showing an Interstitial Ad</a>
+ * @see <a href="https://support.axon.ai/en/max/ios/ad-formats/interstitial-ads#showing-an-interstitial-ad">MAX Integration Guide ⇒ iOS ⇒ Ad Formats ⇒ Interstitials ⇒ Showing an Interstitial Ad</a>
  */
 - (void)showAd;
 

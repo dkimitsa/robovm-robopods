@@ -28,21 +28,21 @@ NS_ASSUME_NONNULL_BEGIN
  *
  * Verbose logging is <em>disabled</em> (@c NO) by default.
  *
- * @see <a href="https://developers.applovin.com/en/ios/overview/advanced-settings#enable-verbose-logging">MAX Integration Guide ⇒ iOS ⇒ Advanced Settings ⇒ Enable Verbose Logging</a>
+ * @see <a href="https://support.axon.ai/en/max/ios/overview/advanced-settings#enable-verbose-logging">MAX Integration Guide ⇒ iOS ⇒ Advanced Settings ⇒ Enable Verbose Logging</a>
  */
 @property (nonatomic, assign, getter=isVerboseLoggingEnabled) BOOL verboseLoggingEnabled;
 
 /**
  * Whether to begin video ads in a muted state or not. Defaults to @c NO unless you change this in the dashboard.
  *
- * @see <a href="https://developers.applovin.com/en/ios/overview/advanced-settings#mute-audio">MAX Integration Guide ⇒ iOS ⇒ Advanced Settings ⇒ Mute Audio</a>
+ * @see <a href="https://support.axon.ai/en/max/ios/overview/advanced-settings#mute-audio">MAX Integration Guide ⇒ iOS ⇒ Advanced Settings ⇒ Mute Audio</a>
  */
 @property (nonatomic, assign, getter=isMuted) BOOL muted;
 
 /**
  * Whether the Creative Debugger will be displayed after flipping the device screen down twice. Defaults to @c YES.
  *
- * @see <a href="https://developers.applovin.com/en/ios/testing-networks/creative-debugger">MAX Integration Guide ⇒ iOS ⇒ Testing Networks ⇒ Creative Debugger</a>
+ * @see <a href="https://support.axon.ai/en/max/ios/testing-networks/creative-debugger">MAX Integration Guide ⇒ iOS ⇒ Testing Networks ⇒ Creative Debugger</a>
  */
 @property (nonatomic, assign, getter=isCreativeDebuggerEnabled) BOOL creativeDebuggerEnabled;
 
@@ -52,7 +52,7 @@ NS_ASSUME_NONNULL_BEGIN
  * If you use reward validation, you can optionally set an identifier that AppLovin will include with its currency validation postbacks (for example, a username
  * or email address). AppLovin will include this in the postback when AppLovin pings your currency endpoint from our server.
  *
- * @see <a href="https://developers.applovin.com/en/advanced-features/s2s-rewarded-callback-api#setting-an-internal-user-id">MAX Integration Guide ⇒ S2S Rewarded Callback API ⇒ Setting an Internal User ID</a>
+ * @see <a href="https://support.axon.ai/en/max/advanced-features/s2s-rewarded-callback-api#setting-an-internal-user-id">MAX Integration Guide ⇒ S2S Rewarded Callback API ⇒ Setting an Internal User ID</a>
  */
 @property (nonatomic, copy, nullable) NSString *userIdentifier;
 

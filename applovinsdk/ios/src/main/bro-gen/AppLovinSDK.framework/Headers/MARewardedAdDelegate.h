@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * This delegate is notified when a user watches a rewarded video and of whether a reward was granted or rejected.
  *
- * @see <a href="https://developers.applovin.com/en/ios/ad-formats/rewarded-ads">MAX Integration Guide ⇒ iOS ⇒ Ad Foramts ⇒ Rewarded Ads</a>
+ * @see <a href="https://support.axon.ai/en/max/ios/ad-formats/rewarded-ads">MAX Integration Guide ⇒ iOS ⇒ Ad Foramts ⇒ Rewarded Ads</a>
  */
 @protocol MARewardedAdDelegate <MAAdDelegate>
 

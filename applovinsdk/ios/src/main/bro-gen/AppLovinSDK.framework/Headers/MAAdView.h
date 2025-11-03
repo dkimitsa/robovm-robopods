@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * This class represents a view-based ad — i.e. banner/leader or MREC.
  *
- * @see <a href="https://developers.applovin.com/en/ios/ad-formats/banner-and-mrec-ads">MAX Integration Guide ⇒ iOS ⇒ Ad Formats ⇒ Banner & MREC Ads</a>
+ * @see <a href="https://support.axon.ai/en/max/ios/ad-formats/banner-and-mrec-ads">MAX Integration Guide ⇒ iOS ⇒ Ad Formats ⇒ Banner & MREC Ads</a>
  */
 @interface MAAdView : UIView
 
@@ -85,21 +85,21 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * Loads the ad for the current ad view. Set @code -[MAAdView delegate] @endcode to assign a delegate that should be notified about ad load state.
  *
- * @see <a href="https://developers.applovin.com/en/ios/ad-formats/banner-and-mrec-ads">MAX Integration Guide ⇒ iOS ⇒ Ad Formats ⇒ Banner & MREC Ads ⇒ Loading a Banner or MREC</a>
+ * @see <a href="https://support.axon.ai/en/max/ios/ad-formats/banner-and-mrec-ads#loading-a-banner-or-mrec">MAX Integration Guide ⇒ iOS ⇒ Ad Formats ⇒ Banner & MREC Ads ⇒ Loading a Banner or MREC</a>
  */
 - (void)loadAd;
 
 /**
  * Starts or resumes auto-refreshing of the banner.
  *
- * @see <a href="https://developers.applovin.com/en/ios/ad-formats/banner-and-mrec-ads#stopping-and-starting-auto-refresh">MAX Integration Guide ⇒ iOS ⇒ Ad Formats ⇒ Banner & MREC Ads ⇒ Stopping and Starting Auto-Refresh</a>
+ * @see <a href="https://support.axon.ai/en/max/ios/ad-formats/banner-and-mrec-ads#stopping-and-starting-auto-refresh">MAX Integration Guide ⇒ iOS ⇒ Ad Formats ⇒ Banner & MREC Ads ⇒ Stopping and Starting Auto-Refresh</a>
  */
 - (void)startAutoRefresh;
 
 /**
  * Pauses auto-refreshing of the banner.
  *
- * @see <a href="https://developers.applovin.com/en/ios/ad-formats/banner-and-mrec-ads#stopping-and-starting-auto-refresh">MAX Integration Guide ⇒ iOS ⇒ Ad Formats ⇒ Banner & MREC Ads ⇒ Stopping and Starting Auto-Refresh</a>
+ * @see <a href="https://support.axon.ai/en/max/ios/ad-formats/banner-and-mrec-ads#stopping-and-starting-auto-refresh">MAX Integration Guide ⇒ iOS ⇒ Ad Formats ⇒ Banner & MREC Ads ⇒ Stopping and Starting Auto-Refresh</a>
  */
 - (void)stopAutoRefresh;
 

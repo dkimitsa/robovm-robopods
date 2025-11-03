@@ -37,7 +37,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * The ad network from which this ad was loaded.
  *
- * @see <a href="https://developers.applovin.com/en/ios/testing-networks/creative-debugger#network-name">MAX Integration Guide ⇒ iOS ⇒ Testing Networks ⇒ Creative Debugger ⇒ Network Name</a>
+ * @see <a href="https://support.axon.ai/en/max/ios/testing-networks/creative-debugger#network-name">MAX Integration Guide ⇒ iOS ⇒ Testing Networks ⇒ Creative Debugger ⇒ Network Name</a>
  */
 @property (nonatomic, copy, readonly) NSString *networkName;
 
@@ -51,7 +51,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  * It may not be available until @c -[MAAdDelegate didDisplayAd:] is called.
  *
- * @see <a href="https://developers.applovin.com/en/ios/testing-networks/creative-debugger#creative-id">MAX Integration Guide ⇒ iOS ⇒ Testing Networks ⇒ Creative Debugger ⇒ Creative ID</a>
+ * @see <a href="https://support.axon.ai/en/max/ios/testing-networks/creative-debugger#creative-id">MAX Integration Guide ⇒ iOS ⇒ Testing Networks ⇒ Creative Debugger ⇒ Creative ID</a>
  *
  * @since 6.15.0
  */
