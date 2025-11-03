@@ -45,8 +45,8 @@ import org.robovm.apple.corelocation.*;
     /*<ptr>*/public static class CASPtr extends Ptr<CAS, CASPtr> {}/*</ptr>*/
     /*<bind>*/static { ObjCRuntime.bind(CAS.class); }/*</bind>*/
     /*<constants>*/
-    public static final String FRAMEWORK_VERSION = "4.3.0";
-    public static final int FRAMEWORK_CODE = 4300;
+    public static final String FRAMEWORK_VERSION = "4.4.2";
+    public static final int FRAMEWORK_CODE = 4402;
     /*</constants>*/
     /*<constructors>*/
     public CAS() {}
@@ -68,10 +68,16 @@ import org.robovm.apple.corelocation.*;
     public static native void setManager(CASMediationManager value);
     @Method(selector = "buildManager")
     public static native CASManagerBuilder buildManager();
+    @Method(selector = "getSDKCode")
+    public static native @MachineSizedSInt long getSDKCode();
     @Method(selector = "getSDKVersion")
     public static native String getSDKVersion();
+    @Method(selector = "getSKNetworksCount")
+    public static native @MachineSizedSInt long getSKNetworksCount();
     @Method(selector = "validateIntegration")
     public static native void validateIntegration();
+    @Method(selector = "reportCustomRevenueWithJson:")
+    public static native void reportCustomRevenue(String json);
     @Method(selector = "getMessageOf:")
     public static native String getMessageOf(CASError error);
     @Method(selector = "getErrorFor:")

@@ -35,6 +35,8 @@ classes:
                 name: createMediationManager
             '+createWithManagerID:enableTypes:demoAdMode:mediationExtras:onInit:':
                 name: createMediationManager
+            '+reportCustomRevenueWithJson:':
+                name: reportCustomRevenue
     CASAnalytics: { }
     CASAppOpen:
         methods:

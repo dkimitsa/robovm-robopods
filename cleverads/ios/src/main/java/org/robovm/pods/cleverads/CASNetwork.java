@@ -79,8 +79,8 @@ import org.robovm.apple.corelocation.*;
     public static native String inMobi();
     @Method(selector = "ironSource")
     public static native String ironSource();
-    @Method(selector = "yandexAds")
-    public static native String yandexAds();
+    @Method(selector = "yangoAds")
+    public static native String yangoAds();
     @Method(selector = "mintegral")
     public static native String mintegral();
     @Method(selector = "pangle")
@@ -93,6 +93,8 @@ import org.robovm.apple.corelocation.*;
     public static native String bigo();
     @Method(selector = "maticoo")
     public static native String maticoo();
+    @Method(selector = "verve")
+    public static native String verve();
     @Method(selector = "hyprMX")
     public static native String hyprMX();
     @Method(selector = "smaato")
@@ -105,6 +107,8 @@ import org.robovm.apple.corelocation.*;
     public static native String ogury();
     @Method(selector = "ysoNetwork")
     public static native String ysoNetwork();
+    @Method(selector = "superAwesome")
+    public static native String superAwesome();
     @Method(selector = "lastPageAd")
     public static native String lastPageAd();
     @Method(selector = "facebookAdvertiserTracking")
@@ -115,6 +119,8 @@ import org.robovm.apple.corelocation.*;
     public static native String getDisplayName(CASSourceId id);
     @Method(selector = "getDisplayName:")
     public static native String getDisplayName(String net);
+    @Method(selector = "getAdapterId:")
+    public static native CASSourceId getAdapterId(String net);
     @Method(selector = "getActiveNetworkPattern")
     public static native String getActiveNetworkPattern();
     @Method(selector = "getActiveNetworks")

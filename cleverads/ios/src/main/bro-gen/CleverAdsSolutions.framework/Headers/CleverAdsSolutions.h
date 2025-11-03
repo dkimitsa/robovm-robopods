@@ -10,8 +10,8 @@
 #import <CleverAdsSolutions/CASTypeFlags.h>
 #import <CleverAdsSolutions/CASInternalUtils.h>
 
-#define CAS_FRAMEWORK_VERSION @"4.3.0"
-#define CAS_FRAMEWORK_CODE 4300
+#define CAS_FRAMEWORK_VERSION @"4.4.2"
+#define CAS_FRAMEWORK_CODE 4402
 
 @class CASContentInfo;
 
