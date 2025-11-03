@@ -52,6 +52,7 @@ import org.robovm.apple.foundation.*;
     public static final String CampaignDetails = "campaign_details";
     public static final String EarnVirtualCurrency = "earn_virtual_currency";
     public static final String GenerateLead = "generate_lead";
+    public static final String InAppPurchase = "in_app_purchase";
     public static final String JoinGroup = "join_group";
     public static final String LevelEnd = "level_end";
     public static final String LevelStart = "level_start";
