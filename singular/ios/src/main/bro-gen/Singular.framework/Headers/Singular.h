@@ -103,6 +103,7 @@
 
 + (void)customRevenue:(NSData *)transactionJsonRepresentation productJsonRepresentation:(NSData *)productJsonRepresentation;
 + (void)customRevenue:(NSString *)eventName transactionJsonRepresentation:(NSData *)transactionJsonRepresentation productJsonRepresentation:(NSData *)productJsonRepresentation;
++ (void)customRevenue:(NSString *)eventName transactionJsonRepresentation:(NSData *)transactionJsonRepresentation productJsonRepresentation:(NSData *)productJsonRepresentation withAttributes:(NSDictionary *)attributes;
 
 + (void)setCustomUserId:(NSString *)customUserId;
 + (void)unsetCustomUserId;

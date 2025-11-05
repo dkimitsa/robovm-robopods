@@ -238,6 +238,8 @@ import org.robovm.apple.uikit.*;
     public static native void customRevenue(NSData transactionJsonRepresentation, NSData productJsonRepresentation);
     @Method(selector = "customRevenue:transactionJsonRepresentation:productJsonRepresentation:")
     public static native void customRevenue(String eventName, NSData transactionJsonRepresentation, NSData productJsonRepresentation);
+    @Method(selector = "customRevenue:transactionJsonRepresentation:productJsonRepresentation:withAttributes:")
+    public static native void customRevenue(String eventName, NSData transactionJsonRepresentation, NSData productJsonRepresentation, NSDictionary<?, ?> attributes);
     @Method(selector = "setCustomUserId:")
     public static native void setCustomUserId(String customUserId);
     @Method(selector = "unsetCustomUserId")

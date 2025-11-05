@@ -96,6 +96,8 @@ classes:
                 name: customRevenue
             '+customRevenue:transactionJsonRepresentation:productJsonRepresentation:':
                 name: customRevenue
+            '+customRevenue:transactionJsonRepresentation:productJsonRepresentation:withAttributes:':
+                name: customRevenue
     SingularAdData:
         methods:
             '-initWithAdPlatfrom:withCurrency:withRevenue:':

@@ -15,46 +15,46 @@
 @interface SingularConfig : NSObject
 
 // General Fields
-@property NSString* apikey;
-@property NSString* secret;
-@property BOOL clipboardAttribution;
+@property (strong) NSString *apikey;
+@property (strong) NSString *secret;
+@property (assign) BOOL clipboardAttribution;
 
 // Singular Links fields
-@property NSDictionary *launchOptions;
-@property NSUserActivity* userActivity;
-@property NSURL* openUrl;
-@property void(^singularLinksHandler)(SingularLinkParams*);
-@property long shortLinkResolveTimeOut;
-@property NSArray* supportedDomains __attribute__((deprecated));
-@property NSArray* espDomains;
-@property NSArray* brandedDomains;
+@property (strong) NSDictionary *launchOptions;
+@property (strong) NSUserActivity *userActivity;
+@property (strong) NSURL *openUrl;
+@property (copy) void(^singularLinksHandler)(SingularLinkParams*);
+@property (assign) long shortLinkResolveTimeOut;
+@property (strong) NSArray *supportedDomains __attribute__((deprecated));
+@property (strong) NSArray *espDomains;
+@property (strong) NSArray *brandedDomains;
 
 // Global Properties fields
-@property (readonly) NSMutableDictionary* globalProperties;
+@property (readonly) NSMutableDictionary *globalProperties;
 
 // SKAN fields
-@property BOOL skAdNetworkEnabled;
-@property BOOL manualSkanConversionManagement;
-@property void(^conversionValueUpdatedCallback)(NSInteger);
-@property void(^conversionValuesUpdatedCallback)(NSNumber *, NSNumber *, BOOL);
-@property NSInteger waitForTrackingAuthorizationWithTimeoutInterval;
-@property void(^deviceAttributionCallback)(NSDictionary *);
+@property (assign) BOOL skAdNetworkEnabled;
+@property (assign) BOOL manualSkanConversionManagement;
+@property (copy) void(^conversionValueUpdatedCallback)(NSInteger);
+@property (copy) void(^conversionValuesUpdatedCallback)(NSNumber *, NSNumber *, BOOL);
+@property (assign) NSInteger waitForTrackingAuthorizationWithTimeoutInterval;
+@property (copy) void(^deviceAttributionCallback)(NSDictionary *);
 
 // SDID - Singular Device Identifier
-typedef void (^SdidAccessorHandler)(NSString* result);
-@property NSString *customSdid;
-@property SdidAccessorHandler didSetSdidHandler;
-@property SdidAccessorHandler sdidReceivedHandler;
+typedef void (^SdidAccessorHandler)(NSString *result);
+@property (strong) NSString *customSdid;
+@property (copy) SdidAccessorHandler didSetSdidHandler;
+@property (copy) SdidAccessorHandler sdidReceivedHandler;
 
 // Limit Advertising Identifiers
-@property BOOL limitAdvertisingIdentifiers;
+@property (assign) BOOL limitAdvertisingIdentifiers;
 
 // Push Notifications fields
-@property NSDictionary* pushNotificationPayload;
-@property NSArray<NSArray<NSString*>*>* pushNotificationLinkPath;
+@property (strong) NSDictionary *pushNotificationPayload;
+@property (strong) NSArray<NSArray<NSString*>*> *pushNotificationLinkPath;
 
 // Google ODM fields
-@property NSInteger enableOdmWithTimeoutInterval; // in Seconds
+@property (assign) NSInteger enableOdmWithTimeoutInterval; // in Seconds
 
 -(id)initWithApiKey:(NSString*)apikey andSecret:(NSString*)secret;
 
@@ -62,7 +62,7 @@ typedef void (^SdidAccessorHandler)(NSString* result);
 -(NSString*)toJsonString;
 
 //Test for app extension
-@property BOOL supportAppExtension;
-@property NSString *appGroupName;
+@property (assign) BOOL supportAppExtension;
+@property (strong) NSString *appGroupName;
 
 @end
