@@ -1238,15 +1238,15 @@ fun registerMobileAds(frameworkRegistry: MutableMap<String, (String) -> Unit>, g
     ///
     /// Register adapters as separate group
     ///
-    val adaptersRegistry = GroupFrameworkRegister("FirebaseAdsAdapters", frameworkRegistry, groupRegistry)
-    val moduleReadmeFile = Path.of("firebase/ios-google-mobile-ads-adapters/README.md").toFile()
+    val adaptersRegistry = GroupFrameworkRegister("GoogleAdsAdapters", frameworkRegistry, groupRegistry)
+    val moduleReadmeFile = Path.of("google-mobile-ads/ios-google-mobile-ads-adapters/README.md").toFile()
     adaptersRegistry["AppLovinAdapter"] = { framework ->
         val artifact = "$framework.framework"
         val artifactLocation =
             downloadFolder.extend("AppLovinAdapter/AppLovinAdapter.xcframework/ios-arm64/$artifact")
         processFramework(
             artifact = artifact,
-            moduleFolder = "firebase/ios-google-mobile-ads-adapters/ios-applovin",
+            moduleFolder = "google-mobile-ads/ios-google-mobile-ads-adapters/ios-applovin",
             sourceHeadersDir = artifactLocation.headers,
             yaml = "applovin-adapter.yaml",
             version = { artifactLocation.infoPlist.extractVersion() },
@@ -1266,7 +1266,7 @@ fun registerMobileAds(frameworkRegistry: MutableMap<String, (String) -> Unit>, g
             downloadFolder.extend("MetaAdapter/MetaAdapter.xcframework/ios-arm64/$artifact")
         processFramework(
             artifact = artifact,
-            moduleFolder = "firebase/ios-google-mobile-ads-adapters/ios-facebook",
+            moduleFolder = "google-mobile-ads/ios-google-mobile-ads-adapters/ios-facebook",
             sourceHeadersDir = artifactLocation.headers,
             yaml = "facebook-adapter.yaml",
             version = { artifactLocation.infoPlist.extractVersion() },
@@ -1286,7 +1286,7 @@ fun registerMobileAds(frameworkRegistry: MutableMap<String, (String) -> Unit>, g
             downloadFolder.extend("InMobiAdapter/InMobiAdapter.xcframework/ios-arm64/$artifact")
         processFramework(
             artifact = artifact,
-            moduleFolder = "firebase/ios-google-mobile-ads-adapters/ios-inmobi",
+            moduleFolder = "google-mobile-ads/ios-google-mobile-ads-adapters/ios-inmobi",
             sourceHeadersDir = artifactLocation.headers,
             yaml = "inmobi-adapter.yaml",
             version = { artifactLocation.infoPlist.extractVersion() },

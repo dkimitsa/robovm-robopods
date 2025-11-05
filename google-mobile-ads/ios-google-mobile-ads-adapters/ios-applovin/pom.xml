@@ -7,7 +7,7 @@
     </parent>
 
     <artifactId>robopods-google-mobile-ads-applovin-adapter-ios</artifactId>
-    <name>RoboPods FireBase AppLovin Mediation Adapter iOS v13.3.0</name>
+    <name>RoboPods FireBase AppLovin Mediation Adapter iOS v13.5.0</name>
     <packaging>jar</packaging>
 
     <dependencies>
