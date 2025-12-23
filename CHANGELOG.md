@@ -1,5 +1,32 @@
 ## Version of AltPods to framework version mapping
 
+v1.55.0
+| Name                                    | 1.55.0  |
+|-----------------------------------------|---------|
+| [AdaptySDK](adapty/)                    | 1.17.7  |
+| [AppCenter](appcenter/)                 | 5.0.6   |
+| [AppLovinSDK](applovinsdk/)             | 13.5.0  |
+| [AppsFlyer](appsflyer/)                 | 6.17.7  |
+| [Azure](azure/)                         | 3.1.4   |
+| [BranchMetrics](branchmetrics/)         | 3.13.3  |
+| [Charts](charts/)                       | 5.1.0   |
+| [CleverAds](cleverads/)                 | 4.4.2   |
+| [Facebook](facebook/)                   | 18.0.1  |
+| [Firebase](firebase/)                   | 12.5.0  |
+| [Fyber](fyber/)                         | 8.4.1   |
+| [Google Mobile Ads](google-mobile-ads/) | 12.12.0 |
+| [HelpShiftX](helpshift/)                | 10.4.1  |
+| [InMobi](inmobi/)                       | 11.0.0  |
+| [IronSource](ironsource/)               | 9.0.0   |
+| [Lottie](lottie/)                       | 4.5.2   |
+| [OneSignal](onesignal/)                 | 5.2.15  |
+| [Pollfish](pollfish/)                   | 6.5.0   |
+| [SAMKeychain](samkeychain/)             | 1.5.3   |
+| [Singular](singular/)                   | 12.9.0  |
+| [Tenjin](tenjin/)                       | 1.14.11 |
+| [UnityAds](unityads/)                   | 4.16.3  |
+| [YouTubePlayer](youtube/)               | 1.0.4   |
+
 v1.54.0
 
 | Name                                    | 1.54.0  |
