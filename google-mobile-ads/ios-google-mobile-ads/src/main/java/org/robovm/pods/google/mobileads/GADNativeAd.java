@@ -105,12 +105,20 @@ import org.robovm.apple.webkit.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "registerAdView:clickableAssetViews:nonclickableAssetViews:")
-    public native void registerAdView(UIView adView, NSDictionary<NSString, UIView> clickableAssetViews, NSDictionary<NSString, UIView> nonclickableAssetViews);
-    @Method(selector = "unregisterAdView")
-    public native void unregisterAdView();
     @Method(selector = "muteThisAdWithReason:")
     public native void muteThisAd(GADMuteThisAdReason reason);
+    /**
+     * @deprecated This method is no longer supported and will be removed in a future version.
+     */
+    @Deprecated
+    @Method(selector = "registerAdView:clickableAssetViews:nonclickableAssetViews:")
+    public native void registerAdView(UIView adView, NSDictionary<NSString, UIView> clickableAssetViews, NSDictionary<NSString, UIView> nonclickableAssetViews);
+    /**
+     * @deprecated This method is no longer supported and will be removed in a future version.
+     */
+    @Deprecated
+    @Method(selector = "unregisterAdView")
+    public native void unregisterAdView();
     @Method(selector = "registerClickConfirmingView:")
     public native void registerClickConfirmingView(UIView view);
     @Method(selector = "cancelUnconfirmedClick")

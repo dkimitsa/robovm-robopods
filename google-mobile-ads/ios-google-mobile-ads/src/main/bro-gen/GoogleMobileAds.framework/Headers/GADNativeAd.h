@@ -17,6 +17,7 @@
 #import <GoogleMobileAds/GADNativeAdImage.h>
 #import <GoogleMobileAds/GADResponseInfo.h>
 #import <GoogleMobileAds/GADVideoController.h>
+#import <GoogleMobileAds/GoogleMobileAdsDefines.h>
 #import <UIKit/UIKit.h>
 
 /// Native ad. To request this ad type, pass GADAdLoaderAdTypeNative
@@ -84,6 +85,10 @@ NS_SWIFT_NAME(NativeAd)
 /// implement your own Mute This Ad feature only when customMuteThisAdAvailable is YES.
 @property(nonatomic, readonly, nullable) NSArray<GADMuteThisAdReason *> *muteThisAdReasons;
 
+/// Reports the mute event with the mute reason selected by user. Use nil if no reason was selected.
+/// Call this method only if customMuteThisAdAvailable is YES.
+- (void)muteThisAdWithReason:(nullable GADMuteThisAdReason *)reason;
+
 /// Registers ad view, clickable asset views, and nonclickable asset views with this native ad.
 /// Media view shouldn't be registered as clickable.
 /// @param clickableAssetViews Dictionary of asset views that are clickable, keyed by asset IDs.
@@ -93,15 +98,14 @@ NS_SWIFT_NAME(NativeAd)
        clickableAssetViews:
            (nonnull NSDictionary<GADNativeAssetIdentifier, UIView *> *)clickableAssetViews
     nonclickableAssetViews:
-        (nonnull NSDictionary<GADNativeAssetIdentifier, UIView *> *)nonclickableAssetViews;
+        (nonnull NSDictionary<GADNativeAssetIdentifier, UIView *> *)nonclickableAssetViews
+    GAD_DEPRECATED_MSG_ATTRIBUTE(
+        "This method is no longer supported and will be removed in a future version.");
 
 /// Unregisters ad view from this native ad. The corresponding asset views will also be
 /// unregistered.
-- (void)unregisterAdView;
-
-/// Reports the mute event with the mute reason selected by user. Use nil if no reason was selected.
-/// Call this method only if customMuteThisAdAvailable is YES.
-- (void)muteThisAdWithReason:(nullable GADMuteThisAdReason *)reason;
+- (void)unregisterAdView GAD_DEPRECATED_MSG_ATTRIBUTE(
+    "This method is no longer supported and will be removed in a future version.");
 
 @end
 
@@ -114,7 +118,7 @@ NS_SWIFT_NAME(NativeAdLoaderDelegate)
 - (void)adLoader:(nonnull GADAdLoader *)adLoader didReceiveNativeAd:(nonnull GADNativeAd *)nativeAd;
 @end
 
-#pragma mark - Unified Native Ad View
+#pragma mark - Native Ad View
 
 /// Base class for native ad views. Your native ad view must be a subclass of this class and must
 /// call superclass methods for all overridden methods.

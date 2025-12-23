@@ -56,6 +56,10 @@ import org.robovm.apple.uikit.*;
     public native UMPDebugSettings getDebugSettings();
     @Property(selector = "setDebugSettings:")
     public native void setDebugSettings(UMPDebugSettings v);
+    @Property(selector = "consentSyncID")
+    public native String getConsentSyncID();
+    @Property(selector = "setConsentSyncID:")
+    public native void setConsentSyncID(String v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
