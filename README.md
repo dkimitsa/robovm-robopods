@@ -56,7 +56,7 @@ v1.56.0 - in development
 | [Google Mobile Ads](google-mobile-ads/) | 12.14.0 |
 | [HelpShiftX](helpshift/)                | 10.5.0  |
 | [InMobi](inmobi/)                       | 11.1.0  |
-| [IronSource](ironsource/)               | 9.0.0   |
+| [IronSource](ironsource/)               | 9.2.0   |
 | [Lottie](lottie/)                       | 4.5.2   |
 | [OneSignal](onesignal/)                 | 5.2.15  |
 | [Pollfish](pollfish/)                   | 6.5.0   |

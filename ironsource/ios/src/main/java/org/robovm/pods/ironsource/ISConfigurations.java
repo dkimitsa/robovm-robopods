@@ -130,10 +130,10 @@ import org.robovm.apple.coreanimation.*;
     public native NSNumber getSerr();
     @Property(selector = "setSerr:")
     public native void setSerr(NSNumber v);
-    @Property(selector = "categorizeType")
-    public native String getCategorizeType();
-    @Property(selector = "setCategorizeType:")
-    public native void setCategorizeType(String v);
+    @Property(selector = "abt")
+    public native String getAbt();
+    @Property(selector = "setAbt:")
+    public native void setAbt(String v);
     @Property(selector = "rvServerParams")
     public native NSDictionary<?, ?> getRvServerParams();
     @Property(selector = "setRvServerParams:")

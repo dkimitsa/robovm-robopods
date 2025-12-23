@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface LPMConfiguration : NSObject
 
 @property(nonatomic, assign) BOOL isAdQualityEnabled;
+@property(nonatomic, strong, nullable) NSString *ab;
 
 @end
 

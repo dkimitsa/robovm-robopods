@@ -54,6 +54,10 @@ import org.robovm.apple.coreanimation.*;
     public native boolean isAdQualityEnabled();
     @Property(selector = "setIsAdQualityEnabled:")
     public native void setIsAdQualityEnabled(boolean v);
+    @Property(selector = "ab")
+    public native String getAb();
+    @Property(selector = "setAb:")
+    public native void setAb(String v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
