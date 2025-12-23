@@ -110,5 +110,9 @@ import org.robovm.apple.coreanimation.*;
     @Deprecated
     @Method(selector = "cancel")
     public native void cancel();
+    @Method(selector = "notifyWinWithMinBidToWin:")
+    public native void notifyWin(double minBidToWin);
+    @Method(selector = "notifyLossWithLossReasonCode:auctionPrice:")
+    public native void notifyLoss(@MachineSizedSInt long lossReasonCode, double auctionPrice);
     /*</methods>*/
 }

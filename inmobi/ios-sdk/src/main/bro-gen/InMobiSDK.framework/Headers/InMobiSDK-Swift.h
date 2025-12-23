@@ -305,6 +305,14 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 
 #if defined(__OBJC__)
+
+SWIFT_CLASS("_TtC9InMobiSDK35AVAudioSessionManagerConfigForMraid")
+@interface AVAudioSessionManagerConfigForMraid : NSObject
+@property (nonatomic) BOOL enableForBanner;
+@property (nonatomic) BOOL enableForInterstitial;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
 @class NSString;
 
 SWIFT_CLASS("_TtC9InMobiSDK14AdChoiceConfig")
@@ -376,6 +384,8 @@ SWIFT_CLASS("_TtC9InMobiSDK12IMConfigBase")
 @class JSDownloaderConfig;
 @class Mraid3Config;
 @class PingV2Config;
+@class HybridPlayerConfig;
+@class CustomBrowserConfig;
 @class WebViewModeConfig;
 
 SWIFT_CLASS("_TtC9InMobiSDK9AdsConfig")
@@ -406,6 +416,8 @@ SWIFT_CLASS("_TtC9InMobiSDK9AdsConfig")
 @property (nonatomic, strong) JSDownloaderConfig * _Nonnull jsDownloader;
 @property (nonatomic, strong) Mraid3Config * _Nonnull mraid3;
 @property (nonatomic, strong) PingV2Config * _Nonnull pingV2;
+@property (nonatomic, strong) HybridPlayerConfig * _Nonnull hybridNative;
+@property (nonatomic, strong) CustomBrowserConfig * _Nonnull customBrowser;
 - (NSString * _Nonnull)getAdServerUrl SWIFT_WARN_UNUSED_RESULT;
 - (WebViewModeConfig * _Nonnull)getWebviewConfigFor:(NSString * _Nonnull)type SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
@@ -581,6 +593,15 @@ SWIFT_CLASS("_TtC9InMobiSDK20CrashReportingConfig")
 @end
 
 
+SWIFT_CLASS("_TtC9InMobiSDK19CustomBrowserConfig")
+@interface CustomBrowserConfig : NSObject
+@property (nonatomic) NSTimeInterval userClickGraceTime;
+@property (nonatomic) BOOL shouldHandleUniversalURL;
+@property (nonatomic, copy) NSArray<NSString *> * _Nonnull appleScheme;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
 SWIFT_CLASS("_TtC9InMobiSDK14DatabaseConfig")
 @interface DatabaseConfig : NSObject
 @property (nonatomic) NSInteger dbWALFrameSize;
@@ -614,6 +635,42 @@ SWIFT_CLASS("_TtC9InMobiSDK13GestureConfig")
 @interface GestureConfig : NSObject
 @property (nonatomic) BOOL isHTEnable;
 @property (nonatomic) NSTimeInterval htThrottlingTime;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class UIView;
+@class UIWindow;
+
+SWIFT_CLASS("_TtC9InMobiSDK18HybridNativePlayer")
+@interface HybridNativePlayer : NSObject
+@property (nonatomic, readonly, strong) UIView * _Nullable videoView;
+@property (nonatomic, readonly) BOOL isOMSDKEnabled;
+- (nullable instancetype)initWithRenderView:(UIView * _Nonnull)renderView OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+- (void)processCommandWithCommand:(NSString * _Nullable)command params:(NSDictionary<NSString *, id> * _Nullable)params;
+- (void)attachToWindow:(UIWindow * _Nullable)newWindow;
+- (void)isHybridPlayerViewableWithIsViewable:(BOOL)isViewable;
+- (void)cleanup;
+@end
+
+
+@interface HybridNativePlayer (SWIFT_EXTENSION(InMobiSDK))
+- (void)fireVideoPositionChangeEvent;
+@end
+
+
+
+
+
+
+@class VideoCacheConfig;
+
+SWIFT_CLASS("_TtC9InMobiSDK18HybridPlayerConfig")
+@interface HybridPlayerConfig : NSObject
+@property (nonatomic) BOOL isEnabled;
+@property (nonatomic) NSTimeInterval minProgressInterval;
+@property (nonatomic, strong) VideoCacheConfig * _Nonnull videoCache;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -698,7 +755,6 @@ SWIFT_CLASS("_TtC9InMobiSDK7IMAudio")
 - (NSDictionary<NSString *, id> * _Nullable)getAdMetaInfo SWIFT_WARN_UNUSED_RESULT;
 @end
 
-@class UIWindow;
 
 @interface IMAudio (SWIFT_EXTENSION(InMobiSDK))
 - (void)load;
@@ -849,6 +905,8 @@ SWIFT_CLASS("_TtC9InMobiSDK8IMBanner")
 - (void)cancel SWIFT_DEPRECATED_MSG("Deprecated with no replacement");
 /// overridden <code>UIView</code> method
 - (void)willMoveToWindow:(UIWindow * _Nullable)newWindow;
+- (void)notifyWinWithMinBidToWin:(double)minBidToWin;
+- (void)notifyLossWithLossReasonCode:(NSInteger)lossReasonCode auctionPrice:(double)auctionPrice;
 @end
 
 
@@ -1168,6 +1226,8 @@ SWIFT_CLASS("_TtC9InMobiSDK14IMInterstitial")
 - (void)setWatermarkWith:(IMWatermark * _Nonnull)watermark;
 /// Releases memory and remove ad from screen.
 - (void)cancel SWIFT_DEPRECATED_MSG("Deprecated with no replacement");
+- (void)notifyWinWithMinBidToWin:(double)minBidToWin;
+- (void)notifyLossWithLossReasonCode:(NSInteger)lossReasonCode auctionPrice:(double)auctionPrice;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -1557,6 +1617,8 @@ SWIFT_CLASS("_TtC9InMobiSDK8IMNative")
 /// returns:
 /// <code>String</code> representing the creative Id of the native ad.
 @property (nonatomic, readonly, copy) NSString * _Nullable creativeId;
+- (void)notifyWinWithMinBidToWin:(double)minBidToWin;
+- (void)notifyLossWithLossReasonCode:(NSInteger)lossReasonCode auctionPrice:(double)auctionPrice;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -2448,6 +2510,7 @@ SWIFT_CLASS("_TtC9InMobiSDK12Mraid3Config")
 @property (nonatomic) BOOL bannerEnabled;
 @property (nonatomic) BOOL interstitialEnabled;
 @property (nonatomic) NSTimeInterval exposureChangeInterval;
+@property (nonatomic, strong) AVAudioSessionManagerConfigForMraid * _Nonnull audioSession;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -2567,6 +2630,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PingManager 
 - (void)processWithPings:(NSArray<Ping *> * _Nonnull)pings source:(id <PingSource> _Nonnull)source;
 - (void)processPendingWithOnlyHighPriority:(BOOL)onlyHighPriority;
 @end
+
 
 
 SWIFT_PROTOCOL("_TtP9InMobiSDK10PingSource_")
@@ -2807,6 +2871,7 @@ SWIFT_CLASS("_TtC9InMobiSDK14TimeoutsConfig")
 
 
 
+
 SWIFT_CLASS("_TtC9InMobiSDK22UnifiedIdServiceConfig")
 @interface UnifiedIdServiceConfig : NSObject
 @property (nonatomic) BOOL enabled;
@@ -2828,6 +2893,49 @@ SWIFT_CLASS("_TtC9InMobiSDK15VastVideoConfig")
 @property (nonatomic, copy) NSArray<NSString *> * _Nonnull allowedCompanionType;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
+
+
+SWIFT_CLASS("_TtC9InMobiSDK16VideoCacheConfig")
+@interface VideoCacheConfig : NSObject
+@property (nonatomic) BOOL isEnabled;
+@property (nonatomic) NSInteger maxSize;
+@property (nonatomic) NSTimeInterval expiryInSec;
+@property (nonatomic, copy) NSArray<NSString *> * _Nonnull videoFormats;
+@property (nonatomic, copy) NSArray<NSString *> * _Nonnull cacheableFormats;
+@property (nonatomic) NSInteger lateMoovThreshold;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+typedef SWIFT_ENUM(NSInteger, VideoEventObjC, open) {
+  VideoEventObjCLoaded = 0,
+  VideoEventObjCStart = 1,
+  VideoEventObjCFirstQuartile = 2,
+  VideoEventObjCMidpoint = 3,
+  VideoEventObjCThirdQuartile = 4,
+  VideoEventObjCComplete = 5,
+  VideoEventObjCCreativeView = 6,
+  VideoEventObjCMute = 7,
+  VideoEventObjCUnmute = 8,
+  VideoEventObjCPause = 9,
+  VideoEventObjCRewind = 10,
+  VideoEventObjCResume = 11,
+  VideoEventObjCFullscreen = 12,
+  VideoEventObjCExitFullscreen = 13,
+  VideoEventObjCPlayerExpand = 14,
+  VideoEventObjCPlayerCollapse = 15,
+  VideoEventObjCAcceptInvitationLinear = 16,
+  VideoEventObjCCloseLinear = 17,
+  VideoEventObjCSkip = 18,
+  VideoEventObjCProgress = 19,
+  VideoEventObjCCollapse = 20,
+  VideoEventObjCExpand = 21,
+  VideoEventObjCAcceptInvitation = 22,
+  VideoEventObjCClose = 23,
+  VideoEventObjCUnknown = 24,
+  VideoEventObjCBufferStart = 25,
+  VideoEventObjCBufferEnd = 26,
+  VideoEventObjCVolumeChange = 27,
+};
 
 
 SWIFT_CLASS("_TtC9InMobiSDK21VideoImpressionConfig")
@@ -2859,6 +2967,7 @@ SWIFT_CLASS("_TtC9InMobiSDK17VideoPlayerConfig")
 @property (nonatomic, strong) VideoPlayerProgressConfig * _Nonnull progressConfig;
 @property (nonatomic, strong) VideoPlayerAudioConfig * _Nonnull audioConfig;
 @property (nonatomic, strong) VideoPlayerViewabilityConfig * _Nonnull viewability;
+@property (nonatomic, strong) VideoCacheConfig * _Nonnull videoCache;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 

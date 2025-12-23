@@ -114,5 +114,9 @@ import org.robovm.apple.coreanimation.*;
     public native boolean isVideoAd();
     @Method(selector = "getAdMetaInfo")
     public native NSDictionary<NSString, ?> getAdMetaInfo();
+    @Method(selector = "notifyWinWithMinBidToWin:")
+    public native void notifyWin(double minBidToWin);
+    @Method(selector = "notifyLossWithLossReasonCode:auctionPrice:")
+    public native void notifyLoss(@MachineSizedSInt long lossReasonCode, double auctionPrice);
     /*</methods>*/
 }

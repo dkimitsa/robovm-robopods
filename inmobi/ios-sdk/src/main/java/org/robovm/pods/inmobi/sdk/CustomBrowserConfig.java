@@ -37,36 +37,32 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("InMobiSDK.Mraid3Config")/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/Mraid3Config/*</name>*/ 
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("InMobiSDK.CustomBrowserConfig")/*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/CustomBrowserConfig/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class Mraid3ConfigPtr extends Ptr<Mraid3Config, Mraid3ConfigPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(Mraid3Config.class); }/*</bind>*/
+    /*<ptr>*/public static class CustomBrowserConfigPtr extends Ptr<CustomBrowserConfig, CustomBrowserConfigPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(CustomBrowserConfig.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public Mraid3Config() {}
-    protected Mraid3Config(Handle h, long handle) { super(h, handle); }
-    protected Mraid3Config(SkipInit skipInit) { super(skipInit); }
+    public CustomBrowserConfig() {}
+    protected CustomBrowserConfig(Handle h, long handle) { super(h, handle); }
+    protected CustomBrowserConfig(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
-    @Property(selector = "bannerEnabled")
-    public native boolean isBannerEnabled();
-    @Property(selector = "setBannerEnabled:")
-    public native void setBannerEnabled(boolean v);
-    @Property(selector = "interstitialEnabled")
-    public native boolean isInterstitialEnabled();
-    @Property(selector = "setInterstitialEnabled:")
-    public native void setInterstitialEnabled(boolean v);
-    @Property(selector = "exposureChangeInterval")
-    public native double getExposureChangeInterval();
-    @Property(selector = "setExposureChangeInterval:")
-    public native void setExposureChangeInterval(double v);
-    @Property(selector = "audioSession")
-    public native AVAudioSessionManagerConfigForMraid getAudioSession();
-    @Property(selector = "setAudioSession:")
-    public native void setAudioSession(AVAudioSessionManagerConfigForMraid v);
+    @Property(selector = "userClickGraceTime")
+    public native double getUserClickGraceTime();
+    @Property(selector = "setUserClickGraceTime:")
+    public native void setUserClickGraceTime(double v);
+    @Property(selector = "shouldHandleUniversalURL")
+    public native boolean shouldHandleUniversalURL();
+    @Property(selector = "setShouldHandleUniversalURL:")
+    public native void setShouldHandleUniversalURL(boolean v);
+    @Property(selector = "appleScheme")
+    public native NSArray<NSString> getAppleScheme();
+    @Property(selector = "setAppleScheme:")
+    public native void setAppleScheme(NSArray<NSString> v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

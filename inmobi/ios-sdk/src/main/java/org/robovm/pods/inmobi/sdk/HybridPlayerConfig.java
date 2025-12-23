@@ -37,36 +37,32 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("InMobiSDK.Mraid3Config")/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/Mraid3Config/*</name>*/ 
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("InMobiSDK.HybridPlayerConfig")/*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/HybridPlayerConfig/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class Mraid3ConfigPtr extends Ptr<Mraid3Config, Mraid3ConfigPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(Mraid3Config.class); }/*</bind>*/
+    /*<ptr>*/public static class HybridPlayerConfigPtr extends Ptr<HybridPlayerConfig, HybridPlayerConfigPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(HybridPlayerConfig.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public Mraid3Config() {}
-    protected Mraid3Config(Handle h, long handle) { super(h, handle); }
-    protected Mraid3Config(SkipInit skipInit) { super(skipInit); }
+    public HybridPlayerConfig() {}
+    protected HybridPlayerConfig(Handle h, long handle) { super(h, handle); }
+    protected HybridPlayerConfig(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
-    @Property(selector = "bannerEnabled")
-    public native boolean isBannerEnabled();
-    @Property(selector = "setBannerEnabled:")
-    public native void setBannerEnabled(boolean v);
-    @Property(selector = "interstitialEnabled")
-    public native boolean isInterstitialEnabled();
-    @Property(selector = "setInterstitialEnabled:")
-    public native void setInterstitialEnabled(boolean v);
-    @Property(selector = "exposureChangeInterval")
-    public native double getExposureChangeInterval();
-    @Property(selector = "setExposureChangeInterval:")
-    public native void setExposureChangeInterval(double v);
-    @Property(selector = "audioSession")
-    public native AVAudioSessionManagerConfigForMraid getAudioSession();
-    @Property(selector = "setAudioSession:")
-    public native void setAudioSession(AVAudioSessionManagerConfigForMraid v);
+    @Property(selector = "isEnabled")
+    public native boolean isEnabled();
+    @Property(selector = "setIsEnabled:")
+    public native void setIsEnabled(boolean v);
+    @Property(selector = "minProgressInterval")
+    public native double getMinProgressInterval();
+    @Property(selector = "setMinProgressInterval:")
+    public native void setMinProgressInterval(double v);
+    @Property(selector = "videoCache")
+    public native VideoCacheConfig getVideoCache();
+    @Property(selector = "setVideoCache:")
+    public native void setVideoCache(VideoCacheConfig v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

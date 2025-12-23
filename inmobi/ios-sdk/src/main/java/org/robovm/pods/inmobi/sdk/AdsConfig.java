@@ -147,6 +147,14 @@ import org.robovm.apple.coreanimation.*;
     public native PingV2Config getPingV2();
     @Property(selector = "setPingV2:")
     public native void setPingV2(PingV2Config v);
+    @Property(selector = "hybridNative")
+    public native HybridPlayerConfig getHybridNative();
+    @Property(selector = "setHybridNative:")
+    public native void setHybridNative(HybridPlayerConfig v);
+    @Property(selector = "customBrowser")
+    public native CustomBrowserConfig getCustomBrowser();
+    @Property(selector = "setCustomBrowser:")
+    public native void setCustomBrowser(CustomBrowserConfig v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

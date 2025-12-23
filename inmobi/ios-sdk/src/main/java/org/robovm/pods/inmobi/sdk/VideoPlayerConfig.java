@@ -67,6 +67,10 @@ import org.robovm.apple.coreanimation.*;
     public native VideoPlayerViewabilityConfig getViewability();
     @Property(selector = "setViewability:")
     public native void setViewability(VideoPlayerViewabilityConfig v);
+    @Property(selector = "videoCache")
+    public native VideoCacheConfig getVideoCache();
+    @Property(selector = "setVideoCache:")
+    public native void setVideoCache(VideoCacheConfig v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

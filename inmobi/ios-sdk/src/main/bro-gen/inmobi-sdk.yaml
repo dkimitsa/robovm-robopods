@@ -23,6 +23,7 @@ enums:
     IMSessionSignalsType: { }
     IMTelemetryLandingPageEventType: { }
     ConfigMuteIconPosition: { }
+    VideoEventObjC: {}
 typed_enums:
 
 classes:
@@ -35,6 +36,10 @@ classes:
                 name: init
             '-setWatermarkWith:':
                 name: setWatermarkWith
+            '-notifyWinWithMinBidToWin:':
+                name: notifyWin
+            '-notifyLossWithLossReasonCode:auctionPrice:':
+                name: notifyLoss
     IMBannerPreloadManager: {}
     IMInterstitial:
         methods:
@@ -48,6 +53,10 @@ classes:
                 name: show
             '-setWatermarkWith:':
                 name: setWatermark
+            '-notifyWinWithMinBidToWin:':
+                name: notifyWin
+            '-notifyLossWithLossReasonCode:auctionPrice:':
+                name: notifyLoss
     IMInterstitialPreloadManager: {}
     IMNative:
         methods:
@@ -55,6 +64,10 @@ classes:
                 name: init
             '-initWithPlacementId:delegate:':
                 name: init
+            '-notifyWinWithMinBidToWin:':
+                name: notifyWin
+            '-notifyLossWithLossReasonCode:auctionPrice:':
+                name: notifyLoss
     IMRequestStatus: {skip_def_constructor: true}
     IMSdk:
         methods:
@@ -229,6 +242,18 @@ classes:
     VideoPlayerConfig: { }
     VideoPlayerProgressConfig: { }
     VideoPlayerViewabilityConfig: { }
+    AVAudioSessionManagerConfigForMraid: { }
+    CustomBrowserConfig: { }
+    HybridNativePlayer:
+        methods:
+            '-initWithRenderView:':
+                name: init
+            '-processCommandWithCommand:params:':
+                name: processCommand
+            '-isHybridPlayerViewableWithIsViewable:':
+                name: isHybridPlayerViewable
+    HybridPlayerConfig: { }
+    VideoCacheConfig: { }
 protocols:
     IMBannerDelegate:
         methods:
