@@ -581,7 +581,8 @@ typedef SWIFT_ENUM_NAMED(NSInteger, CASSourceId, "AdSourceId", open) {
   CASSourceIdYsoNetwork = 25,
   CASSourceIdPrado = 26,
   CASSourceIdMaticoo = 27,
-  CASSourceIdVerve = 28,
+  CASSourceIdPubmatic = 28,
+  CASSourceIdVerve = 29,
   CASSourceIdDspExchange = 30,
   CASSourceIdLastPageAd = 31,
   CASSourceIdCustom = 32,
@@ -1335,25 +1336,91 @@ SWIFT_PROTOCOL_NAMED("CASNativeLoaderDelegate")
 @end
 
 @class UILabel;
-@class UIButton;
 @class UIImageView;
+@class UIButton;
 SWIFT_PROTOCOL_NAMED("NativeAdAssetViews")
 @protocol CASNativeAdAssetViews <NSObject>
+/// Ad AdChoices overlay logo must be displayed at the top of the ad Each ad view must display
+/// an AdChoices overlay logo. Also, it’s important that the AdChoices overlay be easily seen,
+/// so choose background colors and images appropriately.
+/// <em>An AdChoices overlay can be added by the SDK if view not registered.</em>
+/// Use <code>AdChoicesPlacement</code> constants to set preferred corner.
+/// And leave space in your preferred corner of your native ad view for the automatically
+/// inserted AdChoices logo.
 @property (nonatomic, weak) CASChoicesView * _Nullable adChoicesView;
+/// The <code>CASMediaView</code> is a special View designed to display the main media asset,
+/// either video or image. Can be defined in an XML layout or constructed dynamically.
+/// It should be placed within the view hierarchy of a <code>CASNativeView</code>, just like any other asset view.
+/// The media view will be populated automatically when calling <code>CASNativeView.setNativeAd</code>.
+/// Video ads won’t serve to implementations with main asset CASMediaView smaller than 120dp in any dimension.
 @property (nonatomic, readonly, weak) CASMediaView * _Nullable mediaView;
+/// TextView for the headline text of the native ad.
 @property (nonatomic, readonly, weak) UILabel * _Nullable headlineView;
-@property (nonatomic, readonly, weak) UIButton * _Nullable callToActionView;
+/// The small app icon or advertiser logo with square aspect ratio (1:1).
 @property (nonatomic, readonly, weak) UIImageView * _Nullable iconView;
+/// Button that encourages users to take action (for example, “Visit site” or “Install”).
+/// This text may truncate after 15 characters.
+@property (nonatomic, readonly, weak) UIButton * _Nullable callToActionView;
+/// TextView for the body text of the native ad. This text may truncate after 90 characters.
 @property (nonatomic, readonly, weak) UILabel * _Nullable bodyView;
+/// TextView for the text that identifies the advertiser (for example, advertiser name, brand name, or visible URL).
+/// This text may truncate after 25 characters.
 @property (nonatomic, readonly, weak) UILabel * _Nullable priceView;
+/// TextView for the name of the store where the product or service is available.
 @property (nonatomic, readonly, weak) UILabel * _Nullable advertiserView;
+/// TextView for the price of the product or service advertised.
 @property (nonatomic, readonly, weak) UILabel * _Nullable storeView;
+/// The rating from 0.0-5.0 that represents the average rating of the app in a store.
+/// Automatically populates the rating value for the following view types:
+/// <ul>
+///   <li>
+///     <code>UILabel</code> – sets the rating value via <code>text</code>.
+///   </li>
+///   <li>
+///     <code>CASStarRatingView</code> – a custom view rendering 5 stars. Supports customizing <code>CASStarRatingView.color</code> and <code>CASStarRatingView.space</code>.
+///   </li>
+///   <li>
+///     Any custom view implementing <code>NativeAdStarRating</code>, which will receive the rating value automatically.
+///   </li>
+/// </ul>
 @property (nonatomic, readonly, weak) UIView * _Nullable starRatingView;
+/// TextView for the number of reviews the app has received.
 @property (nonatomic, readonly, weak) UILabel * _Nullable reviewCountView;
+/// You must clearly display the text “Ad”, “Advertisement”, or “Sponsored” (localized appropriately).
+/// The badge is required to be a minimum of 15px height and width.
+/// Ad attribution must be displayed at the top of the ad.
 @property (nonatomic, readonly, weak) UILabel * _Nullable adLabelView;
+/// Array of clickable views.
 @property (nonatomic, readonly, copy) NSArray<UIView *> * _Nonnull clickableViews;
 @end
 
+/// This class is a UIView that publishers should use as the root for the <code>NativeAdContent</code>.
+/// A single CASNativeView corresponds to a single native ad.
+/// Each view used to display that ad’s assets (the ImageView that displays the screenshot asset,
+/// for instance) should be a child of the CASNativeView object.
+/// Advertising requirements:
+/// <ul>
+///   <li>
+///     The Ad View must be visible and non-transparent.
+///   </li>
+///   <li>
+///     Don’t edit the text content of assets.
+///   </li>
+///   <li>
+///     Don’t edit the content of images.
+///   </li>
+///   <li>
+///     Native ads smaller than 32x32dp won’t serve.
+///     Ads this small can be difficult to see or interact with and may adversely affect the display quality of advertiser assets.
+///   </li>
+///   <li>
+///     At a single point in time, a loaded ad can only be served in one View.
+///     Simultaneous display of a single ad in multiple Views may result in the loss of impression.
+///   </li>
+///   <li>
+///     The app must be active (not running in the background).
+///   </li>
+/// </ul>
 SWIFT_CLASS_NAMED("CASNativeView")
 @interface CASNativeView : UIView <CASNativeAdAssetViews>
 @property (nonatomic, weak) IBOutlet CASMediaView * _Nullable mediaView;
@@ -1506,6 +1573,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 + (NSString * _Nonnull)superAwesome SWIFT_WARN_UNUSED_RESULT;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull lastPageAd;)
 + (NSString * _Nonnull)lastPageAd SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull pubmatic;)
++ (NSString * _Nonnull)pubmatic SWIFT_WARN_UNUSED_RESULT;
 /// Meta Audience Network  Advertising Tracking Enabled
 /// Set the <code>FBAdSettings.setAdvertiserTrackingEnabled</code> flag.
 /// The setAdvertiserTrackingEnabled “1” flag allows you to inform Audience Network whether to use the data to deliver personalized ads in line with your own legal obligations,

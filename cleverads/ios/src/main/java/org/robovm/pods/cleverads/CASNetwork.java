@@ -111,6 +111,8 @@ import org.robovm.apple.corelocation.*;
     public static native String superAwesome();
     @Method(selector = "lastPageAd")
     public static native String lastPageAd();
+    @Method(selector = "pubmatic")
+    public static native String pubmatic();
     @Method(selector = "facebookAdvertiserTracking")
     public static native String facebookAdvertiserTracking();
     @Method(selector = "facebookDataProcessing")

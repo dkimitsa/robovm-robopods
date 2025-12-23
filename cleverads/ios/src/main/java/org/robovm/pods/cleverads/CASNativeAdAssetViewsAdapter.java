@@ -56,10 +56,10 @@ import org.robovm.apple.corelocation.*;
     public CASMediaView getMediaView() { return null; }
     @NotImplemented("headlineView")
     public UILabel getHeadlineView() { return null; }
-    @NotImplemented("callToActionView")
-    public UIButton getCallToActionView() { return null; }
     @NotImplemented("iconView")
     public UIImageView getIconView() { return null; }
+    @NotImplemented("callToActionView")
+    public UIButton getCallToActionView() { return null; }
     @NotImplemented("bodyView")
     public UILabel getBodyView() { return null; }
     @NotImplemented("priceView")

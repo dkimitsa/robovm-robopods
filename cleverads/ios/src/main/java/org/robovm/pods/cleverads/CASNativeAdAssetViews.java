@@ -55,10 +55,10 @@ import org.robovm.apple.corelocation.*;
     CASMediaView getMediaView();
     @Property(selector = "headlineView")
     UILabel getHeadlineView();
-    @Property(selector = "callToActionView")
-    UIButton getCallToActionView();
     @Property(selector = "iconView")
     UIImageView getIconView();
+    @Property(selector = "callToActionView")
+    UIButton getCallToActionView();
     @Property(selector = "bodyView")
     UILabel getBodyView();
     @Property(selector = "priceView")

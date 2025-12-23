@@ -49,7 +49,7 @@ v1.56.0 - in development
 | [Azure](azure/)                         | 3.1.4   |
 | [BranchMetrics](branchmetrics/)         | 3.13.3  |
 | [Charts](charts/)                       | 5.1.0   |
-| [CleverAds](cleverads/)                 | 4.4.2   |
+| [CleverAds](cleverads/)                 | 4.5.4   |
 | [Facebook](facebook/)                   | 18.0.1  |
 | [Firebase](firebase/)                   | 12.7.0  |
 | [Fyber](fyber/)                         | 8.4.1   |
