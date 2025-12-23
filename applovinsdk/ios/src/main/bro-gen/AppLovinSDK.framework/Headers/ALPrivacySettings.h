@@ -66,8 +66,6 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * Parses the IABTCF_VendorConsents string to determine the consent status of the IAB vendor with the provided ID.
  *
- * NOTE: Must be called after AppLovin MAX SDK has been initialized.
- *
  * @param vendorIdentifier Vendor ID as defined in the Global Vendor List.
  *
  * @return @c 1 if the vendor has consent, @c 0 if not, or @c nil if TC data is not available on disk.
@@ -78,8 +76,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  * Parses the IABTCF_AddtlConsent string to determine the consent status of the advertising entity with the provided Ad Technology Provider (ATP) ID.
- *
- * NOTE: Must be called after AppLovin MAX SDK has been initialized.
  *
  * @param atpIdentifier ATP ID of the advertising entity (e.g. 89 for Meta Audience Network).
  *
@@ -93,8 +89,6 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * Parses the IABTCF_PurposeConsents String to determine the consent status of the IAB defined data processing purpose.
  *
- * NOTE: Must be called after AppLovin MAX SDK has been initialized.
- *
  * @param purposeIdentifier Purpose ID.
  *
  * @return @c 1 if the purpose has consent, @c 0 if not, or @c nil if TC data is not available on disk.
@@ -106,7 +100,6 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * Parses the IABTCF_SpecialFeaturesOptIns String to determine the opt-in status of the IAB defined special feature.
  *
- * NOTE: Must be called after AppLovin MAX SDK has been initialized.
  *
  * @param specialFeatureIdentifier Special feature ID.
  *
