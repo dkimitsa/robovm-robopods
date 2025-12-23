@@ -13,3 +13,4 @@ robovm-build
 .DS_Store
 /scripts/lib/
 /scripts/out/
+mkmf.log
