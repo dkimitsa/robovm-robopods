@@ -10,6 +10,7 @@
 #import "HelpshiftDelegate.h"
 #import "HelpshiftProactiveAPIConfigCollectorDelegate.h"
 #import "HelpshiftUserLoginFailureReason.h"
+#import <UserNotifications/UserNotifications.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -135,12 +136,6 @@ typedef void (^HelpshiftLoginFailureCallback)(NSString *reason,
 + (void) logout;
 
 /**
- * Call this API if you need to clear the anonymous user data on login.
- * Equivalent to calling clearAnonymousUserOnLogin:(BOOL)shouldClear API with true value for shouldClear parameter.
- */
-+ (void) clearAnonymousUserOnLogin __attribute__((deprecated("Use clearAnonymousUserOnLogin:(BOOL)shouldClear instead.")));
-
-/**
  * Call this API if you need to start clearing/stop clearing the anonymous user data on login
  *
  * @param shouldClear If true, anonymous user data will be cleared on login. If false, it won't be cleared.
@@ -150,27 +145,9 @@ typedef void (^HelpshiftLoginFailureCallback)(NSString *reason,
 /**
  * Shows the helpshift support conversation screen.
  *
- * @param viewController The `UIViewController` on which the conversation screen is to be shown
- * @param config An `NSDictionary` which represents the configuration that needs to be set to the conversation
- */
-+ (void) showConversationWith:(UIViewController *)viewController config:(nullable NSDictionary *)config
-__attribute__((deprecated("Use showConversationWithConfig:(NSDictionary *)config instead.")));
-
-/**
- * Shows the helpshift support conversation screen.
- *
  * @param config An `NSDictionary` which represents the configuration that needs to be set to the conversation
  */
 + (void) showConversationWithConfig:(nullable NSDictionary *)config;
-
-/**
- * Show the helpshift help center screen.
- *
- * @param viewController The `UIViewController` on which the help center screen is to be shown
- * @param config An `NSDictionary` which represents the configuration that needs to be set to the help center
- */
-+ (void) showFAQsWith:(UIViewController *)viewController config:(nullable NSDictionary *)config
-__attribute__((deprecated("Use showFAQsWithConfig:(NSDictionary *)config instead.")));
 
 /**
  * Show the helpshift help center screen.
@@ -184,35 +161,9 @@ __attribute__((deprecated("Use showFAQsWithConfig:(NSDictionary *)config instead
  *
  * @param faqSectionPublishID Publish ID of FAQ section which is shown in the FAQ page on the admin side
  * (__yourcompanyname__.helpshift.com/admin/faq/).
- * @param viewController The `UIViewController` on which the help center screen is to be shown
- * @param config An `NSDictionary` which represents the configuration that needs to be set to the help center
- */
-+ (void) showFAQSection:(NSString *)faqSectionPublishID
-                   with:(UIViewController *)viewController
-                 config:(nullable NSDictionary *)config
-__attribute__((deprecated("Use showFAQSection:(NSString *)sectionId withConfig:(NSDictionary *)config instead.")));
-
-/**
- * Show the helpshift help center screen with FAQs from a particular section
- *
- * @param faqSectionPublishID Publish ID of FAQ section which is shown in the FAQ page on the admin side
- * (__yourcompanyname__.helpshift.com/admin/faq/).
  * @param config An `NSDictionary` which represents the configuration that needs to be set to the help center
  */
 + (void) showFAQSection:(NSString *)faqSectionPublishID withConfig:(nullable NSDictionary *)config;
-
-/**
- * Show the helpshift help center screen with a single FAQ
- *
- * @param faqPublishID Publish ID of FAQ which is shown when you expand a single FAQ on admin side
- * (__yourcompanyname__.helpshift.com/admin/faq/)
- * @param viewController The `UIViewController` on which the help center screen is to be shown
- * @param config An `NSDictionary` which represents the configuration that needs to be set to the help center
- */
-+ (void) showSingleFAQ:(NSString *)faqPublishID
-                  with:(UIViewController *)viewController
-                config:(nullable NSDictionary *)config
-__attribute__((deprecated("Use showSingleFAQ:(NSString *)faqId withConfig:(NSDictionary *)config instead.")));
 
 /**
  * Show the helpshift help center screen with a single FAQ
@@ -240,22 +191,51 @@ __attribute__((deprecated("Use showSingleFAQ:(NSString *)faqId withConfig:(NSDic
 /**
  *  Pass along the userInfo dictionary (received with a `UNNotification`) for the Helpshift SDK to handle
  *  @param userInfo   dictionary contained in the `UNNotification` object received in AppDelegate.
- *  @param viewController The `UIViewController` on which you want the Helpshift SDK stack to be shown
  *  @param isAppLaunch    A `BOOL` indicating whether the app was lanuched from a killed state. This parameter should ideally only be true in case when called from app's didFinishLaunchingWithOptions AppDelegate.
  *  @return BOOL value indicating whether Helpshift SDK handled this notification.
  */
-+ (BOOL) handleNotificationWithUserInfoDictionary:(NSDictionary *)userInfo
-                                      isAppLaunch:(BOOL)isAppLaunch
-                                   withController:(UIViewController *)viewController
-__attribute__((deprecated("Use handleNotificationWithUserInfoDictionary:(NSDictionary *)userInfo isAppLaunch:(BOOL)isAppLaunch instead.")));
++ (BOOL) handleNotificationWithUserInfoDictionary:(NSDictionary *)userInfo isAppLaunch:(BOOL)isAppLaunch
+__attribute__((deprecated("Use (UNNotificationPresentationOptions) handleForegroundNotification:(NSDictionary *)userInfo or handleBackgroundNotificationClick:(NSDictionary *)userInfo")));
 
 /**
- *  Pass along the userInfo dictionary (received with a `UNNotification`) for the Helpshift SDK to handle
- *  @param userInfo   dictionary contained in the `UNNotification` object received in AppDelegate.
- *  @param isAppLaunch    A `BOOL` indicating whether the app was lanuched from a killed state. This parameter should ideally only be true in case when called from app's didFinishLaunchingWithOptions AppDelegate.
- *  @return BOOL value indicating whether Helpshift SDK handled this notification.
+ *  Invoke this method from within `userNotificationCenter:willPresent:withCompletionHandler`
+ *  system API to handle foreground notification reception.
+ *
+ *  @param userInfo dictionary contained in the `UNNotification` object.
+ *  @param completionHandler completion handler from the system API.
  */
-+ (BOOL) handleNotificationWithUserInfoDictionary:(NSDictionary *)userInfo isAppLaunch:(BOOL)isAppLaunch;
++ (void) handleForegroundNotification:(NSDictionary *)userInfo
+                withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler;
+
+/**
+ *  Invoke this method from within `userNotificationCenter:didReceive:withCompletionHandler`
+ *  system API to handle background notification click.
+ *
+ *  @param userInfo dictionary contained in the `UNNotification` object.
+ *  @param completionHandler completion handler from the system API.
+ */
++ (void) handleBackgroundNotificationClick:(NSDictionary *)userInfo
+                     withCompletionHandler:(void(^)(void))completionHandler;
+
+/**
+ *  Invoke this method from within `didReceiveNotificationRequest:withContentHandler:`
+ *  Notification Service system API to handle background notification reception.
+ *
+ *  @param request The notification request object containing the original notification content.
+ *  @param contentHandler content handler from the system API.
+*/
++ (void) handleBackgroundNotification:(UNNotificationRequest *)request
+                   withContentHandler:(void (^)(UNNotificationContent *content))contentHandler;
+
+/**
+ *  Invoke this method from within `application:didReceiveRemoteNotification:fetchCompletionHandler:`
+ *  system API to handle silent background notification reception.
+ *
+ *  @param userInfo dictionary contained in the `UNNotification` object.
+ *  @param completionHandler completion handler from the system API.
+*/
++ (void) handleSilentBackgroundNotification:(NSDictionary *)userInfo
+                      withCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler;
 
 /**
  * Add function to handle proactive link handling.

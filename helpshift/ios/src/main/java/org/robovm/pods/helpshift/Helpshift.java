@@ -29,6 +29,7 @@ import org.robovm.rt.bro.annotation.*;
 import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
+import org.robovm.apple.usernotifications.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -139,44 +140,14 @@ import org.robovm.apple.uikit.*;
     public static native void updateAppAttributes(NSDictionary<NSString, ?> attributes);
     @Method(selector = "logout")
     public static native void logout();
-    /**
-     * @deprecated Use clearAnonymousUserOnLogin:(BOOL)shouldClear instead.
-     */
-    @Deprecated
-    @Method(selector = "clearAnonymousUserOnLogin")
-    public static native void clearAnonymousUserOnLogin();
     @Method(selector = "clearAnonymousUserOnLogin:")
     public static native void clearAnonymousUserOnLogin(boolean shouldClear);
-    /**
-     * @deprecated Use showConversationWithConfig:(NSDictionary *)config instead.
-     */
-    @Deprecated
-    @Method(selector = "showConversationWith:config:")
-    public static native void showConversation(UIViewController viewController, NSDictionary<?, ?> config);
     @Method(selector = "showConversationWithConfig:")
     public static native void showConversation(NSDictionary<?, ?> config);
-    /**
-     * @deprecated Use showFAQsWithConfig:(NSDictionary *)config instead.
-     */
-    @Deprecated
-    @Method(selector = "showFAQsWith:config:")
-    public static native void showFAQs(UIViewController viewController, NSDictionary<?, ?> config);
     @Method(selector = "showFAQsWithConfig:")
     public static native void showFAQs(NSDictionary<?, ?> config);
-    /**
-     * @deprecated Use showFAQSection:(NSString *)sectionId withConfig:(NSDictionary *)config instead.
-     */
-    @Deprecated
-    @Method(selector = "showFAQSection:with:config:")
-    public static native void showFAQSection(String faqSectionPublishID, UIViewController viewController, NSDictionary<?, ?> config);
     @Method(selector = "showFAQSection:withConfig:")
     public static native void showFAQSection(String faqSectionPublishID, NSDictionary<?, ?> config);
-    /**
-     * @deprecated Use showSingleFAQ:(NSString *)faqId withConfig:(NSDictionary *)config instead.
-     */
-    @Deprecated
-    @Method(selector = "showSingleFAQ:with:config:")
-    public static native void showSingleFAQ(String faqPublishID, UIViewController viewController, NSDictionary<?, ?> config);
     @Method(selector = "showSingleFAQ:withConfig:")
     public static native void showSingleFAQ(String faqPublishID, NSDictionary<?, ?> config);
     @Method(selector = "setLanguage:")
@@ -184,13 +155,19 @@ import org.robovm.apple.uikit.*;
     @Method(selector = "registerDeviceToken:")
     public static native void registerDeviceToken(NSData deviceToken);
     /**
-     * @deprecated Use handleNotificationWithUserInfoDictionary:(NSDictionary *)userInfo isAppLaunch:(BOOL)isAppLaunch instead.
+     * @deprecated Use (UNNotificationPresentationOptions) handleForegroundNotification:(NSDictionary *)userInfo or handleBackgroundNotificationClick:(NSDictionary *)userInfo
      */
     @Deprecated
-    @Method(selector = "handleNotificationWithUserInfoDictionary:isAppLaunch:withController:")
-    public static native boolean handleNotification(NSDictionary<?, ?> userInfo, boolean isAppLaunch, UIViewController viewController);
     @Method(selector = "handleNotificationWithUserInfoDictionary:isAppLaunch:")
     public static native boolean handleNotification(NSDictionary<?, ?> userInfo, boolean isAppLaunch);
+    @Method(selector = "handleForegroundNotification:withCompletionHandler:")
+    public static native void handleForegroundNotification(NSDictionary<?, ?> userInfo, @Block VoidBlock1<UNNotificationPresentationOptions> completionHandler);
+    @Method(selector = "handleBackgroundNotificationClick:withCompletionHandler:")
+    public static native void handleBackgroundNotificationClick(NSDictionary<?, ?> userInfo, @Block Runnable completionHandler);
+    @Method(selector = "handleBackgroundNotification:withContentHandler:")
+    public static native void handleBackgroundNotification(UNNotificationRequest request, @Block VoidBlock1<UNNotificationContent> contentHandler);
+    @Method(selector = "handleSilentBackgroundNotification:withCompletionHandler:")
+    public static native void handleSilentBackgroundNotification(NSDictionary<?, ?> userInfo, @Block VoidBlock1<UIBackgroundFetchResult> completionHandler);
     @Method(selector = "handleProactiveLink:")
     public static native void handleProactiveLink(String proactiveLink);
     @Method(selector = "requestUnreadMessageCount:")
