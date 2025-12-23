@@ -19,6 +19,13 @@
 
 - (void)IAVideoCompleted:(IAVideoContentController * _Nullable)contentController;
 
+/**
+ *  @brief Called when an error occurs during video playback.
+ *
+ *  @discussion Use this callback to log the error details.
+ *
+ *  @warning This callback is for informational purposes only. Do not release or nil-out any SDK objects in this callback.
+ */
 - (void)IAVideoContentController:(IAVideoContentController * _Nullable)contentController videoInterruptedWithError:(NSError * _Nonnull)error;
 
 /**

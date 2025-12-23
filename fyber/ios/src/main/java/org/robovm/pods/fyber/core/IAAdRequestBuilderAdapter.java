@@ -69,6 +69,10 @@ import org.robovm.apple.coregraphics.*;
     public double getTimeout() { return 0; }
     @NotImplemented("setTimeout:")
     public void setTimeout(double v) {}
+    @NotImplemented("floorPrice")
+    public NSNumber getFloorPrice() { return null; }
+    @NotImplemented("setFloorPrice:")
+    public void setFloorPrice(NSNumber v) {}
     @NotImplemented("debugger")
     public IADebugger getDebugger() { return null; }
     @NotImplemented("setDebugger:")

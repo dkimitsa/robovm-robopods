@@ -440,9 +440,11 @@ SWIFT_PROTOCOL("_TtP9IASDKCore18IANativeAdDelegate_")
 /// \param adSpot The <code>IANativeAdSpot</code> instance that triggered the event.
 ///
 - (void)iaNativeAdVideoCompleted:(IANativeAdSpot * _Nullable)adSpot;
-/// Called when the native ad video is interrupted due to an error.
+/// Called when an error occurs during video playback.
 /// note:
-/// This method is optional.
+/// This method is optional. Use this callback to log the error details.
+/// warning:
+/// This callback is for informational purposes only. Do not release or nil-out any SDK objects in this callback.
 /// \param adSpot The <code>IANativeAdSpot</code> instance that triggered the event.
 ///
 /// \param error The <code>Error</code> object describing the cause of the interruption.

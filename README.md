@@ -52,7 +52,7 @@ v1.56.0 - in development
 | [CleverAds](cleverads/)                 | 4.5.4   |
 | [Facebook](facebook/)                   | 18.0.1  |
 | [Firebase](firebase/)                   | 12.7.0  |
-| [Fyber](fyber/)                         | 8.4.1   |
+| [Fyber](fyber/)                         | 8.4.2   |
 | [Google Mobile Ads](google-mobile-ads/) | 12.12.0 |
 | [HelpShiftX](helpshift/)                | 10.4.1  |
 | [InMobi](inmobi/)                       | 11.0.0  |

@@ -74,6 +74,10 @@ import org.robovm.apple.coregraphics.*;
     public native double getTimeout();
     @Property(selector = "setTimeout:")
     public native void setTimeout(double v);
+    @Property(selector = "floorPrice")
+    public native NSNumber getFloorPrice();
+    @Property(selector = "setFloorPrice:")
+    public native void setFloorPrice(NSNumber v);
     @Property(selector = "debugger")
     public native IADebugger getDebugger();
     @Property(selector = "setDebugger:")
