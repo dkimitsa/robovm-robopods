@@ -43,7 +43,7 @@ v1.56.0 - in development
 | Name                                    | 1.56.0  |
 |-----------------------------------------|---------|
 | [AdaptySDK](adapty/)                    | 1.17.7  |
-| [AppCenter](appcenter/)                 | 5.0.6   |
+| [AppCenter](appcenter/)                 | 5.10.0  |
 | [AppLovinSDK](applovinsdk/)             | 13.5.0  |
 | [AppsFlyer](appsflyer/)                 | 6.17.7  |
 | [Azure](azure/)                         | 3.1.4   |

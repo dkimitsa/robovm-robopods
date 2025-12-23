@@ -7,7 +7,7 @@
     </parent>
 
     <artifactId>robopods-appcenter-core-ios</artifactId>
-    <name>RoboPods Microsoft AppCenter iOS v5.0.6</name>
+    <name>RoboPods Microsoft AppCenter iOS v5.10.0</name>
     <packaging>jar</packaging>
 
     <licenses>
