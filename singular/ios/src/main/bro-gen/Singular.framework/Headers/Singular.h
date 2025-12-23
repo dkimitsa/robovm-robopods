@@ -11,6 +11,7 @@
 #import "Attributes.h"
 #import "Events.h"
 #import "SingularAdData.h"
+#import "SingularLogLevel.h"
 
 // avoid circular include of SingularLinkParams
 #ifndef SingularLinkParams
@@ -163,5 +164,8 @@
               passthroughParams:(NSDictionary *)passthroughParams
               completionHandler:(void (^)(NSString *, NSError *))completionHandler;
 
+#pragma mark - Logger methods
++ (void)setLoggingEnabled:(BOOL)enabled;
++ (void)setLogLevel:(SingularLogLevel)logLevel;
 
 @end

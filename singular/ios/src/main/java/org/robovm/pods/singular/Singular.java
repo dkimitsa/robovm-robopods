@@ -292,5 +292,9 @@ import org.robovm.apple.uikit.*;
     public static native void createReferrerShortLink(String baseLink, String referrerName, String referrerId, @Block VoidBlock2<NSString, NSError> completionHandler);
     @Method(selector = "createReferrerShortLink:referrerName:referrerId:passthroughParams:completionHandler:")
     public static native void createReferrerShortLink(String baseLink, String referrerName, String referrerId, NSDictionary<?, ?> passthroughParams, @Block VoidBlock2<NSString, NSError> completionHandler);
+    @Method(selector = "setLoggingEnabled:")
+    public static native void setLoggingEnabled(boolean enabled);
+    @Method(selector = "setLogLevel:")
+    public static native void setLogLevel(SingularLogLevel logLevel);
     /*</methods>*/
 }

@@ -10,7 +10,7 @@ headers:
     - Attributes.h
     - Events.h
 enums:
-
+    SingularLogLevel: {}
 private_typedefs:
 
 classes:

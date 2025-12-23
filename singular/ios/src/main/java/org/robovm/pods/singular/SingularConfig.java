@@ -151,6 +151,14 @@ import org.robovm.apple.uikit.*;
     public native @MachineSizedSInt long getEnableOdmWithTimeoutInterval();
     @Property(selector = "setEnableOdmWithTimeoutInterval:")
     public native void setEnableOdmWithTimeoutInterval(@MachineSizedSInt long v);
+    @Property(selector = "enableLogging")
+    public native boolean isEnableLogging();
+    @Property(selector = "setEnableLogging:")
+    public native void setEnableLogging(boolean v);
+    @Property(selector = "logLevel")
+    public native SingularLogLevel getLogLevel();
+    @Property(selector = "setLogLevel:")
+    public native void setLogLevel(SingularLogLevel v);
     @Property(selector = "supportAppExtension")
     public native boolean isSupportAppExtension();
     @Property(selector = "setSupportAppExtension:")

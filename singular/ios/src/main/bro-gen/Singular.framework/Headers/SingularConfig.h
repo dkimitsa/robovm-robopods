@@ -6,6 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SingularLogLevel.h"
 
 // avoid circular include of SingularLinkParams
 #ifndef SingularLinkParams
@@ -55,6 +56,10 @@ typedef void (^SdidAccessorHandler)(NSString *result);
 
 // Google ODM fields
 @property (assign) NSInteger enableOdmWithTimeoutInterval; // in Seconds
+
+// Logging fields
+@property (assign) BOOL enableLogging;
+@property (assign) SingularLogLevel logLevel;
 
 -(id)initWithApiKey:(NSString*)apikey andSecret:(NSString*)secret;
 
