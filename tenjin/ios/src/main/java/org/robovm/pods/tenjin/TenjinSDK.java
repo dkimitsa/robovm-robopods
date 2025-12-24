@@ -190,6 +190,12 @@ import org.robovm.apple.dispatch.*;
     public static native void setEncryptRequestsSetting(boolean isEncryptRequestsEnabled);
     @Method(selector = "getAnalyticsInstallationId")
     public static native String getAnalyticsInstallationId();
+    @Method(selector = "getUserProfile")
+    public static native TJNUserProfileData getUserProfile();
+    @Method(selector = "getUserProfileAsDictionary")
+    public static native NSDictionary<?, ?> getUserProfileAsDictionary();
+    @Method(selector = "resetUserProfile")
+    public static native void resetUserProfile();
     @Method(selector = "verboseLogs")
     public static native void verboseLogs();
     @Method(selector = "debugLogs")

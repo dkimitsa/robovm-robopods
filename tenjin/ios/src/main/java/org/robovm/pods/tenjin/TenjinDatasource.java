@@ -71,5 +71,9 @@ import org.robovm.apple.dispatch.*;
     public static native String getODMInfo();
     @Method(selector = "getAnalyticsInstallationId")
     public static native String getAnalyticsInstallationId();
+    @Method(selector = "setInitializedAt:")
+    public static native void setInitializedAt(String timestamp);
+    @Method(selector = "getInitializedAt")
+    public static native String getInitializedAt();
     /*</methods>*/
 }

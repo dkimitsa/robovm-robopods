@@ -273,6 +273,16 @@ SWIFT_CLASS("_TtC9TenjinSDK13RequestHelper")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+typedef SWIFT_ENUM(NSInteger, TJNAdNetwork, open) {
+  TJNAdNetworkIronSource = 0,
+  TJNAdNetworkAppLovin = 1,
+  TJNAdNetworkAdMob = 2,
+  TJNAdNetworkHyperBid = 3,
+  TJNAdNetworkTopOn = 4,
+  TJNAdNetworkCas = 5,
+  TJNAdNetworkTradPlus = 6,
+};
+
 @class NSData;
 @class NSURLResponse;
 @class NSMutableString;
@@ -305,6 +315,53 @@ SWIFT_CLASS("_TtC9TenjinSDK13TJNHTTPClient")
 
 
 
+SWIFT_CLASS("_TtC9TenjinSDK18TJNUserProfileData")
+@interface TJNUserProfileData : NSObject
+@property (nonatomic, readonly) NSInteger sessionCount;
+@property (nonatomic, readonly) int64_t totalSessionTime;
+@property (nonatomic, readonly) int64_t lastSessionLength;
+@property (nonatomic, readonly, copy) NSDate * _Nullable currentSessionStartTime;
+@property (nonatomic, readonly, copy) NSDate * _Nullable lastBackgroundTime;
+@property (nonatomic, readonly) int64_t currentSessionPausedTime;
+@property (nonatomic, readonly, copy) NSDate * _Nullable firstSessionDate;
+@property (nonatomic, readonly, copy) NSDate * _Nullable lastSessionDate;
+@property (nonatomic, readonly) NSInteger iapTransactionCount;
+@property (nonatomic, readonly, copy) NSDictionary<NSString *, NSNumber *> * _Nonnull iapRevenueByCurrency;
+@property (nonatomic, readonly) double totalILRDRevenueUSD;
+@property (nonatomic, readonly, copy) NSDictionary<NSString *, NSNumber *> * _Nonnull ilrdRevenueByNetwork;
+@property (nonatomic, readonly) int64_t currentSessionDuration;
+@property (nonatomic, readonly) int64_t totalSessionTimeIncludingCurrent;
+@property (nonatomic, readonly) int64_t averageSessionLength;
+@property (nonatomic, readonly, copy) NSArray<NSString *> * _Nonnull purchasedProductIDsArray;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (double)getILRDRevenueForNetwork:(enum TJNAdNetwork)network SWIFT_WARN_UNUSED_RESULT;
+- (double)getIAPRevenueForCurrency:(NSString * _Nonnull)currencyCode SWIFT_WARN_UNUSED_RESULT;
+- (NSDictionary<NSString *, id> * _Nonnull)toDictionary SWIFT_WARN_UNUSED_RESULT;
+- (NSDictionary<NSString *, id> * _Nonnull)toScalarDictionary SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+SWIFT_CLASS("_TtC9TenjinSDK21TJNUserProfileManager")
+@interface TJNUserProfileManager : NSObject
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TJNUserProfileManager * _Nonnull shared;)
++ (TJNUserProfileManager * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
+/// Session timeout in seconds. Default is 1800 seconds (30 minutes).
+/// If the app returns from background after this duration, a new session is started.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class) NSTimeInterval sessionTimeoutInterval;)
++ (NSTimeInterval)sessionTimeoutInterval SWIFT_WARN_UNUSED_RESULT;
++ (void)setSessionTimeoutInterval:(NSTimeInterval)value;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+- (void)recordIAPTransactionWithRevenue:(double)revenue currencyCode:(NSString * _Nonnull)currencyCode;
+- (void)recordIAPTransactionWithRevenue:(double)revenue currencyCode:(NSString * _Nonnull)currencyCode productID:(NSString * _Nullable)productID;
+- (void)recordILRDRevenueWithRevenueUSD:(double)revenueUSD network:(enum TJNAdNetwork)network;
+- (TJNUserProfileData * _Nonnull)getProfileData SWIFT_WARN_UNUSED_RESULT;
+- (NSDictionary<NSString *, id> * _Nonnull)getProfileDictionary SWIFT_WARN_UNUSED_RESULT;
+- (NSDictionary<NSString *, id> * _Nonnull)getScalarProfileDictionary SWIFT_WARN_UNUSED_RESULT;
+- (void)resetProfile;
+@end
+
+
 SWIFT_CLASS("_TtC9TenjinSDK16TenjinDatasource")
 @interface TenjinDatasource : NSObject
 + (void)setBooleanValue:(BOOL)value key:(NSString * _Nonnull)key;
@@ -315,6 +372,8 @@ SWIFT_CLASS("_TtC9TenjinSDK16TenjinDatasource")
 + (void)setODMInfo:(NSString * _Nonnull)odmInfo;
 + (NSString * _Nullable)getODMInfo SWIFT_WARN_UNUSED_RESULT;
 + (NSString * _Nonnull)getAnalyticsInstallationId SWIFT_WARN_UNUSED_RESULT;
++ (void)setInitializedAt:(NSString * _Nonnull)timestamp;
++ (NSString * _Nullable)getInitializedAt SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -610,6 +669,16 @@ SWIFT_CLASS("_TtC9TenjinSDK13RequestHelper")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+typedef SWIFT_ENUM(NSInteger, TJNAdNetwork, open) {
+  TJNAdNetworkIronSource = 0,
+  TJNAdNetworkAppLovin = 1,
+  TJNAdNetworkAdMob = 2,
+  TJNAdNetworkHyperBid = 3,
+  TJNAdNetworkTopOn = 4,
+  TJNAdNetworkCas = 5,
+  TJNAdNetworkTradPlus = 6,
+};
+
 @class NSData;
 @class NSURLResponse;
 @class NSMutableString;
@@ -642,6 +711,53 @@ SWIFT_CLASS("_TtC9TenjinSDK13TJNHTTPClient")
 
 
 
+SWIFT_CLASS("_TtC9TenjinSDK18TJNUserProfileData")
+@interface TJNUserProfileData : NSObject
+@property (nonatomic, readonly) NSInteger sessionCount;
+@property (nonatomic, readonly) int64_t totalSessionTime;
+@property (nonatomic, readonly) int64_t lastSessionLength;
+@property (nonatomic, readonly, copy) NSDate * _Nullable currentSessionStartTime;
+@property (nonatomic, readonly, copy) NSDate * _Nullable lastBackgroundTime;
+@property (nonatomic, readonly) int64_t currentSessionPausedTime;
+@property (nonatomic, readonly, copy) NSDate * _Nullable firstSessionDate;
+@property (nonatomic, readonly, copy) NSDate * _Nullable lastSessionDate;
+@property (nonatomic, readonly) NSInteger iapTransactionCount;
+@property (nonatomic, readonly, copy) NSDictionary<NSString *, NSNumber *> * _Nonnull iapRevenueByCurrency;
+@property (nonatomic, readonly) double totalILRDRevenueUSD;
+@property (nonatomic, readonly, copy) NSDictionary<NSString *, NSNumber *> * _Nonnull ilrdRevenueByNetwork;
+@property (nonatomic, readonly) int64_t currentSessionDuration;
+@property (nonatomic, readonly) int64_t totalSessionTimeIncludingCurrent;
+@property (nonatomic, readonly) int64_t averageSessionLength;
+@property (nonatomic, readonly, copy) NSArray<NSString *> * _Nonnull purchasedProductIDsArray;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (double)getILRDRevenueForNetwork:(enum TJNAdNetwork)network SWIFT_WARN_UNUSED_RESULT;
+- (double)getIAPRevenueForCurrency:(NSString * _Nonnull)currencyCode SWIFT_WARN_UNUSED_RESULT;
+- (NSDictionary<NSString *, id> * _Nonnull)toDictionary SWIFT_WARN_UNUSED_RESULT;
+- (NSDictionary<NSString *, id> * _Nonnull)toScalarDictionary SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+SWIFT_CLASS("_TtC9TenjinSDK21TJNUserProfileManager")
+@interface TJNUserProfileManager : NSObject
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TJNUserProfileManager * _Nonnull shared;)
++ (TJNUserProfileManager * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
+/// Session timeout in seconds. Default is 1800 seconds (30 minutes).
+/// If the app returns from background after this duration, a new session is started.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class) NSTimeInterval sessionTimeoutInterval;)
++ (NSTimeInterval)sessionTimeoutInterval SWIFT_WARN_UNUSED_RESULT;
++ (void)setSessionTimeoutInterval:(NSTimeInterval)value;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+- (void)recordIAPTransactionWithRevenue:(double)revenue currencyCode:(NSString * _Nonnull)currencyCode;
+- (void)recordIAPTransactionWithRevenue:(double)revenue currencyCode:(NSString * _Nonnull)currencyCode productID:(NSString * _Nullable)productID;
+- (void)recordILRDRevenueWithRevenueUSD:(double)revenueUSD network:(enum TJNAdNetwork)network;
+- (TJNUserProfileData * _Nonnull)getProfileData SWIFT_WARN_UNUSED_RESULT;
+- (NSDictionary<NSString *, id> * _Nonnull)getProfileDictionary SWIFT_WARN_UNUSED_RESULT;
+- (NSDictionary<NSString *, id> * _Nonnull)getScalarProfileDictionary SWIFT_WARN_UNUSED_RESULT;
+- (void)resetProfile;
+@end
+
+
 SWIFT_CLASS("_TtC9TenjinSDK16TenjinDatasource")
 @interface TenjinDatasource : NSObject
 + (void)setBooleanValue:(BOOL)value key:(NSString * _Nonnull)key;
@@ -652,6 +768,8 @@ SWIFT_CLASS("_TtC9TenjinSDK16TenjinDatasource")
 + (void)setODMInfo:(NSString * _Nonnull)odmInfo;
 + (NSString * _Nullable)getODMInfo SWIFT_WARN_UNUSED_RESULT;
 + (NSString * _Nonnull)getAnalyticsInstallationId SWIFT_WARN_UNUSED_RESULT;
++ (void)setInitializedAt:(NSString * _Nonnull)timestamp;
++ (NSString * _Nullable)getInitializedAt SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 

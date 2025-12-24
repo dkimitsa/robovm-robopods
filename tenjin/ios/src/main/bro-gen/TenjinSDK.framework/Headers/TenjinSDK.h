@@ -7,6 +7,8 @@
 #import <Foundation/Foundation.h>
 #import <StoreKit/StoreKit.h>
 
+@class TJNUserProfileData;
+
 @interface TenjinSDK : NSObject
 
 #pragma mark Initialization
@@ -189,6 +191,14 @@ andDeferredDeeplink:(NSURL *)url
 
 // Get cached analytics_installation_id
 + (NSString*)getAnalyticsInstallationId;
+
+#pragma mark User Profile
+
++ (TJNUserProfileData *)getUserProfile;
+
++ (NSDictionary *)getUserProfileAsDictionary;
+
++ (void)resetUserProfile;
 
 #pragma mark Util
 

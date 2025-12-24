@@ -17,7 +17,7 @@ headers:
     - TenjinSDK+TradPlusILRD.h
 enums:
     PurposeConsentStatus: {}
-
+    TJNAdNetwork: {}
 private_typedefs:
     'GADAdValue *': org.robovm.pods.google.mobileads.GADAdValue
 
@@ -140,6 +140,15 @@ classes:
             '-getAttributionTokenWithCompletion:':
                 name: getAttributionToken
     GoogleOnDeviceConversionManager: {}
+    TJNUserProfileData: { }
+    TJNUserProfileManager:
+        methods:
+            '-recordIAPTransactionWithRevenue:currencyCode:':
+                name: recordIAPTransaction
+            '-recordIAPTransactionWithRevenue:currencyCode:productID:':
+                name: recordIAPTransaction
+            '-recordILRDRevenueWithRevenueUSD:network:':
+                name: recordILRDRevenue
 protocols:
     TJNRequestSender:
         methods:

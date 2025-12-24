@@ -13,7 +13,7 @@
 #define kTenjinConversionEndpoint @"conversion-values"
 
 //this line replaced by build script
-#define kTenjinTenjinSDKVersion @"1.14.11"
+#define kTenjinTenjinSDKVersion @"1.15.0"
 
 
 #define kTenjinPlatformIos @"ios"
@@ -44,9 +44,22 @@
 #define kTenjinCustomerUserId @"customer_user_id"
 #define kTenjinEvent @"event"
 #define kTenjinAnalyticsId @"analytics_installation_id"
+#define kTenjinSDKAnalyticsMetrics @"sdk_analytics_metrics"
+
+// User Profile Analytics Parameters
+#define kTenjinSessionCount @"session_count"
+#define kTenjinTotalSessionTime @"total_session_time"
+#define kTenjinAverageSessionLength @"average_session_length"
+#define kTenjinLastSessionLength @"last_session_length"
+#define kTenjinCurrentSessionLength @"current_session_length"
+#define kTenjinIAPTransactionCount @"iap_transaction_count"
+#define kTenjinTotalILRDRevenueUSD @"total_ilrd_revenue_usd"
+#define kTenjinFirstSessionDate @"first_session_date"
+#define kTenjinLastSessionDate @"last_session_date"
 
 #define kTenjinSessionId @"session_id"
 #define kTenjinSentAt @"sent_at"
+#define kTenjinInitializedAt @"initialized_at"
 #define kTenjinSignature @"signature"
 #define kTenjinConversionValue @"conversion_value"
 #define kTenjinCoarseConversionValue @"coarse_conversion_value"
