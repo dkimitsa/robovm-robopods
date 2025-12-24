@@ -322,6 +322,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 
 
 
+
 @class NSString;
 
 SWIFT_CLASS("_TtC8UnityAds13LoggerWrapper")
@@ -478,6 +479,7 @@ SWIFT_CLASS("_TtC8UnityAds8UnityAds")
 ///
 + (void)getTokenWith:(UnityAdsTokenConfiguration * _Nonnull)configuration completion:(void (^ _Nonnull)(NSString * _Nullable))completion;
 @end
+
 
 typedef SWIFT_ENUM(NSInteger, UnityAdsAdFormat, open) {
   UnityAdsAdFormatInterstitial = 0,
