@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>io.github.dkimitsa.robovm</groupId>
-        <version>1.56.0-SNAPSHOT</version>
+        <version>1.56.0</version>
         <artifactId>robopods-youtube-player-parent</artifactId>
     </parent>
 
