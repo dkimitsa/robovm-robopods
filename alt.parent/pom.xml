@@ -5,7 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.github.dkimitsa.robovm</groupId>
-    <version>1.56.0</version>
+    <!-- version corresponds to RoboVMs one + minor extensions (.0)  -->
+    <version>2.3.24.0</version>
     <artifactId>robopods-parent</artifactId>
     <name>RoboPods Parent</name>
     <packaging>pom</packaging>
@@ -46,8 +47,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <robovm.version>2.3.23</robovm.version>
-        <robopods.version>${project.version}</robopods.version>
+        <robovm.version>2.3.24</robovm.version>
         <skipTests>true</skipTests>
     </properties>
 
@@ -238,30 +238,4 @@
             </plugin>
         </plugins>
     </build>
-
-    <modules>
-        <module>charts</module>
-        <module>onesignal</module>
-        <module>lottie</module>
-        <module>samkeychain</module>
-        <module>branchmetrics</module>
-        <module>helpshift</module>
-        <module>pollfish</module>
-        <module>applovinsdk</module>
-        <module>facebook</module>
-        <module>fyber</module>
-        <module>inmobi</module>
-        <module>ironsource</module>
-        <module>appcenter</module>
-        <module>azure</module>
-        <module>unityads</module>
-        <module>youtube</module>
-        <module>adapty</module>
-        <module>singular</module>
-        <module>tenjin</module>
-        <module>cleverads</module>
-        <module>appsflyer</module>
-        <module>firebase</module>
-        <module>google-mobile-ads</module>
-    </modules>
 </project>

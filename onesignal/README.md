@@ -1,7 +1,9 @@
 # RoboPods for OneSignal
 
-## Available RoboPods
+## Official website
+https://github.com/OneSignal/OneSignal-iOS-SDK
 
+## Available RoboPods
 | RoboPods Version | OneSignal Version |
 |------------------|-------------------|
 | 1.55.0           | 5.2.15            |
@@ -9,38 +11,59 @@
 | 1.47.0           | 5.2.10            |
 | 1.46.0           | 5.2.9             |
 | 1.44.0-1.45.0    | 5.2.4-5.2.5       |
-| 1.42.0           | 5.2.2             |
-| 1.41.0           | 5.2.0             |
-| 1.40.0           | 5.1.6             |
-| 1.38.0 - 1.39.0  | 5.1.3 - 5.1.4     |
-| 1.37.0           | 5.1.0             |
-| 1.36.0           | 5.0.5             |
-| 1.35.0           | 5.0.4             |
-| 1.33.0           | 5.0.1             |
-| 1.30.0           | 3.12.4            |
-| 1.27.0           | 3.12.1            |
-| 1.24.0           | 3.11.2            |
-| 1.23.0           | 3.11.1            |
-| 1.22.0           | 3.10.2            |
-| 1.19.0           | 3.10.0            |
-| 1.18.0           | 3.5.3             |
-| 1.17.0           | 3.5.1             |
-| 1.16.0           | 3.4.1             |
-| 1.15.0           | 3.2.1             |
-| 1.14.0           | 3.1.0             |
-| 1.13.0           | 2.15.4            |
-| 1.11.0           | 2.15.3            |
-| 1.10.0           | 2.15.2            |
-| 1.9.0            | 2.14.3            |
-| 1.8.0            | 2.14.2            |
-| 1.7.1            | 2.13.1            |
-| 1.5.0            | 2.12.6            |
-| 1.4.0            | 2.11.2            |
-| 1.3.0            | 2.11.0            |
-| 1.2.0            | 2.10.0            |
-| 1.1.1            | 2.9.4             |
-| 1.1.0            | 2.6.0             |
 
-## Official website
+## Sample app
 
-https://github.com/OneSignal/OneSignal-iOS-SDK
+[Link](https://github.com/dkimitsa/robovm-samples/tree/alt/robopods/- `OneSignal/ios)
+
+## Install Instructions
+
+### 3rd party native framework
+This RoboPod requires you to add the following native frameworks:
+- OneSignalFramework
+- OneSignalCore
+- OneSignalOSCore
+- OneSignalNotifications
+- OneSignalOutcomes
+- OneSignalUser
+
+Optional frameworks:
+- OneSignalExtension
+- OneSignalInAppMessages
+- OneSignalLocation
+  These frameworks are not included into pod's `robovm.xml` and has to be added to application one if required:
+```
+<config>
+    ...
+    <frameworks>
+        <framework>OneSignalExtension</framework>
+        <framework>OneSignalInAppMessages</framework>
+        <framework>OneSignalLocation</framework>
+    </frameworks>
+</config>
+```
+
+### to use this pod configure your `robovm.xml`
+
+```
+<config>
+    ...
+    <frameworkPaths>
+        <path>libs</path>  <!-- path where - `OneSignal.framework is located -->
+    </frameworkPaths>
+</config>
+```
+
+### Gradle
+
+Add the following dependency to your `build.gradle`:
+
+```
+repositories {
+    maven { url 'https://central.sonatype.com/repository/maven-snapshots/' }
+}
+dependencies {
+   ... other dependencies ...
+   implementation "io.github.dkimitsa.robovm:robopods-- `OneSignal-ios:$altpodsVersion"
+}
+```

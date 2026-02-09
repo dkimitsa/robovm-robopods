@@ -1,5 +1,8 @@
 # RoboPods for HelpShiftX
 
+## Official website
+https://developers.helpshift.com
+
 ## Available RoboPods
 
 | RoboPods Version | HelpShift Version |
@@ -9,21 +12,33 @@
 | 1.46.0-1.54.0    | 10.4.0            |
 | 1.35.0-1.43.0    | 10.3.0-10.3.1     |
 | 1.33.0           | 10.2.3            |
-| 1.29.0           | 10.2.2            |
-| 1.19.0           | 7.11.2            |
-| 1.15.0           | 7.10.0            |
-| 1.13.0           | 7.9.1             |
-| 1.12.0           | 7.9.0             |
-| 1.10.0           | 7.8.2             |
-| 1.9.0            | 7.8.0             |
-| 1.7.1            | 7.7.1             |
-| 1.6.1            | 7.7.0             |
-| 1.5.0            | 7.6.3             |
-| 1.4.0            | 7.6.3             |
-| 1.3.0            | 7.6.2             |
-| 1.2.0            | 7.5.3             |
-| 1.1.1            | 7.3.0             |
 
-## Official website
+## Install Instructions
 
-https://developers.helpshift.com
+### 3rd party native framework
+This RoboPod requires you to add the native `libHelpshift.a` which is part of distribution package.
+
+### to use this pod configure your `robovm.xml`
+
+```
+<config>
+    ...
+    <libs>
+        <lib>libs/libHelpshift.a</lib>
+    </libs>
+</config>
+```
+
+### Gradle
+
+Add the following dependency to your `build.gradle`:
+
+```
+repositories {
+    maven { url 'https://central.sonatype.com/repository/maven-snapshots/' }
+}
+dependencies {
+   ... other dependencies ...
+   implementation "io.github.dkimitsa.robovm:robopods-helpshift-ios:$altpodsVersion"
+}
+```

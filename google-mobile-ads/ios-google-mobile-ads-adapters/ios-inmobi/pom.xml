@@ -2,11 +2,12 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>io.github.dkimitsa.robovm</groupId>
-        <version>1.56.0</version>
-        <artifactId>robopods-google-mobile-ads-adapters-parent</artifactId>
+        <version>2.3.24.0</version>
+        <artifactId>robopods-parent</artifactId>
     </parent>
 
     <artifactId>robopods-google-mobile-ads-inmobi-adapter-ios</artifactId>
+    <version>11.1.0.0</version>
     <name>RoboPods FireBase InMobi Ads Mediation Adapter iOS v11.1.0</name>
     <packaging>jar</packaging>
 
@@ -14,7 +15,7 @@
         <dependency>
             <groupId>io.github.dkimitsa.robovm</groupId>
             <artifactId>robopods-google-mobile-ads-ios</artifactId>
-            <version>${project.version}</version>
+            <version>12.14.0.0</version>
         </dependency>
         <dependency>
             <groupId>io.github.dkimitsa.robovm</groupId>

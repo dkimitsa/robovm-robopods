@@ -1,10 +1,7 @@
 # RoboPods for InMobi -- Monetization SDK for iOS
 
-## Available RoboPods
-
-| RoboPod                           | Description                               |
-|-----------------------------------|-------------------------------------------|
-| [ios-sdk](ios-sdk/)               | InMobi SDK                                |
+## Official website
+https://www.inmobi.com/sdk
 
 ## Versions
 
@@ -15,21 +12,29 @@
 | 1.52.0           | 10.8.6                  |
 | 1.49.0           | 10.8.3                  |
 | 1.46.0-1.48.0    | 10.8.0                  |
-| 1.42.0-1.43.0    | 10.7.4-10.7.5           |
-| 1.35.0-1.40.0    | 10.6.0-10.7.2           |
-| 1.33.0           | 10.5.8                  |
-| 1.31.0           | 10.1.4 (no api changes) |
-| 1.26.0           | 10.1.0                  |
-| 1.23.0           | 10.0.7                  |
-| 1.20.0           | 10.0.2                  |
-| 1.19.0           | 10.0.1                  |
-| 1.18.0           | 9.2.0                   |
-| 1.16.0           | 9.1.7                   |
-| 1.15.0           | 9.1.5                   |
-| 1.14.0           | 9.1.1                   |
-| 1.12.0           | 9.1.0                   |
-| 1.11.0           | 9.0.7                   |
 
-## Official website
+### to use this pod configure your `robovm.xml`
 
-https://www.inmobi.com/sdk
+```
+<config>
+    ...
+    <frameworkPaths>
+        <path>libs</path>  <!-- path where InMobiSDK.framework is located -->
+    </frameworkPaths>
+</config>
+```
+
+### Gradle
+
+Add the following dependency to your `build.gradle`:
+
+```
+repositories {
+    maven { url 'https://central.sonatype.com/repository/maven-snapshots/' }
+}
+dependencies {
+   ... other dependencies ...
+   implementation "io.github.dkimitsa.robovm:robopods-inmobi-sdk-ios:$altpodsVersion"
+}
+```
+

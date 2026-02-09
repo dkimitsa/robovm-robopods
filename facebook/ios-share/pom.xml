@@ -2,11 +2,12 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>io.github.dkimitsa.robovm</groupId>
-        <version>1.56.0</version>
-        <artifactId>robopods-facebook-parent</artifactId>
+        <version>2.3.24.0</version>
+        <artifactId>robopods-parent</artifactId>
     </parent>
 
     <artifactId>robopods-facebook-share-ios</artifactId>
+    <version>18.0.1.0</version>
     <name>RoboPods Facebook ShareKit iOS v18.0.1</name>
     <packaging>jar</packaging>
 

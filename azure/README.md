@@ -1,10 +1,8 @@
-# RoboPods for Microsoft Azure SDKs for iOS
+# Microsoft Azure Notification Hubs SDK for Apple
 
-## Available RoboPods
-
-| RoboPod                                                | Description                               |
-|--------------------------------------------------------|-------------------------------------------|
-| [ios-notification-hubs](ios-notification-hubs/)        | Azure Notification Hubs                   |
+## Official website
+https://github.com/Azure/azure-notificationhubs-ios
+https://azure.microsoft.com/en-us/documentation/services/notification-hubs
 
 ## Versions
 
@@ -14,6 +12,30 @@
 | 1.15.0            | 3.1.3               |
 | 1.14.0            | 3.1.2               |
 
-## Official website
 
-https://github.com/Azure/azure-notificationhubs-ios
+### Frameworks required for this pod:
+* WindowsAzureMessaging.framework
+
+### to use this pod configure your `robovm.xml`
+
+```
+<config>
+    ...
+    <frameworkPaths>
+        <path>libs</path>  <!-- path where WindowsAzureMessaging.framework is located -->
+    </frameworkPaths>
+</config>
+```
+
+### Gradle
+
+Add the following dependency to your `build.gradle`:
+
+```
+repositories {
+    maven { url 'https://central.sonatype.com/repository/maven-snapshots/' }
+}
+dependencies {
+   ... other dependencies ...
+   implementation "io.github.dkimitsa.robovm:robopods-azure-notification-hubs-ios:$altpodsVersion"
+}

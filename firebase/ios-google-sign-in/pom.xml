@@ -2,11 +2,12 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>io.github.dkimitsa.robovm</groupId>
-        <version>1.56.0</version>
-        <artifactId>robopods-firebase-parent</artifactId>
+        <version>2.3.24.0</version>
+        <artifactId>robopods-parent</artifactId>
     </parent>
 
     <artifactId>robopods-firebase-google-signin-ios</artifactId>
+    <version>9.0.0</version>
     <name>RoboPods FireBase Google Sign iOS v9.0.0</name>
     <packaging>jar</packaging>
 
