@@ -1,7 +1,9 @@
 # RoboPods for Singular SDK iOS
 
-## Available RoboPods
+## Official website
+https://www.singular.net
 
+## Available RoboPods
 | RoboPods Version | Singular Version |
 |------------------|------------------|
 | 1.56.0           | 12.9.2           |
@@ -9,17 +11,33 @@
 | 1.50.0           | 12.8.1           |
 | 1.49.0           | 12.8.0           |
 | 1.48.0           | 12.7.1           |
-| 1.46.0           | 12.6.1           |
-| 1.38.0-1.44.0    | 12.3.2-12.5.0    |
-| 1.35.0           | 12.2.0           |
-| 1.33.0           | 12.1.1           |
-| 1.32.0           | 12.0.6           |
-| 1.31.0           | 12.0.5           |
-| 1.28.0           | 12.0.1           |
-| 1.26.0           | 11.0.10          |
-| 1.23.0           | 11.0.5           |
-| 1.21.0           | 11.0.4           |
-| 1.20.0           | 11.0.3           |
 
-## Official website
-https://www.singular.net
+## Install Instructions
+
+### 3rd party native framework
+This RoboPod requires you to add the native `Singular.xcframework`.
+
+### to use this pod configure your `robovm.xml`
+
+```
+<config>
+    ...
+    <frameworkPaths>
+        <path>libs</path>  <!-- path where Singular.xcframework is located -->
+    </frameworkPaths>
+</config>
+```
+
+### Gradle
+
+Add the following dependency to your `build.gradle`:
+
+```
+repositories {
+    maven { url 'https://central.sonatype.com/repository/maven-snapshots/' }
+}
+dependencies {
+   ... other dependencies ...
+   implementation "io.github.dkimitsa.robovm:robopods-singular-ios:$altpodsVersion"
+}
+```

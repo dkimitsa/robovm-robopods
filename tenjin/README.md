@@ -1,7 +1,9 @@
 # RoboPods for Tenjin SDK iOS
 
-## Available RoboPods
+## Official website
+https://github.com/tenjin/tenjin-ios-sdk
 
+## Available RoboPods
 | RoboPods Version | Tenjin Version  |
 |------------------|-----------------|
 | 1.56.0           | 1.15.0          |
@@ -9,15 +11,34 @@
 | 1.48.0           | 1.14.8          |
 | 1.46.0           | 1.14.7          |
 | 1.44.0-1.45.0    | 1.14.4-1.14.5   |
-| 1.40.0           | 1.14.3          |
-| 1.39.0           | 1.14.1          |
-| 1.38.0           | 1.14.0          |
-| 1.37.0           | 1.13.0          |
-| 1.34.0-1.36.0    | 1.12.28-1.12.30 |
-| 1.33.0           | 1.12.27         |
-| 1.32.0           | 1.12.25         |
-| 1.29.0           | 1.12.22         |
-| 1.26.0           | 1.12.18         |
 
-## Official website
-https://github.com/tenjin/tenjin-ios-sdk
+
+## Install Instructions
+
+### 3rd party native framework
+This RoboPod requires you to add the native `libTenjinSDK.a`.
+
+### to use this pod configure your `robovm.xml`
+
+```
+<config>
+    ...
+    <libs>
+        <lib>libs/libTenjinSDK.a</lib>  <!-- path to libTenjinSDK.a -->
+    </libs>
+</config>
+```
+
+### Gradle
+
+Add the following dependency to your `build.gradle`:
+
+```
+repositories {
+    maven { url 'https://central.sonatype.com/repository/maven-snapshots/' }
+}
+dependencies {
+   ... other dependencies ...
+   implementation "io.github.dkimitsa.robovm:robopods-tenjin-ios:$altpodsVersion"
+}
+```

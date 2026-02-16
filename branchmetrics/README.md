@@ -1,4 +1,8 @@
 # RoboPods for BranchMetrics
+The Branch Metrics iOS SDK for deferred and contextual mobile deep linking
+
+## Official website
+https://github.com/BranchMetrics/ios-branch-deep-linking
 
 ## Available RoboPods
 
@@ -9,35 +13,38 @@
 | 1.49.0-1.52.0    | 3.12.1-3.12.2         |
 | 1.47.0           | 3.10.0                |
 | 1.46.0           | 3.8.0                 |
-| 1.45.0           | 3.6.4                 | 
-| 1.43.0-1.44.0    | 3.6.0-3.6.3           | 
-| 1.39.0-1.41.0    | 3.4.1-3.4.4           | 
-| 1.38.0           | 3.3.0                 | 
-| 1.35.0           | 3.0.0-3.0.1           |
-| 1.34.0           | 2.2.2                 |
-| 1.33.0           | 2.2.1                 |
-| 1.31.0           | 2.1.2                 |
-| 1.30.0           | 2.1.0                 |
-| 1.29.0           | 2.0.0                 |
-| 1.28.0           | 1.45.2                |
-| 1.27.0           | 1.44.0                |
-| 1.26.0           | 1.43.2                |
-| 1.24.0           | 1.43.1                |
-| 1.23.0           | 1.42.0                |
-| 1.17.0           | 1.39.3                |
-| 1.16.0           | 1.39.2                |
-| 1.15.0           | 1.38.0                |
-| 1.14.0           | 0.36.0                |
-| 1.12.0           | 0.35.1                |
-| 1.11.0           | 0.35.0                |
-| 1.8.0            | 0.34.0                |
-| 1.7.1            | 0.33.1                |
-| 1.5.0            | 0.31.4                |
-| 1.4.0            | 0.30.0                |
-| 1.3.0            | 0.28.1                |
-| 1.2.0            | 0.27.1                |
-| 1.1.1            | 0.25.10               |
 
-## Official website
+## Install Instructions
 
-https://github.com/BranchMetrics/ios-branch-deep-linking
+### 3rd party native framework
+This RoboPod requires you to add the native `Branch.framework`. Easiest way is to use [Carthage](https://github.com/Carthage/Carthage#installing-carthage):
+```
+echo 'github "BranchMetrics/ios-branch-deep-linking"' > Cartfile
+carthage update
+```
+
+### to use this pod configure your `robovm.xml`
+
+```
+<config>
+    ...
+    <frameworkPaths>
+        <path>libs</path>  <!-- path where Branch.framework is located -->
+    </frameworkPaths>
+</config>
+```
+
+### Gradle
+
+Add the following dependency to your `build.gradle`:
+
+```
+repositories {
+    maven { url 'https://central.sonatype.com/repository/maven-snapshots/' }
+}
+dependencies {
+   ... other dependencies ...
+   implementation "io.github.dkimitsa.robovm:robopods-branchmetrics-ios:$altpodsVersion"
+}
+```
+

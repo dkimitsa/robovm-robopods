@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>io.github.dkimitsa.robovm</groupId>
+    <version>0.0.0</version>
+    <artifactId>robopods-parent-dev</artifactId>
+    <name>RoboPods Build Aggregator (no install, no deploy)</name>
+    <packaging>pom</packaging>
+    <url>https://dkimitsa.github.io</url>
+    <description>aggregator of modules to build</description>
+    <inceptionYear>2017</inceptionYear>
+
+   <!-- this POM is not for deploy or install  -->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-install-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <!-- list of modules to build  -->
+    <modules>
+        <module>adapty</module>
+        <module>alt.parent</module>
+        <module>appcenter/ios-analytics</module>
+        <module>appcenter/ios-core</module>
+        <module>appcenter/ios-crashes</module>
+        <module>appcenter/ios-distribute</module>
+        <module>applovinsdk</module>
+        <module>appsflyer</module>
+        <module>azure</module>
+        <module>branchmetrics</module>
+        <module>charts</module>
+        <module>cleverads</module>
+        <module>facebook/ios-aem</module>
+        <module>facebook/ios-audience</module>
+        <module>facebook/ios-bom</module>
+        <module>facebook/ios-core</module>
+        <module>facebook/ios-core-basics</module>
+        <module>facebook/ios-gaming-services-kit</module>
+        <module>facebook/ios-login</module>
+        <module>facebook/ios-share</module>
+        <module>firebase/ios-analytics</module>
+        <module>firebase/ios-appcheck</module>
+        <module>firebase/ios-auth</module>
+        <module>firebase/ios-bom</module>
+        <module>firebase/ios-core</module>
+        <module>firebase/ios-crashlytics</module>
+        <module>firebase/ios-database</module>
+        <module>firebase/ios-firestore</module>
+        <module>firebase/ios-google-sign-in</module>
+        <module>firebase/ios-installations</module>
+        <module>firebase/ios-messaging</module>
+        <module>firebase/ios-remoteconfig</module>
+        <module>firebase/ios-storage</module>
+        <module>fyber</module>
+        <module>google-mobile-ads/ios-google-mobile-ads</module>
+        <module>google-mobile-ads/ios-google-mobile-ads-adapters/ios-applovin</module>
+        <module>google-mobile-ads/ios-google-mobile-ads-adapters/ios-facebook</module>
+        <module>google-mobile-ads/ios-google-mobile-ads-adapters/ios-inmobi</module>
+        <module>google-mobile-ads/ios-google-mobile-ads-mediation-testsuite</module>
+        <module>google-mobile-ads/ios-google-ump</module>
+        <module>helpshift</module>
+        <module>inmobi</module>
+        <module>ironsource</module>
+        <module>lottie</module>
+        <module>onesignal</module>
+        <module>pollfish</module>
+        <module>samkeychain</module>
+        <module>singular</module>
+        <module>tenjin</module>
+        <module>unityads</module>
+        <module>youtube</module>
+    </modules>
+
+</project>

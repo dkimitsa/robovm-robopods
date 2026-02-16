@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>io.github.dkimitsa.robovm</groupId>
+        <version>2.3.24.0</version>
+        <artifactId>robopods-parent</artifactId>
+    </parent>
+    <groupId>io.github.dkimitsa.robovm</groupId>
+    <artifactId>robopods-facebook-bom</artifactId>
+    <version>18.0.1.0</version>
+    <name>RoboPods Facebook BOM iOS v18.0.1.0</name>
+    <packaging>pom</packaging>
+    <url>https://dkimitsa.github.io</url>
+    <description>Bill of materials for Facebook</description>
+    <inceptionYear>2026</inceptionYear>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>io.github.dkimitsa.robovm</groupId>
+                <artifactId>robopods-facebook-aem-ios</artifactId>
+                <version>18.0.1.0</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.dkimitsa.robovm</groupId>
+                <artifactId>robopods-facebook-core-ios</artifactId>
+                <version>18.0.1.0</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.dkimitsa.robovm</groupId>
+                <artifactId>robopods-facebook-core-basics-ios</artifactId>
+                <version>18.0.1.0</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.dkimitsa.robovm</groupId>
+                <artifactId>robopods-facebook-gamingservicekit-ios</artifactId>
+                <version>18.0.1.0</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.dkimitsa.robovm</groupId>
+                <artifactId>robopods-facebook-login-ios</artifactId>
+                <version>18.0.1.0</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.dkimitsa.robovm</groupId>
+                <artifactId>robopods-facebook-share-ios</artifactId>
+                <version>18.0.1.0</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+</project>

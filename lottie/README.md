@@ -1,5 +1,8 @@
 # RoboPods for AirBNB Lottie
 
+## Official website
+https://github.com/airbnb/lottie-ios
+
 ## Available RoboPods
 
 | RoboPods Version | Lottie Version |
@@ -9,22 +12,41 @@
 | 1.34.0-1.40.0    | 4.3.3-4.4.3    |
 | 1.33.0           | 4.3.1          |
 | 1.31.0           | 4.2.0          |
-| 1.29.0           | 4.1.3          |
-| 1.28.0           | 4.0.1          |
-| 1.26.0           | 3.5.0          |
-| 1.24.0           | 3.4.0          |
-| 1.19.0           | 3.3.0          |
-| 1.17.0           | 3.2.3          |
-| 1.15.0           | 3.2.1          |
-| 1.14.0           | 3.1.9          |
-| 1.7.1            | 3.1.8          |
-| 1.5.0            | 3.1.6          |
-| 1.4.0            | 3.1.5          |
-| 1.3.0            | 3.1.2          |
-| 1.2.0            | 3.1.1          |
-| 1.1.1            | 2.5.2          |
-| 1.0.0            | 2.5.0          |
 
-## Official website
+## Sample app
 
-https://github.com/airbnb/lottie-ios
+[Link](https://github.com/dkimitsa/robovm-samples/tree/alt/robopods/lottie/ios)
+
+## Install Instructions
+
+### 3rd party native framework
+This RoboPod requires you to add the native `Lottie.framework`. Easiest way is to use [Carthage](https://github.com/Carthage/Carthage#installing-carthage):
+```
+echo 'github "airbnb/lottie-ios"' > Cartfile
+carthage update
+```
+
+### to use this pod configure your `robovm.xml`
+
+```
+<config>
+    ...
+    <frameworkPaths>
+        <path>libs</path>  <!-- path where Lottie.framework is located -->
+    </frameworkPaths>
+</config>
+```
+
+### Gradle
+
+Add the following dependency to your `build.gradle`:
+
+```
+repositories {
+    maven { url 'https://central.sonatype.com/repository/maven-snapshots/' }
+}
+dependencies {
+   ... other dependencies ...
+   implementation "io.github.dkimitsa.robovm:robopods-lottie-ios:$altpodsVersion"
+}
+```
