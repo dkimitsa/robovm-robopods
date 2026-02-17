@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.robovm.pods.facebook.core;
+package org.robovm.pods.facebook.login;
 
 /*<imports>*/
 import java.io.*;
@@ -31,38 +31,37 @@ import org.robovm.apple.foundation.*;
 import org.robovm.apple.dispatch.*;
 import org.robovm.apple.coregraphics.*;
 import org.robovm.apple.uikit.*;
-import org.robovm.apple.webkit.*;
 import org.robovm.apple.coreanimation.*;
-import org.robovm.apple.storekit.*;
+import org.robovm.pods.facebook.core.*;
 import org.robovm.pods.facebook.corebasics.*;
 /*</imports>*/
 
 /*<javadoc>*/
-/*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL)/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/FBSDKURLScheme/*</name>*/ 
-    extends /*<extends>*/CocoaUtility/*</extends>*/ 
-    /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/
-    /*</ptr>*/
-    /*<bind>*/static { Bro.bind(FBSDKURLScheme.class); }/*</bind>*/
+/*</javadoc>*/
+/*<annotations>*/@Marshaler(ValuedEnum.AsMachineSizedUIntMarshaler.class)/*</annotations>*/
+public enum /*<name>*/FBSDKAppSwitch/*</name>*/ implements ValuedEnum {
+    /*<values>*/
+    Disabled(0L),
+    Enabled(1L);
+    /*</values>*/
+
+    /*<bind>*/
+    /*</bind>*/
     /*<constants>*//*</constants>*/
-    /*<constructors>*//*</constructors>*/
-    /*<properties>*//*</properties>*/
-    /*<members>*//*</members>*/
-    /*<methods>*/
-    @GlobalValue(symbol="FBSDKURLSchemeFacebookAPI", optional=true)
-    public static native String FacebookAPI();
-    @GlobalValue(symbol="FBSDKURLSchemeMessengerApp", optional=true)
-    public static native String MessengerApp();
-    @GlobalValue(symbol="FBSDKURLSchemeFacebookAuth", optional=true)
-    public static native String FacebookAuth();
-    @GlobalValue(symbol="FBSDKURLSchemeHTTPS", optional=true)
-    public static native String HTTPS();
-    @GlobalValue(symbol="FBSDKURLSchemeHTTP", optional=true)
-    public static native String HTTP();
-    @GlobalValue(symbol="FBSDKURLSchemeWeb", optional=true)
-    public static native String Web();
-    /*</methods>*/
+    /*<methods>*//*</methods>*/
+
+    private final long n;
+
+    private /*<name>*/FBSDKAppSwitch/*</name>*/(long n) { this.n = n; }
+    public long value() { return n; }
+    public static /*<name>*/FBSDKAppSwitch/*</name>*/ valueOf(long n) {
+        for (/*<name>*/FBSDKAppSwitch/*</name>*/ v : values()) {
+            if (v.n == n) {
+                return v;
+            }
+        }
+        throw new IllegalArgumentException("No constant with value " + n + " found in " 
+            + /*<name>*/FBSDKAppSwitch/*</name>*/.class.getName());
+    }
 }

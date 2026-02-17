@@ -1481,6 +1481,7 @@ fun registerFacebook(frameworkRegistry: MutableMap<String, (String) -> Unit>, gr
             readmeFileVersionUpdater = { frm, modFolder, version ->
                 readmeFileVersionUpdater(frm, modFolder, version)
                 updateAggregatedReadmeFileVersionString(frm, moduleReadmeFile, modFolder, version)
+                updateModuleReadmeFileVersionString(frm, File("$modFolder/README.md"), version, "$version.0")
             },
             instruction = instruction
         )
@@ -1503,4 +1504,15 @@ fun registerFacebook(frameworkRegistry: MutableMap<String, (String) -> Unit>, gr
                     "FB_AD_SDK_VERSION")
             })
     }
+    registry["FacebookBOM"] = { framework ->
+        val version = facebookVersion
+        updatePomVersionString(framework, File("facebook/ios-bom/pom.xml"), version, pomVersion = "$version.0")
+        // update artifacts list in bom
+        with (PomUtils()) {
+            listSubmodules(File("facebook/"))
+                .filter { it.moduleDir != "ios-bom" && it.moduleDir != "ios-audience"}
+                .let { updateAggregatedPom(File("facebook/ios-bom/pom.xml"), it) }
+        }
+    }
+
 }

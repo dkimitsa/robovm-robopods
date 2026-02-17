@@ -35,6 +35,14 @@
 
     <!-- list of modules to build  -->
     <modules>
+        <module>facebook/ios-aem</module>
+        <module>facebook/ios-audience</module>
+        <module>facebook/ios-bom</module>
+        <module>facebook/ios-core</module>
+        <module>facebook/ios-core-basics</module>
+        <module>facebook/ios-gaming-services-kit</module>
+        <module>facebook/ios-login</module>
+        <module>facebook/ios-share</module>
         <module>firebase/ios-analytics</module>
         <module>firebase/ios-appcheck</module>
         <module>firebase/ios-auth</module>

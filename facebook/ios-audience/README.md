@@ -1,5 +1,10 @@
 # Facebook iOS Audience framework
 
+### Available RoboPods
+| RoboPods Version | Facebook Audience |
+|------------------|-------------------|
+| 6.21.0.0         | 6.21.0            |
+
 ### Use the dynamic version of frameworks
 It is available for a download as `FacebookSDK_Dynamic.framework.zip` and allows automatic swift dependency resolution. In case static linking is required swift libs should be specified manually in `robovm.xml`:
 ```xml
@@ -33,20 +38,6 @@ It is available for a download as `FacebookSDK_Dynamic.framework.zip` and allows
     </frameworkPaths>
 </config>
 ```
-
-## Versions
-
-| RoboPods Version | FBAudience Version |
-|------------------|--------------------|
-| 1.50.0-1.52.0    | 6.20.0-6.20.1      |
-| 1.24.0           | 6.11.1             |
-| 1.19.0           | 6.9.0              |
-| 1.12.0           | 6.0.0              |
-| 1.8.0            | 5.9.0              |
-| 1.7.1            | 5.8.0              |
-| 1.5.0            | 5.6.1              |
-| 1.4.0            | 5.6.0              |
-| 1.3.0            | 5.5.0              |
 
 ### Gradle
 
