@@ -71,6 +71,15 @@ classes:
                 name: configure
             '-configureDebugProviderWithAPIKey:completion:':
                 name: configureDebug
+            '-signInWithPresentingViewController:claims:completion:':
+                name: signIn
+            '-signInWithPresentingViewController:hint:claims:completion:':
+                name: signIn
+            '-signInWithPresentingViewController:hint:additionalScopes:claims:completion:':
+                name: signIn
+            '-signInWithPresentingViewController:hint:additionalScopes:nonce:claims:completion:':
+                name: signIn
+
     GIDSignInButton: {}
     GIDConfiguration:
         methods:
@@ -155,6 +164,7 @@ classes:
         methods:
             '-initWithUserAgentString:':
                 name: init
+    GIDClaim: { }
 protocols:
     GIDSignInDelegate:
         methods:
@@ -240,6 +250,10 @@ values:
         class: GTMSessionUploadFetcher
         static_class: Consts
         name: '#{g[0]}'
+
+    kAuthTimeClaimName:
+        class: GIDClaim
+        name: AuthTimeClaimName
 
     # Make sure we don't miss any values if new ones are introduced in a later version
     (.*):

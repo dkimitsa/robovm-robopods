@@ -1,6 +1,11 @@
 # Firebase iOS Installations framework
 The Firebase installations service (FIS) provides a Firebase installation ID (FID) for each installed instance of a Firebase app
 
+### Available RoboPods
+| RoboPods Version | Firebase Installations |
+|------------------|------------------------|
+| 12.9.0.0         | 12.9.0                 |
+
 ### Frameworks required for this pod: 
 * FirebaseInstallations.xcframework (from Firebase.zip/FirebaseAnalytics/FirebaseInstallations.xcframework)
 

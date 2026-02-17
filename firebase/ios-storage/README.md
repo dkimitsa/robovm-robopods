@@ -1,6 +1,11 @@
 # Firebase iOS Cloud Storage framework
 Cloud Storage is built for app developers who need to store and serve user-generated content, such as photos or videos.
 
+### Available RoboPods
+| RoboPods Version | Firebase Storage |
+|------------------|------------------|
+| 12.9.0.0         | 12.9.0           |
+
 ### Frameworks required for this pod:
 * FirebaseAppCheckInterop.xcframework (from Firebase.zip/FirebaseStorage/FirebaseAppCheckInterop.xcframework)
 * FirebaseAuthInterop.xcframework (from Firebase.zip/FirebaseStorage/FirebaseAuthInterop.xcframework)

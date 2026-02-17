@@ -1,5 +1,10 @@
 # Firebase iOS Analytics framework
 
+### Available RoboPods
+| RoboPods Version | FirebaseAnalytics  |
+|------------------|--------------------|
+| 12.9.0.0         | 12.9.0             |
+
 ### Frameworks required for this pod: 
 * FirebaseAnalytics.xcframework (from Firebase.zip/FirebaseAnalytics/FirebaseAnalytics.xcframework)
 

@@ -11,6 +11,7 @@
 #endif
 
 #import "GIDAppCheckError.h"
+#import "GIDClaim.h"
 #import "GIDConfiguration.h"
 #import "GIDGoogleUser.h"
 #import "GIDProfileData.h"

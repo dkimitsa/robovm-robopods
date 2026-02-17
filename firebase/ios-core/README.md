@@ -1,5 +1,10 @@
 # Firebase iOS Core framework
 
+### Available RoboPods
+| RoboPods Version | FirebaseCore  |
+|------------------|---------------|
+| 12.9.0.0         | 12.9.0        |
+
 ### Frameworks required for this pod: 
 * FBLPromises.xcframework (from Firebase.zip/FirebaseAnalytics/FBLPromises.xcframework)
 * FirebaseCore.xcframework (from Firebase.zip/FirebaseAnalytics/FirebaseCore.xcframework)

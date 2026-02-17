@@ -1,5 +1,10 @@
 # Firebase iOS Messaging framework
 
+### Available RoboPods
+| RoboPods Version | Firebase Messaging |
+|------------------|--------------------|
+| 12.9.0.0         | 12.9.0             |
+
 ### Frameworks required for this pod: 
 * FirebaseMessaging.xcframework (from Firebase.zip/FirebaseMessaging/FirebaseMessaging.xcframework)
 * GoogleDataTransport.xcframework (from Firebase.zip/FirebaseMessaging/GoogleDataTransport.xcframework

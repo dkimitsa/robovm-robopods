@@ -31,6 +31,7 @@
 #import "FIRLoadBundleTask.h"
 #import "FIRLocalCacheSettings.h"
 #import "FIRPersistentCacheIndexManager.h"
+#import "FIRPipelineBridge.h"
 #import "FIRQuery.h"
 #import "FIRQuerySnapshot.h"
 #import "FIRSnapshotListenOptions.h"

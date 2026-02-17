@@ -520,7 +520,7 @@ fun processInternal(
     headersCopier: (framework: String, sourceHeadersDir: File, destinationHeadersDir: File) -> Unit,
     javaFolderCleaner: (framework: String, destinationJavaDir: File) -> Unit,
     broGenExecutor: (framework: String, javaFolder: File, yamlFile: File) -> Unit,
-    pomVersionStringUpdater: (framework: String, pomFile: File, version: String) -> Unit,
+    pomVersionStringUpdater: (framework: String, pomFile: File, version: String, pomVersion: String) -> Unit,
     readmeFileVersionUpdater: (framework: String, moduleFolder: String, version: String) -> Unit
 ) {
     if (interactive) {
@@ -535,12 +535,13 @@ fun processInternal(
     }
 
     val version = versionProvider()
+    val pomVersion = version + ".0"
     log.d("$framework: version $version")
     headerFolderCleaner(framework, destinationHeadersDir)
     headersCopier(framework, sourceHeadersDir, destinationHeadersDir)
     javaFolderCleaner(framework, javaFolder)
     broGenExecutor(framework, javaFolder, yamlFile)
-    pomVersionStringUpdater(framework, pomFile, version)
+    pomVersionStringUpdater(framework, pomFile, version, pomVersion)
     readmeFileVersionUpdater(framework, moduleFolder, version)
 }
 
@@ -643,12 +644,14 @@ fun getPomVersionString(framework: String, pomFile: File): String? {
         ?: error("'iOS v' is missing in artifact <name> in ${pomFile.canonicalPath}")
 }
 
-fun updatePomVersionString(framework: String, pomFile: File, version: String) {
+fun updatePomVersionString(framework: String, pomFile: File, version: String, pomVersion: String) {
     // updating version string in pom file
     pomFile.requiresIsFile { "$framework is missing pom.xml ${pomFile.canonicalPath}" }
-    val artifactTitleWithVersion = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(pomFile)
-        .getElementByTagName("name")?.getTextValue()
+    val document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(pomFile)
+    val artifactTitleWithVersion = document.getElementByTagName("name")?.getTextValue()
         ?: error("Failed to get <name> from ${pomFile.canonicalPath}")
+    val artifactVersion = document.getElementByTagName("version")?.getTextValue()
+        ?: error("Failed to get <version> from ${pomFile.canonicalPath}")
     val artifactTitle =
         artifactTitleWithVersion.indexOf("iOS v").takeIf { it > 0 }
             ?.let { artifactTitleWithVersion.substring(0, it).trim() }
@@ -658,7 +661,11 @@ fun updatePomVersionString(framework: String, pomFile: File, version: String) {
     val newTitle = "$artifactTitle iOS v${version}"
     log.i("$framework:  Replacing <name> from: $artifactTitleWithVersion")
     log.i("$framework:                   with: $newTitle")
-    pomFile.readText().replaceFirst(artifactTitleWithVersion, newTitle).run { pomFile.writeText(this) }
+    log.i("$framework:  Updating <version> to: $pomVersion")
+    pomFile.readText()
+        .replaceFirst(artifactTitleWithVersion, newTitle)
+        .replaceFirst("<version>$artifactVersion</version>", "<version>$pomVersion</version>")
+        .run { pomFile.writeText(this) }
 }
 
 fun updateReadmeFileVersionString(framework: String, moduleFolder: String, version: String) {
@@ -690,7 +697,8 @@ fun updateReadmeFileVersionString(framework: String, moduleFolder: String, versi
     }
 }
 
-fun updateModuleReadmeFileVersionString(framework: String, moduleReadmeFile: File, moduleFolder: String, version: String) {
+/// updates aggregated readme file, table that contain module link, updates its version
+fun updateAggregatedReadmeFileVersionString(framework: String, moduleReadmeFile: File, moduleFolder: String, version: String) {
     // updating the version in README file
     synchronized(readmeFile) {
         var original: String? = null
@@ -717,6 +725,55 @@ fun updateModuleReadmeFileVersionString(framework: String, moduleReadmeFile: Fil
     }
 }
 
+/// updates aggregated readme file, table that contain module link, updates its version
+fun updateModuleReadmeFileVersionString(framework: String, moduleReadmeFile: File, version: String, podVersion: String) {
+    // updating the version in README file
+    synchronized(readmeFile) {
+        var original: String? = null
+        var replacement: String? = null
+        moduleReadmeFile.requiresIsFile { "$framework is missing ${moduleReadmeFile.canonicalPath}" }
+        var versionLineDetected = 0
+        val resultLines = mutableListOf<String>()
+        moduleReadmeFile.readLines().map { line ->
+            when {
+                line.contains("RoboPods Version") -> {
+                    versionLineDetected = 1
+                    resultLines.add(line)
+                }
+                versionLineDetected == 1 -> {
+                    versionLineDetected = if (line.contains("---")) 2 else 0
+                    resultLines.add(line)
+                }
+                versionLineDetected == 2 -> {
+                    versionLineDetected = 3 // end of story
+                    val cols = line.split("|").toMutableList()
+                    if (cols.size == 4) {
+                        // first version line, insert new or update existing
+                        original = cols[1].trim()
+                        replacement = podVersion
+                        val sdkVersion = cols[2].trim()
+
+                        cols[1] = " $podVersion".padEnd(cols[1].length)
+                        cols[2] = " $version".padEnd(cols[2].length)
+                        resultLines.add(cols.joinToString("|"))
+                        if (sdkVersion != version) {
+                            // version changed, adding on top
+                            resultLines.add(line)
+                        }
+                    } else resultLines.add(line)
+                }
+                else -> resultLines.add(line)
+            }
+        }
+
+        if (replacement == null || original == null)
+            error("$framework version entry is not found in ${moduleReadmeFile.canonicalPath}")
+        log.i("$framework:  Replacing README.md version from: $original")
+        log.i("$framework:                                to: $replacement")
+        moduleReadmeFile.writeText(resultLines.joinToString(System.lineSeparator()))
+    }
+}
+
 // common framework processing code
 fun processFramework(
     artifact: String,
@@ -731,7 +788,7 @@ fun processFramework(
     headersCopier: (framework: String, sourceHeadersDir: File, destinationHeadersDir: File) -> Unit = ::copyHeaders,
     broGenExecutor: (framework: String, javaFolder: File, yamlFile: File) -> Unit = ::execBroGen,
     javaFolderCleaner: (framework: String, destinationJavaDir: File) -> Unit = ::cleanUpJava,
-    pomVersionStringUpdater: (framework: String, pomFile: File, version: String) -> Unit = ::updatePomVersionString,
+    pomVersionStringUpdater: (framework: String, pomFile: File, version: String, pomVersion: String) -> Unit = ::updatePomVersionString,
     readmeFileVersionUpdater: (framework: String, moduleFolder: String, version: String) -> Unit = ::updateReadmeFileVersionString,
 ) {
     log.d("$artifact:  <<<< starting processing")
@@ -906,6 +963,71 @@ fun oneTimeReadmeUpdater(versionOverrideProvider: (() -> String)? = null): (Stri
     return updater::readmeUpdater
 }
 
+
+/// pom.xml related manipulations
+data class ArtifactId(val groupId: String, val id: String, val version: String, val moduleDir: String)
+class PomUtils{
+    fun Element.getChildText(tag: String): String? = getElementByTagName(tag)?.textContent
+
+    fun parsePom(aggregatorDir: File, pom: File): ArtifactId {
+        val doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(pom)
+        val project = doc.documentElement
+        val parent = project.getElementsByTagName("parent").item(0) as? Element
+
+        val groupId = project.getChildText("groupId") ?: parent?.getChildText("groupId") ?: throw IllegalStateException("groupId missing")
+        val version = project.getChildText("version") ?: parent?.getChildText("version") ?: throw IllegalStateException("version missing")
+        val id = project.getChildText("artifactId") ?: throw IllegalStateException("artifactId missing")
+        val moduleDir = pom.parentFile.relativeTo(aggregatorDir).invariantSeparatorsPath
+        return ArtifactId(groupId = groupId, id = id, version = version, moduleDir = moduleDir)
+    }
+
+    fun listSubmodules(dir: File): List<ArtifactId> {
+        return dir.listFiles { it.isDirectory }
+            ?.mapNotNull { File(it, "pom.xml").takeIf { it.isFile } }
+            ?.map { parsePom(aggregatorDir = dir, it) }
+            ?.sortedBy { it.moduleDir }
+            ?: emptyList()
+    }
+
+    fun updateAggregatedPom(pom: File, modules: List<ArtifactId>) {
+        var progress = 0
+        val resultPom = mutableListOf<String>()
+        pom.forEachLine { line ->
+            when {
+                progress == 0 && line.contains("<dependencyManagement>") -> {
+                    resultPom.add(line)
+                    progress = 1
+                }
+                progress == 1 && line.contains("<dependencies>") -> {
+                    resultPom.add(line)
+                    progress = 2
+
+                    // drop all modules
+                    modules.forEach {
+                        resultPom.add("            <dependency>")
+                        resultPom.add("                <groupId>${it.groupId}</groupId>")
+                        resultPom.add("                <artifactId>${it.id}</artifactId>")
+                        resultPom.add("                <version>${it.version}</version>")
+                        resultPom.add("            </dependency>")
+                    }
+                }
+                progress == 2 && line.contains("</dependencies>") -> {
+                    resultPom.add(line)
+                    progress = -1 // end of story
+                }
+                progress == 2 -> {} // just skip line while inside dep
+                else -> {
+                    // default case
+                    if (progress > 0) progress = -1
+                    resultPom.add(line)
+                }
+            }
+        }
+        pom.writeText(resultPom.joinToString(System.lineSeparator()))
+    }
+}
+
+
 class GroupFrameworkRegister(
     private val groupName: String,
     private val frameworkRegistry: MutableMap<String, (String) -> Unit>,
@@ -1009,7 +1131,8 @@ fun registerFirebase(frameworkRegistry: MutableMap<String, (String) -> Unit>, gr
             version = { versionProvider[versionKey] },
             readmeFileVersionUpdater = { frm, modFolder, version ->
                 readmeUpdater(frm, modFolder, version)
-                updateModuleReadmeFileVersionString(frm, moduleReadmeFile, modFolder, version)
+                updateModuleReadmeFileVersionString(frm, File("$modFolder/README.md"), version, "$version.0")
+                updateAggregatedReadmeFileVersionString(frm, moduleReadmeFile, modFolder, version)
             },
             instruction = firebaseInstallInstruction,
             interactiveValidateHeaderFolder = interactiveValidateHeaderFolder,
@@ -1164,6 +1287,16 @@ fun registerFirebase(frameworkRegistry: MutableMap<String, (String) -> Unit>, gr
     registry["FirebaseInstallations"] = { framework -> action(framework, "firebase/ios-installations", "firebase-installations.yaml",
         frameworkLocation = pickLocation("FirebaseInstallations", "FirebaseAnalytics"))
     }
+    registry["FirebaseBOM"] = { framework ->
+        val version = versionProvider["Firebase"]
+        updatePomVersionString(framework, File("firebase/ios-bom/pom.xml"), version, pomVersion = "$version.0")
+        // update artifacts list in bom
+        with (PomUtils()) {
+            listSubmodules(File("firebase/"))
+                .filter { it.moduleDir != "ios-bom" }
+                .let { updateAggregatedPom(File("firebase/ios-bom/pom.xml"), it) }
+        }
+    }
 }
 
 fun registerMobileAds(frameworkRegistry: MutableMap<String, (String) -> Unit>, groupRegistry: MutableMap<String, MutableList<String>>) {
@@ -1186,7 +1319,7 @@ fun registerMobileAds(frameworkRegistry: MutableMap<String, (String) -> Unit>, g
             instruction = instructions(artifactLocation.toString()),
             readmeFileVersionUpdater = { frm, modFolder, version ->
                 val moduleReadmeFile = Path.of("google-mobile-ads/README.md").toFile()
-                updateModuleReadmeFileVersionString(frm, moduleReadmeFile, modFolder, version)
+                updateAggregatedReadmeFileVersionString(frm, moduleReadmeFile, modFolder, version)
                 updateReadmeFileVersionString(frm, "google-mobile-ads", version)
             }
         )
@@ -1203,7 +1336,7 @@ fun registerMobileAds(frameworkRegistry: MutableMap<String, (String) -> Unit>, g
             instruction = instructions(artifactLocation.toString()),
             readmeFileVersionUpdater = { frm, modFolder, version ->
                 val moduleReadmeFile = Path.of("google-mobile-ads/README.md").toFile()
-                updateModuleReadmeFileVersionString(frm, moduleReadmeFile, modFolder, version)
+                updateAggregatedReadmeFileVersionString(frm, moduleReadmeFile, modFolder, version)
             }
         )
     }
@@ -1230,7 +1363,7 @@ fun registerMobileAds(frameworkRegistry: MutableMap<String, (String) -> Unit>, g
             """.trimIndent(),
             readmeFileVersionUpdater = { frm, modFolder, version ->
                 val moduleReadmeFile = Path.of("Firebase/README.md").toFile()
-                updateModuleReadmeFileVersionString(frm, moduleReadmeFile, modFolder, version)
+                updateAggregatedReadmeFileVersionString(frm, moduleReadmeFile, modFolder, version)
             }
         )
     }
@@ -1256,7 +1389,7 @@ fun registerMobileAds(frameworkRegistry: MutableMap<String, (String) -> Unit>, g
                 3. expected location ${downloadFolder.extend("AppLovinAdapter/AppLovinAdapter.xcframework/ios-arm64_armv7/")}
             """.trimIndent(),
             readmeFileVersionUpdater = { frm, modFolder, version ->
-                updateModuleReadmeFileVersionString(frm, moduleReadmeFile, modFolder, version)
+                updateAggregatedReadmeFileVersionString(frm, moduleReadmeFile, modFolder, version)
             }
         )
     }
@@ -1276,7 +1409,7 @@ fun registerMobileAds(frameworkRegistry: MutableMap<String, (String) -> Unit>, g
                 3. expected location ${downloadFolder.extend("MetaAdapter/MetaAdapter.xcframework/ios-arm64/")}
             """.trimIndent(),
             readmeFileVersionUpdater = { frm, modFolder, version ->
-                updateModuleReadmeFileVersionString(frm, moduleReadmeFile, modFolder, version)
+                updateAggregatedReadmeFileVersionString(frm, moduleReadmeFile, modFolder, version)
             },
         )
     }
@@ -1296,7 +1429,7 @@ fun registerMobileAds(frameworkRegistry: MutableMap<String, (String) -> Unit>, g
                 3. expected location ${downloadFolder.extend("InMobiAdapter/InMobiAdapter.xcframework/ios-arm64_armv7/")}
             """.trimIndent(),
             readmeFileVersionUpdater = { frm, modFolder, version ->
-                updateModuleReadmeFileVersionString(frm, moduleReadmeFile, modFolder, version)
+                updateAggregatedReadmeFileVersionString(frm, moduleReadmeFile, modFolder, version)
             },
         )
     }
@@ -1347,7 +1480,7 @@ fun registerFacebook(frameworkRegistry: MutableMap<String, (String) -> Unit>, gr
             version = versionProvider,
             readmeFileVersionUpdater = { frm, modFolder, version ->
                 readmeFileVersionUpdater(frm, modFolder, version)
-                updateModuleReadmeFileVersionString(frm, moduleReadmeFile, modFolder, version)
+                updateAggregatedReadmeFileVersionString(frm, moduleReadmeFile, modFolder, version)
             },
             instruction = instruction
         )

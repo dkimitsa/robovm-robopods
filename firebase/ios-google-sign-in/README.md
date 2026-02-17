@@ -1,5 +1,10 @@
 # Firebase iOS Google SignIn framework
 
+### Available RoboPods
+| RoboPods Version | Google SignIn  |
+|------------------|----------------|
+| 9.1.0.0          | 9.1.0          |
+
 ### Frameworks required for this pod: 
 * AppAuth.xcframework (from Firebase.zip/GoogleSignIn/AppAuth.xcframework)
 * AppCheckCore.xcframework (from Firebase.zip/GoogleSignIn/AppCheckCore.xcframework)

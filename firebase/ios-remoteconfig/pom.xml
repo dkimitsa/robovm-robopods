@@ -7,8 +7,8 @@
     </parent>
 
     <artifactId>robopods-firebase-remote-config-ios</artifactId>
-    <version>12.7.0.0</version>
-    <name>RoboPods FireBase RemoteConfig iOS v12.7.0</name>
+    <version>12.9.0.0</version>
+    <name>RoboPods FireBase RemoteConfig iOS v12.9.0</name>
     <packaging>jar</packaging>
 
     <dependencies>

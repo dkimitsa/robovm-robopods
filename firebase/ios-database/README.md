@@ -1,5 +1,10 @@
 # Firebase iOS Realtime Database framework
 
+### Available RoboPods
+| RoboPods Version | FirebaseDatabase |
+|------------------|------------------|
+| 12.9.0.0         | 12.9.0           |
+
 ### Frameworks required for this pod: 
 * FirebaseAppCheckInterop.xcframework (from Firebase.zip/FirebaseDatabase/FirebaseAppCheckInterop.xcframework)
 * FirebaseDatabase.xcframework (from Firebase.zip/FirebaseDatabase/FirebaseDatabase.xcframework)
