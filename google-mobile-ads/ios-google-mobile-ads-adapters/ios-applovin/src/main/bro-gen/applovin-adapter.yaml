@@ -3,7 +3,7 @@ framework: AppLovinAdapter
 include:
     - foundation
     - ../../../../../ios-google-mobile-ads/src/main/bro-gen/gad.yaml
-    - ../../../../../../applovinsdk/ios/src/main/bro-gen/applovinsdk.yaml
+    - ../../../../../../applovinsdk/src/main/bro-gen/applovinsdk.yaml
 clang_args: ['-x', 'objective-c']
 headers: 
     - AppLovinAdapter.h

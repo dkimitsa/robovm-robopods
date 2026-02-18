@@ -28,31 +28,33 @@ import org.robovm.rt.bro.*;
 import org.robovm.rt.bro.annotation.*;
 import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
+import org.robovm.apple.uikit.*;
 import org.robovm.pods.google.mobileads.*;
-import org.robovm.pods.applovinsdk.*;
 /*</imports>*/
 
 /*<javadoc>*/
 
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/GADMediationAdapterAppLovin/*</name>*/ 
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/GADMediationAdapterFacebook/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*/implements GADRTBAdapter/*</implements>*/ {
 
-    /*<ptr>*/public static class GADMediationAdapterAppLovinPtr extends Ptr<GADMediationAdapterAppLovin, GADMediationAdapterAppLovinPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(GADMediationAdapterAppLovin.class); }/*</bind>*/
+    /*<ptr>*/public static class GADMediationAdapterFacebookPtr extends Ptr<GADMediationAdapterFacebook, GADMediationAdapterFacebookPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(GADMediationAdapterFacebook.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public GADMediationAdapterAppLovin() {}
-    protected GADMediationAdapterAppLovin(Handle h, long handle) { super(h, handle); }
-    protected GADMediationAdapterAppLovin(SkipInit skipInit) { super(skipInit); }
+    public GADMediationAdapterFacebook() {}
+    protected GADMediationAdapterFacebook(Handle h, long handle) { super(h, handle); }
+    protected GADMediationAdapterFacebook(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
     
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
+    @Method(selector = "getPlacementIDFromCredentials:")
+    public static native String getPlacementIDFromCredentials(GADMediationCredentials credentials);
     @Method(selector = "collectSignalsForRequestParameters:completionHandler:")
     public native void collectSignals(GADRTBRequestParameters params, @Block VoidBlock2<NSString, NSError> completionHandler);
     @Method(selector = "loadBannerForAdConfiguration:completionHandler:")

@@ -28,28 +28,21 @@ import org.robovm.rt.bro.*;
 import org.robovm.rt.bro.annotation.*;
 import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
+import org.robovm.apple.uikit.*;
 import org.robovm.pods.google.mobileads.*;
-import org.robovm.pods.applovinsdk.*;
 /*</imports>*/
 
 /*<javadoc>*/
 
 /*</javadoc>*/
 /*<annotations>*/@Marshaler(ValuedEnum.AsMachineSizedSIntMarshaler.class)/*</annotations>*/
-public enum /*<name>*/GADMAdapterAppLovinErrorCode/*</name>*/ implements ValuedEnum {
+public enum /*<name>*/GADFBErrorCode/*</name>*/ implements ValuedEnum {
     /*<values>*/
-    BannerSizeMismatch(101L),
-    InvalidServerParameters(102L),
-    Show(103L),
-    AdAlreadyLoaded(104L),
-    MissingSDKKey(105L),
-    EmptyBidToken(107L),
-    UnsupportedAdFormat(108L),
-    ChildUser(112L),
-    AppLovinSDKNotInitialized(113L),
-    FailedToReturnBidToken(114L),
-    MissingAdUnitID(115L),
-    AdNotReady(116L);
+    InvalidRequest(101L),
+    AdObjectNil(103L),
+    AdNotValid(104L),
+    RootViewControllerNil(105L),
+    InitializationFailure(106L);
     /*</values>*/
 
     /*<bind>*/
@@ -59,15 +52,15 @@ public enum /*<name>*/GADMAdapterAppLovinErrorCode/*</name>*/ implements ValuedE
 
     private final long n;
 
-    private /*<name>*/GADMAdapterAppLovinErrorCode/*</name>*/(long n) { this.n = n; }
+    private /*<name>*/GADFBErrorCode/*</name>*/(long n) { this.n = n; }
     public long value() { return n; }
-    public static /*<name>*/GADMAdapterAppLovinErrorCode/*</name>*/ valueOf(long n) {
-        for (/*<name>*/GADMAdapterAppLovinErrorCode/*</name>*/ v : values()) {
+    public static /*<name>*/GADFBErrorCode/*</name>*/ valueOf(long n) {
+        for (/*<name>*/GADFBErrorCode/*</name>*/ v : values()) {
             if (v.n == n) {
                 return v;
             }
         }
         throw new IllegalArgumentException("No constant with value " + n + " found in " 
-            + /*<name>*/GADMAdapterAppLovinErrorCode/*</name>*/.class.getName());
+            + /*<name>*/GADFBErrorCode/*</name>*/.class.getName());
     }
 }

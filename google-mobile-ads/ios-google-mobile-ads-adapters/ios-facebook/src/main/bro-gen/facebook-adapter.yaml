@@ -12,12 +12,12 @@ private_typedefs:
 
 enums:
     GADFBAdFormat: {}
-
+    GADFBErrorCode: {prefix: GADFBError}
 typed_enums:
 
 classes:
     GADFBNetworkExtras: {}
-
+    GADMediationAdapterFacebook: {}
 protocols:
 
 functions:

@@ -1366,60 +1366,78 @@ fun registerMobileAds(frameworkRegistry: MutableMap<String, (String) -> Unit>, g
     val moduleReadmeFile = Path.of("google-mobile-ads/ios-google-mobile-ads-adapters/README.md").toFile()
     adaptersRegistry["AppLovinAdapter"] = { framework ->
         val artifact = "$framework.framework"
-        val artifactLocation =
-            downloadFolder.extend("AppLovinAdapter/AppLovinAdapter.xcframework/ios-arm64/$artifact")
+        // plist contains version without .0 suffix added by google, pick version from directory name
+        val locationWithVersion = downloadFolder.listFiles()?.filter { it.isDirectory && it.name.startsWith("AppLovinAdapter-") }
+            ?.let { if (it.size == 1) it[0] else null }
+        val artifactLocation = locationWithVersion?.let { File(it, "/AppLovinAdapter.xcframework/ios-arm64/$artifact") }
+            ?: downloadFolder.extend("AppLovinAdapter/AppLovinAdapter.xcframework/ios-arm64/$artifact")
+        val versionProvider: () -> String = locationWithVersion?.let { { it.name.substringAfter("-") } }
+            ?: { artifactLocation.infoPlist.extractVersion() }
         processFramework(
             artifact = artifact,
             moduleFolder = "google-mobile-ads/ios-google-mobile-ads-adapters/ios-applovin",
             sourceHeadersDir = artifactLocation.headers,
             yaml = "applovin-adapter.yaml",
-            version = { artifactLocation.infoPlist.extractVersion() },
+            version = versionProvider,
             instruction = """
                 1. download AppLovinAdapter-X.X.X.X.zip from https://developers.google.com/admob/ios/mediation/applovin#applovin-ios-mediation-adapter-changelog
                 2. extract and rename folder to AppLovinAdapter
                 3. expected location ${downloadFolder.extend("AppLovinAdapter/AppLovinAdapter.xcframework/ios-arm64_armv7/")}
             """.trimIndent(),
             readmeFileVersionUpdater = { frm, modFolder, version ->
+                updateModuleReadmeFileVersionString(frm, File("$modFolder/README.md"), version, "$version.0")
                 updateAggregatedReadmeFileVersionString(frm, moduleReadmeFile, modFolder, version)
             }
         )
     }
     adaptersRegistry["MetaAdapter"] = { framework ->
         val artifact = "$framework.framework"
-        val artifactLocation =
-            downloadFolder.extend("MetaAdapter/MetaAdapter.xcframework/ios-arm64/$artifact")
+        // plist contains version without .0 suffix added by google, pick version from directory name
+        val locationWithVersion = downloadFolder.listFiles()?.filter {  it.isDirectory && it.name.startsWith("MetaAdapter-") }
+            ?.let { if (it.size == 1) it[0] else null }
+        val artifactLocation = locationWithVersion?.let { File(it, "MetaAdapter.xcframework/ios-arm64/$artifact") }
+            ?: downloadFolder.extend("MetaAdapter/MetaAdapter.xcframework/ios-arm64/$artifact")
+        val versionProvider: () -> String = locationWithVersion?.let { { it.name.substringAfter("-") } }
+            ?: { artifactLocation.infoPlist.extractVersion() }
         processFramework(
             artifact = artifact,
             moduleFolder = "google-mobile-ads/ios-google-mobile-ads-adapters/ios-facebook",
             sourceHeadersDir = artifactLocation.headers,
             yaml = "facebook-adapter.yaml",
-            version = { artifactLocation.infoPlist.extractVersion() },
+            version = versionProvider,
             instruction = """
                 1. download MetaAdapter-X.X.X.X.zip from https://developers.google.com/admob/ios/mediation/meta#meta-audience-network-ios-mediation-adapter-changelog
                 2. extract and rename folder to MetaAdapter 
                 3. expected location ${downloadFolder.extend("MetaAdapter/MetaAdapter.xcframework/ios-arm64/")}
             """.trimIndent(),
             readmeFileVersionUpdater = { frm, modFolder, version ->
+                updateModuleReadmeFileVersionString(frm, File("$modFolder/README.md"), version, "$version.0")
                 updateAggregatedReadmeFileVersionString(frm, moduleReadmeFile, modFolder, version)
             },
         )
     }
     adaptersRegistry["InMobiAdapter"] = { framework ->
         val artifact = "$framework.framework"
-        val artifactLocation =
-            downloadFolder.extend("InMobiAdapter/InMobiAdapter.xcframework/ios-arm64/$artifact")
+        // plist contains version without .0 suffix added by google, pick version from directory name
+        val locationWithVersion = downloadFolder.listFiles()?.filter {  it.isDirectory && it.name.startsWith("InMobiAdapter-") }
+            ?.let { if (it.size == 1) it[0] else null }
+        val artifactLocation = locationWithVersion?.let { File(it, "InMobiAdapter.xcframework/ios-arm64/$artifact") }
+            ?: downloadFolder.extend("InMobiAdapter/InMobiAdapter.xcframework/ios-arm64/$artifact")
+        val versionProvider: () -> String = locationWithVersion?.let { { it.name.substringAfter("-") } }
+            ?: { artifactLocation.infoPlist.extractVersion() }
         processFramework(
             artifact = artifact,
             moduleFolder = "google-mobile-ads/ios-google-mobile-ads-adapters/ios-inmobi",
             sourceHeadersDir = artifactLocation.headers,
             yaml = "inmobi-adapter.yaml",
-            version = { artifactLocation.infoPlist.extractVersion() },
+            version = versionProvider,
             instruction = """
                 1. download InMobiAdapter-X.X.X.X.zip from https://developers.google.com/admob/ios/mediation/inmobi#inmobi-ios-mediation-adapter-changelog
                 2. extract and rename folder to InMobiAdapter 
                 3. expected location ${downloadFolder.extend("InMobiAdapter/InMobiAdapter.xcframework/ios-arm64_armv7/")}
             """.trimIndent(),
             readmeFileVersionUpdater = { frm, modFolder, version ->
+                updateModuleReadmeFileVersionString(frm, File("$modFolder/README.md"), version, "$version.0")
                 updateAggregatedReadmeFileVersionString(frm, moduleReadmeFile, modFolder, version)
             },
         )
