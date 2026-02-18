@@ -8,6 +8,7 @@ https://github.com/AppLovin/AppLovin-MAX-SDK-iOS
 
 | RoboPods Version | AppLovinSDK Version |
 |------------------|---------------------|
+| 13.6.0.0         | 13.6.0              |
 | 1.55.0-1.56.0    | 13.5.0-13.5.1       |
 | 1.53.0           | 13.4.0              |
 | 1.49.0-1.50.0    | 13.3.0-13.3.1       |
@@ -85,4 +86,3 @@ public class MyViewController extends UIViewController implements ALAdLoadDelega
     }
 }
 ```
-

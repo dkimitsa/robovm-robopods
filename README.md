@@ -44,7 +44,7 @@ v1.57.0
 |-----------------------------------------|---------|
 | [AdaptySDK](adapty/)                    | 1.17.7  |
 | [AppCenter](appcenter/)                 | 5.10.0  |
-| [AppLovinSDK](applovinsdk/)             | 13.5.1  |
+| [AppLovinSDK](applovinsdk/)             | 13.6.0  |
 | [AppsFlyer](appsflyer/)                 | 6.17.8  |
 | [Azure](azure/)                         | 3.1.4   |
 | [BranchMetrics](branchmetrics/)         | 3.13.3  |

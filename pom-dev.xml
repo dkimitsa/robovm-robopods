@@ -35,6 +35,7 @@
 
     <!-- list of modules to build  -->
     <modules>
+        <module>applovinsdk</module>
         <module>facebook/ios-aem</module>
         <module>facebook/ios-audience</module>
         <module>facebook/ios-bom</module>

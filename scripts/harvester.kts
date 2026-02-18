@@ -53,7 +53,7 @@ val knownFrameworks = mutableMapOf<String, (String) -> Unit>(
         val artifactLocation = Path.of("applovinsdk/cocoapods/AppLovinSDK.xcframework/ios-arm64/AppLovinSDK.framework").toFile()
         processFramework(
             artifact = artifact,
-            moduleFolder = "applovinsdk/ios",
+            moduleFolder = "applovinsdk",
             sourceHeadersDir = artifactLocation.headers,
             yaml = "applovinsdk.yaml",
             version = { artifactLocation.infoPlist.extractVersion() },
@@ -668,7 +668,14 @@ fun updatePomVersionString(framework: String, pomFile: File, version: String, po
         .run { pomFile.writeText(this) }
 }
 
-fun updateReadmeFileVersionString(framework: String, moduleFolder: String, version: String) {
+
+fun updateRootAndModuleReadmeFileVersionString(framework: String, moduleFolder: String, version: String) {
+    updateRootReadmeFileVersionString(framework, moduleFolder, version)
+    updateModuleReadmeFileVersionString(framework, File("$moduleFolder/README.md"), version, "$version.0")
+}
+
+/// updates README.md in root of repo (contains list of all pods)
+fun updateRootReadmeFileVersionString(framework: String, moduleFolder: String, version: String) {
     // updating the version in README file
     synchronized(readmeFile) {
         var original: String? = null
@@ -698,6 +705,9 @@ fun updateReadmeFileVersionString(framework: String, moduleFolder: String, versi
 }
 
 /// updates aggregated readme file, table that contain module link, updates its version
+/// looks for table and looks for `(ios-analytics/)` substring and replaces version there (used for firebase aggregated readme file for ex)
+/// example:
+/// | [ios-analytics](ios-analytics/) | Firebase iOS Analytics  | 12.9.0  |
 fun updateAggregatedReadmeFileVersionString(framework: String, moduleReadmeFile: File, moduleFolder: String, version: String) {
     // updating the version in README file
     synchronized(readmeFile) {
@@ -725,7 +735,13 @@ fun updateAggregatedReadmeFileVersionString(framework: String, moduleReadmeFile:
     }
 }
 
-/// updates aggregated readme file, table that contain module link, updates its version
+/// updates aggregated readme file, table that contain module link, updates its version in table,
+/// looks for following table:
+/// | RoboPods Version | Google SignIn  |
+/// |------------------|----------------|
+/// | 9.1.0.0          | 9.1.0          |
+///
+/// and updates first line: if framework version is same, replace robopod version, otherwise inserts new line on top of table
 fun updateModuleReadmeFileVersionString(framework: String, moduleReadmeFile: File, version: String, podVersion: String) {
     // updating the version in README file
     synchronized(readmeFile) {
@@ -789,7 +805,7 @@ fun processFramework(
     broGenExecutor: (framework: String, javaFolder: File, yamlFile: File) -> Unit = ::execBroGen,
     javaFolderCleaner: (framework: String, destinationJavaDir: File) -> Unit = ::cleanUpJava,
     pomVersionStringUpdater: (framework: String, pomFile: File, version: String, pomVersion: String) -> Unit = ::updatePomVersionString,
-    readmeFileVersionUpdater: (framework: String, moduleFolder: String, version: String) -> Unit = ::updateReadmeFileVersionString,
+    readmeFileVersionUpdater: (framework: String, moduleFolder: String, version: String) -> Unit = ::updateRootAndModuleReadmeFileVersionString,
 ) {
     log.d("$artifact:  <<<< starting processing")
 
@@ -955,7 +971,7 @@ fun oneTimeReadmeUpdater(versionOverrideProvider: (() -> String)? = null): (Stri
         var readmeUpdated = false
         fun readmeUpdater(framework: String, moduleFolder: String, version: String) {
             if (!readmeUpdated) {
-                updateReadmeFileVersionString(framework, moduleFolder, versionOverrideProvider?.invoke() ?: version)
+                updateRootReadmeFileVersionString(framework, moduleFolder, versionOverrideProvider?.invoke() ?: version)
                 readmeUpdated = true
             }
         }
@@ -1321,7 +1337,7 @@ fun registerMobileAds(frameworkRegistry: MutableMap<String, (String) -> Unit>, g
                 val moduleReadmeFile = Path.of("google-mobile-ads/README.md").toFile()
                 updateAggregatedReadmeFileVersionString(frm, moduleReadmeFile, modFolder, version)
                 updateModuleReadmeFileVersionString(frm, File("$modFolder/README.md"), version, "$version.0")
-                updateReadmeFileVersionString(frm, "google-mobile-ads", version)
+                updateRootReadmeFileVersionString(frm, "google-mobile-ads", version)
             }
         )
     }

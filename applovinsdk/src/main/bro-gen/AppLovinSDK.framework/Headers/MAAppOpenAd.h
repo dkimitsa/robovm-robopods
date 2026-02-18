@@ -103,6 +103,16 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign, readonly, getter=isReady) BOOL ready;
 
 /**
+ * Whether or not this ad is currently being loaded.
+ */
+@property (nonatomic, assign, readonly, getter=isLoading) BOOL loading;
+
+/**
+ * Whether or not this ad is currently being shown.
+ */
+@property (nonatomic, assign, readonly, getter=isShowing) BOOL showing;
+
+/**
  * Sets an extra key/value parameter for the ad.
  *
  * @param key   Parameter key.

@@ -83,6 +83,10 @@ import org.robovm.apple.safariservices.*;
     public native String getAdUnitIdentifier();
     @Property(selector = "isReady")
     public native boolean isReady();
+    @Property(selector = "isLoading")
+    public native boolean isLoading();
+    @Property(selector = "isShowing")
+    public native boolean isShowing();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
