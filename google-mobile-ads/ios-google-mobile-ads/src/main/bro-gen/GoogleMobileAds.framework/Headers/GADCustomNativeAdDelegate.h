@@ -18,10 +18,10 @@ NS_SWIFT_NAME(CustomNativeAdDelegate)
 #pragma mark Ad Lifecycle Events
 
 /// Called when an impression is recorded for a custom native ad.
-- (void)customNativeAdDidRecordImpression:(nonnull GADCustomNativeAd *)nativeAd;
+- (void)customNativeAdDidRecordImpression:(nonnull GADCustomNativeAd *)nativeAd NS_SWIFT_UI_ACTOR;
 
 /// Called when a click is recorded for a custom native ad.
-- (void)customNativeAdDidRecordClick:(nonnull GADCustomNativeAd *)nativeAd;
+- (void)customNativeAdDidRecordClick:(nonnull GADCustomNativeAd *)nativeAd NS_SWIFT_UI_ACTOR;
 
 #pragma mark Click-Time Lifecycle Notifications
 

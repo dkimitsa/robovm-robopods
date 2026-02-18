@@ -56,6 +56,7 @@
         <module>firebase/ios-messaging</module>
         <module>firebase/ios-remoteconfig</module>
         <module>firebase/ios-storage</module>
+        <module>google-mobile-ads/ios-google-mobile-ads</module>
     </modules>
 
 </project>

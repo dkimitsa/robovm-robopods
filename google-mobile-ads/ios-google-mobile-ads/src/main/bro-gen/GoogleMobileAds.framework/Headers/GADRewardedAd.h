@@ -61,7 +61,7 @@ NS_SWIFT_NAME(RewardedAd)
 + (void)loadWithAdUnitID:(nonnull NSString *)adUnitID
                  request:(nullable GADRequest *)request
        completionHandler:(nonnull GADRewardedAdLoadCompletionHandler)completionHandler
-    NS_SWIFT_NAME(load(with:request:completionHandler:));
+    NS_SWIFT_NAME(load(with:request:completionHandler:))NS_SWIFT_SENDING;
 
 /// Loads a rewarded ad.
 ///
@@ -69,7 +69,7 @@ NS_SWIFT_NAME(RewardedAd)
 /// @param completionHandler A handler to execute when the load operation finishes or times out.
 + (void)loadWithAdResponseString:(nonnull NSString *)adResponseString
                completionHandler:(nonnull GADRewardedAdLoadCompletionHandler)completionHandler
-    NS_SWIFT_NAME(load(with:completionHandler:));
+    NS_SWIFT_NAME(load(with:completionHandler:))NS_SWIFT_SENDING;
 
 /// Indicates whether the rewarded ad can be presented from the provided root view controller. Must
 /// be called on the main thread.

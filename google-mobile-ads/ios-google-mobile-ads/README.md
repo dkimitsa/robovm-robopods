@@ -1,5 +1,10 @@
 # RoboPods for Firebase Google Mobile Ads 
 
+### Available RoboPods
+| RoboPods Version | Google Mobile Ads |
+|------------------|-------------------|
+| 13.0.0.0         | 13.0.0            |
+
 ### Frameworks required for this pod: 
 * GoogleMobileAds.xcframework (from Firebase.zip/Google-Mobile-Ads-SDK/GoogleMobileAds.xcframework)
 * UserMessagingPlatform.xcframework (from Firebase.zip/Google-Mobile-Ads-SDK/UserMessagingPlatform.xcframework)

@@ -16,11 +16,11 @@ NS_SWIFT_NAME(AdLoaderDelegate)
 
 /// Called when adLoader fails to load an ad.
 - (void)adLoader:(nonnull GADAdLoader *)adLoader
-    didFailToReceiveAdWithError:(nonnull NSError *)error;
+    didFailToReceiveAdWithError:(nonnull NSError *)error NS_SWIFT_UI_ACTOR;
 
 @optional
 
 /// Called after adLoader has finished loading.
-- (void)adLoaderDidFinishLoading:(nonnull GADAdLoader *)adLoader;
+- (void)adLoaderDidFinishLoading:(nonnull GADAdLoader *)adLoader NS_SWIFT_UI_ACTOR;
 
 @end

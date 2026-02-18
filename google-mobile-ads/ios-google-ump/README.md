@@ -1,5 +1,10 @@
 # Firebase iOS Google User Messaging Platform framework
 
+### Available RoboPods
+| RoboPods Version | Google UMP    |
+|------------------|---------------|
+| 3.1.0.0          | 3.1.0         |
+
 ### Frameworks required for this pod: 
 * UserMessagingPlatform.xcframework (from Firebase.zip/Google-Mobile-Ads-SDK/UserMessagingPlatform.xcframework)
 

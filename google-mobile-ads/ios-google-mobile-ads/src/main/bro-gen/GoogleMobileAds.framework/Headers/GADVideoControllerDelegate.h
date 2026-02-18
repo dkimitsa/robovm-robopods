@@ -16,18 +16,21 @@ NS_SWIFT_NAME(VideoControllerDelegate)
 @optional
 
 /// Tells the delegate that the video controller has began or resumed playing a video.
-- (void)videoControllerDidPlayVideo:(nonnull GADVideoController *)videoController;
+- (void)videoControllerDidPlayVideo:(nonnull GADVideoController *)videoController NS_SWIFT_UI_ACTOR;
 
 /// Tells the delegate that the video controller has paused video.
-- (void)videoControllerDidPauseVideo:(nonnull GADVideoController *)videoController;
+- (void)videoControllerDidPauseVideo:(nonnull GADVideoController *)videoController
+    NS_SWIFT_UI_ACTOR;
 
 /// Tells the delegate that the video controller's video playback has ended.
-- (void)videoControllerDidEndVideoPlayback:(nonnull GADVideoController *)videoController;
+- (void)videoControllerDidEndVideoPlayback:(nonnull GADVideoController *)videoController
+    NS_SWIFT_UI_ACTOR;
 
 /// Tells the delegate that the video controller has muted video.
-- (void)videoControllerDidMuteVideo:(nonnull GADVideoController *)videoController;
+- (void)videoControllerDidMuteVideo:(nonnull GADVideoController *)videoController NS_SWIFT_UI_ACTOR;
 
 /// Tells the delegate that the video controller has unmuted video.
-- (void)videoControllerDidUnmuteVideo:(nonnull GADVideoController *)videoController;
+- (void)videoControllerDidUnmuteVideo:(nonnull GADVideoController *)videoController
+    NS_SWIFT_UI_ACTOR;
 
 @end

@@ -89,24 +89,6 @@ NS_SWIFT_NAME(NativeAd)
 /// Call this method only if customMuteThisAdAvailable is YES.
 - (void)muteThisAdWithReason:(nullable GADMuteThisAdReason *)reason;
 
-/// Registers ad view, clickable asset views, and nonclickable asset views with this native ad.
-/// Media view shouldn't be registered as clickable.
-/// @param clickableAssetViews Dictionary of asset views that are clickable, keyed by asset IDs.
-/// @param nonclickableAssetViews Dictionary of asset views that are not clickable, keyed by asset
-///        IDs.
-- (void)registerAdView:(nonnull UIView *)adView
-       clickableAssetViews:
-           (nonnull NSDictionary<GADNativeAssetIdentifier, UIView *> *)clickableAssetViews
-    nonclickableAssetViews:
-        (nonnull NSDictionary<GADNativeAssetIdentifier, UIView *> *)nonclickableAssetViews
-    GAD_DEPRECATED_MSG_ATTRIBUTE(
-        "This method is no longer supported and will be removed in a future version.");
-
-/// Unregisters ad view from this native ad. The corresponding asset views will also be
-/// unregistered.
-- (void)unregisterAdView GAD_DEPRECATED_MSG_ATTRIBUTE(
-    "This method is no longer supported and will be removed in a future version.");
-
 @end
 
 #pragma mark - Protocol and constants
@@ -114,8 +96,11 @@ NS_SWIFT_NAME(NativeAd)
 /// The delegate of a GADAdLoader object implements this protocol to receive GADNativeAd ads.
 NS_SWIFT_NAME(NativeAdLoaderDelegate)
 @protocol GADNativeAdLoaderDelegate <GADAdLoaderDelegate>
+
 /// Called when a native ad is received.
-- (void)adLoader:(nonnull GADAdLoader *)adLoader didReceiveNativeAd:(nonnull GADNativeAd *)nativeAd;
+- (void)adLoader:(nonnull GADAdLoader *)adLoader
+    didReceiveNativeAd:(nonnull GADNativeAd *)nativeAd NS_SWIFT_UI_ACTOR;
+
 @end
 
 #pragma mark - Native Ad View

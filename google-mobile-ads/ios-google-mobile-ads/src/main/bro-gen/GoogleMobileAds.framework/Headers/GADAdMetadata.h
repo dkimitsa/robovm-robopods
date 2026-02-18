@@ -30,6 +30,6 @@ NS_SWIFT_NAME(AdMetadataDelegate)
 
 /// Tells the delegate that the ad's metadata changed. Called when an ad loads and when a loaded
 /// ad's metadata changes.
-- (void)adMetadataDidChange:(nonnull id<GADAdMetadataProvider>)ad;
+- (void)adMetadataDidChange:(nonnull id<GADAdMetadataProvider>)ad NS_SWIFT_UI_ACTOR;
 
 @end

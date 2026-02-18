@@ -15,7 +15,8 @@ NS_SWIFT_NAME(DebugOptionsViewControllerDelegate)
 @protocol GADDebugOptionsViewControllerDelegate <NSObject>
 
 /// Called when the debug options flow is finished.
-- (void)debugOptionsViewControllerDidDismiss:(nonnull GADDebugOptionsViewController *)controller;
+- (void)debugOptionsViewControllerDidDismiss:(nonnull GADDebugOptionsViewController *)controller
+    NS_SWIFT_UI_ACTOR;
 
 @end
 

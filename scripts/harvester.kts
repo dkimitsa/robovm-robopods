@@ -1320,6 +1320,7 @@ fun registerMobileAds(frameworkRegistry: MutableMap<String, (String) -> Unit>, g
             readmeFileVersionUpdater = { frm, modFolder, version ->
                 val moduleReadmeFile = Path.of("google-mobile-ads/README.md").toFile()
                 updateAggregatedReadmeFileVersionString(frm, moduleReadmeFile, modFolder, version)
+                updateModuleReadmeFileVersionString(frm, File("$modFolder/README.md"), version, "$version.0")
                 updateReadmeFileVersionString(frm, "google-mobile-ads", version)
             }
         )
@@ -1336,33 +1337,7 @@ fun registerMobileAds(frameworkRegistry: MutableMap<String, (String) -> Unit>, g
             instruction = instructions(artifactLocation.toString()),
             readmeFileVersionUpdater = { frm, modFolder, version ->
                 val moduleReadmeFile = Path.of("google-mobile-ads/README.md").toFile()
-                updateAggregatedReadmeFileVersionString(frm, moduleReadmeFile, modFolder, version)
-            }
-        )
-    }
-
-    /// test suite as single framework (without group)
-    frameworkRegistry["GoogleMobileAdsMediationTestSuite"] = { framework ->
-        val artifact = "$framework.framework"
-        val artifactLocation = downloadFolder.extend("googlemobileadsmediationtestsuiteios/GoogleMobileAdsMediationTestSuite.xcframework/ios-arm64_armv7/$artifact")
-        processFramework(
-            artifact = artifact,
-            moduleFolder = "firebase/ios-google-mobile-ads-mediation-testsuite",
-            sourceHeadersDir = artifactLocation.headers,
-            yaml = "gad-mediation-testsuite.yaml",
-            version = {
-                downloadFolder.extend("googlemobileadsmediationtestsuiteios/CHANGELOG.md").readLines()
-                    .find { it.contains("### ") }
-                    ?.let { it.substringAfter("### ") }
-                    ?: error("Failed to extract version from CHANGELOG.md!")
-            },
-            instruction = """
-                1. download iOS sdk from https://developers.google.com/admob/ios/mediation-test-suite
-                2. unpack 
-                3. expected location ${downloadFolder.extend("googlemobileadsmediationtestsuiteios")}
-            """.trimIndent(),
-            readmeFileVersionUpdater = { frm, modFolder, version ->
-                val moduleReadmeFile = Path.of("Firebase/README.md").toFile()
+                updateModuleReadmeFileVersionString(frm, File("$modFolder/README.md"), version, "$version.0")
                 updateAggregatedReadmeFileVersionString(frm, moduleReadmeFile, modFolder, version)
             }
         )

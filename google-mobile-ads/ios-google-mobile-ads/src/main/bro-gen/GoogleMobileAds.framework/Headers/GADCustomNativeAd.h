@@ -89,6 +89,6 @@ NS_SWIFT_NAME(CustomNativeAdLoaderDelegate)
 
 /// Tells the delegate that a custom native ad was received.
 - (void)adLoader:(nonnull GADAdLoader *)adLoader
-    didReceiveCustomNativeAd:(nonnull GADCustomNativeAd *)customNativeAd;
+    didReceiveCustomNativeAd:(nonnull GADCustomNativeAd *)customNativeAd NS_SWIFT_UI_ACTOR;
 
 @end

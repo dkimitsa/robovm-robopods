@@ -22,7 +22,7 @@ NS_SWIFT_NAME(AdManagerBannerAdLoaderDelegate)
 
 /// Tells the delegate that a Google Ad Manager banner ad was received.
 - (void)adLoader:(nonnull GADAdLoader *)adLoader
-    didReceiveGAMBannerView:(nonnull GAMBannerView *)bannerView;
+    didReceiveGAMBannerView:(nonnull GAMBannerView *)bannerView NS_SWIFT_UI_ACTOR;
 
 @end
 

@@ -61,7 +61,7 @@ NS_SWIFT_NAME(RewardedInterstitialAd)
 + (void)loadWithAdUnitID:(nonnull NSString *)adUnitID
                  request:(nullable GADRequest *)request
        completionHandler:(nonnull GADRewardedInterstitialAdLoadCompletionHandler)completionHandler
-    NS_SWIFT_NAME(load(with:request:completionHandler:));
+    NS_SWIFT_NAME(load(with:request:completionHandler:))NS_SWIFT_SENDING;
 
 /// Loads a rewarded interstitial ad.
 ///
@@ -70,7 +70,7 @@ NS_SWIFT_NAME(RewardedInterstitialAd)
 + (void)loadWithAdResponseString:(nonnull NSString *)adResponseString
                completionHandler:
                    (nonnull GADRewardedInterstitialAdLoadCompletionHandler)completionHandler
-    NS_SWIFT_NAME(load(with:completionHandler:));
+    NS_SWIFT_NAME(load(with:completionHandler:))NS_SWIFT_SENDING;
 
 /// Indicates whether the rewarded interstitial ad can be presented from the provided root view
 /// controller. Must be called on the main thread.
