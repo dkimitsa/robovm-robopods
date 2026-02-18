@@ -143,7 +143,7 @@ val knownFrameworks = mutableMapOf<String, (String) -> Unit>(
         val artifactLocation = downloadFolder.extend("InMobi-iOS-SDK/InMobiSDK.xcframework/ios-arm64/$artifact")
         processFramework(
             artifact = artifact,
-            moduleFolder = "inmobi/ios-sdk",
+            moduleFolder = "inmobi",
             sourceHeadersDir = artifactLocation.headers,
             yaml = "inmobi-sdk.yaml",
             version = { artifactLocation.infoPlist.extractVersion() },

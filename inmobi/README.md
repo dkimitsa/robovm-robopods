@@ -7,6 +7,7 @@ https://www.inmobi.com/sdk
 
 | RoboPods Version | InMobi Version          |
 |------------------|-------------------------|
+| 11.1.1.0         | 11.1.1                  |
 | 1.56.0           | 11.1.0                  |
 | 1.54.0           | 11.0.0                  |
 | 1.52.0           | 10.8.6                  |
@@ -37,4 +38,3 @@ dependencies {
    implementation "io.github.dkimitsa.robovm:robopods-inmobi-sdk-ios:$altpodsVersion"
 }
 ```
-

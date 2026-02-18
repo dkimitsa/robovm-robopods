@@ -55,7 +55,7 @@ v1.57.0
 | [Fyber](fyber/)                         | 8.4.2   |
 | [Google Mobile Ads](google-mobile-ads/) | 13.0.0  |
 | [HelpShiftX](helpshift/)                | 10.5.0  |
-| [InMobi](inmobi/)                       | 11.1.0  |
+| [InMobi](inmobi/)                       | 11.1.1  |
 | [IronSource](ironsource/)               | 9.2.0   |
 | [Lottie](lottie/)                       | 4.5.2   |
 | [OneSignal](onesignal/)                 | 5.2.15  |

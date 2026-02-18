@@ -1723,9 +1723,9 @@ SWIFT_CLASS("_TtC9InMobiSDK16IMNativeViewData")
 SWIFT_CLASS_NAMED("Builder")
 @interface IMNativeViewDataBuilder : NSObject
 /// Initializes the builder with the required parent view.
-/// \param parentView The parent view containing all other views.
+/// \param adParentView The parent view containing all other views.
 ///
-- (nonnull instancetype)initWithParentView:(UIView * _Nonnull)parentView OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithAdParentView:(UIView * _Nonnull)adParentView OBJC_DESIGNATED_INITIALIZER;
 /// Sets the title view.
 /// \param titleView A <code>UIView</code> representing the title.
 ///

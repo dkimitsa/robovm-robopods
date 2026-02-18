@@ -58,6 +58,7 @@
         <module>firebase/ios-remoteconfig</module>
         <module>firebase/ios-storage</module>
         <module>google-mobile-ads/ios-google-mobile-ads</module>
+        <module>inmobi</module>
     </modules>
 
 </project>
