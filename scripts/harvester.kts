@@ -122,7 +122,7 @@ val knownFrameworks = mutableMapOf<String, (String) -> Unit>(
             downloadFolder.extend("helpshiftx-sdk-ios/HelpshiftX.xcframework/ios-arm64/$artifact")
         processFramework(
             artifact = artifact,
-            moduleFolder = "helpshift/ios",
+            moduleFolder = "helpshift",
             sourceHeadersDir = artifactLocation.headers,
             yaml = "helpshift.yaml",
             version = {
