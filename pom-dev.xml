@@ -65,6 +65,8 @@
         <module>google-mobile-ads/ios-google-mobile-ads-adapters/ios-facebook</module>
         <module>google-mobile-ads/ios-google-mobile-ads-adapters/ios-inmobi</module>
         <module>inmobi</module>
+        <module>lottie</module>
+        <module>onesignal</module>
     </modules>
 
 </project>

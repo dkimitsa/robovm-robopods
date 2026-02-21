@@ -568,6 +568,8 @@ protocols:
                 name: addTag
             '-onJwtExpiredWithExpiredHandler:':
                 name: onJwtExpired
+            '-trackEventWithName:properties:':
+                name: trackEvent
     OneSignalNotificationsDelegate: { }
     OSUserStateObserver:
         methods:

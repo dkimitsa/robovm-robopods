@@ -66,10 +66,6 @@ import org.robovm.apple.uikit.*;
     @GlobalValue(symbol="OneSignalOSCoreVersionString", optional=true)
     public static native BytePtr OSCoreVersionString();
     
-    @Method(selector = "sdkVersionRaw")
-    public static native String sdkVersionRaw();
-    @Method(selector = "sdkSemanticVersion")
-    public static native String sdkSemanticVersion();
     @Method(selector = "User")
     public static native OSUser User();
     @Method(selector = "login:")

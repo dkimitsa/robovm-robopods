@@ -180,9 +180,9 @@ val knownFrameworks = mutableMapOf<String, (String) -> Unit>(
             "OneSignalOutcomes", "OneSignalUser" )
         processFramework(
             artifact = artifact,
-            moduleFolder = "onesignal/ios",
+            moduleFolder = "onesignal",
             sourceHeadersDir = downloadFolder,
-            destinationHeadersDir = Path.of("onesignal", "ios", "src", "main", "bro-gen").toFile(),
+            destinationHeadersDir = Path.of("onesignal", "src", "main", "bro-gen").toFile(),
             yaml = "onesignal.yaml",
             headerFolderCleaner = { frm, dst ->
                 internalFrameworks.forEach {

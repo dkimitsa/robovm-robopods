@@ -130,5 +130,7 @@ import org.robovm.apple.uikit.*;
     public native void removeSms(String number);
     @Method(selector = "setLanguage:")
     public native void setLanguage(String language);
+    @Method(selector = "trackEventWithName:properties:")
+    public native void trackEvent(String name, NSDictionary<NSString, ?> properties);
     /*</methods>*/
 }
