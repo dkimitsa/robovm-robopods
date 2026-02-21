@@ -369,7 +369,7 @@ val knownFrameworks = mutableMapOf<String, (String) -> Unit>(
         }
         processFramework(
             artifact = "$framework.framework",
-            moduleFolder = "tenjin/ios",
+            moduleFolder = "tenjin",
             sourceHeadersDir = artifactLocation.headers,
             yaml = "tenjin.yaml",
             version = { tenjinvVersion },

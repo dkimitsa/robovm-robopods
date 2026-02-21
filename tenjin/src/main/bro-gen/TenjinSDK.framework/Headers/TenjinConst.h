@@ -13,7 +13,7 @@
 #define kTenjinConversionEndpoint @"conversion-values"
 
 //this line replaced by build script
-#define kTenjinTenjinSDKVersion @"1.15.0"
+#define kTenjinTenjinSDKVersion @"1.15.1"
 
 
 #define kTenjinPlatformIos @"ios"
