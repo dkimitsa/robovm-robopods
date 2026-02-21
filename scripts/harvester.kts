@@ -1085,7 +1085,10 @@ fun registerAppCenter(frameworkRegistry: MutableMap<String, (String) -> Unit>, g
             sourceHeadersDir = artifactLocation.headers,
             yaml = yaml,
             version = { appCenterVersion },
-            readmeFileVersionUpdater = readmeUpdater,
+            readmeFileVersionUpdater = { frm, modFolder, version ->
+                readmeUpdater(frm, modFolder, version)
+                updateModuleReadmeFileVersionString(frm, File("$modFolder/README.md"), version, "$version.0")
+            },
             instruction = appCenterInstallInstruction
         )
     }
