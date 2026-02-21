@@ -249,7 +249,7 @@ val knownFrameworks = mutableMapOf<String, (String) -> Unit>(
         val artifactLocation = downloadFolder.extend("InneractiveAdSDK-iOS-master/$framework/$framework.xcframework/ios-arm64/$framework.framework")
         processFramework(
             artifact = "$framework.framework",
-            moduleFolder = "fyber/ios",
+            moduleFolder = "fyber",
             sourceHeadersDir = artifactLocation.headers,
             yaml = "iasdk-core.yaml",
             version = { artifactLocation.infoPlist.extractVersion() },

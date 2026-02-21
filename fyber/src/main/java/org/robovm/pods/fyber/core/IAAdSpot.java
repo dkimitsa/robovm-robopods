@@ -79,6 +79,8 @@ import org.robovm.apple.coregraphics.*;
     public native void fetchAd(@Block VoidBlock3<IAAdSpot, IAAdModel, NSError> completionHandler);
     @Method(selector = "loadAdWithMarkup:withCompletion:")
     public native void loadAd(String admString, @Block VoidBlock3<IAAdSpot, IAAdModel, NSError> completionHandler);
+    @Method(selector = "loadAdWithMarkup:watermarkData:withCompletion:")
+    public native void loadAd(String admString, NSData data, @Block VoidBlock3<IAAdSpot, IAAdModel, NSError> completionHandler);
     @Method(selector = "setAdRefreshCompletion:")
     public native void setAdRefreshCompletion(@Block VoidBlock3<IAAdSpot, IAAdModel, NSError> completionHandler);
     @Method(selector = "refreshAd")

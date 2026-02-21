@@ -490,6 +490,7 @@ SWIFT_PROTOCOL("_TtP9IASDKCore18IANativeAdDelegate_")
 
 @class IAAdRequest;
 @protocol IANativeAdSpotBuilder;
+@class NSData;
 SWIFT_CLASS("_TtC9IASDKCore14IANativeAdSpot")
 @interface IANativeAdSpot : NSObject
 @property (nonatomic, readonly, strong) IAAdRequest * _Nullable adRequest;
@@ -499,6 +500,7 @@ SWIFT_CLASS("_TtC9IASDKCore14IANativeAdSpot")
 @property (nonatomic) BOOL muteVideo;
 + (IANativeAdSpot * _Nonnull)build:(SWIFT_NOESCAPE void (^ _Nonnull)(id <IANativeAdSpotBuilder> _Nonnull))builder SWIFT_WARN_UNUSED_RESULT;
 - (void)loadAdWithMarkup:(NSString * _Nonnull)adMarkup withCompletion:(void (^ _Nonnull)(IANativeAdAssets * _Nullable, NSError * _Nullable))completion;
+- (void)loadAdWithMarkup:(NSString * _Nonnull)adMarkup withWatermarkData:(NSData * _Nonnull)watermarkData withCompletion:(void (^ _Nonnull)(IANativeAdAssets * _Nullable, NSError * _Nullable))completion;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER SWIFT_UNAVAILABLE_MSG("Use build(_:) to create IANativeAdSpot");
 @end
 

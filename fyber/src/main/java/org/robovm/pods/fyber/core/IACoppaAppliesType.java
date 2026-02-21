@@ -42,7 +42,17 @@ import org.robovm.apple.coregraphics.*;
 public enum /*<name>*/IACoppaAppliesType/*</name>*/ implements ValuedEnum {
     /*<values>*/
     Unknown(-1L),
+    False(0L),
+    True(1L),
+    /**
+     * @deprecated Use IACoppaAppliesTypeFalse instead
+     */
+    @Deprecated
     Denied(0L),
+    /**
+     * @deprecated Use IACoppaAppliesTypeTrue instead
+     */
+    @Deprecated
     Given(1L);
     /*</values>*/
 
