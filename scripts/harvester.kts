@@ -302,7 +302,7 @@ val knownFrameworks = mutableMapOf<String, (String) -> Unit>(
         val artifactLocation = downloadFolder.extend("Singular.xcframework/ios-arm64/Singular.framework")
         processFramework(
             artifact = "$framework.framework",
-            moduleFolder = "singular/ios",
+            moduleFolder = "singular",
             sourceHeadersDir = artifactLocation.headers,
             yaml = "singular.yaml",
             version = { artifactLocation.infoPlist.extractVersion(versionKey = "CFBundleVersion") },
