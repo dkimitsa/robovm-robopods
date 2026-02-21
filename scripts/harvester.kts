@@ -159,7 +159,7 @@ val knownFrameworks = mutableMapOf<String, (String) -> Unit>(
         val artifactLocation = downloadFolder.extend("Lottie.xcframework/ios-arm64//$artifact")
         processFramework(
             artifact = artifact,
-            moduleFolder = "lottie/ios",
+            moduleFolder = "lottie",
             sourceHeadersDir = artifactLocation.headers,
             yaml = "lottie.yaml",
             version = { artifactLocation.infoPlist.extractVersion() },
