@@ -3,7 +3,7 @@ set -e
 
 # clean up
 rm -rf Carthage
-rm Cartfile.resolved
+rm -rf Cartfile.resolved
 
 carthage update --platform ios  --use-xcframeworks
 

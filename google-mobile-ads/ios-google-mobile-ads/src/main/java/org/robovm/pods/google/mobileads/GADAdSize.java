@@ -86,12 +86,12 @@ import org.robovm.apple.webkit.*;
     public static native @ByVal GADAdSize getCurrentOrientationInlineAdaptiveBannerAdSize(@MachineSizedFloat double width);
     @Bridge(symbol="GADInlineAdaptiveBannerAdSizeWithWidthAndMaxHeight", optional=true)
     public static native @ByVal GADAdSize getInlineAdaptiveBannerAdSize(@MachineSizedFloat double width, @MachineSizedFloat double maxHeight);
-    @Bridge(symbol="GADPortraitAnchoredAdaptiveBannerAdSizeWithWidth", optional=true)
-    public static native @ByVal GADAdSize getPortraitAnchoredAdaptiveBannerAdSize(@MachineSizedFloat double width);
-    @Bridge(symbol="GADLandscapeAnchoredAdaptiveBannerAdSizeWithWidth", optional=true)
-    public static native @ByVal GADAdSize getLandscapeAnchoredAdaptiveBannerAdSize(@MachineSizedFloat double width);
-    @Bridge(symbol="GADCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth", optional=true)
-    public static native @ByVal GADAdSize getCurrentOrientationAnchoredAdaptiveBannerAdSize(@MachineSizedFloat double width);
+    @Bridge(symbol="GADLargePortraitAnchoredAdaptiveBannerAdSizeWithWidth", optional=true)
+    public static native @ByVal GADAdSize getLargePortraitAnchoredAdaptiveBannerAdSize(@MachineSizedFloat double width);
+    @Bridge(symbol="GADLargeLandscapeAnchoredAdaptiveBannerAdSizeWithWidth", optional=true)
+    public static native @ByVal GADAdSize getLargeLandscapeAnchoredAdaptiveBannerAdSize(@MachineSizedFloat double width);
+    @Bridge(symbol="GADLargeAnchoredAdaptiveBannerAdSizeWithWidth", optional=true)
+    public static native @ByVal GADAdSize getLargeAnchoredAdaptiveBannerAdSizeWithWidth(@MachineSizedFloat double width);
     @Bridge(symbol="GADAdSizeFromCGSize", optional=true)
     public static native @ByVal GADAdSize createFromCGSize(@ByVal CGSize size);
     @Bridge(symbol="GADAdSizeFullWidthPortraitWithHeight", optional=true)
@@ -118,6 +118,24 @@ import org.robovm.apple.webkit.*;
     private static native NSValue toNSValue(@ByVal GADAdSize size);
     @Bridge(symbol="GADAdSizeFromNSValue", optional=true)
     public static native @ByVal GADAdSize createFromFromNSValue(NSValue value);
+    /**
+     * @deprecated Use GADLargePortraitAnchoredAdaptiveBannerAdSizeWithWidth instead.
+     */
+    @Deprecated
+    @Bridge(symbol="GADPortraitAnchoredAdaptiveBannerAdSizeWithWidth", optional=true)
+    public static native @ByVal GADAdSize getPortraitAnchoredAdaptiveBannerAdSize(@MachineSizedFloat double width);
+    /**
+     * @deprecated Use GADLargeLandscapeAnchoredAdaptiveBannerAdSizeWithWidth instead.
+     */
+    @Deprecated
+    @Bridge(symbol="GADLandscapeAnchoredAdaptiveBannerAdSizeWithWidth", optional=true)
+    public static native @ByVal GADAdSize getLandscapeAnchoredAdaptiveBannerAdSize(@MachineSizedFloat double width);
+    /**
+     * @deprecated Use GADLargeAnchoredAdaptiveBannerAdSizeWithWidth instead.
+     */
+    @Deprecated
+    @Bridge(symbol="GADCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth", optional=true)
+    public static native @ByVal GADAdSize getCurrentOrientationAnchoredAdaptiveBannerAdSize(@MachineSizedFloat double width);
     public GADAdSize getClosestValidSize(NSArray<NSValue> possibleAdSizes) { return getClosestValidSize(this, possibleAdSizes); }
     @Bridge(symbol="GADClosestValidSizeForAdSizes", optional=true)
     private static native @ByVal GADAdSize getClosestValidSize(@ByVal GADAdSize original, NSArray<NSValue> possibleAdSizes);

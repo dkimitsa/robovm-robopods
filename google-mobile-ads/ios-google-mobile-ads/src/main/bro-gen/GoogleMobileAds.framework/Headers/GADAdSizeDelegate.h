@@ -16,6 +16,7 @@ NS_SWIFT_NAME(AdSizeDelegate)
 @protocol GADAdSizeDelegate <NSObject>
 
 /// Called before the ad view changes to the new size.
-- (void)adView:(nonnull GADBannerView *)bannerView willChangeAdSizeTo:(GADAdSize)size;
+- (void)adView:(nonnull GADBannerView *)bannerView
+    willChangeAdSizeTo:(GADAdSize)size NS_SWIFT_UI_ACTOR;
 
 @end

@@ -79,6 +79,10 @@ import org.robovm.pods.facebook.corebasics.*;
     public native FBSDKLoginTracking getLoginTracking();
     @Property(selector = "setLoginTracking:")
     public native void setLoginTracking(FBSDKLoginTracking v);
+    @Property(selector = "appSwitch")
+    public native FBSDKAppSwitch getAppSwitch();
+    @Property(selector = "setAppSwitch:")
+    public native void setAppSwitch(FBSDKAppSwitch v);
     @Property(selector = "nonce")
     public native String getNonce();
     @Property(selector = "setNonce:")

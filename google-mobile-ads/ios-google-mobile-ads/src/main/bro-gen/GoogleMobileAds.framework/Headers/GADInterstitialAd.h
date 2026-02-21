@@ -52,7 +52,7 @@ NS_SWIFT_NAME(InterstitialAd)
 + (void)loadWithAdUnitID:(nonnull NSString *)adUnitID
                  request:(nullable GADRequest *)request
        completionHandler:(nonnull GADInterstitialAdLoadCompletionHandler)completionHandler
-    NS_SWIFT_NAME(load(with:request:completionHandler:));
+    NS_SWIFT_NAME(load(with:request:completionHandler:))NS_SWIFT_SENDING;
 
 /// Loads an interstitial ad.
 ///
@@ -60,7 +60,7 @@ NS_SWIFT_NAME(InterstitialAd)
 /// @param completionHandler A handler to execute when the load operation finishes or times out.
 + (void)loadWithAdResponseString:(nonnull NSString *)adResponseString
                completionHandler:(nonnull GADInterstitialAdLoadCompletionHandler)completionHandler
-    NS_SWIFT_NAME(load(with:completionHandler:));
+    NS_SWIFT_NAME(load(with:completionHandler:))NS_SWIFT_SENDING;
 
 /// Indicates whether the interstitial ad can be presented from the provided root view controller.
 /// Must be called on the main thread.

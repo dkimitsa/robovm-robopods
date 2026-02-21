@@ -17,8 +17,10 @@ NS_SWIFT_NAME(MediationAppOpenAd)
 /// Presents the receiver from the view controller.
 - (void)presentFromViewController:(nonnull UIViewController *)viewController
     NS_SWIFT_NAME(present(from:));
+
 @end
 
 /// App open ad configuration.
+NS_SWIFT_NAME(MediationAppOpenAdConfiguration)
 @interface GADMediationAppOpenAdConfiguration : GADMediationAdConfiguration
 @end

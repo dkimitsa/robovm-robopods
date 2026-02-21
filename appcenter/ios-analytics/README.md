@@ -1,5 +1,10 @@
-# App Center Crashes
+# App Center Analytics
 App Center Analytics helps you understand user behavior and customer engagement to improve your app. The SDK automatically captures session count, device properties like model, OS version, etc. You can define your own custom events to measure things that matter to you. All the information captured is available in the App Center portal for you to analyze the data.
+
+### Available RoboPods
+| RoboPods Version | Analytics |
+|------------------|-----------|
+| 5.12.0.0         | 5.12.0    |
 
 ### Frameworks required for this pod:
 * AppCenterAnalytics.framework 

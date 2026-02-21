@@ -6,6 +6,7 @@ https://www.singular.net
 ## Available RoboPods
 | RoboPods Version | Singular Version |
 |------------------|------------------|
+| 12.10.0.0        | 12.10.0          |
 | 1.56.0           | 12.9.2           |
 | 1.55.0           | 12.9.0           |
 | 1.50.0           | 12.8.1           |

@@ -56,6 +56,8 @@ import org.robovm.pods.facebook.corebasics.*;
     public static native String FacebookAPI();
     @GlobalValue(symbol="FBSDKURLSchemeMessengerApp", optional=true)
     public static native String MessengerApp();
+    @GlobalValue(symbol="FBSDKURLSchemeFacebookAuth", optional=true)
+    public static native String FacebookAuth();
     @GlobalValue(symbol="FBSDKURLSchemeHTTPS", optional=true)
     public static native String HTTPS();
     @GlobalValue(symbol="FBSDKURLSchemeHTTP", optional=true)

@@ -7,7 +7,7 @@ https://github.com/danielgindi/Charts
 
 | RoboPods Version | Charts Version |
 |------------------|----------------|
-| 1.38.0           | 5.1.0          |
+| 5.1.0.0          | 5.1.0          |
 | 1.32.0           | 5.0.0          |
 | 1.26.0           | 4.1.0          |
 | 1.23.0           | 4.0.3          |

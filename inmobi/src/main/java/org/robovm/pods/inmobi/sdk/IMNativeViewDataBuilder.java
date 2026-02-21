@@ -49,16 +49,16 @@ import org.robovm.apple.coreanimation.*;
     protected IMNativeViewDataBuilder() {}
     protected IMNativeViewDataBuilder(Handle h, long handle) { super(h, handle); }
     protected IMNativeViewDataBuilder(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithParentView:")
-    public IMNativeViewDataBuilder(UIView parentView) { super((SkipInit) null); initObject(init(parentView)); }
+    @Method(selector = "initWithAdParentView:")
+    public IMNativeViewDataBuilder(UIView adParentView) { super((SkipInit) null); initObject(init(adParentView)); }
     /*</constructors>*/
     /*<properties>*/
     
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "initWithParentView:")
-    protected native @Pointer long init(UIView parentView);
+    @Method(selector = "initWithAdParentView:")
+    protected native @Pointer long init(UIView adParentView);
     @Method(selector = "setTitleView:")
     public native IMNativeViewDataBuilder setTitleView(UIView titleView);
     @Method(selector = "setDescriptionView:")

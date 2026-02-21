@@ -86,18 +86,6 @@ import org.robovm.apple.webkit.*;
     public native NSDictionary<NSString, ?> getCustomTargeting();
     @Property(selector = "setCustomTargeting:")
     public native void setCustomTargeting(NSDictionary<NSString, ?> v);
-    /**
-     * @deprecated Use each ad format class's loadWithAdResponseString: instead.
-     */
-    @Deprecated
-    @Property(selector = "adString")
-    public native String getAdString();
-    /**
-     * @deprecated Use each ad format class's loadWithAdResponseString: instead.
-     */
-    @Deprecated
-    @Property(selector = "setAdString:")
-    public native void setAdString(String v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

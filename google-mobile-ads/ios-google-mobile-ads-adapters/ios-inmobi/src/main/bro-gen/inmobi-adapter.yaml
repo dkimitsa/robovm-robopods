@@ -4,7 +4,7 @@ include:
     - foundation
     - corelocation
     - ../../../../../ios-google-mobile-ads/src/main/bro-gen/gad.yaml
-    - ../../../../../../inmobi/ios-sdk/src/main/bro-gen/inmobi-sdk.yaml
+    - ../../../../../../inmobi/src/main/bro-gen/inmobi-sdk.yaml
 clang_args: ['-x', 'objective-c']
 headers:
     - "#import <InMobiSDK/InMobiSDK.h>" # as a workaround for Err: Parse Issue use of '@import' when modules are disabled

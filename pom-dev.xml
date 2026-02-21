@@ -35,17 +35,8 @@
 
     <!-- list of modules to build  -->
     <modules>
-        <module>adapty</module>
-        <module>alt.parent</module>
-        <module>appcenter/ios-analytics</module>
-        <module>appcenter/ios-core</module>
-        <module>appcenter/ios-crashes</module>
-        <module>appcenter/ios-distribute</module>
         <module>applovinsdk</module>
-        <module>appsflyer</module>
-        <module>azure</module>
         <module>branchmetrics</module>
-        <module>charts</module>
         <module>cleverads</module>
         <module>facebook/ios-aem</module>
         <module>facebook/ios-audience</module>
@@ -73,19 +64,12 @@
         <module>google-mobile-ads/ios-google-mobile-ads-adapters/ios-applovin</module>
         <module>google-mobile-ads/ios-google-mobile-ads-adapters/ios-facebook</module>
         <module>google-mobile-ads/ios-google-mobile-ads-adapters/ios-inmobi</module>
-        <module>google-mobile-ads/ios-google-mobile-ads-mediation-testsuite</module>
-        <module>google-mobile-ads/ios-google-ump</module>
-        <module>helpshift</module>
         <module>inmobi</module>
-        <module>ironsource</module>
         <module>lottie</module>
         <module>onesignal</module>
-        <module>pollfish</module>
-        <module>samkeychain</module>
         <module>singular</module>
         <module>tenjin</module>
         <module>unityads</module>
-        <module>youtube</module>
     </modules>
 
 </project>

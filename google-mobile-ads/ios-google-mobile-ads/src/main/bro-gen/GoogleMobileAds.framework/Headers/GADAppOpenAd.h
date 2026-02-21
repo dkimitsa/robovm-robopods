@@ -33,7 +33,7 @@ NS_SWIFT_NAME(AppOpenAd)
 + (void)loadWithAdUnitID:(nonnull NSString *)adUnitID
                  request:(nullable GADRequest *)request
        completionHandler:(nonnull GADAppOpenAdLoadCompletionHandler)completionHandler
-    NS_SWIFT_NAME(load(with:request:completionHandler:));
+    NS_SWIFT_NAME(load(with:request:completionHandler:))NS_SWIFT_SENDING;
 
 /// Loads an app open ad.
 ///
@@ -41,7 +41,7 @@ NS_SWIFT_NAME(AppOpenAd)
 /// @param completionHandler A handler to execute when the load operation finishes or times out.
 + (void)loadWithAdResponseString:(nonnull NSString *)adResponseString
                completionHandler:(nonnull GADAppOpenAdLoadCompletionHandler)completionHandler
-    NS_SWIFT_NAME(load(with:completionHandler:));
+    NS_SWIFT_NAME(load(with:completionHandler:))NS_SWIFT_SENDING;
 
 /// Optional delegate object that receives notifications about presentation and dismissal of full
 /// screen content from this ad. Full screen content covers your application's content. The delegate

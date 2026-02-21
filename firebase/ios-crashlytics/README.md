@@ -1,5 +1,10 @@
 # Firebase iOS Crashlytics framework
 
+### Available RoboPods
+| RoboPods Version | FirebaseCrashlytics |
+|------------------|---------------------|
+| 12.9.0.0         | 12.9.0              |
+
 ### Frameworks required for this pod: 
 * FirebaseCoreExtension.xcframework (from Firebase.zip/FirebaseCrashlytics/FirebaseCoreExtension.xcframework)
 * FirebaseCrashlytics.xcframework (from Firebase.zip/FirebaseCrashlytics/FirebaseCrashlytics.xcframework)

@@ -1,5 +1,10 @@
 # Visual Studio App Center SDK for iOS
 
+### Available RoboPods
+| RoboPods Version | Core   |
+|------------------|--------|
+| 5.12.0.0         | 5.12.0 |
+
 ### Frameworks required for this pod:
 * AppCenter.framework
 

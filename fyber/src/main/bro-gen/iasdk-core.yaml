@@ -32,6 +32,8 @@ classes:
                 name: fetchAd
             '-loadAdWithMarkup:withCompletion:':
                 name: loadAd
+            '-loadAdWithMarkup:watermarkData:withCompletion:':
+                name: loadAd
     IAAdView: {}
     IABaseView: {}
     IAContentController: {}
@@ -57,6 +59,8 @@ classes:
                 name: init
             '-initWithAppID:completionBlock:completionQueue:':
                 name: init
+            '-setExtraDataForKey:value:':
+                name: setExtraData
     IAUnitController: {}
     IAUserData: {}
     IAViewUnitController: {}

@@ -9,6 +9,7 @@ headers:
 
 private_typedefs:
     "FIRApp *": org.robovm.pods.firebase.core.FIRApp
+    "FIRTimestamp *": org.robovm.pods.firebase.core.FIRTimestamp
 
 typedefs: {}
 
@@ -287,6 +288,127 @@ classes:
         methods:
             '-initWithArray:':
                 name: init
+    FIRAddFieldsStageBridge:
+        methods:
+            '-initWithFields:':
+                name: init
+    FIRAggregateFunctionBridge:
+        methods:
+            '-initWithName:Args:':
+                name: init
+    FIRAggregateStageBridge:
+        methods:
+            '-initWithAccumulators:groups:':
+                name: init
+    FIRCollectionGroupSourceStageBridge:
+        methods:
+            '-initWithCollectionId:':
+                name: init
+    FIRCollectionSourceStageBridge:
+        methods:
+            '-initWithRef:firestore:':
+                name: init
+    FIRConstantBridge: { }
+    FIRDatabaseSourceStageBridge: { }
+    FIRDistinctStageBridge:
+        methods:
+            '-initWithGroups:':
+                name: init
+    FIRDocumentsSourceStageBridge:
+        methods:
+            '-initWithDocuments:firestore:':
+                name: init
+    FIRExprBridge: { }
+    FIRFieldBridge:
+        methods:
+            '-initWithName:':
+                name: init
+            '-initWithPath:':
+                name: init
+    FIRFindNearestStageBridge:
+        methods:
+            '-initWithField:vectorValue:distanceMeasure:limit:distanceField:':
+                name: init
+    FIRFunctionExprBridge:
+        methods:
+            '-initWithName:Args:':
+                name: init
+    FIRLimitStageBridge:
+        methods:
+            '-initWithLimit:':
+                name: init
+    FIROffsetStageBridge:
+        methods:
+            '-initWithOffset:':
+                name: init
+    FIROrderingBridge:
+        methods:
+            '-initWithExpr:Direction:':
+                name: init
+    FIRPipelineBridge:
+        methods:
+            '-initWithStages:db:':
+                name: init
+            '-executeWithCompletion:':
+                name: execute
+    FIRRawStageBridge:
+        methods:
+            '-initWithName:params:options:':
+                name: init
+    FIRRealtimePipelineBridge:
+        methods:
+            '-initWithStages:db:':
+                name: init
+            '-addSnapshotListenerWithOptions:listener:':
+                name: addSnapshotListener
+    FIRRemoveFieldsStageBridge:
+        methods:
+            '-initWithFields:':
+                name: init
+    FIRReplaceWithStageBridge:
+        methods:
+            '-initWithExpr:':
+                name: init
+    FIRSampleStageBridge:
+        methods:
+            '-initWithCount:':
+                name: init
+            '-initWithPercentage:':
+                name: init
+    FIRSelectStageBridge:
+        methods:
+            '-initWithSelections:':
+                name: init
+    FIRSorStageBridge:
+        methods:
+            '-initWithOrderings:':
+                name: init
+    FIRStageBridge: { }
+    FIRUnionStageBridge:
+        methods:
+            '-initWithOther:':
+                name: init
+    FIRUnnestStageBridge:
+        methods:
+            '-initWithField:alias:indexField:':
+                name: init
+    FIRWhereStageBridge:
+        methods:
+            '-initWithExpr:':
+                name: init
+    __FIRPipelineListenOptionsBridge:
+        methods:
+            '-initWithServerTimestampBehavior:includeMetadata:source:':
+                name: init
+    __FIRPipelineResultBridge:
+        methods:
+            '-dataWithServerTimestampBehavior:':
+                name: data
+            '-get:serverTimestampBehavior:':
+                name: get
+    __FIRPipelineResultChangeBridge: { }
+    __FIRPipelineSnapshotBridge: { }
+    __FIRRealtimePipelineSnapshotBridge: { }
 protocols:
     FIRListenerRegistration: { }
     FIRLocalCacheSettings: { }

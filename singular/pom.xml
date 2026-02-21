@@ -7,8 +7,8 @@
     </parent>
 
     <artifactId>robopods-singular-ios</artifactId>
-    <version>12.9.2.0</version>
-    <name>RoboPods Singular SDK iOS v12.9.2</name>
+    <version>12.10.0.0</version>
+    <name>RoboPods Singular SDK iOS v12.10.0</name>
     <packaging>jar</packaging>
 
     <licenses>

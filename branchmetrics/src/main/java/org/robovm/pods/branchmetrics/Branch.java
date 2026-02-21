@@ -419,6 +419,12 @@ import org.robovm.apple.intents.*;
     public static native void setTrackingDisabled(boolean disabled);
     @Method(selector = "trackingDisabled")
     public static native boolean trackingDisabled();
+    @Method(selector = "disableNextForeground")
+    public static native void disableNextForeground();
+    @Method(selector = "disableNextForegroundForTimeInterval:")
+    public static native void disableNextForegroundForTimeInterval(double timeout);
+    @Method(selector = "resumeSession")
+    public static native void resumeSession();
     @Method(selector = "setReferrerGbraidValidityWindow:")
     public static native void setReferrerGbraidValidityWindow(double validityWindow);
     @Method(selector = "setDMAParamsForEEA:AdPersonalizationConsent:AdUserDataUsageConsent:")

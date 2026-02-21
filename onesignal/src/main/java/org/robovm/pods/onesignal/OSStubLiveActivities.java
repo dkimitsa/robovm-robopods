@@ -63,5 +63,7 @@ import org.robovm.apple.uikit.*;
     public static native void exit(String activityId);
     @Method(selector = "exit:withSuccess:withFailure:")
     public static native void exit(String activityId, @Block VoidBlock1<NSDictionary<?, ?>> withSuccess, @Block VoidBlock1<NSError> withFailure);
+    @Method(selector = "trackClickAndReturnOriginal:")
+    public static native NSURL trackClickAndReturnOriginal(NSURL url);
     /*</methods>*/
 }

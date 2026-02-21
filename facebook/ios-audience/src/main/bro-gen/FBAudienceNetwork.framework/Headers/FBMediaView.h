@@ -57,6 +57,21 @@ FB_CLASS_EXPORT
 @property (nonatomic, assign, readonly) FBNativeAdViewTag nativeAdViewTag;
 
 /**
+ Option to hide the play and pause controls for video ads. The default value is NO.
+ */
+@property (nonatomic, assign) BOOL shouldHideMediaControls;
+
+/**
+ Option to disable entering full screen mode for video ads. The default value is NO.
+ */
+@property (nonatomic, assign) BOOL disableFullScreen;
+
+/**
+ Option to start the video unmuted. The default value is NO.
+ */
+@property (nonatomic, assign) BOOL shouldStartUnmuted;
+
+/**
  Changes the width of the FBMediaView's frame based on the current height, respecting aspectRatio.
  */
 - (void)applyNaturalWidth;

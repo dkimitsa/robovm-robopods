@@ -156,19 +156,13 @@ typedef NS_ENUM(NSInteger, IASDKCoreInitErrorType) {
 /**
  *  @brief The COPPA complience status.
  *
- *  @discussion Use this property in order to set the COPPA complience accoring to your preferences.
+ *  @discussion Use this property in order to set the COPPA complience status.
  *
- * It can be used as one of the following, in order to allow/restrict:
+ * It can be used as one of the following:
  *
- * - `[IASDKCore.sharedInstance setCoppaApplies:YES]`
+ * - `IASDKCore.sharedInstance.coppaApplies = IACoppaAppliesTypeTrue`
  *
- * - `[IASDKCore.sharedInstance setCoppaApplies:true]`
- *
- * - `IASDKCore.sharedInstance.coppaApplies = NO`
- *
- * - `IASDKCore.sharedInstance.coppaApplies = 1`
- *
- * - `IASDKCore.sharedInstance.setCoppaApplies = IACoppaAppliesTypeGiven`
+ * - `IASDKCore.sharedInstance.coppaApplies = IACoppaAppliesTypeFalse`
  *
  * Or it can be cleared by using the following:
  *
@@ -257,5 +251,18 @@ DEPRECATED_MSG_ATTRIBUTE("This API is deprecated, please use `initWithAppID:comp
  *  @brief Clears all the LGPD related information. The state of the `LGPDConsent` property will become `-1` or `IALGPDConsentTypeUnknown`.
  */
 - (void)clearLGPDConsentData;
+
+/**
+ * @brief Sets a key-value pair in the SDK's extra data.
+ *
+ * @param key The key (non-nil string) for the extra data to set.
+ * @param value The string value associated with the key.
+ *
+ * @discussion For adding multiple data, call this method for every key-value pair. For removing, pass `nil` for the value.
+ *
+ * This method must be called after the SDK init and before the ad-request / bidding-token creation.
+ */
+- (void)setExtraDataForKey:(nonnull NSString *)key
+                     value:(nullable NSString *)value NS_SWIFT_NAME(setExtraData(key:value:));
 
 @end

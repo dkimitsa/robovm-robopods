@@ -7,20 +7,20 @@
     </parent>
 
     <artifactId>robopods-google-mobile-ads-applovin-adapter-ios</artifactId>
-    <version>13.5.0.0</version>
-    <name>RoboPods FireBase AppLovin Mediation Adapter iOS v13.5.0</name>
+    <version>13.5.1.0.0</version>
+    <name>RoboPods FireBase AppLovin Mediation Adapter iOS v13.5.1.0</name>
     <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
             <groupId>io.github.dkimitsa.robovm</groupId>
             <artifactId>robopods-google-mobile-ads-ios</artifactId>
-            <version>12.14.0.0</version>
+            <version>13.0.0.0</version>
         </dependency>
         <dependency>
             <groupId>io.github.dkimitsa.robovm</groupId>
             <artifactId>robopods-applovinsdk-ios</artifactId>
-            <version>13.5.1.0</version>  <!-- might be not compatible -->
+            <version>13.5.1.0</version>
         </dependency>
     </dependencies>
 

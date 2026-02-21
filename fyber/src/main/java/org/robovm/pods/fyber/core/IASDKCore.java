@@ -133,6 +133,8 @@ import org.robovm.apple.coregraphics.*;
     public native void clearGDPRConsentData();
     @Method(selector = "clearLGPDConsentData")
     public native void clearLGPDConsentData();
+    @Method(selector = "setExtraDataForKey:value:")
+    public native void setExtraData(String key, String value);
     @Method(selector = "sharedInstance")
     public static native IASDKCore sharedInstance();
     /*</methods>*/

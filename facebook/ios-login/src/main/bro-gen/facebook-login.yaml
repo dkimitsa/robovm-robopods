@@ -23,6 +23,7 @@ enums:
     FBSDKLoginButtonTooltipBehavior: {}
     FBSDKLoginTracking: {}
     FBSDKLoginManagerState: {}
+    FBSDKAppSwitch: {}
 typed_enums:
     FBSDKLoginAuthType:
         enum: FBSDKLoginAuthType
@@ -116,6 +117,23 @@ classes:
             '-initWithPermissions:tracking:messengerPageId:authType:':
                 name: init
             '-initWithPermissions:tracking:nonce:messengerPageId:authType:codeVerifier:':
+                name: init
+            '-initWithPermissions:tracking:nonce:messengerPageId:appSwitch:':
+                name: init
+            '-initWithPermissions:tracking:nonce:messengerPageId:authType:appSwitch:':
+                name: init
+            '-initWithPermissions:tracking:nonce:appSwitch:':
+                name: init
+            '-initWithPermissions:tracking:messengerPageId:appSwitch:':
+                static_constructor_name: createUsingMessengerPageId
+                name: initUsingMessengerPageId
+            '-initWithPermissions:tracking:messengerPageId:authType:appSwitch:':
+                name: init
+            '-initWithPermissions:tracking:nonce:messengerPageId:authType:appSwitch:codeVerifier:':
+                name: init
+            '-initWithPermissions:tracking:appSwitch:':
+                name: init
+            '-initWithTracking:appSwitch:':
                 name: init
     FBSDKCodeVerifier:
         methods:

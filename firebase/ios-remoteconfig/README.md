@@ -1,5 +1,10 @@
 # Firebase iOS RemoteConfig framework
 
+### Available RoboPods
+| RoboPods Version | Firebase RemoteConfig |
+|------------------|-----------------------|
+| 12.9.0.0         | 12.9.0                |
+
 ### Frameworks required for this pod: 
 * FirebaseABTesting.xcframework (from Firebase.zip/FirebaseRemoteConfig/FirebaseABTesting.xcframework)
 * FirebaseRemoteConfig.xcframework (from Firebase.zip/FirebaseRemoteConfig/FirebaseRemoteConfig.xcframework)

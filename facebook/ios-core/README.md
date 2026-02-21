@@ -1,5 +1,10 @@
 # Facebook iOS Core framework
 
+### Available RoboPods
+| RoboPods Version | Facebook Core |
+|------------------|---------------|
+| 18.0.3.0         | 18.0.3        |
+
 ### Use the dynamic version of frameworks
 It is available for a download as `FacebookSDK_Dynamic.framework.zip` and allows automatic swift dependency resolution. In case static linking is required swift libs should be specified manually in `robovm.xml`:  
 ```xml

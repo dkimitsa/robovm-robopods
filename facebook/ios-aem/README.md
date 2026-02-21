@@ -1,5 +1,10 @@
 # Facebook iOS AEM Kit framework
 
+### Available RoboPods
+| RoboPods Version | Facebook AEM Kit |
+|------------------|------------------|
+| 18.0.3.0         | 18.0.3           |
+
 ### Use the dynamic version of frameworks
 FBAEMKit.framework is available for a download as `FacebookSDK_Dynamic.framework.zip`.
 

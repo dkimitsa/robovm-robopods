@@ -1,5 +1,10 @@
 # Facebook iOS Gaming Services Kit
 
+### Available RoboPods
+| RoboPods Version | Facebook Gaming |
+|------------------|-----------------|
+| 18.0.3.0         | 18.0.3          |
+
 ### Frameworks required for this pod:
 * FBSDKGamingServicesKit
 

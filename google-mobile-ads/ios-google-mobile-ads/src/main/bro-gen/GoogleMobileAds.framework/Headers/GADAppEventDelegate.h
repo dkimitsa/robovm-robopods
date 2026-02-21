@@ -20,11 +20,13 @@ NS_SWIFT_NAME(AppEventDelegate)
 /// Called when the banner receives an app event.
 - (void)adView:(nonnull GADBannerView *)banner
     didReceiveAppEvent:(nonnull NSString *)name
-              withInfo:(nullable NSString *)info NS_SWIFT_NAME(adView(_:didReceiveAppEvent:with:));
+              withInfo:(nullable NSString *)info
+    NS_SWIFT_NAME(adView(_:didReceiveAppEvent:with:)) NS_SWIFT_UI_ACTOR;
 
 /// Called when the interstitial receives an app event.
 - (void)interstitialAd:(nonnull GADInterstitialAd *)interstitialAd
     didReceiveAppEvent:(nonnull NSString *)name
-              withInfo:(nullable NSString *)info NS_SWIFT_NAME(adView(_:didReceiveAppEvent:with:));
+              withInfo:(nullable NSString *)info
+    NS_SWIFT_NAME(adView(_:didReceiveAppEvent:with:)) NS_SWIFT_UI_ACTOR;
 
 @end

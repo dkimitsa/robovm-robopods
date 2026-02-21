@@ -1,5 +1,10 @@
 # Firebase iOS Cloud Firestore framework
 
+### Available RoboPods
+| RoboPods Version | Firebase Firestore |
+|------------------|--------------------|
+| 12.9.0.0         | 12.9.0             |
+
 ### Frameworks required for this pod: 
 * FirebaseAppCheckInterop.xcframework (from Firebase.zip/FirebaseFirestore/FirebaseAppCheckInterop.xcframework)
 * FirebaseCoreExtension.xcframework (from Firebase.zip/FirebaseFirestore/FirebaseCoreExtension.xcframework)

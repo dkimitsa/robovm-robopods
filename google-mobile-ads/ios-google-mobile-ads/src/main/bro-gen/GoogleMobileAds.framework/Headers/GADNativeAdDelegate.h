@@ -18,13 +18,13 @@ NS_SWIFT_NAME(NativeAdDelegate)
 #pragma mark - Ad Lifecycle Events
 
 /// Called when an impression is recorded for an ad.
-- (void)nativeAdDidRecordImpression:(nonnull GADNativeAd *)nativeAd;
+- (void)nativeAdDidRecordImpression:(nonnull GADNativeAd *)nativeAd NS_SWIFT_UI_ACTOR;
 
 /// Called when a click is recorded for an ad.
-- (void)nativeAdDidRecordClick:(nonnull GADNativeAd *)nativeAd;
+- (void)nativeAdDidRecordClick:(nonnull GADNativeAd *)nativeAd NS_SWIFT_UI_ACTOR;
 
 /// Called when a swipe gesture click is recorded for an ad.
-- (void)nativeAdDidRecordSwipeGestureClick:(nonnull GADNativeAd *)nativeAd;
+- (void)nativeAdDidRecordSwipeGestureClick:(nonnull GADNativeAd *)nativeAd NS_SWIFT_UI_ACTOR;
 
 #pragma mark - Click-Time Lifecycle Notifications
 
@@ -48,6 +48,6 @@ NS_SWIFT_NAME(NativeAdDelegate)
 
 /// Used for Mute This Ad feature. Called after the native ad is muted. Only called for Google ads
 /// and is not supported for mediated ads.
-- (void)nativeAdIsMuted:(nonnull GADNativeAd *)nativeAd;
+- (void)nativeAdIsMuted:(nonnull GADNativeAd *)nativeAd NS_SWIFT_UI_ACTOR;
 
 @end

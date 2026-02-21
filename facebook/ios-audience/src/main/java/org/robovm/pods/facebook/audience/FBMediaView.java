@@ -74,6 +74,18 @@ import org.robovm.apple.avfoundation.*;
     public native @MachineSizedFloat double getAspectRatio();
     @Property(selector = "nativeAdViewTag")
     public native FBNativeAdViewTag getNativeAdViewTag();
+    @Property(selector = "shouldHideMediaControls")
+    public native boolean shouldHideMediaControls();
+    @Property(selector = "setShouldHideMediaControls:")
+    public native void setShouldHideMediaControls(boolean v);
+    @Property(selector = "disableFullScreen")
+    public native boolean isDisableFullScreen();
+    @Property(selector = "setDisableFullScreen:")
+    public native void setDisableFullScreen(boolean v);
+    @Property(selector = "shouldStartUnmuted")
+    public native boolean shouldStartUnmuted();
+    @Property(selector = "setShouldStartUnmuted:")
+    public native void setShouldStartUnmuted(boolean v);
     @WeaklyLinked
     @Property(selector = "layerClass")
     public static native Class<? extends CALayer> getLayerClass();

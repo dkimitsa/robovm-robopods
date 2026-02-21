@@ -87,6 +87,8 @@ import org.robovm.apple.uikit.*;
     public void removeSms(String number) {}
     @NotImplemented("setLanguage:")
     public void setLanguage(String language) {}
+    @NotImplemented("trackEventWithName:properties:")
+    public void trackEvent(String name, NSDictionary<NSString, ?> properties) {}
     @NotImplemented("onJwtExpiredWithExpiredHandler:")
     public void onJwtExpired(@Block("(,@Block)") VoidBlock2<NSString, VoidBlock1<NSString>> expiredHandler) {}
     /*</methods>*/

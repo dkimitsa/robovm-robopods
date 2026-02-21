@@ -24,16 +24,6 @@ NS_SWIFT_NAME(MediationBannerAd)
 - (void)changeAdSizeTo:(GADAdSize)adSize;
 @end
 
-/// Rendered interscroller ad.
-GAD_DEPRECATED_MSG_ATTRIBUTE("Interscroller will not be supported.")
-@protocol GADMediationInterscrollerAd <GADMediationBannerAd>
-
-/// Indicates whether the interscroller rendering effect should be delegated to the Google Mobile
-/// Ads SDK.
-@property(nonatomic, assign) BOOL delegateInterscrollerEffect;
-
-@end
-
 /// Banner ad configuration.
 NS_SWIFT_NAME(MediationBannerAdConfiguration)
 @interface GADMediationBannerAdConfiguration : GADMediationAdConfiguration

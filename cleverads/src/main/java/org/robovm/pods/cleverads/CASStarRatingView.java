@@ -49,6 +49,10 @@ import org.robovm.apple.corelocation.*;
     public CASStarRatingView() {}
     protected CASStarRatingView(Handle h, long handle) { super(h, handle); }
     protected CASStarRatingView(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithFrame:")
+    public CASStarRatingView(@ByVal CGRect frame) { super((SkipInit) null); initObject(init(frame)); }
+    @Method(selector = "initWithCoder:")
+    public CASStarRatingView(NSCoder coder) { super((SkipInit) null); initObject(init(coder)); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "rating")
@@ -63,6 +67,10 @@ import org.robovm.apple.corelocation.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
+    @Method(selector = "initWithFrame:")
+    protected native @Pointer long init(@ByVal CGRect frame);
+    @Method(selector = "initWithCoder:")
+    protected native @Pointer long init(NSCoder coder);
     @Method(selector = "layoutSubviews")
     public native void layoutSubviews();
     /**

@@ -7,8 +7,8 @@
     </parent>
 
     <artifactId>robopods-fyber-core-ios</artifactId>
-    <version>8.4.2.0</version>
-    <name>RoboPods Fyber Core iOS v8.4.2</name>
+    <version>8.4.5.0</version>
+    <name>RoboPods Fyber Core iOS v8.4.5</name>
     <packaging>jar</packaging>
 
     <licenses>

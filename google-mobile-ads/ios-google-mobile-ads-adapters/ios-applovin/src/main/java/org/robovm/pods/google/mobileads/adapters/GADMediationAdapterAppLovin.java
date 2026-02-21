@@ -67,12 +67,6 @@ import org.robovm.pods.applovinsdk.*;
     public native void loadRewardedInterstitialAd(GADMediationRewardedAdConfiguration adConfiguration, @Block Block2<GADMediationRewardedAd, NSError, GADMediationRewardedAdEventDelegate> completionHandler);
     @Method(selector = "loadAppOpenAdForAdConfiguration:completionHandler:")
     public native void loadAppOpenAd(GADMediationAppOpenAdConfiguration adConfiguration, @Block Block2<GADMediationAppOpenAd, NSError, GADMediationAppOpenAdEventDelegate> completionHandler);
-    /**
-     * @deprecated Interscroller mediation is no longer supported. This API will be removed in a future release.
-     */
-    @Deprecated
-    @Method(selector = "loadInterscrollerAdForAdConfiguration:completionHandler:")
-    public native void loadInterscrollerAd(GADMediationBannerAdConfiguration adConfiguration, @Block Block2<GADMediationInterscrollerAd, NSError, GADMediationBannerAdEventDelegate> completionHandler);
     @Method(selector = "adapterVersion")
     public static native @ByVal GADVersionNumber adapterVersion();
     @Method(selector = "adSDKVersion")

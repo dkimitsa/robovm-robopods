@@ -47,7 +47,9 @@ public enum /*<name>*/GADMAdapterAppLovinErrorCode/*</name>*/ implements ValuedE
     UnsupportedAdFormat(108L),
     ChildUser(112L),
     AppLovinSDKNotInitialized(113L),
-    FailedToReturnBidToken(114L);
+    FailedToReturnBidToken(114L),
+    MissingAdUnitID(115L),
+    AdNotReady(116L);
     /*</values>*/
 
     /*<bind>*/

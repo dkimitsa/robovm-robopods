@@ -147,10 +147,10 @@ fun parsePom(aggregatorDir: File, pom: File): Artifact {
 }
 
 /// checks if artifact is published at repositories, return null if unable to get status
-fun isPublishedToRemote(id: Artifact.Id): Boolean? {
+fun isPublishedToRemote(artifactId: Artifact.Id): Boolean? {
     fun Artifact.Id.toArtifactUrl(prefix: String) = prefix + "${groupId.replace('.', '/')}/$id/$version/$id-$version.pom"
-    val url = if (id.isSnapshot) id.toArtifactUrl("https://repo1.maven.org/maven2/")
-        else id.toArtifactUrl("https://central.sonatype.com/repository/maven-snapshots/")
+    val url = if (artifactId.isSnapshot) artifactId.toArtifactUrl("https://central.sonatype.com/repository/maven-snapshots/")
+        else artifactId.toArtifactUrl("https://repo1.maven.org/maven2/")
 
     val httpClient: HttpClient = HttpClient.newBuilder()
         .connectTimeout(Duration.ofSeconds(5))
@@ -173,7 +173,7 @@ fun isPublishedToRemote(id: Artifact.Id): Boolean? {
             }
         }
     } catch (ex: Exception) {
-        println("Request failed for: $id -> ${ex.message}")
+        println("Request failed for: $artifactId -> ${ex.message}")
         null
     }
 

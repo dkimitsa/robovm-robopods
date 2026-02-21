@@ -44,6 +44,11 @@ extern const CGFloat FBAdOptionsViewHeight;
  */
 @property (nonatomic, assign) BOOL useSingleIcon;
 
+/**
+ The callback to be called when the ad is reported by user.
+ */
+@property (nonatomic, copy, nullable) void (^adClosedCallback)(void);
+
 @end
 
 NS_ASSUME_NONNULL_END

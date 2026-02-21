@@ -70,6 +70,10 @@ import org.robovm.apple.avfoundation.*;
     public native boolean isUseSingleIcon();
     @Property(selector = "setUseSingleIcon:")
     public native void setUseSingleIcon(boolean v);
+    @Property(selector = "adClosedCallback")
+    public native @Block Runnable getAdClosedCallback();
+    @Property(selector = "setAdClosedCallback:")
+    public native void setAdClosedCallback(@Block Runnable v);
     @WeaklyLinked
     @Property(selector = "layerClass")
     public static native Class<? extends CALayer> getLayerClass();

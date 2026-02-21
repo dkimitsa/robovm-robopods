@@ -1,6 +1,11 @@
 # Firebase iOS AppCheck framework
 App Check helps protect your backend resources from abuse, such as billing fraud and phishing. It works with both Firebase services and your own backends to keep your resources safe.
 
+### Available RoboPods
+| RoboPods Version | FirebaseAppCheck |
+|------------------|------------------|
+| 12.9.0.0         | 12.9.0           |
+
 ### Frameworks required for this pod: 
 * AppCheckCore.xcframework (from Firebase.zip/FirebaseAppCheck/AppCheckCore.xcframework)
 * FirebaseAppCheck.xcframework (from Firebase.zip/FirebaseAppCheck/FirebaseAppCheck.xcframework)

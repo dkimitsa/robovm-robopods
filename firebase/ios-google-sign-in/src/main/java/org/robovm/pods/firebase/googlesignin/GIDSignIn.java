@@ -87,5 +87,13 @@ import org.robovm.apple.coreanimation.*;
     public native void signIn(UIViewController presentingViewController, String hint, NSArray<NSString> additionalScopes, @Block VoidBlock2<GIDSignInResult, NSError> completion);
     @Method(selector = "signInWithPresentingViewController:hint:additionalScopes:nonce:completion:")
     public native void signIn(UIViewController presentingViewController, String hint, NSArray<NSString> additionalScopes, String nonce, @Block VoidBlock2<GIDSignInResult, NSError> completion);
+    @Method(selector = "signInWithPresentingViewController:claims:completion:")
+    public native void signIn(UIViewController presentingViewController, NSSet<GIDClaim> claims, @Block VoidBlock2<GIDSignInResult, NSError> completion);
+    @Method(selector = "signInWithPresentingViewController:hint:claims:completion:")
+    public native void signIn(UIViewController presentingViewController, String hint, NSSet<GIDClaim> claims, @Block VoidBlock2<GIDSignInResult, NSError> completion);
+    @Method(selector = "signInWithPresentingViewController:hint:additionalScopes:claims:completion:")
+    public native void signIn(UIViewController presentingViewController, String hint, NSArray<NSString> additionalScopes, NSSet<GIDClaim> claims, @Block VoidBlock2<GIDSignInResult, NSError> completion);
+    @Method(selector = "signInWithPresentingViewController:hint:additionalScopes:nonce:claims:completion:")
+    public native void signIn(UIViewController presentingViewController, String hint, NSArray<NSString> additionalScopes, String nonce, NSSet<GIDClaim> claims, @Block VoidBlock2<GIDSignInResult, NSError> completion);
     /*</methods>*/
 }

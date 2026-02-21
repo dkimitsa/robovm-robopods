@@ -222,12 +222,6 @@ classes:
         methods:
             '-initWithSwipeGestureDirection:tapsAllowed:':
                 name: init
-    GADQueryInfo:
-        methods:
-            '+createQueryInfoWithRequest:adFormat:completionHandler:':
-                name: createQueryInfo
-            '+createQueryInfoWithRequest:adFormat:adUnitID:completionHandler:':
-                name: createQueryInfo
     GADMediationAppOpenAdConfiguration: { }
     GADAppOpenSignalRequest:
         methods:
@@ -524,7 +518,6 @@ protocols:
     GADFullScreenPresentingAd: {}
     GADAdMetadataDelegate: {}
     GADAdMetadataProvider: {}
-    GADMediationInterscrollerAd: {}
     GADCustomNativeAdDelegate:
         methods:
             '-customNativeAdDid(.*):':
@@ -586,6 +579,15 @@ functions:
     GADAdSizeFullWidthLandscapeWithHeight:
         class: GADAdSize
         name: getAdSizeFullWidthLandscape
+    GADLargePortraitAnchoredAdaptiveBannerAdSizeWithWidth:
+        class: GADAdSize
+        name: getLargePortraitAnchoredAdaptiveBannerAdSize
+    GADLargeLandscapeAnchoredAdaptiveBannerAdSizeWithWidth:
+        class: GADAdSize
+        name: getLargeLandscapeAnchoredAdaptiveBannerAdSize
+    GADLargeAnchoredAdaptiveBannerAdSizeWithWidth:
+        class: GADAdSize
+        name: getLargeAnchoredAdaptiveBannerAdSizeWithWidth
     GADAdSizeEqualToSize:
         class: GADAdSize
         name: equals

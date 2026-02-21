@@ -1,5 +1,10 @@
 # RoboPods FireBase InMobi Ads Mediation Adapter iOS v9.0.7.2
 
+### Available RoboPods
+| RoboPods Version | Inmobi Adapter |
+|------------------|----------------|
+| 11.1.1.1.0       | 11.1.1.1       |
+
 ### Frameworks required for this pod: 
 * InMobiAdapter.framework
 
