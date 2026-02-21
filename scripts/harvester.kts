@@ -100,7 +100,7 @@ val knownFrameworks = mutableMapOf<String, (String) -> Unit>(
         val artifactLocation = Path.of("charts/carthage/DGCharts.xcframework/ios-arm64/$artifact").toFile()
         processFramework(
             artifact = artifact,
-            moduleFolder = "charts/ios",
+            moduleFolder = "charts",
             sourceHeadersDir = artifactLocation.headers,
             yaml = "charts.yaml",
             version = {
