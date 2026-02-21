@@ -414,7 +414,7 @@ val knownFrameworks = mutableMapOf<String, (String) -> Unit>(
         val artifactLocation = downloadFolder.extend("AppsFlyerLib.xcframework/ios-arm64/$framework.framework")
         processFramework(
             artifact = "$framework.framework",
-            moduleFolder = "appsflyer/ios",
+            moduleFolder = "appsflyer/",
             sourceHeadersDir = artifactLocation.headers,
             yaml = "appsflyer.yaml",
             version = { artifactLocation.infoPlist.extractVersion(versionKey = "CFBundleVersion") },
