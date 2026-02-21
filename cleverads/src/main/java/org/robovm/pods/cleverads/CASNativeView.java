@@ -141,12 +141,20 @@ import org.robovm.apple.corelocation.*;
     public native void registerReviewCountView(@MachineSizedSInt long tag);
     @Method(selector = "registerAdLabelViewWithTag:")
     public native void registerAdLabelView(@MachineSizedSInt long tag);
-    @Method(selector = "setNativeAd:")
-    public native void setNativeAd(CASNativeAdContent content);
     @Method(selector = "setAdTemplateSize:")
     public native void setAdTemplateSize(CASSize size);
+    @Method(selector = "bindAdContent:")
+    public native void bindAdContent(CASNativeAdContent adContent);
+    @Method(selector = "bindAdContent:autoPopulateText:")
+    public native void bindAdContent$autoPopulateText$(CASNativeAdContent adContent, boolean autoPopulateText);
     /**
-     * @deprecated To improve performance, please call setTemplateSize(_:) once to create layout and setNativeAd(_:) for each new NativeAdContent.
+     * @deprecated Renamed to bindAdContent(_:). Use bindAdContent:
+     */
+    @Deprecated
+    @Method(selector = "setNativeAd:")
+    public native void setNativeAd(CASNativeAdContent content);
+    /**
+     * @deprecated To improve performance, please call setTemplateSize(_:) once to create layout and bindAdContent(_:) for each new NativeAdContent.
      */
     @Deprecated
     @Method(selector = "setNativeAd:templateSize:")

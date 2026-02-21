@@ -37,6 +37,7 @@
     <modules>
         <module>applovinsdk</module>
         <module>branchmetrics</module>
+        <module>cleverads</module>
         <module>facebook/ios-aem</module>
         <module>facebook/ios-audience</module>
         <module>facebook/ios-bom</module>

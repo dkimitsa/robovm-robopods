@@ -393,7 +393,7 @@ val knownFrameworks = mutableMapOf<String, (String) -> Unit>(
         val artifactLocation = downloadFolder.extend("CleverAdsSolutions/CleverAdsSolutions.xcframework/ios-arm64/$framework.framework")
         processFramework(
             artifact = "$framework.framework",
-            moduleFolder = "cleverads/ios",
+            moduleFolder = "cleverads",
             sourceHeadersDir = artifactLocation.headers,
             yaml = "cleverads.yaml",
             version = {
