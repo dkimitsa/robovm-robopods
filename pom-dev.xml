@@ -67,6 +67,9 @@
         <module>inmobi</module>
         <module>lottie</module>
         <module>onesignal</module>
+        <module>singular</module>
+        <module>tenjin</module>
+        <module>unityads</module>
     </modules>
 
 </project>

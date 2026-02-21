@@ -266,7 +266,7 @@ val knownFrameworks = mutableMapOf<String, (String) -> Unit>(
         val artifactLocation = downloadFolder.extend("UnityAds/$framework.xcframework/ios-arm64/$framework.framework")
         processFramework(
             artifact = "$framework.framework",
-            moduleFolder = "unityads/ios",
+            moduleFolder = "unityads",
             sourceHeadersDir = artifactLocation.headers,
             yaml = "unityads.yaml",
             version = { unityVersion },
