@@ -637,6 +637,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) CASMediationManager * 
 + (NSInteger)getSDKCode SWIFT_WARN_UNUSED_RESULT;
 + (NSString * _Nonnull)getSDKVersion SWIFT_WARN_UNUSED_RESULT;
 + (NSInteger)getSKNetworksCount SWIFT_WARN_UNUSED_RESULT;
++ (NSInteger)getAdAttributionKitCount SWIFT_WARN_UNUSED_RESULT;
 /// Call Integration Helper and check current integration in console.
 /// Log tag: [CASIntegrationHelper]
 + (void)validateIntegration;

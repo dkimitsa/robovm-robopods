@@ -52,14 +52,8 @@ import org.robovm.apple.webkit.*;
     protected GADRequest(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
-    /**
-     * @since Available in iOS 13.0 and later.
-     */
     @Property(selector = "scene")
     public native UIWindowScene getScene();
-    /**
-     * @since Available in iOS 13.0 and later.
-     */
     @Property(selector = "setScene:", strongRef = true)
     public native void setScene(UIWindowScene v);
     @Property(selector = "keywords")

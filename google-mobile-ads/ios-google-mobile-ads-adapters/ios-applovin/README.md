@@ -3,6 +3,7 @@
 ### Available RoboPods
 | RoboPods Version | AppLovin Adapter |
 |------------------|------------------|
+| 13.6.0.0         | 13.6.0           |
 | 13.5.1.0.0       | 13.5.1.0         |
 
 ### Frameworks required for this pod: 

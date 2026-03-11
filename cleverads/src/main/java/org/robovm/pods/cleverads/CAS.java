@@ -45,8 +45,8 @@ import org.robovm.apple.corelocation.*;
     /*<ptr>*/public static class CASPtr extends Ptr<CAS, CASPtr> {}/*</ptr>*/
     /*<bind>*/static { ObjCRuntime.bind(CAS.class); }/*</bind>*/
     /*<constants>*/
-    public static final String FRAMEWORK_VERSION = "4.6.2";
-    public static final int FRAMEWORK_CODE = 406250;
+    public static final String FRAMEWORK_VERSION = "4.6.3";
+    public static final int FRAMEWORK_CODE = 406350;
     /*</constants>*/
     /*<constructors>*/
     public CAS() {}
@@ -74,6 +74,8 @@ import org.robovm.apple.corelocation.*;
     public static native String getSDKVersion();
     @Method(selector = "getSKNetworksCount")
     public static native @MachineSizedSInt long getSKNetworksCount();
+    @Method(selector = "getAdAttributionKitCount")
+    public static native @MachineSizedSInt long getAdAttributionKitCount();
     @Method(selector = "validateIntegration")
     public static native void validateIntegration();
     @Method(selector = "reportCustomRevenueWithJson:")

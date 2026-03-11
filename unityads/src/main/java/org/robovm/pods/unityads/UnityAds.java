@@ -93,5 +93,19 @@ import org.robovm.apple.coreanimation.*;
     public static native void getToken(@Block VoidBlock1<NSString> completion);
     @Method(selector = "getTokenWith:completion:")
     public static native void getToken(UnityAdsTokenConfiguration configuration, @Block VoidBlock1<NSString> completion);
+    @Method(selector = "getToken:completion:")
+    public static native void getToken(UADSTokenConfiguration configuration, @Block VoidBlock1<NSString> completion);
+    @Method(selector = "initialize:completion:")
+    public static native void initialize(UADSInitializationConfiguration configuration, @Block VoidBlock1<UnityAdsError> completion);
+    @Method(selector = "userIdentifier")
+    public static native String userIdentifier();
+    @Method(selector = "setUserIdentifier:")
+    public static native void setUserIdentifier(String newValue);
+    @Method(selector = "setUserConsent:")
+    public static native void setUserConsent(boolean consentGranted);
+    @Method(selector = "setUserOptOut:")
+    public static native void setUserOptOut(boolean optOut);
+    @Method(selector = "setNonBehavioral:")
+    public static native void setNonBehavioral(boolean nonBehavioral);
     /*</methods>*/
 }

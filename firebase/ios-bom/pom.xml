@@ -11,8 +11,8 @@
     </parent>
     <groupId>io.github.dkimitsa.robovm</groupId>
     <artifactId>robopods-firebase-bom</artifactId>
-    <version>12.9.0.0</version>
-    <name>RoboPods FireBase BOM iOS v12.9.0</name>
+    <version>12.10.0.0</version>
+    <name>RoboPods FireBase BOM iOS v12.10.0</name>
     <packaging>pom</packaging>
     <url>https://dkimitsa.github.io</url>
     <description>Bill of materials for Firebase</description>
@@ -23,37 +23,37 @@
             <dependency>
                 <groupId>io.github.dkimitsa.robovm</groupId>
                 <artifactId>robopods-firebase-analytics-ios</artifactId>
-                <version>12.9.0.0</version>
+                <version>12.10.0.0</version>
             </dependency>
             <dependency>
                 <groupId>io.github.dkimitsa.robovm</groupId>
                 <artifactId>robopods-firebase-app-check-ios</artifactId>
-                <version>12.9.0.0</version>
+                <version>12.10.0.0</version>
             </dependency>
             <dependency>
                 <groupId>io.github.dkimitsa.robovm</groupId>
                 <artifactId>robopods-firebase-auth-ios</artifactId>
-                <version>12.9.0.0</version>
+                <version>12.10.0.0</version>
             </dependency>
             <dependency>
                 <groupId>io.github.dkimitsa.robovm</groupId>
                 <artifactId>robopods-firebase-core-ios</artifactId>
-                <version>12.9.0.0</version>
+                <version>12.10.0.0</version>
             </dependency>
             <dependency>
                 <groupId>io.github.dkimitsa.robovm</groupId>
                 <artifactId>robopods-firebase-crashlytics-ios</artifactId>
-                <version>12.9.0.0</version>
+                <version>12.10.0.0</version>
             </dependency>
             <dependency>
                 <groupId>io.github.dkimitsa.robovm</groupId>
                 <artifactId>robopods-firebase-database-ios</artifactId>
-                <version>12.9.0.0</version>
+                <version>12.10.0.0</version>
             </dependency>
             <dependency>
                 <groupId>io.github.dkimitsa.robovm</groupId>
                 <artifactId>robopods-firebase-firestore-ios</artifactId>
-                <version>12.9.0.0</version>
+                <version>12.10.0.0</version>
             </dependency>
             <dependency>
                 <groupId>io.github.dkimitsa.robovm</groupId>
@@ -63,22 +63,22 @@
             <dependency>
                 <groupId>io.github.dkimitsa.robovm</groupId>
                 <artifactId>robopods-firebase-installations-ios</artifactId>
-                <version>12.9.0.0</version>
+                <version>12.10.0.0</version>
             </dependency>
             <dependency>
                 <groupId>io.github.dkimitsa.robovm</groupId>
                 <artifactId>robopods-firebase-messaging-ios</artifactId>
-                <version>12.9.0.0</version>
+                <version>12.10.0.0</version>
             </dependency>
             <dependency>
                 <groupId>io.github.dkimitsa.robovm</groupId>
                 <artifactId>robopods-firebase-remote-config-ios</artifactId>
-                <version>12.9.0.0</version>
+                <version>12.10.0.0</version>
             </dependency>
             <dependency>
                 <groupId>io.github.dkimitsa.robovm</groupId>
                 <artifactId>robopods-firebase-storage-ios</artifactId>
-                <version>12.9.0.0</version>
+                <version>12.10.0.0</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

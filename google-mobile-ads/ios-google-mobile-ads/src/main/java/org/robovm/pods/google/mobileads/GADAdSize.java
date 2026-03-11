@@ -119,19 +119,19 @@ import org.robovm.apple.webkit.*;
     @Bridge(symbol="GADAdSizeFromNSValue", optional=true)
     public static native @ByVal GADAdSize createFromFromNSValue(NSValue value);
     /**
-     * @deprecated Use GADLargePortraitAnchoredAdaptiveBannerAdSizeWithWidth instead.
+     * @deprecated Use GADLargePortraitAnchoredAdaptiveBannerAdSizeWithWidth instead.. Use GADLargePortraitAnchoredAdaptiveBannerAdSizeWithWidth
      */
     @Deprecated
     @Bridge(symbol="GADPortraitAnchoredAdaptiveBannerAdSizeWithWidth", optional=true)
     public static native @ByVal GADAdSize getPortraitAnchoredAdaptiveBannerAdSize(@MachineSizedFloat double width);
     /**
-     * @deprecated Use GADLargeLandscapeAnchoredAdaptiveBannerAdSizeWithWidth instead.
+     * @deprecated Use GADLargeLandscapeAnchoredAdaptiveBannerAdSizeWithWidth instead.. Use GADLargeLandscapeAnchoredAdaptiveBannerAdSizeWithWidth
      */
     @Deprecated
     @Bridge(symbol="GADLandscapeAnchoredAdaptiveBannerAdSizeWithWidth", optional=true)
     public static native @ByVal GADAdSize getLandscapeAnchoredAdaptiveBannerAdSize(@MachineSizedFloat double width);
     /**
-     * @deprecated Use GADLargeAnchoredAdaptiveBannerAdSizeWithWidth instead.
+     * @deprecated Use GADLargeAnchoredAdaptiveBannerAdSizeWithWidth instead.. Use GADLargeAnchoredAdaptiveBannerAdSizeWithWidth
      */
     @Deprecated
     @Bridge(symbol="GADCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth", optional=true)

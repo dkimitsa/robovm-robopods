@@ -35,17 +35,9 @@
 
     <!-- list of modules to build  -->
     <modules>
-        <module>applovinsdk</module>
-        <module>branchmetrics</module>
+        <module>appsflyer</module>
         <module>cleverads</module>
-        <module>facebook/ios-aem</module>
         <module>facebook/ios-audience</module>
-        <module>facebook/ios-bom</module>
-        <module>facebook/ios-core</module>
-        <module>facebook/ios-core-basics</module>
-        <module>facebook/ios-gaming-services-kit</module>
-        <module>facebook/ios-login</module>
-        <module>facebook/ios-share</module>
         <module>firebase/ios-analytics</module>
         <module>firebase/ios-appcheck</module>
         <module>firebase/ios-auth</module>
@@ -54,21 +46,15 @@
         <module>firebase/ios-crashlytics</module>
         <module>firebase/ios-database</module>
         <module>firebase/ios-firestore</module>
-        <module>firebase/ios-google-sign-in</module>
         <module>firebase/ios-installations</module>
         <module>firebase/ios-messaging</module>
         <module>firebase/ios-remoteconfig</module>
         <module>firebase/ios-storage</module>
-        <module>fyber</module>
         <module>google-mobile-ads/ios-google-mobile-ads</module>
         <module>google-mobile-ads/ios-google-mobile-ads-adapters/ios-applovin</module>
         <module>google-mobile-ads/ios-google-mobile-ads-adapters/ios-facebook</module>
         <module>google-mobile-ads/ios-google-mobile-ads-adapters/ios-inmobi</module>
-        <module>inmobi</module>
-        <module>lottie</module>
         <module>onesignal</module>
-        <module>singular</module>
-        <module>tenjin</module>
         <module>unityads</module>
     </modules>
 

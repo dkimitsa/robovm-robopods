@@ -7,8 +7,8 @@
     </parent>
 
     <artifactId>robopods-cleverads-ios</artifactId>
-    <version>4.6.2.0</version>
-    <name>RoboPods Clever Ads Solutions iOS SDK iOS v4.6.2</name>
+    <version>4.6.3.0</version>
+    <name>RoboPods Clever Ads Solutions iOS SDK iOS v4.6.3</name>
     <packaging>jar</packaging>
 
     <licenses>

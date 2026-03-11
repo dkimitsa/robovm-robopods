@@ -3,6 +3,7 @@
 ### Available RoboPods
 | RoboPods Version | Facebook Adapter |
 |------------------|------------------|
+| 6.21.1.0         | 6.21.1           |
 | 6.21.0.2.0       | 6.21.0.2         |
 
 ### Frameworks required for this pod: 

@@ -3,6 +3,7 @@
 ### Available RoboPods
 | RoboPods Version | Google Mobile Ads |
 |------------------|-------------------|
+| 13.1.0.0         | 13.1.0            |
 | 13.0.0.0         | 13.0.0            |
 
 ### Frameworks required for this pod: 

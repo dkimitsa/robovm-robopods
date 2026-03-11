@@ -77,6 +77,8 @@ classes:
                 exclude: true
             '+doTryBlock:error:':
                 exclude: true
+            '+tryResolveCStringFuncWithName:':
+                name: tryResolveCStringFunc
     CASLastPageAdContent:
         methods:
             '-initWithHeadline:adText:destinationURL:imageURL:iconURL:':
@@ -205,6 +207,8 @@ classes:
                 name: registerAdLabelView
             '-setNativeAd:templateSize:':
                 name: setNativeAdTemplateSize
+            '-bindAdContent:autoPopulateText:':
+                name: bindAdContent
 
     CASBiddingUnit: { }
     CASChoicesView: { }

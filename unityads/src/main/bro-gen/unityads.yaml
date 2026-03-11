@@ -31,6 +31,9 @@ enums:
     UnityAdsPurchasingEvent: { prefix: kUnityAdsPurchasingEvent }
     USRVInitializeStateType: {}
     UnityAdsAdFormat: { }
+    UADSAdFormat: { }
+    UADSLogLevel: { }
+    UADSShowFinishState: { }
 classes:
     UADSBannerError:
         skip_def_constructor: true
@@ -97,6 +100,10 @@ classes:
                 name: show
             '+getTokenWith:completion:':
                 name: getToken
+            '+getToken:completion:':
+                name: getToken
+            '+initialize:completion:':
+                name: initialize
     UnityAdsBanner: { }
     UnityAdsDelegateUtil:
         methods:
@@ -160,6 +167,49 @@ classes:
                 constructor: true
             '+newWithAdFormat:extras:':
                 exclude: true
+    UADSBannerAd:
+        methods:
+            '+load:completion:':
+                name: load
+    UADSBannerLoadConfiguration: { }
+    UADSBannerLoadConfigurationBuilder:
+        methods:
+            '-initWithPlacementId:bannerSize:delegate:':
+                name: init
+    UADSInitializationConfiguration: { }
+    UADSInitializationConfigurationBuilder:
+        methods:
+            '-initWithGameId:':
+                name: init
+    UADSInterstitialAd:
+        methods:
+            '-show:delegate:':
+                name: show
+            '+load:completion:':
+                name: load
+    UADSLoadConfiguration: { }
+    UADSLoadConfigurationBuilder:
+        methods:
+            '-initWithPlacementId:':
+                name: init
+    UADSMediationInfo:
+        methods:
+            '-initWithName:version:adapterVersion:':
+                name: init
+    UADSRewardedAd:
+        methods:
+            '-show:delegate:':
+                name: show
+            '+load:completion:':
+                name: load
+    UADSShowConfiguration: { }
+    UADSShowConfigurationBuilder: { }
+    UADSTokenConfiguration: { }
+    UADSTokenConfigurationBuilder:
+        methods:
+            '-initWithAdFormat:':
+                name: init
+    UnityAd: {}
 protocols:
     UADSBannerAdRefreshViewDelegate:
         methods:
@@ -199,6 +249,23 @@ protocols:
         methods:
             '-startWithCompletion:error:':
                 name: start
+    UADSBannerAdDelegate:
+        methods:
+            '-bannerDidFailShow:error:':
+                name: bannerDidFailShow
+    UADSInterstitialShowDelegate:
+        methods:
+            '-showDidComplete:with:':
+                name: showDidComplete
+            '-showDidFail:error:':
+                name: showDidFail
+    UADSRewardedShowDelegate:
+        methods:
+            '-showDidComplete:with:':
+                name: showDidComplete
+            '-showDidFail:error:':
+                name: showDidFail
+    UnityAdsError: { }
 functions:
     NSStringFromPlacementContentState:
         class: UnityMonetizationPlacementContentState
