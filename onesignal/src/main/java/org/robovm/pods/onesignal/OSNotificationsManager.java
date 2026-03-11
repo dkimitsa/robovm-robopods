@@ -68,8 +68,8 @@ import org.robovm.apple.uikit.*;
     /*<methods>*/
     @Method(selector = "Notifications")
     public static native Class<?> Notifications();
-    @Method(selector = "start")
-    public static native void start();
+    @Method(selector = "startSwizzling")
+    public static native void startSwizzling();
     @Method(selector = "setColdStartFromTapOnNotification:")
     public static native void setColdStartFromTapOnNotification(boolean coldStartFromTapOnNotification);
     @Method(selector = "getColdStartFromTapOnNotification")
@@ -98,18 +98,24 @@ import org.robovm.apple.uikit.*;
     public static native void handleNotificationAction(String url, String actionID);
     @Method(selector = "clearBadgeCount:fromClearAll:")
     public static native void clearBadgeCount(boolean fromNotifOpened, boolean fromClearAll);
-    @Method(selector = "receiveRemoteNotification:UserInfo:completionHandler:")
-    public static native boolean receiveRemoteNotification(UIApplication application, NSDictionary<?, ?> userInfo, @Block VoidBlock1<UIBackgroundFetchResult> completionHandler);
     @Method(selector = "notificationReceived:wasOpened:")
     public static native void notificationReceived(NSDictionary<?, ?> messageDict, boolean opened);
-    @Method(selector = "handleWillPresentNotificationInForegroundWithPayload:withCompletion:")
-    public static native void handleWillPresentNotificationInForeground(NSDictionary<?, ?> payload, @Block VoidBlock1<OSNotification> completion);
-    @Method(selector = "didRegisterForRemoteNotifications:deviceToken:")
-    public static native void didRegisterForRemoteNotifications(UIApplication app, NSData inDeviceToken);
-    @Method(selector = "handleDidFailRegisterForRemoteNotification:")
-    public static native void handleDidFailRegisterForRemoteNotification(NSError err);
     @Method(selector = "checkProvisionalAuthorizationStatus")
     public static native void checkProvisionalAuthorizationStatus();
+    @Method(selector = "registerLifecycleObserver")
+    public static native void registerLifecycleObserver();
+    @Method(selector = "isSwizzlingDisabled")
+    public static native boolean isSwizzlingDisabled();
+    @Method(selector = "processRegisteredDeviceToken:")
+    public static native void processRegisteredDeviceToken(NSData deviceToken);
+    @Method(selector = "processFailedRemoteNotificationsRegistration:")
+    public static native void processFailedRemoteNotificationsRegistration(NSError error);
+    @Method(selector = "processReceivedRemoteNotification:completionHandler:")
+    public static native boolean processReceivedRemoteNotification(NSDictionary<?, ?> userInfo, @Block VoidBlock1<UIBackgroundFetchResult> completionHandler);
+    @Method(selector = "processWillPresentNotificationWithPayload:completion:")
+    public static native void processWillPresentNotification(NSDictionary<?, ?> payload, @Block VoidBlock1<OSNotification> completion);
+    @Method(selector = "processNotificationResponse:")
+    public static native void processNotificationResponse(UNNotificationResponse response);
     @Method(selector = "permission")
     public static native boolean permission();
     @Method(selector = "canRequestPermission")
@@ -136,5 +142,17 @@ import org.robovm.apple.uikit.*;
     public static native void removePermissionObserver(OSNotificationPermissionObserver observer);
     @Method(selector = "clearAll")
     public static native void clearAll();
+    @Method(selector = "didRegisterForRemoteNotificationsWithDeviceToken:")
+    public static native void didRegisterForRemoteNotificationsWithDeviceToken(NSData deviceToken);
+    @Method(selector = "didFailToRegisterForRemoteNotificationsWithError:")
+    public static native void didFailToRegisterForRemoteNotificationsWithError(NSError error);
+    @Method(selector = "didReceiveRemoteNotification:completionHandler:")
+    public static native void didReceiveRemoteNotification$completionHandler$(NSDictionary<?, ?> userInfo, @Block VoidBlock1<UIBackgroundFetchResult> completionHandler);
+    @Method(selector = "willPresentNotificationWithPayload:completion:")
+    public static native void willPresentNotificationWithPayload$completion$(NSDictionary<?, ?> payload, @Block VoidBlock1<OSNotification> completion);
+    @Method(selector = "didReceiveNotificationResponse:")
+    public static native void didReceiveNotificationResponse(UNNotificationResponse response);
+    @Method(selector = "setBadgeCount:")
+    public static native void setBadgeCount(@MachineSizedSInt long badgeCount);
     /*</methods>*/
 }
