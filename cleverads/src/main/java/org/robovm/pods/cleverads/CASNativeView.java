@@ -146,7 +146,7 @@ import org.robovm.apple.corelocation.*;
     @Method(selector = "bindAdContent:")
     public native void bindAdContent(CASNativeAdContent adContent);
     @Method(selector = "bindAdContent:autoPopulateText:")
-    public native void bindAdContent$autoPopulateText$(CASNativeAdContent adContent, boolean autoPopulateText);
+    public native void bindAdContent(CASNativeAdContent adContent, boolean autoPopulateText);
     /**
      * @deprecated Renamed to bindAdContent(_:). Use bindAdContent:
      */

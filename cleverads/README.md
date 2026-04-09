@@ -6,6 +6,7 @@ https://github.com/cleveradssolutions/CAS-iOS
 ## Available RoboPods
 | RoboPods Version | CleverAds Version |
 |------------------|-------------------|
+| 4.6.3.0          | 4.6.3             |
 | 4.6.2.0          | 4.6.2             |
 | 1.56.0           | 4.5.4             |
 | 1.55.0           | 4.4.2             |

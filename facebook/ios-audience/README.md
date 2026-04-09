@@ -3,6 +3,7 @@
 ### Available RoboPods
 | RoboPods Version | Facebook Audience |
 |------------------|-------------------|
+| 6.21.1.0         | 6.21.1            |
 | 6.21.0.0         | 6.21.0            |
 
 ### Use the dynamic version of frameworks

@@ -37,6 +37,7 @@ FOUNDATION_EXPORT const unsigned char UnityAdsModuleVersionString[];
 #import <UnityAds/USRVStorage.h>
 #import <UnityAds/UADSGenericError.h>
 #import <UnityAds/UADSGenericCompletion.h>
+#import <UnityAds/UADSDynamicFunctionInvoker.h>
 #import <UnityAds/UADSScarSignalParameters.h>
 #import <UnityAds/UADSGMAScarVersionBridge.h>
 #import <UnityAds/UADSGMAScarSignalsBridge.h>
@@ -46,6 +47,7 @@ FOUNDATION_EXPORT const unsigned char UnityAdsModuleVersionString[];
 #import <UnityAds/UADSOfferwallVersionBridge.h>
 #import <UnityAds/UADSOfferwallAvailabilityBridge.h>
 #import <UnityAds/UADSOfferwallAdsBridge.h>
+#import <UnityAds/UADSProxyReflection.h>
 
 #import <UnityAds/InternalAdFormat.h>
 #endif /* UnityAds_h */

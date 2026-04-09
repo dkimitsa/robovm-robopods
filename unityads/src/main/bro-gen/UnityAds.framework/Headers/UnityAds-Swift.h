@@ -280,6 +280,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #if __has_warning("-Watimport-in-framework-header")
 #pragma clang diagnostic ignored "-Watimport-in-framework-header"
 #endif
+@import CoreFoundation;
 @import Foundation;
 @import ObjectiveC;
 #endif
@@ -306,39 +307,52 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 
 
 
+typedef SWIFT_ENUM_NAMED(NSInteger, UADSAdFormat, "AdFormat", open) {
+  UADSAdFormatUnspecified = 0,
+  UADSAdFormatInterstitial = 1,
+  UADSAdFormatRewarded = 2,
+  UADSAdFormatBanner = 3,
+};
 
+@class UADSBannerLoadConfiguration;
+@protocol UnityAdsError;
+@class UIView;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@class NSString;
-
-SWIFT_CLASS("_TtC8UnityAds13LoggerWrapper")
-@interface LoggerWrapper : NSObject
-- (void)log:(NSString * _Nonnull)message;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+SWIFT_CLASS_NAMED("BannerAd")
+@interface UADSBannerAd : NSObject
++ (void)load:(UADSBannerLoadConfiguration * _Nonnull)config completion:(void (^ _Nonnull)(UADSBannerAd * _Nullable, id <UnityAdsError> _Nullable))completion;
+@property (nonatomic, readonly, strong) UIView * _Nonnull view;
+@property (nonatomic, copy) void (^ _Nullable onAdExpired)(UADSBannerAd * _Nonnull);
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 
+SWIFT_PROTOCOL_NAMED("BannerAdDelegate")
+@protocol UADSBannerAdDelegate <NSObject>
+- (void)bannerImpression:(UADSBannerAd * _Nonnull)banner;
+- (void)bannerDidClick:(UADSBannerAd * _Nonnull)banner;
+- (void)bannerDidFailShow:(UADSBannerAd * _Nonnull)banner error:(id <UnityAdsError> _Nonnull)error;
+@end
 
 
+SWIFT_CLASS_NAMED("BannerLoadConfiguration")
+@interface UADSBannerLoadConfiguration : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
 
-SWIFT_CLASS("_TtC8UnityAds33SDKConfigurationStorageObjcBridge")
-@interface SDKConfigurationStorageObjcBridge : NSObject
-@property (nonatomic, readonly, copy) NSDictionary<NSString *, id> * _Nonnull configDictionary;
-- (void)saveSDKConfigFrom:(NSDictionary<NSString *, id> * _Nonnull)dictionary;
+@class NSString;
+@class UADSMediationInfo;
+
+SWIFT_CLASS_NAMED("BannerLoadConfigurationBuilder")
+@interface UADSBannerLoadConfigurationBuilder : NSObject
+- (nonnull instancetype)initWithPlacementId:(NSString * _Nonnull)placementId bannerSize:(CGSize)bannerSize delegate:(id <UADSBannerAdDelegate> _Nonnull)delegate OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)withAdMarkup:(NSString * _Nonnull)adMarkup SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)withMediationAdUnitId:(NSString * _Nonnull)mediationAdUnitId SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)withMediationInfo:(UADSMediationInfo * _Nonnull)mediationInfo SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)withExtras:(NSDictionary<NSString *, NSString *> * _Nonnull)extras SWIFT_WARN_UNUSED_RESULT;
+- (UADSBannerLoadConfiguration * _Nonnull)build SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -360,6 +374,192 @@ SWIFT_CLASS("_TtC8UnityAds33SDKConfigurationStorageObjcBridge")
 
 
 
+SWIFT_CLASS_NAMED("InitializationConfiguration")
+@interface UADSInitializationConfiguration : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+enum UADSLogLevel : NSInteger;
+
+SWIFT_CLASS_NAMED("InitializationConfigurationBuilder")
+@interface UADSInitializationConfigurationBuilder : NSObject
+- (nonnull instancetype)initWithGameId:(NSString * _Nonnull)gameId OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)withTestMode:(BOOL)testMode SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)withLogLevel:(enum UADSLogLevel)logLevel SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)withMediationInfo:(UADSMediationInfo * _Nonnull)mediationInfo SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)withExtras:(NSDictionary<NSString *, NSString *> * _Nonnull)extras SWIFT_WARN_UNUSED_RESULT;
+- (UADSInitializationConfiguration * _Nonnull)build SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS("_TtC8UnityAds7UnityAd")
+@interface UnityAd : NSObject
+@property (nonatomic, copy) void (^ _Nullable onAdExpired)(UnityAd * _Nonnull);
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+@class UADSLoadConfiguration;
+@class UADSShowConfiguration;
+@protocol UADSInterstitialShowDelegate;
+
+SWIFT_CLASS_NAMED("InterstitialAd")
+@interface UADSInterstitialAd : UnityAd
++ (void)load:(UADSLoadConfiguration * _Nonnull)configuration completion:(void (^ _Nonnull)(UADSInterstitialAd * _Nullable, id <UnityAdsError> _Nullable))completion;
+- (void)show:(UADSShowConfiguration * _Nullable)configuration delegate:(id <UADSInterstitialShowDelegate> _Nonnull)delegate;
+@end
+
+
+enum UADSShowFinishState : NSInteger;
+
+SWIFT_PROTOCOL_NAMED("InterstitialShowDelegate")
+@protocol UADSInterstitialShowDelegate <NSObject>
+- (void)showDidStart:(UnityAd * _Nonnull)unityAd;
+- (void)showDidClick:(UnityAd * _Nonnull)unityAd;
+- (void)showDidComplete:(UnityAd * _Nonnull)unityAd with:(enum UADSShowFinishState)finishState;
+- (void)showDidFail:(UnityAd * _Nonnull)unityAd error:(id <UnityAdsError> _Nonnull)error;
+@end
+
+
+
+SWIFT_CLASS_NAMED("LoadConfiguration")
+@interface UADSLoadConfiguration : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS_NAMED("LoadConfigurationBuilder")
+@interface UADSLoadConfigurationBuilder : NSObject
+- (nonnull instancetype)initWithPlacementId:(NSString * _Nonnull)placementId OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)withAdMarkup:(NSString * _Nonnull)adMarkup SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)withMediationAdUnitId:(NSString * _Nonnull)mediationAdUnitId SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)withMediationInfo:(UADSMediationInfo * _Nonnull)mediationInfo SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)withExtras:(NSDictionary<NSString *, NSString *> * _Nonnull)extras SWIFT_WARN_UNUSED_RESULT;
+- (UADSLoadConfiguration * _Nonnull)build SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+typedef SWIFT_ENUM_NAMED(NSInteger, UADSLogLevel, "LogLevel", open) {
+  UADSLogLevelDisabled = 0,
+  UADSLogLevelError = 1,
+  UADSLogLevelInfo = 2,
+  UADSLogLevelDebug = 3,
+};
+
+
+SWIFT_CLASS("_TtC8UnityAds13LoggerWrapper")
+@interface LoggerWrapper : NSObject
+- (void)log:(NSString * _Nonnull)message;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS_NAMED("MediationInfo")
+@interface UADSMediationInfo : NSObject
+- (nonnull instancetype)initWithName:(NSString * _Nonnull)name version:(NSString * _Nonnull)version adapterVersion:(NSString * _Nonnull)adapterVersion OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+
+
+@protocol UADSRewardedShowDelegate;
+
+SWIFT_CLASS_NAMED("RewardedAd")
+@interface UADSRewardedAd : UnityAd
++ (void)load:(UADSLoadConfiguration * _Nonnull)configuration completion:(void (^ _Nonnull)(UADSRewardedAd * _Nullable, id <UnityAdsError> _Nullable))completion;
+- (void)show:(UADSShowConfiguration * _Nullable)configuration delegate:(id <UADSRewardedShowDelegate> _Nonnull)delegate;
+@end
+
+
+
+SWIFT_PROTOCOL_NAMED("RewardedShowDelegate")
+@protocol UADSRewardedShowDelegate <NSObject>
+- (void)showDidStart:(UnityAd * _Nonnull)unityAd;
+- (void)showDidClick:(UnityAd * _Nonnull)unityAd;
+- (void)showDidComplete:(UnityAd * _Nonnull)unityAd with:(enum UADSShowFinishState)finishState;
+- (void)showDidFail:(UnityAd * _Nonnull)unityAd error:(id <UnityAdsError> _Nonnull)error;
+- (void)showDidReceiveReward:(UnityAd * _Nonnull)unityAd;
+@end
+
+
+SWIFT_CLASS("_TtC8UnityAds33SDKConfigurationStorageObjcBridge")
+@interface SDKConfigurationStorageObjcBridge : NSObject
+@property (nonatomic, readonly, copy) NSDictionary<NSString *, id> * _Nonnull configDictionary;
+- (void)saveSDKConfigFrom:(NSDictionary<NSString *, id> * _Nonnull)dictionary;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+
+
+
+
+
+
+
+SWIFT_CLASS_NAMED("ShowConfiguration")
+@interface UADSShowConfiguration : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+@class UIViewController;
+
+SWIFT_CLASS_NAMED("ShowConfigurationBuilder")
+@interface UADSShowConfigurationBuilder : NSObject
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)withViewController:(UIViewController * _Nonnull)viewController SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)withCustomRewardString:(NSString * _Nonnull)customRewardString SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)withExtras:(NSDictionary<NSString *, NSString *> * _Nonnull)extras SWIFT_WARN_UNUSED_RESULT;
+- (UADSShowConfiguration * _Nonnull)build SWIFT_WARN_UNUSED_RESULT;
+@end
+
+typedef SWIFT_ENUM_NAMED(NSInteger, UADSShowFinishState, "ShowFinishState", open) {
+  UADSShowFinishStateSkipped = 0,
+  UADSShowFinishStateCompleted = 1,
+};
+
+
+SWIFT_CLASS_NAMED("TokenConfiguration")
+@interface UADSTokenConfiguration : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS_NAMED("TokenConfigurationBuilder")
+@interface UADSTokenConfigurationBuilder : NSObject
+- (nonnull instancetype)initWithAdFormat:(enum UADSAdFormat)adFormat OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)withMediationInfo:(UADSMediationInfo * _Nonnull)mediationInfo SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)withExtras:(NSDictionary<NSString *, NSString *> * _Nonnull)extras SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)withMediationAdUnitId:(NSString * _Nonnull)mediationAdUnitId SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)withPlacementId:(NSString * _Nonnull)placementId SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)withBannerSize:(CGSize)bannerSize SWIFT_WARN_UNUSED_RESULT;
+- (UADSTokenConfiguration * _Nonnull)build SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -368,7 +568,6 @@ SWIFT_CLASS("_TtC8UnityAds33SDKConfigurationStorageObjcBridge")
 @protocol UnityAdsInitializationDelegate;
 @protocol UnityAdsLoadDelegate;
 @class UADSLoadOptions;
-@class UIViewController;
 @protocol UnityAdsShowDelegate;
 @class UADSShowOptions;
 @class UnityAdsTokenConfiguration;
@@ -478,6 +677,21 @@ SWIFT_CLASS("_TtC8UnityAds8UnityAds")
 /// \param completion Callback that will be invoked with the generated token. Returns active token or nil if no active token is available.
 ///
 + (void)getTokenWith:(UnityAdsTokenConfiguration * _Nonnull)configuration completion:(void (^ _Nonnull)(NSString * _Nullable))completion;
+/// Get request token for a specific ad format.
+/// note:
+/// This method allows for format-specific token generation which can be used to optimize token content based on the intended ad format.
+/// \param configuration Configuration object containing the ad format and any additional parameters for token generation.
+///
+/// \param completion Callback that will be invoked with the generated token. Returns active token or nil if no active token is available.
+///
++ (void)getToken:(UADSTokenConfiguration * _Nonnull)configuration completion:(void (^ _Nonnull)(NSString * _Nullable))completion;
++ (void)initialize:(UADSInitializationConfiguration * _Nonnull)configuration completion:(void (^ _Nonnull)(id <UnityAdsError> _Nullable))completion;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, copy) NSString * _Nonnull userIdentifier;)
++ (NSString * _Nonnull)userIdentifier SWIFT_WARN_UNUSED_RESULT;
++ (void)setUserIdentifier:(NSString * _Nonnull)newValue;
++ (void)setUserConsent:(BOOL)consentGranted;
++ (void)setUserOptOut:(BOOL)optOut;
++ (void)setNonBehavioral:(BOOL)nonBehavioral;
 @end
 
 
@@ -486,6 +700,13 @@ typedef SWIFT_ENUM(NSInteger, UnityAdsAdFormat, open) {
   UnityAdsAdFormatRewarded = 1,
   UnityAdsAdFormatBanner = 2,
 };
+
+
+SWIFT_PROTOCOL("_TtP8UnityAds13UnityAdsError_")
+@protocol UnityAdsError
+@property (nonatomic, readonly) NSInteger code;
+@property (nonatomic, readonly, copy) NSString * _Nonnull message;
+@end
 
 
 SWIFT_CLASS("_TtC8UnityAds26UnityAdsTokenConfiguration")

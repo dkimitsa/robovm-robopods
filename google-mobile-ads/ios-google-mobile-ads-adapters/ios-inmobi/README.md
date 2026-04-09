@@ -3,6 +3,7 @@
 ### Available RoboPods
 | RoboPods Version | Inmobi Adapter |
 |------------------|----------------|
+| 11.1.1.0         | 11.1.1         |
 | 11.1.1.1.0       | 11.1.1.1       |
 
 ### Frameworks required for this pod: 

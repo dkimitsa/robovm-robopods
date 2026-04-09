@@ -12,13 +12,14 @@ https://github.com/facebook/facebook-objc-sdk
 | [ios-login](ios-login/)                             | Facebook iOS Login Kit           | 18.0.3  |
 | [ios-share](ios-share/)                             | Facebook iOS Share Kit           | 18.0.3  |
 | [ios-aem](ios-aem/)                                 | Facebook iOS AEM Kit             | 18.0.3  |
-| [ios-audience](ios-audience/)                       | Facebook iOS Audience Ad Network | 6.21.0  |
+| [ios-audience](ios-audience/)                       | Facebook iOS Audience Ad Network | 6.21.1  |
 | [ios-gaming-services-kit](ios-gaming-services-kit/) | Facebook iOS Gaming Service Kit  | 18.0.3  |
 
 ## Versions
 
 | RoboPods Version | Facebook Version |
 |------------------|------------------|
+| 18.0.3.0         | 18.0.3           |
 | 1.53.0           | 18.0.1           |
 | 1.46.0           | 18.0.0           |
 | 1.45.0           | 17.3.0           |

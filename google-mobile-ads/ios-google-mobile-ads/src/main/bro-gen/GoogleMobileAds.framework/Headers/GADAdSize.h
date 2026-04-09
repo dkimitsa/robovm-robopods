@@ -168,13 +168,17 @@ FOUNDATION_EXPORT GADAdSize GADAdSizeFromNSValue(NSValue *_Nonnull value)
 
 /// An ad size that spans the full width of the application in portrait orientation. The height is
 /// typically 50 points on an iPhone/iPod UI, and 90 points tall on an iPad UI.
-FOUNDATION_EXPORT GADAdSize const kGADAdSizeSmartBannerPortrait GAD_DEPRECATED_MSG_ATTRIBUTE(
-    "Use GADLargePortraitAnchoredAdaptiveBannerAdSizeWithWidth instead.");
+FOUNDATION_EXPORT GADAdSize const kGADAdSizeSmartBannerPortrait
+    GAD_DEPRECATED_MSG_REPLACEMENT_ATTRIBUTE(
+        "Use GADLargePortraitAnchoredAdaptiveBannerAdSizeWithWidth instead.",
+        GADLargePortraitAnchoredAdaptiveBannerAdSizeWithWidth());
 
 /// An ad size that spans the full width of the application in landscape orientation. The height is
 /// typically 32 points on an iPhone/iPod UI, and 90 points tall on an iPad UI.
-FOUNDATION_EXPORT GADAdSize const kGADAdSizeSmartBannerLandscape GAD_DEPRECATED_MSG_ATTRIBUTE(
-    "Use GADLargeLandscapeAnchoredAdaptiveBannerAdSizeWithWidth instead.");
+FOUNDATION_EXPORT GADAdSize const kGADAdSizeSmartBannerLandscape
+    GAD_DEPRECATED_MSG_REPLACEMENT_ATTRIBUTE(
+        "Use GADLargeLandscapeAnchoredAdaptiveBannerAdSizeWithWidth instead.",
+        GADLargeLandscapeAnchoredAdaptiveBannerAdSizeWithWidth());
 
 /// Returns a GADAdSize with the given width and a Google-optimized height to create a banner ad.
 /// The size returned has an aspect ratio similar to that of GADAdSizeBanner, suitable for
@@ -182,8 +186,9 @@ FOUNDATION_EXPORT GADAdSize const kGADAdSizeSmartBannerLandscape GAD_DEPRECATED_
 /// device's portrait height and is always between 50-90 points. This function always returns the
 /// same height for any width / device combination.
 FOUNDATION_EXPORT GADAdSize GADPortraitAnchoredAdaptiveBannerAdSizeWithWidth(CGFloat width)
-    NS_SWIFT_NAME(portraitAnchoredAdaptiveBanner(width:)) GAD_DEPRECATED_MSG_ATTRIBUTE(
-        "Use GADLargePortraitAnchoredAdaptiveBannerAdSizeWithWidth instead.");
+    NS_SWIFT_NAME(portraitAnchoredAdaptiveBanner(width:)) GAD_DEPRECATED_MSG_REPLACEMENT_ATTRIBUTE(
+        "Use GADLargePortraitAnchoredAdaptiveBannerAdSizeWithWidth instead.",
+        GADLargePortraitAnchoredAdaptiveBannerAdSizeWithWidth);
 
 /// Returns a GADAdSize with the given width and a Google-optimized height to create a banner ad.
 /// The size returned is suitable for use in a banner ad anchored near the top or bottom of your
@@ -191,8 +196,9 @@ FOUNDATION_EXPORT GADAdSize GADPortraitAnchoredAdaptiveBannerAdSizeWithWidth(CGF
 /// landscape height and is always between 50-90 points. This function always returns the same
 /// height for any width / device combination.
 FOUNDATION_EXPORT GADAdSize GADLandscapeAnchoredAdaptiveBannerAdSizeWithWidth(CGFloat width)
-    NS_SWIFT_NAME(landscapeAnchoredAdaptiveBanner(width:)) GAD_DEPRECATED_MSG_ATTRIBUTE(
-        "Use GADLargeLandscapeAnchoredAdaptiveBannerAdSizeWithWidth instead.");
+    NS_SWIFT_NAME(landscapeAnchoredAdaptiveBanner(width:)) GAD_DEPRECATED_MSG_REPLACEMENT_ATTRIBUTE(
+        "Use GADLargeLandscapeAnchoredAdaptiveBannerAdSizeWithWidth instead.",
+        GADLargeLandscapeAnchoredAdaptiveBannerAdSizeWithWidth);
 
 /// Returns a GADAdSize with the given width and a Google-optimized height. This is a convenience
 /// function to return GADPortraitAnchoredAdaptiveBannerAdSizeWithWidth or
@@ -201,4 +207,6 @@ FOUNDATION_EXPORT GADAdSize GADLandscapeAnchoredAdaptiveBannerAdSizeWithWidth(CG
 FOUNDATION_EXPORT GADAdSize
 GADCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(CGFloat width)
     NS_SWIFT_NAME(currentOrientationAnchoredAdaptiveBanner(width:))
-        GAD_DEPRECATED_MSG_ATTRIBUTE("Use GADLargeAnchoredAdaptiveBannerAdSizeWithWidth instead.");
+        GAD_DEPRECATED_MSG_REPLACEMENT_ATTRIBUTE(
+            "Use GADLargeAnchoredAdaptiveBannerAdSizeWithWidth instead.",
+            GADLargeAnchoredAdaptiveBannerAdSizeWithWidth);

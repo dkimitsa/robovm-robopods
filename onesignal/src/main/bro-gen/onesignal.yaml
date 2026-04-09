@@ -371,6 +371,10 @@ classes:
                 name: didRegisterForRemoteNotifications
             '+clearBadgeCount:fromClearAll:':
                 name: clearBadgeCount
+            '+processReceivedRemoteNotification:completionHandler:':
+                name: processReceivedRemoteNotification
+            '+processWillPresentNotificationWithPayload:completion:':
+                name: processWillPresentNotification
     OSObservable:
         methods:
             '-initWithChangeSelector:':

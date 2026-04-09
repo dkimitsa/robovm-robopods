@@ -28,7 +28,7 @@ typedef NS_ERROR_ENUM(GADErrorDomain, GADErrorCode){
     GADErrorServerError = 3,
 
     /// The current device's OS is below the minimum required version.
-    GADErrorOSVersionTooLow = 4,
+    GADErrorOSVersionTooLow GAD_DEPRECATED_MSG_ATTRIBUTE("Deprecated. No replacement.") = 4,
 
     /// The request was unable to be loaded before being timed out.
     GADErrorTimeout = 5,

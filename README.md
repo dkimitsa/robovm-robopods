@@ -45,25 +45,25 @@ v1.57.0
 | [AdaptySDK](adapty/)                    | 1.17.7  |
 | [AppCenter](appcenter/)                 | 5.10.0  |
 | [AppLovinSDK](applovinsdk/)             | 13.6.0  |
-| [AppsFlyer](appsflyer/)                 | 6.17.8  |
+| [AppsFlyer](appsflyer/)                 | 6.17.9  |
 | [Azure](azure/)                         | 3.1.4   |
 | [BranchMetrics](branchmetrics/)         | 3.14.0  |
 | [Charts](charts/)                       | 5.1.0   |
-| [CleverAds](cleverads/)                 | 4.6.2   |
+| [CleverAds](cleverads/)                 | 4.6.3   |
 | [Facebook](facebook/)                   | 18.0.3  |
-| [Firebase](firebase/)                   | 12.9.0  |
+| [Firebase](firebase/)                   | 12.10.0 |
 | [Fyber](fyber/)                         | 8.4.5   |
-| [Google Mobile Ads](google-mobile-ads/) | 13.0.0  |
+| [Google Mobile Ads](google-mobile-ads/) | 13.1.0  |
 | [HelpShiftX](helpshift/)                | 10.5.0  |
 | [InMobi](inmobi/)                       | 11.1.1  |
 | [IronSource](ironsource/)               | 9.2.0   |
 | [Lottie](lottie/)                       | 4.6.0   |
-| [OneSignal](onesignal/)                 | 5.4.1   |
+| [OneSignal](onesignal/)                 | 5.5.0   |
 | [Pollfish](pollfish/)                   | 6.5.0   |
 | [SAMKeychain](samkeychain/)             | 1.5.3   |
 | [Singular](singular/)                   | 12.10.0 |
 | [Tenjin](tenjin/)                       | 1.15.1  |
-| [UnityAds](unityads/)                   | 4.16.6  |
+| [UnityAds](unityads/)                   | 4.17.0  |
 | [YouTubePlayer](youtube/)               | 1.0.4   |
 
 [Older versions](CHANGELOG.md)

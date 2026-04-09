@@ -45,6 +45,10 @@ public enum /*<name>*/GADErrorCode/*</name>*/ implements NSErrorCode {
     NoFill(1L),
     NetworkError(2L),
     ServerError(3L),
+    /**
+     * @deprecated Deprecated. No replacement.
+     */
+    @Deprecated
     OSVersionTooLow(4L),
     Timeout(5L),
     MediationDataError(7L),

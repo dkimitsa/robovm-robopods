@@ -3,6 +3,7 @@
 ### Available RoboPods
 | RoboPods Version | FirebaseCrashlytics |
 |------------------|---------------------|
+| 12.10.0.0        | 12.10.0             |
 | 12.9.0.0         | 12.9.0              |
 
 ### Frameworks required for this pod: 
