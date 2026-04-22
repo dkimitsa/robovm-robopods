@@ -35,7 +35,7 @@
 
     <!-- list of modules to build  -->
     <modules>
-        <module>onesignal</module>
+        <module>adjustsdk</module>
     </modules>
 
 </project>

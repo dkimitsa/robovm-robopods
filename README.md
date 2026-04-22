@@ -43,6 +43,7 @@ v1.57.0
 | Name                                    | 1.57.0  |
 |-----------------------------------------|---------|
 | [AdaptySDK](adapty/)                    | 1.17.7  |
+| [AdjustSdk](adjustsdk/)                 | 5.6.2   |
 | [AppCenter](appcenter/)                 | 5.10.0  |
 | [AppLovinSDK](applovinsdk/)             | 13.6.0  |
 | [AppsFlyer](appsflyer/)                 | 6.17.9  |

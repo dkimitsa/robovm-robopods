@@ -410,6 +410,26 @@ val knownFrameworks = mutableMapOf<String, (String) -> Unit>(
             """.trimIndent(),
         )
     },
+    "AdjustSdk" to { framework ->
+        val artifactLocation = downloadFolder.extend("AdjustSdk-iOS-tvOS-Dynamic-xcframework/AdjustSdk.xcframework/ios-arm64/$framework.framework")
+        processFramework(
+            artifact = "$framework.framework",
+            moduleFolder = "adjustsdk",
+            sourceHeadersDir = artifactLocation.headers,
+            yaml = "adjustsdk.yaml",
+            version = {
+                artifactLocation.headers.extend("Adjust.h").readLines()
+                    .find{ it.contains("//  V") }
+                    ?.substringAfterLast("//  V")
+                    ?: error("Filed to evaluate $framework version")
+            },
+            instruction = """
+                0. download latest AdjustSdk-iOS-tvOS-Dynamic-X.X.X.xcframework.zip from https://github.com/adjust/ios_sdk/releases
+                1. unpack
+                2. expected location $artifactLocation
+            """.trimIndent(),
+        )
+    },
     "AppsFlyerLib" to { framework ->
         val artifactLocation = downloadFolder.extend("AppsFlyerLib.xcframework/ios-arm64/$framework.framework")
         processFramework(
@@ -772,7 +792,7 @@ fun updateModuleReadmeFileVersionString(framework: String, moduleReadmeFile: Fil
                         cols[1] = " $podVersion".padEnd(cols[1].length)
                         cols[2] = " $version".padEnd(cols[2].length)
                         resultLines.add(cols.joinToString("|"))
-                        if (sdkVersion != version) {
+                        if (sdkVersion.isNotEmpty() &&  sdkVersion != version) {
                             // version changed, adding on top
                             resultLines.add(line)
                         }

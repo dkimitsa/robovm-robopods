@@ -1,0 +1,160 @@
+package: org.robovm.pods.adjustsdk
+include: [foundation, uikit, coregraphics, coreanimation]
+framework: AdjustSdk
+clang_args: ['-x', 'objective-c']
+headers:
+    - AdjustSdk.h
+
+private_typedefs: {}
+
+typedefs: {}
+
+enums:
+    ADJLogLevel: {}
+
+classes:
+    ADJAdRevenue:
+        methods:
+            '-initWithSource:':
+                name: init
+            '-setRevenue:currency:':
+                name: setRevenue
+            '-addCallbackParameter:value:':
+                name: addCallbackParameter
+            '-addPartnerParameter:value:':
+                name: addPartnerParameter
+    ADJAppStorePurchase:
+        methods:
+            '-initWithTransactionId:productId:':
+                name: init
+    ADJAppStoreSubscription:
+        methods:
+            '-initWithPrice:currency:transactionId:':
+                name: init
+            '-addCallbackParameter:value:':
+                name: addCallbackParameter
+            '-addPartnerParameter:value:':
+                name: addPartnerParameter
+    ADJAttribution:
+        methods:
+            '-initWithJsonDict:':
+                name: init
+    ADJConfig:
+        methods:
+            '-initWithAppToken:environment:':
+                name: init
+            '-initWithAppToken:environment:suppressLogLevel:':
+                name: init
+            '-setUrlStrategy:useSubdomains:isDataResidency:':
+                name: setUrlStrategy
+    ADJDeeplink:
+        methods:
+            '-initWithDeeplink:':
+                name: init
+    ADJEvent:
+        methods:
+            '-initWithEventToken:':
+                name: init
+            '-setRevenue:currency:':
+                name: setRevenue
+            '-addCallbackParameter:value:':
+                name: addCallbackParameter
+            '-addPartnerParameter:value:':
+                name: addPartnerParameter
+    ADJEventFailure: { }
+    ADJEventSuccess: { }
+    ADJLinkResolution:
+        methods:
+            '+resolveLinkWithUrl:resolveUrlSuffixArray:callback:':
+                name: resolveLink
+    ADJLogger: { }
+    ADJPurchaseVerificationResult: { }
+    ADJRemoteTrigger:
+        methods:
+            '-initWithLabel:payload:':
+                name: init
+    ADJSessionFailure: { }
+    ADJSessionSuccess: { }
+    ADJStoreInfo:
+        methods:
+            '-initWithStoreName:':
+                name: init
+    ADJThirdPartySharing:
+        methods:
+            '-initWithIsEnabled:':
+                name: init
+            '-addGranularOption:key:value:':
+                name: addGranularOption
+            '-addPartnerSharingSetting:key:value:':
+                name: addPartnerSharingSetting
+    Adjust:
+        methods:
+            '+isEnabledWithCompletionHandler:':
+                name: isEnabled
+            '+processAndResolveDeeplink:withCompletionHandler:':
+                name: processAndResolveDeeplink
+            '+idfaWithCompletionHandler:':
+                name: idfa
+            '+idfvWithCompletionHandler:':
+                name: idfv
+            '+adidWithCompletionHandler:':
+                name: adid
+            '+adidWithTimeout:completionHandler:':
+                name: adid
+            '+attributionWithCompletionHandler:':
+                name: attribution
+            '+attributionWithTimeout:completionHandler:':
+                name: attribution
+            '+sdkVersionWithCompletionHandler:':
+                name: sdkVersion
+            '+convertUniversalLink:withScheme:':
+                name: convertUniversalLink
+            '+addGlobalCallbackParameter:forKey:':
+                name: addGlobalCallbackParameter
+            '+addGlobalPartnerParameter:forKey:':
+                name: addGlobalPartnerParameter
+            '+requestAppTrackingAuthorizationWithCompletionHandler:':
+                name: requestAppTrackingAuthorization
+            '+updateSkanConversionValue:coarseValue:lockWindow:withCompletionHandler:':
+                name: updateSkanConversionValue
+            '+lastDeeplinkWithCompletionHandler:':
+                name: lastDeeplink
+            '+verifyAppStorePurchase:withCompletionHandler:':
+                name: verifyAppStorePurchase
+            '+verifyAndTrackAppStorePurchase:withCompletionHandler:':
+                name: verifyAndTrackAppStorePurchase
+protocols:
+    ADJLogger:
+        name: ADJLoggerProtocol
+        methods:
+            '-setLogLevel:isProductionEnvironment:':
+                name: setLogLevel
+    AdjustDelegate:
+        methods:
+            '-adjustSkanUpdatedWithConversionData:':
+                name: adjustSkanUpdated
+
+functions:
+
+    # Make sure we don't miss any functions if new ones are introduced in a later version
+    (.*):
+        class: __FixMe
+        name: 'Function_#{g[0]}'
+
+values:
+    ADJEnvironment(Sandbox|Production):
+        class: Adjust
+        static_class: Environments
+        name: '#{g[0]}'
+
+    # Make sure we don't miss any values if new ones are introduced in a later version
+    (.*):
+        class: __FixMe
+        name: 'Value_#{g[0]}'
+
+constants:
+
+    # Make sure we don't miss any values if new ones are introduced in a later version
+    (.*):
+        class: __FixMe
+        name: '#{g[0]}'
