@@ -48,6 +48,7 @@
 - (void)setBannerAdapter:(id<ISBannerAdapterProtocol>)bannerAdapter;
 - (void)setNativeAdAdapter:(id<ISNativeAdAdapterProtocol>)nativeAdAdapter;
 - (void)setConsent:(BOOL)consent;
+- (void)setTestMode:(BOOL)enabled;
 
 - (id<ISRewardedVideoAdapterProtocol>)getRewardedVideoAdapter;
 - (id<ISInterstitialAdapterProtocol>)getInterstitialAdapter;

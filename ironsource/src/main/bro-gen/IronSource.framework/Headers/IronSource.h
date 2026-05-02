@@ -78,6 +78,7 @@
 #import "LPMInterstitialAdConfig.h"
 #import "LPMInterstitialAdConfigBuilder.h"
 #import "LPMInterstitialAdDelegate.h"
+#import "LPMPrivacySettings.h"
 #import "LPMRewardedAd.h"
 #import "LPMRewardedAdConfig.h"
 #import "LPMRewardedAdConfigBuilder.h"
@@ -93,8 +94,8 @@ NS_ASSUME_NONNULL_BEGIN
 #define IS_BANNER @"banner"
 #define IS_NATIVE_AD @"nativead"
 
-static NSString *const MEDIATION_SDK_VERSION = @"9.2.0";
-static NSString *GitHash = @"19b9775";
+static NSString *const MEDIATION_SDK_VERSION = @"9.4.1";
+static NSString *GitHash = @"cb3504d";
 
 @interface IronSource : NSObject
 

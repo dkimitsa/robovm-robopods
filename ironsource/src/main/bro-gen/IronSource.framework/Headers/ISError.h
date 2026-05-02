@@ -17,6 +17,12 @@ static NSString *const kSSErrorsForSS = @"for IronSource";
 
 static NSString *const kEmptyString = @"";
 
+// TestSuite error messages
+static NSString *const kErrorMessageTestSuiteDisabled =
+    @"TestSuite cannot be launched because the setMetadata flag is not enabled.\n"
+     "To fix this, call LevelPlay.setMetaData(withKey: \"is_test_suite\", value: \"enable\")\n"
+     "before initializing the LevelPlay SDK.";
+
 typedef NS_ENUM(NSUInteger, ISErrorCode) {
 
   ERROR_CODE_DECRYPT_FAILED = 1,

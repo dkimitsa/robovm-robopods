@@ -54,8 +54,14 @@ import org.robovm.apple.coreanimation.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
+    /**
+     * @deprecated deprecated, use lpmDictionary instead.
+     */
+    @Deprecated
     @Method(selector = "dictionary")
     public static native ISConcurrentMutableDictionary dictionary();
+    @Method(selector = "lpmDictionary")
+    public static native LPMThreadSafeDictionaryProtocol lpmDictionary();
     @Method(selector = "count")
     public native @MachineSizedUInt long count();
     @Method(selector = "objectForKey:")

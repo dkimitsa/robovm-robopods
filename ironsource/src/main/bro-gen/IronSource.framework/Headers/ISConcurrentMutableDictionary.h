@@ -26,6 +26,8 @@
 
 @interface ISConcurrentMutableDictionary : NSObject <LPMThreadSafeDictionaryProtocol>
 
-+ (instancetype)dictionary;
++ (instancetype)dictionary __attribute__((deprecated("deprecated, use lpmDictionary instead.")));
+
++ (id<LPMThreadSafeDictionaryProtocol>)lpmDictionary;
 
 @end
