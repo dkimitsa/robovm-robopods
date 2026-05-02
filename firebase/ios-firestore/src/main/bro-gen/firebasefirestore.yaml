@@ -333,6 +333,8 @@ classes:
         methods:
             '-initWithName:Args:':
                 name: init
+            '-initWithName:Args:Options:':
+                name: initWithName$Args$Options$
     FIRLimitStageBridge:
         methods:
             '-initWithLimit:':
@@ -395,6 +397,26 @@ classes:
     FIRWhereStageBridge:
         methods:
             '-initWithExpr:':
+                name: init
+    FIRDefineStageBridge:
+        methods:
+            '-initWithVariables:':
+                name: init
+    FIRPipelineExprBridge:
+        methods:
+            '-initWithStages:':
+                name: init
+    FIRSearchStageBridge:
+        methods:
+            '-initWithOptions:addFields:select:sort:':
+                name: init
+    FIRSubcollectionSourceStageBridge:
+        methods:
+            '-initWithPath:':
+                name: init
+    FIRVariableBridge:
+        methods:
+            '-initWithName:':
                 name: init
     __FIRPipelineListenOptionsBridge:
         methods:

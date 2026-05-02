@@ -52,7 +52,7 @@ v1.57.0
 | [Charts](charts/)                       | 5.1.0   |
 | [CleverAds](cleverads/)                 | 4.6.3   |
 | [Facebook](facebook/)                   | 18.0.3  |
-| [Firebase](firebase/)                   | 12.10.0 |
+| [Firebase](firebase/)                   | 12.12.0 |
 | [Fyber](fyber/)                         | 8.4.5   |
 | [Google Mobile Ads](google-mobile-ads/) | 13.1.0  |
 | [HelpShiftX](helpshift/)                | 10.5.0  |

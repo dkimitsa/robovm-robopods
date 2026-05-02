@@ -35,26 +35,26 @@ import org.robovm.apple.dispatch.*;
 
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/FIRFunctionExprBridge/*</name>*/ 
-    extends /*<extends>*/FIRExprBridge/*</extends>*/ 
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/FIRDefineStageBridge/*</name>*/ 
+    extends /*<extends>*/FIRStageBridge/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class FIRFunctionExprBridgePtr extends Ptr<FIRFunctionExprBridge, FIRFunctionExprBridgePtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(FIRFunctionExprBridge.class); }/*</bind>*/
+    /*<ptr>*/public static class FIRDefineStageBridgePtr extends Ptr<FIRDefineStageBridge, FIRDefineStageBridgePtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(FIRDefineStageBridge.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public FIRFunctionExprBridge() {}
-    protected FIRFunctionExprBridge(Handle h, long handle) { super(h, handle); }
-    protected FIRFunctionExprBridge(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithName:Args:Options:")
-    public FIRFunctionExprBridge(String name, NSArray<FIRExprBridge> args, NSDictionary<NSString, FIRExprBridge> options) { super((SkipInit) null); initObject(initWithName$Args$Options$(name, args, options)); }
+    public FIRDefineStageBridge() {}
+    protected FIRDefineStageBridge(Handle h, long handle) { super(h, handle); }
+    protected FIRDefineStageBridge(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithVariables:")
+    public FIRDefineStageBridge(NSDictionary<NSString, FIRExprBridge> variables) { super((SkipInit) null); initObject(init(variables)); }
     /*</constructors>*/
     /*<properties>*/
     
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "initWithName:Args:Options:")
-    protected native @Pointer long initWithName$Args$Options$(String name, NSArray<FIRExprBridge> args, NSDictionary<NSString, FIRExprBridge> options);
+    @Method(selector = "initWithVariables:")
+    protected native @Pointer long init(NSDictionary<NSString, FIRExprBridge> variables);
     /*</methods>*/
 }

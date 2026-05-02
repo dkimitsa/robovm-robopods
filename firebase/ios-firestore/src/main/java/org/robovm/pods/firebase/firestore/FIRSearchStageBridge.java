@@ -35,26 +35,26 @@ import org.robovm.apple.dispatch.*;
 
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/FIRFunctionExprBridge/*</name>*/ 
-    extends /*<extends>*/FIRExprBridge/*</extends>*/ 
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/FIRSearchStageBridge/*</name>*/ 
+    extends /*<extends>*/FIRStageBridge/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class FIRFunctionExprBridgePtr extends Ptr<FIRFunctionExprBridge, FIRFunctionExprBridgePtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(FIRFunctionExprBridge.class); }/*</bind>*/
+    /*<ptr>*/public static class FIRSearchStageBridgePtr extends Ptr<FIRSearchStageBridge, FIRSearchStageBridgePtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(FIRSearchStageBridge.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public FIRFunctionExprBridge() {}
-    protected FIRFunctionExprBridge(Handle h, long handle) { super(h, handle); }
-    protected FIRFunctionExprBridge(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithName:Args:Options:")
-    public FIRFunctionExprBridge(String name, NSArray<FIRExprBridge> args, NSDictionary<NSString, FIRExprBridge> options) { super((SkipInit) null); initObject(initWithName$Args$Options$(name, args, options)); }
+    public FIRSearchStageBridge() {}
+    protected FIRSearchStageBridge(Handle h, long handle) { super(h, handle); }
+    protected FIRSearchStageBridge(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithOptions:addFields:select:sort:")
+    public FIRSearchStageBridge(NSDictionary<NSString, FIRExprBridge> options, NSDictionary<NSString, FIRExprBridge> add_fields, NSDictionary<NSString, FIRExprBridge> select, NSArray<FIROrderingBridge> sort) { super((SkipInit) null); initObject(init(options, add_fields, select, sort)); }
     /*</constructors>*/
     /*<properties>*/
     
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "initWithName:Args:Options:")
-    protected native @Pointer long initWithName$Args$Options$(String name, NSArray<FIRExprBridge> args, NSDictionary<NSString, FIRExprBridge> options);
+    @Method(selector = "initWithOptions:addFields:select:sort:")
+    protected native @Pointer long init(NSDictionary<NSString, FIRExprBridge> options, NSDictionary<NSString, FIRExprBridge> add_fields, NSDictionary<NSString, FIRExprBridge> select, NSArray<FIROrderingBridge> sort);
     /*</methods>*/
 }

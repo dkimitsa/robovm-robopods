@@ -35,26 +35,26 @@ import org.robovm.apple.dispatch.*;
 
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/FIRFunctionExprBridge/*</name>*/ 
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/FIRVariableBridge/*</name>*/ 
     extends /*<extends>*/FIRExprBridge/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class FIRFunctionExprBridgePtr extends Ptr<FIRFunctionExprBridge, FIRFunctionExprBridgePtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(FIRFunctionExprBridge.class); }/*</bind>*/
+    /*<ptr>*/public static class FIRVariableBridgePtr extends Ptr<FIRVariableBridge, FIRVariableBridgePtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(FIRVariableBridge.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public FIRFunctionExprBridge() {}
-    protected FIRFunctionExprBridge(Handle h, long handle) { super(h, handle); }
-    protected FIRFunctionExprBridge(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithName:Args:Options:")
-    public FIRFunctionExprBridge(String name, NSArray<FIRExprBridge> args, NSDictionary<NSString, FIRExprBridge> options) { super((SkipInit) null); initObject(initWithName$Args$Options$(name, args, options)); }
+    public FIRVariableBridge() {}
+    protected FIRVariableBridge(Handle h, long handle) { super(h, handle); }
+    protected FIRVariableBridge(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithName:")
+    public FIRVariableBridge(String name) { super((SkipInit) null); initObject(init(name)); }
     /*</constructors>*/
     /*<properties>*/
     
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "initWithName:Args:Options:")
-    protected native @Pointer long initWithName$Args$Options$(String name, NSArray<FIRExprBridge> args, NSDictionary<NSString, FIRExprBridge> options);
+    @Method(selector = "initWithName:")
+    protected native @Pointer long init(String name);
     /*</methods>*/
 }
