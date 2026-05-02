@@ -38,9 +38,9 @@ This is the list of currently available AltPods. Click them to get more informat
 
 ## Version of AltPods to framework version mapping
 
-v1.57.0 
+Latest bindings:
 
-| Name                                    | 1.57.0  |
+| Name                                    | Version |
 |-----------------------------------------|---------|
 | [AdaptySDK](adapty/)                    | 1.17.7  |
 | [AdjustSdk](adjustsdk/)                 | 5.6.2   |
