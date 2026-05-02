@@ -12,8 +12,8 @@
 #import <AppsFlyerLib/AppsFlyerShareInviteHelper.h>
 #import <AppsFlyerLib/AppsFlyerDeepLinkResult.h>
 #import <AppsFlyerLib/AppsFlyerDeepLink.h>
-#import <AppsFlyerLib/AFSDKPurchaseDetails.h>
 #import <AppsFlyerLib/AFSDKPurchaseType.h>
+#import <AppsFlyerLib/AFSDKPurchaseDetails.h>
 #import <AppsFlyerLib/AFSDKValidateAndLogResult.h>
 #import <AppsFlyerLib/AFAdRevenueData.h>
 
@@ -101,6 +101,7 @@ NS_ASSUME_NONNULL_BEGIN
 #define AFEventParam9                      @"af_param_9"
 #define AFEventParam10                     @"af_param_10"
 #define AFEventParamTouch                  @"af_touch_obj"
+#define AFEventParamNetworkToken           @"net_token"
 
 #define AFEventParamDepartingDepartureDate  @"af_departing_departure_date"
 #define AFEventParamReturningDepartureDate  @"af_returning_departure_date"
