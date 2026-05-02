@@ -35,33 +35,31 @@ import org.robovm.apple.dispatch.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
+/**
+ * @since Available in iOS 16.0 and later.
+ */
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("TenjinSDK.RequestHelper")/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/RequestHelper/*</name>*/ 
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("TenjinSDK.TenjinPurchasesManager")/*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/TenjinPurchasesManager/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class RequestHelperPtr extends Ptr<RequestHelper, RequestHelperPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(RequestHelper.class); }/*</bind>*/
+    /*<ptr>*/public static class TenjinPurchasesManagerPtr extends Ptr<TenjinPurchasesManager, TenjinPurchasesManagerPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(TenjinPurchasesManager.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    protected RequestHelper() {}
-    protected RequestHelper(Handle h, long handle) { super(h, handle); }
-    protected RequestHelper(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithApiKey:")
-    public RequestHelper(String apiKey) { super((SkipInit) null); initObject(init(apiKey)); }
+    protected TenjinPurchasesManager() {}
+    protected TenjinPurchasesManager(Handle h, long handle) { super(h, handle); }
+    protected TenjinPurchasesManager(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
     
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "initWithApiKey:")
-    protected native @Pointer long init(String apiKey);
-    @Method(selector = "handlePostRequestWithEndpoint:params:")
-    public native void handlePostRequest(String endpoint, NSDictionary<NSString, ?> params);
-    @Method(selector = "handleConnectRequestWithEndpoint:params:completion:")
-    public native void handleConnectRequest(String endpoint, NSDictionary<NSString, ?> params, @Block VoidBooleanBlock completion);
+    @Method(selector = "sharedWith:")
+    public static native TenjinPurchasesManager shared(TenjinImpl apiClient);
+    @Method(selector = "handleSubscriptionWithProductId:currencyCode:unitPrice:")
+    public static native void handleSubscription(String productId, String currencyCode, NSDecimalNumber unitPrice);
     /*</methods>*/
 }

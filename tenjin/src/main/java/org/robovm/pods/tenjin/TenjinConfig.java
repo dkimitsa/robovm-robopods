@@ -37,31 +37,29 @@ import org.robovm.apple.dispatch.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("TenjinSDK.RequestHelper")/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/RequestHelper/*</name>*/ 
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/TenjinConfig/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class RequestHelperPtr extends Ptr<RequestHelper, RequestHelperPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(RequestHelper.class); }/*</bind>*/
+    /*<ptr>*/public static class TenjinConfigPtr extends Ptr<TenjinConfig, TenjinConfigPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(TenjinConfig.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    protected RequestHelper() {}
-    protected RequestHelper(Handle h, long handle) { super(h, handle); }
-    protected RequestHelper(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithApiKey:")
-    public RequestHelper(String apiKey) { super((SkipInit) null); initObject(init(apiKey)); }
+    public TenjinConfig() {}
+    protected TenjinConfig(Handle h, long handle) { super(h, handle); }
+    protected TenjinConfig(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
     
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "initWithApiKey:")
-    protected native @Pointer long init(String apiKey);
-    @Method(selector = "handlePostRequestWithEndpoint:params:")
-    public native void handlePostRequest(String endpoint, NSDictionary<NSString, ?> params);
-    @Method(selector = "handleConnectRequestWithEndpoint:params:completion:")
-    public native void handleConnectRequest(String endpoint, NSDictionary<NSString, ?> params, @Block VoidBooleanBlock completion);
+    @Method(selector = "boolForKey:")
+    public native boolean boolForKey(String key);
+    @Method(selector = "setValue:forKey:")
+    public native void setValue$forKey$(NSObject value, NSObject key);
+    @Method(selector = "stringForKey:")
+    public native String stringForKey(String key);
     /*</methods>*/
 }

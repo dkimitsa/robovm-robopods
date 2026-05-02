@@ -15,6 +15,7 @@ headers:
     - TenjinSDK+IronSourceILRD.h
     - TenjinSDK+TopOnILRD.h
     - TenjinSDK+TradPlusILRD.h
+    - TenjinImpl.h
 enums:
     PurposeConsentStatus: {}
     TJNAdNetwork: {}
@@ -76,6 +77,12 @@ classes:
                 name: setGoogleDMAParameters
             '+sendEventWithName:andValue:':
                 name: sendEvent
+            '+subscriptionWithProductName:andCurrencyCode:andUnitPrice:andTransactionId:andOriginalTransactionId:andBase64Receipt:andSKTransaction:':
+                name: subscription
+            '+subscriptionWithStoreKitForProductId:andCurrencyCode:andUnitPrice:':
+                name: subscription
+            '+setPluginVersion:version:':
+                name: setPluginVersion
     TJNHTTPClient:
         methods:
             '-initWithApiKey:':
@@ -89,6 +96,8 @@ classes:
                 name: init
             '-handlePostRequestWithEndpoint:params:':
                 name: handlePostRequest
+            '-handleConnectRequestWithEndpoint:params:completion:':
+                name: handleConnectRequest
     TenjinRepository:
         methods:
             '-initWithApiKey:':
@@ -127,6 +136,12 @@ classes:
                 name: setValue
             '+setBooleanValue:key:':
                 name: setBooleanValue
+            '-subscriptionWithParams:':
+                name: subscription
+            '+setPlugin:version:':
+                name: setPlugin
+            '+setGoogleDMAParametersWithAdPersonalization:adUserData:':
+                name: setGoogleDMAParameters
 
     GDPRHelper: {}
     AttributionOperationHelper:
@@ -149,6 +164,26 @@ classes:
                 name: recordIAPTransaction
             '-recordILRDRevenueWithRevenueUSD:network:':
                 name: recordILRDRevenue
+    EventGatingManager:
+        methods:
+            '-handleConnectCompletionWithSuccess:processHandler:':
+                name: handleConnectCompletion
+            '-ensureConnectedWithConnectHandler:':
+                name: ensureConnected
+    TenjinPurchasesManager: #since 16.0
+        methods:
+            '+sharedWith:':
+                name: shared
+            '+handleSubscriptionWithProductId:currencyCode:unitPrice:':
+                name: handleSubscription
+    PersistedFileStore: { }
+    TenjinConfig: { }
+    TenjinIAPHelper:
+        methods:
+            '-getProductFor:withCompletion:':
+                name: getProduct
+            '+extractPropertiesFromProduct:to:':
+                name: extractProperties
 protocols:
     TJNRequestSender:
         methods:
@@ -160,7 +195,36 @@ protocols:
                 name: method
             '-method:url:body:headers:completionBlock:':
                 name: method
-
+    EventGating:
+        methods:
+            '-handleConnectCompletionWithSuccess:processHandler:':
+                name: handleConnectCompletion
+            '-queueEvent:sendHandler:':
+                name: sendHandler
+            '-ensureConnectedWithConnectHandler:':
+                name: ensureConnected
+    DataStore:
+        methods:
+            '-getString:withDefault:':
+                name: getString
+            '-getInteger:withDefault:':
+                name: getInteger
+            '-getLong:withDefault:':
+                name: getLong
+            '-getFloat:withDefault:':
+                name: getFloat
+            '-getBool:withDefault:':
+                name: getBool
+            '-putString:value:':
+                name: putString
+            '-putInteger:value:':
+                name: putInteger
+            '-putLong:value:':
+                name: putLong
+            '-putFloat:value:':
+                name: putFloat
+            '-putBool:value:':
+                name: putBool
 functions:
     # Make sure we don't miss any functions if new ones are introduced in a later version
     (.*):

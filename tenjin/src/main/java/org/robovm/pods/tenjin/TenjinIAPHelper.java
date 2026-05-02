@@ -37,31 +37,33 @@ import org.robovm.apple.dispatch.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("TenjinSDK.RequestHelper")/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/RequestHelper/*</name>*/ 
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/TenjinIAPHelper/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
-    /*<implements>*//*</implements>*/ {
+    /*<implements>*/implements SKProductsRequestDelegate/*</implements>*/ {
 
-    /*<ptr>*/public static class RequestHelperPtr extends Ptr<RequestHelper, RequestHelperPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(RequestHelper.class); }/*</bind>*/
+    /*<ptr>*/public static class TenjinIAPHelperPtr extends Ptr<TenjinIAPHelper, TenjinIAPHelperPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(TenjinIAPHelper.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    protected RequestHelper() {}
-    protected RequestHelper(Handle h, long handle) { super(h, handle); }
-    protected RequestHelper(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithApiKey:")
-    public RequestHelper(String apiKey) { super((SkipInit) null); initObject(init(apiKey)); }
+    public TenjinIAPHelper() {}
+    protected TenjinIAPHelper(Handle h, long handle) { super(h, handle); }
+    protected TenjinIAPHelper(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
     
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "initWithApiKey:")
-    protected native @Pointer long init(String apiKey);
-    @Method(selector = "handlePostRequestWithEndpoint:params:")
-    public native void handlePostRequest(String endpoint, NSDictionary<NSString, ?> params);
-    @Method(selector = "handleConnectRequestWithEndpoint:params:completion:")
-    public native void handleConnectRequest(String endpoint, NSDictionary<NSString, ?> params, @Block VoidBooleanBlock completion);
+    @Method(selector = "getProductFor:withCompletion:")
+    public native void getProduct(String productIdentifier, @Block VoidBlock1<SKProduct> completion);
+    @Method(selector = "extractPropertiesFromProduct:to:")
+    public static native void extractProperties(SKProduct product, NSMutableDictionary<?, ?> props);
+    @Method(selector = "productsRequest:didReceiveResponse:")
+    public native void didReceiveResponse(SKProductsRequest request, SKProductsResponse response);
+    @Method(selector = "requestDidFinish:")
+    public native void didFinish(SKRequest request);
+    @Method(selector = "request:didFailWithError:")
+    public native void didFail(SKRequest request, NSError error);
     /*</methods>*/
 }

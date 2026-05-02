@@ -63,7 +63,7 @@ v1.57.0
 | [Pollfish](pollfish/)                   | 6.5.0   |
 | [SAMKeychain](samkeychain/)             | 1.5.3   |
 | [Singular](singular/)                   | 12.10.1 |
-| [Tenjin](tenjin/)                       | 1.15.1  |
+| [Tenjin](tenjin/)                       | 1.16.1  |
 | [UnityAds](unityads/)                   | 4.17.0  |
 | [YouTubePlayer](youtube/)               | 1.0.4   |
 

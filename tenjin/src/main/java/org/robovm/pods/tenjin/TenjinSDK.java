@@ -121,6 +121,8 @@ import org.robovm.apple.dispatch.*;
     public static native TenjinSDK sharedInstance(String apiToken, NSURL url);
     @Method(selector = "sharedInstance")
     public static native TenjinSDK sharedInstance();
+    @Method(selector = "purchasesManager")
+    public static native TenjinPurchasesManager purchasesManager();
     @Method(selector = "connect")
     public static native void connect();
     @Method(selector = "connectWithDeferredDeeplink:")
@@ -146,6 +148,13 @@ import org.robovm.apple.dispatch.*;
     public static native void transaction(String productName, String currencyCode, @MachineSizedSInt long quantity, NSDecimalNumber price, String transactionId, NSData receipt);
     @Method(selector = "transactionWithProductName:andCurrencyCode:andQuantity:andUnitPrice:andTransactionId:andBase64Receipt:")
     public static native void transaction(String productName, String currencyCode, @MachineSizedSInt long quantity, NSDecimalNumber price, String transactionId, String receipt);
+    @Method(selector = "subscriptionWithProductName:andCurrencyCode:andUnitPrice:andTransactionId:andOriginalTransactionId:andBase64Receipt:andSKTransaction:")
+    public static native void subscription(String productName, String currencyCode, NSDecimalNumber price, String transactionId, String originalTransactionId, String receipt, String skTransaction);
+    /**
+     * @since Available in iOS 16.0 and later.
+     */
+    @Method(selector = "subscriptionWithStoreKitForProductId:andCurrencyCode:andUnitPrice:")
+    public static native void subscription(String productId, String currencyCode, NSDecimalNumber price);
     @Method(selector = "optOut")
     public static native void optOut();
     @Method(selector = "optIn")
@@ -206,6 +215,8 @@ import org.robovm.apple.dispatch.*;
     public static native String sdkVersion();
     @Method(selector = "setWrapperVersion:")
     public static native void setWrapperVersion(String wrapperVersion);
+    @Method(selector = "setPluginVersion:version:")
+    public static native void setPluginVersion(String plugin, String version);
     @Method(selector = "setValue:forKey:")
     public static native void setValue(String value, String key);
     /**

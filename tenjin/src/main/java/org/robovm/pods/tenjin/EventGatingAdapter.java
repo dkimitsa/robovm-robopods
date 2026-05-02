@@ -35,33 +35,31 @@ import org.robovm.apple.dispatch.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("TenjinSDK.RequestHelper")/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/RequestHelper/*</name>*/ 
+/*<annotations>*//*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/EventGatingAdapter/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
-    /*<implements>*//*</implements>*/ {
+    /*<implements>*/implements EventGating/*</implements>*/ {
 
-    /*<ptr>*/public static class RequestHelperPtr extends Ptr<RequestHelper, RequestHelperPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(RequestHelper.class); }/*</bind>*/
+    /*<ptr>*/
+    /*</ptr>*/
+    /*<bind>*/
+    /*</bind>*/
     /*<constants>*//*</constants>*/
-    /*<constructors>*/
-    protected RequestHelper() {}
-    protected RequestHelper(Handle h, long handle) { super(h, handle); }
-    protected RequestHelper(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithApiKey:")
-    public RequestHelper(String apiKey) { super((SkipInit) null); initObject(init(apiKey)); }
-    /*</constructors>*/
+    /*<constructors>*//*</constructors>*/
     /*<properties>*/
-    
+    @NotImplemented("canSendEvents")
+    public boolean canSendEvents() { return false; }
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "initWithApiKey:")
-    protected native @Pointer long init(String apiKey);
-    @Method(selector = "handlePostRequestWithEndpoint:params:")
-    public native void handlePostRequest(String endpoint, NSDictionary<NSString, ?> params);
-    @Method(selector = "handleConnectRequestWithEndpoint:params:completion:")
-    public native void handleConnectRequest(String endpoint, NSDictionary<NSString, ?> params, @Block VoidBooleanBlock completion);
+    @NotImplemented("tryBeginConnect")
+    public boolean tryBeginConnect() { return false; }
+    @NotImplemented("handleConnectCompletionWithSuccess:processHandler:")
+    public void handleConnectCompletion(boolean success, @Block VoidBlock1<NSDictionary<NSString, ?>> processHandler) {}
+    @NotImplemented("queueEvent:sendHandler:")
+    public void sendHandler(NSDictionary<NSString, ?> eventData, @Block VoidBlock1<NSDictionary<NSString, ?>> sendHandler) {}
+    @NotImplemented("ensureConnectedWithConnectHandler:")
+    public void ensureConnected(@Block Runnable connectHandler) {}
     /*</methods>*/
 }
