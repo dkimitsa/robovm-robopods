@@ -85,18 +85,18 @@ import org.robovm.apple.coreanimation.*;
     public static native String getToken();
     @Method(selector = "getTokenWithExtras:andKeywords:")
     public static native String getToken(NSDictionary<NSString, ?> extras, String keywords);
-    @Method(selector = "shouldAutoManageAVAudioSession:")
-    public static native void shouldAutoManageAVAudioSession(boolean value);
-    @Method(selector = "setMute:")
-    public static native void setMute(boolean shouldMute);
-    @Method(selector = "setPublisherProvidedUnifiedId:")
-    public static native void setPublisherProvidedUnifiedId(NSDictionary<NSString, ?> ids);
     @Method(selector = "putPublisherSignals:")
     public static native void putPublisherSignals(NSDictionary<NSString, ?> signals);
     @Method(selector = "getPublisherSignals")
     public static native NSDictionary<NSString, ?> getPublisherSignals();
     @Method(selector = "resetPublisherSignals")
     public static native void resetPublisherSignals();
+    @Method(selector = "shouldAutoManageAVAudioSession:")
+    public static native void shouldAutoManageAVAudioSession(boolean value);
+    @Method(selector = "setMute:")
+    public static native void setMute(boolean shouldMute);
+    @Method(selector = "setPublisherProvidedUnifiedId:")
+    public static native void setPublisherProvidedUnifiedId(NSDictionary<NSString, ?> ids);
     @Method(selector = "setAge:")
     public static native void setAge(@MachineSizedSInt long age);
     @Method(selector = "setAreaCode:")

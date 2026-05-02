@@ -410,6 +410,7 @@ SWIFT_CLASS("_TtC9InMobiSDK9AdsConfig")
 @property (nonatomic, strong) IMIncludeIds * _Nonnull includeIds;
 @property (nonatomic, strong) SkanConfig * _Nonnull skan;
 @property (nonatomic, strong) RenderingConfig * _Nonnull rendering;
+@property (nonatomic, copy) NSArray<NSString *> * _Nonnull disableAppendingKeysForBeacons;
 @property (nonatomic, strong) SilenceDetectionConfig * _Nonnull silenceDetection;
 @property (nonatomic, strong) MraidConfig * _Nonnull mraid;
 @property (nonatomic, strong) NativeConfig * _Nonnull native;
@@ -455,15 +456,6 @@ SWIFT_CLASS("_TtC9InMobiSDK21AudioImpressionConfig")
 @property (nonatomic) NSInteger impressionMinPercentageViewed;
 @property (nonatomic) NSInteger impressionType;
 @property (nonatomic) NSInteger impressionMinTimeViewed;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-SWIFT_CLASS("_TtC9InMobiSDK9BTSConfig")
-@interface BTSConfig : NSObject
-@property (nonatomic) BOOL enabled;
-@property (nonatomic) NSTimeInterval expiry;
-@property (nonatomic) NSInteger maxEntries;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -592,13 +584,23 @@ SWIFT_CLASS("_TtC9InMobiSDK20CrashReportingConfig")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@class CustomBrowserInternalConfig;
 
 SWIFT_CLASS("_TtC9InMobiSDK19CustomBrowserConfig")
 @interface CustomBrowserConfig : NSObject
 @property (nonatomic) NSTimeInterval userClickGraceTime;
 @property (nonatomic) BOOL shouldHandleUniversalURL;
 @property (nonatomic, copy) NSArray<NSString *> * _Nonnull appleScheme;
+@property (nonatomic, strong) CustomBrowserInternalConfig * _Nonnull interstitial;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9InMobiSDK27CustomBrowserInternalConfig")
+@interface CustomBrowserInternalConfig : NSObject
+@property (nonatomic) double loaderTimeout;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 
@@ -655,10 +657,10 @@ SWIFT_CLASS("_TtC9InMobiSDK18HybridNativePlayer")
 @end
 
 
+
 @interface HybridNativePlayer (SWIFT_EXTENSION(InMobiSDK))
 - (void)fireVideoPositionChangeEvent;
 @end
-
 
 
 
@@ -1830,6 +1832,7 @@ typedef SWIFT_ENUM(NSInteger, IMRemoteLogLevel, open) {
 };
 
 
+
 SWIFT_CLASS("_TtC9InMobiSDK15IMRequestStatus")
 @interface IMRequestStatus : NSError
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
@@ -2001,34 +2004,6 @@ SWIFT_CLASS("_TtC9InMobiSDK5IMSdk")
 
 
 @interface IMSdk (SWIFT_EXTENSION(InMobiSDK))
-/// Enable or disable the AVAudioSession management by SDK
-/// Indicates whether the application wants to manage audio session. If set as NO, the InMobi SDK will stop managing AVAudioSession during the HTML video playback lifecycle. If set as YES,
-/// the InMobi SDK will manage AVAudioSession. That might set AVAudioSession’s category to AVAudioSessionCategoryAmbient and categoryOption to AVAudioSessionCategoryOptionMixWithOthers,
-/// when HTML video is rendering. This setting will not stop the app audio from playing in an app. It will mix with ad audio and if any sound playing in another app, it will stop that sound and play the ads’
-/// sound and once the ad is dismissed it notifies another app.
-/// \param value Boolean depicting enable or disable the AVAudioSession management by SDK
-///
-+ (void)shouldAutoManageAVAudioSession:(BOOL)value;
-/// Use this to set the global state of the SDK to mute.
-/// \param shouldMute Boolean depicting the mute state of the SDK
-///
-+ (void)setMute:(BOOL)shouldMute;
-/// Set Unified Id procured from vendors directly.
-/// The ids are to be submitted in the following format.
-/// key would be the vendor and value would be the identifier.
-/// \code
-/// {
-/// "id5" :  "jkfid3ufolkb89hgvhb@$dj!@?#",
-/// "live Ramp":  "$fvjk@kjfsk%$nfkvd9008jkf"
-/// }
-///
-/// \endcode\param ids Represents the unified ids in dictionary format.
-///
-+ (void)setPublisherProvidedUnifiedId:(NSDictionary<NSString *, id> * _Nonnull)ids;
-@end
-
-
-@interface IMSdk (SWIFT_EXTENSION(InMobiSDK))
 /// Pass or update custom signals to InMobi.
 /// <ul>
 ///   <li>
@@ -2084,6 +2059,34 @@ SWIFT_CLASS("_TtC9InMobiSDK5IMSdk")
 ///
 /// \endcode
 + (void)resetPublisherSignals;
+@end
+
+
+@interface IMSdk (SWIFT_EXTENSION(InMobiSDK))
+/// Enable or disable the AVAudioSession management by SDK
+/// Indicates whether the application wants to manage audio session. If set as NO, the InMobi SDK will stop managing AVAudioSession during the HTML video playback lifecycle. If set as YES,
+/// the InMobi SDK will manage AVAudioSession. That might set AVAudioSession’s category to AVAudioSessionCategoryAmbient and categoryOption to AVAudioSessionCategoryOptionMixWithOthers,
+/// when HTML video is rendering. This setting will not stop the app audio from playing in an app. It will mix with ad audio and if any sound playing in another app, it will stop that sound and play the ads’
+/// sound and once the ad is dismissed it notifies another app.
+/// \param value Boolean depicting enable or disable the AVAudioSession management by SDK
+///
++ (void)shouldAutoManageAVAudioSession:(BOOL)value;
+/// Use this to set the global state of the SDK to mute.
+/// \param shouldMute Boolean depicting the mute state of the SDK
+///
++ (void)setMute:(BOOL)shouldMute;
+/// Set Unified Id procured from vendors directly.
+/// The ids are to be submitted in the following format.
+/// key would be the vendor and value would be the identifier.
+/// \code
+/// {
+/// "id5" :  "jkfid3ufolkb89hgvhb@$dj!@?#",
+/// "live Ramp":  "$fvjk@kjfsk%$nfkvd9008jkf"
+/// }
+///
+/// \endcode\param ids Represents the unified ids in dictionary format.
+///
++ (void)setPublisherProvidedUnifiedId:(NSDictionary<NSString *, id> * _Nonnull)ids;
 @end
 
 @class CLLocation;
@@ -2448,14 +2451,6 @@ SWIFT_CLASS("_TtC9InMobiSDK13LoggingConfig")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
-
-SWIFT_CLASS("_TtC9InMobiSDK11MRC50Config")
-@interface MRC50Config : NSObject
-@property (nonatomic) NSInteger minTimeViewed;
-@property (nonatomic) NSInteger videoMinTimeViewed;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
 @class MediationFlowTypeConfig;
 
 SWIFT_CLASS("_TtC9InMobiSDK15MediationConfig")
@@ -2551,7 +2546,6 @@ SWIFT_CLASS("_TtC9InMobiSDK12NativeConfig")
 SWIFT_CLASS("_TtC9InMobiSDK23NativeViewabilityConfig")
 @interface NativeViewabilityConfig : NSObject
 @property (nonatomic, strong) ImpressionConfig * _Nonnull impressionConfig;
-@property (nonatomic, strong) MRC50Config * _Nonnull mrc50Config;
 @property (nonatomic, strong) DimensionConfig * _Nonnull parentMinDimension;
 @property (nonatomic, strong) DimensionConfig * _Nonnull iconMinDimension;
 @property (nonatomic, strong) DimensionConfig * _Nonnull mediaMinDimension;
@@ -2700,6 +2694,7 @@ SWIFT_CLASS("_TtC9InMobiSDK15PurchasesConfig")
 @interface PurchasesConfig : NSObject
 @property (nonatomic) BOOL inapp;
 @property (nonatomic) BOOL restore;
+@property (nonatomic) BOOL inappV2;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -2721,6 +2716,7 @@ SWIFT_CLASS("_TtC9InMobiSDK15RenderingConfig")
 @property (nonatomic) BOOL enableSDKAVAudioSession;
 @property (nonatomic, strong) WebViewModeDictionaryConfig * _Nonnull webviewModeDictionary;
 @property (nonatomic, strong) GestureConfig * _Nonnull gestureConfig;
+@property (nonatomic) BOOL enableHtmlUrlPrefetch;
 - (BOOL)enablePubMuteControl_ SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -2793,7 +2789,6 @@ SWIFT_CLASS("_TtC9InMobiSDK12SignalConfig")
 @property (nonatomic, strong) PurchasesConfig * _Nonnull purchases;
 @property (nonatomic, strong) PublisherConfig * _Nonnull publisher;
 @property (nonatomic, strong) ExperimentsConfig * _Nonnull experiments;
-@property (nonatomic, strong) BTSConfig * _Nonnull bts;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 

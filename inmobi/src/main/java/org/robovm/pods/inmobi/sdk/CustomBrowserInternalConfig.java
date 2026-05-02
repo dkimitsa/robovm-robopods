@@ -37,28 +37,24 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("InMobiSDK.MRC50Config")/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/MRC50Config/*</name>*/ 
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("InMobiSDK.CustomBrowserInternalConfig")/*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/CustomBrowserInternalConfig/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class MRC50ConfigPtr extends Ptr<MRC50Config, MRC50ConfigPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(MRC50Config.class); }/*</bind>*/
+    /*<ptr>*/public static class CustomBrowserInternalConfigPtr extends Ptr<CustomBrowserInternalConfig, CustomBrowserInternalConfigPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(CustomBrowserInternalConfig.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public MRC50Config() {}
-    protected MRC50Config(Handle h, long handle) { super(h, handle); }
-    protected MRC50Config(SkipInit skipInit) { super(skipInit); }
+    protected CustomBrowserInternalConfig() {}
+    protected CustomBrowserInternalConfig(Handle h, long handle) { super(h, handle); }
+    protected CustomBrowserInternalConfig(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
-    @Property(selector = "minTimeViewed")
-    public native @MachineSizedSInt long getMinTimeViewed();
-    @Property(selector = "setMinTimeViewed:")
-    public native void setMinTimeViewed(@MachineSizedSInt long v);
-    @Property(selector = "videoMinTimeViewed")
-    public native @MachineSizedSInt long getVideoMinTimeViewed();
-    @Property(selector = "setVideoMinTimeViewed:")
-    public native void setVideoMinTimeViewed(@MachineSizedSInt long v);
+    @Property(selector = "loaderTimeout")
+    public native double getLoaderTimeout();
+    @Property(selector = "setLoaderTimeout:")
+    public native void setLoaderTimeout(double v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

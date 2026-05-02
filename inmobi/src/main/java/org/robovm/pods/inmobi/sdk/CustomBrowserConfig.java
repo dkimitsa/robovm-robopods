@@ -63,6 +63,10 @@ import org.robovm.apple.coreanimation.*;
     public native NSArray<NSString> getAppleScheme();
     @Property(selector = "setAppleScheme:")
     public native void setAppleScheme(NSArray<NSString> v);
+    @Property(selector = "interstitial")
+    public native CustomBrowserInternalConfig getInterstitial();
+    @Property(selector = "setInterstitial:")
+    public native void setInterstitial(CustomBrowserInternalConfig v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
