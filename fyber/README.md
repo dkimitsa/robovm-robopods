@@ -6,6 +6,7 @@ https://github.com/inner-active/InneractiveAdSDK-iOS
 ## Versions
 | RoboPods Version | Fyber Marketplace Version |
 |------------------|---------------------------|
+| 8.4.7.0          | 8.4.7                     |
 | 8.4.5.0          | 8.4.5                     |
 | 1.56.0           | 8.4.2                     |
 | 1.54.0-1.55.0    | 8.4.0-8.4.1               |

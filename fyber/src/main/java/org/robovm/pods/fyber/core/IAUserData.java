@@ -52,8 +52,16 @@ import org.robovm.apple.coregraphics.*;
     protected IAUserData(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
+    /**
+     * @deprecated This API is deprecated starting from 8.4.6.
+     */
+    @Deprecated
     @Property(selector = "age")
     public native @MachineSizedUInt long getAge();
+    /**
+     * @deprecated This API is deprecated starting from 8.4.6.
+     */
+    @Deprecated
     @Property(selector = "setAge:")
     public native void setAge(@MachineSizedUInt long v);
     @Property(selector = "gender")

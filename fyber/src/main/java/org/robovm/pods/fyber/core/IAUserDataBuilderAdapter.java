@@ -49,8 +49,16 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*//*</constructors>*/
     /*<properties>*/
+    /**
+     * @deprecated This API is deprecated starting from 8.4.6.
+     */
+    @Deprecated
     @NotImplemented("age")
     public @MachineSizedUInt long getAge() { return 0; }
+    /**
+     * @deprecated This API is deprecated starting from 8.4.6.
+     */
+    @Deprecated
     @NotImplemented("setAge:")
     public void setAge(@MachineSizedUInt long v) {}
     @NotImplemented("gender")

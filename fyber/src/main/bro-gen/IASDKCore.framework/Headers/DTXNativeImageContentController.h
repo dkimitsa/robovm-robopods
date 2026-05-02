@@ -22,7 +22,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)nativeImage:(DTXNativeImageContentController * _Nullable)nativeImageContentController failedToLoadImageFromURL:(NSURL * _Nonnull)URL error:(NSError * _Nonnull)error;
 @end
 
-
 @protocol DTXNativeImageContentControllerBuilder <NSObject>
 
 @required
@@ -30,7 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface DTXNativeImageContentController : IAContentController<IAInterfaceBuilder, DTXNativeImageContentControllerBuilder>
+@interface DTXNativeImageContentController : IAContentController <IAInterfaceBuilder, DTXNativeImageContentControllerBuilder>
 
 @property (nonatomic) CGFloat mediaAspectRatio;
 
