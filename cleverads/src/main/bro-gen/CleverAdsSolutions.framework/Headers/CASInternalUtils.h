@@ -36,7 +36,7 @@
 
 + (NSString *_Nullable)tryResolveCStringFuncWithName:(NSString *_Nonnull)name;
 
-+ (BOOL)doTryBlock:(void (^_Nonnull)(void))block error:(NSError *_Nullable *_Nullable)err;
++ (NSError *_Nullable)doTryBlock:(void (^_Nonnull)(void))block;
 @end
 
 #endif /* ifndef CASInternalUtils_h */
