@@ -61,5 +61,7 @@ import org.robovm.apple.dispatch.*;
     protected native @Pointer long init(String apiKey);
     @Method(selector = "handlePostRequestWithEndpoint:params:")
     public native void handlePostRequest(String endpoint, NSDictionary<NSString, ?> params);
+    @Method(selector = "handleConnectRequestWithEndpoint:params:completion:")
+    public native void handleConnectRequest(String endpoint, NSDictionary<NSString, ?> params, @Block VoidBooleanBlock completion);
     /*</methods>*/
 }

@@ -4,6 +4,7 @@ The Firebase installations service (FIS) provides a Firebase installation ID (FI
 ### Available RoboPods
 | RoboPods Version | Firebase Installations |
 |------------------|------------------------|
+| 12.12.0.0        | 12.12.0                |
 | 12.10.0.0        | 12.10.0                |
 | 12.9.0.0         | 12.9.0                 |
 

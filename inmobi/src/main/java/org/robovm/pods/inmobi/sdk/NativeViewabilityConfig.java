@@ -55,10 +55,6 @@ import org.robovm.apple.coreanimation.*;
     public native ImpressionConfig getImpressionConfig();
     @Property(selector = "setImpressionConfig:")
     public native void setImpressionConfig(ImpressionConfig v);
-    @Property(selector = "mrc50Config")
-    public native MRC50Config getMrc50Config();
-    @Property(selector = "setMrc50Config:")
-    public native void setMrc50Config(MRC50Config v);
     @Property(selector = "parentMinDimension")
     public native DimensionConfig getParentMinDimension();
     @Property(selector = "setParentMinDimension:")

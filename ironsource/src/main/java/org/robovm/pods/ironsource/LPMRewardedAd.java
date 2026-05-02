@@ -71,6 +71,8 @@ import org.robovm.apple.coreanimation.*;
     public native void showAd(UIViewController viewController, String placementName);
     @Method(selector = "isAdReady")
     public native boolean isAdReady();
+    @Method(selector = "getRewardWithPlacementName:")
+    public native LPMReward getReward(String placement);
     @Method(selector = "isPlacementCapped:")
     public static native boolean isPlacementCapped(String placementName);
     /*</methods>*/

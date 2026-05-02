@@ -83,6 +83,10 @@ import org.robovm.apple.coreanimation.*;
     public static native void launchTestSuite(UIViewController viewController);
     @Method(selector = "validateIntegration")
     public static native void validateIntegration();
+    /**
+     * @deprecated use LevelPlayPrivacySettings.setGDPRConsents: for GDPR consent management.
+     */
+    @Deprecated
     @Method(selector = "setConsent:")
     public static native void setConsent(boolean consent);
     /*</methods>*/

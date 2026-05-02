@@ -254,6 +254,7 @@ classes:
                 name: isHybridPlayerViewable
     HybridPlayerConfig: { }
     VideoCacheConfig: { }
+    CustomBrowserInternalConfig: {}
 protocols:
     IMBannerDelegate:
         methods:

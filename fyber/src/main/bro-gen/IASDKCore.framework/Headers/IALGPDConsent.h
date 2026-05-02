@@ -13,3 +13,5 @@ typedef NS_ENUM(NSInteger, IALGPDConsentType) {
     IALGPDConsentTypeDenied = 0,
     IALGPDConsentTypeGiven = 1
 };
+
+NSString * IALGPDConsentTypeToString(IALGPDConsentType value);

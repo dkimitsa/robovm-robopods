@@ -48,7 +48,9 @@ typedef void (^SdidAccessorHandler)(NSString *result);
 @property (copy) SdidAccessorHandler sdidReceivedHandler;
 
 // Limit Advertising Identifiers
+#ifndef SINGULAR_KIDS
 @property (assign) BOOL limitAdvertisingIdentifiers;
+#endif // !SINGULAR_KIDS
 
 // Push Notifications fields
 @property (strong) NSDictionary *pushNotificationPayload;

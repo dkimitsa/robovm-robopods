@@ -123,6 +123,10 @@ import org.robovm.apple.coreanimation.*;
     public native RenderingConfig getRendering();
     @Property(selector = "setRendering:")
     public native void setRendering(RenderingConfig v);
+    @Property(selector = "disableAppendingKeysForBeacons")
+    public native NSArray<NSString> getDisableAppendingKeysForBeacons();
+    @Property(selector = "setDisableAppendingKeysForBeacons:")
+    public native void setDisableAppendingKeysForBeacons(NSArray<NSString> v);
     @Property(selector = "silenceDetection")
     public native SilenceDetectionConfig getSilenceDetection();
     @Property(selector = "setSilenceDetection:")

@@ -145,8 +145,12 @@ typedef void (^LPMInitCompletionHandler)(LPMConfiguration *_Nullable config,
  @discussion Sets the consent, boolean value that indicates whether the user has granted consent for
  the SDK to collect and share data. Consent is used for GDPR compliance.
  @param consent value.
+ @deprecated This method is deprecated. Use `+[LPMPrivacySettings.setGDPRConsents:]` instead
+ for GDPR consent management.
  */
-+ (void)setConsent:(BOOL)consent;
++ (void)setConsent:(BOOL)consent
+    __attribute__((
+        deprecated("use LevelPlayPrivacySettings.setGDPRConsents: for GDPR consent management.")));
 
 @end
 

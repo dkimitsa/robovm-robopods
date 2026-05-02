@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.robovm.pods.inmobi.sdk;
+package org.robovm.pods.adjustsdk;
 
 /*<imports>*/
 import java.io.*;
@@ -29,7 +29,6 @@ import org.robovm.rt.bro.annotation.*;
 import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
-import org.robovm.apple.corelocation.*;
 import org.robovm.apple.coregraphics.*;
 import org.robovm.apple.coreanimation.*;
 /*</imports>*/
@@ -37,35 +36,30 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("InMobiSDK.BTSConfig")/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/BTSConfig/*</name>*/ 
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/ADJRemoteTrigger/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class BTSConfigPtr extends Ptr<BTSConfig, BTSConfigPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(BTSConfig.class); }/*</bind>*/
+    /*<ptr>*/public static class ADJRemoteTriggerPtr extends Ptr<ADJRemoteTrigger, ADJRemoteTriggerPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(ADJRemoteTrigger.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public BTSConfig() {}
-    protected BTSConfig(Handle h, long handle) { super(h, handle); }
-    protected BTSConfig(SkipInit skipInit) { super(skipInit); }
+    public ADJRemoteTrigger() {}
+    protected ADJRemoteTrigger(Handle h, long handle) { super(h, handle); }
+    protected ADJRemoteTrigger(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithLabel:payload:")
+    public ADJRemoteTrigger(String label, NSDictionary<NSString, ?> payload) { super((SkipInit) null); initObject(init(label, payload)); }
     /*</constructors>*/
     /*<properties>*/
-    @Property(selector = "enabled")
-    public native boolean isEnabled();
-    @Property(selector = "setEnabled:")
-    public native void setEnabled(boolean v);
-    @Property(selector = "expiry")
-    public native double getExpiry();
-    @Property(selector = "setExpiry:")
-    public native void setExpiry(double v);
-    @Property(selector = "maxEntries")
-    public native @MachineSizedSInt long getMaxEntries();
-    @Property(selector = "setMaxEntries:")
-    public native void setMaxEntries(@MachineSizedSInt long v);
+    @Property(selector = "label")
+    public native String getLabel();
+    @Property(selector = "payload")
+    public native NSDictionary<NSString, ?> getPayload();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    
+    @Method(selector = "initWithLabel:payload:")
+    protected native @Pointer long init(String label, NSDictionary<NSString, ?> payload);
     /*</methods>*/
 }

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.robovm.pods.inmobi.sdk;
+package org.robovm.pods.adjustsdk;
 
 /*<imports>*/
 import java.io.*;
@@ -29,7 +29,6 @@ import org.robovm.rt.bro.annotation.*;
 import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
-import org.robovm.apple.corelocation.*;
 import org.robovm.apple.coregraphics.*;
 import org.robovm.apple.coreanimation.*;
 /*</imports>*/
@@ -37,31 +36,24 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("InMobiSDK.MRC50Config")/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/MRC50Config/*</name>*/ 
-    extends /*<extends>*/NSObject/*</extends>*/ 
-    /*<implements>*//*</implements>*/ {
+/*<annotations>*//*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ interface /*<name>*/ADJLoggerProtocol/*</name>*/ 
+    /*<implements>*/extends NSObjectProtocol/*</implements>*/ {
 
-    /*<ptr>*/public static class MRC50ConfigPtr extends Ptr<MRC50Config, MRC50ConfigPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(MRC50Config.class); }/*</bind>*/
+    /*<ptr>*/
+    /*</ptr>*/
+    /*<bind>*/
+    /*</bind>*/
     /*<constants>*//*</constants>*/
-    /*<constructors>*/
-    public MRC50Config() {}
-    protected MRC50Config(Handle h, long handle) { super(h, handle); }
-    protected MRC50Config(SkipInit skipInit) { super(skipInit); }
-    /*</constructors>*/
     /*<properties>*/
-    @Property(selector = "minTimeViewed")
-    public native @MachineSizedSInt long getMinTimeViewed();
-    @Property(selector = "setMinTimeViewed:")
-    public native void setMinTimeViewed(@MachineSizedSInt long v);
-    @Property(selector = "videoMinTimeViewed")
-    public native @MachineSizedSInt long getVideoMinTimeViewed();
-    @Property(selector = "setVideoMinTimeViewed:")
-    public native void setVideoMinTimeViewed(@MachineSizedSInt long v);
-    /*</properties>*/
-    /*<members>*//*</members>*/
-    /*<methods>*/
     
+    /*</properties>*/
+    /*<methods>*/
+    @Method(selector = "setLogLevel:isProductionEnvironment:")
+    void setLogLevel(ADJLogLevel logLevel, boolean isProductionEnvironment);
+    @Method(selector = "lockLogLevel")
+    void lockLogLevel();
     /*</methods>*/
+    /*<adapter>*/
+    /*</adapter>*/
 }

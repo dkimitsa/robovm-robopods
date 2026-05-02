@@ -70,8 +70,6 @@ import org.robovm.apple.uikit.*;
     public native String getProviderID();
     @Property(selector = "uid")
     public native String getUid();
-    @Property(selector = "setUid:")
-    public native void setUid(String v);
     @Property(selector = "displayName")
     public native String getDisplayName();
     @Property(selector = "setDisplayName:")
@@ -82,12 +80,8 @@ import org.robovm.apple.uikit.*;
     public native void setPhotoURL(NSURL v);
     @Property(selector = "email")
     public native String getEmail();
-    @Property(selector = "setEmail:")
-    public native void setEmail(String v);
     @Property(selector = "phoneNumber")
     public native String getPhoneNumber();
-    @Property(selector = "setPhoneNumber:")
-    public native void setPhoneNumber(String v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

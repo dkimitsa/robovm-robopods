@@ -48,7 +48,7 @@ import org.robovm.apple.coreanimation.*;
     public static final String IS_INTERSTITIAL = "interstitial";
     public static final String IS_BANNER = "banner";
     public static final String IS_NATIVE_AD = "nativead";
-    public static final String getSdkVersion = "9.2.0";
+    public static final String getSdkVersion = "9.4.1";
     /*</constants>*/
     /*<constructors>*/
     public IronSource() {}

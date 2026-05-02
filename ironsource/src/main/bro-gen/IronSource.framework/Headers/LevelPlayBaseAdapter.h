@@ -9,12 +9,14 @@
 #define LevelPlayBaseAdapter_h
 
 #import "ISAdapterAdaptiveProtocol.h"
+#import "ISAdapterTestModeProtocol.h"
 #import "ISBaseNetworkAdapter.h"
 #import "ISBiddingDataProtocol.h"
 NS_ASSUME_NONNULL_BEGIN
 
-@interface LevelPlayBaseAdapter
-    : ISBaseNetworkAdapter <ISAdapterAdaptiveProtocol, ISAdapterMetaDataProtocol>
+@interface LevelPlayBaseAdapter : ISBaseNetworkAdapter <ISAdapterAdaptiveProtocol,
+                                                        ISAdapterMetaDataProtocol,
+                                                        ISAdapterTestModeProtocol>
 
 @end
 

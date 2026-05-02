@@ -411,6 +411,8 @@ classes:
                 name: init
             '-showAdWithViewController:placementName:':
                 name: showAd
+            '-getRewardWithPlacementName:':
+                name: getReward
     LPMBannerAdViewConfig: { }
     LPMBannerAdViewConfigBuilder:
         methods:
@@ -450,6 +452,7 @@ classes:
                 name: destroyAd
             '-getNativeAdPropertiesWithAdData:':
                 name: getNativeAdProperties
+    LPMPrivacySettings: {}
 protocols:
     ISAdapterAdDelegate:
         methods:
@@ -925,7 +928,8 @@ constants:
     LEVEL_PLAY_(.*):
         class: LevelPlay
         name: '#{g[0]}'
-
+    kErrorMessageTestSuiteDisabled:
+        exclude: true
     kEmptyString:
         exclude: true
 

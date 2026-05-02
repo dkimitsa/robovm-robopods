@@ -38,7 +38,7 @@ import org.robovm.apple.coregraphics.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Marshaler(ValuedEnum.AsMachineSizedSIntMarshaler.class)/*</annotations>*/
+/*<annotations>*/@Marshaler(ValuedEnum.AsMachineSizedSIntMarshaler.class) @Library(Library.INTERNAL)/*</annotations>*/
 public enum /*<name>*/IALGPDConsentType/*</name>*/ implements ValuedEnum {
     /*<values>*/
     Unknown(-1L),
@@ -46,10 +46,12 @@ public enum /*<name>*/IALGPDConsentType/*</name>*/ implements ValuedEnum {
     Given(1L);
     /*</values>*/
 
-    /*<bind>*/
-    /*</bind>*/
+    /*<bind>*/static { Bro.bind(IALGPDConsentType.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
-    /*<methods>*//*</methods>*/
+    /*<methods>*/
+    @Bridge(symbol="IALGPDConsentTypeToString", optional=true)
+    public native String toString();
+    /*</methods>*/
 
     private final long n;
 

@@ -1,19 +1,21 @@
 //endpoints
-#define kTenjinEventEndpoint @"event"
-#define kTenjinUserEndpoint @"user"
-#define kTenjinPurchaseEndpoint @"purchase"
-#define kTenjinAdRevenueEndpoint @"ad_impression"
-#define kTenjinAdMobAdRevenueEndpoint @"ad_impressions/admob"
-#define kTenjinAdRevenueAppLovinEndpoint @"ad_impressions/max"
-#define kTenjinAdRevenueIronSourceEndpoint @"ad_impressions/ironsource"
-#define kTenjinHyperBidRevenueEndpoint @"ad_impressions/hyperbid"
-#define kTenjinTopOnRevenueEndpoint @"ad_impressions/topon"
-#define kTenjinCASRevenueEndpoint @"ad_impressions/cas"
-#define kTenjinTradPlusRevenueEndpoint @"ad_impressions/tradplus"
-#define kTenjinConversionEndpoint @"conversion-values"
+#define kTenjinEventEndpoint @"v0/event"
+#define kTenjinUserEndpoint @"v0/user"
+#define kTenjinPurchaseEndpoint @"v0/purchase"
+#define kTenjinSubscriptionEndpoint @"v1/subscriptions"
+#define kTenjinAdRevenueEndpoint @"v0/ad_impression"
+#define kTenjinAdMobAdRevenueEndpoint @"v0/ad_impressions/admob"
+#define kTenjinAdRevenueAppLovinEndpoint @"v0/ad_impressions/max"
+#define kTenjinAdRevenueIronSourceEndpoint @"v0/ad_impressions/ironsource"
+#define kTenjinHyperBidRevenueEndpoint @"v0/ad_impressions/hyperbid"
+#define kTenjinTopOnRevenueEndpoint @"v0/ad_impressions/topon"
+#define kTenjinCASRevenueEndpoint @"v0/ad_impressions/cas"
+#define kTenjinTradPlusRevenueEndpoint @"v0/ad_impressions/tradplus"
+#define kTenjinConversionEndpoint @"v0/conversion-values"
 
 //this line replaced by build script
-#define kTenjinTenjinSDKVersion @"1.15.1"
+#define kTenjinTenjinSDKVersion @"1.16.1"
+
 
 
 #define kTenjinPlatformIos @"ios"
@@ -42,6 +44,8 @@
 #define kTenjinDeviceModel @"device_model"
 #define kTenjinAAAttributionToken @"attribution_token"
 #define kTenjinCustomerUserId @"customer_user_id"
+#define kTenjinPlugin @"plugin"
+#define kTenjinPluginVersion @"plugin_version"
 #define kTenjinEvent @"event"
 #define kTenjinAnalyticsId @"analytics_installation_id"
 #define kTenjinSDKAnalyticsMetrics @"sdk_analytics_metrics"

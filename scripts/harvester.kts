@@ -68,14 +68,14 @@ val knownFrameworks = mutableMapOf<String, (String) -> Unit>(
         val artifactLocation = downloadFolder.extend("WindowsAzureMessaging-SDK-Apple/iOS/$artifact")
         processFramework(
             artifact = artifact,
-            moduleFolder = "azure/ios-notification-hubs",
+            moduleFolder = "azure",
             sourceHeadersDir = artifactLocation.headers,
             yaml = "azure-windows-messaging.yaml",
             version = { azureVersionFromReadme(downloadFolder.extend("WindowsAzureMessaging-SDK-Apple/README.md")) },
             instruction = """
                 1. Download recent version of WindowsAzureMessaging-SDK-Apple-X.Y.Z.zip from https://github.com/Azure/azure-notificationhubs-ios/releases
-                2. unpack 
-                3. expected location ${downloadFolder.extend("WindowsAzureMessaging-SDK-Apple")} 
+                2. unpack
+                3. expected location ${downloadFolder.extend("WindowsAzureMessaging-SDK-Apple")}
             """.trimIndent()
         )
     },
@@ -227,7 +227,7 @@ val knownFrameworks = mutableMapOf<String, (String) -> Unit>(
         val artifactLocation = downloadFolder.extend("Pollfish-iOS-SDK/Pollfish.xcframework/ios-arm64/$artifact")
         processFramework(
             artifact = artifact,
-            moduleFolder = "pollfish/ios",
+            moduleFolder = "pollfish",
             sourceHeadersDir = artifactLocation.headers,
             yaml = "pollfish.yaml",
             headersCopier = { frm, sourceHeadersDir, destinationHeadersDir ->
@@ -281,7 +281,7 @@ val knownFrameworks = mutableMapOf<String, (String) -> Unit>(
         val artifactLocation = downloadFolder.extend("$framework/Carthage/Build/$framework.xcframework/ios-arm64_armv7/$framework.framework")
         processFramework(
             artifact = "$framework.framework",
-            moduleFolder = "youtube/ios-player-helper",
+            moduleFolder = "youtube",
             sourceHeadersDir = artifactLocation.headers,
             yaml = "youtube-player-helper.yaml",
             version = {
@@ -326,7 +326,7 @@ val knownFrameworks = mutableMapOf<String, (String) -> Unit>(
                 ?: error("Filed to evaluate $framework version")
             },
             instruction = """
-                0. download latest version from https://developers.is.com/ironsource-mobile/ios/ios-sdk/#step-1
+                0. download latest IronSourceX.X.X.zip from https://github.com/ironsource-mobile/iOS-sdk/releases/
                 1. unpack
                 2. expected location $artifactLocation
             """.trimIndent(),
@@ -336,7 +336,7 @@ val knownFrameworks = mutableMapOf<String, (String) -> Unit>(
         val artifactLocation = Path.of("adapty/cocoapods/Adapty.framework").toFile()
         processFramework(
             artifact = "$framework.framework",
-            moduleFolder = "adapty/ios",
+            moduleFolder = "adapty",
             sourceHeadersDir = artifactLocation.headers,
             yaml = "adapty.yaml",
             version = { artifactLocation.infoPlist.extractVersion() },
@@ -360,7 +360,7 @@ val knownFrameworks = mutableMapOf<String, (String) -> Unit>(
         )
     },
     "TenjinSDK" to { framework ->
-        val artifactLocation = downloadFolder.extend("TenjinSDK.xcframework/ios-arm64_armv7/$framework.framework")
+        val artifactLocation = downloadFolder.extend("TenjinSDK.xcframework/ios-arm64/$framework.framework")
         val tenjinvVersion: String by lazy {
             artifactLocation.extend("PrivateHeaders/TenjinConst.h").readLines()
                 .find{ it.contains(" kTenjinTenjinSDKVersion ") }
@@ -406,6 +406,26 @@ val knownFrameworks = mutableMapOf<String, (String) -> Unit>(
                 0. download latest CleverAdsSolutions-x.x.x.x.zip from https://github.com/cleveradssolutions/CAS-iOS/releases/
                 1. unpack
                 2. rename to CleverAdsSolutions
+                2. expected location $artifactLocation
+            """.trimIndent(),
+        )
+    },
+    "AdjustSdk" to { framework ->
+        val artifactLocation = downloadFolder.extend("AdjustSdk-iOS-tvOS-Dynamic-xcframework/AdjustSdk.xcframework/ios-arm64/$framework.framework")
+        processFramework(
+            artifact = "$framework.framework",
+            moduleFolder = "adjustsdk",
+            sourceHeadersDir = artifactLocation.headers,
+            yaml = "adjustsdk.yaml",
+            version = {
+                artifactLocation.headers.extend("Adjust.h").readLines()
+                    .find{ it.contains("//  V") }
+                    ?.substringAfterLast("//  V")
+                    ?: error("Filed to evaluate $framework version")
+            },
+            instruction = """
+                0. download latest AdjustSdk-iOS-tvOS-Dynamic-X.X.X.xcframework.zip from https://github.com/adjust/ios_sdk/releases
+                1. unpack
                 2. expected location $artifactLocation
             """.trimIndent(),
         )
@@ -772,7 +792,7 @@ fun updateModuleReadmeFileVersionString(framework: String, moduleReadmeFile: Fil
                         cols[1] = " $podVersion".padEnd(cols[1].length)
                         cols[2] = " $version".padEnd(cols[2].length)
                         resultLines.add(cols.joinToString("|"))
-                        if (sdkVersion != version) {
+                        if (sdkVersion.isNotEmpty() &&  sdkVersion != version) {
                             // version changed, adding on top
                             resultLines.add(line)
                         }

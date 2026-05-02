@@ -130,8 +130,9 @@
 + (BOOL)isAllTrackingStopped;
 + (void)limitDataSharing:(BOOL)shouldLimitDataSharing;
 + (BOOL)getLimitDataSharing;
+#ifndef SINGULAR_KIDS
 + (void)setLimitAdvertisingIdentifiers:(BOOL)enabled;
-
+#endif // !SINGULAR_KIDS
 #pragma mark - SKAN Methods
 
 + (void)skanRegisterAppForAdNetworkAttribution;

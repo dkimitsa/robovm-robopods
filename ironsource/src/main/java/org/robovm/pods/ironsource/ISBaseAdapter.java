@@ -99,6 +99,8 @@ import org.robovm.apple.coreanimation.*;
     public native void setNativeAdAdapter(ISNativeAdAdapterProtocol nativeAdAdapter);
     @Method(selector = "setConsent:")
     public native void setConsent(boolean consent);
+    @Method(selector = "setTestMode:")
+    public native void setTestMode(boolean enabled);
     @Method(selector = "getRewardedVideoAdapter")
     public native ISRewardedVideoAdapterProtocol getRewardedVideoAdapter();
     @Method(selector = "getInterstitialAdapter")

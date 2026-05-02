@@ -60,18 +60,38 @@ import org.robovm.apple.webkit.*;
     public native NSArray<NSString> getTestDeviceIdentifiers();
     @Property(selector = "setTestDeviceIdentifiers:")
     public native void setTestDeviceIdentifiers(NSArray<NSString> v);
-    @Property(selector = "tagForUnderAgeOfConsent")
-    public native NSNumber getTagForUnderAgeOfConsent();
-    @Property(selector = "setTagForUnderAgeOfConsent:")
-    public native void setTagForUnderAgeOfConsent(NSNumber v);
-    @Property(selector = "tagForChildDirectedTreatment")
-    public native NSNumber getTagForChildDirectedTreatment();
-    @Property(selector = "setTagForChildDirectedTreatment:")
-    public native void setTagForChildDirectedTreatment(NSNumber v);
+    @Property(selector = "ageRestrictedTreatment")
+    public native GADAgeRestrictedTreatment getAgeRestrictedTreatment();
+    @Property(selector = "setAgeRestrictedTreatment:")
+    public native void setAgeRestrictedTreatment(GADAgeRestrictedTreatment v);
     @Property(selector = "publisherPrivacyPersonalizationState")
     public native GADPublisherPrivacyPersonalizationState getPublisherPrivacyPersonalizationState();
     @Property(selector = "setPublisherPrivacyPersonalizationState:")
     public native void setPublisherPrivacyPersonalizationState(GADPublisherPrivacyPersonalizationState v);
+    /**
+     * @deprecated Use the ageRestrictedTreatment property instead.
+     */
+    @Deprecated
+    @Property(selector = "tagForUnderAgeOfConsent")
+    public native NSNumber getTagForUnderAgeOfConsent();
+    /**
+     * @deprecated Use the ageRestrictedTreatment property instead.
+     */
+    @Deprecated
+    @Property(selector = "setTagForUnderAgeOfConsent:")
+    public native void setTagForUnderAgeOfConsent(NSNumber v);
+    /**
+     * @deprecated Use the ageRestrictedTreatment property instead.
+     */
+    @Deprecated
+    @Property(selector = "tagForChildDirectedTreatment")
+    public native NSNumber getTagForChildDirectedTreatment();
+    /**
+     * @deprecated Use the ageRestrictedTreatment property instead.
+     */
+    @Deprecated
+    @Property(selector = "setTagForChildDirectedTreatment:")
+    public native void setTagForChildDirectedTreatment(NSNumber v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

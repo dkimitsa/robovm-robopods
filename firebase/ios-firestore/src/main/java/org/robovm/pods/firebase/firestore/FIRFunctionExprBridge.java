@@ -46,15 +46,15 @@ import org.robovm.apple.dispatch.*;
     public FIRFunctionExprBridge() {}
     protected FIRFunctionExprBridge(Handle h, long handle) { super(h, handle); }
     protected FIRFunctionExprBridge(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithName:Args:")
-    public FIRFunctionExprBridge(String name, NSArray<FIRExprBridge> args) { super((SkipInit) null); initObject(init(name, args)); }
+    @Method(selector = "initWithName:Args:Options:")
+    public FIRFunctionExprBridge(String name, NSArray<FIRExprBridge> args, NSDictionary<NSString, FIRExprBridge> options) { super((SkipInit) null); initObject(initWithName$Args$Options$(name, args, options)); }
     /*</constructors>*/
     /*<properties>*/
     
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "initWithName:Args:")
-    protected native @Pointer long init(String name, NSArray<FIRExprBridge> args);
+    @Method(selector = "initWithName:Args:Options:")
+    protected native @Pointer long initWithName$Args$Options$(String name, NSArray<FIRExprBridge> args, NSDictionary<NSString, FIRExprBridge> options);
     /*</methods>*/
 }

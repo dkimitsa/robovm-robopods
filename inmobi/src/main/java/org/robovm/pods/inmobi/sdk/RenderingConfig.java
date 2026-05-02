@@ -103,6 +103,10 @@ import org.robovm.apple.coreanimation.*;
     public native GestureConfig getGestureConfig();
     @Property(selector = "setGestureConfig:")
     public native void setGestureConfig(GestureConfig v);
+    @Property(selector = "enableHtmlUrlPrefetch")
+    public native boolean isEnableHtmlUrlPrefetch();
+    @Property(selector = "setEnableHtmlUrlPrefetch:")
+    public native void setEnableHtmlUrlPrefetch(boolean v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

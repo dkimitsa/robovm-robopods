@@ -21,7 +21,7 @@ typedef NS_ENUM(NSInteger, IAUserGenderType) {
 
 @required
 
-@property (nonatomic) NSUInteger age;
+@property (nonatomic) NSUInteger age DEPRECATED_MSG_ATTRIBUTE("This API is deprecated starting from 8.4.6.");
 @property (nonatomic) IAUserGenderType gender;
 @property (nonatomic, copy, nullable) NSString *zipCode;
 

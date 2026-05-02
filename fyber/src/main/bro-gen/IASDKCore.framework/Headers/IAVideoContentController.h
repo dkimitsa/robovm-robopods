@@ -29,14 +29,4 @@
 @property (nonatomic, readwrite, getter=isMuted) BOOL muted;
 @property (nonatomic, readonly) CGFloat mediaAspectRatio;
 
-/**
- *  @brief Deprecated.
- */
-- (void)play DEPRECATED_MSG_ATTRIBUTE("This API is deprecated.");
-
-/**
- *  @brief Deprecated.
- */
-- (void)pause DEPRECATED_MSG_ATTRIBUTE("This API is deprecated.");
-
 @end

@@ -38,31 +38,32 @@ This is the list of currently available AltPods. Click them to get more informat
 
 ## Version of AltPods to framework version mapping
 
-v1.57.0 
+Latest bindings:
 
-| Name                                    | 1.57.0  |
+| Name                                    | Version |
 |-----------------------------------------|---------|
 | [AdaptySDK](adapty/)                    | 1.17.7  |
+| [AdjustSdk](adjustsdk/)                 | 5.6.2   |
 | [AppCenter](appcenter/)                 | 5.10.0  |
-| [AppLovinSDK](applovinsdk/)             | 13.6.0  |
-| [AppsFlyer](appsflyer/)                 | 6.17.9  |
+| [AppLovinSDK](applovinsdk/)             | 13.6.2  |
+| [AppsFlyer](appsflyer/)                 | 6.18.0  |
 | [Azure](azure/)                         | 3.1.4   |
 | [BranchMetrics](branchmetrics/)         | 3.14.0  |
 | [Charts](charts/)                       | 5.1.0   |
-| [CleverAds](cleverads/)                 | 4.6.3   |
+| [CleverAds](cleverads/)                 | 4.6.6   |
 | [Facebook](facebook/)                   | 18.0.3  |
-| [Firebase](firebase/)                   | 12.10.0 |
-| [Fyber](fyber/)                         | 8.4.5   |
-| [Google Mobile Ads](google-mobile-ads/) | 13.1.0  |
+| [Firebase](firebase/)                   | 12.12.0 |
+| [Fyber](fyber/)                         | 8.4.7   |
+| [Google Mobile Ads](google-mobile-ads/) | 13.3.0  |
 | [HelpShiftX](helpshift/)                | 10.5.0  |
-| [InMobi](inmobi/)                       | 11.1.1  |
-| [IronSource](ironsource/)               | 9.2.0   |
+| [InMobi](inmobi/)                       | 11.2.0  |
+| [IronSource](ironsource/)               | 9.4.1   |
 | [Lottie](lottie/)                       | 4.6.0   |
-| [OneSignal](onesignal/)                 | 5.5.0   |
+| [OneSignal](onesignal/)                 | 5.5.1   |
 | [Pollfish](pollfish/)                   | 6.5.0   |
 | [SAMKeychain](samkeychain/)             | 1.5.3   |
-| [Singular](singular/)                   | 12.10.0 |
-| [Tenjin](tenjin/)                       | 1.15.1  |
+| [Singular](singular/)                   | 12.10.1 |
+| [Tenjin](tenjin/)                       | 1.16.1  |
 | [UnityAds](unityads/)                   | 4.17.0  |
 | [YouTubePlayer](youtube/)               | 1.0.4   |
 

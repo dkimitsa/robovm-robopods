@@ -66,5 +66,7 @@ import org.robovm.apple.corelocation.*;
     public static native void trackingAuthorizationRequest(@Block("(@MachineSizedUInt)") VoidBlock1<Long> completion);
     @Method(selector = "tryResolveCStringFuncWithName:")
     public static native String tryResolveCStringFunc(String name);
+    @Method(selector = "doTryBlock:")
+    public static native NSError doTryBlock(@Block Runnable block);
     /*</methods>*/
 }

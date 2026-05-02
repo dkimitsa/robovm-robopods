@@ -96,6 +96,7 @@ import org.robovm.apple.coreanimation.*;
         public static final String Param9 = "af_param_9";
         public static final String Param10 = "af_param_10";
         public static final String Touch = "af_touch_obj";
+        public static final String NetworkToken = "net_token";
         public static final String DepartingDepartureDate = "af_departing_departure_date";
         public static final String ReturningDepartureDate = "af_returning_departure_date";
         public static final String DestinationList = "af_destination_list";

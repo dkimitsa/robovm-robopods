@@ -48,8 +48,16 @@ import org.robovm.apple.coregraphics.*;
     /*</bind>*/
     /*<constants>*//*</constants>*/
     /*<properties>*/
+    /**
+     * @deprecated This API is deprecated starting from 8.4.6.
+     */
+    @Deprecated
     @Property(selector = "age")
     @MachineSizedUInt long getAge();
+    /**
+     * @deprecated This API is deprecated starting from 8.4.6.
+     */
+    @Deprecated
     @Property(selector = "setAge:")
     void setAge(@MachineSizedUInt long v);
     @Property(selector = "gender")

@@ -135,6 +135,10 @@ protocols:
             '-nativeImage:failedToLoadImageFromURL:error:':
                 name: failedToLoadImage
 functions:
+    IALGPDConsentTypeToString:
+        class: IALGPDConsentType
+        name: toString
+
     # Make sure we don't miss any functions if new ones are introduced in a later version
     (.*):
         class: __FixMe

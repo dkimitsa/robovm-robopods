@@ -59,6 +59,10 @@ import org.robovm.apple.coreanimation.*;
     public native boolean isRestore();
     @Property(selector = "setRestore:")
     public native void setRestore(boolean v);
+    @Property(selector = "inappV2")
+    public native boolean isInappV2();
+    @Property(selector = "setInappV2:")
+    public native void setInappV2(boolean v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
