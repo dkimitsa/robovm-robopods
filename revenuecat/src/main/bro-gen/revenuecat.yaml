@@ -1,0 +1,420 @@
+package: org.robovm.pods.revenuecat
+include: [foundation, uikit, storekit]
+framework: RevenueCat
+clang_args: ['-x', 'objective-c']
+headers:
+    - "#include <StoreKit/StoreKit.h>"
+    - RevenueCat-Swift.h
+
+private_typedefs: {}
+
+typedefs: {}
+
+enums:
+    RCAttributionNetwork: { }
+    RCCacheFetchPolicy: { }
+    RCEntitlementVerificationMode: { }
+    RCPurchasesErrorCode: { prefix: RC, nserror: true }
+    FakeTrackingManagerAuthorizationStatus: { }
+    RCIntroEligibilityStatus: { }
+    RCLogLevel: { }
+    RCPackageType: { }
+    RCPeriodType: { prefix: RC }
+    RCPurchaseOwnershipType: { }
+    RCPurchasesAreCompletedBy: { }
+    RCRefundRequestStatus: { prefix: RCRefundRequest }
+    RCStore: { prefix: RC }
+    RCStoreKitVersion: { }
+    RCStoreMessageType: { }
+    RCStoreProductCategory: { }
+    RCStoreProductType: { }
+    RCPaymentMode: { }
+    RCDiscountType: { }
+    RCSubscriptionPeriodUnit: { }
+    RCVerificationResult: { }
+
+classes:
+    CacheableNetworkOperation: { }
+    DiagnosticsPostOperation: { }
+    FakeASIdManager: { }
+    FakeTrackingManager: { }
+    GetCustomerCenterConfigOperation: { }
+    GetCustomerInfoOperation: { }
+    GetIntroEligibilityOperation: { }
+    GetOfferingsOperation: { }
+    GetProductEntitlementMappingOperation: { }
+    GetRewardVerificationStatusOperation: { }
+    GetVirtualCurrenciesOperation: { }
+    GetWebBillingProductsOperation: { }
+    GetWebOfferingProductsOperation: { }
+    GetWorkflowOperation: { }
+    HealthOperation: { }
+    LogInOperation: { }
+    NetworkOperation: { }
+    PaymentQueueWrapper:
+        methods:
+            '-finishTransaction:completion:':
+                name: finishTransaction
+    PostAdEventsOperation: { } #since 15.0
+    PostAdServicesTokenOperation: { }
+    PostAttributionDataOperation: { }
+    PostFeatureEventsOperation: { }
+    PostIsPurchaseAllowedByRestoreBehaviorOperation: { }
+    PostOfferForSigningOperation: { }
+    PostReceiptDataOperation: { }
+    PostRedeemWebPurchaseOperation: { }
+    PostSubscriberAttributesOperation: { }
+    ProductsFetcherSK1: { }
+    ProductsManager: { }
+    RCAdDisplayed:
+        methods:
+            '-initWithNetworkName:mediatorName:adFormat:placement:adUnitId:impressionId:':
+                name: init
+            '-initWithNetworkName:mediatorName:adFormat:adUnitId:impressionId:':
+                name: init
+    RCAdFailedToLoad:
+        methods:
+            '-initWithMediatorName:adFormat:placement:adUnitId:mediatorErrorCode:':
+                name: init
+            '-initWithMediatorName:adFormat:adUnitId:mediatorErrorCode:':
+                name: init
+    RCAdFormat:
+        methods:
+            '-initWithRawValue:':
+                name: init
+            '+native':
+                name: getNative
+    RCAdLoaded:
+        methods:
+            '-initWithNetworkName:mediatorName:adFormat:placement:adUnitId:impressionId:':
+                name: init
+            '-initWithNetworkName:mediatorName:adFormat:adUnitId:impressionId:':
+                name: init
+    RCAdOpened:
+        methods:
+            '-initWithNetworkName:mediatorName:adFormat:placement:adUnitId:impressionId:':
+                name: init
+            '-initWithNetworkName:mediatorName:adFormat:adUnitId:impressionId:':
+                name: init
+    RCAdRevenue:
+        methods:
+            '-initWithNetworkName:mediatorName:adFormat:placement:adUnitId:impressionId:revenueMicros:currency:precision:':
+                name: init
+            '-initWithNetworkName:mediatorName:adFormat:adUnitId:impressionId:revenueMicros:currency:precision:':
+                name: init
+    RCAdRevenuePrecision:
+        methods:
+            '-initWithRawValue:':
+                name: init
+    RCAdTracker: { } #since 15.0
+    RCConfiguration:
+        methods:
+            '+builderWithAPIKey:':
+                name: builder
+    RCConfigurationBuilder:
+        methods:
+            '-initWithAPIKey:':
+                name: init
+            '-withPurchasesAreCompletedBy:storeKitVersion:':
+                name: with
+    RCCustomPaywallImpressionParams:
+        methods:
+            '-initWithPaywallId:offeringId:':
+                name: init
+            '-initWithPaywallId:':
+                name: init
+    RCCustomerInfo: { }
+    RCDangerousSettings:
+        methods:
+            '-initWithAutoSyncPurchases:':
+                name: init
+            '-initWithAutoSyncPurchases:customEntitlementComputation:':
+                name: init
+    RCEntitlementInfo: { }
+    RCEntitlementInfos: { }
+    RCIntroEligibility: { }
+    RCMediatorName:
+        methods:
+            '-initWithRawValue:':
+                name: init
+    RCNonSubscriptionTransaction: { }
+    RCOffering:
+        methods:
+            '-packageWithIdentifier:':
+                name: getPackage
+            '-initWithIdentifier:serverDescription:metadata:availablePackages:webCheckoutUrl:':
+                name: init
+    RCPackage:
+        methods:
+            '-initWithIdentifier:packageType:storeProduct:offeringIdentifier:webCheckoutUrl:':
+                name: init
+            '-initWithIdentifier:packageType:storeProduct:presentedOfferingContext:webCheckoutUrl:':
+                name: init
+    RCPlatformInfo:
+        methods:
+            '-initWithFlavor:version:':
+                name: init
+    RCPresentedOfferingContext:
+        methods:
+            '-initWithOfferingIdentifier:placementIdentifier:targetingContext:':
+                name: init
+            '-initWithOfferingIdentifier:':
+                name: init
+    RCProductPaidPrice: { }
+    RCPromotionalOffer: { }
+    RCPromotionalOfferEligibility: { }
+    RCPromotionalOfferSignedData: { }
+    RCPurchaseParams: { }
+    RCPurchaseParamsBuilder:
+        methods:
+            '-initWithPackage:':
+                name: init
+            '-initWithProduct:':
+                name: init
+    RCPurchaserInfo: { }
+    RCPurchasesErrorUtils: { }
+    RCStoreProductDiscount: { }
+    RCStoreTransaction: { }
+    RCStorefront: { }
+    RCSubscriptionInfo: { }
+    RCSubscriptionPeriod: { }
+    RCTargetingContext:
+        methods:
+            '-initWithRevision:ruleId:':
+                name: init
+    RCTransaction: { }
+    RCVirtualCurrencies: { }
+    RCVirtualCurrency: { }
+    RCWebPurchaseRedemption: { }
+    RCWinBackOffer: { }
+    RedirectLoggerSessionDelegate:
+        methods:
+            '-URLSession:task:willPerformHTTPRedirection:newRequest:completionHandler:':
+                name: willPerformHTTPRedirection
+    StoreKit1Wrapper: { }
+    StoreKit2PromotionalOfferPurchaseOptions:
+        methods:
+            '-initWithOfferID:compactJWS:':
+                name: init
+    StoreKitRequestFetcher: { }
+    TrackingManagerProxy: { }
+    PurchasesReceiptParser:
+        methods:
+            '-receiptHasTransactionsWithReceiptData:':
+                name: receiptHasTransactions
+            '+default':
+                name: getDefault
+    RCAttribution:
+        methods:
+            '-setAppstackAttributionParams:completion:':
+                name: setAppstackAttributionParams
+    RCOfferings:
+        methods:
+            '-offeringWithIdentifier:':
+                name: offering
+    RCPurchases:
+        methods:
+            '-showStoreMessagesWithCompletion:':
+                name: showStoreMessages
+            '-showStoreMessagesForTypes:completion:':
+                name: showStoreMessages
+            '+addAttributionData:fromNetwork:':
+                name: addAttributionData
+            '+addAttributionData:fromNetwork:forNetworkUserId:':
+                name: addAttributionData
+            '+configureWithConfiguration:':
+                name: configure
+            '+configureWithConfigurationBuilder:':
+                name: configure
+            '+configureWithAPIKey:':
+                name: configure
+            '+configureWithAPIKey:appUserID:':
+                name: configure
+            '+configureWithAPIKey:appUserID:purchasesAreCompletedBy:storeKitVersion:':
+                name: configure
+            '-restoreTransactionsWithCompletionBlock:':
+                name: restoreTransactions
+            '-customerInfoWithCompletion:':
+                name: customerInfo
+            '-purchaserInfoWithCompletionBlock:':
+                name: purchaserInfo
+            '-productsWithIdentifiers:completionBlock:':
+                name: productsWithIdentifiers
+            '-offeringsWithCompletionBlock:':
+                name: offerings
+            '-purchasePackage:withCompletionBlock:':
+                name: purchasePackageWithCompletionBlock
+            '-purchaseProduct:withCompletionBlock:':
+                name: purchaseProduct
+            '-checkTrialOrIntroductoryPriceEligibility:completion:':
+                name: checkTrialOrIntroductoryPriceEligibility
+            '-shouldPurchasePromoProduct:defermentBlock:':
+                name: shouldPurchasePromoProduct
+            '-createAlias:completionBlock:':
+                name: createAlias
+            '-identify:completionBlock:':
+                name: identify
+            '-resetWithCompletionBlock:':
+                name: reset
+            '+configureWithAPIKey:appUserID:observerMode:':
+                name: configure
+            '+configureWithAPIKey:appUserID:observerMode:userDefaults:':
+                name: configure
+            '+configureWithAPIKey:appUserID:observerMode:userDefaults:useStoreKit2IfAvailable:':
+                name: configure
+            '+configureWithAPIKey:appUserID:observerMode:userDefaults:useStoreKit2IfAvailable:dangerousSettings:':
+                name: configure
+            '-recordPurchaseForProductID:completion:':
+                name: recordPurchase
+    RCPurchasesDiagnostics:
+        methods:
+            '-testSDKHealthWithCompletion:':
+                name: testSDKHealth
+            '+default':
+                name: getDefault
+    RCStoreProduct:
+        methods:
+            '-initWithSk1Product:':
+                name: init
+protocols:
+    PaymentQueueWrapperType:
+        methods:
+            '-finishTransaction:completion:':
+                name: finishTransaction
+    PurchasesOrchestratorDelegate:
+        methods:
+            '-readyForPromotedProduct:purchase:':
+                name: readyForPromotedProduct
+    RCPurchasesDelegate:
+        methods:
+            '-purchases:didReceiveUpdatedPurchaserInfo:':
+                name: didReceiveUpdatedPurchaserInfo
+            '-purchases:receivedUpdatedCustomerInfo:':
+                name: receivedUpdatedCustomerInfo
+            '-purchases:readyForPromotedProduct:purchase:':
+                name: readyForPromotedProduct
+            '-purchases:shouldPurchasePromoProduct:defermentBlock:':
+                name: shouldPurchasePromoProduct
+    RCPurchasesType:
+        methods:
+            '-getStorefrontWithCompletion:':
+                name: getStorefront
+            '-getStorefrontWithCompletionHandler:':
+                name: getStorefrontWithCompletionHandler
+            '-logIn:completion:':
+                name: logIn
+            '-logIn:completionHandler:':
+                name: logInWithCompletionHandler
+            '-logOutWithCompletion:':
+                name: logOutWithCompletion$
+            '-logOutWithCompletionHandler:':
+                name: logOut
+            '-getCustomerInfoWithCompletion:':
+                name: getCustomerInfo
+            '-getCustomerInfoWithFetchPolicy:completion:':
+                name: getCustomerInfo
+            '-customerInfoWithCompletionHandler:':
+                name: customerInfoWithCompletionHandler
+            '-customerInfoWithFetchPolicy:completionHandler:':
+                name: customerInfo
+            '-getOfferingsWithCompletion:':
+                name: getOfferings
+            '-offeringsWithCompletionHandler:':
+                name: offeringsWithCompletionHandler
+            '-getProductsWithIdentifiers:completion:':
+                name: getProducts
+            '-products:completionHandler:':
+                name: products
+            '-purchaseProduct:withCompletion:':
+                name: purchaseProduct
+            '-purchaseWithProduct:completionHandler:':
+                name: purchase
+            '-purchasePackage:withCompletion:':
+                name: purchasePackage
+            '-purchaseWithPackage:completionHandler:':
+                name: purchase
+            '-purchaseWithParams:completion:':
+                name: purchaseWithParams
+            '-purchase:completionHandler:':
+                name: purchase
+            '-restorePurchasesWithCompletion:':
+                name: restorePurchases
+            '-restorePurchasesWithCompletionHandler:':
+                name: restorePurchasesWithCompletionHandler
+            '-syncPurchasesWithCompletion:':
+                name: syncPurchases
+            '-syncPurchasesWithCompletionHandler:':
+                name: syncPurchasesWithCompletionHandler
+            '-purchaseProduct:withPromotionalOffer:completion:':
+                name: purchaseProduct
+            '-purchaseWithProduct:promotionalOffer:completionHandler:':
+                name: purchase
+            '-purchasePackage:withPromotionalOffer:completion:':
+                name: purchasePackageWithPromotionalOffer
+            '-purchaseWithPackage:promotionalOffer:completionHandler:':
+                name: purchase
+            '-checkTrialOrIntroDiscountEligibility:completion:':
+                name: checkTrialOrIntroDiscountEligibility
+            '-checkTrialOrIntroDiscountEligibilityWithProductIdentifiers:completionHandler:':
+                name: checkTrialOrIntroDiscountEligibilityWithProductIdentifiers
+            '-checkTrialOrIntroDiscountEligibilityForProduct:completion:':
+                name: checkTrialOrIntroDiscountEligibilityForProduct
+            '-checkTrialOrIntroDiscountEligibilityWithProduct:completionHandler:':
+                name: checkTrialOrIntroDiscountEligibilityWithProduct
+            '-getPromotionalOfferForProductDiscount:withProduct:withCompletion:':
+                name: getPromotionalOfferForProductDiscount
+            '-promotionalOfferForProductDiscount:product:completionHandler:':
+                name: promotionalOfferForProductDiscount
+            '-eligiblePromotionalOffersForProduct:completionHandler:':
+                name: eligiblePromotionalOffersForProduct
+            '-eligibleWinBackOffersForProduct:completion:':
+                name: eligibleWinBackOffersForProduct
+            '-eligibleWinBackOffersForPackage:completion:':
+                name: eligibleWinBackOffersForPackage
+            '-beginRefundRequestForProduct:completion:':
+                name: beginRefundRequestForProduct
+            '-beginRefundRequestForEntitlement:completion:':
+                name: beginRefundRequestForEntitlement
+            '-beginRefundRequestForActiveEntitlementWithCompletion:':
+                name: beginRefundRequestForActiveEntitlement
+            '-showManageSubscriptionsWithCompletion:':
+                name: showManageSubscriptions
+            '-showManageSubscriptionsWithCompletionHandler:':
+                name: showManageSubscriptionsWithCompletionHandler
+            '-syncAttributesAndOfferingsIfNeededWithCompletion:':
+                name: syncAttributesAndOfferingsIfNeeded
+            '-syncAttributesAndOfferingsIfNeededWithCompletionHandler:':
+                name: syncAttributesAndOfferingsIfNeededWithCompletionHandler
+            '-redeemWebPurchaseWithWebPurchaseRedemption:completion:':
+                name: redeemWebPurchaseWithWebPurchaseRedemption
+            '-getVirtualCurrenciesWithCompletion:':
+                name: getVirtualCurrencies
+            '-params:withCompletion:':
+                name: params
+
+functions:
+
+    # Make sure we don't miss any functions if new ones are introduced in a later version
+    (.*):
+        class: __FixMe
+        name: 'Function_#{g[0]}'
+
+values:
+
+    # Make sure we don't miss any values if new ones are introduced in a later version
+    (.*):
+        class: __FixMe
+        name: 'Value_#{g[0]}'
+
+constants:
+    SWIFT_TYPEDEFS:
+        exclude: true
+
+    RCPurchasesErrorCodeDomain:
+        class: RCPurchasesErrorCode
+        name: ErrorDomain
+
+    # Make sure we don't miss any values if new ones are introduced in a later version
+    (.*):
+        class: __FixMe
+        name: '#{g[0]}'

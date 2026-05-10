@@ -35,31 +35,7 @@
 
     <!-- list of modules to build  -->
     <modules>
-        <module>adjustsdk</module>
-        <module>applovinsdk</module>
-        <module>appsflyer</module>
-        <module>cleverads</module>
-        <module>firebase/ios-analytics</module>
-        <module>firebase/ios-appcheck</module>
-        <module>firebase/ios-auth</module>
-        <module>firebase/ios-bom</module>
-        <module>firebase/ios-core</module>
-        <module>firebase/ios-crashlytics</module>
-        <module>firebase/ios-database</module>
-        <module>firebase/ios-firestore</module>
-        <module>firebase/ios-installations</module>
-        <module>firebase/ios-messaging</module>
-        <module>firebase/ios-remoteconfig</module>
-        <module>firebase/ios-storage</module>
-        <module>fyber</module>
-        <module>google-mobile-ads/ios-google-mobile-ads</module>
-        <module>google-mobile-ads/ios-google-mobile-ads-adapters/ios-applovin</module>
-        <module>google-mobile-ads/ios-google-mobile-ads-adapters/ios-inmobi</module>
-        <module>inmobi</module>
-        <module>ironsource</module>
-        <module>onesignal</module>
-        <module>singular</module>
-        <module>tenjin</module>
+        <module>revenuecat</module>
     </modules>
 
 </project>

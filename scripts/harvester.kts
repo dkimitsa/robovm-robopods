@@ -430,6 +430,21 @@ val knownFrameworks = mutableMapOf<String, (String) -> Unit>(
             """.trimIndent(),
         )
     },
+    "RevenueCat" to { framework ->
+        val artifactLocation = downloadFolder.extend("RevenueCat.xcframework/ios-arm64/$framework.framework")
+        processFramework(
+            artifact = "$framework.framework",
+            moduleFolder = "revenuecat",
+            sourceHeadersDir = artifactLocation.headers,
+            yaml = "revenuecat.yaml",
+            version = { artifactLocation.infoPlist.extractVersion() },
+            instruction = """
+                0. download latest RevenueCat.xcframework.zip from https://github.com/RevenueCat/purchases-ios/releases
+                1. unpack
+                2. expected location $artifactLocation
+            """.trimIndent(),
+        )
+    },
     "AppsFlyerLib" to { framework ->
         val artifactLocation = downloadFolder.extend("AppsFlyerLib.xcframework/ios-arm64/$framework.framework")
         processFramework(
