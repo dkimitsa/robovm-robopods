@@ -1,0 +1,6 @@
+name: firebase-appcheck
+moduleFolder: firebase/ios-appcheck
+artifactSource:
+  - check if folder exists in ~/Downloads/robopods-wip/Firebase/FirebaseAppCheck/FirebaseAppCheck.xcframework/, stop and report error if not
+downloadLocation: ~/Downloads/robopods-wip/Firebase
+dropVersionSuffix: true

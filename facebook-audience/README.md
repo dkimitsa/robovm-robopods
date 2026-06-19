@@ -1,4 +1,5 @@
 # Facebook iOS Audience framework
+https://developers.facebook.com/docs/audience-network/guides/adding-sdk/ios
 
 ### Available RoboPods
 | RoboPods Version | Facebook Audience |
@@ -7,25 +8,9 @@
 | 6.21.0.0         | 6.21.0            |
 
 ### Use the dynamic version of frameworks
-It is available for a download as `FacebookSDK_Dynamic.framework.zip` and allows automatic swift dependency resolution. In case static linking is required swift libs should be specified manually in `robovm.xml`:
-```xml
-<libs>
-    <lib>libswiftCore.dylib</lib>>
-    <lib>libswiftCoreFoundation.dylib</lib>>
-    <lib>libswiftCoreGraphics.dylib</lib>>
-    <lib>libswiftCoreImage.dylib</lib>>
-    <lib>libswiftDarwin.dylib</lib>>
-    <lib>libswiftDispatch.dylib</lib>>
-    <lib>libswiftFoundation.dylib</lib>>
-    <lib>libswiftMetal.dylib</lib>>
-    <lib>libswiftObjectiveC.dylib</lib>>
-    <lib>libswiftQuartzCore.dylib</lib>>
-    <lib>libswiftUIKit.dylib</lib>>
+It is available for a download as `FacebookSDK_Dynamic.framework.zip` and allows automatic swift dependency resolution.
 
-    <lib>swiftCompatibility51</lib>
-</libs>
 ```
-
 ### Frameworks required for this pod:
 * FBAudienceNetwork.framework
 

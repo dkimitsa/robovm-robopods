@@ -1,6 +1,0 @@
-platform :ios, '17.0'
-target 'pods' do
-use_frameworks!
-use_modular_headers!
-pod 'AppLovinSDK'
-end

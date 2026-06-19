@@ -1,0 +1,5 @@
+name: appsflyer
+moduleFolder: appsflyer
+artifactSource: latest release https://github.com/AppsFlyerSDK/AppsFlyerFramework, AppsFlyerLib.xcframework.zip from assets
+downloadLocation: ~/Downloads/robopods-wip/AppsFlyerLib.xcframework
+dropVersionSuffix: true

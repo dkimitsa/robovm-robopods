@@ -1,0 +1,6 @@
+name: firebase-core
+moduleFolder: firebase/ios-core
+artifactSource:
+  - check if folder exists in ~/Downloads/robopods-wip/Firebase/FirebaseAnalytics/FirebaseCore.xcframework/, stop and report error if not
+downloadLocation: ~/Downloads/robopods-wip/Firebase
+dropVersionSuffix: true

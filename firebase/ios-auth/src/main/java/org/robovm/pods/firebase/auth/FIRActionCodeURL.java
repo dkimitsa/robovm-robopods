@@ -47,8 +47,12 @@ import org.robovm.apple.uikit.*;
     protected FIRActionCodeURL(Handle h, long handle) { super(h, handle); }
     protected FIRActionCodeURL(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
+
+    /*<manually-added>*/
     // dkimitsa: manually added code due actionCodeURLWithLink is not -init
     public FIRActionCodeURL(String link) { super((SkipInit) null); initObject(init(link)); }
+    /*</manually-added>*/
+
     /*<properties>*/
     @Property(selector = "APIKey")
     public native String getAPIKey();

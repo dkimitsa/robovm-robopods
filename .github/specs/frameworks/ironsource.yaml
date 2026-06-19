@@ -1,0 +1,5 @@
+name: ironsource
+moduleFolder: ironsource
+artifactSource: download latest IronSourceX.X.X.zip from https://github.com/ironsource-mobile/iOS-sdk/releases/ and unpack to IronSource
+downloadLocation: ~/Downloads/robopods-wip/IronSource/
+dropVersionSuffix: false

@@ -1,0 +1,6 @@
+name: firebase-bom
+moduleFolder: firebase/ios-bom
+artifactSource:
+  - check if folder exists in ~/Downloads/robopods-wip/Firebase/, stop and report error if not
+downloadLocation: ~/Downloads/robopods-wip/Firebase
+dropVersionSuffix: true

@@ -1,23 +1,23 @@
 package: org.robovm.pods.google.mobileads.adapters
-framework: MetaAdapter
+framework: AppLovinAdapter
 include:
     - foundation
-    - uikit
-    - ../../../../../ios-google-mobile-ads/src/main/bro-gen/gad.yaml
+    - ../../../../../ios-google-mobile-ads/src/main/bro-gen/google-mobile-ads.yaml
+    - ../../../../../../applovinsdk/src/main/bro-gen/applovinsdk.yaml
 clang_args: ['-x', 'objective-c']
 headers: 
-    - MetaAdapter.h
+    - AppLovinAdapter.h
 
 private_typedefs:
 
 enums:
-    GADFBAdFormat: {}
-    GADFBErrorCode: {prefix: GADFBError}
+    GADMAdapterAppLovinErrorCode: {prefix: GADMAdapterAppLovinError}
+
 typed_enums:
 
 classes:
-    GADFBNetworkExtras: {}
-    GADMediationAdapterFacebook: {}
+    GADMAdapterAppLovinExtras: {}
+    GADMediationAdapterAppLovin: {}
 protocols:
 
 functions:
@@ -27,10 +27,6 @@ functions:
         name: 'Function_#{g[0]}'
 
 values:
-    GAD(FBSubtitle|FBSocialContext):
-        class: GADFBNetworkExtras
-        name: '#{g[0]}'
-
     # Make sure we don't miss any values if new ones are introduced in a later version
     (.*):
         class: __FixMe

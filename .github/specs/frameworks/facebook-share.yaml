@@ -1,0 +1,6 @@
+name: facebook-share
+moduleFolder: facebook/ios-share
+artifactSource:
+  - check if folder exists in ~/Downloads/robopods-wip/Facebook/FBSDKShareKit, stop and report error if not
+downloadLocation: ~/Downloads/robopods-wip/Facebook
+dropVersionSuffix: true

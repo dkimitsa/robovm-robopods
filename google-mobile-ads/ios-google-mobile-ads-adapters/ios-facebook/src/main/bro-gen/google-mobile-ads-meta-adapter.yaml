@@ -1,28 +1,23 @@
 package: org.robovm.pods.google.mobileads.adapters
-framework: InMobiAdapter
+framework: MetaAdapter
 include:
     - foundation
-    - corelocation
-    - ../../../../../ios-google-mobile-ads/src/main/bro-gen/gad.yaml
-    - ../../../../../../inmobi/src/main/bro-gen/inmobi-sdk.yaml
+    - uikit
+    - ../../../../../ios-google-mobile-ads/src/main/bro-gen/google-mobile-ads.yaml
 clang_args: ['-x', 'objective-c']
-headers:
-    - "#import <InMobiSDK/InMobiSDK.h>" # as a workaround for Err: Parse Issue use of '@import' when modules are disabled
-    - InMobiAdapter.h
+headers: 
+    - MetaAdapter.h
 
 private_typedefs:
 
 enums:
-
+    GADFBAdFormat: {}
+    GADFBErrorCode: {prefix: GADFBError}
 typed_enums:
 
 classes:
-    GADInMobiExtras:
-        methods:
-            '-setLocationWithCity:state:country:':
-                name: setLocation
-    GADMInMobiConsent: {}
-
+    GADFBNetworkExtras: {}
+    GADMediationAdapterFacebook: {}
 protocols:
 
 functions:
@@ -32,6 +27,10 @@ functions:
         name: 'Function_#{g[0]}'
 
 values:
+    GAD(FBSubtitle|FBSocialContext):
+        class: GADFBNetworkExtras
+        name: '#{g[0]}'
+
     # Make sure we don't miss any values if new ones are introduced in a later version
     (.*):
         class: __FixMe

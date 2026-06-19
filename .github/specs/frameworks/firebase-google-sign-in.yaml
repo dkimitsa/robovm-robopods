@@ -1,0 +1,6 @@
+name: firebase-google-sign-in
+moduleFolder: firebase/ios-google-sign-in
+artifactSource:
+  - check if folder exists in ~/Downloads/robopods-wip/Firebase/GoogleSignIn/GoogleSignIn.xcframework/, stop and report error if not
+downloadLocation: ~/Downloads/robopods-wip/Firebase
+dropVersionSuffix: true

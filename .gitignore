@@ -1,5 +1,6 @@
 .settings/
 .classpath
+.github/state/
 .project
 *.o
 *.iml

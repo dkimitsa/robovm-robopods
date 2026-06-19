@@ -1,0 +1,12 @@
+name: google-mobile-ads-meta-adapter
+moduleFolder: google-mobile-ads/ios-google-mobile-ads-adapters/ios-facebook
+artifactSource:
+  - to get last version tag use https://github.com/googleads/googleads-mobile-ios-mediation-meta/releases/latest
+  - check `Package.swift` from corresponding version tag to get `.binaryTarget` url for the zip file
+  - how to get version - last chunk of tag is packed by formula (version * 100 + patch), e.g. tag 13.6.300 corresponds to version 13.6.3.0, tag 13.6.301 corresponds to version 13.6.3.1, tag 13.6.0 corresponds to version 13.6.0.0 etc.
+  - download the zip into a temporary/empty staging folder (NOT directly into downloadLocation)
+  - the zip contains a single top-level folder with a version suffix, e.g. MetaAdapter-13.6.3.0/, and the framework lives directly inside it as MetaAdapter-13.6.3.0/MetaAdapter.xcframework
+  - "drop the version suffix" means this top-level folder must BECOME the downloadLocation itself. Move/rename that folder so that its CONTENTS end up directly under downloadLocation. Do NOT create an extra nested MetaAdapter/ folder.
+  - result check - the folder ~/Downloads/robopods-wip/MetaAdapter/MetaAdapter.xcframework/ must exist
+downloadLocation: ~/Downloads/robopods-wip/MetaAdapter
+dropVersionSuffix: true

@@ -39,7 +39,7 @@ val broGenScript: File = Path.of("../robovm-bro-gen/bro-gen.rb").toFile().also {
 }
 
 // Download root folder
-val downloadFolder: File = Path.of(System.getProperty("user.home"), "Downloads").toFile().also {
+val downloadFolder: File = Path.of(System.getProperty("user.home"), "Downloads/robopods-wip").toFile().also {
     it.requiresIsDirectory { "Failed to locate Download directory ${it.canonicalPath}" }
 }
 
@@ -48,9 +48,10 @@ val knownGroups = mutableMapOf<String, MutableList<String>>()
 
 // list of known frameworks and ways to process it
 val knownFrameworks = mutableMapOf<String, (String) -> Unit>(
-    "AppLovinSDK" to { framework ->
+    "applovinsdk" to {
+        val framework = "AppLovinSDK"
         val artifact = "$framework.framework"
-        val artifactLocation = Path.of("applovinsdk/cocoapods/AppLovinSDK.xcframework/ios-arm64/AppLovinSDK.framework").toFile()
+        val artifactLocation = downloadFolder.extend("AppLovinSDK.xcframework/ios-arm64/AppLovinSDK.framework")
         processFramework(
             artifact = artifact,
             moduleFolder = "applovinsdk",
@@ -58,7 +59,7 @@ val knownFrameworks = mutableMapOf<String, (String) -> Unit>(
             yaml = "applovinsdk.yaml",
             version = { artifactLocation.infoPlist.extractVersion() },
             instruction = """
-                0. run applovinsdk/cocoatouch/fetch.sh to fetch and build from cocotouch 
+                0. download sdk from https://support.axon.ai/en/max/ios/overview/manual-integration 
                 1. expected location $artifactLocation 
             """.trimIndent()
         )
@@ -79,7 +80,8 @@ val knownFrameworks = mutableMapOf<String, (String) -> Unit>(
             """.trimIndent()
         )
     },
-    "BranchSDK" to { framework ->
+    "branchmetrics" to {
+        val framework = "BranchSDK"
         val artifact = "$framework.framework"
         val artifactLocation = downloadFolder.extend("BranchSDK.xcframework/ios-arm64/$artifact")
         processFramework(
@@ -95,9 +97,10 @@ val knownFrameworks = mutableMapOf<String, (String) -> Unit>(
             """.trimIndent()
         )
     },
-    "DGCharts" to { framework ->
+    "charts" to {
+        val framework = "DGCharts"
         val artifact = "$framework.framework"
-        val artifactLocation = Path.of("charts/carthage/DGCharts.xcframework/ios-arm64/$artifact").toFile()
+        val artifactLocation = downloadFolder.extend("DGCharts.xcframework/ios-arm64/$artifact")
         processFramework(
             artifact = artifact,
             moduleFolder = "charts",
@@ -116,7 +119,8 @@ val knownFrameworks = mutableMapOf<String, (String) -> Unit>(
             """.trimIndent()
         )
     },
-    "HelpshiftX" to { framework ->
+    "helpshift" to {
+        val framework = "HelpshiftX"
         val artifact = "$framework.framework"
         val artifactLocation =
             downloadFolder.extend("helpshiftx-sdk-ios/HelpshiftX.xcframework/ios-arm64/$artifact")
@@ -125,12 +129,7 @@ val knownFrameworks = mutableMapOf<String, (String) -> Unit>(
             moduleFolder = "helpshift",
             sourceHeadersDir = artifactLocation.headers,
             yaml = "helpshift.yaml",
-            version = {
-                downloadFolder.extend("helpshiftx-sdk-ios").list()
-                    ?.find { it.startsWith("Release") && it.endsWith(".txt") }
-                    ?.let { it.substringAfter('-').substringBeforeLast('.') }
-                    ?: error("Failed to find out Helpshift version!")
-            },
+            version = { artifactLocation.infoPlist.extractVersion() },
             instruction = """
                 1. download iOS SDK from https://developers.helpshift.com/sdkx_ios/getting-started/#getting-sdk
                 2. unpack helpshift-sdk-ios-vX.Y.Z.zip
@@ -138,14 +137,15 @@ val knownFrameworks = mutableMapOf<String, (String) -> Unit>(
             """.trimIndent()
         )
     },
-    "InMobiSDK" to { framework ->
+    "inmobi" to {
+        val framework = "InMobiSDK"
         val artifact = "$framework.framework"
         val artifactLocation = downloadFolder.extend("InMobi-iOS-SDK/InMobiSDK.xcframework/ios-arm64/$artifact")
         processFramework(
             artifact = artifact,
             moduleFolder = "inmobi",
             sourceHeadersDir = artifactLocation.headers,
-            yaml = "inmobi-sdk.yaml",
+            yaml = "inmobi.yaml",
             version = { artifactLocation.infoPlist.extractVersion() },
             instruction = """
                 1. Download iOS sdk (for manual integration) from https://www.inmobi.com/sdk
@@ -154,7 +154,8 @@ val knownFrameworks = mutableMapOf<String, (String) -> Unit>(
             """.trimIndent()
         )
     },
-    "Lottie" to { framework ->
+    "lottie" to {
+        val framework = "Lottie"
         val artifact = "$framework.framework"
         val artifactLocation = downloadFolder.extend("Lottie.xcframework/ios-arm64//$artifact")
         processFramework(
@@ -170,10 +171,11 @@ val knownFrameworks = mutableMapOf<String, (String) -> Unit>(
             """.trimIndent()
         )
     },
-    "OneSignal" to { framework ->
+    "onesignal" to {
+        val framework = "OneSignal"
         val artifact = "$framework.framework"
         val versionFile: String by lazy {
-            downloadFolder.extend("OneSignalFramework.xcframework/version").readText()
+            downloadFolder.extend("OneSignal/.version-metadata").readText().dropLastWhile { it == '\n' || it == '\r' }
         }
         val internalFrameworks = arrayOf("OneSignalFramework", "OneSignalCore", "OneSignalOSCore",
             "OneSignalExtension", "OneSignalLocation", "OneSignalNotifications", "OneSignalInAppMessages",
@@ -181,7 +183,7 @@ val knownFrameworks = mutableMapOf<String, (String) -> Unit>(
         processFramework(
             artifact = artifact,
             moduleFolder = "onesignal",
-            sourceHeadersDir = downloadFolder,
+            sourceHeadersDir = downloadFolder.extend("OneSignal"),
             destinationHeadersDir = Path.of("onesignal", "src", "main", "bro-gen").toFile(),
             yaml = "onesignal.yaml",
             headerFolderCleaner = { frm, dst ->
@@ -245,13 +247,14 @@ val knownFrameworks = mutableMapOf<String, (String) -> Unit>(
             """.trimIndent()
         )
     },
-    "IASDKCore" to { framework ->
+    "fyber" to {
+        val framework = "IASDKCore"
         val artifactLocation = downloadFolder.extend("InneractiveAdSDK-iOS-master/$framework/$framework.xcframework/ios-arm64/$framework.framework")
         processFramework(
             artifact = "$framework.framework",
             moduleFolder = "fyber",
             sourceHeadersDir = artifactLocation.headers,
-            yaml = "iasdk-core.yaml",
+            yaml = "fyber.yaml",
             version = { artifactLocation.infoPlist.extractVersion() },
             instruction = """
                 1. download and unpack https://github.com/inner-active/InneractiveAdSDK-iOS/archive/refs/heads/master.zip
@@ -259,9 +262,10 @@ val knownFrameworks = mutableMapOf<String, (String) -> Unit>(
             """.trimIndent()
         )
     },
-    "UnityAds" to { framework ->
+    "unityads" to {
+        val framework = "UnityAds"
         val unityVersion: String by lazy {
-            downloadFolder.extend("UnityAds/version/").readText()
+            downloadFolder.extend("UnityAds/.version-metadata/").readText()
         }
         val artifactLocation = downloadFolder.extend("UnityAds/$framework.xcframework/ios-arm64/$framework.framework")
         processFramework(
@@ -273,7 +277,7 @@ val knownFrameworks = mutableMapOf<String, (String) -> Unit>(
             instruction = """
                 1. download and unpack UnityAds.zip from https://github.com/Unity-Technologies/unity-ads-ios/releases
                 2. unpack, expected location ${downloadFolder.extend("UnityAds")}
-                3. create a file ${downloadFolder.extend("UnityAds/version")} and put verions there, e.g. 4.0.0 
+                3. create a file ${downloadFolder.extend("UnityAds/.version-metadata")} and put verions there, e.g. 4.0.0 
             """.trimIndent()
         )
     },
@@ -298,7 +302,8 @@ val knownFrameworks = mutableMapOf<String, (String) -> Unit>(
             """.trimIndent()
         )
     },
-    "Singular" to { framework ->
+    "singular" to {
+        val framework = "Singular"
         val artifactLocation = downloadFolder.extend("Singular.xcframework/ios-arm64/Singular.framework")
         processFramework(
             artifact = "$framework.framework",
@@ -312,7 +317,8 @@ val knownFrameworks = mutableMapOf<String, (String) -> Unit>(
             """.trimIndent()
         )
     },
-    "IronSource" to { framework ->
+    "ironsource" to {
+        val framework = "IronSource"
         val artifactLocation = downloadFolder.extend("IronSource/IronSource.xcframework/ios-arm64/$framework.framework")
         processFramework(
             artifact = "$framework.framework",
@@ -359,7 +365,8 @@ val knownFrameworks = mutableMapOf<String, (String) -> Unit>(
             """.trimIndent(),
         )
     },
-    "TenjinSDK" to { framework ->
+    "tenjin" to {
+        val framework = "TenjinSDK"
         val artifactLocation = downloadFolder.extend("TenjinSDK.xcframework/ios-arm64/$framework.framework")
         val tenjinvVersion: String by lazy {
             artifactLocation.extend("PrivateHeaders/TenjinConst.h").readLines()
@@ -389,7 +396,8 @@ val knownFrameworks = mutableMapOf<String, (String) -> Unit>(
             """.trimIndent()
         )
     },
-    "CleverAdsSolutions" to { framework ->
+    "cleverads" to {
+        val framework = "CleverAdsSolutions"
         val artifactLocation = downloadFolder.extend("CleverAdsSolutions/CleverAdsSolutions.xcframework/ios-arm64/$framework.framework")
         processFramework(
             artifact = "$framework.framework",
@@ -410,7 +418,8 @@ val knownFrameworks = mutableMapOf<String, (String) -> Unit>(
             """.trimIndent(),
         )
     },
-    "AdjustSdk" to { framework ->
+    "adjustsdk" to {
+        val framework = "AdjustSdk"
         val artifactLocation = downloadFolder.extend("AdjustSdk-iOS-tvOS-Dynamic-xcframework/AdjustSdk.xcframework/ios-arm64/$framework.framework")
         processFramework(
             artifact = "$framework.framework",
@@ -430,7 +439,8 @@ val knownFrameworks = mutableMapOf<String, (String) -> Unit>(
             """.trimIndent(),
         )
     },
-    "AppsFlyerLib" to { framework ->
+    "appsflyer" to {
+        val framework = "AppsFlyerLib"
         val artifactLocation = downloadFolder.extend("AppsFlyerLib.xcframework/ios-arm64/$framework.framework")
         processFramework(
             artifact = "$framework.framework",
@@ -634,7 +644,7 @@ fun copyHeadersFiltered(
 
     val sourcePath = sourceHeadersDir.toPath()
     val destinationPath = destinationHeadersDir.toPath()
-    Files.walk(sourcePath).forEach { source ->
+    Files.walk(sourcePath).forEach { source: Path ->
         if (filter(source)) {
             val dest = destinationPath.resolve(if (flatten) source.fileName else sourcePath.relativize(source))
             dest.toFile().requireMkdirs()
@@ -649,9 +659,9 @@ fun execBroGen(framework: String, javaFolder: File, yamlFile: File) {
     yamlFile.requiresIsFile { "$framework is missing yaml-file ${yamlFile.canonicalPath}" }
 
     // generating binding
-    val broGenCmd = "${broGenScript.canonicalPath} ${javaFolder.canonicalPath} ${yamlFile.canonicalPath}"
+    val broGenCmd = "${broGenScript.canonicalPath} -s ${javaFolder.canonicalPath} ${yamlFile.canonicalPath}"
     log.i("$framework:  Invoking bro-gen with command: $broGenCmd")
-    exec("$framework:    ", broGenCmd)
+    exec(if (parallelBuild) "$framework:    " else "", broGenCmd)
 }
 
 fun getPomVersionString(framework: String, pomFile: File): String? {
@@ -952,7 +962,8 @@ class Log {
             println(msg)
     }
 
-    val allowedD = true
+    val allowedD
+        get() = verbose
     fun d(msg: String) {
         if (allowedD)
             println(msg)
@@ -1180,15 +1191,15 @@ fun registerFirebase(frameworkRegistry: MutableMap<String, (String) -> Unit>, gr
         )
     }
 
-    registry["FirebaseCore"] = { framework ->
-        action(framework, "firebase/ios-core", "firebase-core.yaml",
+    registry["firebase-core"] = {
+        action("FirebaseCore", "firebase/ios-core", "firebase-core.yaml",
             frameworkLocation = pickLocation("FirebaseCore", "FirebaseAnalytics"))
     }
-    registry["FirebaseAnalytics"] = { framework -> action(framework, "firebase/ios-analytics", "firebase-analytics.yaml") }
-    registry["FirebaseAuth"] = { framework ->
-        action(framework,
+    registry["firebase-analytics"] = { action("FirebaseAnalytics", "firebase/ios-analytics", "firebase-analytics.yaml") }
+    registry["firebase-auth"] = {
+        action("FirebaseAuth",
             moduleFolder = "firebase/ios-auth",
-            yaml = "firebaseauth.yaml",
+            yaml = "firebase-auth.yaml",
             destinationHeadersDir = Path.of("firebase", "ios-auth", "src", "main", "bro-gen").toFile(),
             headerFolderCleaner = { _, dst ->
                 cleanUpHeaders("FirebaseAuth", dst.extend("FirebaseAuth.framework"))
@@ -1210,8 +1221,8 @@ fun registerFirebase(frameworkRegistry: MutableMap<String, (String) -> Unit>, gr
             }
         )
     }
-    registry["FirebaseCrashlytics"] = { framework ->
-        action(framework,
+    registry["firebase-crashlytics"] = { framework ->
+        action("FirebaseCrashlytics",
             moduleFolder = "firebase/ios-crashlytics",
             yaml = "firebase-crashlytics.yaml",
             destinationHeadersDir = Path.of("firebase", "ios-crashlytics", "src", "main", "bro-gen").toFile(),
@@ -1235,11 +1246,11 @@ fun registerFirebase(frameworkRegistry: MutableMap<String, (String) -> Unit>, gr
             }
         )
     }
-    registry["FirebaseDatabase"] = { framework -> action(framework, "firebase/ios-database", "firebasedatabase.yaml") }
-    registry["FirebaseFirestore"] = { framework ->
-        action(framework,
+    registry["firebase-database"] = { action("FirebaseDatabase", "firebase/ios-database", "firebase-database.yaml") }
+    registry["firebase-firestore"] = {
+        action("FirebaseFirestore",
             moduleFolder = "firebase/ios-firestore",
-            yaml = "firebasefirestore.yaml",
+            yaml = "firebase-firestore.yaml",
             destinationHeadersDir = Path.of("firebase", "ios-firestore", "src", "main", "bro-gen").toFile(),
             headerFolderCleaner = { _, dst ->
                 cleanUpHeaders("FirebaseFirestore", dst.extend("FirebaseFirestore.framework"))
@@ -1261,11 +1272,11 @@ fun registerFirebase(frameworkRegistry: MutableMap<String, (String) -> Unit>, gr
             },
         )
     }
-    registry["FirebaseMessaging"] = { framework -> action(framework, "firebase/ios-messaging", "firebase-messaging.yaml") }
-    registry["FirebaseRemoteConfig"] = { framework -> action(framework, "firebase/ios-remoteconfig", "firebase-remoteconfig.yaml") }
-    registry["FirebaseStorage"] = { framework -> action(framework, "firebase/ios-storage", "firebasestorage.yaml") }
-    registry["GoogleSignIn"] = { framework ->
-        action(framework,
+    registry["firebase-messaging"] = { action("FirebaseMessaging", "firebase/ios-messaging", "firebase-messaging.yaml") }
+    registry["firebase-remoteconfig"] = { action("FirebaseRemoteConfig", "firebase/ios-remoteconfig", "firebase-remoteconfig.yaml") }
+    registry["firebase-storage"] = { action("FirebaseStorage", "firebase/ios-storage", "firebase-storage.yaml") }
+    registry["firebase-google-sign-in"] = {
+        action("GoogleSignIn",
             moduleFolder = "firebase/ios-google-sign-in", "firebase-google-sign-in.yaml",
             frameworkLocation =  pickLocation("GoogleSignIn"),
             destinationHeadersDir = Path.of("firebase", "ios-google-sign-in", "src", "main", "bro-gen").toFile(),
@@ -1289,8 +1300,8 @@ fun registerFirebase(frameworkRegistry: MutableMap<String, (String) -> Unit>, gr
             },
         )
     }
-    registry["FirebaseAppCheck"] = { framework ->
-        action(framework, "firebase/ios-appcheck", "firebase-appcheck.yaml",
+    registry["firebase-appcheck"] = {
+        action("FirebaseAppCheck", "firebase/ios-appcheck", "firebase-appcheck.yaml",
             destinationHeadersDir = Path.of("firebase", "ios-appcheck", "src", "main", "bro-gen").toFile(),
             headerFolderCleaner = { _, dst ->
                 cleanUpHeaders("FirebaseAppCheck", dst.extend("FirebaseAppCheck.framework"))
@@ -1323,12 +1334,12 @@ fun registerFirebase(frameworkRegistry: MutableMap<String, (String) -> Unit>, gr
             },
         )
     }
-    registry["FirebaseInstallations"] = { framework -> action(framework, "firebase/ios-installations", "firebase-installations.yaml",
+    registry["firebase-installations"] = { action("FirebaseInstallations", "firebase/ios-installations", "firebase-installations.yaml",
         frameworkLocation = pickLocation("FirebaseInstallations", "FirebaseAnalytics"))
     }
-    registry["FirebaseBOM"] = { framework ->
+    registry["firebase-bom"] = {
         val version = versionProvider["Firebase"]
-        updatePomVersionString(framework, File("firebase/ios-bom/pom.xml"), version, pomVersion = "$version.0")
+        updatePomVersionString("FirebaseBOM", File("firebase/ios-bom/pom.xml"), version, pomVersion = "$version.0")
         // update artifacts list in bom
         with (PomUtils()) {
             listSubmodules(File("firebase/"))
@@ -1346,14 +1357,15 @@ fun registerMobileAds(frameworkRegistry: MutableMap<String, (String) -> Unit>, g
                 3. rename to GoogleMobileAdsSdkiOS
                 3. expected location $location}
             """.trimIndent()
-    adsRegistry["GoogleMobileAds"] = { framework ->
+    adsRegistry["google-mobile-ads"] = {
+        val framework = "GoogleMobileAds"
         val artifact = "$framework.framework"
         val artifactLocation = downloadFolder.extend("GoogleMobileAdsSdkiOS/GoogleMobileAds.xcframework/ios-arm64/$artifact")
         processFramework(
             artifact = artifact,
             moduleFolder = "google-mobile-ads/ios-google-mobile-ads",
             sourceHeadersDir = artifactLocation.headers,
-            yaml = "gad.yaml",
+            yaml = "google-mobile-ads.yaml",
             version = { artifactLocation.infoPlist.extractVersion(versionKey = "CFBundleShortVersionString") },
             instruction = instructions(artifactLocation.toString()),
             readmeFileVersionUpdater = { frm, modFolder, version ->
@@ -1364,14 +1376,15 @@ fun registerMobileAds(frameworkRegistry: MutableMap<String, (String) -> Unit>, g
             }
         )
     }
-    adsRegistry["UserMessagingPlatform"] = { framework ->
+    adsRegistry["google-ump"] = {
+        val framework = "UserMessagingPlatform"
         val artifact = "$framework.framework"
         val artifactLocation = downloadFolder.extend("GoogleMobileAdsSdkiOS/UserMessagingPlatform.xcframework/ios-arm64/$artifact")
         processFramework(
             artifact = artifact,
             moduleFolder = "google-mobile-ads/ios-google-ump",
             sourceHeadersDir = artifactLocation.headers,
-            yaml = "firebase-ump.yaml",
+            yaml = "google-ump.yaml",
             version = { artifactLocation.infoPlist.extractVersion(versionKey = "CFBundleShortVersionString") },
             instruction = instructions(artifactLocation.toString()),
             readmeFileVersionUpdater = { frm, modFolder, version ->
@@ -1385,22 +1398,20 @@ fun registerMobileAds(frameworkRegistry: MutableMap<String, (String) -> Unit>, g
     ///
     /// Register adapters as separate group
     ///
-    val adaptersRegistry = GroupFrameworkRegister("GoogleAdsAdapters", frameworkRegistry, groupRegistry)
+    val adaptersRegistry = GroupFrameworkRegister("google-mobile-ads-adapters", frameworkRegistry, groupRegistry)
     val moduleReadmeFile = Path.of("google-mobile-ads/ios-google-mobile-ads-adapters/README.md").toFile()
-    adaptersRegistry["AppLovinAdapter"] = { framework ->
+    adaptersRegistry["google-mobile-ads-applovin-adapter"] = {
+        val framework = "AppLovinAdapter"
         val artifact = "$framework.framework"
-        // plist contains version without .0 suffix added by google, pick version from directory name
-        val locationWithVersion = downloadFolder.listFiles()?.filter { it.isDirectory && it.name.startsWith("AppLovinAdapter-") }
-            ?.let { if (it.size == 1) it[0] else null }
-        val artifactLocation = locationWithVersion?.let { File(it, "/AppLovinAdapter.xcframework/ios-arm64/$artifact") }
-            ?: downloadFolder.extend("AppLovinAdapter/AppLovinAdapter.xcframework/ios-arm64/$artifact")
-        val versionProvider: () -> String = locationWithVersion?.let { { it.name.substringAfter("-") } }
-            ?: { artifactLocation.infoPlist.extractVersion() }
+        val artifactLocation = downloadFolder.extend("AppLovinAdapter/AppLovinAdapter.xcframework/ios-arm64/$artifact")
+        val versionProvider: () -> String = {
+            downloadFolder.extend("AppLovinAdapter/.version-metadata").readText().dropLastWhile { it == '\n' || it == '\r' }
+        }
         processFramework(
             artifact = artifact,
             moduleFolder = "google-mobile-ads/ios-google-mobile-ads-adapters/ios-applovin",
             sourceHeadersDir = artifactLocation.headers,
-            yaml = "applovin-adapter.yaml",
+            yaml = "google-mobile-ads-applovin-adapter.yaml",
             version = versionProvider,
             instruction = """
                 1. download AppLovinAdapter-X.X.X.X.zip from https://developers.google.com/admob/ios/mediation/applovin#applovin-ios-mediation-adapter-changelog
@@ -1413,20 +1424,18 @@ fun registerMobileAds(frameworkRegistry: MutableMap<String, (String) -> Unit>, g
             }
         )
     }
-    adaptersRegistry["MetaAdapter"] = { framework ->
+    adaptersRegistry["google-mobile-ads-meta-adapter"] = {
+        val framework = "MetaAdapter"
         val artifact = "$framework.framework"
-        // plist contains version without .0 suffix added by google, pick version from directory name
-        val locationWithVersion = downloadFolder.listFiles()?.filter {  it.isDirectory && it.name.startsWith("MetaAdapter-") }
-            ?.let { if (it.size == 1) it[0] else null }
-        val artifactLocation = locationWithVersion?.let { File(it, "MetaAdapter.xcframework/ios-arm64/$artifact") }
-            ?: downloadFolder.extend("MetaAdapter/MetaAdapter.xcframework/ios-arm64/$artifact")
-        val versionProvider: () -> String = locationWithVersion?.let { { it.name.substringAfter("-") } }
-            ?: { artifactLocation.infoPlist.extractVersion() }
+        val artifactLocation = downloadFolder.extend("MetaAdapter/MetaAdapter.xcframework/ios-arm64/$artifact")
+        val versionProvider: () -> String = {
+            downloadFolder.extend("MetaAdapter/.version-metadata").readText().dropLastWhile { it == '\n' || it == '\r' }
+        }
         processFramework(
             artifact = artifact,
             moduleFolder = "google-mobile-ads/ios-google-mobile-ads-adapters/ios-facebook",
             sourceHeadersDir = artifactLocation.headers,
-            yaml = "facebook-adapter.yaml",
+            yaml = "google-mobile-ads-meta-adapter.yaml",
             version = versionProvider,
             instruction = """
                 1. download MetaAdapter-X.X.X.X.zip from https://developers.google.com/admob/ios/mediation/meta#meta-audience-network-ios-mediation-adapter-changelog
@@ -1439,20 +1448,18 @@ fun registerMobileAds(frameworkRegistry: MutableMap<String, (String) -> Unit>, g
             },
         )
     }
-    adaptersRegistry["InMobiAdapter"] = { framework ->
+    adaptersRegistry["google-mobile-ads-inmobi-adapter"] = {
+        val framework = "InMobiAdapter"
         val artifact = "$framework.framework"
-        // plist contains version without .0 suffix added by google, pick version from directory name
-        val locationWithVersion = downloadFolder.listFiles()?.filter {  it.isDirectory && it.name.startsWith("InMobiAdapter-") }
-            ?.let { if (it.size == 1) it[0] else null }
-        val artifactLocation = locationWithVersion?.let { File(it, "InMobiAdapter.xcframework/ios-arm64/$artifact") }
-            ?: downloadFolder.extend("InMobiAdapter/InMobiAdapter.xcframework/ios-arm64/$artifact")
-        val versionProvider: () -> String = locationWithVersion?.let { { it.name.substringAfter("-") } }
-            ?: { artifactLocation.infoPlist.extractVersion() }
+        val artifactLocation = downloadFolder.extend("InMobiAdapter/InMobiAdapter.xcframework/ios-arm64/$artifact")
+        val versionProvider: () -> String = {
+            downloadFolder.extend("InMobiAdapter/.version-metadata").readText().dropLastWhile { it == '\n' || it == '\r' }
+        }
         processFramework(
             artifact = artifact,
             moduleFolder = "google-mobile-ads/ios-google-mobile-ads-adapters/ios-inmobi",
             sourceHeadersDir = artifactLocation.headers,
-            yaml = "inmobi-adapter.yaml",
+            yaml = "google-mobile-ads-inmobi-adapter.yaml",
             version = versionProvider,
             instruction = """
                 1. download InMobiAdapter-X.X.X.X.zip from https://developers.google.com/admob/ios/mediation/inmobi#inmobi-ios-mediation-adapter-changelog
@@ -1488,11 +1495,6 @@ fun registerFacebook(frameworkRegistry: MutableMap<String, (String) -> Unit>, gr
         2. Unpack it, it will be unpacked to ${downloadFolder.extend("XCFrameworks")}
         3. Rename ${downloadFolder.extend("XCFrameworks")} to ${downloadFolder.extend("Facebook")}
     """.trimIndent()
-    val facebookAudienceInstallInstruction = """
-        1. Download latest FBAudienceNetwork-X.Y.Z.zip from https://developers.facebook.com/docs/audience-network/guides/adding-sdk/ios
-        2. Unpack it, it will be unpacked to ${downloadFolder.extend("FBAudienceNetwork-X.Y.Z")}
-        3. Rename ${downloadFolder.extend("FBAudienceNetwork-X.Y.Z")} to ${downloadFolder.extend("FBAudienceNetwork")}
-    """.trimIndent()
 
     val readmeUpdater = oneTimeReadmeUpdater { facebookVersion }
     val moduleReadmeFile = Path.of("facebook/README.md").toFile()
@@ -1519,32 +1521,42 @@ fun registerFacebook(frameworkRegistry: MutableMap<String, (String) -> Unit>, gr
         )
     }
 
-    registry["FBSDKCoreKit_Basics"] = { framework -> action(framework, "facebook/ios-core-basics", "facebook-core-basics.yaml") }
-    registry["FBSDKCoreKit"] = { framework -> action(framework, "facebook/ios-core", "facebook-core.yaml") }
-    registry["FBSDKLoginKit"] = { framework -> action(framework, "facebook/ios-login", "facebook-login.yaml") }
-    registry["FBSDKShareKit"] = { framework -> action(framework, "facebook/ios-share", "facebook-share.yaml") }
-    registry["FBAEMKit"] = { framework -> action(framework, "facebook/ios-aem", "facebook-aemkit.yaml") }
-    registry["FBSDKGamingServicesKit"] = { framework -> action(framework, "facebook/ios-gaming-services-kit", "facebook-gaming-serv-kit.yaml") }
-    registry["FBAudienceNetwork"] = { framework ->
-        action(framework, "facebook/ios-audience", "facebook-audience.yaml",
-            frameworkLocation = "FBAudienceNetwork/Dynamic/FBAudienceNetwork.xcframework/ios-arm64/FBAudienceNetwork.framework",
-            instruction = facebookAudienceInstallInstruction,
-            readmeFileVersionUpdater = { _, _, _ -> },
-            versionProvider = {
-                extractVersionFromHeader("FBAudienceNetwork",
-                    downloadFolder.extend("FBAudienceNetwork/Dynamic/FBAudienceNetwork.xcframework/ios-arm64/FBAudienceNetwork.framework/Headers/FBAudienceNetwork.h"),
-                    "FB_AD_SDK_VERSION")
-            })
-    }
-    registry["FacebookBOM"] = { framework ->
+    registry["facebook-core-basics"] = { action("FBSDKCoreKit_Basics", "facebook/ios-core-basics", "facebook-core-basics.yaml") }
+    registry["facebook-core"] = { action("FBSDKCoreKit", "facebook/ios-core", "facebook-core.yaml") }
+    registry["facebook-login"] = { action("FBSDKLoginKit", "facebook/ios-login", "facebook-login.yaml") }
+    registry["facebook-share"] = { action("FBSDKShareKit", "facebook/ios-share", "facebook-share.yaml") }
+    registry["facebook-aemkit"] = { action("FBAEMKit", "facebook/ios-aem", "facebook-aemkit.yaml") }
+    registry["facebook-gaming-serv-kit"] = { action("FBSDKGamingServicesKit", "facebook/ios-gaming-services-kit", "facebook-gaming-serv-kit.yaml") }
+    registry["facebook-bom"] = { framework ->
         val version = facebookVersion
         updatePomVersionString(framework, File("facebook/ios-bom/pom.xml"), version, pomVersion = "$version.0")
         // update artifacts list in bom
         with (PomUtils()) {
             listSubmodules(File("facebook/"))
-                .filter { it.moduleDir != "ios-bom" && it.moduleDir != "ios-audience"}
+                .filter { it.moduleDir != "ios-bom" }
                 .let { updateAggregatedPom(File("facebook/ios-bom/pom.xml"), it) }
         }
     }
 
+    // register facebook-audience as independent framwork
+    frameworkRegistry["facebook-audience"] = {
+        val facebookAudienceInstallInstruction = """
+            1. Download latest FBAudienceNetwork-X.Y.Z.zip from x
+            2. Unpack it, it will be unpacked to ${downloadFolder.extend("FBAudienceNetwork-X.Y.Z")}
+            3. Rename ${downloadFolder.extend("FBAudienceNetwork-X.Y.Z")} to ${downloadFolder.extend("FBAudienceNetwork")}
+        """.trimIndent()
+        val artifactLocation = downloadFolder.extend("FBAudienceNetwork/Dynamic/FBAudienceNetwork.xcframework/ios-arm64/FBAudienceNetwork.framework")
+        processFramework(
+            artifact = "FBAudienceNetwork.framework",
+            moduleFolder = "facebook-audience",
+            sourceHeadersDir = artifactLocation.headers,
+            yaml = "facebook-audience.yaml",
+            version = {
+                extractVersionFromHeader("FBAudienceNetwork",
+                    downloadFolder.extend("FBAudienceNetwork/Dynamic/FBAudienceNetwork.xcframework/ios-arm64/FBAudienceNetwork.framework/Headers/FBAudienceNetwork.h"),
+                    "FB_AD_SDK_VERSION")
+            },
+            instruction = facebookAudienceInstallInstruction
+        )
+    }
 }

@@ -10,30 +10,31 @@
 
 This is the list of currently available AltPods. Click them to get more information like install instructions.
 
-| Name                             | Description                                                                                                                                                        |
-|----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [AdaptySDK](adapty/)             | Framework that makes implementing in-app subscriptions                                                                                                             |
-| [AppCenter](appcenter/)          | Visual Studio App Center SDK                                                                                                                                       |
-| [AppLovinSDK](applovinsdk/)      | An advertisement mediator SDK                                                                                                                                      |
-| [AppsFlyer](appsflyer/)          | Mobile Attribution — Reliable, stable and always up to date with the market                                                                                        |
-| [Azure](azure/)                  | Microsoft Azure SDKs                                                                                                                                               |
-| [BranchMetrics](branchmetrics/)  | The Branch Metrics iOS SDK for deferred and contextual mobile deep linking                                                                                         |
-| [Charts](charts/)                | Beautiful charts for iOS/tvOS/OSX! The Apple side of the crossplatform MPAndroidChart.                                                                             |
-| [CleverAdsSolutions](cleverads/) | Clever Ads Solutions iOS SDK                                                                                                                                       |
-| [Facebook](facebook/)            | Used to integrate the Facebook Platform with your iOS & tvOS apps                                                                                                  |
-| [Firebase](firebase/)            | Firebase (analytics, databases, mobile ads)                                                                                                                        |
-| [Fyber](fyber/)                  | Fyber Markertplace                                                                                                                                                 |
-| [HelpShiftX](helpshift/)         | Deliver a superior customer service experience at a lower cost with Helpshift’s AI-powered messaging platform.                                                     |
-| [InMobi](inmobi/)                | Monetization SDK for iOS                                                                                                                                           |
-| [IronSource](ironsource/)        | The Leading Mobile Advertising Technology Platform                                                                                                                 |
-| [Lottie](lottie/)                | An iOS library to natively render After Effects vector animations                                                                                                  |
-| [OneSignal](onesignal/)          | OneSignal is a free push notification service for mobile apps                                                                                                      |
-| [Pollfish](pollfish/)            | Simple Surveys                                                                                                                                                     |
-| [SAMKeychain](samkeychain/)      | SAMKeychain is a simple wrapper for accessing accounts, getting passwords, setting passwords, and deleting passwords using the system Keychain on Mac OS X and iOS |
-| [Singular](singular/)            | Singular iOS SDK                                                                                                                                                   |
-| [Tenjin](tenjin/)                | Tenjin iOS SDK                                                                                                                                                     |
-| [UnityAds](unityads/)            | Unity Ads is a comprehensive monetization platform for Unity, iOS, and Android developers                                                                          |
-| [YouTubePlayer](youtube/)        | Lightweight helper library that allows iOS developers to add inline playback of YouTube videos through a WebView                                                   |
+| Name                                    | Description                                                                                                                                                        |
+|-----------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [AdaptySDK](adapty/)                    | Framework that makes implementing in-app subscriptions                                                                                                             |
+| [AppCenter](appcenter/)                 | Visual Studio App Center SDK                                                                                                                                       |
+| [AppLovinSDK](applovinsdk/)             | An advertisement mediator SDK                                                                                                                                      |
+| [AppsFlyer](appsflyer/)                 | Mobile Attribution — Reliable, stable and always up to date with the market                                                                                        |
+| [Azure](azure/)                         | Microsoft Azure SDKs                                                                                                                                               |
+| [BranchMetrics](branchmetrics/)         | The Branch Metrics iOS SDK for deferred and contextual mobile deep linking                                                                                         |
+| [Charts](charts/)                       | Beautiful charts for iOS/tvOS/OSX! The Apple side of the crossplatform MPAndroidChart.                                                                             |
+| [CleverAdsSolutions](cleverads/)        | Clever Ads Solutions iOS SDK                                                                                                                                       |
+| [Facebook](facebook/)                   | Used to integrate the Facebook Platform with your iOS & tvOS apps                                                                                                  |
+| [Facebook Audience](facebook-audience/) | Facebook Audience framework                                                                                                                                        |
+| [Firebase](firebase/)                   | Firebase (analytics, databases, mobile ads)                                                                                                                        |
+| [Fyber](fyber/)                         | Fyber Markertplace                                                                                                                                                 |
+| [HelpShiftX](helpshift/)                | Deliver a superior customer service experience at a lower cost with Helpshift’s AI-powered messaging platform.                                                     |
+| [InMobi](inmobi/)                       | Monetization SDK for iOS                                                                                                                                           |
+| [IronSource](ironsource/)               | The Leading Mobile Advertising Technology Platform                                                                                                                 |
+| [Lottie](lottie/)                       | An iOS library to natively render After Effects vector animations                                                                                                  |
+| [OneSignal](onesignal/)                 | OneSignal is a free push notification service for mobile apps                                                                                                      |
+| [Pollfish](pollfish/)                   | Simple Surveys                                                                                                                                                     |
+| [SAMKeychain](samkeychain/)             | SAMKeychain is a simple wrapper for accessing accounts, getting passwords, setting passwords, and deleting passwords using the system Keychain on Mac OS X and iOS |
+| [Singular](singular/)                   | Singular iOS SDK                                                                                                                                                   |
+| [Tenjin](tenjin/)                       | Tenjin iOS SDK                                                                                                                                                     |
+| [UnityAds](unityads/)                   | Unity Ads is a comprehensive monetization platform for Unity, iOS, and Android developers                                                                          |
+| [YouTubePlayer](youtube/)               | Lightweight helper library that allows iOS developers to add inline playback of YouTube videos through a WebView                                                   |
 
 
 ## Version of AltPods to framework version mapping
@@ -52,6 +53,7 @@ Latest bindings:
 | [Charts](charts/)                       | 5.1.0   |
 | [CleverAds](cleverads/)                 | 4.6.6   |
 | [Facebook](facebook/)                   | 18.0.3  |
+| [Facebook Audience](facebook-audience/) | 6.21.1  |
 | [Firebase](firebase/)                   | 12.12.0 |
 | [Fyber](fyber/)                         | 8.4.7   |
 | [Google Mobile Ads](google-mobile-ads/) | 13.3.0  |

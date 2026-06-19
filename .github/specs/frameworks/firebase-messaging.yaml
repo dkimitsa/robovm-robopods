@@ -1,0 +1,6 @@
+name: firebase-messaging
+moduleFolder: firebase/ios-messaging
+artifactSource:
+  - check if folder exists in ~/Downloads/robopods-wip/Firebase/FirebaseMessaging/FirebaseMessaging.xcframework/, stop and report error if not
+downloadLocation: ~/Downloads/robopods-wip/Firebase
+dropVersionSuffix: true

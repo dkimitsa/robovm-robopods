@@ -83,6 +83,7 @@ import org.robovm.apple.foundation.*;
     public static native FIRCrashlytics crashlytics();
     /*</methods>*/
 
+    /*<manually-added>*/
     /**
      * Registers a default java uncaught exception handler that forwards exceptions Firebase using FIRExceptionModel
      * and pre-save java stack traces
@@ -118,4 +119,5 @@ import org.robovm.apple.foundation.*;
             throw new ThreadDeath();
         });
     }
+    /*</manually-added>*/
 }
