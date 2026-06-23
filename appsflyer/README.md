@@ -9,6 +9,7 @@ https://github.com/AppsFlyerSDK/AppsFlyerFramework/releases
 
 | RoboPods Version | CleverAds Version |
 |------------------|-------------------|
+| 7.0.0.0          | 7.0.0             |
 | 6.18.0.0         | 6.18.0            |
 | 6.17.9.0         | 6.17.9            |
 | 6.17.8.0         | 6.17.8            |

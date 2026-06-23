@@ -54,9 +54,9 @@ import org.robovm.apple.coreanimation.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "generateInviteUrlWithLinkGenerator:completionHandler:")
-    public static native void generateInviteUrl(@Block Block1<AppsFlyerLinkGenerator, AppsFlyerLinkGenerator> generatorCreator, @Block VoidBlock1<NSURL> completionHandler);
-    @Method(selector = "logInvite:parameters:")
-    public static native void logInvite(String channel, NSDictionary<?, ?> parameters);
+    @Method(selector = "generateInviteLinkWithLinkGenerator:completionHandler:")
+    public static native void generateInviteLink(@Block Block1<AppsFlyerLinkGenerator, AppsFlyerLinkGenerator> generatorCreator, @Block VoidBlock2<NSURL, NSError> completionHandler);
+    @Method(selector = "logInvite:eventParameters:")
+    public static native void logInvite(String channel, NSDictionary<?, ?> eventParameters);
     /*</methods>*/
 }

@@ -53,10 +53,6 @@ import org.robovm.apple.coreanimation.*;
     void onConversionDataSuccess(NSDictionary<?, ?> conversionInfo);
     @Method(selector = "onConversionDataFail:")
     void onConversionDataFail(NSError error);
-    @Method(selector = "onAppOpenAttribution:")
-    void onAppOpenAttribution(NSDictionary<?, ?> attributionData);
-    @Method(selector = "onAppOpenAttributionFailure:")
-    void onAppOpenAttributionFailure(NSError error);
     @Method(selector = "allHTTPHeaderFieldsForResolveDeepLinkURL:")
     NSDictionary<NSString, NSString> allHTTPHeaderFieldsForResolveDeepLinkURL(NSURL URL);
     /*</methods>*/

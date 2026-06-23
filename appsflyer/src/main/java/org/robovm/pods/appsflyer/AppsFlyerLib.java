@@ -56,16 +56,12 @@ import org.robovm.apple.coreanimation.*;
     public native void setCustomerUserID(String v);
     @Property(selector = "customData")
     public native NSDictionary<?, ?> getCustomData();
-    @Property(selector = "setAdditionalData:")
+    @Property(selector = "setCustomData:")
     public native void setCustomData(NSDictionary<?, ?> v);
     @Property(selector = "appsFlyerDevKey")
     public native String getAppsFlyerDevKey();
-    @Property(selector = "setAppsFlyerDevKey:")
-    public native void setAppsFlyerDevKey(String v);
     @Property(selector = "appleAppID")
     public native String getAppleAppID();
-    @Property(selector = "setAppleAppID:")
-    public native void setAppleAppID(String v);
     @Property(selector = "disableAdvertisingIdentifier")
     public native boolean isDisableAdvertisingIdentifier();
     @Property(selector = "setDisableAdvertisingIdentifier:")
@@ -82,7 +78,7 @@ import org.robovm.apple.coreanimation.*;
     public native void setCurrencyCode(String v);
     @Property(selector = "isDebug")
     public native boolean isDebug();
-    @Property(selector = "setIsDebug:")
+    @Property(selector = "isDebug:")
     public native void setIsDebug(boolean v);
     @Property(selector = "shouldCollectDeviceName")
     public native boolean shouldCollectDeviceName();
@@ -94,7 +90,7 @@ import org.robovm.apple.coreanimation.*;
     public native void setAppInviteOneLinkID(String v);
     @Property(selector = "anonymizeUser")
     public native boolean isAnonymizeUser();
-    @Property(selector = "setAnonymizeUser:")
+    @Property(selector = "anonymizeUser:")
     public native void setAnonymizeUser(boolean v);
     @Property(selector = "disableCollectASA")
     public native boolean isDisableCollectASA();
@@ -150,22 +146,14 @@ import org.robovm.apple.coreanimation.*;
     public native void setMinTimeBetweenSessions(@MachineSizedUInt long v);
     @Property(selector = "isStopped")
     public native boolean isStopped();
-    @Property(selector = "setIsStopped:")
+    @Property(selector = "stop:")
     public native void setIsStopped(boolean v);
     @Property(selector = "facebookDeferredAppLink")
     public native NSURL getFacebookDeferredAppLink();
     @Property(selector = "setFacebookDeferredAppLink:")
     public native void setFacebookDeferredAppLink(NSURL v);
-    /**
-     * @deprecated starting SDK version 6.4.0, please use `setSharingFilterForPartners:`
-     */
-    @Deprecated
     @Property(selector = "sharingFilter")
     public native NSArray<NSString> getSharingFilter();
-    /**
-     * @deprecated starting SDK version 6.4.0, please use `setSharingFilterForPartners:`
-     */
-    @Deprecated
     @Property(selector = "setSharingFilter:")
     public native void setSharingFilter(NSArray<NSString> v);
     @Property(selector = "deepLinkTimeout")
@@ -175,8 +163,14 @@ import org.robovm.apple.coreanimation.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
+    @Method(selector = "initWithDevKey:appleAppId:")
+    public native void init(String devKey, String appId);
     @Method(selector = "setUpInteroperabilityObject:")
     public native void setUpInteroperabilityObject(NSObject object);
+    /**
+     * @deprecated Use registerSessionReadyListener: instead. Register the listener in didFinishLaunching and call start() inside it. If ATT consent is needed before start, collect it inside the listener block. The SDK no longer manages ATT timing internally.
+     */
+    @Deprecated
     @Method(selector = "waitForATTUserAuthorizationWithTimeoutInterval:")
     public native void waitForATTUserAuthorization(double timeoutInterval);
     @Method(selector = "setPluginInfoWith:pluginVersion:additionalParams:")
@@ -189,12 +183,18 @@ import org.robovm.apple.coreanimation.*;
     public native void start();
     @Method(selector = "startWithCompletionHandler:")
     public native void start(@Block VoidBlock2<NSDictionary<NSString, ?>, NSError> completionHandler);
+    @Method(selector = "handleLaunchOptions:")
+    public native void handleLaunchOptions(NSDictionary<?, ?> launchOptions);
+    @Method(selector = "registerSessionReadyListener:")
+    public native void registerSessionReadyListener(@Block Runnable listener);
+    @Method(selector = "unregisterSessionReadyListener")
+    public native void unregisterSessionReadyListener();
+    @Method(selector = "isSessionReady")
+    public native boolean isSessionReady();
     @Method(selector = "logEvent:withValues:")
     public native void logEvent(String eventName, NSDictionary<?, ?> values);
     @Method(selector = "logEventWithEventName:eventValues:completionHandler:")
     public native void logEvent(String eventName, NSDictionary<NSString, ?> eventValues, @Block VoidBlock2<NSDictionary<NSString, ?>, NSError> completionHandler);
-    @Method(selector = "validateAndLogInAppPurchase:price:currency:transactionId:additionalParameters:success:failure:")
-    public native void validateAndLogInAppPurchase(String productIdentifier, String price, String currency, String transactionId, NSDictionary<?, ?> params, @Block VoidBlock1<NSDictionary<?, ?>> successBlock, @Block VoidBlock2<NSError, NSObject> failedBlock);
     @Method(selector = "validateAndLogInAppPurchase:purchaseAdditionalDetails:completion:")
     public native void validateAndLogInAppPurchase(AFSDKPurchaseDetails purchaseDetails, NSDictionary<?, ?> purchaseAdditionalDetails, @Block VoidBlock2<NSDictionary<?, ?>, NSError> completion);
     @Method(selector = "logAdRevenue:additionalParameters:")
@@ -218,22 +218,16 @@ import org.robovm.apple.coreanimation.*;
     public native void handlePushNotification(NSDictionary<?, ?> pushPayload);
     @Method(selector = "registerUninstall:")
     public native void registerUninstall(NSData deviceToken);
-    @Method(selector = "getSDKVersion")
-    public native String getSDKVersion();
+    @Method(selector = "getSdkVersion")
+    public native String getSdkVersion();
     @Method(selector = "remoteDebuggingCallWithData:")
     public native void remoteDebuggingCall(String data);
     @Method(selector = "remoteDebuggingCallV2WithData:")
     public native void remoteDebuggingCallV2(String dataAsString);
     @Method(selector = "performOnAppAttributionWithURL:")
     public native void performOnAppAttribution(NSURL URL);
-    @Method(selector = "setHost:withHostPrefix:")
-    public native void setHost(String host, String hostPrefix);
-    /**
-     * @deprecated starting SDK version 6.4.0, please use `setSharingFilterForPartners:`
-     */
-    @Deprecated
-    @Method(selector = "setSharingFilterForAllPartners")
-    public native void setSharingFilterForAllPartners();
+    @Method(selector = "setHost:hostName:")
+    public native void setHost(String hostPrefixName, String hostName);
     @Method(selector = "setSharingFilterForPartners:")
     public native void setSharingFilterForPartners(NSArray<NSString> sharingFilter);
     @Method(selector = "setInstallId:")
@@ -241,13 +235,13 @@ import org.robovm.apple.coreanimation.*;
     @Method(selector = "setConsentData:")
     public native void setConsentData(AppsFlyerConsent consent);
     @Method(selector = "enableTCFDataCollection:")
-    public native void enableTCFDataCollection(boolean shouldCollectConsentData);
+    public native void enableTCFDataCollection(boolean shouldCollect);
     @Method(selector = "appendParametersToDeepLinkingURLWithString:parameters:")
     public native void appendParametersToDeepLinkingURL(String containsString, NSDictionary<NSString, NSString> parameters);
     @Method(selector = "addPushNotificationDeepLinkPath:")
     public native void addPushNotificationDeepLinkPath(NSArray<NSString> deepLinkPath);
-    @Method(selector = "setPartnerDataWithPartnerId:partnerInfo:")
-    public native void setPartnerData(String partnerId, NSDictionary<NSString, ?> partnerInfo);
+    @Method(selector = "setPartnerDataWithPartnerId:data:")
+    public native void setPartnerData(String partnerId, NSDictionary<NSString, ?> data);
     @Method(selector = "shared")
     public static native AppsFlyerLib shared();
     /*</methods>*/
