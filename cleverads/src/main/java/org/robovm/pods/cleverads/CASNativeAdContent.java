@@ -75,6 +75,8 @@ import org.robovm.apple.corelocation.*;
     public native String getAdLabel();
     @Property(selector = "hasVideoContent")
     public native boolean hasVideoContent();
+    @Property(selector = "hasAdChoices")
+    public native boolean hasAdChoices();
     @Property(selector = "mediaContentAspectRatio")
     public native @MachineSizedFloat double getMediaContentAspectRatio();
     @Property(selector = "mediaImage")

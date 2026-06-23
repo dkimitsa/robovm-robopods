@@ -45,8 +45,8 @@ import org.robovm.apple.corelocation.*;
     /*<ptr>*/public static class CASPtr extends Ptr<CAS, CASPtr> {}/*</ptr>*/
     /*<bind>*/static { ObjCRuntime.bind(CAS.class); }/*</bind>*/
     /*<constants>*/
-    public static final String FRAMEWORK_VERSION = "4.6.6";
-    public static final int FRAMEWORK_CODE = 406650;
+    public static final String FRAMEWORK_VERSION = "4.7.4";
+    public static final int FRAMEWORK_CODE = 407400;
     /*</constants>*/
     /*<constructors>*/
     public CAS() {}

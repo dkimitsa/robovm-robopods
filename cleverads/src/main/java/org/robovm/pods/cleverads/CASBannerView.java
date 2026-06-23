@@ -101,6 +101,10 @@ import org.robovm.apple.corelocation.*;
     public native CASImpressionDelegate getImpressionDelegate();
     @Property(selector = "setImpressionDelegate:", strongRef = true)
     public native void setImpressionDelegate(CASImpressionDelegate v);
+    @Property(selector = "placement")
+    public native String getPlacement();
+    @Property(selector = "setPlacement:")
+    public native void setPlacement(String v);
     @Property(selector = "isAdLoaded")
     public native boolean isAdLoaded();
     @Property(selector = "contentInfo")

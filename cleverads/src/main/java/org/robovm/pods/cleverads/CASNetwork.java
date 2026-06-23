@@ -113,6 +113,12 @@ import org.robovm.apple.corelocation.*;
     public static native String lastPageAd();
     @Method(selector = "pubmatic")
     public static native String pubmatic();
+    @Method(selector = "displayIO")
+    public static native String displayIO();
+    @Method(selector = "bidease")
+    public static native String bidease();
+    @Method(selector = "moloco")
+    public static native String moloco();
     @Method(selector = "facebookAdvertiserTracking")
     public static native String facebookAdvertiserTracking();
     @Method(selector = "facebookDataProcessing")

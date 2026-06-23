@@ -65,6 +65,10 @@ import org.robovm.apple.corelocation.*;
     public native boolean isStartVideoMuted();
     @Property(selector = "setIsStartVideoMuted:")
     public native void setIsStartVideoMuted(boolean v);
+    @Property(selector = "placement")
+    public native String getPlacement();
+    @Property(selector = "setPlacement:")
+    public native void setPlacement(String v);
     @Property(selector = "isAdLoading")
     public native boolean isAdLoading();
     /*</properties>*/
