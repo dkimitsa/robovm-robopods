@@ -44,6 +44,13 @@ NS_SWIFT_NAME(AppOpenAdPreloader)
 /// @param preloadID A string that refers to a set of preloaded ads.
 - (nullable GADAppOpenAd *)adWithPreloadID:(nonnull NSString *)preloadID NS_SWIFT_NAME(ad(with:));
 
+/// Returns the responseInfo of a preloaded app open ad for the given preload ID without removing
+/// the ad from the queue. Returns nil if an ad is not available.
+///
+/// @param preloadID A string that refers to a set of preloaded ads.
+- (nullable GADResponseInfo *)adResponseInfoWithPreloadID:(nonnull NSString *)preloadID
+    NS_SWIFT_NAME(responseInfo(with:));
+
 /// Returns the number of preloaded app open ads available for the given preload ID.
 ///
 /// @param preloadID A string that refers to a set of preloaded ads.

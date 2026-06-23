@@ -70,6 +70,26 @@ classes:
                 name: canPresentFromRootViewController
             '+loadWithAdResponseString:completionHandler:':
                 name: load
+    GADAppOpenAdPreloader:
+        methods:
+            '-preloadForPreloadID:configuration:delegate:':
+                name: preloadForPreloadID
+            '-isAdAvailableWithPreloadID:':
+                name: isAdAvailable
+            '-adWithPreloadID:':
+                name: ad
+            '-adResponseInfoWithPreloadID:':
+                name: adResponseInfo
+            '-numberOfAdsAvailableWithPreloadID:':
+                name: numberOfAdsAvailable
+            '-configurationWithPreloadID:':
+                name: configuration
+    GADPreloadConfigurationV2:
+        methods:
+            '-initWithAdUnitID:request:':
+                name: init
+            '-initWithAdUnitID:':
+                name: init
     GADAppOpenAdView: {}
     GADAudioVideoManager: {}
     GADBannerView:
@@ -114,6 +134,7 @@ classes:
     GADMediationNativeAdConfiguration: {}
     GADMediationRewardedAdConfiguration: {}
     GADMediationServerConfiguration: {}
+    GADMediationInitializationConfiguration: {}
     GADMobileAds:
         properties:
             '+sharedInstance':
@@ -122,6 +143,8 @@ classes:
             '-isSDKVersionAtLeastMajor:minor:patch:':
                 name: isSDKVersionAtLeast
             '-startWithCompletionHandler:':
+                name: start
+            '-startWithMediationInitializationConfiguration:completionHandler:':
                 name: start
             '+configureWithApplicationID:':
                 name: configure
@@ -197,6 +220,34 @@ classes:
                 name: load
             '+loadWithAdResponseString:completionHandler:':
                 name: load
+    GADRewardedAdPreloader:
+        methods:
+            '-preloadForPreloadID:configuration:delegate:':
+                name: preloadForPreloadID
+            '-isAdAvailableWithPreloadID:':
+                name: isAdAvailable
+            '-adWithPreloadID:':
+                name: ad
+            '-adResponseInfoWithPreloadID:':
+                name: adResponseInfo
+            '-numberOfAdsAvailableWithPreloadID:':
+                name: numberOfAdsAvailable
+            '-configurationWithPreloadID:':
+                name: configuration
+    GADRewardedInterstitialAdPreloader:
+        methods:
+            '-preloadForPreloadID:configuration:delegate:':
+                name: preloadForPreloadID
+            '-isAdAvailableWithPreloadID:':
+                name: isAdAvailable
+            '-adWithPreloadID:':
+                name: ad
+            '-adResponseInfoWithPreloadID:':
+                name: adResponseInfo
+            '-numberOfAdsAvailableWithPreloadID:':
+                name: numberOfAdsAvailable
+            '-configurationWithPreloadID:':
+                name: configuration
     GADCustomNativeAd:
         methods:
             '-performClickOnAssetWithKey:':
@@ -209,6 +260,28 @@ classes:
                 name: load
             '+loadWithAdResponseString:completionHandler:':
                 name: load
+    GADInterstitialAdPreloader:
+        methods:
+            '-preloadForPreloadID:configuration:delegate:':
+                name: preloadForPreloadID
+            '-isAdAvailableWithPreloadID:':
+                name: isAdAvailable
+            '-adWithPreloadID:':
+                name: ad
+            '-adResponseInfoWithPreloadID:':
+                name: adResponseInfo
+            '-numberOfAdsAvailableWithPreloadID:':
+                name: numberOfAdsAvailable
+            '-configurationWithPreloadID:':
+                name: configuration
+    GADSwipeableInterstitialAd:
+        methods:
+            '+loadWithAdUnitID:request:options:completionHandler:':
+                name: load
+    GADSwipeableInterstitialAdOptions:
+        methods:
+            '-enableCustomClickSwipeGestureWithDirection:tapsAllowed:':
+                name: enableCustomClickSwipeGesture
     GADNativeAdView: {}
     GAMBannerView: {}
     GAMBannerViewOptions: {}
@@ -260,6 +333,13 @@ protocols:
                 name: didFinishLoading
             '-adLoader:didFailToReceiveAdWithError:':
                 name: didFailToReceiveAd
+    GADPreloadDelegate:
+        methods:
+            '-adAvailableForPreloadID:responseInfo:':
+                name: adAvailableForPreloadID
+            '-adFailedToPreloadForPreloadID:error:':
+                name: adFailedToPreloadForPreloadID
+    GADSwipeableInterstitialAdDelegate: {}
     GADAdNetworkExtras:
         skip_adapter: true
     GADAdSizeDelegate:
