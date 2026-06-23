@@ -2495,6 +2495,8 @@ SWIFT_CLASS("_TtC9InMobiSDK22MediationTimeoutConfig")
 @property (nonatomic, strong) AnyDictionary * _Nullable maxLoadRetries;
 @property (nonatomic, strong) AnyDictionary * _Nullable muttTimeout;
 @property (nonatomic, strong) AnyDictionary * _Nullable preloadTimeout;
+@property (nonatomic, strong) AnyDictionary * _Nullable adaptiveBannerControl;
+- (BOOL)isAdaptiveBannerEnabledWithTpName:(NSString * _Nullable)tpName SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
