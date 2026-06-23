@@ -304,9 +304,13 @@ classes:
         methods:
             '-initWithCollectionId:':
                 name: init
+            '-initWithCollectionId:forceIndex:':
+                name: init
     FIRCollectionSourceStageBridge:
         methods:
             '-initWithRef:firestore:':
+                name: init
+            '-initWithRef:firestore:forceIndex:':
                 name: init
     FIRConstantBridge: { }
     FIRDatabaseSourceStageBridge: { }

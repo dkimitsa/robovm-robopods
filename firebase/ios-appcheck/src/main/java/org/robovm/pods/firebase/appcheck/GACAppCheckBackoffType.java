@@ -33,20 +33,12 @@ import org.robovm.apple.foundation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Marshaler(ValuedEnum.AsMachineSizedSIntMarshaler.class)/*</annotations>*/
-public enum /*<name>*/GACAppCheckMessageCode/*</name>*/ implements ValuedEnum {
+/*<annotations>*/@Marshaler(ValuedEnum.AsMachineSizedUIntMarshaler.class)/*</annotations>*/
+public enum /*<name>*/GACAppCheckBackoffType/*</name>*/ implements ValuedEnum {
     /*<values>*/
-    CodeUnknown(1001L),
-    CodeProviderIsMissing(2002L),
-    CodeStagingModeEnabled(2003L),
-    CodeUnexpectedHTTPCode(3001L),
-    LocalDebugToken(4001L),
-    EnvironmentVariableDebugToken(4002L),
-    DebugProviderFirebaseEnvironmentVariable(4003L),
-    DebugProviderFailedExchange(4004L),
-    CodeAppAttestNotSupported(7001L),
-    CodeAttestationRejected(7002L),
-    CodeAssertionRejected(7003L);
+    None(0L),
+    _1Day(1L),
+    Exponential(2L);
     /*</values>*/
 
     /*<bind>*/
@@ -56,15 +48,15 @@ public enum /*<name>*/GACAppCheckMessageCode/*</name>*/ implements ValuedEnum {
 
     private final long n;
 
-    private /*<name>*/GACAppCheckMessageCode/*</name>*/(long n) { this.n = n; }
+    private /*<name>*/GACAppCheckBackoffType/*</name>*/(long n) { this.n = n; }
     public long value() { return n; }
-    public static /*<name>*/GACAppCheckMessageCode/*</name>*/ valueOf(long n) {
-        for (/*<name>*/GACAppCheckMessageCode/*</name>*/ v : values()) {
+    public static /*<name>*/GACAppCheckBackoffType/*</name>*/ valueOf(long n) {
+        for (/*<name>*/GACAppCheckBackoffType/*</name>*/ v : values()) {
             if (v.n == n) {
                 return v;
             }
         }
         throw new IllegalArgumentException("No constant with value " + n + " found in " 
-            + /*<name>*/GACAppCheckMessageCode/*</name>*/.class.getName());
+            + /*<name>*/GACAppCheckBackoffType/*</name>*/.class.getName());
     }
 }

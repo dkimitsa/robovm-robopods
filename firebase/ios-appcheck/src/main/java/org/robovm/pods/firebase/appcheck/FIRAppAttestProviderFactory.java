@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.robovm.pods.firebase.auth;
+package org.robovm.pods.firebase.appcheck;
 
 /*<imports>*/
 import java.io.*;
@@ -28,35 +28,32 @@ import org.robovm.rt.bro.*;
 import org.robovm.rt.bro.annotation.*;
 import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
-import org.robovm.apple.uikit.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
+/**
+ * @since Available in iOS 14.0 and later.
+ */
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/FIRTOTPMultiFactorGenerator/*</name>*/ 
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/FIRAppAttestProviderFactory/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
-    /*<implements>*//*</implements>*/ {
+    /*<implements>*/implements FIRAppCheckProviderFactory/*</implements>*/ {
 
-    /*<ptr>*/public static class FIRTOTPMultiFactorGeneratorPtr extends Ptr<FIRTOTPMultiFactorGenerator, FIRTOTPMultiFactorGeneratorPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(FIRTOTPMultiFactorGenerator.class); }/*</bind>*/
+    /*<ptr>*/public static class FIRAppAttestProviderFactoryPtr extends Ptr<FIRAppAttestProviderFactory, FIRAppAttestProviderFactoryPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(FIRAppAttestProviderFactory.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public FIRTOTPMultiFactorGenerator() {}
-    protected FIRTOTPMultiFactorGenerator(Handle h, long handle) { super(h, handle); }
-    protected FIRTOTPMultiFactorGenerator(SkipInit skipInit) { super(skipInit); }
+    public FIRAppAttestProviderFactory() {}
+    protected FIRAppAttestProviderFactory(Handle h, long handle) { super(h, handle); }
+    protected FIRAppAttestProviderFactory(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
     
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "generateSecretWithMultiFactorSession:completion:")
-    public static native void generateSecret(FIRMultiFactorSession session, @Block VoidBlock2<FIRTOTPSecret, NSError> completion);
-    @Method(selector = "assertionForEnrollmentWithSecret:oneTimePassword:")
-    public static native FIRTOTPMultiFactorAssertion assertionForEnrollment(FIRTOTPSecret secret, String oneTimePassword);
-    @Method(selector = "assertionForSignInWithEnrollmentID:oneTimePassword:")
-    public static native FIRTOTPMultiFactorAssertion assertionForSignIn(String enrollmentID, String oneTimePassword);
+    @Method(selector = "createProviderWithApp:")
+    public native FIRAppCheckProvider createProvider(org.robovm.pods.firebase.core.FIRApp app);
     /*</methods>*/
 }
