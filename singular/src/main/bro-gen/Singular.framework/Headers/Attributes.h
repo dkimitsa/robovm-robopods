@@ -33,5 +33,6 @@
 #define ATTRIBUTE_SNG_ATTR_TRANSACTION_ID @"sng_attr_transaction_id"
 #define ATTRIBUTE_SNG_ATTR_TUTORIAL_ID @"sng_attr_tutorial_id"
 #define ATTRIBUTE_SNG_ATTR_VALID @"sng_attr_valid"
+#define ATTRIBUTE_SNG_LIMIT_DATA_SHARING @"sng_attr_limit_data_sharing"
 
 #endif

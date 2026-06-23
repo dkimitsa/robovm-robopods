@@ -136,6 +136,10 @@ constants:
         class: Singular
         static_class: Events
         name: '#{g[0]}'
+    ATTRIBUTE_SNG_LIMIT_DATA_SHARING:
+        class: Singular
+        static_class: Attributes
+        name: LIMIT_DATA_SHARING
     ATTRIBUTE_SNG_ATTR_(.*):
         class: Singular
         static_class: Attributes

@@ -83,6 +83,8 @@ import org.robovm.apple.uikit.*;
     public native void setPlacementId(String placementId);
     @Method(selector = "setAdUnitName:")
     public native void setAdUnitName(String adUnitName);
+    @Method(selector = "setLimitDataSharing:")
+    public native void setLimitDataSharing(boolean shouldLimitDataSharing);
     @Method(selector = "hasRequiredParams")
     public native boolean hasRequiredParams();
     /*</methods>*/
