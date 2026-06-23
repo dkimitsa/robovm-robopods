@@ -36,28 +36,38 @@ import org.robovm.apple.uikit.*;
 
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/OneSignalConfigManager/*</name>*/ 
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/OSResilientStorage/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class OneSignalConfigManagerPtr extends Ptr<OneSignalConfigManager, OneSignalConfigManagerPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(OneSignalConfigManager.class); }/*</bind>*/
+    /*<ptr>*/public static class OSResilientStoragePtr extends Ptr<OSResilientStorage, OSResilientStoragePtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(OSResilientStorage.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public OneSignalConfigManager() {}
-    protected OneSignalConfigManager(Handle h, long handle) { super(h, handle); }
-    protected OneSignalConfigManager(SkipInit skipInit) { super(skipInit); }
+    public OSResilientStorage() {}
+    protected OSResilientStorage(Handle h, long handle) { super(h, handle); }
+    protected OSResilientStorage(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
     
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "setAppId:")
-    public static native void setAppId(String appId);
-    @Method(selector = "getAppId")
-    public static native String getAppId();
-    @Method(selector = "shouldAwaitAppIdAndLogMissingPrivacyConsentForMethod:")
-    public static native boolean shouldAwaitAppIdAndLogMissingPrivacyConsentForMethod(String methodName);
+    @Method(selector = "keyAppId")
+    public static native String keyAppId();
+    @Method(selector = "keySubscriptionId")
+    public static native String keySubscriptionId();
+    @Method(selector = "keyReceiveReceiptsEnabled")
+    public static native String keyReceiveReceiptsEnabled();
+    @Method(selector = "keyHasPriorSession")
+    public static native String keyHasPriorSession();
+    @Method(selector = "snapshot")
+    public static native NSDictionary<NSString, NSString> snapshot();
+    @Method(selector = "stringForKey:")
+    public static native String stringForKey(String key);
+    @Method(selector = "setString:forKey:")
+    public static native void setString(String value, String key);
+    @Method(selector = "setStrings:")
+    public static native void setStrings(NSDictionary<NSString, NSString> values);
     /*</methods>*/
 }
