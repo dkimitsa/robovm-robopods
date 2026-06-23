@@ -78,6 +78,14 @@ import org.robovm.apple.coreanimation.*;
     public native CompatibleDictionaryTextProvider getCompatibleDictionaryTextProvider();
     @Property(selector = "setCompatibleDictionaryTextProvider:")
     public native void setCompatibleDictionaryTextProvider(CompatibleDictionaryTextProvider v);
+    @Property(selector = "compatibleAnimationFontProvider")
+    public native CompatibleAnimationFontProvider getCompatibleAnimationFontProvider();
+    @Property(selector = "setCompatibleAnimationFontProvider:")
+    public native void setCompatibleAnimationFontProvider(CompatibleAnimationFontProvider v);
+    @Property(selector = "compatibleAnimationImageProvider")
+    public native CompatibleAnimationImageProvider getCompatibleAnimationImageProvider();
+    @Property(selector = "setCompatibleAnimationImageProvider:")
+    public native void setCompatibleAnimationImageProvider(CompatibleAnimationImageProvider v);
     @Property(selector = "contentMode")
     public native UIViewContentMode getContentMode();
     @Property(selector = "setContentMode:")

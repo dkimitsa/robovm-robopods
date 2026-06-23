@@ -1,10 +1,11 @@
 package: org.robovm.pods.lottie
-include: [foundation, uikit, coregraphics, coreanimation]
+include: [foundation, uikit, coregraphics, coreanimation, coretext]
 framework: Lottie
 clang_args: ['-x', 'objective-c']
 headers:
     - "#include <TargetConditionals.h>"
     - "#import <UIKit/UIKit.h>"
+    - "#import <CoreText/CoreText.h>"
     - "#import <Lottie/Lottie-Swift.h>"
 
 typedefs: {}
@@ -170,7 +171,15 @@ classes:
         methods:
             '-initWithCoder:':
                 name: init
-protocols: {}
+protocols:
+    CompatibleAnimationFontProvider:
+        methods:
+            '-fontForFamily:size:':
+                name: fontForFamily
+    CompatibleAnimationImageProvider:
+        methods:
+            '-imageForAssetWithName:':
+                name: imageForAsset
 
 
 functions:
