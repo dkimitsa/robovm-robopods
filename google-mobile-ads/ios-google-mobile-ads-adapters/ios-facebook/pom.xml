@@ -7,15 +7,15 @@
     </parent>
 
     <artifactId>robopods-google-mobile-ads-facebook-adapter-ios</artifactId>
-    <version>6.21.1.0</version>
-    <name>RoboPods FireBase Facebook Mediation Adapter iOS v6.21.1</name>
+    <version>6.21.1.1.0</version>
+    <name>RoboPods FireBase Facebook Mediation Adapter iOS v6.21.1.1</name>
     <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
             <groupId>io.github.dkimitsa.robovm</groupId>
             <artifactId>robopods-google-mobile-ads-ios</artifactId>
-            <version>13.0.0.0</version>
+            <version>13.5.0.0</version>
         </dependency>
         <dependency>
             <groupId>io.github.dkimitsa.robovm</groupId>

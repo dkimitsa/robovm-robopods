@@ -44,29 +44,29 @@ Latest bindings:
 | Name                                    | Version |
 |-----------------------------------------|---------|
 | [AdaptySDK](adapty/)                    | 1.17.7  |
-| [AdjustSdk](adjustsdk/)                 | 5.6.2   |
+| [AdjustSdk](adjustsdk/)                 | 5.7.0   |
 | [AppCenter](appcenter/)                 | 5.10.0  |
-| [AppLovinSDK](applovinsdk/)             | 13.6.2  |
-| [AppsFlyer](appsflyer/)                 | 6.18.0  |
+| [AppLovinSDK](applovinsdk/)             | 13.6.3  |
+| [AppsFlyer](appsflyer/)                 | 7.0.0   |
 | [Azure](azure/)                         | 3.1.4   |
 | [BranchMetrics](branchmetrics/)         | 3.14.0  |
 | [Charts](charts/)                       | 5.1.0   |
-| [CleverAds](cleverads/)                 | 4.6.6   |
+| [CleverAds](cleverads/)                 | 4.7.4   |
 | [Facebook](facebook/)                   | 18.0.3  |
 | [Facebook Audience](facebook-audience/) | 6.21.1  |
-| [Firebase](firebase/)                   | 12.12.0 |
+| [Firebase](firebase/)                   | 12.15.0 |
 | [Fyber](fyber/)                         | 8.4.7   |
-| [Google Mobile Ads](google-mobile-ads/) | 13.3.0  |
+| [Google Mobile Ads](google-mobile-ads/) | 13.5.0  |
 | [HelpShiftX](helpshift/)                | 10.5.0  |
-| [InMobi](inmobi/)                       | 11.2.0  |
+| [InMobi](inmobi/)                       | 11.3.0  |
 | [IronSource](ironsource/)               | 9.4.1   |
-| [Lottie](lottie/)                       | 4.6.0   |
-| [OneSignal](onesignal/)                 | 5.5.1   |
+| [Lottie](lottie/)                       | 4.6.1   |
+| [OneSignal](onesignal/)                 | 5.5.3   |
 | [Pollfish](pollfish/)                   | 6.5.0   |
 | [SAMKeychain](samkeychain/)             | 1.5.3   |
-| [Singular](singular/)                   | 12.10.1 |
-| [Tenjin](tenjin/)                       | 1.16.1  |
-| [UnityAds](unityads/)                   | 4.17.0  |
+| [Singular](singular/)                   | 12.12.0 |
+| [Tenjin](tenjin/)                       | 1.17.1  |
+| [UnityAds](unityads/)                   | 4.18.1  |
 | [YouTubePlayer](youtube/)               | 1.0.4   |
 
 [Older versions](CHANGELOG.md)
