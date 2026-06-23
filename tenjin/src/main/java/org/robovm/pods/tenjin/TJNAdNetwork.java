@@ -46,7 +46,9 @@ public enum /*<name>*/TJNAdNetwork/*</name>*/ implements ValuedEnum {
     HyperBid(3L),
     TopOn(4L),
     Cas(5L),
-    TradPlus(6L);
+    TradPlus(6L),
+    CloudX(7L),
+    Custom(8L);
     /*</values>*/
 
     /*<bind>*/

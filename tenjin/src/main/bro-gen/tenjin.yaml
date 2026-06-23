@@ -177,7 +177,10 @@ classes:
             '+handleSubscriptionWithProductId:currencyCode:unitPrice:':
                 name: handleSubscription
     PersistedFileStore: { }
-    TenjinConfig: { }
+    TenjinConfig:
+        methods:
+            '-setValue:forKey:':
+                name: setValue
     TenjinIAPHelper:
         methods:
             '-getProductFor:withCompletion:':
