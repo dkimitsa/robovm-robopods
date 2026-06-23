@@ -2,7 +2,7 @@
 //  Adjust.h
 //  Adjust SDK
 //
-//  V5.6.2
+//  V5.7.0
 //  Created by Christian Wellenbrock (@wellle) on 23rd July 2013.
 //  Copyright (c) 2012-Present Adjust GmbH. All rights reserved.
 //
@@ -19,6 +19,7 @@
 @class ADJAppStorePurchase;
 @class ADJPurchaseVerificationResult;
 @class ADJDeeplink;
+@class ADJThirdPartySharingResult;
 
 typedef void(^ADJResolvedDeeplinkBlock)(NSString * _Nullable resolvedLink);
 typedef void(^ADJAttributionGetterBlock)(ADJAttribution * _Nullable attribution);
@@ -29,6 +30,7 @@ typedef void(^ADJLastDeeplinkGetterBlock)(NSURL * _Nullable lastDeeplink);
 typedef void(^ADJAdidGetterBlock)(NSString * _Nullable adid);
 typedef void(^ADJIsEnabledGetterBlock)(BOOL isEnabled);
 typedef void(^ADJVerificationResultBlock)(ADJPurchaseVerificationResult * _Nonnull verificationResult);
+typedef void(^ADJThirdPartySharingGetterBlock)(ADJThirdPartySharingResult * _Nullable result);
 
 /**
  * Constants for our supported tracking environments.
@@ -184,6 +186,16 @@ extern NSString * __nonnull const ADJEnvironmentProduction;
  */
 + (void)attributionWithTimeout:(NSInteger)timeoutMs
              completionHandler:(nonnull ADJAttributionGetterBlock)completion;
+
+/**
+ * @brief Get current third party sharing settings through a callback with timeout.
+ *
+ * @param timeoutMs Timeout in milliseconds. If third party sharing settings are not available
+ *                  within this time, the completion block will be called with nil result.
+ * @param completion Completion block to get the third party sharing settings result delivered to.
+ */
++ (void)thirdPartySharingSettingsWithTimeout:(NSInteger)timeoutMs
+                           completionHandler:(nonnull ADJThirdPartySharingGetterBlock)completion;
 
 /**
  * @brief Get current Adjust SDK version string through a callback.

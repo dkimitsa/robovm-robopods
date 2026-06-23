@@ -7,8 +7,8 @@
     </parent>
 
     <artifactId>robopods-adjustsdk-ios</artifactId>
-    <version>5.6.2.0</version>
-    <name>RoboPods AdjustSdk iOS v5.6.2</name>
+    <version>5.7.0.0</version>
+    <name>RoboPods AdjustSdk iOS v5.7.0</name>
     <packaging>jar</packaging>
 
     <licenses>

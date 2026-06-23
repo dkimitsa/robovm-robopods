@@ -98,6 +98,8 @@ import org.robovm.apple.coreanimation.*;
     public static native void attribution(@Block VoidBlock1<ADJAttribution> completion);
     @Method(selector = "attributionWithTimeout:completionHandler:")
     public static native void attribution(@MachineSizedSInt long timeoutMs, @Block VoidBlock1<ADJAttribution> completion);
+    @Method(selector = "thirdPartySharingSettingsWithTimeout:completionHandler:")
+    public static native void thirdPartySharingSettings(@MachineSizedSInt long timeoutMs, @Block VoidBlock1<ADJThirdPartySharingResult> completion);
     @Method(selector = "sdkVersionWithCompletionHandler:")
     public static native void sdkVersion(@Block VoidBlock1<NSString> completion);
     @Method(selector = "convertUniversalLink:withScheme:")

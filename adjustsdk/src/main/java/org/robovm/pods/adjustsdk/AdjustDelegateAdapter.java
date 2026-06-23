@@ -53,6 +53,8 @@ import org.robovm.apple.coreanimation.*;
     /*<methods>*/
     @NotImplemented("adjustAttributionChanged:")
     public void adjustAttributionChanged(ADJAttribution attribution) {}
+    @NotImplemented("adjustThirdPartySharingSettingsChanged:")
+    public void adjustThirdPartySharingSettingsChanged(ADJThirdPartySharingResult thirdPartySharingResult) {}
     @NotImplemented("adjustEventTrackingSucceeded:")
     public void adjustEventTrackingSucceeded(ADJEventSuccess eventSuccessResponse) {}
     @NotImplemented("adjustEventTrackingFailed:")

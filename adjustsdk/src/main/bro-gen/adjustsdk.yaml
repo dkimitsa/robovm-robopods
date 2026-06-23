@@ -87,6 +87,10 @@ classes:
                 name: addGranularOption
             '-addPartnerSharingSetting:key:value:':
                 name: addPartnerSharingSetting
+    ADJThirdPartySharingResult:
+        methods:
+            '-initWithThirdPartySharingSettings:':
+                name: init
     Adjust:
         methods:
             '+isEnabledWithCompletionHandler:':
@@ -123,6 +127,8 @@ classes:
                 name: verifyAppStorePurchase
             '+verifyAndTrackAppStorePurchase:withCompletionHandler:':
                 name: verifyAndTrackAppStorePurchase
+            '+thirdPartySharingSettingsWithTimeout:completionHandler:':
+                name: thirdPartySharingSettings
 protocols:
     ADJLogger:
         name: ADJLoggerProtocol
