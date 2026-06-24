@@ -7,6 +7,5 @@ artifactSource:
   - download the zip into a temporary/empty staging folder (NOT directly into downloadLocation)
   - the zip contains a single top-level folder with a version suffix, e.g. MetaAdapter-13.6.3.0/, and the framework lives directly inside it as MetaAdapter-13.6.3.0/MetaAdapter.xcframework
   - "drop the version suffix" means this top-level folder must BECOME the downloadLocation itself. Move/rename that folder so that its CONTENTS end up directly under downloadLocation. Do NOT create an extra nested MetaAdapter/ folder.
-  - result check - the folder ~/Downloads/robopods-wip/MetaAdapter/MetaAdapter.xcframework/ must exist
-downloadLocation: ~/Downloads/robopods-wip/MetaAdapter
-dropVersionSuffix: true
+  - result check - the folder ./.robopods-wip/MetaAdapter/MetaAdapter.xcframework/ must exist
+downloadLocation: ./.robopods-wip/MetaAdapter

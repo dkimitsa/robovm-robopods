@@ -3,7 +3,6 @@ moduleFolder: facebook-audience
 artifactSource:
   - to get last version tag use https://github.com/facebook/FBAudienceNetwork/releases/latest
   - download zip from https://developers.facebook.com/resources/FBAudienceNetwork-$version.zip
-  - make dir ~/Downloads/robopods-wip/FBAudienceNetwork, switch to it and unpack downloaded zip there
-  - result should contain ~/Downloads/robopods-wip/FBAudienceNetwork/Dynamic/FBAudienceNetwork.xcframework
-downloadLocation: ~/Downloads/robopods-wip/FBAudienceNetwork
-dropVersionSuffix: true
+  - make dir ./.robopods-wip/FBAudienceNetwork, switch to it and unpack downloaded zip there
+  - result should contain ./.robopods-wip/FBAudienceNetwork/Dynamic/FBAudienceNetwork.xcframework
+downloadLocation: ./.robopods-wip/FBAudienceNetwork

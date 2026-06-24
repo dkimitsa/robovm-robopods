@@ -8,7 +8,7 @@ tools: ['run_in_terminal', 'read_file', 'create_file', 'run_subagent']
 This agent processes a specific framework end-to-end by delegating each stage of the binding pipeline to a dedicated sub-agent. It performs NO binding, normalization, merging, or compilation work itself.
 
 ## RESTRICTIONS (CRITICAL)
-- Follow `.github/skills/agent-invocation-rules/SKILL.md` for any shell, file, or path-handling behavior used during orchestration.
+- `read_file` and follow `.github/skills/agent-invocation-rules/SKILL.md` for any shell, file, or path-handling behavior used during orchestration.
 - DO NOT run `harvester.kts` directly.
 - DO NOT read, normalize, or merge YAML suggestions yourself.
 - DO NOT attempt module compilation yourself.

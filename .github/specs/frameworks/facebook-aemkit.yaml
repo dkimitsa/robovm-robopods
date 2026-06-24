@@ -1,6 +1,5 @@
 name: facebook-aemkit
 moduleFolder: facebook/ios-aem
 artifactSource:
-  - check if folder exists in ~/Downloads/robopods-wip/Facebook/FBAEMKit.xcframework, stop and report error if not
-downloadLocation: ~/Downloads/robopods-wip/Facebook
-dropVersionSuffix: true
+  - check if folder exists in ./.robopods-wip/Facebook/FBAEMKit.xcframework, stop and report error if not
+downloadLocation: ./.robopods-wip/Facebook

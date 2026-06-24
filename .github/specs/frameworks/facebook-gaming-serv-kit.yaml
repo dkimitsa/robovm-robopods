@@ -1,6 +1,5 @@
 name: facebook-gaming-serv-kit
 moduleFolder: facebook/ios-gaming-services-kit
 artifactSource:
-  - check if folder exists in ~/Downloads/robopods-wip/Facebook/FBSDKGamingServicesKit.xcframework, stop and report error if not
-downloadLocation: ~/Downloads/robopods-wip/Facebook
-dropVersionSuffix: true
+  - check if folder exists in ./.robopods-wip/Facebook/FBSDKGamingServicesKit.xcframework, stop and report error if not
+downloadLocation: ./.robopods-wip/Facebook

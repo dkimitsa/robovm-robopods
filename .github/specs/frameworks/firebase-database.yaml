@@ -1,6 +1,5 @@
 name: firebase-database
 moduleFolder: firebase/ios-database
 artifactSource:
-  - check if folder exists in ~/Downloads/robopods-wip/Firebase/FirebaseDatabase/FirebaseDatabase.xcframework/, stop and report error if not present
-downloadLocation: ~/Downloads/robopods-wip/Firebase
-dropVersionSuffix: true
+  - check if folder exists in ./.robopods-wip/Firebase/FirebaseDatabase/FirebaseDatabase.xcframework/, stop and report error if not present
+downloadLocation: ./.robopods-wip/Firebase

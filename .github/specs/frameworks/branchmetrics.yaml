@@ -1,5 +1,4 @@
 name: branchmetrics
 moduleFolder: branchmetrics
 artifactSource: latest release https://github.com/BranchMetrics/ios-branch-deep-linking-attribution, Branch.zip from assets
-downloadLocation: ~/Downloads/robopods-wip/BranchSDK.xcframework
-dropVersionSuffix: true
+downloadLocation: ./.robopods-wip/BranchSDK.xcframework

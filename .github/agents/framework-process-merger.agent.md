@@ -8,7 +8,7 @@ tools: ['run_in_terminal', 'apply_patch', 'read_file', 'file_search', 'create_fi
 This subagent is the third stage of the framework binding pipeline. It applies the previously normalized YAML fragment into the actual bro-gen YAML file for the framework.
 
 ## RESTRICTIONS (CRITICAL)
-- Follow `.github/skills/agent-invocation-rules/SKILL.md` for terminal safety, fail-fast handling, path resolution, and bounded search scope.
+- `read_file` and follow `.github/skills/agent-invocation-rules/SKILL.md` for terminal safety, fail-fast handling, path resolution, and bounded search scope.
 - DO NOT run `harvester.kts`.
 - DO NOT re-normalize, rename, or deduplicate suggestions — they were already normalized upstream.
 - DO NOT attempt compilation.
@@ -19,12 +19,11 @@ This subagent is the third stage of the framework binding pipeline. It applies t
 - **DO NOT produce invalid YAML.** Indentation, key uniqueness, and structural integrity are mandatory. The file MUST parse cleanly after the merge (see Step 4: Validation).
 
 ## Required Inputs
-- Resolve `<moduleFolder>` from the framework spec as described above. If it cannot be resolved, abort with an error.
-- Read `.github/specs/framework-spec.md` first to understand the expected framework spec structure.
-- Load `.github/specs/frameworks/<framework_name>.yaml`, where `<framework_name>` is the parameter passed to `@framework-process-merger`. Use it to resolve `<moduleFolder>` (see above).
-- Read `.github/skills/agent-invocation-rules/SKILL.md`.
-- Read `.github/skills/bro-gen-binding-rules/SKILL.md` (for `Merge Rules` reference only).
-- Read `.github/state/framework-process-suggestions-normalized.txt`. If the file does not exist, there is nothing to merge.
+- direct_read `.github/specs/framework-spec.md` first to understand the expected framework spec structure.
+- direct_read `.github/specs/frameworks/<framework_name>.yaml`, where `<framework_name>` is the parameter passed to `@framework-process-merger`. Use it to resolve `<moduleFolder>` (see above).
+- direct_read `.github/skills/agent-invocation-rules/SKILL.md`.
+- direct_read `.github/skills/bro-gen-binding-rules/SKILL.md` (for `Merge Rules` reference only).
+- direct_read `.github/state/framework-process-suggestions-normalized.txt`. If the file does not exist, there is nothing to merge.
 
 ## Workflow
 

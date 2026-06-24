@@ -4,5 +4,4 @@ artifactSource:
   - to get last version tag use https://github.com/ChartsOrg/Charts/releases/latest
   - to build the artifact, change directory to `charts/carthage` and run `fetch.sh`, if successful, the artifact will be copied to expected downloadLocation
   - if failed -- don't recover, just exit with error
-downloadLocation: ~/Downloads/robopods-wip/DGCharts.xcframework
-dropVersionSuffix: true
+downloadLocation: ./.robopods-wip/DGCharts.xcframework

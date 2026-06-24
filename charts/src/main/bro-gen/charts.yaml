@@ -1064,7 +1064,7 @@ protocols:
 functions:
     # Make sure we don't miss any functions if new ones are introduced in a later version
     (.*):
-        class: __FixMeCharts
+        class: __FixMe
         name: 'Function_#{g[0]}'
 
 values:
@@ -1073,7 +1073,7 @@ values:
         exclude: true
     # Make sure we don't miss any values if new ones are introduced in a later version
     (.*):
-        class: __FixMeCharts
+        class: __FixMe
         name: 'Value_#{g[0]}'
 
 constants:
@@ -1081,5 +1081,5 @@ constants:
         exclude: true
     # Make sure we don't miss any constants if new ones are introduced in a later version
     (.*):
-        class: __FixMeCharts
+        class: __FixMe
         name: 'Constant__#{g[0]}'

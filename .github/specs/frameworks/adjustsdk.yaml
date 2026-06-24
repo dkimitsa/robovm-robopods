@@ -1,5 +1,4 @@
 name: adjustsdk
 moduleFolder: adjustsdk
 artifactSource: latest release https://github.com/adjust/ios_sdk, AdjustSdk-iOS-tvOS-Dynamic-*.xcframework.zip from assets
-downloadLocation: ~/Downloads/robopods-wip/AdjustSdk-iOS-tvOS-Dynamic-xcframework
-dropVersionSuffix: true
+downloadLocation: ./.robopods-wip/AdjustSdk-iOS-tvOS-Dynamic-xcframework

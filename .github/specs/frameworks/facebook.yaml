@@ -1,8 +1,7 @@
 name: facebook
-moduleFolder: NOT USED
+moduleFolder: facebook/ios-bom
 artifactSource:
   - check latest release at https://github.com/facebook/facebook-ios-sdk/releases, download FacebookSDK_Dynamic.xcframework.zip from assets
   - zip file might contains a single top-level folder "XCFrameworks", in this case extract to temporary/stage folder and move content of XCFrameworks/ to  downloadLocation;
-  - unpack to ~/Downloads/robopods-wip/Facebook
-downloadLocation: ~/Downloads/robopods-wip/Facebook
-dropVersionSuffix: true
+  - unpack to ./.robopods-wip/Facebook
+downloadLocation: ./.robopods-wip/Facebook

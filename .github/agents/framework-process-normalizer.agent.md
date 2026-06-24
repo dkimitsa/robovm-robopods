@@ -15,18 +15,17 @@ This subagent is the second stage of the framework binding pipeline. It transfor
 - DO NOT spawn unauthorized tools.
 
 ## Resolving `<moduleFolder>`
-1. Read `.github/specs/frameworks/<framework_name>.yaml` with `read_file`.
+1. `read_file` and follow `.github/specs/frameworks/<framework_name>.yaml` to extract the `moduleFolder` field.
 2. Extract the `moduleFolder` field. Its value is the ONLY directory you are permitted to scan for Java/FIXME files.
 3. If the field is missing or empty, stop and report the error. Do NOT fall back to a workspace-wide search.
 
 ## Required Inputs
-*IMPORTANT*: if stated "Read file", you must use the `read_file` tool with the exact path. Do NOT use `file_search` or any other discovery search to verify their presence. 
-- Read file `.github/specs/framework-spec.md` first to understand the expected framework spec structure.
-- Read file `.github/specs/frameworks/<framework_name>.yaml`, where `<framework_name>` is the parameter passed to `@framework-process-normalizer`. Use it to resolve `<moduleFolder>` (see above).
-- Read file `.github/skills/agent-invocation-rules/SKILL.md`.
-- Read file `.github/skills/bro-gen-binding-rules/SKILL.md`.
-- Read file `.github/state/framework-process-suggestions.txt` (raw harvester suggestions). If the file does not exist, there are no harvester suggestions.
-- Locate and read any FIXME files **only inside `<moduleFolder>/src/main/java/`** (searching that directory tree recursively, including nested package folders), matching the filenames `__FIXME.java` or `__FixMe.java`.
+- direct_read `.github/specs/framework-spec.md` first to understand the expected framework spec structure.
+- direct_read `.github/specs/frameworks/<framework_name>.yaml`, where `<framework_name>` is the parameter passed to `@framework-process-normalizer`. Use it to resolve `<moduleFolder>` (see above).
+- direct_read `.github/skills/agent-invocation-rules/SKILL.md`.
+- direct_read `.github/skills/bro-gen-binding-rules/SKILL.md`.
+- direct_read `.github/state/framework-process-suggestions.txt` (raw harvester suggestions). If the file does not exist, there are no harvester suggestions.
+- Locate and direct_read any FIXME files **only inside `<moduleFolder>/src/main/java/`** (searching that directory tree recursively, including nested package folders), matching the filenames `__FIXME.java` or `__FixMe.java`.
 - Do not continue and return an error if expected spec files are missing.
 
 ## Workflow

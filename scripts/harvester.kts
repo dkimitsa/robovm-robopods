@@ -39,7 +39,7 @@ val broGenScript: File = Path.of("../robovm-bro-gen/bro-gen.rb").toFile().also {
 }
 
 // Download root folder
-val downloadFolder: File = Path.of(System.getProperty("user.home"), "Downloads/robopods-wip").toFile().also {
+val downloadFolder: File = Path.of("./.robopods-wip").toFile().also {
     it.requiresIsDirectory { "Failed to locate Download directory ${it.canonicalPath}" }
 }
 
@@ -1485,9 +1485,7 @@ fun registerFacebook(frameworkRegistry: MutableMap<String, (String) -> Unit>, gr
     }
 
     val facebookVersion: String by lazy {
-        extractVersionFromHeader("Facebook",
-            downloadFolder.extend("$facebookRoot/FBSDKCoreKit.xcframework/ios-arm64/FBSDKCoreKit.framework/Headers/FBSDKCoreKitVersions.h"),
-            "FBSDK_VERSION_STRING")
+        downloadFolder.extend("Facebook/.version-metadata").readText().dropLastWhile { it == '\n' || it == '\r' }
     }
 
     val facebookInstallInstruction = """
@@ -1500,11 +1498,13 @@ fun registerFacebook(frameworkRegistry: MutableMap<String, (String) -> Unit>, gr
     val moduleReadmeFile = Path.of("facebook/README.md").toFile()
     fun action(
         framework: String, moduleFolder: String, yaml: String,
-        frameworkLocation: String = "${facebookRoot}/$framework.xcframework/ios-arm64/$framework.framework",
-        readmeFileVersionUpdater: (String, String, String) -> Unit = readmeUpdater,
-        instruction: String = facebookInstallInstruction,
-        versionProvider: () -> String = { facebookVersion }
     ) {
+        val frameworkLocation: String = "${facebookRoot}/$framework.xcframework/ios-arm64/$framework.framework"
+            .takeIf { File(it).exists() }
+            ?: "${facebookRoot}/$framework.xcframework/ios-arm64_arm64e/$framework.framework"
+        val readmeFileVersionUpdater: (String, String, String) -> Unit = readmeUpdater
+        val instruction: String = facebookInstallInstruction
+        val versionProvider: () -> String = { facebookVersion }
         val artifactLocation = downloadFolder.extend(frameworkLocation)
         processFramework(
             artifact = "$framework.framework",

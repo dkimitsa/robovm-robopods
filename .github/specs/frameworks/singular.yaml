@@ -3,6 +3,5 @@ moduleFolder: singular
 artifactSource:
   - check tags for latest version https://github.com/singular-labs/Singular-iOS-SDK
   - fetch tag, binary Singular.xcframework is part of repository
-  - move to ~/Downloads/robopods-wip/Singular.xcframework
-downloadLocation: ~/Downloads/robopods-wip/Singular.xcframework
-dropVersionSuffix: true
+  - move to ./.robopods-wip/Singular.xcframework
+downloadLocation: ./.robopods-wip/Singular.xcframework
