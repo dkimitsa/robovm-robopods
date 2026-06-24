@@ -1,0 +1,6 @@
+name: firebase-remoteconfig
+moduleFolder: firebase/ios-remoteconfig
+artifactSource:
+  - check if folder exists in ~/Downloads/robopods-wip/Firebase/FirebaseRemoteConfig/FirebaseRemoteConfig.xcframework/, stop and report error if not
+downloadLocation: ~/Downloads/robopods-wip/Firebase
+dropVersionSuffix: true

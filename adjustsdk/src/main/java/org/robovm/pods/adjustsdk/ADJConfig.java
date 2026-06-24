@@ -66,6 +66,8 @@ import org.robovm.apple.coreanimation.*;
     public native boolean isIdfaReadingEnabled();
     @Property(selector = "isIdfvReadingEnabled")
     public native boolean isIdfvReadingEnabled();
+    @Property(selector = "isFbIdReadingEnabled")
+    public native boolean isFbIdReadingEnabled();
     @Property(selector = "isSkanAttributionEnabled")
     public native boolean isSkanAttributionEnabled();
     @Property(selector = "isCostDataInAttributionEnabled")
@@ -135,6 +137,8 @@ import org.robovm.apple.coreanimation.*;
     public native void disableIdfaReading();
     @Method(selector = "disableIdfvReading")
     public native void disableIdfvReading();
+    @Method(selector = "disableFbIdReading")
+    public native void disableFbIdReading();
     @Method(selector = "disableSkanAttribution")
     public native void disableSkanAttribution();
     @Method(selector = "enableSendingInBackground")

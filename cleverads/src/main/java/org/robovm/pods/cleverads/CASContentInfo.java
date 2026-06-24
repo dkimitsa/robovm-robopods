@@ -65,6 +65,8 @@ import org.robovm.apple.corelocation.*;
     public native double getRevenue();
     @Property(selector = "revenuePrecision")
     public native CASRevenuePrecision getRevenuePrecision();
+    @Property(selector = "placement")
+    public native String getPlacement();
     @Property(selector = "impressionDepth")
     public native @MachineSizedSInt long getImpressionDepth();
     @Property(selector = "revenueTotal")

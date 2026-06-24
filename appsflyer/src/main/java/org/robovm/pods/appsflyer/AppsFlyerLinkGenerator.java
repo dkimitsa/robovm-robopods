@@ -67,17 +67,13 @@ import org.robovm.apple.coreanimation.*;
     public native void setReferrerUID(String referrerUID);
     @Method(selector = "setReferrerName:")
     public native void setReferrerName(String referrerName);
-    @Method(selector = "setReferrerImageURL:")
-    public native void setReferrerImageURL(String referrerImageURL);
-    @Method(selector = "setAppleAppID:")
-    public native void setAppleAppID(String appleAppID);
-    @Method(selector = "setDeeplinkPath:")
-    public native void setDeeplinkPath(String deeplinkPath);
-    @Method(selector = "setBaseDeeplink:")
-    public native void setBaseDeeplink(String baseDeeplink);
+    @Method(selector = "setReferrerImageUrl:")
+    public native void setReferrerImageUrl(String referrerImageUrl);
+    @Method(selector = "setBaseDeepLink:")
+    public native void setBaseDeepLink(String baseDeepLink);
     @Method(selector = "addParameterValue:forKey:")
     public native void addParameter(String value, String key);
-    @Method(selector = "addParameters:")
-    public native void addParameters(NSDictionary<?, ?> parameters);
+    @Method(selector = "addUserParams:")
+    public native void addUserParams(NSDictionary<?, ?> userParams);
     /*</methods>*/
 }

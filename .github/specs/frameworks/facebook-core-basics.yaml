@@ -1,0 +1,6 @@
+name: facebook-core-basics
+moduleFolder: facebook/ios-core-basics
+artifactSource:
+  - check if folder exists in ~/Downloads/robopods-wip/Facebook/FBSDKCoreKit_Basics, stop and report error if not
+downloadLocation: ~/Downloads/robopods-wip/Facebook
+dropVersionSuffix: true

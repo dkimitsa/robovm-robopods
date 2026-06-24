@@ -394,7 +394,13 @@ classes:
     OSRemoteParamController: { }
     OSStubInAppMessages: { }
     OSStubLocation: { }
+    OSResilientStorage:
+        methods:
+            '+setString:forKey:':
+                name: setString
+    OneSignalConfig: { }
     OneSignalConfigManager: { }
+    OneSignalIdentifiers: { }
     OneSignalLiveActivityController: { }
     OneSignalMobileProvision: { }
     OneSignalNotificationSettings: { }

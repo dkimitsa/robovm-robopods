@@ -54,9 +54,9 @@ import org.robovm.apple.coreanimation.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "logCrossPromoteImpression:campaign:parameters:")
-    public static native void logCrossPromoteImpression(String appID, String campaign, NSDictionary<?, ?> parameters);
-    @Method(selector = "logAndOpenStore:campaign:parameters:openStore:")
-    public static native void logAndOpenStore(String appID, String campaign, NSDictionary<?, ?> parameters, @Block VoidBlock2<NSURLSession, NSURL> openStoreBlock);
+    @Method(selector = "logCrossPromoteImpression:campaign:userParams:")
+    public static native void logCrossPromoteImpression(String appId, String campaign, NSDictionary<?, ?> userParams);
+    @Method(selector = "logAndOpenStore:campaign:userParams:openStore:")
+    public static native void logAndOpenStore(String promotedAppId, String campaign, NSDictionary<?, ?> userParams, @Block VoidBlock2<NSURLSession, NSURL> openStoreBlock);
     /*</methods>*/
 }

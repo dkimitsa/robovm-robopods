@@ -1,0 +1,5 @@
+name: helpshift
+moduleFolder: helpshift
+artifactSource: download iOS SDK from https://developers.helpshift.com/sdkx_ios/getting-started/#getting-sdk, unpack helpshift-sdk-ios-vX.Y.Z.zip and rename to helpshift-sdk-ios, do not delete any files from archive.
+downloadLocation: ~/Downloads/robopods-wip/helpshiftx-sdk-ios/
+dropVersionSuffix: false

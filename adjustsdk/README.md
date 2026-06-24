@@ -8,6 +8,7 @@ https://github.com/adjust/ios_sdk/
 
 | RoboPods Version | AdjustSdk Version |
 |------------------|-------------------|
+| 5.7.0.0          | 5.7.0             |
 | 5.6.2.0          | 5.6.2             |
 
 ## Install Instructions

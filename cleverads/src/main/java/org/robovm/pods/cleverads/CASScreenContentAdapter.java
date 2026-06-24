@@ -60,6 +60,10 @@ import org.robovm.apple.corelocation.*;
     public boolean isAutoloadEnabled() { return false; }
     @NotImplemented("setIsAutoloadEnabled:")
     public void setIsAutoloadEnabled(boolean v) {}
+    @NotImplemented("placement")
+    public String getPlacement() { return null; }
+    @NotImplemented("setPlacement:")
+    public void setPlacement(String v) {}
     @NotImplemented("isAdLoaded")
     public boolean isAdLoaded() { return false; }
     @NotImplemented("contentInfo")

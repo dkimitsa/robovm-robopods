@@ -62,10 +62,11 @@ public enum /*<name>*/FIRStorageErrorCode/*</name>*/ implements NSErrorCode {
     /*<members>*//*</members>*/
     /*<methods>*//*</methods>*/
 
-    // dkimitsa: manually added code
+    /*<manually-added>*/
     private static String getClassDomain() {
         return ErrorClassDomain;
     }
+    /*</manually-added>*/
     private final long n;
 
     private /*<name>*/FIRStorageErrorCode/*</name>*/(long n) { this.n = n; }

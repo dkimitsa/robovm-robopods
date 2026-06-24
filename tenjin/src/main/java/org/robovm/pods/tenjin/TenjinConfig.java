@@ -58,7 +58,7 @@ import org.robovm.apple.dispatch.*;
     @Method(selector = "boolForKey:")
     public native boolean boolForKey(String key);
     @Method(selector = "setValue:forKey:")
-    public native void setValue$forKey$(NSObject value, NSObject key);
+    public native void setValue(NSObject value, NSObject key);
     @Method(selector = "stringForKey:")
     public native String stringForKey(String key);
     /*</methods>*/

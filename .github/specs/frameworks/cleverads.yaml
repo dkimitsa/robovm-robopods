@@ -1,0 +1,5 @@
+name: cleverads
+moduleFolder: cleverads
+artifactSource: latest release https://github.com/cleveradssolutions/CAS-iOS/releases, CleverAdsSolutions-x.x.x.x.zip from assets, unpack to CleverAdsSolutions
+downloadLocation: ~/Downloads/robopods-wip/CleverAdsSolutions/CleverAdsSolutions.xcframework
+dropVersionSuffix: false

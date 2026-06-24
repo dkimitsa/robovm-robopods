@@ -1,0 +1,6 @@
+name: firebase-firestore
+moduleFolder: firebase/ios-firestore
+artifactSource:
+  - check if folder exists in ~/Downloads/robopods-wip/Firebase/FirebaseFirestore/FirebaseFirestore.xcframework/, stop and report error if not
+downloadLocation: ~/Downloads/robopods-wip/Firebase
+dropVersionSuffix: true

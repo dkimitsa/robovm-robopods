@@ -90,8 +90,6 @@ import org.robovm.apple.uikit.*;
     public static native void updateNotificationTypes(int notificationTypes);
     @Method(selector = "sendNotificationTypesUpdateToDelegate")
     public static native void sendNotificationTypesUpdateToDelegate();
-    @Method(selector = "setPushSubscriptionId:")
-    public static native void setPushSubscriptionId(String pushSubscriptionId);
     @Method(selector = "handleWillShowInForegroundForNotification:completion:")
     public static native void handleWillShowInForegroundForNotification(OSNotification notification, @Block VoidBlock1<OSNotification> completion);
     @Method(selector = "handleNotificationActionWithUrl:actionID:")

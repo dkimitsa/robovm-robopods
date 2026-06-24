@@ -71,7 +71,10 @@ public enum /*<name>*/CASSourceId/*</name>*/ implements ValuedEnum {
     DspExchange(30L),
     LastPageAd(31L),
     Custom(32L),
-    Unknown(33L);
+    Unknown(33L),
+    DisplayIO(73L),
+    Bidease(74L),
+    Moloco(76L);
     /*</values>*/
 
     /*<bind>*/

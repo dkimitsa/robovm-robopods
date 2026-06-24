@@ -1,0 +1,9 @@
+name: google-mobile-ads
+moduleFolder: google-mobile-ads/ios-google-mobile-ads
+artifactSource:
+  - to get last version number use https://github.com/googleads/swift-package-manager-google-mobile-ads/releases
+  - to download framework use https://dl.google.com/googleadmobadssdk/googlemobileadssdkios.zip
+  - inside zip it contains folder with version(like GoogleMobileAdsSdkiOS-13.5.0) unpack zip and remove version, make sure it is locate in ~/Downloads/robopods-wip/GoogleMobileAdsSdkiOS
+  - check if folder exists in ~/Downloads/robopods-wip/GoogleMobileAdsSdkiOS/GoogleMobileAds.xcframework/, stop and report error if not
+downloadLocation: ~/Downloads/robopods-wip/GoogleMobileAdsSdkiOS
+dropVersionSuffix: true

@@ -1,0 +1,5 @@
+name: inmobi
+moduleFolder: inmobi
+artifactSource: download iOS sdk (for manual integration) from https://www.inmobi.com/sdk, unpack to InMobi-iOS-SDK
+downloadLocation: ~/Downloads/robopods-wip/InMobi-iOS-SDK/
+dropVersionSuffix: false

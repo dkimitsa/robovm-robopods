@@ -46,15 +46,15 @@ import org.robovm.apple.dispatch.*;
     public FIRCollectionGroupSourceStageBridge() {}
     protected FIRCollectionGroupSourceStageBridge(Handle h, long handle) { super(h, handle); }
     protected FIRCollectionGroupSourceStageBridge(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithCollectionId:")
-    public FIRCollectionGroupSourceStageBridge(String id) { super((SkipInit) null); initObject(init(id)); }
+    @Method(selector = "initWithCollectionId:forceIndex:")
+    public FIRCollectionGroupSourceStageBridge(String id, String force_index) { super((SkipInit) null); initObject(init(id, force_index)); }
     /*</constructors>*/
     /*<properties>*/
     
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "initWithCollectionId:")
-    protected native @Pointer long init(String id);
+    @Method(selector = "initWithCollectionId:forceIndex:")
+    protected native @Pointer long init(String id, String force_index);
     /*</methods>*/
 }

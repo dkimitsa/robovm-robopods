@@ -1,0 +1,6 @@
+name: firebase-crashlytics
+moduleFolder: firebase/ios-crashlytics
+artifactSource:
+  - check if folder exists in ~/Downloads/robopods-wip/Firebase/FirebaseCrashlytics/FirebaseCrashlytics.xcframework/, stop and report error if not
+downloadLocation: ~/Downloads/robopods-wip/Firebase
+dropVersionSuffix: true

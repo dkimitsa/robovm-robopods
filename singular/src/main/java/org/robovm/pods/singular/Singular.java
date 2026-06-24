@@ -76,6 +76,7 @@ import org.robovm.apple.uikit.*;
         public static final String TRANSACTION_ID = "sng_attr_transaction_id";
         public static final String TUTORIAL_ID = "sng_attr_tutorial_id";
         public static final String VALID = "sng_attr_valid";
+        public static final String LIMIT_DATA_SHARING = "sng_attr_limit_data_sharing";
     }
 
     public static class Events {

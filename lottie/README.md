@@ -7,6 +7,7 @@ https://github.com/airbnb/lottie-ios
 
 | RoboPods Version | Lottie Version |
 |------------------|----------------|
+| 4.6.1.0          | 4.6.1          |
 | 4.6.0.0          | 4.6.0          |
 | 1.50.0           | 4.5.2          |
 | 1.43.0-1.47.0    | 4.5.0-4.5.1    |

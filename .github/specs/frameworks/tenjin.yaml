@@ -1,0 +1,8 @@
+name: tenjin
+moduleFolder: tenjin
+artifactSource:
+  - download latest version from https://github.com/tenjin/tenjin-ios-sdk/releases
+  - unpack
+  - expected location ~/Downloads/robopods-wip/TenjinSDK.xcframework
+downloadLocation: ~/Downloads/robopods-wip/TenjinSDK.xcframework
+dropVersionSuffix: true

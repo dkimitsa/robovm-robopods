@@ -62,6 +62,8 @@ import org.robovm.apple.uikit.*;
     /*</methods>*/
     /*<adapter>*/
     /*</adapter>*/
+
+    /*<manually-added>*/
     // manually added code!
     class AsListMarshaller {
         @SuppressWarnings("unchecked")
@@ -87,4 +89,5 @@ import org.robovm.apple.uikit.*;
             return NSObject.Marshaler.toNative(array, flags);
         }
     }
+    /*</manually-added>*/
 }

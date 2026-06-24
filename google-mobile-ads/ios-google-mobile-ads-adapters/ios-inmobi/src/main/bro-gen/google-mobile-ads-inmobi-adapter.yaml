@@ -1,0 +1,45 @@
+package: org.robovm.pods.google.mobileads.adapters
+framework: InMobiAdapter
+include:
+    - foundation
+    - corelocation
+    - ../../../../../ios-google-mobile-ads/src/main/bro-gen/google-mobile-ads.yaml
+    - ../../../../../../inmobi/src/main/bro-gen/inmobi.yaml
+clang_args: ['-x', 'objective-c']
+headers:
+    - "#import <InMobiSDK/InMobiSDK.h>" # as a workaround for Err: Parse Issue use of '@import' when modules are disabled
+    - InMobiAdapter.h
+
+private_typedefs:
+
+enums:
+
+typed_enums:
+
+classes:
+    GADInMobiExtras:
+        methods:
+            '-setLocationWithCity:state:country:':
+                name: setLocation
+    GADMInMobiConsent: {}
+
+protocols:
+
+functions:
+    # Make sure we don't miss any functions if new ones are introduced in a later version
+    (.*):
+        class: __FixMe
+        name: 'Function_#{g[0]}'
+
+values:
+    # Make sure we don't miss any values if new ones are introduced in a later version
+    (.*):
+        class: __FixMe
+        name: 'Value_#{g[0]}'
+
+constants:
+
+    # Make sure we don't miss any constants if new ones are introduced in a later version
+    (.*):
+        class: __FixMe
+        name: 'Constant__#{g[0]}'

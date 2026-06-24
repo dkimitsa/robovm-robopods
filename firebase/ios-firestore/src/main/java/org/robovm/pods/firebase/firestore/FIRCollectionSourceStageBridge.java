@@ -46,15 +46,15 @@ import org.robovm.apple.dispatch.*;
     public FIRCollectionSourceStageBridge() {}
     protected FIRCollectionSourceStageBridge(Handle h, long handle) { super(h, handle); }
     protected FIRCollectionSourceStageBridge(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithRef:firestore:")
-    public FIRCollectionSourceStageBridge(FIRCollectionReference ref, FIRFirestore db) { super((SkipInit) null); initObject(init(ref, db)); }
+    @Method(selector = "initWithRef:firestore:forceIndex:")
+    public FIRCollectionSourceStageBridge(FIRCollectionReference ref, FIRFirestore db, String force_index) { super((SkipInit) null); initObject(init(ref, db, force_index)); }
     /*</constructors>*/
     /*<properties>*/
     
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "initWithRef:firestore:")
-    protected native @Pointer long init(FIRCollectionReference ref, FIRFirestore db);
+    @Method(selector = "initWithRef:firestore:forceIndex:")
+    protected native @Pointer long init(FIRCollectionReference ref, FIRFirestore db, String force_index);
     /*</methods>*/
 }

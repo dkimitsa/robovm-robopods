@@ -71,9 +71,14 @@ import org.robovm.apple.coreanimation.*;
     public native AnyDictionary getPreloadTimeout();
     @Property(selector = "setPreloadTimeout:")
     public native void setPreloadTimeout(AnyDictionary v);
+    @Property(selector = "adaptiveBannerControl")
+    public native AnyDictionary getAdaptiveBannerControl();
+    @Property(selector = "setAdaptiveBannerControl:")
+    public native void setAdaptiveBannerControl(AnyDictionary v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    
+    @Method(selector = "isAdaptiveBannerEnabledWithTpName:")
+    public native boolean isAdaptiveBannerEnabled(String tpName);
     /*</methods>*/
 }

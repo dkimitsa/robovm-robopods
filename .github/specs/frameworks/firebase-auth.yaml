@@ -1,0 +1,6 @@
+name: firebase-auth
+moduleFolder: firebase/ios-auth
+artifactSource:
+  - check if folder exists in ~/Downloads/robopods-wip/Firebase/FirebaseAuth/FirebaseAuth.xcframework/, stop and report error if not
+downloadLocation: ~/Downloads/robopods-wip/Firebase
+dropVersionSuffix: true

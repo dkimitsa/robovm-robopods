@@ -1,4 +1,4 @@
-#!/usr/bin/env kscript
+#!/usr/bin/env kotlinc -jvm-target 9 -script --
 
 @file:DependsOn("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1")
 

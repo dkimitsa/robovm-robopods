@@ -12,7 +12,6 @@ https://github.com/facebook/facebook-objc-sdk
 | [ios-login](ios-login/)                             | Facebook iOS Login Kit           | 18.0.3  |
 | [ios-share](ios-share/)                             | Facebook iOS Share Kit           | 18.0.3  |
 | [ios-aem](ios-aem/)                                 | Facebook iOS AEM Kit             | 18.0.3  |
-| [ios-audience](ios-audience/)                       | Facebook iOS Audience Ad Network | 6.21.1  |
 | [ios-gaming-services-kit](ios-gaming-services-kit/) | Facebook iOS Gaming Service Kit  | 18.0.3  |
 
 ## Versions

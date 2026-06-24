@@ -32,11 +32,11 @@ typedef NS_ENUM(NSInteger, GADPublisherPrivacyPersonalizationState) {
 
 /// An age treatment to apply to ad requests.
 typedef NS_ENUM(NSInteger, GADAgeRestrictedTreatment) {
-  // Indicates that no specific age treatment signal applies to ad requests.
+  /// Indicates that no specific age treatment signal applies to ad requests.
   GADAgeRestrictedTreatmentUnspecified = 0,
-  // Indicates that ad requests should receive child age treatment.
+  /// Indicates that ad requests should receive child age treatment.
   GADAgeRestrictedTreatmentChild = 1,
-  // Indicates that ad requests should receive teenage treatment.
+  /// Indicates that ad requests should receive teenage treatment.
   GADAgeRestrictedTreatmentTeen = 2,
 } NS_SWIFT_NAME(AgeRestrictedTreatment);
 
@@ -54,9 +54,9 @@ NS_SWIFT_NAME(RequestConfiguration)
 
 /// The age treatment to apply to ad requests. Consult your own legal counsel to determine the age
 /// treatment settings for your users based on your legal and regulatory requirements. For more
-/// information on how these settings affect ad serving, review
+/// information on this setting, review
 /// https://developers.google.com/admob/ios/targeting#set_the_age_treatment
-
+///
 /// By setting this property, you certify that this notification is accurate and you are authorized
 /// to act on behalf of the owner of the app. You understand that abuse of this setting may result
 /// in termination of your Google account.

@@ -283,6 +283,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 @import CoreFoundation;
 @import CoreGraphics;
+@import CoreText;
 @import Foundation;
 @import ObjectiveC;
 @import QuartzCore;
@@ -409,6 +410,19 @@ SWIFT_CLASS("_TtC6Lottie19CompatibleAnimation")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+/// An Objective-C compatible protocol for providing fonts to Lottie.
+SWIFT_PROTOCOL("_TtP6Lottie31CompatibleAnimationFontProvider_")
+@protocol CompatibleAnimationFontProvider <NSObject>
+- (CTFontRef _Nullable)fontForFamily:(NSString * _Nonnull)family size:(CGFloat)size SWIFT_WARN_UNUSED_RESULT;
+@end
+
+/// An Objective-C compatible protocol for providing images to Lottie.
+SWIFT_PROTOCOL("_TtP6Lottie32CompatibleAnimationImageProvider_")
+@protocol CompatibleAnimationImageProvider <NSObject>
+/// The image to display for the given asset name defined in the <code>LottieAnimation</code> JSON file.
+- (CGImageRef _Nullable)imageForAssetWithName:(NSString * _Nonnull)name SWIFT_WARN_UNUSED_RESULT;
+@end
+
 /// An Objective-C compatible wrapper around Lottie’s AnimationKeypath
 SWIFT_CLASS("_TtC6Lottie26CompatibleAnimationKeypath")
 @interface CompatibleAnimationKeypath : NSObject
@@ -452,6 +466,8 @@ SWIFT_CLASS("_TtC6Lottie23CompatibleAnimationView")
 @property (nonatomic, strong) CompatibleAnimation * _Nullable compatibleAnimation;
 @property (nonatomic) CGFloat loopAnimationCount;
 @property (nonatomic, strong) CompatibleDictionaryTextProvider * _Nullable compatibleDictionaryTextProvider;
+@property (nonatomic, strong) id <CompatibleAnimationFontProvider> _Nullable compatibleAnimationFontProvider;
+@property (nonatomic, strong) id <CompatibleAnimationImageProvider> _Nullable compatibleAnimationImageProvider;
 @property (nonatomic) UIViewContentMode contentMode;
 @property (nonatomic) BOOL shouldRasterizeWhenIdle;
 @property (nonatomic) CGFloat currentProgress;

@@ -18,6 +18,7 @@ enums:
     GACAppCheckErrorCode: { nserror: true }
     GACAppCheckMessageCode: {prefix: GACLoggerAppCheckMessage}
     GACAppCheckLogLevel: {}
+    GACAppCheckBackoffType: {}
 classes:
     FIRAppAttestProvider: #since 14.0
         methods:
@@ -77,6 +78,24 @@ classes:
         methods:
             '-initWithServiceName:resourceName:APIKey:requestHooks:':
                 name: init
+    FIRAppAttestProviderFactory: {} #since 14.0
+    FIRRecaptchaProvider: #since 15.0
+        methods:
+            '-initWithApp:':
+                name: init
+            '-getTokenWithCompletion:':
+                name: getToken
+            '-getLimitedUseTokenWithCompletion:':
+                name: getLimitedUseToken
+    FIRRecaptchaProviderFactory: {} #since 15.0
+    _GACAppCheckAPIService:
+        exclude: true # looks to be internal
+    _GACAppCheckBackoffWrapper:
+        exclude: true # looks to be internal
+    _GACAppCheckErrorUtil:
+        exclude: true # looks to be internal
+    _GACURLSessionDataResponse:
+        exclude: true # looks to be internal
 protocols:
     FIRAppCheckProvider:
         methods:
@@ -109,13 +128,23 @@ protocols:
         methods:
             '-tokenDidUpdate:serviceName:':
                 name: tokenDidUpdate
+    _GACAppCheckAPIServiceProtocol:
+        exclude: true # looks to be internal
+    _GACAppCheckBackoffWrapperProtocol:
+        exclude: true # looks to be internal
+
 functions:
+    GACAppCheckSetErrorToPointer:
+        exclude: true # looks to be internal
+
     # Make sure we don't miss any functions if new ones are introduced in a later version
     (.*):
         class: __FixMe
         name: 'Function_#{g[0]}'
 
 values:
+    kGACAppCheckMissingRecaptchaSDKMessage:
+        exclude: true # looks to be internal
     FIRAppCheckErrorDomain:
         class: FIRAppCheckErrorCode
         name: getClassDomain

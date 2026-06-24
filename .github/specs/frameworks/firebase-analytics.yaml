@@ -1,0 +1,6 @@
+name: firebase-analytics
+moduleFolder: firebase/ios-analytics
+artifactSource:
+  - check if folder exists in ~/Downloads/robopods-wip/Firebase/FirebaseAnalytics/FirebaseAnalytics.xcframework/, stop and report error if not
+downloadLocation: ~/Downloads/robopods-wip/Firebase
+dropVersionSuffix: true

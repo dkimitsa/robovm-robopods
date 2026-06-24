@@ -26,6 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setPrecision:(NSString*)precision;
 - (void)setPlacementId:(NSString*)placementId;
 - (void)setAdUnitName:(NSString*)adUnitName;
+- (void)setLimitDataSharing:(BOOL)shouldLimitDataSharing;
 
 - (BOOL)hasRequiredParams;
 

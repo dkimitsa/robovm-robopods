@@ -1,0 +1,44 @@
+package: org.robovm.pods.google.mobileads.adapters
+framework: MetaAdapter
+include:
+    - foundation
+    - uikit
+    - ../../../../../ios-google-mobile-ads/src/main/bro-gen/google-mobile-ads.yaml
+clang_args: ['-x', 'objective-c']
+headers: 
+    - MetaAdapter.h
+
+private_typedefs:
+
+enums:
+    GADFBAdFormat: {}
+    GADFBErrorCode: {prefix: GADFBError}
+typed_enums:
+
+classes:
+    GADFBNetworkExtras: {}
+    GADMediationAdapterFacebook: {}
+protocols:
+
+functions:
+    # Make sure we don't miss any functions if new ones are introduced in a later version
+    (.*):
+        class: __FixMe
+        name: 'Function_#{g[0]}'
+
+values:
+    GAD(FBSubtitle|FBSocialContext):
+        class: GADFBNetworkExtras
+        name: '#{g[0]}'
+
+    # Make sure we don't miss any values if new ones are introduced in a later version
+    (.*):
+        class: __FixMe
+        name: 'Value_#{g[0]}'
+
+constants:
+
+    # Make sure we don't miss any constants if new ones are introduced in a later version
+    (.*):
+        class: __FixMe
+        name: 'Constant__#{g[0]}'

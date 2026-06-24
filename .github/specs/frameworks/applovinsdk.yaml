@@ -1,0 +1,5 @@
+name: applovinsdk
+moduleFolder: applovinsdk
+artifactSource: check api endpoint for latest ios version and download link https://docs.applovin.com/max/api/1.0/sdk/info
+downloadLocation: ~/Downloads/robopods-wip/AppLovinSDK.xcframework
+dropVersionSuffix: false

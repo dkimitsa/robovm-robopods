@@ -1,0 +1,17 @@
+name: onesignal
+moduleFolder: onesignal
+artifactSource:
+  - check latest release at https://github.com/OneSignal/OneSignal-iOS-SDK/releases;
+  - download OneSignalFramework.xcframework.zip
+  - download OneSignalCore.xcframework.zip
+  - download OneSignalOSCore.xcframework.zip
+  - download OneSignalExtension.xcframework.zip
+  - download OneSignalLocation.xcframework.zip
+  - download OneSignalNotifications.xcframework.zip
+  - download OneSignalInAppMessages.xcframework.zip
+  - download OneSignalOutcomes.xcframework.zip
+  - download OneSignalUser.xcframework.zip
+  - unzip all to ~/Downloads/OneSignal/
+  - location to for verification ~/Downloads/OneSignal/OneSignalFramework.xcframework/
+downloadLocation: ~/Downloads/robopods-wip/OneSignal
+dropVersionSuffix: true

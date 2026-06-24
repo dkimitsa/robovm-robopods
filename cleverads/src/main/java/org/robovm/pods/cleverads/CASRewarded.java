@@ -69,6 +69,14 @@ import org.robovm.apple.corelocation.*;
     public native boolean isExtraFillInterstitialAdEnabled();
     @Property(selector = "setIsExtraFillInterstitialAdEnabled:")
     public native void setIsExtraFillInterstitialAdEnabled(boolean v);
+    @Property(selector = "placement")
+    public native String getPlacement();
+    @Property(selector = "setPlacement:")
+    public native void setPlacement(String v);
+    @Property(selector = "serverSideVerificationData")
+    public native String getServerSideVerificationData();
+    @Property(selector = "setServerSideVerificationData:")
+    public native void setServerSideVerificationData(String v);
     @Property(selector = "isAdLoaded")
     public native boolean isAdLoaded();
     @Property(selector = "contentInfo")

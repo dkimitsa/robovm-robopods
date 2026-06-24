@@ -1,0 +1,8 @@
+name: firebase
+moduleFolder: NOT USED
+artifactSource:
+  - check latest release at https://github.com/firebase/firebase-ios-sdk/releases, download Firebase.zip from assets
+  - zip file might contains a single top-level folder "Firebase", in this case extract to temporary/stage folder and move content of Firebase/ to  downloadLocation;
+  - in result following shall exist: ~/Downloads/robopods-wip/Firebase/METADATA.md
+downloadLocation: ~/Downloads/robopods-wip/Firebase
+dropVersionSuffix: true

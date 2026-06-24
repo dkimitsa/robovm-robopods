@@ -23,6 +23,10 @@
 #import "GACAppCheckTokenDelegate.h"
 #import "GACAppCheckTokenResult.h"
 #import "GACDeviceCheckProvider.h"
+#import "_GACAppCheckAPIService.h"
+#import "_GACAppCheckBackoffWrapper.h"
+#import "_GACAppCheckErrorUtil.h"
+#import "_GACURLSessionDataResponse.h"
 
 FOUNDATION_EXPORT double AppCheckCoreVersionNumber;
 FOUNDATION_EXPORT const unsigned char AppCheckCoreVersionString[];

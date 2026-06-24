@@ -340,6 +340,8 @@ SWIFT_CLASS_NAMED("AdContentInfo")
 @property (nonatomic, readonly) double revenue;
 /// Gets the precision type of the revenue field.
 @property (nonatomic, readonly) enum CASRevenuePrecision revenuePrecision;
+/// The Placement name defined in the Ad Instance.
+@property (nonatomic, readonly, copy) NSString * _Nullable placement;
 /// Gets the total number of impressions across all ad formats for the current user, across all sessions.
 @property (nonatomic, readonly) NSInteger impressionDepth;
 /// Gets the accumulated value of user ad revenue in USD from all ad format impressions.
@@ -587,6 +589,9 @@ typedef SWIFT_ENUM_NAMED(NSInteger, CASSourceId, "AdSourceId", open) {
   CASSourceIdLastPageAd = 31,
   CASSourceIdCustom = 32,
   CASSourceIdUnknown = 33,
+  CASSourceIdDisplayIO = 73,
+  CASSourceIdBidease = 74,
+  CASSourceIdMoloco = 76,
 };
 
 typedef SWIFT_ENUM_NAMED(NSInteger, CASAudience, "Audience", open) {
@@ -622,21 +627,25 @@ SWIFT_CLASS_NAMED("CAS")
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) CASSettings * _Nonnull settings;)
 + (CASSettings * _Nonnull)settings SWIFT_WARN_UNUSED_RESULT;
 /// You can now easily tailor the way you serve your ads to fit a specific audience!
-/// You’ll need to inform our servers of the users details
+/// You’ll need to inform our servers of the user’s details
 /// so the SDK will know to serve ads according to the segment the user belongs to.
 /// <em>Attention:</em> Must be set before initializing the SDK
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) CASTargetingOptions * _Nonnull targetingOptions;)
 + (CASTargetingOptions * _Nonnull)targetingOptions SWIFT_WARN_UNUSED_RESULT;
-/// Get last created <code>CASMediationManager</code> by <code>CAS.create()</code>
+/// Get last created <code>CASMediationManager</code> by <code>CAS.buildManager()</code>
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) CASMediationManager * _Nullable manager;)
 + (CASMediationManager * _Nullable)manager SWIFT_WARN_UNUSED_RESULT;
 + (void)setManager:(CASMediationManager * _Nullable)value;
 /// Create <code>CASMediationManager</code> builder.
-/// Don’t forget to call the <code>ManagerBuilder.create</code> method to create manager instance.
+/// Don’t forget to call the <code>CASManagerBuilder.create</code> method to create a manager instance.
 + (CASManagerBuilder * _Nonnull)buildManager SWIFT_WARN_UNUSED_RESULT;
+/// Returns the integer code identifying this SDK build.
 + (NSInteger)getSDKCode SWIFT_WARN_UNUSED_RESULT;
+/// Returns the current SDK version string (e.g. “4.0.0”).
 + (NSString * _Nonnull)getSDKVersion SWIFT_WARN_UNUSED_RESULT;
+/// Returns the total number of SKAdNetwork identifiers bundled with the SDK.
 + (NSInteger)getSKNetworksCount SWIFT_WARN_UNUSED_RESULT;
+/// Returns the number of AdAttributionKit entries bundled with the SDK.
 + (NSInteger)getAdAttributionKitCount SWIFT_WARN_UNUSED_RESULT;
 /// Call Integration Helper and check current integration in console.
 /// Log tag: [CASIntegrationHelper]
@@ -692,6 +701,9 @@ SWIFT_PROTOCOL_NAMED("CASScreenContent")
 /// Autoload will also retry loading the ad if it fails during the loading process.
 /// By default, autoloading is disabled.
 @property (nonatomic) BOOL isAutoloadEnabled;
+/// An optional placement name for the ad instance that helps categorize
+/// and track statistics across different ad placements.
+@property (nonatomic, copy) NSString * _Nullable placement;
 /// This property returns <code>true</code> if the ad content is successfully loaded and eady to be presented.
 @property (nonatomic, readonly) BOOL isAdLoaded;
 /// Loads the ad content.
@@ -740,6 +752,10 @@ SWIFT_CLASS_NAMED("CASAppOpen")
 /// If enabled, the app open ad will be presented automatically once the app is resumed. The ad must be ready for display at that point.
 /// By default, auto-show is disabled.
 @property (nonatomic) BOOL isAutoshowEnabled;
+/// An optional placement name for the ad instance that helps categorize
+/// and track statistics across different ad placements.
+/// The placement name is applied only before ad load.
+@property (nonatomic, copy) NSString * _Nullable placement;
 /// Loads the app open ad content.
 /// Call this function to load the ad before attempting to present it. The loading process may take some time,
 /// and you will be notified when the ad is successfully loaded or if the loading fails via the <code>delegate</code>.
@@ -861,6 +877,10 @@ SWIFT_CLASS("_TtC18CleverAdsSolutions13CASBannerView")
 /// the ad has been successfully shown and the impression has been accounted for. You can use this to handle
 /// actions that should occur upon a successful ad impression, such as logging or updating analytics.
 @property (nonatomic, weak) id <CASImpressionDelegate> _Nullable impressionDelegate;
+/// An optional placement name for the ad instance that helps categorize
+/// and track statistics across different ad placements.
+/// The placement name is applied only before ad load.
+@property (nonatomic, copy) NSString * _Nullable placement;
 /// This property returns <code>true</code> if the ad content is successfully loaded and eady to be presented.
 @property (nonatomic, readonly) BOOL isAdLoaded;
 /// Information about the currently loaded ad.
@@ -1005,6 +1025,18 @@ SWIFT_CLASS_NAMED("CASInterstitial")
 /// between app transitions or after specific events.
 /// By default, auto-show is disabled.
 @property (nonatomic) BOOL isAutoshowEnabled;
+/// <ul>
+///   <li>
+///     An optional placement name for the ad instance that helps categorize
+///   </li>
+///   <li>
+///     and track statistics across different ad placements.
+///   </li>
+///   <li>
+///     The placement name is applied only before ad load.
+///   </li>
+/// </ul>
+@property (nonatomic, copy) NSString * _Nullable placement;
 /// Loads the interstitial ad content.
 /// Call this function to load the ad before attempting to present it. The loading process may take some time,
 /// and you will be notified when the ad is successfully loaded or if the loading fails via the <code>delegate</code>.
@@ -1284,11 +1316,17 @@ SWIFT_CLASS_NAMED("CASNativeLoader")
 /// Configures the placement of the AdChoices icon within the ad content.
 /// The <code>adChoicesPlacement</code> property allows you to define the location of the AdChoices icon, ensuring compliance
 /// with privacy and advertising regulations. Customize this property to align with your app’s design and user experience.
+/// The icon placement is applied only before ad load.
 @property (nonatomic) enum CASChoicesPlacement adChoicesPlacement;
 /// Sets the initial mute state for video ads.
 /// By default, video ads will start with the sound muted. You can modify this setting to ensure that the video
 /// starts with sound enabled or muted, depending on your app’s requirements.
+/// The mute state is applied only before ad load.
 @property (nonatomic) BOOL isStartVideoMuted;
+/// An optional placement name for the ad instance that helps categorize
+/// and track statistics across different ad placements.
+/// The placement name is applied only before ad load.
+@property (nonatomic, copy) NSString * _Nullable placement;
 /// Starts loading a single native ad.
 /// This method initiates the loading of a single native ad.
 /// note:
@@ -1598,6 +1636,12 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 + (NSString * _Nonnull)lastPageAd SWIFT_WARN_UNUSED_RESULT;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull pubmatic;)
 + (NSString * _Nonnull)pubmatic SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull displayIO;)
++ (NSString * _Nonnull)displayIO SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull bidease;)
++ (NSString * _Nonnull)bidease SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull moloco;)
++ (NSString * _Nonnull)moloco SWIFT_WARN_UNUSED_RESULT;
 /// Meta Audience Network  Advertising Tracking Enabled
 /// Set the <code>FBAdSettings.setAdvertiserTrackingEnabled</code> flag.
 /// The setAdvertiserTrackingEnabled “1” flag allows you to inform Audience Network whether to use the data to deliver personalized ads in line with your own legal obligations,
@@ -1680,6 +1724,24 @@ SWIFT_CLASS_NAMED("CASRewarded")
 /// <code>userDidEarnRewardHandler</code> will still be triggered as if the user completed the rewarded video.
 /// This option is enabled by default.
 @property (nonatomic) BOOL isExtraFillInterstitialAdEnabled;
+/// <ul>
+///   <li>
+///     An optional placement name for the ad instance that helps categorize
+///   </li>
+///   <li>
+///     and track statistics across different ad placements.
+///   </li>
+///   <li>
+///     The placement name is applied only before ad load.
+///   </li>
+/// </ul>
+@property (nonatomic, copy) NSString * _Nullable placement;
+/// Sets custom data to be included in server-side verification callbacks.
+/// Maximum 8192 characters allowed for the custom data.
+/// The callbacks contain query parameters that describe the rewarded ad interaction,
+/// including the <code>placement</code> and <code>userID</code> from <code>CAS.targetingOptions</code> alongside any custom data provided here.
+/// This feature is currently in closed beta.
+@property (nonatomic, copy) NSString * _Nullable serverSideVerificationData;
 /// Loads the rewarded ad content.
 /// Call this function to load the ad before attempting to present it. The loading process may take some time,
 /// and you will be notified when the ad is successfully loaded or if the loading fails via the <code>delegate</code>.
@@ -2311,6 +2373,8 @@ SWIFT_CLASS_NAMED("NativeAdContent")
 /// Indicates whether the native ad contains video content.
 /// Returns <code>true</code> if the ad includes video content (e.g., a promotional video). Otherwise, it will return <code>false</code>.
 @property (nonatomic, readonly) BOOL hasVideoContent;
+/// Indicates whether the native ad contains AdChoices view.
+@property (nonatomic, readonly) BOOL hasAdChoices;
 /// The aspect ratio of the media content in the ad (width/height).
 /// This is calculated based on the dimensions of the media content, such as a video or image. For example, a 4:3 aspect ratio
 @property (nonatomic, readonly) CGFloat mediaContentAspectRatio;

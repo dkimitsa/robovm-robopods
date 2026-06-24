@@ -173,7 +173,7 @@ import org.robovm.apple.uikit.*;
     @Method(selector = "initWithApiKey:andSecret:")
     protected native @Pointer long init(String apikey, String secret);
     @Method(selector = "setGlobalProperty:withValue:overrideExisting:")
-    public native void setGlobalProperty(String key, String value, boolean overrideExisiting);
+    public native void setGlobalProperty(String key, String value, boolean overrideExisting);
     @Method(selector = "toJsonString")
     public native String toJsonString();
     /*</methods>*/

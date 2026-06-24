@@ -52,10 +52,16 @@ classes:
                 name: logCrossPromoteImpression
             '+logAndOpenStore:campaign:parameters:openStore:':
                 name: logAndOpenStore
+            '+logCrossPromoteImpression:campaign:userParams:':
+                name: logCrossPromoteImpression
+            '+logAndOpenStore:campaign:userParams:openStore:':
+                name: logAndOpenStore
     AppsFlyerDeepLink: { }
     AppsFlyerDeepLinkResult: { }
     AppsFlyerLib:
         methods:
+            '-initWithDevKey:appleAppId:':
+                name: init
             '-waitForATTUserAuthorizationWithTimeoutInterval:':
                 name: waitForATTUserAuthorization
             '-setPluginInfoWith:pluginVersion:additionalParams:':
@@ -92,11 +98,15 @@ classes:
                 name: remoteDebuggingCallV2
             '-performOnAppAttributionWithURL:':
                 name: performOnAppAttribution
+            '-setHost:hostName:':
+                name: setHost
             '-setHost:withHostPrefix:':
                 name: setHost
             '-appendParametersToDeepLinkingURLWithString:parameters:':
                 name: appendParametersToDeepLinkingURL
             '-setPartnerDataWithPartnerId:partnerInfo:':
+                name: setPartnerData
+            '-setPartnerDataWithPartnerId:data:':
                 name: setPartnerData
             '-validateAndLogInAppPurchase:purchaseAdditionalDetails:completion:':
                 name: validateAndLogInAppPurchase
@@ -109,6 +119,10 @@ classes:
             '+generateInviteUrlWithLinkGenerator:completionHandler:':
                 name: generateInviteUrl
             '+logInvite:parameters:':
+                name: logInvite
+            '+generateInviteLinkWithLinkGenerator:completionHandler:':
+                name: generateInviteLink
+            '+logInvite:eventParameters:':
                 name: logInvite
 protocols:
     AppsFlyerDeepLinkDelegate: { }

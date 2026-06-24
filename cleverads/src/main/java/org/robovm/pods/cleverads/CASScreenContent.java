@@ -59,6 +59,10 @@ import org.robovm.apple.corelocation.*;
     boolean isAutoloadEnabled();
     @Property(selector = "setIsAutoloadEnabled:")
     void setIsAutoloadEnabled(boolean v);
+    @Property(selector = "placement")
+    String getPlacement();
+    @Property(selector = "setPlacement:")
+    void setPlacement(String v);
     @Property(selector = "isAdLoaded")
     boolean isAdLoaded();
     @Property(selector = "contentInfo")

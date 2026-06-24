@@ -38,6 +38,7 @@ public enum /*<name>*/GACAppCheckMessageCode/*</name>*/ implements ValuedEnum {
     /*<values>*/
     CodeUnknown(1001L),
     CodeProviderIsMissing(2002L),
+    CodeStagingModeEnabled(2003L),
     CodeUnexpectedHTTPCode(3001L),
     LocalDebugToken(4001L),
     EnvironmentVariableDebugToken(4002L),
