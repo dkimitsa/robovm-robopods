@@ -53,8 +53,6 @@ import org.robovm.pods.facebook.corebasics.*;
     
     /*</properties>*/
     /*<methods>*/
-    @Method(selector = "logWarnings")
-    void logWarnings();
     @Method(selector = "logIfSDKSettingsChanged")
     void logIfSDKSettingsChanged();
     @Method(selector = "recordInstall")

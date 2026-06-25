@@ -55,8 +55,6 @@ import org.robovm.pods.facebook.corebasics.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @NotImplemented("logWarnings")
-    public void logWarnings() {}
     @NotImplemented("logIfSDKSettingsChanged")
     public void logIfSDKSettingsChanged() {}
     @NotImplemented("recordInstall")

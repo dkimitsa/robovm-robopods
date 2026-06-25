@@ -52,14 +52,14 @@ Latest bindings:
 | [BranchMetrics](branchmetrics/)         | 3.14.0  |
 | [Charts](charts/)                       | 5.1.0   |
 | [CleverAds](cleverads/)                 | 4.7.4   |
-| [Facebook](facebook/)                   | 18.0.3  |
+| [Facebook](facebook/)                   | 18.1.0  |
 | [Facebook Audience](facebook-audience/) | 6.21.1  |
 | [Firebase](firebase/)                   | 12.15.0 |
 | [Fyber](fyber/)                         | 8.4.7   |
-| [Google Mobile Ads](google-mobile-ads/) | 13.5.0  |
+| [Google Mobile Ads](google-mobile-ads/) | 13.6.0  |
 | [HelpShiftX](helpshift/)                | 10.5.0  |
 | [InMobi](inmobi/)                       | 11.3.0  |
-| [IronSource](ironsource/)               | 9.4.1   |
+| [IronSource](ironsource/)               | 9.4.2   |
 | [Lottie](lottie/)                       | 4.6.1   |
 | [OneSignal](onesignal/)                 | 5.5.3   |
 | [Pollfish](pollfish/)                   | 6.5.0   |

@@ -3,6 +3,7 @@
 ### Available RoboPods
 | RoboPods Version | Facebook Gaming |
 |------------------|-----------------|
+| 18.1.0.0         | 18.1.0          |
 | 18.0.3.0         | 18.0.3          |
 
 ### Frameworks required for this pod:

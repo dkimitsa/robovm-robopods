@@ -7,12 +7,12 @@ https://github.com/facebook/facebook-objc-sdk
 
 | RoboPod                                             | Description                      | Version |
 |-----------------------------------------------------|----------------------------------|---------|
-| [ios-core](ios-core/)                               | Facebook Core                    | 18.0.3  |
-| [ios-core-basics](ios-core-basics/)                 | Facebook Core Basics             | 18.0.3  |
-| [ios-login](ios-login/)                             | Facebook iOS Login Kit           | 18.0.3  |
-| [ios-share](ios-share/)                             | Facebook iOS Share Kit           | 18.0.3  |
-| [ios-aem](ios-aem/)                                 | Facebook iOS AEM Kit             | 18.0.3  |
-| [ios-gaming-services-kit](ios-gaming-services-kit/) | Facebook iOS Gaming Service Kit  | 18.0.3  |
+| [ios-core](ios-core/)                               | Facebook Core                    | 18.1.0  |
+| [ios-core-basics](ios-core-basics/)                 | Facebook Core Basics             | 18.1.0  |
+| [ios-login](ios-login/)                             | Facebook iOS Login Kit           | 18.1.0  |
+| [ios-share](ios-share/)                             | Facebook iOS Share Kit           | 18.1.0  |
+| [ios-aem](ios-aem/)                                 | Facebook iOS AEM Kit             | 18.1.0  |
+| [ios-gaming-services-kit](ios-gaming-services-kit/) | Facebook iOS Gaming Service Kit  | 18.1.0  |
 
 ## Versions
 

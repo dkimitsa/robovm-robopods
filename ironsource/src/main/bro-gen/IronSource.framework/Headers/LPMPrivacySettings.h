@@ -34,6 +34,9 @@ NS_ASSUME_NONNULL_BEGIN
  * Sets the COPPA (Children's Online Privacy Protection Act) flag. This flag indicates whether
  * the user is a child and the app should comply with COPPA regulations.
  *
+ * Must be called before SDK initialization. If the SDK is already initialized, this
+ * call is ignored and an error is logged.
+ *
  * @param value YES if the user is a child and COPPA compliance is required, NO otherwise.
  */
 + (void)setCOPPA:(BOOL)value;

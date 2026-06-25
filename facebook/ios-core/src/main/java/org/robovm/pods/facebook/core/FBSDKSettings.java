@@ -166,10 +166,18 @@ import org.robovm.pods.facebook.corebasics.*;
     public native String getGraphAPIDebugParamValue();
     @Property(selector = "graphAPIDebugParameterValue")
     public native String getGraphAPIDebugParameterValue();
+    @Property(selector = "limitedLoginAutoRefreshInterval")
+    public native double getLimitedLoginAutoRefreshInterval();
+    @Property(selector = "setLimitedLoginAutoRefreshInterval:")
+    public native void setLimitedLoginAutoRefreshInterval(double v);
     @Property(selector = "isDomainErrorEnabled")
     public native boolean isDomainErrorEnabled();
     @Property(selector = "setIsDomainErrorEnabled:")
     public native void setIsDomainErrorEnabled(boolean v);
+    @Property(selector = "addToMessagingCustomerBaseForWhatsApp")
+    public native NSNumber getAddToMessagingCustomerBaseForWhatsApp();
+    @Property(selector = "setAddToMessagingCustomerBaseForWhatsApp:")
+    public native void setAddToMessagingCustomerBaseForWhatsApp(NSNumber v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
@@ -181,12 +189,12 @@ import org.robovm.pods.facebook.corebasics.*;
     public native void enableLoggingBehavior(FBSDKLoggingBehavior loggingBehavior);
     @Method(selector = "disableLoggingBehavior:")
     public native void disableLoggingBehavior(FBSDKLoggingBehavior loggingBehavior);
+    @Method(selector = "isLoggingBehaviorEnabled:")
+    public native boolean isLoggingBehaviorEnabled(FBSDKLoggingBehavior loggingBehavior);
     @Method(selector = "sharedSettings")
     public static native FBSDKSettings sharedSettings();
     @Method(selector = "recordInstall")
     public native void recordInstall();
-    @Method(selector = "logWarnings")
-    public native void logWarnings();
     @Method(selector = "logIfSDKSettingsChanged")
     public native void logIfSDKSettingsChanged();
     /*</methods>*/

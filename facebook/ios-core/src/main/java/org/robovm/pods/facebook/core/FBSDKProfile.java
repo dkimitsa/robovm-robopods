@@ -94,6 +94,8 @@ import org.robovm.pods.facebook.corebasics.*;
     public native String getGender();
     @Property(selector = "permissions")
     public native NSSet<NSString> getPermissions();
+    @Property(selector = "isLimited")
+    public native boolean isLimited();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

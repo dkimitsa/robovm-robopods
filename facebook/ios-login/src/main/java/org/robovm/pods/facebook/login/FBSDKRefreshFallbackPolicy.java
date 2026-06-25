@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.robovm.pods.ironsource;
+package org.robovm.pods.facebook.login;
 
 /*<imports>*/
 import java.io.*;
@@ -28,33 +28,42 @@ import org.robovm.rt.bro.*;
 import org.robovm.rt.bro.annotation.*;
 import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
-import org.robovm.apple.uikit.*;
+import org.robovm.apple.dispatch.*;
 import org.robovm.apple.coregraphics.*;
+import org.robovm.apple.uikit.*;
 import org.robovm.apple.coreanimation.*;
+import org.robovm.pods.facebook.core.*;
+import org.robovm.pods.facebook.corebasics.*;
 /*</imports>*/
 
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/ISMediationGlobalDataWriterFacade/*</name>*/ 
-    extends /*<extends>*/NSObject/*</extends>*/ 
-    /*<implements>*//*</implements>*/ {
+/*<annotations>*/@Marshaler(ValuedEnum.AsMachineSizedSIntMarshaler.class)/*</annotations>*/
+public enum /*<name>*/FBSDKRefreshFallbackPolicy/*</name>*/ implements ValuedEnum {
+    /*<values>*/
+    Automatic(0L),
+    SilentOnly(1L),
+    ExplicitOnly(2L),
+    DirectOnly(3L);
+    /*</values>*/
 
-    /*<ptr>*/public static class ISMediationGlobalDataWriterFacadePtr extends Ptr<ISMediationGlobalDataWriterFacade, ISMediationGlobalDataWriterFacadePtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(ISMediationGlobalDataWriterFacade.class); }/*</bind>*/
+    /*<bind>*/
+    /*</bind>*/
     /*<constants>*//*</constants>*/
-    /*<constructors>*/
-    public ISMediationGlobalDataWriterFacade() {}
-    protected ISMediationGlobalDataWriterFacade(Handle h, long handle) { super(h, handle); }
-    protected ISMediationGlobalDataWriterFacade(SkipInit skipInit) { super(skipInit); }
-    /*</constructors>*/
-    /*<properties>*/
-    
-    /*</properties>*/
-    /*<members>*//*</members>*/
-    /*<methods>*/
-    @Method(selector = "setGoogleWaterMark:")
-    public native void setGoogleWaterMark(String waterMark);
-    /*</methods>*/
+    /*<methods>*//*</methods>*/
+
+    private final long n;
+
+    private /*<name>*/FBSDKRefreshFallbackPolicy/*</name>*/(long n) { this.n = n; }
+    public long value() { return n; }
+    public static /*<name>*/FBSDKRefreshFallbackPolicy/*</name>*/ valueOf(long n) {
+        for (/*<name>*/FBSDKRefreshFallbackPolicy/*</name>*/ v : values()) {
+            if (v.n == n) {
+                return v;
+            }
+        }
+        throw new IllegalArgumentException("No constant with value " + n + " found in " 
+            + /*<name>*/FBSDKRefreshFallbackPolicy/*</name>*/.class.getName());
+    }
 }

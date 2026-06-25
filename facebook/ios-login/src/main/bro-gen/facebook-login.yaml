@@ -24,6 +24,8 @@ enums:
     FBSDKLoginTracking: {}
     FBSDKLoginManagerState: {}
     FBSDKAppSwitch: {}
+    FBSDKLimitedLoginRefreshError: { nserror: true }
+    FBSDKRefreshFallbackPolicy: {}
 typed_enums:
     FBSDKLoginAuthType:
         enum: FBSDKLoginAuthType
@@ -69,6 +71,8 @@ classes:
                 name: openURL
             '-canOpenURL:forApplication:sourceApplication:annotation:':
                 name: canOpenURL
+            '-refreshLimitedLoginFromViewController:fallbackPolicy:completion:':
+                name: refreshLimitedLoginFromViewController
     FBSDKLoginManagerLoginResult:
         methods:
             '-initWithToken:isCancelled:grantedPermissions:declinedPermissions:':
@@ -264,6 +268,10 @@ values:
         name: 'Value_#{g[0]}'
 
 constants:
+    FBSDKLimitedLoginRefreshErrorDomain:
+        class: FBSDKLimitedLoginRefreshError
+        name: ErrorDomain
+
     SWIFT_.*:
         exclude: true
 

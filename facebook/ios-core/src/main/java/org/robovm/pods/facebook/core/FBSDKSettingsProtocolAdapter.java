@@ -141,6 +141,10 @@ import org.robovm.pods.facebook.corebasics.*;
     public boolean isDomainErrorEnabled() { return false; }
     @NotImplemented("setIsDomainErrorEnabled:")
     public void setIsDomainErrorEnabled(boolean v) {}
+    @NotImplemented("limitedLoginAutoRefreshInterval")
+    public double getLimitedLoginAutoRefreshInterval() { return 0; }
+    @NotImplemented("setLimitedLoginAutoRefreshInterval:")
+    public void setLimitedLoginAutoRefreshInterval(double v) {}
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
@@ -148,5 +152,7 @@ import org.robovm.pods.facebook.corebasics.*;
     public void setDataProcessingOptions(NSArray<NSString> options) {}
     @NotImplemented("setDataProcessingOptions:country:state:")
     public void setDataProcessingOptions(NSArray<NSString> options, int country, int state) {}
+    @NotImplemented("isLoggingBehaviorEnabled:")
+    public boolean isLoggingBehaviorEnabled(FBSDKLoggingBehavior loggingBehavior) { return false; }
     /*</methods>*/
 }
