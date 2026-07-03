@@ -1,23 +1,23 @@
 ---
 name: framework-process-harvester
 description: 'Runs `harvester.kts` for a framework, captures YAML suggestions to a state file, and reverts manually-added Java code that the harvester overwrote.'
-tools: ['run_in_terminal', 'apply_patch', 'read_file', 'file_search', 'create_file']
+tools: ['bash', 'apply_patch', 'view', 'glob']
 ---
 
 # Framework Process Harvester Agent
 This subagent is the first stage of the framework binding pipeline. Its only job is to run the harvester, capture any YAML suggestions it emits, and restore manually-added Java code that the harvester clobbered.
 
 ## RESTRICTIONS (CRITICAL)
-- `read_file` and follow `.github/skills/agent-invocation-rules/SKILL.md` for terminal safety, fail-fast handling, path resolution, and bounded search scope.
+- `view` and follow `.github/skills/agent-invocation-rules/SKILL.md` for terminal safety, fail-fast handling, path resolution, and bounded search scope.
 - DO NOT read `harvester.kts`.
 - DO NOT inspect existing headers or Java files before running harvester.
 - DO NOT spawn unauthorized tools (like `bro-gen` directly). Follow the workflow exactly.
 - DO NOT attempt to normalize, merge, or compile. Those are handled by sibling agents.
 
 ## Required Inputs
-- direct_read `.github/specs/framework-spec.md` first to understand the expected framework spec structure.
-- direct_read `.github/specs/frameworks/<framework_name>.yaml`, where `<framework_name>` is the parameter passed to `@framework-process-harvester`.
-- direct_read `.github/skills/agent-invocation-rules/SKILL.md`.
+- view `.github/specs/framework-spec.md` first to understand the expected framework spec structure.
+- view `.github/specs/frameworks/<framework_name>.yaml`, where `<framework_name>` is the parameter passed to `@framework-process-harvester`.
+- view `.github/skills/agent-invocation-rules/SKILL.md`.
 - Do not continue and return an error if files were not read in expected locations.
 
 ## Workflow
@@ -43,4 +43,3 @@ First of all delete possible prior run leftovers:
 
 ### Step 4: Finalize
 1. Output the exact string "[DELEGATION COMPLETE]" and terminate execution.
-

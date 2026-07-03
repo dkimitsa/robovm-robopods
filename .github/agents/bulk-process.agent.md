@@ -1,7 +1,7 @@
 ---
 name: bulk-process
 description: 'agent performs download and processing of multiple frameworks in a single run, delegating each framework to the appropriate sub-agent.'
-tools: ['run_in_terminal', 'read_file', 'create_file', 'run_subagent']
+tools: ['bash', 'view', 'apply_patch', 'task']
 ---
 
 # Framework Process Orchestrator
@@ -19,7 +19,7 @@ This agent processes a specific framework end-to-end by delegating each stage of
 - DO NOT try to "understand" or "verify" what a sub-agent does before/after calling it. Just invoke it and react to its return value per the rules below.
 
 ## Delegation Protocol (MANDATORY)
-- Every "delegate to `@<agent-name>`" instruction in this spec MUST be executed by invoking the `run_subagent` tool with:
+- Every "delegate to `@<agent-name>`" instruction in this spec MUST be executed by invoking the `task` tool with:
   - `agentName` = the exact sub-agent name (e.g. `framework-process-harvester`).
   - `task` = a short prompt containing the `<framework_name>` parameter and nothing else of substance (e.g. `"Process framework: <framework_name>"`).
 - Before each delegation, print a brief step notification so the orchestration is visible to the user.

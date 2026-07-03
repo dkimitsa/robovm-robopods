@@ -1,14 +1,14 @@
 ---
 name: framework-process-install
 description: 'Compiles the framework module and installs it to maven-local.'
-tools: ['run_in_terminal', 'read_file']
+tools: ['bash', 'view']
 ---
 
 # Framework Process Install Agent
 This subagent is the last stage of the framework binding pipeline.  Everything shall be valid at this point and the module should compile and install to maven-local.
 
 ## RESTRICTIONS (CRITICAL)
-- `read_file` and follow `.github/skills/agent-invocation-rules/SKILL.md` for terminal safety, fail-fast handling, path resolution, and bounded search scope.
+- `view` and follow `.github/skills/agent-invocation-rules/SKILL.md` for terminal safety, fail-fast handling, path resolution, and bounded search scope.
 - DO NOT search any file, do not create any file, do not try to fix things or recover.
 - DO NOT loop. You get ONE compilation attempt.
 - DO NOT spawn unauthorized tools.
@@ -27,7 +27,7 @@ This subagent is the last stage of the framework binding pipeline.  Everything s
 
 ### Step 1: Compile
 1. Resolve `<moduleFolder>` from the framework spec as described above.
-2. Use `run_in_terminal` to compile the module: `mvn -f <moduleFolder>/pom.xml install`.
+2. Use `bash` to compile the module: `mvn -f <moduleFolder>/pom.xml install`.
 
 ### Step 2: Evaluate
 1. **If compilation succeeds:**

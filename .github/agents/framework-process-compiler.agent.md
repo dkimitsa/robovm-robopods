@@ -1,14 +1,14 @@
 ---
 name: framework-process-compiler
 description: 'Compiles the framework module and attempts a single round of YAML-based recovery if compilation fails. Returns REBIND-REQUIRED if the bro-gen YAML was modified during recovery.'
-tools: ['run_in_terminal', 'apply_patch', 'read_file', 'create_file']
+tools: ['bash', 'apply_patch', 'view']
 ---
 
 # Framework Process Compiler Agent
 This subagent validates that the module compiles by invoking the build tool, and — if it does not — attempts a single recovery pass by adjusting the bro-gen YAML.
 
 ## RESTRICTIONS (CRITICAL)
-- `read_file` and follow `.github/skills/agent-invocation-rules/SKILL.md` for terminal safety, fail-fast handling, path resolution, and bounded search scope.
+- `view` and follow `.github/skills/agent-invocation-rules/SKILL.md` for terminal safety, fail-fast handling, path resolution, and bounded search scope.
 - DO NOT run `harvester.kts`.
 - DO NOT merge normalized suggestions (that is the merger agent's job).
 - DO NOT loop. You get ONE compilation attempt and at most ONE recovery edit followed by ONE re-evaluation decision.
@@ -31,7 +31,7 @@ This subagent validates that the module compiles by invoking the build tool, and
 
 ### Step 1: Compile
 1. Resolve `<moduleFolder>` from the framework spec as described above.
-2. Use `run_in_terminal` to compile the module: `mvn -f <moduleFolder>/pom.xml compile` (or the equivalent build command specified in the framework spec).
+2. Use `bash` to compile the module: `mvn -f <moduleFolder>/pom.xml compile` (or the equivalent build command specified in the framework spec).
 
 ### Step 2: Evaluate
 1. **If compilation succeeds:**

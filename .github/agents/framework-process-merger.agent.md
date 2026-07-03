@@ -1,14 +1,14 @@
 ---
 name: framework-process-merger
 description: 'Merges normalized YAML suggestions into the framework bro-gen YAML file. Returns REBIND-REQUIRED when any merge occurred.'
-tools: ['run_in_terminal', 'apply_patch', 'read_file', 'file_search', 'create_file']
+tools: ['bash', 'apply_patch', 'view', 'glob']
 ---
 
 # Framework Process Merger Agent
 This subagent is the third stage of the framework binding pipeline. It applies the previously normalized YAML fragment into the actual bro-gen YAML file for the framework.
 
 ## RESTRICTIONS (CRITICAL)
-- `read_file` and follow `.github/skills/agent-invocation-rules/SKILL.md` for terminal safety, fail-fast handling, path resolution, and bounded search scope.
+- `view` and follow `.github/skills/agent-invocation-rules/SKILL.md` for terminal safety, fail-fast handling, path resolution, and bounded search scope.
 - DO NOT run `harvester.kts`.
 - DO NOT re-normalize, rename, or deduplicate suggestions — they were already normalized upstream.
 - DO NOT attempt compilation.
@@ -39,7 +39,7 @@ This subagent is the third stage of the framework binding pipeline. It applies t
 ### Step 3: Merge (key-aware, no duplicates)
 *(MANDATORY procedure for every entry in the normalized fragment — do NOT shortcut with a blind append.)*
 
-1. **Read the full target YAML first.** You must have its current structure in context before editing. Identify each top-level section that exists (`classes:`, `protocols:`, `enums:`, `categories:`, `functions:`, `constants:`, etc.).
+1. **View the full target YAML first.** You must have its current structure in context before editing. Identify each top-level section that exists (`classes:`, `protocols:`, `enums:`, `categories:`, `functions:`, `constants:`, etc.).
 2. **For each top-level section in the normalized fragment:**
    - If the section already exists in the target, merge under it. Do NOT create a second sibling section with the same name.
    - If the section does not exist, add it once, in a sensible location (preferably grouped with related sections).

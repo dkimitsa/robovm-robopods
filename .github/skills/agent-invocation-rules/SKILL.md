@@ -13,12 +13,12 @@ Use this skill whenever an agent invokes terminal commands, reads repository fil
 ## File read 
 `direct_read` directive means following: 
 - if path to file is constructed by you, check if it is valid and there is no typo in it.
-- use 'read_file' tool to read the file, do not use `file_search` or any other discovery search to verify its presence.
+- use the `view` tool to read the file, do not use `glob` or `rg` or any other discovery search to verify its presence.
 - if operation fails, report the error and stop immediately. Do not try to recover or guess a replacement path.
 
 ## Pathing and Scope
 - Do not guess file locations. Use only the file paths named by the agent's required inputs and workflow.
-- **DO NOT** use glob searches like `file_search` for deterministic file path, read that file directly using `read_file`;
+- **DO NOT** use glob searches like `glob` or `rg` for deterministic file path, read that file directly using `view`;
 - Do not search beyond the agent's explicitly allowed scope.
 - Use only the exact absolute path already provided.
 - Never prepend, rewrite, normalize, or “repair” a path unless explicitly instructed.
@@ -35,7 +35,7 @@ Use this skill whenever an agent invokes terminal commands, reads repository fil
 
 ## Terminal Safety (CRITICAL)
 - Never switch shells for command execution. Use the current shell only; do not wrap commands in `sh -lc`, `bash -lc`, or similar shell-launching prefixes.
-- When generating `run_in_terminal` commands, do not use `set -e`, `set -euo pipefail`, or `exit`.
+- When generating `bash` commands, do not use `set -e`, `set -euo pipefail`, or `exit`.
 - Avoid piping into commands that are also consuming heredoc input.
 - Prefer simple chained commands using `&&` or `;`.
 - Keep shell snippets minimal and deterministic.
@@ -48,4 +48,3 @@ Use this skill whenever an agent invokes terminal commands, reads repository fil
 ## Search Discipline
 - Use bounded searches only within the directory scope explicitly allowed by the agent.
 - Avoid broad workspace scans unless the agent explicitly permits them.
-

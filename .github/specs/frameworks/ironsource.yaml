@@ -1,4 +1,8 @@
 name: ironsource
 moduleFolder: ironsource
-artifactSource: download latest IronSourceX.X.X.zip from https://github.com/ironsource-mobile/iOS-sdk/releases/ and unpack to IronSource
+artifactSource:
+    - check latest release at https://github.com/ironsource-mobile/iOS-sdk/releases/
+    - download IronSourceX.X.X.zip from assets
+    - unpack it an move IronSource to ./.robopods-wip/
+    - expected location ./.robopods-wip/IronSource/IronSource.xcframework
 downloadLocation: ./.robopods-wip/IronSource/
