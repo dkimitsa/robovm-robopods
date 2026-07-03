@@ -306,73 +306,258 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 
 #if defined(__OBJC__)
 
-typedef SWIFT_ENUM_NAMED(NSInteger, UADSAdFormat, "AdFormat", open) {
+@class NSString;
+SWIFT_CLASS("_TtC8UnityAds13LoggerWrapper")
+@interface LoggerWrapper : NSObject
+- (void)log:(NSString * _Nonnull)message;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+/// Defines the different types of ad formats supported by Unity Ads.
+typedef SWIFT_ENUM(NSInteger, UADSAdFormat, open) {
+/// No ad format specified.
   UADSAdFormatUnspecified = 0,
+/// Full-screen ads shown at natural pauses in the app.
   UADSAdFormatInterstitial = 1,
+/// Ads that grant users a reward after completion.
   UADSAdFormatRewarded = 2,
+/// Rectangular ads displayed within the app’s layout, typically anchored to the top or bottom of the screen.
   UADSAdFormatBanner = 3,
 };
 
 @class UADSBannerLoadConfiguration;
 @protocol UnityAdsError;
 @class UIView;
-SWIFT_CLASS_NAMED("BannerAd")
+/// Manages the loading and showing of banner ads.
+/// Use this class to load and display banner ads within your app’s view hierarchy.
+/// Example usage:
+/// \code
+/// let config = UADSBannerLoadConfigurationBuilder(
+///     placementId: "banner",
+///     bannerSize: CGSize(width: 320, height: 50),
+///     delegate: self
+/// ).build()
+///
+/// UADSBannerAd.load(config) { banner, error in
+///     if let banner = banner {
+///         containerView.addSubview(banner.view)
+///     }
+/// }
+///
+/// \endcode
+SWIFT_CLASS("_TtC8UnityAds12UADSBannerAd")
 @interface UADSBannerAd : NSObject
+/// Loads a banner ad with the specified configuration.
+/// \param config The options for loading the banner ad.
+///
+/// \param completion A callback that gets called when the banner is loaded.
+/// Passes the loaded <code>UADSBannerAd</code> instance if successful, or a <code>UnityAdsError</code> if loading fails.
+///
 + (void)load:(UADSBannerLoadConfiguration * _Nonnull)config completion:(void (^ _Nonnull)(UADSBannerAd * _Nullable, id <UnityAdsError> _Nullable))completion;
+/// A view property that provides access to the banner ad instance.
+/// Use this property to insert the banner ad within your app’s existing view hierarchy
+/// at the desired location.
 @property (nonatomic, readonly, strong) UIView * _Nonnull view;
+/// A callback that gets triggered when the ad expires.
+/// Set this property to be notified when a loaded banner ad expires and is no longer valid.
 @property (nonatomic, copy) void (^ _Nullable onAdExpired)(UADSBannerAd * _Nonnull);
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-SWIFT_PROTOCOL_NAMED("BannerAdDelegate")
+/// A protocol for handling banner ad events.
+/// Implement this protocol to receive callbacks when banner ads are displayed, clicked, or fail.
+SWIFT_PROTOCOL("_TtP8UnityAds20UADSBannerAdDelegate_")
 @protocol UADSBannerAdDelegate <NSObject>
+/// Called when a banner ad is successfully displayed (impression recorded).
+/// \param banner The banner ad that was displayed.
+///
 - (void)bannerImpression:(UADSBannerAd * _Nonnull)banner;
+/// Called when the user clicks the banner ad.
+/// \param banner The banner ad that was clicked.
+///
 - (void)bannerDidClick:(UADSBannerAd * _Nonnull)banner;
+/// Called if the banner fails to display.
+/// \param banner The banner ad that failed.
+///
+/// \param error A <code>UnityAdsError</code> explaining the failure.
+///
 - (void)bannerDidFailShow:(UADSBannerAd * _Nonnull)banner error:(id <UnityAdsError> _Nonnull)error;
 @end
 
-SWIFT_CLASS_NAMED("BannerLoadConfiguration")
+@class UADSMediationInfo;
+/// The configuration class containing options needed to load banner ads.
+/// Use <code>UADSBannerLoadConfigurationBuilder</code> to create instances of this class.
+SWIFT_CLASS("_TtC8UnityAds27UADSBannerLoadConfiguration")
 @interface UADSBannerLoadConfiguration : NSObject
+/// The placement ID defined in the Unity Monetization dashboard.
+@property (nonatomic, readonly, copy) NSString * _Nonnull placementId;
+/// Ad markup data that’s used when loading an ad through bidding.
+@property (nonatomic, readonly, copy) NSString * _Nullable adMarkup;
+/// The size of the banner ad.
+@property (nonatomic, readonly) CGSize bannerSize;
+/// Delegate to handle banner ad events.
+@property (nonatomic, readonly, strong) id <UADSBannerAdDelegate> _Nullable delegate;
+/// The ad unit or placement ID defined in your mediation partner’s dashboard.
+@property (nonatomic, readonly, copy) NSString * _Nullable mediationAdUnitId;
+/// Specifies details about your mediation integration.
+@property (nonatomic, readonly, strong) UADSMediationInfo * _Nullable mediationInfo;
+/// Additional custom key-value pairs.
+@property (nonatomic, readonly, copy) NSDictionary<NSString *, NSString *> * _Nonnull extras;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-@class NSString;
-@class UADSMediationInfo;
-SWIFT_CLASS_NAMED("BannerLoadConfigurationBuilder")
+/// A builder class for creating <code>UADSBannerLoadConfiguration</code> instances.
+/// Use this builder to configure the options for loading banner ads.
+/// Example usage:
+/// \code
+/// let config = UADSBannerLoadConfigurationBuilder(
+///     placementId: "banner",
+///     bannerSize: CGSize(width: 320, height: 50),
+///     delegate: self
+/// )
+/// .with(adMarkup: biddingToken)
+/// .build()
+///
+/// \endcode
+SWIFT_CLASS("_TtC8UnityAds34UADSBannerLoadConfigurationBuilder")
 @interface UADSBannerLoadConfigurationBuilder : NSObject
+/// Creates a new instance of <code>UADSBannerLoadConfigurationBuilder</code>.
+/// \param placementId The placement ID defined in the Unity Monetization dashboard.
+///
+/// \param bannerSize The size of the banner ad.
+///
+/// \param delegate Delegate to handle banner ad events.
+///
+///
+/// returns:
+/// An instance of <code>UADSBannerLoadConfigurationBuilder</code>.
 - (nonnull instancetype)initWithPlacementId:(NSString * _Nonnull)placementId bannerSize:(CGSize)bannerSize delegate:(id <UADSBannerAdDelegate> _Nonnull)delegate OBJC_DESIGNATED_INITIALIZER;
+/// Adds an adMarkup to the <code>UADSBannerLoadConfigurationBuilder</code>.
+/// \param adMarkup Ad markup data that’s used when loading an ad through bidding.
+///
+///
+/// returns:
+/// The updated <code>UADSBannerLoadConfigurationBuilder</code> instance.
 - (nonnull instancetype)withAdMarkup:(NSString * _Nonnull)adMarkup SWIFT_WARN_UNUSED_RESULT;
+/// Adds a mediation ad unit ID to the <code>UADSBannerLoadConfigurationBuilder</code>.
+/// \param mediationAdUnitId The ad unit or placement ID defined in your mediation partner’s dashboard.
+///
+///
+/// returns:
+/// The updated <code>UADSBannerLoadConfigurationBuilder</code> instance.
 - (nonnull instancetype)withMediationAdUnitId:(NSString * _Nonnull)mediationAdUnitId SWIFT_WARN_UNUSED_RESULT;
+/// Adds mediation information to the <code>UADSBannerLoadConfigurationBuilder</code>.
+/// \param mediationInfo Details about the mediation integration (name, version, adapter version).
+///
+///
+/// returns:
+/// The updated <code>UADSBannerLoadConfigurationBuilder</code> instance.
 - (nonnull instancetype)withMediationInfo:(UADSMediationInfo * _Nonnull)mediationInfo SWIFT_WARN_UNUSED_RESULT;
+/// Adds extra key-value parameters to the <code>UADSBannerLoadConfigurationBuilder</code>.
+/// \param extras Custom parameters for banner loading.
+///
+///
+/// returns:
+/// The updated <code>UADSBannerLoadConfigurationBuilder</code> instance.
 - (nonnull instancetype)withExtras:(NSDictionary<NSString *, NSString *> * _Nonnull)extras SWIFT_WARN_UNUSED_RESULT;
+/// Builds and returns a <code>UADSBannerLoadConfiguration</code> instance.
+///
+/// returns:
+/// An instance of <code>UADSBannerLoadConfiguration</code>.
 - (UADSBannerLoadConfiguration * _Nonnull)build SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-SWIFT_CLASS_NAMED("InitializationConfiguration")
+enum UADSLogLevel : NSInteger;
+/// The configuration class containing essential information required to initialize the Unity Ads SDK.
+/// Use <code>UADSInitializationConfigurationBuilder</code> to create instances of this class.
+/// note:
+/// The properties in this class are internal. Use the builder to set configuration values.
+SWIFT_CLASS("_TtC8UnityAds31UADSInitializationConfiguration")
 @interface UADSInitializationConfiguration : NSObject
+/// Your unique game identifier from the Unity Ads Monetization dashboard.
+@property (nonatomic, readonly, copy) NSString * _Nonnull gameId;
+/// A boolean that enables test mode. When <code>true</code>, only test ads are shown. Defaults to <code>false</code>.
+@property (nonatomic, readonly) BOOL isTestModeEnabled;
+/// Specifies the level of detail for log output. Defaults to <code>.info</code>.
+@property (nonatomic, readonly) enum UADSLogLevel logLevel;
+/// An object that contains information about your mediation integration.
+@property (nonatomic, readonly, strong) UADSMediationInfo * _Nullable mediationInfo;
+/// A map of additional key-value parameters for custom configuration.
+@property (nonatomic, readonly, copy) NSDictionary<NSString *, NSString *> * _Nonnull extras;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-enum UADSLogLevel : NSInteger;
-SWIFT_CLASS_NAMED("InitializationConfigurationBuilder")
+/// A builder class for creating <code>UADSInitializationConfiguration</code> instances.
+/// Use this builder to configure the initialization settings for the Unity Ads SDK
+/// before calling <code>UnityAds/initialize(_:completion:)</code>.
+/// Example usage:
+/// \code
+/// let config = UADSInitializationConfigurationBuilder(gameId: "12345")
+///     .with(testMode: true)
+///     .with(logLevel: .debug)
+///     .build()
+///
+/// \endcode
+SWIFT_CLASS("_TtC8UnityAds38UADSInitializationConfigurationBuilder")
 @interface UADSInitializationConfigurationBuilder : NSObject
+/// Creates a new instance of <code>UADSInitializationConfigurationBuilder</code>.
+/// \param gameId Unique identifier for a game, given by Unity Ads admin tools or Unity editor.
+///
+///
+/// returns:
+/// An instance of <code>UADSInitializationConfigurationBuilder</code>.
 - (nonnull instancetype)initWithGameId:(NSString * _Nonnull)gameId OBJC_DESIGNATED_INITIALIZER;
+/// Sets the test mode.
+/// \param testMode Set this flag to <code>true</code> to indicate test mode and show only test ads.
+///
+///
+/// returns:
+/// The updated <code>UADSInitializationConfigurationBuilder</code> instance.
 - (nonnull instancetype)withTestMode:(BOOL)testMode SWIFT_WARN_UNUSED_RESULT;
+/// Sets the log level, which defines the amount of detail included in logs.
+/// \param logLevel Specifies the detail level of log output, from none to full debug information.
+///
+///
+/// returns:
+/// The updated <code>UADSInitializationConfigurationBuilder</code> instance.
 - (nonnull instancetype)withLogLevel:(enum UADSLogLevel)logLevel SWIFT_WARN_UNUSED_RESULT;
+/// Sets the mediation information, which provides details about your app’s mediation integration.
+/// \param mediationInfo Specifies details about your mediation integration,
+/// including mediation name, version, and adapter version.
+///
+///
+/// returns:
+/// The updated <code>UADSInitializationConfigurationBuilder</code> instance.
 - (nonnull instancetype)withMediationInfo:(UADSMediationInfo * _Nonnull)mediationInfo SWIFT_WARN_UNUSED_RESULT;
+/// Sets additional parameters.
+/// \param extras Additional key-value pairs for custom configuration.
+///
+///
+/// returns:
+/// The updated <code>UADSInitializationConfigurationBuilder</code> instance.
 - (nonnull instancetype)withExtras:(NSDictionary<NSString *, NSString *> * _Nonnull)extras SWIFT_WARN_UNUSED_RESULT;
+/// Builds and returns an <code>UADSInitializationConfiguration</code> instance.
+///
+/// returns:
+/// An instance of <code>UADSInitializationConfiguration</code>.
 - (UADSInitializationConfiguration * _Nonnull)build SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+/// Base class for Unity ad objects.
+/// This class serves as the base for <code>UADSInterstitialAd</code> and <code>UADSRewardedAd</code>,
+/// providing common functionality like ad expiration handling.
 SWIFT_CLASS("_TtC8UnityAds7UnityAd")
 @interface UnityAd : NSObject
+/// A callback that gets triggered when the ad expires.
+/// Set this property to be notified when a loaded ad expires and is no longer valid for display.
+/// When an ad expires, you should load a new ad before attempting to show.
 @property (nonatomic, copy) void (^ _Nullable onAdExpired)(UnityAd * _Nonnull);
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
@@ -381,118 +566,393 @@ SWIFT_CLASS("_TtC8UnityAds7UnityAd")
 @class UADSLoadConfiguration;
 @class UADSShowConfiguration;
 @protocol UADSInterstitialShowDelegate;
-SWIFT_CLASS_NAMED("InterstitialAd")
+/// Manages the loading and showing of full-screen interstitial ads.
+/// Use this class to load and display interstitial ads at natural transition points in your app.
+/// Example usage:
+/// \code
+/// let config = UADSLoadConfigurationBuilder(placementId: "interstitial")
+///     .build()
+///
+/// UADSInterstitialAd.load(config) { ad, error in
+///     if let ad = ad {
+///         ad.show(delegate: self)
+///     }
+/// }
+///
+/// \endcode
+SWIFT_CLASS("_TtC8UnityAds18UADSInterstitialAd")
 @interface UADSInterstitialAd : UnityAd
+/// Loads an interstitial ad with the specified configuration.
+/// \param configuration An instance of <code>UADSLoadConfiguration</code> containing the ad loading options.
+///
+/// \param completion A callback that gets called when the loading process is finished.
+/// Passes an <code>UADSInterstitialAd</code> instance if successful, or a <code>UnityAdsError</code> if loading fails.
+///
 + (void)load:(UADSLoadConfiguration * _Nonnull)configuration completion:(void (^ _Nonnull)(UADSInterstitialAd * _Nullable, id <UnityAdsError> _Nullable))completion;
+/// Displays the loaded interstitial ad.
+/// \param configuration Optional configuration for showing the ad.
+///
+/// \param delegate A delegate conforming to <code>UADSInterstitialShowDelegate</code> to handle ad events.
+///
 - (void)show:(UADSShowConfiguration * _Nullable)configuration delegate:(id <UADSInterstitialShowDelegate> _Nonnull)delegate;
 @end
 
 enum UADSShowFinishState : NSInteger;
-SWIFT_PROTOCOL_NAMED("InterstitialShowDelegate")
+/// A protocol for handling interstitial ad show events.
+/// Implement this protocol to receive callbacks when interstitial ads start, complete, click, or fail.
+SWIFT_PROTOCOL("_TtP8UnityAds28UADSInterstitialShowDelegate_")
 @protocol UADSInterstitialShowDelegate <NSObject>
-- (void)showDidStart:(UnityAd * _Nonnull)unityAd;
-- (void)showDidClick:(UnityAd * _Nonnull)unityAd;
-- (void)showDidComplete:(UnityAd * _Nonnull)unityAd with:(enum UADSShowFinishState)finishState;
-- (void)showDidFail:(UnityAd * _Nonnull)unityAd error:(id <UnityAdsError> _Nonnull)error;
+/// Called when the interstitial ad starts showing.
+/// \param unityAd The ad that started showing.
+///
+- (void)showDidStart:(UADSInterstitialAd * _Nonnull)unityAd;
+/// Called when the interstitial ad is clicked.
+/// \param unityAd The ad that was clicked.
+///
+- (void)showDidClick:(UADSInterstitialAd * _Nonnull)unityAd;
+/// Called when the ad finishes showing.
+/// \param unityAd The ad that finished showing.
+///
+/// \param finishState A <code>UADSShowFinishState</code> indicating whether the ad was skipped or completed.
+///
+- (void)showDidComplete:(UADSInterstitialAd * _Nonnull)unityAd with:(enum UADSShowFinishState)finishState;
+/// Called if the ad fails to show.
+/// \param unityAd The ad that failed to show.
+///
+/// \param error A <code>UnityAdsError</code> explaining the failure.
+///
+- (void)showDidFail:(UADSInterstitialAd * _Nonnull)unityAd error:(id <UnityAdsError> _Nonnull)error;
 @end
 
-SWIFT_CLASS_NAMED("LoadConfiguration")
+/// The configuration class containing options needed to load Unity ads.
+/// Use <code>UADSLoadConfigurationBuilder</code> to create instances of this class.
+/// note:
+/// The <code>adMarkup</code> property is required for all bidding implementations.
+/// For waterfall implementations, omit calling <code>with(adMarkup:)</code> on the builder.
+SWIFT_CLASS("_TtC8UnityAds21UADSLoadConfiguration")
 @interface UADSLoadConfiguration : NSObject
+/// The placement ID defined in the Unity Monetization dashboard.
+@property (nonatomic, readonly, copy) NSString * _Nonnull placementId;
+/// Ad markup data that’s used when loading an ad through bidding. If <code>nil</code>, the ad request uses waterfall.
+@property (nonatomic, readonly, copy) NSString * _Nullable adMarkup;
+/// The placement ID used in your mediation partner’s dashboard.
+@property (nonatomic, readonly, copy) NSString * _Nullable mediationAdUnitId;
+/// Specifies details about your mediation integration.
+@property (nonatomic, readonly, strong) UADSMediationInfo * _Nullable mediationInfo;
+/// Additional custom key-value pairs for configuration.
+@property (nonatomic, readonly, copy) NSDictionary<NSString *, NSString *> * _Nonnull extras;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-SWIFT_CLASS_NAMED("LoadConfigurationBuilder")
+/// A builder class for creating <code>UADSLoadConfiguration</code> instances.
+/// Use this builder to configure the options for loading interstitial or rewarded ads.
+/// Example usage:
+/// \code
+/// let config = UADSLoadConfigurationBuilder(placementId: "rewardedVideo")
+///     .with(adMarkup: biddingToken)
+///     .with(mediationInfo: mediationInfo)
+///     .build()
+///
+/// \endcode
+SWIFT_CLASS("_TtC8UnityAds28UADSLoadConfigurationBuilder")
 @interface UADSLoadConfigurationBuilder : NSObject
+/// Creates a new instance of <code>UADSLoadConfigurationBuilder</code>.
+/// \param placementId The placement ID defined in the Unity Monetization dashboard.
+///
+///
+/// returns:
+/// An instance of <code>UADSLoadConfigurationBuilder</code>.
 - (nonnull instancetype)initWithPlacementId:(NSString * _Nonnull)placementId OBJC_DESIGNATED_INITIALIZER;
+/// Adds an adMarkup to the <code>UADSLoadConfigurationBuilder</code>.
+/// \param adMarkup Ad markup data that’s used when loading an ad through bidding.
+/// If this method is not called, the ad request uses waterfall.
+///
+///
+/// returns:
+/// The updated <code>UADSLoadConfigurationBuilder</code> instance.
 - (nonnull instancetype)withAdMarkup:(NSString * _Nonnull)adMarkup SWIFT_WARN_UNUSED_RESULT;
+/// Adds the mediation ad unit ID to the <code>UADSLoadConfigurationBuilder</code>.
+/// \param mediationAdUnitId The placement ID used in your mediation partner’s dashboard.
+///
+///
+/// returns:
+/// The updated <code>UADSLoadConfigurationBuilder</code> instance.
 - (nonnull instancetype)withMediationAdUnitId:(NSString * _Nonnull)mediationAdUnitId SWIFT_WARN_UNUSED_RESULT;
+/// Adds mediation information to the <code>UADSLoadConfigurationBuilder</code>.
+/// \param mediationInfo Specifies details about your mediation integration
+/// (name, version, adapter version).
+///
+///
+/// returns:
+/// The updated <code>UADSLoadConfigurationBuilder</code> instance.
 - (nonnull instancetype)withMediationInfo:(UADSMediationInfo * _Nonnull)mediationInfo SWIFT_WARN_UNUSED_RESULT;
+/// Adds extra configuration key-value pairs to the <code>UADSLoadConfigurationBuilder</code>.
+/// \param extras A dictionary of custom parameters for ad loading.
+///
+///
+/// returns:
+/// The updated <code>UADSLoadConfigurationBuilder</code> instance.
 - (nonnull instancetype)withExtras:(NSDictionary<NSString *, NSString *> * _Nonnull)extras SWIFT_WARN_UNUSED_RESULT;
+/// Builds and returns a <code>UADSLoadConfiguration</code> instance.
+///
+/// returns:
+/// An instance of <code>UADSLoadConfiguration</code>.
 - (UADSLoadConfiguration * _Nonnull)build SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-typedef SWIFT_ENUM_NAMED(NSInteger, UADSLogLevel, "LogLevel", open) {
+/// Defines the logging levels for Unity Ads.
+/// Use these levels to control the verbosity of log output from the SDK.
+typedef SWIFT_ENUM(NSInteger, UADSLogLevel, open) {
+/// No logs output.
   UADSLogLevelDisabled = 0,
+/// Logs only critical errors and failures in init/load/show operations.
   UADSLogLevelError = 1,
+/// Logs key operational events (such as initialization started/completed, load started/completed,
+/// show started/finished, and token generation).
   UADSLogLevelInfo = 2,
+/// Logs all info plus detailed internal operations like network requests and internal errors.
   UADSLogLevelDebug = 3,
 };
 
-SWIFT_CLASS("_TtC8UnityAds13LoggerWrapper")
-@interface LoggerWrapper : NSObject
-- (void)log:(NSString * _Nonnull)message;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-SWIFT_CLASS_NAMED("MediationInfo")
+/// Specifies details about your mediation integration.
+/// Use this class to provide information about the mediation platform integrated in your app.
+SWIFT_CLASS("_TtC8UnityAds17UADSMediationInfo")
 @interface UADSMediationInfo : NSObject
+/// The name of the mediation platform integrated in your app.
+@property (nonatomic, readonly, copy) NSString * _Nonnull name;
+/// The version of the mediation SDK integrated in your app.
+@property (nonatomic, readonly, copy) NSString * _Nonnull version;
+/// The version of the Unity Ads adapter for your mediation partner.
+@property (nonatomic, readonly, copy) NSString * _Nonnull adapterVersion;
+/// Creates a new instance of <code>UADSMediationInfo</code>.
+/// \param name The name of the mediation platform integrated in your app.
+///
+/// \param version The version of the mediation SDK integrated in your app.
+///
+/// \param adapterVersion The version of the Unity Ads adapter for your mediation partner.
+///
+///
+/// returns:
+/// An instance of <code>UADSMediationInfo</code>.
 - (nonnull instancetype)initWithName:(NSString * _Nonnull)name version:(NSString * _Nonnull)version adapterVersion:(NSString * _Nonnull)adapterVersion OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 @protocol UADSRewardedShowDelegate;
-SWIFT_CLASS_NAMED("RewardedAd")
+/// Manages the loading and showing of rewarded ads.
+/// Use this class to load and display rewarded ads that grant users a reward after completion.
+/// Example usage:
+/// \code
+/// let config = UADSLoadConfigurationBuilder(placementId: "rewardedVideo")
+///     .build()
+///
+/// UADSRewardedAd.load(config) { ad, error in
+///     if let ad = ad {
+///         ad.show(delegate: self)
+///     }
+/// }
+///
+/// \endcode
+SWIFT_CLASS("_TtC8UnityAds14UADSRewardedAd")
 @interface UADSRewardedAd : UnityAd
+/// Loads a rewarded ad with the specified options.
+/// \param configuration An instance of <code>UADSLoadConfiguration</code> containing the ad loading options.
+///
+/// \param completion A callback that gets called when ad loading finishes.
+/// Passes a <code>UADSRewardedAd</code> instance if successful, or a <code>UnityAdsError</code> if loading fails.
+///
 + (void)load:(UADSLoadConfiguration * _Nonnull)configuration completion:(void (^ _Nonnull)(UADSRewardedAd * _Nullable, id <UnityAdsError> _Nullable))completion;
+/// Displays the loaded rewarded ad.
+/// \param configuration Optional settings for showing the ad.
+///
+/// \param delegate A delegate conforming to <code>UADSRewardedShowDelegate</code> to handle rewarded ad events.
+///
 - (void)show:(UADSShowConfiguration * _Nullable)configuration delegate:(id <UADSRewardedShowDelegate> _Nonnull)delegate;
 @end
 
-SWIFT_PROTOCOL_NAMED("RewardedShowDelegate")
+/// A protocol for handling rewarded ad show events.
+/// Implement this protocol to receive callbacks when rewarded ads start, complete, click, fail,
+/// or when the user earns a reward.
+SWIFT_PROTOCOL("_TtP8UnityAds24UADSRewardedShowDelegate_")
 @protocol UADSRewardedShowDelegate <NSObject>
-- (void)showDidStart:(UnityAd * _Nonnull)unityAd;
-- (void)showDidClick:(UnityAd * _Nonnull)unityAd;
-- (void)showDidComplete:(UnityAd * _Nonnull)unityAd with:(enum UADSShowFinishState)finishState;
-- (void)showDidFail:(UnityAd * _Nonnull)unityAd error:(id <UnityAdsError> _Nonnull)error;
-- (void)showDidReceiveReward:(UnityAd * _Nonnull)unityAd;
-@end
-
-SWIFT_CLASS("_TtC8UnityAds33SDKConfigurationStorageObjcBridge")
-@interface SDKConfigurationStorageObjcBridge : NSObject
-@property (nonatomic, readonly, copy) NSDictionary<NSString *, id> * _Nonnull configDictionary;
-- (void)saveSDKConfigFrom:(NSDictionary<NSString *, id> * _Nonnull)dictionary;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-SWIFT_CLASS_NAMED("ShowConfiguration")
-@interface UADSShowConfiguration : NSObject
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+/// Called when the rewarded ad starts showing.
+/// \param unityAd The ad that started showing.
+///
+- (void)showDidStart:(UADSRewardedAd * _Nonnull)unityAd;
+/// Called when the rewarded ad is clicked.
+/// \param unityAd The ad that was clicked.
+///
+- (void)showDidClick:(UADSRewardedAd * _Nonnull)unityAd;
+/// Called when the ad finishes showing.
+/// \param unityAd The ad that finished showing.
+///
+/// \param finishState A <code>UADSShowFinishState</code> indicating whether the ad was skipped or completed.
+///
+- (void)showDidComplete:(UADSRewardedAd * _Nonnull)unityAd with:(enum UADSShowFinishState)finishState;
+/// Called if the ad fails to show.
+/// \param unityAd The ad that failed to show.
+///
+/// \param error A <code>UnityAdsError</code> explaining the failure.
+///
+- (void)showDidFail:(UADSRewardedAd * _Nonnull)unityAd error:(id <UnityAdsError> _Nonnull)error;
+/// Called when the user earns the reward from the ad.
+/// \param unityAd The ad from which the reward was earned.
+///
+- (void)showDidReceiveReward:(UADSRewardedAd * _Nonnull)unityAd;
 @end
 
 @class UIViewController;
-SWIFT_CLASS_NAMED("ShowConfigurationBuilder")
-@interface UADSShowConfigurationBuilder : NSObject
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)withViewController:(UIViewController * _Nonnull)viewController SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)withCustomRewardString:(NSString * _Nonnull)customRewardString SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)withExtras:(NSDictionary<NSString *, NSString *> * _Nonnull)extras SWIFT_WARN_UNUSED_RESULT;
-- (UADSShowConfiguration * _Nonnull)build SWIFT_WARN_UNUSED_RESULT;
-@end
-
-typedef SWIFT_ENUM_NAMED(NSInteger, UADSShowFinishState, "ShowFinishState", open) {
-  UADSShowFinishStateSkipped = 0,
-  UADSShowFinishStateCompleted = 1,
-};
-
-SWIFT_CLASS_NAMED("TokenConfiguration")
-@interface UADSTokenConfiguration : NSObject
+/// The configuration class specifying additional parameters when showing Unity Ads.
+/// Use <code>UADSShowConfigurationBuilder</code> to create instances of this class.
+SWIFT_CLASS("_TtC8UnityAds21UADSShowConfiguration")
+@interface UADSShowConfiguration : NSObject
+/// The view controller used to present the ad.
+@property (nonatomic, readonly, strong) UIViewController * _Nullable viewController;
+/// A custom reward identifier for the ad impression.
+@property (nonatomic, readonly, copy) NSString * _Nullable customRewardString;
+/// Additional key-value parameters to include when showing the ad.
+@property (nonatomic, readonly, copy) NSDictionary<NSString *, NSString *> * _Nonnull extras;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-SWIFT_CLASS_NAMED("TokenConfigurationBuilder")
-@interface UADSTokenConfigurationBuilder : NSObject
-- (nonnull instancetype)initWithAdFormat:(enum UADSAdFormat)adFormat OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)withMediationInfo:(UADSMediationInfo * _Nonnull)mediationInfo SWIFT_WARN_UNUSED_RESULT;
+/// A builder class for creating <code>UADSShowConfiguration</code> instances.
+/// Use this builder to configure optional parameters when showing ads.
+/// Example usage:
+/// \code
+/// let config = UADSShowConfigurationBuilder()
+///     .with(viewController: self)
+///     .with(customRewardString: "bonus_coins")
+///     .build()
+///
+/// rewardedAd.show(config, delegate: self)
+///
+/// \endcode
+SWIFT_CLASS("_TtC8UnityAds28UADSShowConfigurationBuilder")
+@interface UADSShowConfigurationBuilder : NSObject
+/// Creates a new instance of <code>UADSShowConfigurationBuilder</code>.
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+/// Sets the view controller to present the ad from.
+/// \param viewController The view controller presenting the ad.
+///
+///
+/// returns:
+/// The updated <code>UADSShowConfigurationBuilder</code> instance.
+- (nonnull instancetype)withViewController:(UIViewController * _Nonnull)viewController SWIFT_WARN_UNUSED_RESULT;
+/// Sets a custom reward identifier for the ad impression.
+/// \param customRewardString A unique reward ID for the ad impression.
+///
+///
+/// returns:
+/// The updated <code>UADSShowConfigurationBuilder</code> instance.
+- (nonnull instancetype)withCustomRewardString:(NSString * _Nonnull)customRewardString SWIFT_WARN_UNUSED_RESULT;
+/// Adds extra key-value parameters when showing the ad.
+/// \param extras Custom parameters for ad display.
+///
+///
+/// returns:
+/// The updated <code>UADSShowConfigurationBuilder</code> instance.
 - (nonnull instancetype)withExtras:(NSDictionary<NSString *, NSString *> * _Nonnull)extras SWIFT_WARN_UNUSED_RESULT;
+/// Builds and returns a <code>UADSShowConfiguration</code> instance.
+///
+/// returns:
+/// An instance of <code>UADSShowConfiguration</code>.
+- (UADSShowConfiguration * _Nonnull)build SWIFT_WARN_UNUSED_RESULT;
+@end
+
+/// Represents the finish state of an ad after it has been shown.
+typedef SWIFT_ENUM(NSInteger, UADSShowFinishState, open) {
+/// The user closed or skipped the ad before it finished.
+  UADSShowFinishStateSkipped = 0,
+/// The ad played until the end.
+  UADSShowFinishStateCompleted = 1,
+};
+
+/// The configuration class containing essential information required to get a bidding token.
+/// Use <code>UADSTokenConfigurationBuilder</code> to create instances of this class.
+/// note:
+/// The properties in this class are internal. Use the builder to set configuration values.
+SWIFT_CLASS("_TtC8UnityAds22UADSTokenConfiguration")
+@interface UADSTokenConfiguration : NSObject
+/// The type of ad format for which to generate a token.
+@property (nonatomic, readonly) enum UADSAdFormat adFormat;
+/// Specifies details about your mediation integration.
+@property (nonatomic, readonly, strong) UADSMediationInfo * _Nullable mediationInfo;
+/// Additional key-value pairs for custom configuration.
+@property (nonatomic, readonly, copy) NSDictionary<NSString *, NSString *> * _Nonnull extras;
+/// The placement ID used in your mediation partner’s dashboard.
+@property (nonatomic, readonly, copy) NSString * _Nullable mediationAdUnitId;
+/// The placement ID defined in the Unity Monetization dashboard.
+@property (nonatomic, readonly, copy) NSString * _Nullable placementId;
+/// The size of the banner ad when requesting a token for a banner ad.
+@property (nonatomic, readonly) CGSize bannerSize;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+/// A builder class for creating <code>UADSTokenConfiguration</code> instances.
+/// Use this builder to configure the settings required to fetch a bidding token
+/// before calling <code>UnityAds/getToken(_:completion:)</code>.
+/// Example usage:
+/// \code
+/// let config = UADSTokenConfigurationBuilder(adFormat: .rewarded)
+///     .with(placementId: "rewardedVideo")
+///     .with(mediationInfo: mediationInfo)
+///     .build()
+///
+/// \endcode
+SWIFT_CLASS("_TtC8UnityAds29UADSTokenConfigurationBuilder")
+@interface UADSTokenConfigurationBuilder : NSObject
+/// Creates a new instance of <code>UADSTokenConfigurationBuilder</code>.
+/// \param adFormat An instance of <code>UADSAdFormat</code> that specifies the type of ad (interstitial, rewarded, banner).
+///
+///
+/// returns:
+/// An instance of <code>UADSTokenConfigurationBuilder</code>.
+- (nonnull instancetype)initWithAdFormat:(enum UADSAdFormat)adFormat OBJC_DESIGNATED_INITIALIZER;
+/// Specifies details about your mediation integration.
+/// \param mediationInfo Specifies details about your mediation integration.
+///
+///
+/// returns:
+/// The updated <code>UADSTokenConfigurationBuilder</code> instance.
+- (nonnull instancetype)withMediationInfo:(UADSMediationInfo * _Nonnull)mediationInfo SWIFT_WARN_UNUSED_RESULT;
+/// Specifies additional key-value pairs for custom configuration.
+/// \param extras Additional key-value pairs for custom configuration.
+///
+///
+/// returns:
+/// The updated <code>UADSTokenConfigurationBuilder</code> instance.
+- (nonnull instancetype)withExtras:(NSDictionary<NSString *, NSString *> * _Nonnull)extras SWIFT_WARN_UNUSED_RESULT;
+/// Adds the mediation ad unit ID to the <code>UADSTokenConfiguration</code>.
+/// \param mediationAdUnitId The placement ID used in your mediation partner’s dashboard.
+///
+///
+/// returns:
+/// The updated <code>UADSTokenConfigurationBuilder</code> instance.
 - (nonnull instancetype)withMediationAdUnitId:(NSString * _Nonnull)mediationAdUnitId SWIFT_WARN_UNUSED_RESULT;
+/// Specifies the placement ID defined in the Unity Monetization dashboard.
+/// \param placementId The placement ID defined in the Unity Monetization dashboard.
+///
+///
+/// returns:
+/// The updated <code>UADSTokenConfigurationBuilder</code> instance.
 - (nonnull instancetype)withPlacementId:(NSString * _Nonnull)placementId SWIFT_WARN_UNUSED_RESULT;
+/// Specifies the size of the banner ad when requesting a token for a banner ad.
+/// \param bannerSize The size of the banner ad when requesting a token for a banner ad.
+///
+///
+/// returns:
+/// The updated <code>UADSTokenConfigurationBuilder</code> instance.
 - (nonnull instancetype)withBannerSize:(CGSize)bannerSize SWIFT_WARN_UNUSED_RESULT;
+/// Builds and returns a <code>UADSTokenConfiguration</code> instance.
+///
+/// returns:
+/// An instance of <code>UADSTokenConfiguration</code>.
 - (UADSTokenConfiguration * _Nonnull)build SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
@@ -504,6 +964,24 @@ SWIFT_CLASS_NAMED("TokenConfigurationBuilder")
 @protocol UnityAdsShowDelegate;
 @class UADSShowOptions;
 @class UnityAdsTokenConfiguration;
+/// The primary entry point for the Unity Ads SDK.
+/// This static class handles SDK initialization, token retrieval, and provides access to global SDK properties.
+/// Use this class to initialize the SDK, manage privacy settings, and retrieve bidding tokens.
+/// Example usage:
+/// \code
+/// let config = UADSInitializationConfigurationBuilder(gameId: "12345")
+///     .with(testMode: true)
+///     .build()
+///
+/// UnityAds.initialize(config) { error in
+///     if let error = error {
+///         print("Initialization failed: \(error.message)")
+///     } else {
+///         print("Unity Ads initialized successfully")
+///     }
+/// }
+///
+/// \endcode
 SWIFT_CLASS("_TtC8UnityAds8UnityAds")
 @interface UnityAds : NSObject
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
@@ -511,19 +989,19 @@ SWIFT_CLASS("_TtC8UnityAds8UnityAds")
 /// Initializes UnityAds. UnityAds should be initialized when app starts.
 /// \param gameId Unique identifier for a game, given by Unity Ads admin tools or Unity editor.
 ///
-+ (void)initialize:(NSString * _Nonnull)gameId;
++ (void)initialize:(NSString * _Nonnull)gameId SWIFT_DEPRECATED_MSG("Use initialize(_:completion:) instead.");
 /// Initializes UnityAds. UnityAds should be initialized when app starts.
 /// \param gameId Unique identifier for a game, given by Unity Ads admin tools or Unity editor.
 ///
 /// \param initializationDelegate delegate for UnityAdsInitialization
 ///
-+ (void)initialize:(NSString * _Nonnull)gameId initializationDelegate:(id <UnityAdsInitializationDelegate> _Nullable)initializationDelegate;
++ (void)initialize:(NSString * _Nonnull)gameId initializationDelegate:(id <UnityAdsInitializationDelegate> _Nullable)initializationDelegate SWIFT_DEPRECATED_MSG("Use initialize(_:completion:) instead.");
 /// Initializes UnityAds. UnityAds should be initialized when app starts.
 /// \param gameId Unique identifier for a game, given by Unity Ads admin tools or Unity editor.
 ///
 /// \param testMode Set this flag to <code>YES</code> to indicate test mode and show only test ads.
 ///
-+ (void)initialize:(NSString * _Nonnull)gameId testMode:(BOOL)testMode;
++ (void)initialize:(NSString * _Nonnull)gameId testMode:(BOOL)testMode SWIFT_DEPRECATED_MSG("Use initialize(_:completion:) instead.");
 /// Initializes UnityAds. UnityAds should be initialized when app starts.
 /// \param gameId Unique identifier for a game, given by Unity Ads admin tools or Unity editor.
 ///
@@ -531,17 +1009,17 @@ SWIFT_CLASS("_TtC8UnityAds8UnityAds")
 ///
 /// \param initializationDelegate delegate for UnityAdsInitialization
 ///
-+ (void)initialize:(NSString * _Nonnull)gameId testMode:(BOOL)testMode initializationDelegate:(id <UnityAdsInitializationDelegate> _Nullable)initializationDelegate;
++ (void)initialize:(NSString * _Nonnull)gameId testMode:(BOOL)testMode initializationDelegate:(id <UnityAdsInitializationDelegate> _Nullable)initializationDelegate SWIFT_DEPRECATED_MSG("Use initialize(_:completion:) instead.");
 /// Load a placement to make it available to show. Ads generally take a few seconds to finish loading before they can be shown.
 /// \param placementId The placement ID, as defined in Unity Ads admin tools.
 ///
-+ (void)load:(NSString * _Nonnull)placementId;
++ (void)load:(NSString * _Nonnull)placementId SWIFT_DEPRECATED_MSG("Use UADSInterstitialAd or UADSRewardedAd instead.");
 /// Load a placement to make it available to show. Ads generally take a few seconds to finish loading before they can be shown.
 /// \param placementId The placement ID, as defined in Unity Ads admin tools.
 ///
 /// \param loadDelegate The load delegate.
 ///
-+ (void)load:(NSString * _Nonnull)placementId loadDelegate:(id <UnityAdsLoadDelegate> _Nullable)loadDelegate;
++ (void)load:(NSString * _Nonnull)placementId loadDelegate:(id <UnityAdsLoadDelegate> _Nullable)loadDelegate SWIFT_DEPRECATED_MSG("Use UADSInterstitialAd or UADSRewardedAd instead.");
 /// Load a placement to make it available to show. Ads generally take a few seconds to finish loading before they can be shown.
 /// \param placementId The placement ID, as defined in Unity Ads admin tools.
 ///
@@ -549,7 +1027,7 @@ SWIFT_CLASS("_TtC8UnityAds8UnityAds")
 ///
 /// \param loadDelegate The load delegate.
 ///
-+ (void)load:(NSString * _Nonnull)placementId options:(UADSLoadOptions * _Nonnull)options loadDelegate:(id <UnityAdsLoadDelegate> _Nullable)loadDelegate;
++ (void)load:(NSString * _Nonnull)placementId options:(UADSLoadOptions * _Nonnull)options loadDelegate:(id <UnityAdsLoadDelegate> _Nullable)loadDelegate SWIFT_DEPRECATED_MSG("Use UADSInterstitialAd or UADSRewardedAd instead.");
 /// Show an ad using the provided placement ID.
 /// \param viewController The <code>UIViewController</code> that is to present the ad view controller.
 ///
@@ -557,7 +1035,7 @@ SWIFT_CLASS("_TtC8UnityAds8UnityAds")
 ///
 /// \param showDelegate The show delegate.
 ///
-+ (void)show:(UIViewController * _Nonnull)viewController placementId:(NSString * _Nonnull)placementId showDelegate:(id <UnityAdsShowDelegate> _Nullable)showDelegate;
++ (void)show:(UIViewController * _Nonnull)viewController placementId:(NSString * _Nonnull)placementId showDelegate:(id <UnityAdsShowDelegate> _Nullable)showDelegate SWIFT_DEPRECATED_MSG("Use UADSInterstitialAd or UADSRewardedAd instead.");
 /// Show an ad using the provided placement ID.
 /// \param viewController The <code>UIViewController</code> that is to present the ad view controller.
 ///
@@ -567,8 +1045,8 @@ SWIFT_CLASS("_TtC8UnityAds8UnityAds")
 ///
 /// \param showDelegate The show delegate.
 ///
-+ (void)show:(UIViewController * _Nonnull)viewController placementId:(NSString * _Nonnull)placementId options:(UADSShowOptions * _Nonnull)options showDelegate:(id <UnityAdsShowDelegate> _Nullable)showDelegate;
-+ (BOOL)getDebugMode SWIFT_WARN_UNUSED_RESULT;
++ (void)show:(UIViewController * _Nonnull)viewController placementId:(NSString * _Nonnull)placementId options:(UADSShowOptions * _Nonnull)options showDelegate:(id <UnityAdsShowDelegate> _Nullable)showDelegate SWIFT_DEPRECATED_MSG("Use UADSInterstitialAd or UADSRewardedAd instead.");
++ (BOOL)getDebugMode SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_MSG("This method will be removed in a future version.");
 /// Set the logging verbosity of <code>UnityAds</code>. Debug mode indicates verbose logging.
 /// <blockquote>
 /// Warning:  Does not relate to test mode for ad content.
@@ -576,31 +1054,31 @@ SWIFT_CLASS("_TtC8UnityAds8UnityAds")
 /// </blockquote>
 /// \param enableDebugMode <code>YES</code> for verbose logging.
 ///
-+ (void)setDebugMode:(BOOL)enableDebugMode;
++ (void)setDebugMode:(BOOL)enableDebugMode SWIFT_DEPRECATED_MSG("Use UADSInitializationConfigurationBuilder.with(logLevel:) instead.");
 /// Check to see if the current device supports using Unity Ads.
 ///
 /// returns:
 /// If <code>NO</code>, the current device cannot initialize <code>UnityAds</code> or show ads.
-+ (BOOL)isSupported SWIFT_WARN_UNUSED_RESULT;
-/// Check the version of this <code>UnityAds</code> SDK
++ (BOOL)isSupported SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_MSG("This method will be removed in a future version.");
+/// Gets the current Unity Ads SDK version.
 ///
 /// returns:
-/// String representing the current version name.
+/// The current installed version of the Unity Ads SDK.
 + (NSString * _Nonnull)getVersion SWIFT_WARN_UNUSED_RESULT;
-/// Check that <code>UnityAds</code> has been initialized. This might be useful for debugging initialization problems.
+/// Checks if the Unity Ads SDK has been initialized successfully.
 ///
 /// returns:
-/// If <code>YES</code>, Unity Ads has been successfully initialized.
+/// <code>true</code> if Unity Ads has been successfully initialized, <code>false</code> otherwise.
 + (BOOL)isInitialized SWIFT_WARN_UNUSED_RESULT;
 /// Get request token.
 ///
 /// returns:
 /// Active token or null if no active token is available.
-+ (NSString * _Nullable)getToken SWIFT_WARN_UNUSED_RESULT;
++ (NSString * _Nullable)getToken SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_MSG("Use getToken(_:completion:) with a UADSTokenConfiguration instead.");
 /// Get request token.
 /// \param completion Active token or null if no active token is available.
 ///
-+ (void)getToken:(void (^ _Nonnull)(NSString * _Nullable))completion;
++ (void)getToken:(void (^ _Nonnull)(NSString * _Nullable))completion SWIFT_DEPRECATED_MSG("Use getToken(_:completion:) with a UADSTokenConfiguration instead.");
 /// Get request token for a specific ad format.
 /// note:
 /// This method allows for format-specific token generation which can be used to optimize token content based on the intended ad format.
@@ -608,21 +1086,44 @@ SWIFT_CLASS("_TtC8UnityAds8UnityAds")
 ///
 /// \param completion Callback that will be invoked with the generated token. Returns active token or nil if no active token is available.
 ///
-+ (void)getTokenWith:(UnityAdsTokenConfiguration * _Nonnull)configuration completion:(void (^ _Nonnull)(NSString * _Nullable))completion;
-/// Get request token for a specific ad format.
-/// note:
-/// This method allows for format-specific token generation which can be used to optimize token content based on the intended ad format.
-/// \param configuration Configuration object containing the ad format and any additional parameters for token generation.
++ (void)getTokenWith:(UnityAdsTokenConfiguration * _Nonnull)configuration completion:(void (^ _Nonnull)(NSString * _Nullable))completion SWIFT_DEPRECATED_MSG("Use getToken(_:completion:) with a UADSTokenConfiguration instead.");
+/// Fetches a bidding token based on the provided <code>UADSTokenConfiguration</code>.
+/// \param configuration A <code>UADSTokenConfiguration</code> object that specifies the ad format, mediation info, and other parameters.
 ///
-/// \param completion Callback that will be invoked with the generated token. Returns active token or nil if no active token is available.
+/// \param completion A completion block that is called with the token if it’s successfully fetched, or <code>nil</code> if an error occurs.
 ///
 + (void)getToken:(UADSTokenConfiguration * _Nonnull)configuration completion:(void (^ _Nonnull)(NSString * _Nullable))completion;
+/// Initializes the Unity Ads SDK with a specified configuration.
+/// The completion handler is called when initialization completes with either success or failure.
+/// UnityAds should be initialized when app starts.
+/// \param configuration The <code>UADSInitializationConfiguration</code> object that contains the required settings to initialize the SDK.
+///
+/// \param completion A callback that gets called when the SDK initialization finishes. Returns a <code>UnityAdsError</code> if initialization fails.
+///
 + (void)initialize:(UADSInitializationConfiguration * _Nonnull)configuration completion:(void (^ _Nonnull)(id <UnityAdsError> _Nullable))completion;
+/// A unique ID for each user of your app.
+/// Use this property to set or get a user identifier that can be used for tracking
+/// and analytics purposes.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, copy) NSString * _Nonnull userIdentifier;)
 + (NSString * _Nonnull)userIdentifier SWIFT_WARN_UNUSED_RESULT;
 + (void)setUserIdentifier:(NSString * _Nonnull)newValue;
+/// Sets the user’s opt-in consent status for personalized ads.
+/// note:
+/// This method only records a user’s consent status. You’re responsible as the publisher
+/// for presenting any required privacy consent UI to the user.
+/// \param consentGranted <code>true</code> if the user has granted consent for personalized ads, <code>false</code> otherwise.
+///
 + (void)setUserConsent:(BOOL)consentGranted;
+/// Sets the user’s opt-out status for data collection and personalized ads.
+/// note:
+/// This method only records a user’s consent status. You’re responsible as the publisher
+/// for presenting any required privacy consent UI to the user.
+/// \param optOut <code>true</code> if the user opts out of data collection, <code>false</code> otherwise.
+///
 + (void)setUserOptOut:(BOOL)optOut;
+/// Enables the display of contextual (non-personalized) ads.
+/// \param nonBehavioral <code>true</code> to enable non-personalized ads, <code>false</code> otherwise.
+///
 + (void)setNonBehavioral:(BOOL)nonBehavioral;
 @end
 
@@ -632,13 +1133,19 @@ typedef SWIFT_ENUM(NSInteger, UnityAdsAdFormat, open) {
   UnityAdsAdFormatBanner = 2,
 };
 
+/// A protocol that represents errors returned by Unity Ads SDK operations.
+/// This protocol provides a standardized way to handle errors from initialization,
+/// loading, and showing ads. Each error includes a numeric code for programmatic
+/// handling and a human-readable message for debugging.
 SWIFT_PROTOCOL("_TtP8UnityAds13UnityAdsError_")
 @protocol UnityAdsError
+/// A numeric error code that identifies the type of Unity Ads error.
 @property (nonatomic, readonly) NSInteger code;
+/// An error message that provides additional details about the error.
 @property (nonatomic, readonly, copy) NSString * _Nonnull message;
 @end
 
-SWIFT_CLASS("_TtC8UnityAds26UnityAdsTokenConfiguration")
+SWIFT_CLASS("_TtC8UnityAds26UnityAdsTokenConfiguration") SWIFT_DEPRECATED_MSG("Use UADSTokenConfiguration instead.")
 @interface UnityAdsTokenConfiguration : NSObject
 - (nonnull instancetype)initWithAdFormat:(enum UnityAdsAdFormat)adFormat extras:(NSDictionary<NSString *, NSString *> * _Nonnull)extras OBJC_DESIGNATED_INITIALIZER;
 + (UnityAdsTokenConfiguration * _Nonnull)newWithAdFormat:(enum UnityAdsAdFormat)adFormat SWIFT_WARN_UNUSED_RESULT;

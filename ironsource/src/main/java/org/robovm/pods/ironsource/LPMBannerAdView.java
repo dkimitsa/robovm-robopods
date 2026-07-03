@@ -72,6 +72,8 @@ import org.robovm.apple.coreanimation.*;
     protected native @Pointer long init(String adUnitId, LPMBannerAdViewConfig config);
     @Method(selector = "setDelegate:")
     public native void setDelegate(LPMBannerAdViewDelegate delegate);
+    @Method(selector = "setImpressionDataDelegate:")
+    public native void setImpressionDataDelegate(LPMImpressionDataDelegate delegate);
     @Method(selector = "loadAdWithViewController:")
     public native void loadAd(UIViewController viewController);
     @Method(selector = "destroy")

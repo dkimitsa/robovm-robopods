@@ -1,5 +1,9 @@
 name: applovinsdk
 moduleFolder: applovinsdk
-artifactSource: check api endpoint for latest ios version and download link https://docs.applovin.com/max/api/1.0/sdk/info
-downloadLocation: ~/Downloads/robopods-wip/AppLovinSDK.xcframework
-dropVersionSuffix: false
+artifactSource: 
+  - to get last version tag use https://github.com/AppLovin/AppLovin-MAX-Swift-Package/releases/latest
+  - check `Package.swift` from corresponding version tag to get `.binaryTarget` url for the zip file
+  - download the zip into a temporary/empty staging folder (NOT directly into downloadLocation)
+  - extract it and move AppLovinSDK.xcframework to downloadLocation
+  - result check - the folder ./.robopods-wip/AppLovinSDK.xcframework/ must exist
+downloadLocation: ./.robopods-wip/AppLovinSDK.xcframework

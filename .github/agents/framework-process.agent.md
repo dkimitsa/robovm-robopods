@@ -1,14 +1,14 @@
 ---
 name: framework-process
 description: 'Orchestrates the framework binding pipeline by delegating to harvester, normalizer, merger, and compiler sub-agents in a bounded loop (max 5 tries).'
-tools: ['run_in_terminal', 'read_file', 'create_file', 'run_subagent']
+tools: ['bash', 'view', 'apply_patch', 'task']
 ---
 
 # Framework Process Orchestrator
 This agent processes a specific framework end-to-end by delegating each stage of the binding pipeline to a dedicated sub-agent. It performs NO binding, normalization, merging, or compilation work itself.
 
 ## RESTRICTIONS (CRITICAL)
-- Follow `.github/skills/agent-invocation-rules/SKILL.md` for any shell, file, or path-handling behavior used during orchestration.
+- `view` and follow `.github/skills/agent-invocation-rules/SKILL.md` for any shell, file, or path-handling behavior used during orchestration.
 - DO NOT run `harvester.kts` directly.
 - DO NOT read, normalize, or merge YAML suggestions yourself.
 - DO NOT attempt module compilation yourself.
@@ -19,7 +19,7 @@ This agent processes a specific framework end-to-end by delegating each stage of
 - DO NOT try to "understand" or "verify" what a sub-agent does before/after calling it. Just invoke it and react to its return value per the rules below.
 
 ## Delegation Protocol (MANDATORY)
-- Every "delegate to `@<agent-name>`" instruction in this spec MUST be executed by invoking the `run_subagent` tool with:
+- Every "delegate to `@<agent-name>`" instruction in this spec MUST be executed by invoking the `task` tool with:
   - `agentName` = the exact sub-agent name (e.g. `framework-process-harvester`).
   - `task` = a short prompt containing the `<framework_name>` parameter and nothing else of substance (e.g. `"Process framework: <framework_name>"`).
 - Before each delegation, print a brief step notification so the orchestration is visible to the user.
@@ -44,29 +44,29 @@ Repeat the following sequence:
 2. Otherwise, increment `attempt` by 1.
 
 **Step 2 — Harvest**
-1. Delegate to `@framework-process-harvester <framework_name>` via `run_subagent`.
+1. Delegate to `@framework-process-harvester <framework_name>` via `task`.
 2. If the sub-agent reports failure, stop, report its error, and exit. Do NOT attempt recovery.
 
 **Step 3 — Normalize**
 Optional: if '<framework_name>' ends with '-bom' there is no compilation/recovery step, so skip to Step 6.
 
-1. Delegate to `@framework-process-normalizer <framework_name>` via `run_subagent`.
+1. Delegate to `@framework-process-normalizer <framework_name>` via `task`.
 2. If the sub-agent reports failure, stop, report its error, and exit. Do NOT attempt recovery.
 
 **Step 4 — Merge**
-1. Delegate to `@framework-process-merger <framework_name>` via `run_subagent`.
+1. Delegate to `@framework-process-merger <framework_name>` via `task`.
 2. If the sub-agent reports failure, stop, report its error, and exit.
 3. If the sub-agent's returned text contains `REBIND-REQUIRED`, return to **Step 1** (re-run harvester with the updated YAML).
 4. Otherwise, proceed to Step 5.
 
 **Step 5 — Compile**
-1. Delegate to `@framework-process-compiler <framework_name>` via `run_subagent`.
+1. Delegate to `@framework-process-compiler <framework_name>` via `task`.
 2. If the sub-agent reports failure, stop, report its error, and exit. Do NOT attempt recovery.
 3. If the sub-agent's returned text contains `REBIND-REQUIRED`, return to **Step 1** (re-run harvester with the updated YAML).
 4. Otherwise, proceed to Step 6.
 
 **Step 6 — Install**
-1. Delegate to `@framework-process-install <framework_name>` via `run_subagent`.
+1. Delegate to `@framework-process-install <framework_name>` via `task`.
 2. If the sub-agent reports failure, stop, report its error, and exit. Do NOT attempt recovery.
 3. Otherwise, proceed to Phase 3.
 

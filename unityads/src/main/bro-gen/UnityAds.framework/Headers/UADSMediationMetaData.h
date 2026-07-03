@@ -1,5 +1,10 @@
 #import <UnityAds/UADSMetaData.h>
 
+__attribute__((deprecated(
+                          "Use MediationInfo (UADSMediationInfo) in InitializationConfiguration (UADSInitializationConfiguration),"
+                          " LoadConfiguration (UADSLoadConfiguration), BannerLoadConfiguration (UADSBannerLoadConfiguration)"
+                          " and TokenConfiguration (UADSTokenConfiguration) instead."
+                          )))
 @interface UADSMediationMetaData : UADSMetaData
 
 - (void)setName: (NSString *)mediationNetworkName;

@@ -140,12 +140,18 @@ import org.robovm.pods.facebook.corebasics.*;
     boolean isDomainErrorEnabled();
     @Property(selector = "setIsDomainErrorEnabled:")
     void setIsDomainErrorEnabled(boolean v);
+    @Property(selector = "limitedLoginAutoRefreshInterval")
+    double getLimitedLoginAutoRefreshInterval();
+    @Property(selector = "setLimitedLoginAutoRefreshInterval:")
+    void setLimitedLoginAutoRefreshInterval(double v);
     /*</properties>*/
     /*<methods>*/
     @Method(selector = "setDataProcessingOptions:")
     void setDataProcessingOptions(NSArray<NSString> options);
     @Method(selector = "setDataProcessingOptions:country:state:")
     void setDataProcessingOptions(NSArray<NSString> options, int country, int state);
+    @Method(selector = "isLoggingBehaviorEnabled:")
+    boolean isLoggingBehaviorEnabled(FBSDKLoggingBehavior loggingBehavior);
     /*</methods>*/
     /*<adapter>*/
     /*</adapter>*/

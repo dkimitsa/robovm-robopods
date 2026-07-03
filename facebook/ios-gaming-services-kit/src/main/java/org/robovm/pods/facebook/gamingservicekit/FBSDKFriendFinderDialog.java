@@ -28,8 +28,7 @@ import org.robovm.rt.bro.*;
 import org.robovm.rt.bro.annotation.*;
 import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
-import org.robovm.apple.uikit.*;
-import org.robovm.pods.facebook.corebasics.*;
+import org.robovm.apple.uikit.*;import org.robovm.pods.facebook.corebasics.*;
 import org.robovm.pods.facebook.core.*;
 import org.robovm.pods.facebook.share.*;
 /*</imports>*/

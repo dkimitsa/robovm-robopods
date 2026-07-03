@@ -1,7 +1,7 @@
 ---
 name: bulk-process
-description: 'TODO: fixme !'
-tools: ['run_in_terminal', 'read_file', 'create_file', 'run_subagent']
+description: 'agent performs download and processing of multiple frameworks in a single run, delegating each framework to the appropriate sub-agent.'
+tools: ['bash', 'view', 'apply_patch', 'task']
 ---
 
 # Framework Process Orchestrator
@@ -13,14 +13,13 @@ This agent processes a specific framework end-to-end by delegating each stage of
 - DO NOT read, normalize, or merge YAML suggestions yourself.
 - DO NOT attempt module compilation yourself.
 - DO NOT attempt any recovery if a sub-agent fails. Break the loop, report the error, and exit.
-- DO NOT exceed 5 iterations of the orchestration loop.
 - **DO NOT read any sub-agent's `.agent.md` file.** Sub-agents are opaque executables. Their behavior, inputs, and outputs are fully described in this orchestrator spec. Treat each one as a black box.
 - DO NOT read framework specs, YAML files, or skills. Those are the sub-agents' concerns, not yours.
 - You MAY read `.github/state/bulk_download` and `.github/state/bulk_process` because the state-tracking rules below require checking them before dispatching a macro.
 - DO NOT try to "understand" or "verify" what a sub-agent does before/after calling it. Just invoke it and react to its return value per the rules below.
 
 ## Delegation Protocol (MANDATORY)
-- Every "delegate to `@<agent-name>`" instruction in this spec MUST be executed by invoking the `run_subagent` tool with:
+- Every "delegate to `@<agent-name>`" instruction in this spec MUST be executed by invoking the `task` tool with:
   - `agentName` = the exact sub-agent name (e.g. `framework-process-harvester`).
   - `task` = a short prompt containing the `<framework_name>` parameter and nothing else of substance (e.g. `"Process framework: <framework_name>"`).
 - Before each delegation, print a brief step notification so the orchestration is visible to the user.
@@ -118,9 +117,9 @@ do not group or optimize any steps, perform macro steps line by line, in the ord
 - perform_process(facebook-core-basics)
 - perform_process(facebook-core)
 - perform_process(facebook-aemkit)
-- perform_process(facebook-gaming-serv-kit)
 - perform_process(facebook-login)
 - perform_process(facebook-share)
+- perform_process(facebook-gaming-serv-kit)
 - perform_process(facebook-bom)
 
 - perform_download(facebook-audience)

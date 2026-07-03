@@ -1,14 +1,14 @@
 ---
 name: framework-process-compiler
 description: 'Compiles the framework module and attempts a single round of YAML-based recovery if compilation fails. Returns REBIND-REQUIRED if the bro-gen YAML was modified during recovery.'
-tools: ['run_in_terminal', 'apply_patch', 'read_file', 'create_file']
+tools: ['bash', 'apply_patch', 'view']
 ---
 
 # Framework Process Compiler Agent
 This subagent validates that the module compiles by invoking the build tool, and — if it does not — attempts a single recovery pass by adjusting the bro-gen YAML.
 
 ## RESTRICTIONS (CRITICAL)
-- Follow `.github/skills/agent-invocation-rules/SKILL.md` for terminal safety, fail-fast handling, path resolution, and bounded search scope.
+- `view` and follow `.github/skills/agent-invocation-rules/SKILL.md` for terminal safety, fail-fast handling, path resolution, and bounded search scope.
 - DO NOT run `harvester.kts`.
 - DO NOT merge normalized suggestions (that is the merger agent's job).
 - DO NOT loop. You get ONE compilation attempt and at most ONE recovery edit followed by ONE re-evaluation decision.
@@ -19,18 +19,19 @@ This subagent validates that the module compiles by invoking the build tool, and
 
 ## Required Inputs
 - Resolve `<moduleFolder>` from the framework spec as described above. If it cannot be resolved, abort with an error.
-- Read `.github/specs/framework-spec.md` first to understand the expected framework spec structure.
-- Read `.github/specs/frameworks/<framework_name>.yaml`, where `<framework_name>` is the parameter passed to `@framework-process-compiler`. Use it to resolve `<moduleFolder>` (see above).
-- Read `.github/skills/agent-invocation-rules/SKILL.md`.
+- direct_read `.github/specs/framework-spec.md` first to understand the expected framework spec structure.
+- direct_read `.github/specs/frameworks/<framework_name>.yaml`, where `<framework_name>` is the parameter passed to `@framework-process-compiler`. Use it to resolve `<moduleFolder>` (see above).
+- direct_read `.github/skills/agent-invocation-rules/SKILL.md`.
 - The bro-gen YAML you may edit (and only this one) is `<moduleFolder>/src/main/bro-gen/<framework_name>.yaml`. If it does not exist, abort with an error.
-- Read the module bro-gen YAML directly from their exact paths. Do not use `file_search` or any other discovery search to verify their presence.
+- direct_read the module bro-gen YAML directly from their exact paths. Do not use `file_search` or any other discovery search to verify their presence.
 - Do not continue and return an error if expected spec files are missing.
+- do not read `pom.xml` it will give no useful information for a task.
 
 ## Workflow
 
 ### Step 1: Compile
 1. Resolve `<moduleFolder>` from the framework spec as described above.
-2. Use `run_in_terminal` to compile the module: `mvn -f <moduleFolder>/pom.xml compile` (or the equivalent build command specified in the framework spec).
+2. Use `bash` to compile the module: `mvn -f <moduleFolder>/pom.xml compile` (or the equivalent build command specified in the framework spec).
 
 ### Step 2: Evaluate
 1. **If compilation succeeds:**

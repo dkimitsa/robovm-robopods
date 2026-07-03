@@ -36,7 +36,7 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("UnityAds.UADSBannerLoadConfiguration")/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/UADSBannerLoadConfiguration/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
@@ -50,7 +50,20 @@ import org.robovm.apple.coreanimation.*;
     protected UADSBannerLoadConfiguration(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
-    
+    @Property(selector = "placementId")
+    public native String getPlacementId();
+    @Property(selector = "adMarkup")
+    public native String getAdMarkup();
+    @Property(selector = "bannerSize")
+    public native @ByVal CGSize getBannerSize();
+    @Property(selector = "delegate")
+    public native UADSBannerAdDelegate getDelegate();
+    @Property(selector = "mediationAdUnitId")
+    public native String getMediationAdUnitId();
+    @Property(selector = "mediationInfo")
+    public native UADSMediationInfo getMediationInfo();
+    @Property(selector = "extras")
+    public native NSDictionary<NSString, NSString> getExtras();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

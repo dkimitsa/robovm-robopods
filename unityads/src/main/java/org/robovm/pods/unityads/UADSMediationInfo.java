@@ -36,7 +36,7 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("UnityAds.UADSMediationInfo")/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/UADSMediationInfo/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
@@ -52,7 +52,12 @@ import org.robovm.apple.coreanimation.*;
     public UADSMediationInfo(String name, String version, String adapterVersion) { super((SkipInit) null); initObject(init(name, version, adapterVersion)); }
     /*</constructors>*/
     /*<properties>*/
-    
+    @Property(selector = "name")
+    public native String getName();
+    @Property(selector = "version")
+    public native String getVersion();
+    @Property(selector = "adapterVersion")
+    public native String getAdapterVersion();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

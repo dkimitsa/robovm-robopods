@@ -34,9 +34,11 @@ import org.robovm.apple.coreanimation.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
+/**
+ * @deprecated This protocol will be removed in a future release. Please use `InterstitialAd.load(_:completion:)` or `RewardedAd.load(_:completion:)` (Objective-C: `UADSInterstitialAd` / `UADSRewardedAd`)  with a completion handler instead.
+ */
 /*</javadoc>*/
-/*<annotations>*//*</annotations>*/
+/*<annotations>*/@Deprecated/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ interface /*<name>*/UnityAdsLoadDelegate/*</name>*/ 
     /*<implements>*/extends NSObjectProtocol/*</implements>*/ {
 

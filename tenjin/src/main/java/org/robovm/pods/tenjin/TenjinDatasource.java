@@ -75,5 +75,9 @@ import org.robovm.apple.dispatch.*;
     public static native void setInitializedAt(String timestamp);
     @Method(selector = "getInitializedAt")
     public static native String getInitializedAt();
+    @Method(selector = "setLastConnectTimestamp:")
+    public static native void setLastConnectTimestamp(double timestamp);
+    @Method(selector = "getLastConnectTimestamp")
+    public static native double getLastConnectTimestamp();
     /*</methods>*/
 }

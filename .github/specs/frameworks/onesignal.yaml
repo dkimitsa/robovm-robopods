@@ -13,5 +13,4 @@ artifactSource:
   - download OneSignalUser.xcframework.zip
   - unzip all to ~/Downloads/OneSignal/
   - location to for verification ~/Downloads/OneSignal/OneSignalFramework.xcframework/
-downloadLocation: ~/Downloads/robopods-wip/OneSignal
-dropVersionSuffix: true
+downloadLocation: ./.robopods-wip/OneSignal

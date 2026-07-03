@@ -390,6 +390,8 @@ classes:
                 name: setMetaData
             '+setNetworkDataWithNetworkKey:andNetworkData:':
                 name: setNetworkData
+            '+addImpressionLevelRevenueDelegate:forSubscriberId:':
+                name: addImpressionLevelRevenueDelegate
     LPMInterstitialAd:
         methods:
             '-initWithAdUnitId:':

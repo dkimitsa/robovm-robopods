@@ -30,7 +30,7 @@
 /**
  * Called when the banner is hidden.
  *
- * @param placementId the ID of the that has hidden.
+ * @param placementId the ID of the placement that has been hidden.
  */
 - (void)unityAdsBannerDidHide: (NSString *)placementId;
 

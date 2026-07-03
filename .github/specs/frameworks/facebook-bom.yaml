@@ -1,6 +1,5 @@
 name: facebook-bom
 moduleFolder: facebook/ios-bom
 artifactSource:
-  - check if folder exists in ~/Downloads/robopods-wip/Facebook/, stop and report error if not
-downloadLocation: ~/Downloads/robopods-wip/Facebook
-dropVersionSuffix: true
+  - check if folder exists in ./.robopods-wip/Facebook/, stop and report error if not
+downloadLocation: ./.robopods-wip/Facebook

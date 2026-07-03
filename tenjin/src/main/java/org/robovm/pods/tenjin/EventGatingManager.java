@@ -53,17 +53,23 @@ import org.robovm.apple.dispatch.*;
     /*<properties>*/
     @Property(selector = "canSendEvents")
     public native boolean canSendEvents();
-    @Property(selector = "connectSent")
-    public native boolean isConnectSent();
     @Property(selector = "connectInProgress")
     public native boolean isConnectInProgress();
     @Property(selector = "queuedEventCount")
     public native @MachineSizedSInt long getQueuedEventCount();
+    @Property(selector = "connectInterval")
+    public native double getConnectInterval();
+    @Property(selector = "setConnectInterval:")
+    public native void setConnectInterval(double v);
+    @Property(selector = "maxQueueSize")
+    public native @MachineSizedSInt long getMaxQueueSize();
+    @Property(selector = "setMaxQueueSize:")
+    public native void setMaxQueueSize(@MachineSizedSInt long v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "tryBeginConnect")
-    public native boolean tryBeginConnect();
+    @Method(selector = "tryBeginConnectWithFlushHandler:")
+    public native boolean tryBeginConnect(@Block VoidBlock1<NSDictionary<NSString, ?>> flushHandler);
     @Method(selector = "handleConnectCompletionWithSuccess:processHandler:")
     public native void handleConnectCompletion(boolean success, @Block VoidBlock1<NSDictionary<NSString, ?>> processHandler);
     @Method(selector = "queueEvent:sendHandler:")

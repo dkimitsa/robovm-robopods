@@ -36,7 +36,7 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("UnityAds.UADSInitializationConfiguration")/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/UADSInitializationConfiguration/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
@@ -50,7 +50,16 @@ import org.robovm.apple.coreanimation.*;
     protected UADSInitializationConfiguration(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
-    
+    @Property(selector = "gameId")
+    public native String getGameId();
+    @Property(selector = "isTestModeEnabled")
+    public native boolean isTestModeEnabled();
+    @Property(selector = "logLevel")
+    public native UADSLogLevel getLogLevel();
+    @Property(selector = "mediationInfo")
+    public native UADSMediationInfo getMediationInfo();
+    @Property(selector = "extras")
+    public native NSDictionary<NSString, NSString> getExtras();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

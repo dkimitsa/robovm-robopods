@@ -51,8 +51,8 @@ import org.robovm.apple.dispatch.*;
     boolean canSendEvents();
     /*</properties>*/
     /*<methods>*/
-    @Method(selector = "tryBeginConnect")
-    boolean tryBeginConnect();
+    @Method(selector = "tryBeginConnectWithFlushHandler:")
+    boolean tryBeginConnect(@Block VoidBlock1<NSDictionary<NSString, ?>> flushHandler);
     @Method(selector = "handleConnectCompletionWithSuccess:processHandler:")
     void handleConnectCompletion(boolean success, @Block VoidBlock1<NSDictionary<NSString, ?>> processHandler);
     @Method(selector = "queueEvent:sendHandler:")

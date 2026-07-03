@@ -50,15 +50,15 @@ import org.robovm.apple.coreanimation.*;
     /*</properties>*/
     /*<methods>*/
     @Method(selector = "showDidStart:")
-    void showDidStart(UnityAd unityAd);
+    void showDidStart(UADSRewardedAd unityAd);
     @Method(selector = "showDidClick:")
-    void showDidClick(UnityAd unityAd);
+    void showDidClick(UADSRewardedAd unityAd);
     @Method(selector = "showDidComplete:with:")
-    void showDidComplete(UnityAd unityAd, UADSShowFinishState finishState);
+    void showDidComplete(UADSRewardedAd unityAd, UADSShowFinishState finishState);
     @Method(selector = "showDidFail:error:")
-    void showDidFail(UnityAd unityAd, UnityAdsError error);
+    void showDidFail(UADSRewardedAd unityAd, UnityAdsError error);
     @Method(selector = "showDidReceiveReward:")
-    void showDidReceiveReward(UnityAd unityAd);
+    void showDidReceiveReward(UADSRewardedAd unityAd);
     /*</methods>*/
     /*<adapter>*/
     /*</adapter>*/

@@ -95,7 +95,5 @@ import org.robovm.apple.webkit.*;
     public native void registerWebView(WKWebView webView);
     @Method(selector = "generateSignal:completionHandler:")
     public static native void generateSignal(GADSignalRequest request, @Block VoidBlock2<GADSignal, NSError> completionHandler);
-    @Method(selector = "startWithMediationInitializationConfiguration:completionHandler:")
-    public native void start(GADMediationInitializationConfiguration mediationInitializationConfiguration, @Block VoidBlock1<GADInitializationStatus> completionHandler);
     /*</methods>*/
 }

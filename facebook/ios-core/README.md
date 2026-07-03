@@ -3,6 +3,7 @@
 ### Available RoboPods
 | RoboPods Version | Facebook Core |
 |------------------|---------------|
+| 18.1.0.0         | 18.1.0        |
 | 18.0.3.0         | 18.0.3        |
 
 ### Use the dynamic version of frameworks

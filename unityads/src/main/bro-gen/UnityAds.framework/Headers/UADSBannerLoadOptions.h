@@ -3,6 +3,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+__attribute__((deprecated("This class will be removed in a future release. Please use BannerLoadConfiguration (UADSBannerLoadConfiguration) instead.")))
 @interface UADSBannerLoadOptions : UADSLoadOptions
 @property (nonatomic, assign) CGSize size;
 

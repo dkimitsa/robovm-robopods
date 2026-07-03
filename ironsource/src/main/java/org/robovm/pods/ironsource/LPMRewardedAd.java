@@ -65,6 +65,8 @@ import org.robovm.apple.coreanimation.*;
     protected native @Pointer long init(String adUnitId, LPMRewardedAdConfig config);
     @Method(selector = "setDelegate:")
     public native void setDelegate(LPMRewardedAdDelegate delegate);
+    @Method(selector = "setImpressionDataDelegate:")
+    public native void setImpressionDataDelegate(LPMImpressionDataDelegate delegate);
     @Method(selector = "loadAd")
     public native void loadAd();
     @Method(selector = "showAdWithViewController:placementName:")

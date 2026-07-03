@@ -4,7 +4,6 @@ clang_args: ['-x', 'objective-c']
 framework: GoogleMobileAds
 headers:
     - GoogleMobileAds.h
-    - GoogleMobileAds_Beta.h
 
 private_typedefs: {}
 

@@ -1,5 +1,4 @@
 name: lottie
 moduleFolder: lottie
 artifactSource: goto https://github.com/airbnb/lottie-ios/releases and download latest Lottie.xcframework.zip
-downloadLocation: ~/Downloads/robopods-wip/Lottie.xcframework
-dropVersionSuffix: false
+downloadLocation: ./.robopods-wip/Lottie.xcframework

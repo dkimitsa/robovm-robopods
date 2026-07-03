@@ -202,7 +202,7 @@ typedef NS_ENUM(NSInteger, IASDKCoreInitErrorType) {
  *  @brief Indicates which SDK is mediating Fyber. Mediation type value set for IAAdSpot will be checked before and used if there was any set.
  *  @discussion This value will be used in bidding flow, while bidding token creation.
  */
-@property (nonatomic, nullable) IAMediation *mediationType;
+@property (atomic, nullable) IAMediation *mediationType;
 
 /**
  *  @brief Can be used in order to get test ads in bidding flow.

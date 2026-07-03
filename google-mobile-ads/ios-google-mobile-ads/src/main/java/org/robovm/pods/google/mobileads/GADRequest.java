@@ -80,10 +80,6 @@ import org.robovm.apple.webkit.*;
     public native NSDictionary<NSString, ?> getCustomTargeting();
     @Property(selector = "setCustomTargeting:")
     public native void setCustomTargeting(NSDictionary<NSString, ?> v);
-    @Property(selector = "shouldSkipUninitializedAdapters")
-    public native boolean shouldSkipUninitializedAdapters();
-    @Property(selector = "setShouldSkipUninitializedAdapters:")
-    public native void setShouldSkipUninitializedAdapters(boolean v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

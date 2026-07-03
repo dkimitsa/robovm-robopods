@@ -52,12 +52,12 @@ import org.robovm.apple.coreanimation.*;
     /*<members>*//*</members>*/
     /*<methods>*/
     @NotImplemented("showDidStart:")
-    public void showDidStart(UnityAd unityAd) {}
+    public void showDidStart(UADSInterstitialAd unityAd) {}
     @NotImplemented("showDidClick:")
-    public void showDidClick(UnityAd unityAd) {}
+    public void showDidClick(UADSInterstitialAd unityAd) {}
     @NotImplemented("showDidComplete:with:")
-    public void showDidComplete(UnityAd unityAd, UADSShowFinishState finishState) {}
+    public void showDidComplete(UADSInterstitialAd unityAd, UADSShowFinishState finishState) {}
     @NotImplemented("showDidFail:error:")
-    public void showDidFail(UnityAd unityAd, UnityAdsError error) {}
+    public void showDidFail(UADSInterstitialAd unityAd, UnityAdsError error) {}
     /*</methods>*/
 }

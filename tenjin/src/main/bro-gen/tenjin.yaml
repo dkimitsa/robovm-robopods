@@ -206,6 +206,8 @@ protocols:
                 name: sendHandler
             '-ensureConnectedWithConnectHandler:':
                 name: ensureConnected
+            '-tryBeginConnectWithFlushHandler:':
+                name: tryBeginConnect
     DataStore:
         methods:
             '-getString:withDefault:':

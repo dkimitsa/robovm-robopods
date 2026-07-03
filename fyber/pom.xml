@@ -2,13 +2,13 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>io.github.dkimitsa.robovm</groupId>
-        <version>2.3.24.0</version>
+        <version>2.3.24.1</version>
         <artifactId>robopods-parent</artifactId>
     </parent>
 
     <artifactId>robopods-fyber-core-ios</artifactId>
-    <version>8.4.7.0</version>
-    <name>RoboPods Fyber Core iOS v8.4.7</name>
+    <version>8.4.8.0</version>
+    <name>RoboPods Fyber Core iOS v8.4.8</name>
     <packaging>jar</packaging>
 
     <licenses>

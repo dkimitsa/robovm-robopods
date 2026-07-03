@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.github.dkimitsa.robovm</groupId>
-    <!-- version corresponds to RoboVMs one + minor extensions (.0)  -->
-    <version>2.3.24.0</version>
+    <!-- version corresponds to RoboVMs one + minor extensions (.z)  -->
+    <version>2.3.24.1</version>
     <artifactId>robopods-parent</artifactId>
     <name>RoboPods Parent</name>
     <packaging>pom</packaging>
@@ -160,11 +160,15 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>3.1.1</version>
+                    <version>3.12.0</version>
                     <configuration>
                         <doclint>none</doclint>
                         <release>8</release>
                         <detectJavaApiLink>false</detectJavaApiLink>
+                        <quiet>true</quiet>
+                        <notree>true</notree>
+                        <noindex>true</noindex>
+                        <nodeprecated>true</nodeprecated>
                     </configuration>
                     <executions>
                         <execution>

@@ -12,15 +12,13 @@ The current framework specs use a flat YAML object with scalar fields:
 - `moduleFolder`: Repository module folder for the framework.
 - `artifactSource`: Human-readable description of where the framework artifact should be downloaded from.
 - `downloadLocation`: Local staging location for the downloaded and/or unpacked framework artifact.
-- `dropVersionSuffix`: Whether an agent should remove a version suffix from the downloaded artifact or extracted framework directory during processing.
 
 ## Example
 ```yaml
 name: appsflyer
 moduleFolder: appsflyer
 artifactSource: latest release https://github.com/AppsFlyerSDK/AppsFlyerFramework, AppsFlyerLib.xcframework.zip from assets
-downloadLocation: ~/Downloads/robopods-wip/AppsFlyerLib.xcframework
-dropVersionSuffix: true
+downloadLocation: ./.robopods-wip/AppsFlyerLib.xcframework
 ```
 
 ## Agent expectations

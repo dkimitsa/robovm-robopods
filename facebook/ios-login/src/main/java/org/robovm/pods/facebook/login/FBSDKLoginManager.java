@@ -72,6 +72,8 @@ import org.robovm.pods.facebook.corebasics.*;
     public native void reauthorizeDataAccess(UIViewController viewController, @Block VoidBlock2<FBSDKLoginManagerLoginResult, NSError> handler);
     @Method(selector = "logOut")
     public native void logOut();
+    @Method(selector = "refreshLimitedLoginFromViewController:fallbackPolicy:completion:")
+    public native void refreshLimitedLoginFromViewController(UIViewController viewController, FBSDKRefreshFallbackPolicy fallbackPolicy, @Block VoidBlock2<FBSDKProfile, NSError> completion);
     @Method(selector = "application:openURL:sourceApplication:annotation:")
     public native boolean openURL(UIApplication application, NSURL url, String sourceApplication, NSObject annotation);
     @Method(selector = "canOpenURL:forApplication:sourceApplication:annotation:")

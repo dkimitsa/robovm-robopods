@@ -7,7 +7,8 @@ NS_ASSUME_NONNULL_BEGIN
  * The `UnityAdsShowDelegate` defines the methods which will notify UnityAds show call
  * is either successfully completed with its completion state or failed with error category and error message
  */
-
+__attribute__((deprecated("This protocol will be removed in a future release."
+                          " Please use InterstitialShowDelegate (UADSInterstitialShowDelegate) or RewardedShowDelegate (UADSRewardedShowDelegate).")))
 @protocol UnityAdsShowDelegate <NSObject>
 /**
  * Called when UnityAds completes show operation successfully for a placement with completion state.

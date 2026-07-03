@@ -8,6 +8,7 @@ a.out
 *.class
 .idea/
 target/
+.robopods-wip/
 bin/
 gen-external-apklibs
 robovm-build

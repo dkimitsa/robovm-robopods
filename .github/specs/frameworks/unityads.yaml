@@ -3,6 +3,5 @@ moduleFolder: unityads
 artifactSource:
   - for version, check latest release https://github.com/Unity-Technologies/unity-ads-ios/releases/latest
   - download UnityAds.zip from assets
-  - unpack and move to ~/Downloads/robopods-wip/UnityAds/UnityAds.xcframework
-downloadLocation: ~/Downloads/robopods-wip/UnityAds
-dropVersionSuffix: true
+  - unpack and move to ./.robopods-wip/UnityAds/UnityAds.xcframework
+downloadLocation: ./.robopods-wip/UnityAds

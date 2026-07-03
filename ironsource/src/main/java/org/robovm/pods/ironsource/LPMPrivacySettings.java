@@ -54,8 +54,14 @@ import org.robovm.apple.coreanimation.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
+    /**
+     * @deprecated use +[LPMPrivacySettings.setGDPRConsent:] for GDPR consent management.
+     */
+    @Deprecated
     @Method(selector = "setGDPRConsents:")
     public static native void setGDPRConsents(NSDictionary<NSString, NSNumber> networkConsents);
+    @Method(selector = "setGDPRConsent:")
+    public static native void setGDPRConsent(boolean consent);
     @Method(selector = "setCCPA:")
     public static native void setCCPA(boolean value);
     @Method(selector = "setCOPPA:")

@@ -8,7 +8,6 @@
 #import "ISAppStoreErrorDelegate.h"
 #import "ISBaseNativeAdAdapter.h"
 #import "ISIronSourceAdapter.h"
-#import "ISMediationGlobalDataWriterFacade.h"
 #import "ISNAdViewsManagerSwiftFacade.h"
 #import "ISNAppStoreVCRootViewDelegate.h"
 #import "ISNControllerManagerSwiftFacade.h"

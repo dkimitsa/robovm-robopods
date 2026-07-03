@@ -5,6 +5,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+__attribute__((deprecated("This class will be removed in a future release. Please use BannerAd (UADSBannerAd) instead.")))
 @interface UADSBannerView : UIView
 
 @property (nonatomic, readonly) CGSize size;

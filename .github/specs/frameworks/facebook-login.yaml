@@ -1,6 +1,5 @@
 name: facebook-login
 moduleFolder: facebook/ios-login
 artifactSource:
-  - check if folder exists in ~/Downloads/robopods-wip/Facebook/FBSDKLoginKit, stop and report error if not
-downloadLocation: ~/Downloads/robopods-wip/Facebook
-dropVersionSuffix: true
+  - check if folder exists in ./.robopods-wip/Facebook/FBSDKLoginKit, stop and report error if not
+downloadLocation: ./.robopods-wip/Facebook

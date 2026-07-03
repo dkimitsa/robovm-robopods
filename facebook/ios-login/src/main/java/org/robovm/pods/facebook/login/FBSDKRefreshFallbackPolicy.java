@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.robovm.pods.unityads;
+package org.robovm.pods.facebook.login;
 
 /*<imports>*/
 import java.io.*;
@@ -28,40 +28,42 @@ import org.robovm.rt.bro.*;
 import org.robovm.rt.bro.annotation.*;
 import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
-import org.robovm.apple.uikit.*;
+import org.robovm.apple.dispatch.*;
 import org.robovm.apple.coregraphics.*;
+import org.robovm.apple.uikit.*;
 import org.robovm.apple.coreanimation.*;
+import org.robovm.pods.facebook.core.*;
+import org.robovm.pods.facebook.corebasics.*;
 /*</imports>*/
 
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Marshaler(ValuedEnum.AsMachineSizedSIntMarshaler.class) @Library(Library.INTERNAL)/*</annotations>*/
-public enum /*<name>*/UnityAnalyticsAcquisitionType/*</name>*/ implements ValuedEnum {
+/*<annotations>*/@Marshaler(ValuedEnum.AsMachineSizedSIntMarshaler.class)/*</annotations>*/
+public enum /*<name>*/FBSDKRefreshFallbackPolicy/*</name>*/ implements ValuedEnum {
     /*<values>*/
-    Unset(0L),
-    Soft(1L),
-    Premium(2L);
+    Automatic(0L),
+    SilentOnly(1L),
+    ExplicitOnly(2L),
+    DirectOnly(3L);
     /*</values>*/
 
-    /*<bind>*/static { Bro.bind(UnityAnalyticsAcquisitionType.class); }/*</bind>*/
+    /*<bind>*/
+    /*</bind>*/
     /*<constants>*//*</constants>*/
-    /*<methods>*/
-    @Bridge(symbol="NSStringFromUnityAnalyticsAcquisitionType", optional=true)
-    public native String toString();
-    /*</methods>*/
+    /*<methods>*//*</methods>*/
 
     private final long n;
 
-    private /*<name>*/UnityAnalyticsAcquisitionType/*</name>*/(long n) { this.n = n; }
+    private /*<name>*/FBSDKRefreshFallbackPolicy/*</name>*/(long n) { this.n = n; }
     public long value() { return n; }
-    public static /*<name>*/UnityAnalyticsAcquisitionType/*</name>*/ valueOf(long n) {
-        for (/*<name>*/UnityAnalyticsAcquisitionType/*</name>*/ v : values()) {
+    public static /*<name>*/FBSDKRefreshFallbackPolicy/*</name>*/ valueOf(long n) {
+        for (/*<name>*/FBSDKRefreshFallbackPolicy/*</name>*/ v : values()) {
             if (v.n == n) {
                 return v;
             }
         }
         throw new IllegalArgumentException("No constant with value " + n + " found in " 
-            + /*<name>*/UnityAnalyticsAcquisitionType/*</name>*/.class.getName());
+            + /*<name>*/FBSDKRefreshFallbackPolicy/*</name>*/.class.getName());
     }
 }

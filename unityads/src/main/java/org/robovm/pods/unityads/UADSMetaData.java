@@ -34,9 +34,11 @@ import org.robovm.apple.coreanimation.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
+/**
+ * @deprecated Use the appropriate replacement depending on your use case: For configuration data: use extras in InitializationConfiguration (UADSInitializationConfiguration), LoadConfiguration (UADSLoadConfiguration), or ShowConfiguration (UADSShowConfiguration). For privacy data: use UnityAds.setUserConsent(_:), UnityAds.setUserOptOut(_:), or UnityAds.setNonBehavioral(_:) (Objective-C: [UnityAds setUserConsent:], [UnityAds setUserOptOut:], or [UnityAds setNonBehavioral:]).
+ */
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass @Deprecated/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/UADSMetaData/*</name>*/ 
     extends /*<extends>*/USRVJsonStorage/*</extends>*/ 
     /*<implements>*//*</implements>*/ {

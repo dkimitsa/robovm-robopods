@@ -4,6 +4,10 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  The `UnityAdsLoadDelegate` protocol defines the required methods for receiving messages from UnityAds.load() method.
  */
+__attribute__((deprecated("This protocol will be removed in a future release."
+                          " Please use `InterstitialAd.load(_:completion:)` or `RewardedAd.load(_:completion:)`"
+                          " (Objective-C: `UADSInterstitialAd` / `UADSRewardedAd`) "
+                          " with a completion handler instead.")))
 @protocol UnityAdsLoadDelegate <NSObject>
 /**
  *  Callback triggered when a load request has successfully filled the specified placementId with an ad that is ready to show.
