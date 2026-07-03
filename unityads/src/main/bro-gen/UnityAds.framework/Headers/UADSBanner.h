@@ -43,9 +43,9 @@ typedef NS_ENUM (NSInteger, UnityAdsBannerPosition) {
 + (nullable id <UnityAdsBannerDelegate>)getDelegate __attribute__((deprecated));
 
 /**
- *  Asigns the banner delegate.
+ *  Assigns the banner delegate.
  *
- *  @param delegate The new `UnityAdsBannerDelegate' for UnityAds to send banner callbacks to.
+ *  @param delegate The new `UnityAdsBannerDelegate` for UnityAds to send banner callbacks to.
  */
 + (void)setDelegate: (id <UnityAdsBannerDelegate>)delegate __attribute__((deprecated));
 

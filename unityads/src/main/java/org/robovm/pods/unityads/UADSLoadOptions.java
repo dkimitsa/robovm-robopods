@@ -34,9 +34,11 @@ import org.robovm.apple.coreanimation.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
+/**
+ * @deprecated This class will be removed in a future release. Please use LoadConfiguration (UADSLoadConfiguration) instead.
+ */
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass @Deprecated/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/UADSLoadOptions/*</name>*/ 
     extends /*<extends>*/UADSBaseOptions/*</extends>*/ 
     /*<implements>*//*</implements>*/ {

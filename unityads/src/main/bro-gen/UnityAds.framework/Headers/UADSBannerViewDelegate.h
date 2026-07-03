@@ -6,6 +6,7 @@
 /**
  * UnityAdsBannerDelegate is a delegate class for callbacks from Unity Ads Banner operations.
  */
+__attribute__((deprecated("This protocol will be removed in a future release. Please use BannerAdDelegate (UADSBannerAdDelegate) instead.")))
 @protocol UADSBannerViewDelegate <NSObject>
 
 @optional

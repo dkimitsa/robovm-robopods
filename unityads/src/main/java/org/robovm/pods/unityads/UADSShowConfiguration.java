@@ -36,7 +36,7 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("UnityAds.UADSShowConfiguration")/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/UADSShowConfiguration/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
@@ -50,7 +50,12 @@ import org.robovm.apple.coreanimation.*;
     protected UADSShowConfiguration(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
-    
+    @Property(selector = "viewController")
+    public native UIViewController getViewController();
+    @Property(selector = "customRewardString")
+    public native String getCustomRewardString();
+    @Property(selector = "extras")
+    public native NSDictionary<NSString, NSString> getExtras();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

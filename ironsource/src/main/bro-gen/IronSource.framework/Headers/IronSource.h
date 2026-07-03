@@ -94,8 +94,8 @@ NS_ASSUME_NONNULL_BEGIN
 #define IS_BANNER @"banner"
 #define IS_NATIVE_AD @"nativead"
 
-static NSString *const MEDIATION_SDK_VERSION = @"9.4.2";
-static NSString *GitHash = @"7da8f3b";
+static NSString *const MEDIATION_SDK_VERSION = @"9.5.0";
+static NSString *GitHash = @"4533f4b";
 
 @interface IronSource : NSObject
 

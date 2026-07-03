@@ -18,8 +18,21 @@ NS_ASSUME_NONNULL_BEGIN
  *
  * @param networkConsents A dictionary where keys are network identifiers (NSString) and values are
  * NSNumber objects wrapping boolean values (YES if the user has granted consent, NO otherwise).
+ * @deprecated This method is deprecated. Use `+[LPMPrivacySettings.setGDPRConsent:]` instead
+ for GDPR consent management.
  */
-+ (void)setGDPRConsents:(NSDictionary<NSString *, NSNumber *> *_Nonnull)networkConsents;
++ (void)setGDPRConsents:(NSDictionary<NSString *, NSNumber *> *_Nonnull)networkConsents
+    __attribute__((
+        deprecated("use +[LPMPrivacySettings.setGDPRConsent:] for GDPR consent management.")));
+
+/**
+ * Sets the GDPR consent, indicating whether the user has granted consent to collect and share
+ * their data. Consent is used for GDPR compliance.
+ *
+ * @param consent A boolean indicating the user's GDPR consent status, true if the user has
+ *   granted consent, false otherwise.
+ */
++ (void)setGDPRConsent:(BOOL)consent;
 
 /**
  * Sets the CCPA (California Consumer Privacy Act) flag. This flag indicates whether the user has

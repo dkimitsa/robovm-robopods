@@ -54,27 +54,6 @@ import org.robovm.apple.coreanimation.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "initialize:testMode:initializationDelegate:")
-    public static native void initialize(String gameId, boolean testMode, UnityAdsInitializationDelegate initializationDelegate);
-    @Method(selector = "getDebugMode")
-    public static native boolean getDebugMode();
-    @Method(selector = "setDebugMode:")
-    public static native void setDebugMode(boolean enableDebugMode);
-    @Method(selector = "isSupported")
-    public static native boolean isSupported();
-    @Method(selector = "getVersion")
-    public static native String getVersion();
-    @Method(selector = "isInitialized")
-    public static native boolean isInitialized();
-    @Method(selector = "adsGatewayEnabled")
-    public static native boolean adsGatewayEnabled();
-    @Method(selector = "load:options:loadDelegate:")
-    public static native void load(String placementId, UADSLoadOptions options, UnityAdsLoadDelegate loadDelegate);
-    @Method(selector = "show:placementId:options:showDelegate:")
-    public static native void show(UIViewController viewController, String placementId, UADSShowOptions options, UnityAdsShowDelegate showDelegate);
-    @Method(selector = "getToken")
-    public static native String getToken();
-    @Method(selector = "getToken:")
-    public static native void getToken(@Block VoidBlock1<NSString> completion);
+    
     /*</methods>*/
 }

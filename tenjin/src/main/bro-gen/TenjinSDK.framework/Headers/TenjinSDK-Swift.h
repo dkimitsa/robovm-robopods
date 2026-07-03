@@ -316,7 +316,7 @@ SWIFT_CLASS("_TtC9TenjinSDK35AttributionOperationHelperMigration")
 SWIFT_PROTOCOL("_TtP9TenjinSDK11EventGating_")
 @protocol EventGating
 @property (nonatomic, readonly) BOOL canSendEvents;
-- (BOOL)tryBeginConnect SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)tryBeginConnectWithFlushHandler:(void (^ _Nonnull)(NSDictionary<NSString *, id> * _Nonnull))flushHandler SWIFT_WARN_UNUSED_RESULT;
 - (void)handleConnectCompletionWithSuccess:(BOOL)success processHandler:(void (^ _Nonnull)(NSDictionary<NSString *, id> * _Nonnull))processHandler;
 - (void)queueEvent:(NSDictionary<NSString *, id> * _Nonnull)eventData sendHandler:(void (^ _Nonnull)(NSDictionary<NSString *, id> * _Nonnull))sendHandler;
 - (void)ensureConnectedWithConnectHandler:(void (^ _Nonnull)(void))connectHandler;
@@ -330,10 +330,11 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) EventGatingM
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @property (nonatomic, readonly) BOOL canSendEvents;
-@property (nonatomic, readonly) BOOL connectSent;
 @property (nonatomic, readonly) BOOL connectInProgress;
 @property (nonatomic, readonly) NSInteger queuedEventCount;
-- (BOOL)tryBeginConnect SWIFT_WARN_UNUSED_RESULT;
+@property (nonatomic) NSTimeInterval connectInterval;
+@property (nonatomic) NSInteger maxQueueSize;
+- (BOOL)tryBeginConnectWithFlushHandler:(void (^ _Nonnull)(NSDictionary<NSString *, id> * _Nonnull))flushHandler SWIFT_WARN_UNUSED_RESULT;
 - (void)handleConnectCompletionWithSuccess:(BOOL)success processHandler:(void (^ _Nonnull)(NSDictionary<NSString *, id> * _Nonnull))processHandler;
 - (void)queueEvent:(NSDictionary<NSString *, id> * _Nonnull)eventData sendHandler:(void (^ _Nonnull)(NSDictionary<NSString *, id> * _Nonnull))sendHandler;
 - (void)ensureConnectedWithConnectHandler:(void (^ _Nonnull)(void))connectHandler;
@@ -492,6 +493,8 @@ SWIFT_CLASS("_TtC9TenjinSDK16TenjinDatasource")
 + (NSString * _Nonnull)getAnalyticsInstallationId SWIFT_WARN_UNUSED_RESULT;
 + (void)setInitializedAt:(NSString * _Nonnull)timestamp;
 + (NSString * _Nullable)getInitializedAt SWIFT_WARN_UNUSED_RESULT;
++ (void)setLastConnectTimestamp:(double)timestamp;
++ (double)getLastConnectTimestamp SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 

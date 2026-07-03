@@ -34,9 +34,11 @@ import org.robovm.apple.coreanimation.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
+/**
+ * @deprecated Use MediationInfo (UADSMediationInfo) in InitializationConfiguration (UADSInitializationConfiguration), LoadConfiguration (UADSLoadConfiguration), BannerLoadConfiguration (UADSBannerLoadConfiguration) and TokenConfiguration (UADSTokenConfiguration) instead.
+ */
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass @Deprecated/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/UADSMediationMetaData/*</name>*/ 
     extends /*<extends>*/UADSMetaData/*</extends>*/ 
     /*<implements>*//*</implements>*/ {

@@ -6,7 +6,7 @@ NS_ASSUME_NONNULL_BEGIN
  * The `UnityAdsInitializationDelegate` defines the methods which will notify UnityAds
  * has either successfully initialized or failed with error category and error message
  */
-
+__attribute__((deprecated("This protocol will be removed in a future release. Please use `UnityAds.initialize(_:completion:)` with a completion handler instead.")))
 @protocol UnityAdsInitializationDelegate <NSObject>
 /**
  * Called when `UnityAds` is successfully initialized

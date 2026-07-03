@@ -8,6 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ Thread-safety contract: conformers are queried from arbitrary SDK threads.
+ If `name` / `version` (or any property later added to this protocol or its
+ subclasses) is backed by storage, that storage MUST be synchronized — e.g.
+ `atomic` accessors, a lock, or an immutable ivar set before publication.
+ A `nonatomic` getter or lazily-initialized ivar can tear or race and crash
+ the host app.
+ */
 @protocol IAMediationInterface <NSObject>
 
 @required

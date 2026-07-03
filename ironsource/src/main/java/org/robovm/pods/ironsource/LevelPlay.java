@@ -63,10 +63,24 @@ import org.robovm.apple.coreanimation.*;
     public static native void init(LPMInitRequest request, @Block VoidBlock2<LPMConfiguration, NSError> completion);
     @Method(selector = "sdkVersion")
     public static native String sdkVersion();
+    /**
+     * @deprecated Publishers: use setImpressionDataDelegate: on each LPMBannerAdView, LPMInterstitialAd, or LPMRewardedAd.
+Third-party SDKs: use addImpressionLevelRevenueDelegate:forSubscriberId:.
+     */
+    @Deprecated
     @Method(selector = "addImpressionDataDelegate:")
     public static native void addImpressionDataDelegate(LPMImpressionDataDelegate delegate);
+    /**
+     * @deprecated Publishers: use setImpressionDataDelegate:nil on each LPMBannerAdView, LPMInterstitialAd, or LPMRewardedAd.
+Third-party SDKs: use removeImpressionLevelRevenueDelegate:.
+     */
+    @Deprecated
     @Method(selector = "removeImpressionDataDelegate:")
     public static native void removeImpressionDataDelegate(LPMImpressionDataDelegate delegate);
+    @Method(selector = "addImpressionLevelRevenueDelegate:forSubscriberId:")
+    public static native void addImpressionLevelRevenueDelegate(LPMImpressionDataDelegate delegate, String subscriberId);
+    @Method(selector = "removeImpressionLevelRevenueDelegate:")
+    public static native void removeImpressionLevelRevenueDelegate(LPMImpressionDataDelegate delegate);
     @Method(selector = "setMetaDataWithKey:value:")
     public static native void setMetaData(String key, String value);
     @Method(selector = "setMetaDataWithKey:values:")
@@ -84,7 +98,7 @@ import org.robovm.apple.coreanimation.*;
     @Method(selector = "validateIntegration")
     public static native void validateIntegration();
     /**
-     * @deprecated use LevelPlayPrivacySettings.setGDPRConsents: for GDPR consent management.
+     * @deprecated use +[LPMPrivacySettings setGDPRConsent:] for GDPR consent management.
      */
     @Deprecated
     @Method(selector = "setConsent:")

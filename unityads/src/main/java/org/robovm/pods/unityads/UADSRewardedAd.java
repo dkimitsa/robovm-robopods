@@ -36,7 +36,7 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("UnityAds.UADSRewardedAd")/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/UADSRewardedAd/*</name>*/ 
     extends /*<extends>*/UnityAd/*</extends>*/ 
     /*<implements>*//*</implements>*/ {

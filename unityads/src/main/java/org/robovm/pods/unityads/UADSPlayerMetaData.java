@@ -34,9 +34,11 @@ import org.robovm.apple.coreanimation.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
+/**
+ * @deprecated Use customRewardString in ShowConfiguration (UADSShowConfiguration) instead.
+ */
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass @Deprecated/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/UADSPlayerMetaData/*</name>*/ 
     extends /*<extends>*/UADSMetaData/*</extends>*/ 
     /*<implements>*//*</implements>*/ {

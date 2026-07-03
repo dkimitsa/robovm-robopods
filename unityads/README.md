@@ -7,6 +7,7 @@ https://github.com/Unity-Technologies/unity-ads-ios
 ## Available RoboPods
 | RoboPods Version | UnityAds Version |
 |------------------|------------------|
+| 4.19.0.0         | 4.19.0           |
 | 4.18.1.0         | 4.18.1           |
 | 4.17.0.0         | 4.17.0           |
 | 4.16.6.0         | 4.16.6           |

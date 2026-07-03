@@ -34,9 +34,11 @@ import org.robovm.apple.coreanimation.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
+/**
+ * @deprecated This class will be removed in a future release. Please use BannerLoadConfiguration (UADSBannerLoadConfiguration) instead.
+ */
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass @Deprecated/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/UADSBannerLoadOptions/*</name>*/ 
     extends /*<extends>*/UADSLoadOptions/*</extends>*/ 
     /*<implements>*//*</implements>*/ {

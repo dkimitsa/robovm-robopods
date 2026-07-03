@@ -7,6 +7,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "LPMImpressionDataDelegate.h"
 #import "LPMInterstitialAdDelegate.h"
 
 @class LPMInterstitialAdConfig;
@@ -49,6 +50,14 @@ NS_ASSUME_NONNULL_BEGIN
  @param delegate The delegate to set.
  */
 - (void)setDelegate:(id<LPMInterstitialAdDelegate>)delegate;
+
+/**
+ Sets a delegate for impression-level revenue data. The callback will be invoked on the main
+ thread when an impression occurs for this specific ad instance.
+
+ @param delegate The delegate to set.
+ */
+- (void)setImpressionDataDelegate:(nullable id<LPMImpressionDataDelegate>)delegate;
 
 /**
  Loads an interstitial ad.

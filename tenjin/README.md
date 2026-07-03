@@ -6,6 +6,7 @@ https://github.com/tenjin/tenjin-ios-sdk
 ## Available RoboPods
 | RoboPods Version | Tenjin Version  |
 |------------------|-----------------|
+| 1.17.2.0         | 1.17.2          |
 | 1.17.1.0         | 1.17.1          |
 | 1.16.1.0         | 1.16.1          |
 | 1.15.1.0         | 1.15.1          |

@@ -59,38 +59,98 @@ import org.robovm.apple.coreanimation.*;
     @GlobalValue(symbol="UnityAdsModuleVersionString", optional=true)
     public static native BytePtr getVersionString();
     
+    /**
+     * @deprecated Use initialize(_:completion:) instead.
+     */
+    @Deprecated
     @Method(selector = "initialize:")
     public static native void initialize(String gameId);
+    /**
+     * @deprecated Use initialize(_:completion:) instead.
+     */
+    @Deprecated
     @Method(selector = "initialize:initializationDelegate:")
     public static native void initialize(String gameId, UnityAdsInitializationDelegate initializationDelegate);
+    /**
+     * @deprecated Use initialize(_:completion:) instead.
+     */
+    @Deprecated
     @Method(selector = "initialize:testMode:")
     public static native void initialize(String gameId, boolean testMode);
+    /**
+     * @deprecated Use initialize(_:completion:) instead.
+     */
+    @Deprecated
     @Method(selector = "initialize:testMode:initializationDelegate:")
     public static native void initialize(String gameId, boolean testMode, UnityAdsInitializationDelegate initializationDelegate);
+    /**
+     * @deprecated Use UADSInterstitialAd or UADSRewardedAd instead.
+     */
+    @Deprecated
     @Method(selector = "load:")
     public static native void load(String placementId);
+    /**
+     * @deprecated Use UADSInterstitialAd or UADSRewardedAd instead.
+     */
+    @Deprecated
     @Method(selector = "load:loadDelegate:")
     public static native void load(String placementId, UnityAdsLoadDelegate loadDelegate);
+    /**
+     * @deprecated Use UADSInterstitialAd or UADSRewardedAd instead.
+     */
+    @Deprecated
     @Method(selector = "load:options:loadDelegate:")
     public static native void load(String placementId, UADSLoadOptions options, UnityAdsLoadDelegate loadDelegate);
+    /**
+     * @deprecated Use UADSInterstitialAd or UADSRewardedAd instead.
+     */
+    @Deprecated
     @Method(selector = "show:placementId:showDelegate:")
     public static native void show(UIViewController viewController, String placementId, UnityAdsShowDelegate showDelegate);
+    /**
+     * @deprecated Use UADSInterstitialAd or UADSRewardedAd instead.
+     */
+    @Deprecated
     @Method(selector = "show:placementId:options:showDelegate:")
     public static native void show(UIViewController viewController, String placementId, UADSShowOptions options, UnityAdsShowDelegate showDelegate);
+    /**
+     * @deprecated This method will be removed in a future version.
+     */
+    @Deprecated
     @Method(selector = "getDebugMode")
     public static native boolean getDebugMode();
+    /**
+     * @deprecated Use UADSInitializationConfigurationBuilder.with(logLevel:) instead.
+     */
+    @Deprecated
     @Method(selector = "setDebugMode:")
     public static native void setDebugMode(boolean enableDebugMode);
+    /**
+     * @deprecated This method will be removed in a future version.
+     */
+    @Deprecated
     @Method(selector = "isSupported")
     public static native boolean isSupported();
     @Method(selector = "getVersion")
     public static native String getVersion();
     @Method(selector = "isInitialized")
     public static native boolean isInitialized();
+    /**
+     * @deprecated Use getToken(_:completion:) with a UADSTokenConfiguration instead.
+     */
+    @Deprecated
     @Method(selector = "getToken")
     public static native String getToken();
+    /**
+     * @deprecated Use getToken(_:completion:) with a UADSTokenConfiguration instead.
+     */
+    @Deprecated
     @Method(selector = "getToken:")
     public static native void getToken(@Block VoidBlock1<NSString> completion);
+    /**
+     * @deprecated Use getToken(_:completion:) with a UADSTokenConfiguration instead.
+     */
+    @Deprecated
     @Method(selector = "getTokenWith:completion:")
     public static native void getToken(UnityAdsTokenConfiguration configuration, @Block VoidBlock1<NSString> completion);
     @Method(selector = "getToken:completion:")

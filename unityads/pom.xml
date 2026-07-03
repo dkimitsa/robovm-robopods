@@ -7,8 +7,8 @@
     </parent>
 
     <artifactId>robopods-unityads-ios</artifactId>
-    <version>4.18.1.0</version>
-    <name>RoboPods Unity Ads iOS v4.18.1</name>
+    <version>4.19.0.0</version>
+    <name>RoboPods Unity Ads iOS v4.19.0</name>
     <packaging>jar</packaging>
 
     <licenses>

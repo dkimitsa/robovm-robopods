@@ -23,26 +23,16 @@ FOUNDATION_EXPORT const unsigned char UnityAdsModuleVersionString[];
 #import <UnityAds/UnityAdsShowDelegate.h>
 #import <UnityAds/UADSLoadOptions.h>
 #import <UnityAds/UADSShowOptions.h>
-#import <UnityAds/UADSBannerAdRefreshViewDelegate.h>
 #import <UnityAds/UADSBannerLoadOptions.h>
-
-#import <UnityAds/UnityAnalytics.h>
-#import <UnityAds/UnityAnalyticsAcquisitionType.h>
-#import <UnityAds/UANAApiAnalytics.h>
 #import <UnityAds/UADSBanner.h>
-#import <UnityAds/USRVInitializeStateFactory.h>
-#import <UnityAds/USRVInitializeStateType.h>
-#import <UnityAds/UADSDeviceInfoProvider.h>
+#import <UnityAds/UnityAdsBannerDelegate.h>
+#import <UnityAds/UADSBannerAdRefreshViewDelegate.h>
+
 #import <UnityAds/USRVStorageManager.h>
 #import <UnityAds/USRVStorage.h>
 #import <UnityAds/UADSGenericError.h>
 #import <UnityAds/UADSGenericCompletion.h>
 #import <UnityAds/UADSDynamicFunctionInvoker.h>
-#import <UnityAds/UADSScarSignalParameters.h>
-#import <UnityAds/UADSGMAScarVersionBridge.h>
-#import <UnityAds/UADSGMAScarSignalsBridge.h>
-#import <UnityAds/UADSGMAScarAdsBridge.h>
-#import <UnityAds/GMAAdMetaData.h>
 #import <UnityAds/UADSWebViewEventSender.h>
 #import <UnityAds/UADSOfferwallVersionBridge.h>
 #import <UnityAds/UADSOfferwallAvailabilityBridge.h>

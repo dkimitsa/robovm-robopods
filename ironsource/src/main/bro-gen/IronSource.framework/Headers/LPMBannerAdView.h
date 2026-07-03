@@ -8,6 +8,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "LPMBannerAdViewDelegate.h"
+#import "LPMImpressionDataDelegate.h"
 
 @class LPMAdSize, LPMBannerAdViewConfig;
 
@@ -28,6 +29,14 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithAdUnitId:(NSString *)adUnitId config:(LPMBannerAdViewConfig *)config;
 
 - (void)setDelegate:(id<LPMBannerAdViewDelegate>)delegate;
+
+/**
+ Sets a delegate for impression-level revenue data. The callback will be invoked on the main
+ thread when an impression occurs for this specific ad instance.
+
+ @param delegate The delegate to set.
+ */
+- (void)setImpressionDataDelegate:(nullable id<LPMImpressionDataDelegate>)delegate;
 
 - (void)loadAdWithViewController:(UIViewController *)viewController;
 
