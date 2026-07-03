@@ -153,12 +153,12 @@ fun isPublishedToRemote(artifactId: Artifact.Id): Boolean? {
         else artifactId.toArtifactUrl("https://repo1.maven.org/maven2/")
 
     val httpClient: HttpClient = HttpClient.newBuilder()
-        .connectTimeout(Duration.ofSeconds(5))
+        .connectTimeout(Duration.ofSeconds(25))
         .followRedirects(HttpClient.Redirect.NORMAL)
         .build()
     val request = HttpRequest.newBuilder()
         .uri(URI.create(url))
-        .timeout(Duration.ofSeconds(5))
+        .timeout(Duration.ofSeconds(25))
         .method("HEAD", HttpRequest.BodyPublishers.noBody())
         .build()
 

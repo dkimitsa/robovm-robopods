@@ -35,15 +35,12 @@
 
     <!-- list of modules to build  -->
     <modules>
-        <module>facebook/ios-aem</module>
-        <module>facebook/ios-bom</module>
-        <module>facebook/ios-core</module>
-        <module>facebook/ios-core-basics</module>
-        <module>facebook/ios-gaming-services-kit</module>
-        <module>facebook/ios-login</module>
-        <module>facebook/ios-share</module>
-        <module>google-mobile-ads/ios-google-mobile-ads</module>
+        <module>alt.parent</module>
+        <module>branchmetrics</module>
+        <module>fyber</module>
         <module>ironsource</module>
+        <module>tenjin</module>
+        <module>unityads</module>
     </modules>
 
 </project>
