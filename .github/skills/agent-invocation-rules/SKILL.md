@@ -18,7 +18,7 @@ Use this skill whenever an agent invokes terminal commands, reads repository fil
 
 ## Pathing and Scope
 - Do not guess file locations. Use only the file paths named by the agent's required inputs and workflow.
-- **DO NOT** use glob searches like `glob` or `rg` for deterministic file path, read that file directly using `view`;
+- **DO NOT** use discovery searches like `glob` or `rg` to locate a deterministic file path; read that file directly using `view`;
 - Do not search beyond the agent's explicitly allowed scope.
 - Use only the exact absolute path already provided.
 - Never prepend, rewrite, normalize, or “repair” a path unless explicitly instructed.

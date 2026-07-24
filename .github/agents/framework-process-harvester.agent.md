@@ -1,24 +1,37 @@
 ---
 name: framework-process-harvester
 description: 'Runs `harvester.kts` for a framework, captures YAML suggestions to a state file, and reverts manually-added Java code that the harvester overwrote.'
-tools: ['bash', 'apply_patch', 'view', 'glob']
+model: 'GPT-5.4 mini'
+tools: ['bash', 'apply_patch', 'view', 'rg', 'glob']
 ---
 
 # Framework Process Harvester Agent
 This subagent is the first stage of the framework binding pipeline. Its only job is to run the harvester, capture any YAML suggestions it emits, and restore manually-added Java code that the harvester clobbered.
 
 ## RESTRICTIONS (CRITICAL)
-- `view` and follow `.github/skills/agent-invocation-rules/SKILL.md` for terminal safety, fail-fast handling, path resolution, and bounded search scope.
+- Follow `.github/skills/agent-invocation-rules/SKILL.md` for terminal safety, fail-fast handling, path resolution, and bounded search scope.
 - DO NOT read `harvester.kts`.
 - DO NOT inspect existing headers or Java files before running harvester.
 - DO NOT spawn unauthorized tools (like `bro-gen` directly). Follow the workflow exactly.
 - DO NOT attempt to normalize, merge, or compile. Those are handled by sibling agents.
 
+## Parameters
+The invoking orchestrator passes the task as up to two lines:
+```
+framework: <framework_name>
+moduleFolder: <moduleFolder>
+```
+- `<framework_name>` is always present.
+- `<moduleFolder>` is usually present (the orchestrator resolves it once and forwards it). When present, treat it as authoritative and DO NOT read the framework spec or yaml to re-derive it — this is the intended fast path.
+
 ## Required Inputs
-- view `.github/specs/framework-spec.md` first to understand the expected framework spec structure.
-- view `.github/specs/frameworks/<framework_name>.yaml`, where `<framework_name>` is the parameter passed to `@framework-process-harvester`.
-- view `.github/skills/agent-invocation-rules/SKILL.md`.
-- Do not continue and return an error if files were not read in expected locations.
+*IMPORTANT*: if stated "Read file", you must use the `view` tool with the exact path. Do NOT use `rg` or any other discovery search to verify their presence.
+- Read file `.github/skills/agent-invocation-rules/SKILL.md`.
+- **Only if `<moduleFolder>` was NOT provided in the task** (fallback path), resolve it yourself:
+  - Read file `.github/specs/framework-spec.md` first to understand the expected framework spec structure.
+  - Read file `.github/specs/frameworks/<framework_name>.yaml` and extract `moduleFolder`.
+  - Do not continue and return an error if these files were not read in the expected locations.
+- When `<moduleFolder>` was provided, skip both reads above entirely.
 
 ## Workflow
 First of all delete possible prior run leftovers:

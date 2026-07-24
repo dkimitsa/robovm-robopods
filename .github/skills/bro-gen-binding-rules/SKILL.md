@@ -24,6 +24,10 @@ You must apply the following transformations to the `name:` field of suggested e
 2. **Special Characters ($):** If the suggested name contains a `$`, truncate the string at the very first `$`.
     - *Example:* `name: setHost$hostName$` → `name: setHost`
 
+    2a. **Protocol/Delegate Methods (target as first parameter):** In protocol (delegate) methods the delegating target is conventionally passed as the *first* parameter, so the first token before `$` is just the target name, not the event. In this case do NOT keep the first token — use the token after the first `$` (the actual event) as the method name, then apply the remaining rules.
+    - *Example:* `name: messaging$didReceiveRegistration$` → `name: didReceiveRegistration`
+    - *Rationale:* Many methods share the same first parameter (e.g. `messaging`); the distinguishing, meaningful name is the event (`didReceiveRegistration`).
+
 3. **Keyword Truncation (With):** If the remaining name contains the word `With`, truncate the string immediately before `With`.
     - *Example:* `name: setPartnerDataWithPartnerId` → `name: setPartnerData`
 
@@ -34,7 +38,11 @@ You must apply the following transformations to the `name:` field of suggested e
 When handling global constants, values, or functions, apply the following structural grouping:
 1. **Values & Constants:** Group them by their return type. If a value or constant evaluates to a specific framework class (e.g., `SomeType valueA`), move it into the `SomeType` class configuration.
 2. **Functions:** Group them by their primary target. If the first argument of a function is an instance of an available class (e.g., `foo(SomeClass inst)`), move that function into `SomeClass`.
-3. **Swift Exclusions:** Exclude any Swift-specific constants, macros, or artifacts (e.g., `SWIFT_TYPEDEFS`). Do not generate bindings for them.
+3. **Swift Exclusions:** Exclude any Swift-specific constants, macros, or artifacts (e.g., `SWIFT_TYPEDEFS`). Do not generate bindings for them. Instead of listing each symbol individually, add a regex exclusion rule that matches the whole `SWIFT_` family:
+    ```yaml
+    SWIFT_.*:
+        exclude: true
+    ```
 4. **No FixMe Sink Bindings:** Never preserve or introduce `__FixMe`, `__FIXME`, `*FixMe`, or similar placeholder classes as the final destination for a suggestion. If an entity is only known from a FixMe hint, resolve it to the actual owning class/protocol/enum using the header or symbol context; otherwise stop evaluating that entity.
 5. **Strict Failure Mode:** If the correct class belonging for a constant, value, or function cannot be definitively resolved using the rules above, the agent MUST stop evaluating that entity. Do not attempt to guess or recover.
 

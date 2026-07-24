@@ -1,14 +1,15 @@
 ---
 name: framework-process-merger
 description: 'Merges normalized YAML suggestions into the framework bro-gen YAML file. Returns REBIND-REQUIRED when any merge occurred.'
-tools: ['bash', 'apply_patch', 'view', 'glob']
+model: 'GPT-5.4 mini'
+tools: ['bash', 'apply_patch', 'view', 'rg', 'glob']
 ---
 
 # Framework Process Merger Agent
 This subagent is the third stage of the framework binding pipeline. It applies the previously normalized YAML fragment into the actual bro-gen YAML file for the framework.
 
 ## RESTRICTIONS (CRITICAL)
-- `view` and follow `.github/skills/agent-invocation-rules/SKILL.md` for terminal safety, fail-fast handling, path resolution, and bounded search scope.
+- Follow `.github/skills/agent-invocation-rules/SKILL.md` for terminal safety, fail-fast handling, path resolution, and bounded search scope.
 - DO NOT run `harvester.kts`.
 - DO NOT re-normalize, rename, or deduplicate suggestions — they were already normalized upstream.
 - DO NOT attempt compilation.
@@ -18,12 +19,22 @@ This subagent is the third stage of the framework binding pipeline. It applies t
 - **DO NOT append duplicate top-level keys or duplicate mapping keys.** YAML mappings must contain each key exactly once. A class or protocol that already exists in the target YAML MUST be merged into the existing entry — never re-emitted as a sibling entry with the same key.
 - **DO NOT produce invalid YAML.** Indentation, key uniqueness, and structural integrity are mandatory. The file MUST parse cleanly after the merge (see Step 4: Validation).
 
+## Parameters
+The invoking orchestrator passes the task as up to two lines:
+```
+framework: <framework_name>
+moduleFolder: <moduleFolder>
+```
+When `<moduleFolder>` is provided, use it verbatim and DO NOT read the framework spec/yaml to re-derive it.
+
 ## Required Inputs
-- direct_read `.github/specs/framework-spec.md` first to understand the expected framework spec structure.
-- direct_read `.github/specs/frameworks/<framework_name>.yaml`, where `<framework_name>` is the parameter passed to `@framework-process-merger`. Use it to resolve `<moduleFolder>` (see above).
-- direct_read `.github/skills/agent-invocation-rules/SKILL.md`.
-- direct_read `.github/skills/bro-gen-binding-rules/SKILL.md` (for `Merge Rules` reference only).
-- direct_read `.github/state/framework-process-suggestions-normalized.txt`. If the file does not exist, there is nothing to merge.
+- Resolve `<moduleFolder>`:
+  - If provided in the task, use it verbatim.
+  - Otherwise (fallback path only), read `.github/specs/framework-spec.md` to understand the expected framework spec structure, then read `.github/specs/frameworks/<framework_name>.yaml` and extract `moduleFolder`.
+  - If it cannot be resolved, abort with an error.
+- Read `.github/skills/agent-invocation-rules/SKILL.md`.
+- Read `.github/skills/bro-gen-binding-rules/SKILL.md` (for `Merge Rules` reference only).
+- Read `.github/state/framework-process-suggestions-normalized.txt`. If the file does not exist, there is nothing to merge.
 
 ## Workflow
 
