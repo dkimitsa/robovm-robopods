@@ -37,28 +37,40 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("InMobiSDK.CustomBrowserInternalConfig")/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/CustomBrowserInternalConfig/*</name>*/ 
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("InMobiSDK.LPAppOwnershipModel")/*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/LPAppOwnershipModel/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class CustomBrowserInternalConfigPtr extends Ptr<CustomBrowserInternalConfig, CustomBrowserInternalConfigPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(CustomBrowserInternalConfig.class); }/*</bind>*/
+    /*<ptr>*/public static class LPAppOwnershipModelPtr extends Ptr<LPAppOwnershipModel, LPAppOwnershipModelPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(LPAppOwnershipModel.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    protected CustomBrowserInternalConfig() {}
-    protected CustomBrowserInternalConfig(Handle h, long handle) { super(h, handle); }
-    protected CustomBrowserInternalConfig(SkipInit skipInit) { super(skipInit); }
+    protected LPAppOwnershipModel() {}
+    protected LPAppOwnershipModel(Handle h, long handle) { super(h, handle); }
+    protected LPAppOwnershipModel(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
-    @Property(selector = "loaderTimeout")
-    public native double getLoaderTimeout();
-    @Property(selector = "setLoaderTimeout:")
-    public native void setLoaderTimeout(double v);
-    @Property(selector = "loaderOpacity")
-    public native double getLoaderOpacity();
-    @Property(selector = "setLoaderOpacity:")
-    public native void setLoaderOpacity(double v);
+    @Property(selector = "enabled")
+    public native boolean isEnabled();
+    @Property(selector = "setEnabled:")
+    public native void setEnabled(boolean v);
+    @Property(selector = "url")
+    public native String getUrl();
+    @Property(selector = "setUrl:")
+    public native void setUrl(String v);
+    @Property(selector = "id")
+    public native String getId();
+    @Property(selector = "setId:")
+    public native void setId(String v);
+    @Property(selector = "resolveRedirection")
+    public native boolean isResolveRedirection();
+    @Property(selector = "setResolveRedirection:")
+    public native void setResolveRedirection(boolean v);
+    @Property(selector = "enableAutoSKStore")
+    public native boolean isEnableAutoSKStore();
+    @Property(selector = "setEnableAutoSKStore:")
+    public native void setEnableAutoSKStore(boolean v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

@@ -1,6 +1,7 @@
 ---
 name: bulk-process
 description: 'agent performs download and processing of multiple frameworks in a single run, delegating each framework to the appropriate sub-agent.'
+model: 'GPT-5.4 mini'
 tools: ['bash', 'view', 'apply_patch', 'task']
 ---
 
@@ -35,13 +36,13 @@ This agent processes a specific framework end-to-end by delegating each stage of
 ## Macros
 
 ### `perform_download(<framework_id>)`
-1. run in terminal `grep -qx '<framework_id>' '.github/state/bulk_download' && echo PRESENT`, if PRESENT, skip the macro and leave `.github/state/bulk_download` unchanged.
+1. run in `bash` `grep -qx '<framework_id>' '.github/state/bulk_download' && echo PRESENT`, if PRESENT, skip the macro and leave `.github/state/bulk_download` unchanged.
 2. Otherwise delegate to `@framework-download <framework_id>`.
 3. If the sub-agent succeeds, append `<framework_id>` to `.github/state/bulk_download`; if it fails, report the error and stop immediately.
 4. Done
 
 ### `perform_process(<framework_id>)`
-1. run in terminal `grep -qx '<framework_id>' '.github/state/bulk_process' && echo PRESENT`, if PRESENT, skip the macro and leave `.github/state/bulk_process` unchanged.
+1. run in `bash` `grep -qx '<framework_id>' '.github/state/bulk_process' && echo PRESENT`, if PRESENT, skip the macro and leave `.github/state/bulk_process` unchanged.
 2. Otherwise delegate to `@framework-process <framework_id>`.
 3. If the sub-agent succeeds, append `<framework_id>` to `.github/state/bulk_process`; if it fails, report the error and stop immediately.
 4. Done

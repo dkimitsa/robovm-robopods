@@ -99,6 +99,14 @@ import org.robovm.apple.coreanimation.*;
     public native ExperimentsConfig getExperiments();
     @Property(selector = "setExperiments:")
     public native void setExperiments(ExperimentsConfig v);
+    @Property(selector = "fraud")
+    public native FraudSignalConfig getFraud();
+    @Property(selector = "setFraud:")
+    public native void setFraud(FraudSignalConfig v);
+    @Property(selector = "appOwnership")
+    public native LPAppOwnershipConfig getAppOwnership();
+    @Property(selector = "setAppOwnership:")
+    public native void setAppOwnership(LPAppOwnershipConfig v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

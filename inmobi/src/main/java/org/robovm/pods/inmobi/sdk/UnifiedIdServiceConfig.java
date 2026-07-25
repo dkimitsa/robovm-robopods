@@ -71,6 +71,10 @@ import org.robovm.apple.coreanimation.*;
     public native @MachineSizedSInt long getMaxRetries();
     @Property(selector = "setMaxRetries:")
     public native void setMaxRetries(@MachineSizedSInt long v);
+    @Property(selector = "latOptOutCheck")
+    public native boolean isLatOptOutCheck();
+    @Property(selector = "setLatOptOutCheck:")
+    public native void setLatOptOutCheck(boolean v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

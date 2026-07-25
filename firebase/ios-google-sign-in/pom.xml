@@ -7,8 +7,8 @@
     </parent>
 
     <artifactId>robopods-firebase-google-signin-ios</artifactId>
-    <version>9.1.0.0</version>
-    <name>RoboPods FireBase Google Sign iOS v9.1.0</name>
+    <version>9.2.0.0</version>
+    <name>RoboPods FireBase Google Sign iOS v9.2.0</name>
     <packaging>jar</packaging>
 
     <licenses>

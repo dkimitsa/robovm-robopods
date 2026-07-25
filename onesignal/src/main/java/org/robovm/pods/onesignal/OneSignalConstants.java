@@ -47,7 +47,7 @@ import org.robovm.apple.uikit.*;
     public static final String OS_API_VERSION = "1";
     public static final String OS_API_SERVER_URL = "https://api.onesignal.com/";
     public static final String OS_IAM_WEBVIEW_BASE_URL = "https://onesignal.com/";
-    public static final String ONESIGNAL_VERSION = "050503";
+    public static final String ONESIGNAL_VERSION = "050505";
     public static final String OSUD_APP_ID = "GT_APP_ID";
     public static final String OSUD_REGISTERED_WITH_APPLE = "GT_REGISTERED_WITH_APPLE";
     public static final String OSUD_APP_PROVIDES_NOTIFICATION_SETTINGS = "OS_APP_PROVIDES_NOTIFICATION_SETTINGS";

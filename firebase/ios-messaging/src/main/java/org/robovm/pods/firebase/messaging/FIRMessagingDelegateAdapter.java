@@ -51,5 +51,9 @@ import org.robovm.apple.usernotifications.*;
     /*<methods>*/
     @NotImplemented("messaging:didReceiveRegistrationToken:")
     public void didReceiveRegistrationToken(FIRMessaging messaging, String fcmToken) {}
+    @NotImplemented("messaging:didReceiveRegistration:")
+    public void didReceiveRegistration(FIRMessaging messaging, String installationId) {}
+    @NotImplemented("messaging:didUnregister:")
+    public void didUnregister(FIRMessaging messaging, String installationId) {}
     /*</methods>*/
 }

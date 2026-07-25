@@ -60,6 +60,8 @@ classes:
     AppsFlyerDeepLinkResult: { }
     AppsFlyerLib:
         methods:
+            '-setUserPhoneWithCountryCode:phoneNumber:':
+                name: setUserPhone
             '-initWithDevKey:appleAppId:':
                 name: init
             '-waitForATTUserAuthorizationWithTimeoutInterval:':

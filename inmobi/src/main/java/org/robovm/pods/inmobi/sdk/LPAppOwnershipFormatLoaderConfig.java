@@ -37,28 +37,28 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("InMobiSDK.CustomBrowserInternalConfig")/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/CustomBrowserInternalConfig/*</name>*/ 
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("InMobiSDK.LPAppOwnershipFormatLoaderConfig")/*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/LPAppOwnershipFormatLoaderConfig/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class CustomBrowserInternalConfigPtr extends Ptr<CustomBrowserInternalConfig, CustomBrowserInternalConfigPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(CustomBrowserInternalConfig.class); }/*</bind>*/
+    /*<ptr>*/public static class LPAppOwnershipFormatLoaderConfigPtr extends Ptr<LPAppOwnershipFormatLoaderConfig, LPAppOwnershipFormatLoaderConfigPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(LPAppOwnershipFormatLoaderConfig.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    protected CustomBrowserInternalConfig() {}
-    protected CustomBrowserInternalConfig(Handle h, long handle) { super(h, handle); }
-    protected CustomBrowserInternalConfig(SkipInit skipInit) { super(skipInit); }
+    public LPAppOwnershipFormatLoaderConfig() {}
+    protected LPAppOwnershipFormatLoaderConfig(Handle h, long handle) { super(h, handle); }
+    protected LPAppOwnershipFormatLoaderConfig(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
-    @Property(selector = "loaderTimeout")
-    public native double getLoaderTimeout();
-    @Property(selector = "setLoaderTimeout:")
-    public native void setLoaderTimeout(double v);
-    @Property(selector = "loaderOpacity")
-    public native double getLoaderOpacity();
-    @Property(selector = "setLoaderOpacity:")
-    public native void setLoaderOpacity(double v);
+    @Property(selector = "enabled")
+    public native boolean isEnabled();
+    @Property(selector = "setEnabled:")
+    public native void setEnabled(boolean v);
+    @Property(selector = "opacity")
+    public native double getOpacity();
+    @Property(selector = "setOpacity:")
+    public native void setOpacity(double v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

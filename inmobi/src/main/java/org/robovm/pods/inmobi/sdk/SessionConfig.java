@@ -55,6 +55,16 @@ import org.robovm.apple.coreanimation.*;
     public native NSArray<NSNumber> getControl();
     @Property(selector = "setControl:")
     public native void setControl(NSArray<NSNumber> v);
+    @Property(selector = "fgBgModelEnabled")
+    public native boolean isFgBgModelEnabled();
+    @Property(selector = "setFgBgModelEnabled:")
+    public native void setFgBgModelEnabled(boolean v);
+    @Property(selector = "timeoutSeconds")
+    public native @MachineSizedSInt long getTimeoutSeconds();
+    @Property(selector = "setTimeoutSeconds:")
+    public native void setTimeoutSeconds(@MachineSizedSInt long v);
+    @Property(selector = "timeoutMillis")
+    public native long getTimeoutMillis();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

@@ -63,6 +63,10 @@ import org.robovm.apple.coreanimation.*;
     public native boolean isInappV2();
     @Property(selector = "setInappV2:")
     public native void setInappV2(boolean v);
+    @Property(selector = "applePay")
+    public native boolean isApplePay();
+    @Property(selector = "setApplePay:")
+    public native void setApplePay(boolean v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

@@ -48,7 +48,8 @@ public enum /*<name>*/GIDSignInErrorCode/*</name>*/ implements NSErrorCode {
     AmbiguousClaims(-7L),
     ScopesAlreadyGranted(-8L),
     MismatchWithCurrentUser(-9L),
-    JSONSerializationFailure(-10L);
+    JSONSerializationFailure(-10L),
+    RefreshTokenExpired(-11L);
     /*</values>*/
 
     /*<bind>*/static { Bro.bind(GIDSignInErrorCode.class); }/*</bind>*/

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.robovm.pods.firebase.appcheck;
+package org.robovm.pods.inmobi.sdk;
 
 /*<imports>*/
 import java.io.*;
@@ -28,30 +28,36 @@ import org.robovm.rt.bro.*;
 import org.robovm.rt.bro.annotation.*;
 import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
+import org.robovm.apple.uikit.*;
+import org.robovm.apple.corelocation.*;
+import org.robovm.apple.coregraphics.*;
+import org.robovm.apple.coreanimation.*;
 /*</imports>*/
 
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/FIRDeviceCheckProviderFactory/*</name>*/ 
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("InMobiSDK.SynapsInstalledAppModel")/*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/SynapsInstalledAppModel/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
-    /*<implements>*/implements FIRAppCheckProviderFactory/*</implements>*/ {
+    /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class FIRDeviceCheckProviderFactoryPtr extends Ptr<FIRDeviceCheckProviderFactory, FIRDeviceCheckProviderFactoryPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(FIRDeviceCheckProviderFactory.class); }/*</bind>*/
+    /*<ptr>*/public static class SynapsInstalledAppModelPtr extends Ptr<SynapsInstalledAppModel, SynapsInstalledAppModelPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(SynapsInstalledAppModel.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public FIRDeviceCheckProviderFactory() {}
-    protected FIRDeviceCheckProviderFactory(Handle h, long handle) { super(h, handle); }
-    protected FIRDeviceCheckProviderFactory(SkipInit skipInit) { super(skipInit); }
+    protected SynapsInstalledAppModel() {}
+    protected SynapsInstalledAppModel(Handle h, long handle) { super(h, handle); }
+    protected SynapsInstalledAppModel(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithId:domain:")
+    public SynapsInstalledAppModel(String id, String domain) { super((SkipInit) null); initObject(init(id, domain)); }
     /*</constructors>*/
     /*<properties>*/
     
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "createProviderWithApp:")
-    public native FIRAppCheckProvider createProvider(org.robovm.pods.firebase.core.FIRApp app);
+    @Method(selector = "initWithId:domain:")
+    protected native @Pointer long init(String id, String domain);
     /*</methods>*/
 }

@@ -1,6 +1,7 @@
 ---
 name: framework-process-normalizer
 description: 'Reads harvester suggestions (and any __FIXME.java hints), normalizes them per the bro-gen binding rules skill, and writes the normalized YAML diff to a state file.'
+model: 'GPT-5.4 mini'
 tools: ['bash', 'apply_patch', 'view', 'glob']
 ---
 

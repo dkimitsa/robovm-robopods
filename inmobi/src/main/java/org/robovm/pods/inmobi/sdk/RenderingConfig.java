@@ -107,6 +107,14 @@ import org.robovm.apple.coreanimation.*;
     public native boolean isEnableHtmlUrlPrefetch();
     @Property(selector = "setEnableHtmlUrlPrefetch:")
     public native void setEnableHtmlUrlPrefetch(boolean v);
+    @Property(selector = "enableJSNavigationAsClick")
+    public native boolean isEnableJSNavigationAsClick();
+    @Property(selector = "setEnableJSNavigationAsClick:")
+    public native void setEnableJSNavigationAsClick(boolean v);
+    @Property(selector = "handleWebProcessTermination")
+    public native boolean isHandleWebProcessTermination();
+    @Property(selector = "setHandleWebProcessTermination:")
+    public native void setHandleWebProcessTermination(boolean v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

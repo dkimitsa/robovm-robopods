@@ -1,6 +1,7 @@
 ---
 description: Sub-agent for downloading, unpacking, renaming, and staging native iOS framework artifacts.
-tools: ['view', 'apply_patch', 'bash', 'glob', 'rg']
+model: 'GPT-5.4 mini'
+tools: ['bash', 'view', 'web_fetch']
 ---
 
 # Framework download
@@ -21,16 +22,17 @@ Follow `.github/skills/agent-invocation-rules/SKILL.md` for repository pathing, 
 ## Execution Workflow
 
 ### Phase 1: Context & Resolution
-1. View `.github/specs/frameworks/<framework_name>.yaml`.
+1. `direct_read` `.github/specs/frameworks/<framework_name>.yaml` (see `direct_read` in the shared invocation rules).
 2. Locate the `artifactSource` field.
-3. You are permitted to use reasoning here: Translate the natural language instructions in `artifactSource` into the necessary terminal commands (e.g., using `curl`, `grep`, or a browser tool) to determine the latest `X.Y.Z` version.
-4. Extract ONLY the resolved version number.
+3. You are permitted to use reasoning here: Translate the natural language instructions in `artifactSource` into the necessary terminal commands (using `curl`/`grep` via the `bash` tool, or the `web_fetch` tool for page content) to determine the latest `X.Y.Z` version.
+4. When resolving the version, ignore all non-stable releases (any version containing pre-release markers such as `alpha`, `beta`, `rc`, `pre`, `preview`, `snapshot`, `dev`, `-m`, or similar). Consider only stable releases and pick the latest stable `X.Y.Z` version.
+5. Extract ONLY the resolved version number.
 
-### Phase2: Existing Version Check
+### Phase 2: Existing Version Check
 RULE: Run this phase only when `--check-for-update` was passed. otherwise, skip to Phase 3.
 
 1. Locate the `<moduleFolder>` from `.github/specs/frameworks/<framework_name>.yaml`.
-2. Directly view the actual artifact version from `<moduleFolder>/pom.xml`. Do not attempt to search for this file, assume it exists and is readable. Fail if it does not exist or is unreadable.
+2. `direct_read` the actual artifact version from `<moduleFolder>/pom.xml` (view-only, no discovery search; fail immediately if it does not exist or is unreadable).
 3. Drop only any trailing patch/build suffix from the artifact version (for example, `1.2.3.4` becomes `1.2.3`) to derive the existing framework version.
 4. Compare the derived existing framework version to the resolved upstream version from Phase 1 as exact semantic versions.
 5. Treat the versions as the same only when `major.minor.patch` matches exactly after normalization; do not truncate to fewer components and do not use loose/prefix/string containment matching.

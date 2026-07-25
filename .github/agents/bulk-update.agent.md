@@ -2,6 +2,7 @@
 name: bulk-update
 description: 'agent processes multiple frameworks: first checks if there is updated version available online and only in this case performs download and process of particular framework.'
 tools: ['bash', 'view', 'apply_patch', 'task']
+model: 'GPT-5.4 mini'
 ---
 
 # Framework Update Orchestrator

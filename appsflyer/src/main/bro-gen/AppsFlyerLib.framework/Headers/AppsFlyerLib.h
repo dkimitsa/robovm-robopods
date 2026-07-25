@@ -133,13 +133,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 @class AppsFlyerConsent;
-/// Mail hashing type
-typedef enum  {
-    /// None
-    EmailCryptTypeNone = 0,
-    /// SHA256
-    EmailCryptTypeSHA256 = 3
-} EmailCryptType;
 
 typedef NS_CLOSED_ENUM(NSInteger, AFSDKPlugin) {
     AFSDKPluginIOSNative,
@@ -363,13 +356,6 @@ NS_SWIFT_NAME(initialize(devKey:appId:));
  */
 @property(nonatomic, nullable, copy) NSArray<NSString *> *oneLinkCustomDomains;
 
-/*
- * Set phone number for each `start` event. `phoneNumber` will be sent as SHA256 string
- */
-@property(nonatomic, nullable, copy) NSString *phoneNumber;
-
-- (NSString *)phoneNumber UNAVAILABLE_ATTRIBUTE;
-
 /**
  To disable app's vendor identifier(IDFV), set disableIDFVCollection to true
  */
@@ -420,13 +406,44 @@ NS_SWIFT_NAME(setPluginInfo(plugin:version:additionalParams:));
  */
 - (void)enableFacebookDeferredApplinksWithClass:(Class _Nullable)facebookAppLinkUtilityClass;
 
+#pragma mark - Hashed PII collection
+
 /**
- Use this to send the user's emails
- 
- @param userEmails The list of strings that hold mails
- @param type Hash algoritm
+ Hashed PII setters. Values are normalized and SHA-256 hashed before being
+ appended to attribution and event payloads.
+
+ The integrating app must declare the relevant @c NSPrivacyCollectedDataTypes
+ entries in its own @c PrivacyInfo.xcprivacy manifest — the SDK does not.
  */
-- (void)setUserEmails:(NSArray<NSString *> * _Nullable)userEmails withCryptType:(EmailCryptType)type;
+
+/// Sets the user's email. Sent as @c email_hashed.
+- (void)setUserEmail:(NSString *)email NS_SWIFT_NAME(setUserEmail(_:));
+
+/**
+ Sets the user's phone number. Sent as two variants:
+   - @c phone_number_hashed: digits-only, leading zeros stripped.
+   - @c phone_number_e164_hashed: '+' prefix followed by digits.
+ */
+- (void)setUserPhoneWithCountryCode:(NSString *)countryCode
+                        phoneNumber:(NSString *)phoneNumber
+    NS_SWIFT_NAME(setUserPhone(countryCode:phoneNumber:));
+
+/// Sets the user's first name. Sent as @c first_name_hashed.
+- (void)setUserFirstName:(NSString *)firstName NS_SWIFT_NAME(setUserFirstName(_:));
+
+/// Sets the user's last name. Sent as @c last_name_hashed.
+- (void)setUserLastName:(NSString *)lastName NS_SWIFT_NAME(setUserLastName(_:));
+
+/**
+ Sets the user's Facebook App-Scoped ID. Sent as @c fb_login_id (integer, not hashed).
+
+ @c 0 is the unset sentinel and suppresses the field — Facebook App-Scoped IDs
+ are never 0. Pass @c 0 to clear without calling @c clearUserPii.
+ */
+- (void)setUserFbLoginId:(int64_t)fbLoginId NS_SWIFT_NAME(setUserFbLoginId(_:));
+
+/// Clears all hashed-PII fields set via the @c setUser* APIs above.
+- (void)clearUserPii NS_SWIFT_NAME(clearUserPii());
 
 /**
  Starts an SDK session.
@@ -619,6 +636,22 @@ NS_SWIFT_NAME(validateAndLogInAppPurchase(purchaseDetails:purchaseAdditionalDeta
  */
 - (BOOL)continueUserActivity:(NSUserActivity * _Nullable)userActivity
           restorationHandler:(void (^ _Nullable)(NSArray * _Nullable))restorationHandler NS_AVAILABLE_IOS(9_0) API_UNAVAILABLE(macos);
+
+/**
+ Handle a link delivered as a bare URL from SwiftUI `.onOpenURL`.
+
+ SwiftUI apps receive both universal links and custom-scheme deep links as a `URL`,
+ with no `NSUserActivity`, so `-continueUserActivity:restorationHandler:` is never invoked.
+ You can safely route every `.onOpenURL` URL through this method: `https` URLs are
+ classified as Universal Links; custom-scheme URLs (e.g. `myapp://`) are classified
+ exactly as `-handleOpenUrl:options:` would classify them. No need to branch in your closure.
+
+ @note `af_web_referrer` is not populated for universal links on Apple platforms
+       (the OS no longer provides `NSUserActivity.referrerURL`); a bare URL has no referrer.
+ @param url The URL that was passed to your SwiftUI `.onOpenURL` handler.
+ */
+- (void)handleUniversalLink:(NSURL * _Nullable)url
+    NS_SWIFT_NAME(handleUniversalLink(_:)) NS_AVAILABLE_IOS(9_0) API_UNAVAILABLE(macos);
 
 /**
  Enable AppsFlyer to handle a push notification.

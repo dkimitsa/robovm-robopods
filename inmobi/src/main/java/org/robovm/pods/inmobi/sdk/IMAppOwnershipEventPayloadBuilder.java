@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.robovm.pods.firebase.appcheck;
+package org.robovm.pods.inmobi.sdk;
 
 /*<imports>*/
 import java.io.*;
@@ -28,30 +28,34 @@ import org.robovm.rt.bro.*;
 import org.robovm.rt.bro.annotation.*;
 import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
+import org.robovm.apple.uikit.*;
+import org.robovm.apple.corelocation.*;
+import org.robovm.apple.coregraphics.*;
+import org.robovm.apple.coreanimation.*;
 /*</imports>*/
 
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/FIRDeviceCheckProviderFactory/*</name>*/ 
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("InMobiSDK.IMAppOwnershipEventPayloadBuilder")/*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/IMAppOwnershipEventPayloadBuilder/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
-    /*<implements>*/implements FIRAppCheckProviderFactory/*</implements>*/ {
+    /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class FIRDeviceCheckProviderFactoryPtr extends Ptr<FIRDeviceCheckProviderFactory, FIRDeviceCheckProviderFactoryPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(FIRDeviceCheckProviderFactory.class); }/*</bind>*/
+    /*<ptr>*/public static class IMAppOwnershipEventPayloadBuilderPtr extends Ptr<IMAppOwnershipEventPayloadBuilder, IMAppOwnershipEventPayloadBuilderPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(IMAppOwnershipEventPayloadBuilder.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public FIRDeviceCheckProviderFactory() {}
-    protected FIRDeviceCheckProviderFactory(Handle h, long handle) { super(h, handle); }
-    protected FIRDeviceCheckProviderFactory(SkipInit skipInit) { super(skipInit); }
+    public IMAppOwnershipEventPayloadBuilder() {}
+    protected IMAppOwnershipEventPayloadBuilder(Handle h, long handle) { super(h, handle); }
+    protected IMAppOwnershipEventPayloadBuilder(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
     
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "createProviderWithApp:")
-    public native FIRAppCheckProvider createProvider(org.robovm.pods.firebase.core.FIRApp app);
+    @Method(selector = "trackerMacroMapWithURL:appOwnershipID:")
+    public static native NSMutableDictionary<?, ?> trackerMacroMap(String url, String appOwnershipID);
     /*</methods>*/
 }

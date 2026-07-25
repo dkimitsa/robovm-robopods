@@ -15,6 +15,10 @@ enums:
 classes:
     FIRMessaging:
         methods:
+            '-registerWithCompletion:':
+                name: register
+            '-unregisterWithCompletion:':
+                name: unregister
             '-setAPNSToken:type:':
                 name: setAPNSToken
             '-retrieveFCMTokenForSenderID:completion:':
@@ -46,6 +50,10 @@ protocols:
         methods:
             '-messaging:didReceiveRegistrationToken:':
                 name: didReceiveRegistrationToken
+            '-messaging:didReceiveRegistration:':
+                name: didReceiveRegistration
+            '-messaging:didUnregister:':
+                name: didUnregister
             '-messaging:didReceiveMessage:':
                 name: didReceiveMessage
 functions:

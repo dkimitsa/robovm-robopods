@@ -124,10 +124,6 @@ import org.robovm.apple.coreanimation.*;
     public native NSArray<NSString> getOneLinkCustomDomains();
     @Property(selector = "setOneLinkCustomDomains:")
     public native void setOneLinkCustomDomains(NSArray<NSString> v);
-    @Property(selector = "phoneNumber")
-    public native String getPhoneNumber();
-    @Property(selector = "setPhoneNumber:")
-    public native void setPhoneNumber(String v);
     @Property(selector = "disableIDFVCollection")
     public native boolean isDisableIDFVCollection();
     @Property(selector = "setDisableIDFVCollection:")
@@ -177,8 +173,18 @@ import org.robovm.apple.coreanimation.*;
     public native void setPluginInfo(AFSDKPlugin plugin, String version, NSDictionary<?, ?> additionalParams);
     @Method(selector = "enableFacebookDeferredApplinksWithClass:")
     public native void enableFacebookDeferredApplinks(Class<?> facebookAppLinkUtilityClass);
-    @Method(selector = "setUserEmails:withCryptType:")
-    public native void setUserEmails(NSArray<NSString> userEmails, EmailCryptType type);
+    @Method(selector = "setUserEmail:")
+    public native void setUserEmail(String email);
+    @Method(selector = "setUserPhoneWithCountryCode:phoneNumber:")
+    public native void setUserPhone(String countryCode, String phoneNumber);
+    @Method(selector = "setUserFirstName:")
+    public native void setUserFirstName(String firstName);
+    @Method(selector = "setUserLastName:")
+    public native void setUserLastName(String lastName);
+    @Method(selector = "setUserFbLoginId:")
+    public native void setUserFbLoginId(long fbLoginId);
+    @Method(selector = "clearUserPii")
+    public native void clearUserPii();
     @Method(selector = "start")
     public native void start();
     @Method(selector = "startWithCompletionHandler:")
@@ -214,6 +220,11 @@ import org.robovm.apple.coreanimation.*;
      */
     @Method(selector = "continueUserActivity:restorationHandler:")
     public native boolean continueUserActivity(NSUserActivity userActivity, @Block VoidBlock1<NSArray<?>> restorationHandler);
+    /**
+     * @since Available in iOS 9.0 and later.
+     */
+    @Method(selector = "handleUniversalLink:")
+    public native void handleUniversalLink(NSURL url);
     @Method(selector = "handlePushNotification:")
     public native void handlePushNotification(NSDictionary<?, ?> pushPayload);
     @Method(selector = "registerUninstall:")
