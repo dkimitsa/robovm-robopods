@@ -3,6 +3,7 @@
 ### Available RoboPods
 | RoboPods Version | Google SignIn  |
 |------------------|----------------|
+| 9.2.0.0          | 9.2.0          |
 | 9.1.0.0          | 9.1.0          |
 
 ### Frameworks required for this pod: 

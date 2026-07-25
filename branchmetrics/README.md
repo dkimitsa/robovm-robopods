@@ -8,6 +8,7 @@ https://github.com/BranchMetrics/ios-branch-deep-linking
 
 | RoboPods Version | BranchMetrics Version |
 |------------------|-----------------------|
+| 3.14.2.0         | 3.14.2                |
 | 3.14.1.0         | 3.14.1                |
 | 3.14.0.0         | 3.14.0                |
 | 1.54.0           | 3.13.3                |

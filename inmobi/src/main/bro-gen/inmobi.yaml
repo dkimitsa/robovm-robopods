@@ -258,6 +258,29 @@ classes:
     HybridPlayerConfig: { }
     VideoCacheConfig: { }
     CustomBrowserInternalConfig: {}
+    FraudSignalConfig: {}
+    IMAppOwnershipEventPayloadBuilder:
+        methods:
+            '+trackerMacroMapWithURL:appOwnershipID:':
+                name: trackerMacroMap
+    IMCustomAlertViewController:
+        methods:
+            '-configureWithTitle:message:showCancelButton:showTextField:defaultInputText:dismissOnOutsideTap:':
+                name: configure
+            '-gestureRecognizer:shouldReceiveTouch:':
+                name: shouldReceiveTouch
+            '-initWithNibName:bundle:':
+                name: init
+            '-initWithCoder:':
+                name: init
+    LPAppOwnershipConfig: {}
+    LPAppOwnershipFormatConfig: {}
+    LPAppOwnershipFormatLoaderConfig: {}
+    LPAppOwnershipModel: {}
+    SynapsInstalledAppModel:
+        methods:
+            '-initWithId:domain:':
+                name: init
 protocols:
     IMBannerDelegate:
         methods:

@@ -590,8 +590,11 @@ SWIFT_CLASS("_TtC9InMobiSDK19CustomBrowserConfig")
 @interface CustomBrowserConfig : NSObject
 @property (nonatomic) NSTimeInterval userClickGraceTime;
 @property (nonatomic) BOOL shouldHandleUniversalURL;
+@property (nonatomic) BOOL dismissOnOutsideTap;
+@property (nonatomic) BOOL allowJSPopup;
 @property (nonatomic, copy) NSArray<NSString *> * _Nonnull appleScheme;
 @property (nonatomic, strong) CustomBrowserInternalConfig * _Nonnull interstitial;
+@property (nonatomic, strong) CustomBrowserInternalConfig * _Nonnull banner;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -599,6 +602,7 @@ SWIFT_CLASS("_TtC9InMobiSDK19CustomBrowserConfig")
 SWIFT_CLASS("_TtC9InMobiSDK27CustomBrowserInternalConfig")
 @interface CustomBrowserInternalConfig : NSObject
 @property (nonatomic) double loaderTimeout;
+@property (nonatomic) double loaderOpacity;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -633,6 +637,12 @@ SWIFT_CLASS("_TtC9InMobiSDK17ExperimentsConfig")
 @end
 
 
+SWIFT_CLASS("_TtC9InMobiSDK17FraudSignalConfig")
+@interface FraudSignalConfig : NSObject
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
 SWIFT_CLASS("_TtC9InMobiSDK13GestureConfig")
 @interface GestureConfig : NSObject
 @property (nonatomic) BOOL isHTEnable;
@@ -658,10 +668,10 @@ SWIFT_CLASS("_TtC9InMobiSDK18HybridNativePlayer")
 
 
 
+
 @interface HybridNativePlayer (SWIFT_EXTENSION(InMobiSDK))
 - (void)fireVideoPositionChangeEvent;
 @end
-
 
 
 
@@ -687,6 +697,14 @@ SWIFT_CLASS("_TtC9InMobiSDK12IMAdMetaInfo")
 - (double)getBid SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+@class NSMutableDictionary;
+
+SWIFT_CLASS("_TtC9InMobiSDK33IMAppOwnershipEventPayloadBuilder")
+@interface IMAppOwnershipEventPayloadBuilder : NSObject
++ (NSMutableDictionary * _Nullable)trackerMacroMapWithURL:(NSString * _Nullable)url appOwnershipID:(NSString * _Nullable)appOwnershipID SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
 @protocol IMAudioDelegate;
@@ -1085,10 +1103,27 @@ SWIFT_CLASS("_TtC9InMobiSDK11IMComponent")
 
 
 
+@class NSBundle;
+@class UIGestureRecognizer;
+@class UITouch;
+
+SWIFT_CLASS("_TtC9InMobiSDK27IMCustomAlertViewController")
+@interface IMCustomAlertViewController : UIViewController <UIGestureRecognizerDelegate>
+@property (nonatomic, copy) void (^ _Nullable onConfirm)(void);
+@property (nonatomic, copy) void (^ _Nullable onCancel)(void);
+@property (nonatomic, readonly, copy) NSString * _Nullable inputText;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+- (void)configureWithTitle:(NSString * _Nullable)title message:(NSString * _Nullable)message showCancelButton:(BOOL)showCancelButton showTextField:(BOOL)showsTextField defaultInputText:(NSString * _Nullable)textFieldDefaultText dismissOnOutsideTap:(BOOL)dismissOnOutsideTap;
+- (void)viewDidLoad;
+- (BOOL)gestureRecognizer:(UIGestureRecognizer * _Nonnull)gestureRecognizer shouldReceiveTouch:(UITouch * _Nonnull)touch SWIFT_WARN_UNUSED_RESULT;
+@end
+
 
 SWIFT_CLASS("_TtC9InMobiSDK10IMDepthPPS")
 @interface IMDepthPPS : NSObject
 @property (nonatomic) BOOL enabled;
+@property (nonatomic) BOOL sessionEnabled;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -1160,7 +1195,6 @@ SWIFT_CLASS("_TtC9InMobiSDK12IMIncludeIds")
 
 @protocol IMInterstitialDelegate;
 @class IMInterstitialPreloadManager;
-@class UIViewController;
 enum IMInterstitialAnimationType : NSInteger;
 
 /// Class to integrate interstitial ads in your application
@@ -1455,6 +1489,7 @@ SWIFT_CLASS("_TtC9InMobiSDK28IMLandingPageInstrumentModel")
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
 
 
 SWIFT_CLASS("_TtC9InMobiSDK15IMLatestSdkInfo")
@@ -1908,6 +1943,7 @@ typedef SWIFT_ENUM(NSInteger, IMSKANSourceName, open) {
 };
 
 
+
 /// Use this class to set the user specific demographic info.
 /// As part of the General Data Protection Regulation (“GDPR”) publishers who collect data on their apps, are required to have a legal basis for collecting and processing the personal data of users in the European Economic Area (“EEA”).
 /// Please ensure that you obtain appropriate consent from the user before making ad requests to InMobi for Europe and indicate the same by following our recommended SDK implementation.
@@ -1916,6 +1952,11 @@ SWIFT_CLASS("_TtC9InMobiSDK5IMSdk")
 @interface IMSdk : NSObject
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+/// Indicates whether the SDK has been initialized or not.
+///
+/// returns:
+/// A Boolean value indicating the initialization status of the SDK.
++ (BOOL)isSDKInitialized SWIFT_WARN_UNUSED_RESULT;
 /// Initialize the sdk. This must be called before any other API for the SDK is used.
 /// Use <code>initWithAccountID(_:andCompletionHandler:)</code>
 /// \param accountID account id obtained from the InMobi portal.
@@ -2004,6 +2045,34 @@ SWIFT_CLASS("_TtC9InMobiSDK5IMSdk")
 
 
 @interface IMSdk (SWIFT_EXTENSION(InMobiSDK))
+/// Enable or disable the AVAudioSession management by SDK
+/// Indicates whether the application wants to manage audio session. If set as NO, the InMobi SDK will stop managing AVAudioSession during the HTML video playback lifecycle. If set as YES,
+/// the InMobi SDK will manage AVAudioSession. That might set AVAudioSession’s category to AVAudioSessionCategoryAmbient and categoryOption to AVAudioSessionCategoryOptionMixWithOthers,
+/// when HTML video is rendering. This setting will not stop the app audio from playing in an app. It will mix with ad audio and if any sound playing in another app, it will stop that sound and play the ads’
+/// sound and once the ad is dismissed it notifies another app.
+/// \param value Boolean depicting enable or disable the AVAudioSession management by SDK
+///
++ (void)shouldAutoManageAVAudioSession:(BOOL)value;
+/// Use this to set the global state of the SDK to mute.
+/// \param shouldMute Boolean depicting the mute state of the SDK
+///
++ (void)setMute:(BOOL)shouldMute;
+/// Set Unified Id procured from vendors directly.
+/// The ids are to be submitted in the following format.
+/// key would be the vendor and value would be the identifier.
+/// \code
+/// {
+/// "id5" :  "jkfid3ufolkb89hgvhb@$dj!@?#",
+/// "live Ramp":  "$fvjk@kjfsk%$nfkvd9008jkf"
+/// }
+///
+/// \endcode\param ids Represents the unified ids in dictionary format.
+///
++ (void)setPublisherProvidedUnifiedId:(NSDictionary<NSString *, id> * _Nonnull)ids;
+@end
+
+
+@interface IMSdk (SWIFT_EXTENSION(InMobiSDK))
 /// Pass or update custom signals to InMobi.
 /// <ul>
 ///   <li>
@@ -2059,34 +2128,6 @@ SWIFT_CLASS("_TtC9InMobiSDK5IMSdk")
 ///
 /// \endcode
 + (void)resetPublisherSignals;
-@end
-
-
-@interface IMSdk (SWIFT_EXTENSION(InMobiSDK))
-/// Enable or disable the AVAudioSession management by SDK
-/// Indicates whether the application wants to manage audio session. If set as NO, the InMobi SDK will stop managing AVAudioSession during the HTML video playback lifecycle. If set as YES,
-/// the InMobi SDK will manage AVAudioSession. That might set AVAudioSession’s category to AVAudioSessionCategoryAmbient and categoryOption to AVAudioSessionCategoryOptionMixWithOthers,
-/// when HTML video is rendering. This setting will not stop the app audio from playing in an app. It will mix with ad audio and if any sound playing in another app, it will stop that sound and play the ads’
-/// sound and once the ad is dismissed it notifies another app.
-/// \param value Boolean depicting enable or disable the AVAudioSession management by SDK
-///
-+ (void)shouldAutoManageAVAudioSession:(BOOL)value;
-/// Use this to set the global state of the SDK to mute.
-/// \param shouldMute Boolean depicting the mute state of the SDK
-///
-+ (void)setMute:(BOOL)shouldMute;
-/// Set Unified Id procured from vendors directly.
-/// The ids are to be submitted in the following format.
-/// key would be the vendor and value would be the identifier.
-/// \code
-/// {
-/// "id5" :  "jkfid3ufolkb89hgvhb@$dj!@?#",
-/// "live Ramp":  "$fvjk@kjfsk%$nfkvd9008jkf"
-/// }
-///
-/// \endcode\param ids Represents the unified ids in dictionary format.
-///
-+ (void)setPublisherProvidedUnifiedId:(NSDictionary<NSString *, id> * _Nonnull)ids;
 @end
 
 @class CLLocation;
@@ -2150,6 +2191,8 @@ typedef SWIFT_ENUM(NSInteger, IMSessionSignalsType, open) {
   IMSessionSignalsTypeDepthNative = 4,
   IMSessionSignalsTypeCount = 5,
   IMSessionSignalsTypeUserRetention = 6,
+/// Foreground duration in milliseconds, encoded as <code>"f-dur"</code>.
+  IMSessionSignalsTypeDuration = 7,
 };
 
 /// Enumeration for error codes
@@ -2318,6 +2361,7 @@ SWIFT_CLASS("_TtC9InMobiSDK15IMUserDataTypes")
 @end
 
 
+
 /// Use this class to set watermark as an overlay on ads
 SWIFT_CLASS("_TtC9InMobiSDK11IMWatermark")
 @interface IMWatermark : NSObject
@@ -2420,6 +2464,52 @@ SWIFT_CLASS("_TtC9InMobiSDK18JSDownloaderConfig")
 @property (nonatomic) NSTimeInterval retryInterval;
 @property (nonatomic) NSTimeInterval timeout;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class LPAppOwnershipFormatConfig;
+
+SWIFT_CLASS("_TtC9InMobiSDK20LPAppOwnershipConfig")
+@interface LPAppOwnershipConfig : NSObject
+@property (nonatomic, strong) LPAppOwnershipFormatConfig * _Nonnull banner;
+@property (nonatomic, strong) LPAppOwnershipFormatConfig * _Nonnull inter;
+@property (nonatomic, strong) LPAppOwnershipFormatConfig * _Nonnull native;
+@property (nonatomic) BOOL enabled;
+@property (nonatomic) NSInteger ttl;
+@property (nonatomic) NSInteger popupDetection;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@class LPAppOwnershipFormatLoaderConfig;
+
+SWIFT_CLASS("_TtC9InMobiSDK26LPAppOwnershipFormatConfig")
+@interface LPAppOwnershipFormatConfig : NSObject
+@property (nonatomic) NSInteger inNative;
+@property (nonatomic) NSInteger inCustom;
+@property (nonatomic) NSInteger exNative;
+@property (nonatomic) NSInteger skStore;
+@property (nonatomic, strong) LPAppOwnershipFormatLoaderConfig * _Nonnull loader;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9InMobiSDK32LPAppOwnershipFormatLoaderConfig")
+@interface LPAppOwnershipFormatLoaderConfig : NSObject
+@property (nonatomic) BOOL enabled;
+@property (nonatomic) double opacity;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9InMobiSDK19LPAppOwnershipModel")
+@interface LPAppOwnershipModel : NSObject
+@property (nonatomic) BOOL enabled;
+@property (nonatomic, copy) NSString * _Nullable url;
+@property (nonatomic, copy) NSString * _Nullable id;
+@property (nonatomic) BOOL resolveRedirection;
+@property (nonatomic) BOOL enableAutoSKStore;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 
@@ -2697,6 +2787,7 @@ SWIFT_CLASS("_TtC9InMobiSDK15PurchasesConfig")
 @property (nonatomic) BOOL inapp;
 @property (nonatomic) BOOL restore;
 @property (nonatomic) BOOL inappV2;
+@property (nonatomic) BOOL applePay;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -2719,6 +2810,8 @@ SWIFT_CLASS("_TtC9InMobiSDK15RenderingConfig")
 @property (nonatomic, strong) WebViewModeDictionaryConfig * _Nonnull webviewModeDictionary;
 @property (nonatomic, strong) GestureConfig * _Nonnull gestureConfig;
 @property (nonatomic) BOOL enableHtmlUrlPrefetch;
+@property (nonatomic) BOOL enableJSNavigationAsClick;
+@property (nonatomic) BOOL handleWebProcessTermination;
 - (BOOL)enablePubMuteControl_ SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -2770,6 +2863,15 @@ SWIFT_CLASS("_TtC9InMobiSDK10SdkLogInfo")
 SWIFT_CLASS("_TtC9InMobiSDK13SessionConfig")
 @interface SessionConfig : NSObject
 @property (nonatomic, copy) NSArray<NSNumber *> * _Nonnull control;
+/// Enables the foreground/background session model. When disabled, the SDK
+/// keeps legacy hard-launch session behavior for backward compatibility.
+@property (nonatomic) BOOL fgBgModelEnabled;
+/// Idle timeout in seconds. A background duration greater than or equal to
+/// this value expires the current session and the next foreground starts a
+/// fresh session.
+@property (nonatomic) NSInteger timeoutSeconds;
+/// <code>timeoutSeconds</code> converted to milliseconds for duration and timer checks.
+@property (nonatomic, readonly) uint64_t timeoutMillis;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -2791,6 +2893,8 @@ SWIFT_CLASS("_TtC9InMobiSDK12SignalConfig")
 @property (nonatomic, strong) PurchasesConfig * _Nonnull purchases;
 @property (nonatomic, strong) PublisherConfig * _Nonnull publisher;
 @property (nonatomic, strong) ExperimentsConfig * _Nonnull experiments;
+@property (nonatomic, strong) FraudSignalConfig * _Nonnull fraud;
+@property (nonatomic, strong) LPAppOwnershipConfig * _Nonnull appOwnership;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -2821,6 +2925,14 @@ SWIFT_CLASS("_TtC9InMobiSDK10SkanConfig")
 @property (nonatomic) NSInteger requestMode;
 @property (nonatomic, strong) SkanBitSetConfig * _Nonnull skanBitSet;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9InMobiSDK23SynapsInstalledAppModel")
+@interface SynapsInstalledAppModel : NSObject
+- (nonnull instancetype)initWithId:(NSString * _Nonnull)id domain:(NSString * _Nullable)domain OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 
@@ -2876,6 +2988,7 @@ SWIFT_CLASS("_TtC9InMobiSDK22UnifiedIdServiceConfig")
 @property (nonatomic, copy) NSString * _Nonnull url;
 @property (nonatomic) NSInteger timeout;
 @property (nonatomic) NSInteger maxRetries;
+@property (nonatomic) BOOL latOptOutCheck;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 

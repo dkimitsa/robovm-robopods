@@ -46,7 +46,8 @@ public enum /*<name>*/IMSessionSignalsType/*</name>*/ implements ValuedEnum {
     DepthRewarded(3L),
     DepthNative(4L),
     Count(5L),
-    UserRetention(6L);
+    UserRetention(6L),
+    Duration(7L);
     /*</values>*/
 
     /*<bind>*/

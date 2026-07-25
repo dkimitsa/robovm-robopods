@@ -59,6 +59,14 @@ import org.robovm.apple.coreanimation.*;
     public native boolean shouldHandleUniversalURL();
     @Property(selector = "setShouldHandleUniversalURL:")
     public native void setShouldHandleUniversalURL(boolean v);
+    @Property(selector = "dismissOnOutsideTap")
+    public native boolean isDismissOnOutsideTap();
+    @Property(selector = "setDismissOnOutsideTap:")
+    public native void setDismissOnOutsideTap(boolean v);
+    @Property(selector = "allowJSPopup")
+    public native boolean isAllowJSPopup();
+    @Property(selector = "setAllowJSPopup:")
+    public native void setAllowJSPopup(boolean v);
     @Property(selector = "appleScheme")
     public native NSArray<NSString> getAppleScheme();
     @Property(selector = "setAppleScheme:")
@@ -67,6 +75,10 @@ import org.robovm.apple.coreanimation.*;
     public native CustomBrowserInternalConfig getInterstitial();
     @Property(selector = "setInterstitial:")
     public native void setInterstitial(CustomBrowserInternalConfig v);
+    @Property(selector = "banner")
+    public native CustomBrowserInternalConfig getBanner();
+    @Property(selector = "setBanner:")
+    public native void setBanner(CustomBrowserInternalConfig v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

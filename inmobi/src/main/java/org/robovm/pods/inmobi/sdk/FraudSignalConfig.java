@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.robovm.pods.appsflyer;
+package org.robovm.pods.inmobi.sdk;
 
 /*<imports>*/
 import java.io.*;
@@ -29,6 +29,7 @@ import org.robovm.rt.bro.annotation.*;
 import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
+import org.robovm.apple.corelocation.*;
 import org.robovm.apple.coregraphics.*;
 import org.robovm.apple.coreanimation.*;
 /*</imports>*/
@@ -36,29 +37,24 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*//*</annotations>*/
-public enum /*<name>*/EmailCryptType/*</name>*/ implements ValuedEnum {
-    /*<values>*/
-    None(0L),
-    SHA256(3L);
-    /*</values>*/
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("InMobiSDK.FraudSignalConfig")/*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/FraudSignalConfig/*</name>*/ 
+    extends /*<extends>*/NSObject/*</extends>*/ 
+    /*<implements>*//*</implements>*/ {
 
-    /*<bind>*/
-    /*</bind>*/
+    /*<ptr>*/public static class FraudSignalConfigPtr extends Ptr<FraudSignalConfig, FraudSignalConfigPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(FraudSignalConfig.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
-    /*<methods>*//*</methods>*/
-
-    private final long n;
-
-    private /*<name>*/EmailCryptType/*</name>*/(long n) { this.n = n; }
-    public long value() { return n; }
-    public static /*<name>*/EmailCryptType/*</name>*/ valueOf(long n) {
-        for (/*<name>*/EmailCryptType/*</name>*/ v : values()) {
-            if (v.n == n) {
-                return v;
-            }
-        }
-        throw new IllegalArgumentException("No constant with value " + n + " found in " 
-            + /*<name>*/EmailCryptType/*</name>*/.class.getName());
-    }
+    /*<constructors>*/
+    public FraudSignalConfig() {}
+    protected FraudSignalConfig(Handle h, long handle) { super(h, handle); }
+    protected FraudSignalConfig(SkipInit skipInit) { super(skipInit); }
+    /*</constructors>*/
+    /*<properties>*/
+    
+    /*</properties>*/
+    /*<members>*//*</members>*/
+    /*<methods>*/
+    
+    /*</methods>*/
 }

@@ -60,6 +60,8 @@ import org.robovm.apple.usernotifications.*;
     public native boolean isAutoInitEnabled();
     @Property(selector = "setAutoInitEnabled:")
     public native void setAutoInitEnabled(boolean v);
+    @Property(selector = "isInstallationIdEnabled")
+    public native boolean isInstallationIdEnabled();
     @Property(selector = "FCMToken")
     public native String getFCMToken();
     /*</properties>*/
@@ -71,6 +73,8 @@ import org.robovm.apple.usernotifications.*;
 
         @GlobalValue(symbol="FIRMessagingRegistrationTokenRefreshedNotification", optional=true)
         public static native NSString RegistrationTokenRefreshed();
+        @GlobalValue(symbol="FIRMessagingInstallationIdUnregisteredNotification", optional=true)
+        public static native NSString InstallationIdUnregistered();
     }
     
     @Method(selector = "setAPNSToken:type:")
@@ -83,6 +87,10 @@ import org.robovm.apple.usernotifications.*;
     public native void retrieveFCMToken(String senderID, @Block VoidBlock2<NSString, NSError> completion);
     @Method(selector = "deleteFCMTokenForSenderID:completion:")
     public native void deleteFCMToken(String senderID, @Block VoidBlock1<NSError> completion);
+    @Method(selector = "registerWithCompletion:")
+    public native void register(@Block VoidBlock1<NSError> completion);
+    @Method(selector = "unregisterWithCompletion:")
+    public native void unregister(@Block VoidBlock1<NSError> completion);
     @Method(selector = "subscribeToTopic:")
     public native void subscribeToTopic(String topic);
     @Method(selector = "subscribeToTopic:completion:")

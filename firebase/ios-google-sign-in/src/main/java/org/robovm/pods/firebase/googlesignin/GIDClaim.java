@@ -60,10 +60,16 @@ import org.robovm.apple.coreanimation.*;
     /*<methods>*/
     @GlobalValue(symbol="kAuthTimeClaimName", optional=true)
     public static native String AuthTimeClaimName();
+    @GlobalValue(symbol="kAMRClaimName", optional=true)
+    public static native String AMRClaimName();
     
     @Method(selector = "authTimeClaim")
     public static native GIDClaim authTimeClaim();
     @Method(selector = "essentialAuthTimeClaim")
     public static native GIDClaim essentialAuthTimeClaim();
+    @Method(selector = "AMRClaim")
+    public static native GIDClaim AMRClaim();
+    @Method(selector = "essentialAMRClaim")
+    public static native GIDClaim essentialAMRClaim();
     /*</methods>*/
 }

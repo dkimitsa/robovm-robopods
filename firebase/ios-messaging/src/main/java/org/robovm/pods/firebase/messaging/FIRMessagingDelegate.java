@@ -49,6 +49,10 @@ import org.robovm.apple.usernotifications.*;
     /*<methods>*/
     @Method(selector = "messaging:didReceiveRegistrationToken:")
     void didReceiveRegistrationToken(FIRMessaging messaging, String fcmToken);
+    @Method(selector = "messaging:didReceiveRegistration:")
+    void didReceiveRegistration(FIRMessaging messaging, String installationId);
+    @Method(selector = "messaging:didUnregister:")
+    void didUnregister(FIRMessaging messaging, String installationId);
     /*</methods>*/
     /*<adapter>*/
     /*</adapter>*/

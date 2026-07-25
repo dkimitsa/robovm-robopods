@@ -37,28 +37,44 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("InMobiSDK.IMDepthPPS")/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/IMDepthPPS/*</name>*/ 
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("InMobiSDK.LPAppOwnershipConfig")/*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/LPAppOwnershipConfig/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class IMDepthPPSPtr extends Ptr<IMDepthPPS, IMDepthPPSPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(IMDepthPPS.class); }/*</bind>*/
+    /*<ptr>*/public static class LPAppOwnershipConfigPtr extends Ptr<LPAppOwnershipConfig, LPAppOwnershipConfigPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(LPAppOwnershipConfig.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public IMDepthPPS() {}
-    protected IMDepthPPS(Handle h, long handle) { super(h, handle); }
-    protected IMDepthPPS(SkipInit skipInit) { super(skipInit); }
+    public LPAppOwnershipConfig() {}
+    protected LPAppOwnershipConfig(Handle h, long handle) { super(h, handle); }
+    protected LPAppOwnershipConfig(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
+    @Property(selector = "banner")
+    public native LPAppOwnershipFormatConfig getBanner();
+    @Property(selector = "setBanner:")
+    public native void setBanner(LPAppOwnershipFormatConfig v);
+    @Property(selector = "inter")
+    public native LPAppOwnershipFormatConfig getInter();
+    @Property(selector = "setInter:")
+    public native void setInter(LPAppOwnershipFormatConfig v);
+    @Property(selector = "native")
+    public native LPAppOwnershipFormatConfig getNative();
+    @Property(selector = "setNative:")
+    public native void setNative(LPAppOwnershipFormatConfig v);
     @Property(selector = "enabled")
     public native boolean isEnabled();
     @Property(selector = "setEnabled:")
     public native void setEnabled(boolean v);
-    @Property(selector = "sessionEnabled")
-    public native boolean isSessionEnabled();
-    @Property(selector = "setSessionEnabled:")
-    public native void setSessionEnabled(boolean v);
+    @Property(selector = "ttl")
+    public native @MachineSizedSInt long getTtl();
+    @Property(selector = "setTtl:")
+    public native void setTtl(@MachineSizedSInt long v);
+    @Property(selector = "popupDetection")
+    public native @MachineSizedSInt long getPopupDetection();
+    @Property(selector = "setPopupDetection:")
+    public native void setPopupDetection(@MachineSizedSInt long v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

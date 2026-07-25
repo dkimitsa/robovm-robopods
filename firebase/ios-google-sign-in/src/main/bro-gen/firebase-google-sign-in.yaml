@@ -255,6 +255,10 @@ values:
         class: GIDClaim
         name: AuthTimeClaimName
 
+    kAMRClaimName:
+        class: GIDClaim
+        name: AMRClaimName
+
     # Make sure we don't miss any values if new ones are introduced in a later version
     (.*):
         class: __FixMe
