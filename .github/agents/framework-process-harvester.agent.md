@@ -36,15 +36,19 @@ moduleFolder: <moduleFolder>
 ## Workflow
 First of all delete possible prior run leftovers:
 - If `.github/state/framework-process-suggestions.txt` exists, delete it.
+- If `.github/state/framework-process-harvester-output.txt` exists, delete it.
 
 ### Step 1: Run Harvester
-1. Run `./scripts/harvester.kts [framework_name]` from the project ROOT directory.
-2. Expect exit code 0. If it exits with any non-zero code, report the error output and exit immediately.
-3. Capture the full output and extract suggestion text between `>>> YAML FILE POTENTIAL NEW ENTRIES <<<` and `>>> END OF YAML FILE POTENTIAL NEW ENTRIES <<<`.
+1. Run the harvester from the project ROOT directory with output redirected to a deterministic file:
+   - `mkdir -p .github/state && ./scripts/harvester.kts [framework_name] > .github/state/framework-process-harvester-output.txt 2>&1`
+2. Expect exit code 0. If it exits with any non-zero code, read file `.github/state/framework-process-harvester-output.txt`, report its raw contents, and exit immediately.
+3. Extract suggestions instrumentally from the captured output file into the expected state file:
+   - `awk 'BEGIN{capture=0} />>> YAML FILE POTENTIAL NEW ENTRIES <<</{capture=1; next} />>> END OF YAML FILE POTENTIAL NEW ENTRIES <<</{capture=0} capture{print}' .github/state/framework-process-harvester-output.txt > .github/state/framework-process-suggestions.txt`
 
 ### Step 2: Persist Suggestions
-1. If the extracted suggestion block is non-empty, write its raw content to `.github/state/framework-process-suggestions.txt` (create the file, overwriting any prior copy).
-2. If the extracted suggestion block is empty, delete `.github/state/framework-process-suggestions.txt` if it exists (no file means no suggestions).
+1. If `.github/state/framework-process-suggestions.txt` is non-empty, leave it as-is.
+2. If `.github/state/framework-process-suggestions.txt` is empty, delete it (no file means no suggestions):
+   - `test -s .github/state/framework-process-suggestions.txt || rm -f .github/state/framework-process-suggestions.txt`
 
 ### Step 3: Rollback Manual Entries
 *(WHY: Harvester overwrites Java files, deleting manually added code. We must restore these blocks.)*
