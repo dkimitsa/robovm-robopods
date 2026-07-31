@@ -82,6 +82,13 @@ import org.robovm.apple.storekit.*;
     public native RCStoreProductDiscount getIntroductoryDiscount();
     @Property(selector = "discounts")
     public native NSArray<RCStoreProductDiscount> getDiscounts();
+    /**
+     * @since Available in iOS 26.4 and later.
+     */
+    @Property(selector = "installmentsInfo")
+    public native RCInstallmentsInfo getInstallmentsInfo();
+    @Property(selector = "id")
+    public native String getId();
     @Property(selector = "sk1Product")
     public native SKProduct getSk1Product();
     @Property(selector = "price")

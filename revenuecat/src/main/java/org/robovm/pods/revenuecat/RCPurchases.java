@@ -155,6 +155,8 @@ import org.robovm.apple.storekit.*;
     public static native void setVerboseLogs(boolean newValue);
     @Method(selector = "frameworkVersion")
     public static native String frameworkVersion();
+    @Method(selector = "overridePreferredUILocale:")
+    public native void overridePreferredUILocale(String locale);
     /**
      * @since Available in iOS 15.0 and later.
      */
@@ -177,7 +179,7 @@ import org.robovm.apple.storekit.*;
      * @since Available in iOS 18.0 and later.
      */
     @Method(selector = "eligibleWinBackOffersForPackage:completion:")
-    public native void eligibleWinBackOffersForPackage(RCPackage _static, @Block VoidBlock2<NSArray<RCWinBackOffer>, NSError> completion);
+    public native void eligibleWinBackOffersForPackage(RCPackage _package, @Block VoidBlock2<NSArray<RCWinBackOffer>, NSError> completion);
     @Method(selector = "getVirtualCurrenciesWithCompletion:")
     public native void getVirtualCurrencies(@Block VoidBlock2<RCVirtualCurrencies, NSError> completion);
     @Method(selector = "invalidateVirtualCurrenciesCache")
@@ -192,6 +194,16 @@ import org.robovm.apple.storekit.*;
      */
     @Method(selector = "showStoreMessagesForTypes:completion:")
     public native void showStoreMessages(NSSet<?> types, @Block Runnable completion);
+    @Method(selector = "configureWithConfiguration:")
+    public static native RCPurchases configure(RCConfiguration configuration);
+    @Method(selector = "configureWithConfigurationBuilder:")
+    public static native RCPurchases configure(RCConfigurationBuilder builder);
+    @Method(selector = "configureWithAPIKey:")
+    public static native RCPurchases configure(String apiKey);
+    @Method(selector = "configureWithAPIKey:appUserID:")
+    public static native RCPurchases configure(String apiKey, String appUserID);
+    @Method(selector = "configureWithAPIKey:appUserID:purchasesAreCompletedBy:storeKitVersion:")
+    public static native RCPurchases configure(String apiKey, String appUserID, RCPurchasesAreCompletedBy purchasesAreCompletedBy, RCStoreKitVersion storeKitVersion);
     @Method(selector = "debugLogsEnabled")
     public static native boolean debugLogsEnabled();
     @Method(selector = "setDebugLogsEnabled:")
@@ -208,16 +220,6 @@ import org.robovm.apple.storekit.*;
     @Deprecated
     @Method(selector = "addAttributionData:fromNetwork:forNetworkUserId:")
     public static native void addAttributionData(NSDictionary<NSString, ?> data, RCAttributionNetwork network, String networkUserId);
-    @Method(selector = "configureWithConfiguration:")
-    public static native RCPurchases configure(RCConfiguration configuration);
-    @Method(selector = "configureWithConfigurationBuilder:")
-    public static native RCPurchases configure(RCConfigurationBuilder builder);
-    @Method(selector = "configureWithAPIKey:")
-    public static native RCPurchases configure(String apiKey);
-    @Method(selector = "configureWithAPIKey:appUserID:")
-    public static native RCPurchases configure(String apiKey, String appUserID);
-    @Method(selector = "configureWithAPIKey:appUserID:purchasesAreCompletedBy:storeKitVersion:")
-    public static native RCPurchases configure(String apiKey, String appUserID, RCPurchasesAreCompletedBy purchasesAreCompletedBy, RCStoreKitVersion storeKitVersion);
     @Method(selector = "logIn:completion:")
     public native void logIn(String appUserID, @Block VoidBlock3<RCCustomerInfo, Boolean, NSError> completion);
     @Method(selector = "logIn:completionHandler:")
@@ -300,7 +302,7 @@ import org.robovm.apple.storekit.*;
     @Method(selector = "offeringsWithCompletionBlock:")
     public native void offerings(@Block VoidBlock2<RCOfferings, NSError> completion);
     @Method(selector = "purchasePackage:withCompletionBlock:")
-    public native void purchasePackageWithCompletionBlock(RCPackage _static, @Block VoidBlock4<RCStoreTransaction, RCCustomerInfo, NSError, Boolean> completion);
+    public native void purchasePackageWithCompletionBlock(RCPackage _package, @Block VoidBlock4<RCStoreTransaction, RCCustomerInfo, NSError, Boolean> completion);
     @Method(selector = "purchaseProduct:withCompletionBlock:")
     public native void purchaseProduct(SKProduct product, @Block VoidBlock4<RCStoreTransaction, RCCustomerInfo, NSError, Boolean> completion);
     @Method(selector = "invalidatePurchaserInfoCache")
@@ -344,9 +346,9 @@ import org.robovm.apple.storekit.*;
     @Method(selector = "purchaseWithProduct:completionHandler:")
     public native void purchase(RCStoreProduct product, @Block VoidBlock4<RCStoreTransaction, RCCustomerInfo, Boolean, NSError> completionHandler);
     @Method(selector = "purchasePackage:withCompletion:")
-    public native void purchasePackage(RCPackage _static, @Block VoidBlock4<RCStoreTransaction, RCCustomerInfo, NSError, Boolean> completion);
+    public native void purchasePackage(RCPackage _package, @Block VoidBlock4<RCStoreTransaction, RCCustomerInfo, NSError, Boolean> completion);
     @Method(selector = "purchaseWithPackage:completionHandler:")
-    public native void purchase(RCPackage _static, @Block VoidBlock4<RCStoreTransaction, RCCustomerInfo, Boolean, NSError> completionHandler);
+    public native void purchase(RCPackage _package, @Block VoidBlock4<RCStoreTransaction, RCCustomerInfo, Boolean, NSError> completionHandler);
     @Method(selector = "restorePurchasesWithCompletion:")
     public native void restorePurchases(@Block VoidBlock2<RCCustomerInfo, NSError> completion);
     @Method(selector = "restorePurchasesWithCompletionHandler:")
@@ -360,9 +362,9 @@ import org.robovm.apple.storekit.*;
     @Method(selector = "purchaseWithProduct:promotionalOffer:completionHandler:")
     public native void purchase(RCStoreProduct product, RCPromotionalOffer promotionalOffer, @Block VoidBlock4<RCStoreTransaction, RCCustomerInfo, Boolean, NSError> completionHandler);
     @Method(selector = "purchasePackage:withPromotionalOffer:completion:")
-    public native void purchasePackageWithPromotionalOffer(RCPackage _static, RCPromotionalOffer promotionalOffer, @Block VoidBlock4<RCStoreTransaction, RCCustomerInfo, NSError, Boolean> completion);
+    public native void purchasePackageWithPromotionalOffer(RCPackage _package, RCPromotionalOffer promotionalOffer, @Block VoidBlock4<RCStoreTransaction, RCCustomerInfo, NSError, Boolean> completion);
     @Method(selector = "purchaseWithPackage:promotionalOffer:completionHandler:")
-    public native void purchase(RCPackage _static, RCPromotionalOffer promotionalOffer, @Block VoidBlock4<RCStoreTransaction, RCCustomerInfo, Boolean, NSError> completionHandler);
+    public native void purchase(RCPackage _package, RCPromotionalOffer promotionalOffer, @Block VoidBlock4<RCStoreTransaction, RCCustomerInfo, Boolean, NSError> completionHandler);
     @Method(selector = "invalidateCustomerInfoCache")
     public native void invalidateCustomerInfoCache();
     @Method(selector = "syncPurchasesWithCompletion:")

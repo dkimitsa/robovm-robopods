@@ -67,6 +67,8 @@ import org.robovm.apple.storekit.*;
     public native NSDate getBillingIssuesDetectedAt();
     @Property(selector = "gracePeriodExpiresDate")
     public native NSDate getGracePeriodExpiresDate();
+    @Property(selector = "autoResumeDate")
+    public native NSDate getAutoResumeDate();
     @Property(selector = "ownershipType")
     public native RCPurchaseOwnershipType getOwnershipType();
     @Property(selector = "periodType")
@@ -85,6 +87,8 @@ import org.robovm.apple.storekit.*;
     public native RCProductPaidPrice getPrice();
     @Property(selector = "managementURL")
     public native NSURL getManagementURL();
+    @Property(selector = "productPlanIdentifier")
+    public native String getProductPlanIdentifier();
     @Property(selector = "description")
     public native String getDescription();
     /*</properties>*/

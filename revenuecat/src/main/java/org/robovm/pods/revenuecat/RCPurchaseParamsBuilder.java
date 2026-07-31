@@ -48,7 +48,7 @@ import org.robovm.apple.storekit.*;
     protected RCPurchaseParamsBuilder(Handle h, long handle) { super(h, handle); }
     protected RCPurchaseParamsBuilder(SkipInit skipInit) { super(skipInit); }
     @Method(selector = "initWithPackage:")
-    public RCPurchaseParamsBuilder(RCPackage _static) { super((SkipInit) null); initObject(init(_static)); }
+    public RCPurchaseParamsBuilder(RCPackage _package) { super((SkipInit) null); initObject(init(_package)); }
     @Method(selector = "initWithProduct:")
     public RCPurchaseParamsBuilder(RCStoreProduct product) { super((SkipInit) null); initObject(init(product)); }
     /*</constructors>*/
@@ -58,7 +58,7 @@ import org.robovm.apple.storekit.*;
     /*<members>*//*</members>*/
     /*<methods>*/
     @Method(selector = "initWithPackage:")
-    protected native @Pointer long init(RCPackage _static);
+    protected native @Pointer long init(RCPackage _package);
     @Method(selector = "initWithProduct:")
     protected native @Pointer long init(RCStoreProduct product);
     @Method(selector = "withPromotionalOffer:")

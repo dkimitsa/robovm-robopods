@@ -36,49 +36,35 @@ import org.robovm.apple.storekit.*;
 
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/RCStoreTransaction/*</name>*/ 
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/RCRevocationReason/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class RCStoreTransactionPtr extends Ptr<RCStoreTransaction, RCStoreTransactionPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(RCStoreTransaction.class); }/*</bind>*/
+    /*<ptr>*/public static class RCRevocationReasonPtr extends Ptr<RCRevocationReason, RCRevocationReasonPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(RCRevocationReason.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    protected RCStoreTransaction() {}
-    protected RCStoreTransaction(Handle h, long handle) { super(h, handle); }
-    protected RCStoreTransaction(SkipInit skipInit) { super(skipInit); }
+    protected RCRevocationReason() {}
+    protected RCRevocationReason(Handle h, long handle) { super(h, handle); }
+    protected RCRevocationReason(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithRawValue:")
+    public RCRevocationReason(String rawValue) { super((SkipInit) null); initObject(init(rawValue)); }
     /*</constructors>*/
     /*<properties>*/
-    @Property(selector = "productIdentifier")
-    public native String getProductIdentifier();
-    @Property(selector = "purchaseDate")
-    public native NSDate getPurchaseDate();
-    @Property(selector = "transactionIdentifier")
-    public native String getTransactionIdentifier();
-    @Property(selector = "quantity")
-    public native @MachineSizedSInt long getQuantity();
-    @Property(selector = "storefront")
-    public native RCStorefront getStorefront();
-    @Property(selector = "jwsRepresentation")
-    public native String getJwsRepresentation();
-    @Property(selector = "revocationDate")
-    public native NSDate getRevocationDate();
-    @Property(selector = "revocationReason")
-    public native RCRevocationReason getRevocationReason();
+    @Property(selector = "rawValue")
+    public native String getRawValue();
     @Property(selector = "hash")
     public native @MachineSizedUInt long getHash();
-    @Property(selector = "description")
-    public native String getDescription();
-    @Property(selector = "productId")
-    public native String getProductId();
-    @Property(selector = "revenueCatId")
-    public native String getRevenueCatId();
-    @Property(selector = "sk1Transaction")
-    public native SKPaymentTransaction getSk1Transaction();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
+    @Method(selector = "initWithRawValue:")
+    protected native @Pointer long init(String rawValue);
     @Method(selector = "isEqual:")
     public native boolean isEqual(NSObject object);
+    @Method(selector = "RCDeveloperIssue")
+    public static native RCRevocationReason RCDeveloperIssue();
+    @Method(selector = "RCOther")
+    public static native RCRevocationReason RCOther();
     /*</methods>*/
 }

@@ -120,9 +120,9 @@ import org.robovm.apple.storekit.*;
     @Method(selector = "purchaseWithProduct:completionHandler:")
     void purchase(RCStoreProduct product, @Block VoidBlock4<RCStoreTransaction, RCCustomerInfo, Boolean, NSError> completionHandler);
     @Method(selector = "purchasePackage:withCompletion:")
-    void purchasePackage(RCPackage _static, @Block VoidBlock4<RCStoreTransaction, RCCustomerInfo, NSError, Boolean> completion);
+    void purchasePackage(RCPackage _package, @Block VoidBlock4<RCStoreTransaction, RCCustomerInfo, NSError, Boolean> completion);
     @Method(selector = "purchaseWithPackage:completionHandler:")
-    void purchase(RCPackage _static, @Block VoidBlock4<RCStoreTransaction, RCCustomerInfo, Boolean, NSError> completionHandler);
+    void purchase(RCPackage _package, @Block VoidBlock4<RCStoreTransaction, RCCustomerInfo, Boolean, NSError> completionHandler);
     @Method(selector = "purchaseWithParams:completion:")
     void purchaseWithParams(RCPurchaseParams params, @Block VoidBlock4<RCStoreTransaction, RCCustomerInfo, NSError, Boolean> completion);
     @Method(selector = "purchase:completionHandler:")
@@ -142,9 +142,9 @@ import org.robovm.apple.storekit.*;
     @Method(selector = "purchaseWithProduct:promotionalOffer:completionHandler:")
     void purchase(RCStoreProduct product, RCPromotionalOffer promotionalOffer, @Block VoidBlock4<RCStoreTransaction, RCCustomerInfo, Boolean, NSError> completionHandler);
     @Method(selector = "purchasePackage:withPromotionalOffer:completion:")
-    void purchasePackageWithPromotionalOffer(RCPackage _static, RCPromotionalOffer promotionalOffer, @Block VoidBlock4<RCStoreTransaction, RCCustomerInfo, NSError, Boolean> completion);
+    void purchasePackageWithPromotionalOffer(RCPackage _package, RCPromotionalOffer promotionalOffer, @Block VoidBlock4<RCStoreTransaction, RCCustomerInfo, NSError, Boolean> completion);
     @Method(selector = "purchaseWithPackage:promotionalOffer:completionHandler:")
-    void purchase(RCPackage _static, RCPromotionalOffer promotionalOffer, @Block VoidBlock4<RCStoreTransaction, RCCustomerInfo, Boolean, NSError> completionHandler);
+    void purchase(RCPackage _package, RCPromotionalOffer promotionalOffer, @Block VoidBlock4<RCStoreTransaction, RCCustomerInfo, Boolean, NSError> completionHandler);
     @Method(selector = "checkTrialOrIntroDiscountEligibility:completion:")
     void checkTrialOrIntroDiscountEligibility(NSArray<NSString> productIdentifiers, @Block VoidBlock1<NSDictionary<NSString, RCIntroEligibility>> receiveEligibility);
     @Method(selector = "checkTrialOrIntroDiscountEligibilityWithProductIdentifiers:completionHandler:")
@@ -168,7 +168,7 @@ import org.robovm.apple.storekit.*;
      * @since Available in iOS 18.0 and later.
      */
     @Method(selector = "eligibleWinBackOffersForPackage:completion:")
-    void eligibleWinBackOffersForPackage(RCPackage _static, @Block VoidBlock2<NSArray<RCWinBackOffer>, NSError> completion);
+    void eligibleWinBackOffersForPackage(RCPackage _package, @Block VoidBlock2<NSArray<RCWinBackOffer>, NSError> completion);
     /**
      * @since Available in iOS 15.0 and later.
      */

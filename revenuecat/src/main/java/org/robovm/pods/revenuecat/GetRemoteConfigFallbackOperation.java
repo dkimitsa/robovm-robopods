@@ -35,28 +35,24 @@ import org.robovm.apple.storekit.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/RCConfiguration/*</name>*/ 
-    extends /*<extends>*/NSObject/*</extends>*/ 
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("RevenueCat.GetRemoteConfigFallbackOperation")/*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/GetRemoteConfigFallbackOperation/*</name>*/ 
+    extends /*<extends>*/CacheableNetworkOperation/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class RCConfigurationPtr extends Ptr<RCConfiguration, RCConfigurationPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(RCConfiguration.class); }/*</bind>*/
+    /*<ptr>*/public static class GetRemoteConfigFallbackOperationPtr extends Ptr<GetRemoteConfigFallbackOperation, GetRemoteConfigFallbackOperationPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(GetRemoteConfigFallbackOperation.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    protected RCConfiguration() {}
-    protected RCConfiguration(Handle h, long handle) { super(h, handle); }
-    protected RCConfiguration(SkipInit skipInit) { super(skipInit); }
+    protected GetRemoteConfigFallbackOperation() {}
+    protected GetRemoteConfigFallbackOperation(Handle h, long handle) { super(h, handle); }
+    protected GetRemoteConfigFallbackOperation(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
-    @Property(selector = "hash")
-    public native @MachineSizedUInt long getHash();
+    
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "isEqual:")
-    public native boolean isEqual(NSObject object);
-    @Method(selector = "builderWithAPIKey:")
-    public static native RCConfigurationBuilder builder(String apiKey);
+    
     /*</methods>*/
 }

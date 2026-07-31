@@ -51,11 +51,14 @@ import org.robovm.apple.storekit.*;
     public RCPlatformInfo(String flavor, String version) { super((SkipInit) null); initObject(init(flavor, version)); }
     /*</constructors>*/
     /*<properties>*/
-    
+    @Property(selector = "hash")
+    public native @MachineSizedUInt long getHash();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
     @Method(selector = "initWithFlavor:version:")
     protected native @Pointer long init(String flavor, String version);
+    @Method(selector = "isEqual:")
+    public native boolean isEqual(NSObject object);
     /*</methods>*/
 }

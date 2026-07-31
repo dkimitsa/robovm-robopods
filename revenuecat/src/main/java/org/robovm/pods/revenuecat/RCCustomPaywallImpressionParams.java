@@ -47,10 +47,16 @@ import org.robovm.apple.storekit.*;
     protected RCCustomPaywallImpressionParams() {}
     protected RCCustomPaywallImpressionParams(Handle h, long handle) { super(h, handle); }
     protected RCCustomPaywallImpressionParams(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithPaywallId:offeringId:")
-    public RCCustomPaywallImpressionParams(String paywallId, String offeringId) { super((SkipInit) null); initObject(init(paywallId, offeringId)); }
     @Method(selector = "initWithPaywallId:")
     public RCCustomPaywallImpressionParams(String paywallId) { super((SkipInit) null); initObject(init(paywallId)); }
+    /**
+     * @deprecated Pass an Offering object instead. Using an offering identifier string prevents the SDK from deriving placement and targeting context automatically.. Use initWithPaywallId:offering:
+     */
+    @Deprecated
+    @Method(selector = "initWithPaywallId:offeringId:")
+    public RCCustomPaywallImpressionParams(String paywallId, String offeringId) { super((SkipInit) null); initObject(init(paywallId, offeringId)); }
+    @Method(selector = "initWithPaywallId:offering:")
+    public RCCustomPaywallImpressionParams(String paywallId, RCOffering offering) { super((SkipInit) null); initObject(init(paywallId, offering)); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "paywallId")
@@ -60,9 +66,15 @@ import org.robovm.apple.storekit.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "initWithPaywallId:offeringId:")
-    protected native @Pointer long init(String paywallId, String offeringId);
     @Method(selector = "initWithPaywallId:")
     protected native @Pointer long init(String paywallId);
+    /**
+     * @deprecated Pass an Offering object instead. Using an offering identifier string prevents the SDK from deriving placement and targeting context automatically.. Use initWithPaywallId:offering:
+     */
+    @Deprecated
+    @Method(selector = "initWithPaywallId:offeringId:")
+    protected native @Pointer long init(String paywallId, String offeringId);
+    @Method(selector = "initWithPaywallId:offering:")
+    protected native @Pointer long init(String paywallId, RCOffering offering);
     /*</methods>*/
 }

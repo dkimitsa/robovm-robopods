@@ -86,8 +86,12 @@ import org.robovm.apple.storekit.*;
     public native RCConfigurationBuilder withStoreKitVersion(RCStoreKitVersion version);
     @Method(selector = "withAutomaticDeviceIdentifierCollectionEnabled:")
     public native RCConfigurationBuilder withAutomaticDeviceIdentifierCollectionEnabled(boolean automaticDeviceIdentifierCollectionEnabled);
+    @Method(selector = "withIAMEnabled:")
+    public native RCConfigurationBuilder withIAMEnabled(boolean iamEnabled);
     @Method(selector = "build")
     public native RCConfiguration build();
+    @Method(selector = "withPreferredUILocaleOverride:")
+    public native RCConfigurationBuilder withPreferredUILocaleOverride(String preferredUILocaleOverride);
     /**
      * @deprecated Use .with(storeKitVersion:) to enable StoreKit 2
      */

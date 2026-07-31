@@ -9,6 +9,7 @@ https://github.com/RevenueCat/purchases-ios
 
 | RoboPods Version | AdjustSdk Version |
 |------------------|-------------------|
+| 5.83.0.0         | 5.83.0            |
 | 5.72.0.0         | 5.72.0            |
 
 ## Install Instructions

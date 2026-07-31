@@ -35,18 +35,18 @@ import org.robovm.apple.storekit.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("RevenueCat.GetWorkflowOperation")/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/GetWorkflowOperation/*</name>*/ 
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("RevenueCat.GetRemoteConfigOperation")/*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/GetRemoteConfigOperation/*</name>*/ 
     extends /*<extends>*/CacheableNetworkOperation/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class GetWorkflowOperationPtr extends Ptr<GetWorkflowOperation, GetWorkflowOperationPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(GetWorkflowOperation.class); }/*</bind>*/
+    /*<ptr>*/public static class GetRemoteConfigOperationPtr extends Ptr<GetRemoteConfigOperation, GetRemoteConfigOperationPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(GetRemoteConfigOperation.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    protected GetWorkflowOperation() {}
-    protected GetWorkflowOperation(Handle h, long handle) { super(h, handle); }
-    protected GetWorkflowOperation(SkipInit skipInit) { super(skipInit); }
+    protected GetRemoteConfigOperation() {}
+    protected GetRemoteConfigOperation(Handle h, long handle) { super(h, handle); }
+    protected GetRemoteConfigOperation(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
     

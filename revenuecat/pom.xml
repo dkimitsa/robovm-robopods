@@ -7,8 +7,8 @@
     </parent>
 
     <artifactId>robopods-revenuecat-ios</artifactId>
-    <version>5.72.0.0</version>
-    <name>RoboPods RevenuCat iOS v5.72.0</name>
+    <version>5.83.0.0</version>
+    <name>RoboPods RevenuCat iOS v5.83.0</name>
     <packaging>jar</packaging>
 
     <licenses>

@@ -64,7 +64,7 @@ Latest bindings:
 | [Lottie](lottie/)                       | 4.6.1   |
 | [OneSignal](onesignal/)                 | 5.5.5   |
 | [Pollfish](pollfish/)                   | 6.5.0   |
-| [RevenueCat](revenuecat/)               | 5.72.0  |
+| [RevenueCat](revenuecat/)               | 5.83.0  |
 | [SAMKeychain](samkeychain/)             | 1.5.3   |
 | [Singular](singular/)                   | 12.12.0 |
 | [Tenjin](tenjin/)                       | 1.17.2  |

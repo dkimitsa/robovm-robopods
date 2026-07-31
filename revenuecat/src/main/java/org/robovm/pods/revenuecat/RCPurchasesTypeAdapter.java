@@ -122,9 +122,9 @@ import org.robovm.apple.storekit.*;
     @NotImplemented("purchaseWithProduct:completionHandler:")
     public void purchase(RCStoreProduct product, @Block VoidBlock4<RCStoreTransaction, RCCustomerInfo, Boolean, NSError> completionHandler) {}
     @NotImplemented("purchasePackage:withCompletion:")
-    public void purchasePackage(RCPackage _static, @Block VoidBlock4<RCStoreTransaction, RCCustomerInfo, NSError, Boolean> completion) {}
+    public void purchasePackage(RCPackage _package, @Block VoidBlock4<RCStoreTransaction, RCCustomerInfo, NSError, Boolean> completion) {}
     @NotImplemented("purchaseWithPackage:completionHandler:")
-    public void purchase(RCPackage _static, @Block VoidBlock4<RCStoreTransaction, RCCustomerInfo, Boolean, NSError> completionHandler) {}
+    public void purchase(RCPackage _package, @Block VoidBlock4<RCStoreTransaction, RCCustomerInfo, Boolean, NSError> completionHandler) {}
     @NotImplemented("purchaseWithParams:completion:")
     public void purchaseWithParams(RCPurchaseParams params, @Block VoidBlock4<RCStoreTransaction, RCCustomerInfo, NSError, Boolean> completion) {}
     @NotImplemented("purchase:completionHandler:")
@@ -144,9 +144,9 @@ import org.robovm.apple.storekit.*;
     @NotImplemented("purchaseWithProduct:promotionalOffer:completionHandler:")
     public void purchase(RCStoreProduct product, RCPromotionalOffer promotionalOffer, @Block VoidBlock4<RCStoreTransaction, RCCustomerInfo, Boolean, NSError> completionHandler) {}
     @NotImplemented("purchasePackage:withPromotionalOffer:completion:")
-    public void purchasePackageWithPromotionalOffer(RCPackage _static, RCPromotionalOffer promotionalOffer, @Block VoidBlock4<RCStoreTransaction, RCCustomerInfo, NSError, Boolean> completion) {}
+    public void purchasePackageWithPromotionalOffer(RCPackage _package, RCPromotionalOffer promotionalOffer, @Block VoidBlock4<RCStoreTransaction, RCCustomerInfo, NSError, Boolean> completion) {}
     @NotImplemented("purchaseWithPackage:promotionalOffer:completionHandler:")
-    public void purchase(RCPackage _static, RCPromotionalOffer promotionalOffer, @Block VoidBlock4<RCStoreTransaction, RCCustomerInfo, Boolean, NSError> completionHandler) {}
+    public void purchase(RCPackage _package, RCPromotionalOffer promotionalOffer, @Block VoidBlock4<RCStoreTransaction, RCCustomerInfo, Boolean, NSError> completionHandler) {}
     @NotImplemented("checkTrialOrIntroDiscountEligibility:completion:")
     public void checkTrialOrIntroDiscountEligibility(NSArray<NSString> productIdentifiers, @Block VoidBlock1<NSDictionary<NSString, RCIntroEligibility>> receiveEligibility) {}
     @NotImplemented("checkTrialOrIntroDiscountEligibilityWithProductIdentifiers:completionHandler:")
@@ -170,7 +170,7 @@ import org.robovm.apple.storekit.*;
      * @since Available in iOS 18.0 and later.
      */
     @NotImplemented("eligibleWinBackOffersForPackage:completion:")
-    public void eligibleWinBackOffersForPackage(RCPackage _static, @Block VoidBlock2<NSArray<RCWinBackOffer>, NSError> completion) {}
+    public void eligibleWinBackOffersForPackage(RCPackage _package, @Block VoidBlock2<NSArray<RCWinBackOffer>, NSError> completion) {}
     /**
      * @since Available in iOS 15.0 and later.
      */

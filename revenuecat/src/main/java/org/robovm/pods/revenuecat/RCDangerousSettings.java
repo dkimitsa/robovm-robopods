@@ -57,6 +57,8 @@ import org.robovm.apple.storekit.*;
     public native boolean isAutoSyncPurchases();
     @Property(selector = "customEntitlementComputation")
     public native boolean isCustomEntitlementComputation();
+    @Property(selector = "hash")
+    public native @MachineSizedUInt long getHash();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
@@ -64,5 +66,7 @@ import org.robovm.apple.storekit.*;
     protected native @Pointer long init(boolean autoSyncPurchases);
     @Method(selector = "initWithAutoSyncPurchases:customEntitlementComputation:")
     protected native @Pointer long init(boolean autoSyncPurchases, boolean customEntitlementComputation);
+    @Method(selector = "isEqual:")
+    public native boolean isEqual(NSObject object);
     /*</methods>*/
 }

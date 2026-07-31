@@ -47,6 +47,9 @@ classes:
     GetVirtualCurrenciesOperation: { }
     GetWebBillingProductsOperation: { }
     GetWebOfferingProductsOperation: { }
+    GetRemoteConfigFallbackOperation: { }
+    GetRemoteConfigOperation: { }
+    RCBillingPlanType: { }
     GetWorkflowOperation: { }
     HealthOperation: { }
     LogInOperation: { }
@@ -123,6 +126,8 @@ classes:
                 name: init
             '-initWithPaywallId:':
                 name: init
+            '-initWithPaywallId:offering:':
+                name: init
     RCCustomerInfo: { }
     RCDangerousSettings:
         methods:
@@ -173,6 +178,14 @@ classes:
                 name: init
     RCPurchaserInfo: { }
     RCPurchasesErrorUtils: { }
+    RCInstallmentsInfo:
+        methods:
+            '-initWithCommitmentInstallmentsCount:commitmentInstallmentPeriod:installmentBillingPrice:installmentBillingDisplayPrice:commitmentTotalPeriod:commitmentTotalPrice:commitmentTotalDisplayPrice:billingPlanType:':
+                name: init
+    RCRevocationReason:
+        methods:
+            '-initWithRawValue:':
+                name: init
     RCStoreProductDiscount: { }
     RCStoreTransaction: { }
     RCStorefront: { }
