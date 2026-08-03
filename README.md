@@ -62,7 +62,7 @@ Latest bindings:
 | [InMobi](inmobi/)                       | 11.4.0  |
 | [IronSource](ironsource/)               | 9.5.0   |
 | [Lottie](lottie/)                       | 4.6.1   |
-| [OneSignal](onesignal/)                 | 5.5.5   |
+| [OneSignal](onesignal/)                 | 5.5.6   |
 | [Pollfish](pollfish/)                   | 6.5.0   |
 | [RevenueCat](revenuecat/)               | 5.83.0  |
 | [SAMKeychain](samkeychain/)             | 1.5.3   |
