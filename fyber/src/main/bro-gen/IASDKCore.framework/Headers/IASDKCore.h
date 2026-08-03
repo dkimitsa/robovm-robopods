@@ -67,7 +67,7 @@ typedef NS_ENUM(NSInteger, IASDKCoreInitErrorType) {
     IASDKCoreInitErrorTypeFailedToDownloadMandatoryData = 1,
     IASDKCoreInitErrorTypeMissingModules __attribute__((deprecated)) = 2,
     IASDKCoreInitErrorTypeInvalidAppID = 3,
-    IASDKCoreInitErrorTypeCancelled = 4
+    IASDKCoreInitErrorTypeCancelled __attribute__((deprecated)) = 4 // no longer surfaced; redundant init calls are ignored silently (event 62 not sent);
 };
 
 @interface IASDKCore : NSObject <IAInterfaceSingleton>

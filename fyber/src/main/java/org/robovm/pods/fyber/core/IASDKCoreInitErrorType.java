@@ -46,6 +46,7 @@ public enum /*<name>*/IASDKCoreInitErrorType/*</name>*/ implements ValuedEnum {
     @Deprecated
     MissingModules(2L),
     InvalidAppID(3L),
+    @Deprecated
     Cancelled(4L);
     /*</values>*/
 
