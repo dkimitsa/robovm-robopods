@@ -16,7 +16,7 @@
 #define kTenjinConversionEndpoint @"v0/conversion-values"
 
 //this line replaced by build script
-#define kTenjinTenjinSDKVersion @"1.17.2"
+#define kTenjinTenjinSDKVersion @"1.18.0"
 
 
 
@@ -29,6 +29,7 @@
 #define kTenjinAdvertisingId @"advertising_id"
 #define kTenjinVendorId @"developer_device_id"
 #define kTenjinGoogleODMInfo @"omd_info"
+#define kTenjinFirebaseAppInstanceId @"firebase_app_instance_id"
 #define kTenjinPlatform @"platform"
 #define kTenjinAppVersion @"app_version"
 #define kTenjinAppSubversion @"app_subversion"

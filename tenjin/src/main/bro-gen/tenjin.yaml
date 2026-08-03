@@ -187,6 +187,7 @@ classes:
                 name: getProduct
             '+extractPropertiesFromProduct:to:':
                 name: extractProperties
+    FirebaseAnalyticsManager: {}
 protocols:
     TJNRequestSender:
         methods:

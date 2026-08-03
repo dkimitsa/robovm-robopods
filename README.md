@@ -54,11 +54,11 @@ Latest bindings:
 | [Charts](charts/)                       | 5.1.0   |
 | [CleverAds](cleverads/)                 | 4.7.4   |
 | [Facebook](facebook/)                   | 18.1.0  |
-| [Facebook Audience](facebook-audience/) | 6.21.1  |
-| [Firebase](firebase/)                   | 12.16.0 |
-| [Fyber](fyber/)                         | 8.4.8   |
+| [Facebook Audience](facebook-audience/) | 6.22.0  |
+| [Firebase](firebase/)                   | 12.17.0 |
+| [Fyber](fyber/)                         | 8.4.9   |
 | [Google Mobile Ads](google-mobile-ads/) | 13.7.0  |
-| [HelpShiftX](helpshift/)                | 10.6.0-beta-swift|
+| [HelpShiftX](helpshift/)                | 10.5.0  |
 | [InMobi](inmobi/)                       | 11.4.0  |
 | [IronSource](ironsource/)               | 9.5.0   |
 | [Lottie](lottie/)                       | 4.6.1   |
@@ -66,8 +66,8 @@ Latest bindings:
 | [Pollfish](pollfish/)                   | 6.5.0   |
 | [RevenueCat](revenuecat/)               | 5.83.0  |
 | [SAMKeychain](samkeychain/)             | 1.5.3   |
-| [Singular](singular/)                   | 12.12.0 |
-| [Tenjin](tenjin/)                       | 1.17.2  |
+| [Singular](singular/)                   | 12.13.0 |
+| [Tenjin](tenjin/)                       | 1.18.0  |
 | [UnityAds](unityads/)                   | 4.19.0  |
 | [YouTubePlayer](youtube/)               | 1.0.4   |
 
