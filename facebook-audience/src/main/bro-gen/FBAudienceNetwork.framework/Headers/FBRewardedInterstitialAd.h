@@ -10,9 +10,9 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+#import <FBAudienceNetwork/FBAdDefines.h>
 #import <FBAudienceNetwork/FBAdExtraHint.h>
 #import <UIKit/UIKit.h>
-#import "FBAdDefines.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -23,6 +23,9 @@ NS_ASSUME_NONNULL_BEGIN
  This is a full-screen ad shown in your application.
  */
 FB_CLASS_EXPORT FB_SUBCLASSING_RESTRICTED @interface FBRewardedInterstitialAd : NSObject
+
++ (instancetype)new NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 /**
  Typed access to the id of the ad placement.
@@ -71,7 +74,7 @@ FB_CLASS_EXPORT FB_SUBCLASSING_RESTRICTED @interface FBRewardedInterstitialAd : 
  */
 - (instancetype)initWithPlacementID:(NSString *)placementID
                          withUserID:(nullable NSString *)userID
-                       withCurrency:(nullable NSString *)currency;
+                       withCurrency:(nullable NSString *)currency NS_DESIGNATED_INITIALIZER;
 
 /**
  Begins loading the FBRewardedInterstitialAd content.

@@ -1,0 +1,7 @@
+name: revenuecat
+moduleFolder: revenuecat
+artifactSource:
+  - https://github.com/RevenueCat/purchases-ios/releases for latest release version
+  - download latest RevenueCat.xcframework.zip from assets
+  - unpack and move if required to ./.robopods-wip/RevenueCat.xcframework
+downloadLocation: ./.robopods-wip/RevenueCat.xcframework

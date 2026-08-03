@@ -78,7 +78,8 @@ FB_CLASS_EXPORT
  default.
 
  */
-- (void)disableAutoRefresh FB_DEPRECATED;
+- (void)disableAutoRefresh FB_DEPRECATED_WITH_MESSAGE(
+    "Auto-refresh is disabled by default. This method is a no-op and will be removed.");
 
 /**
  Sets the rootViewController.

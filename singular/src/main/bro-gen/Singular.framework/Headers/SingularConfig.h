@@ -18,6 +18,10 @@
 // General Fields
 @property (strong) NSString *apikey;
 @property (strong) NSString *secret;
+
+/// @warning Setting this to @c YES will read @c UIPasteboard synchronously
+/// thus block the calling thread until the read completes.
+/// set it off the main thread or expect the calling thread to stall.
 @property (assign) BOOL clipboardAttribution;
 
 // Singular Links fields

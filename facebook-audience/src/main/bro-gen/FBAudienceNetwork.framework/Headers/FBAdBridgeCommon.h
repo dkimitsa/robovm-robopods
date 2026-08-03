@@ -17,7 +17,7 @@
 #import <UIKit/UIKit.h>
 
 #import <FBAudienceNetwork/FBAdBridgeContainer.h>
-#import "FBAdDefines.h"
+#import <FBAudienceNetwork/FBAdDefines.h>
 
 FB_EXTERN_C_BEGIN
 

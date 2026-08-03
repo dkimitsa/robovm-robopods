@@ -22,6 +22,9 @@ NS_ASSUME_NONNULL_BEGIN
  */
 FB_CLASS_EXPORT FB_SUBCLASSING_RESTRICTED @interface FBAdChoicesView : UIView
 
++ (instancetype)new NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
+
 /**
   Access to the text label contained in this view.
  */

@@ -4,6 +4,7 @@ https://developers.facebook.com/docs/audience-network/guides/adding-sdk/ios
 ### Available RoboPods
 | RoboPods Version | Facebook Audience |
 |------------------|-------------------|
+| 6.22.0.0         | 6.22.0            |
 | 6.21.1.0         | 6.21.1            |
 | 6.21.0.0         | 6.21.0            |
 

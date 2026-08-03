@@ -341,6 +341,13 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) EventGatingM
 - (void)reset;
 @end
 
+
+SWIFT_CLASS("_TtC9TenjinSDK24FirebaseAnalyticsManager")
+@interface FirebaseAnalyticsManager : NSObject
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (NSString * _Nullable)appInstanceId SWIFT_WARN_UNUSED_RESULT;
+@end
+
 enum PurposeConsentStatus : NSInteger;
 
 SWIFT_CLASS("_TtC9TenjinSDK10GDPRHelper")

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "FBAdDefines.h"
+#import <FBAudienceNetwork/FBAdDefines.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -51,6 +51,14 @@ typedef NS_ENUM(NSInteger, FBAdTestAdType) {
     FBAdTestAdType_Img_16_9_App_Install,
     /// 16x9 image ad with link CTA option
     FBAdTestAdType_Img_16_9_Link,
+    /// 9x16 image ad with app install CTA option
+    FBAdTestAdType_Img_9_16_App_Install,
+    /// 9x16 image ad with link CTA option
+    FBAdTestAdType_Img_9_16_Link,
+    /// 1x1 image ad with app install CTA option
+    FBAdTestAdType_Img_1_1_App_Install,
+    /// 1x1 image ad with link CTA option
+    FBAdTestAdType_Img_1_1_Link,
     /// 16x9 HD video 46 sec ad with app install CTA option
     FBAdTestAdType_Vid_HD_16_9_46s_App_Install,
     /// 16x9 HD video 46 sec ad with link CTA option

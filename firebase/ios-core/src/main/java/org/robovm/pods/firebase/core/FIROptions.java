@@ -87,10 +87,6 @@ import org.robovm.apple.foundation.*;
     public native String getAppGroupID();
     @Property(selector = "setAppGroupID:")
     public native void setAppGroupID(String v);
-    @Property(selector = "recaptchaSiteKey")
-    public native String getRecaptchaSiteKey();
-    @Property(selector = "setRecaptchaSiteKey:")
-    public native void setRecaptchaSiteKey(String v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

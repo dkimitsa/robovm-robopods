@@ -311,7 +311,8 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 @class NSMutableURLRequest;
 @class GACAppCheckToken;
 /// Firebase App Check provider that verifies app integrity using the
-/// <a href="https://cloud.google.com/recaptcha/docs/instrument-ios-apps">reCAPTCHA Enterprise</a>
+/// <a href="https://firebase.google.com/docs/app-check/ios/recaptcha-enterprise-provider">reCAPTCHA
+/// Enterprise</a>
 /// API. This class’s platform and OS availability matches reCAPTCHA
 /// Enterprise’s.
 SWIFT_CLASS_NAMED("AppCheckRecaptchaProvider") SWIFT_AVAILABILITY(watchos,unavailable) SWIFT_AVAILABILITY(tvos,unavailable) SWIFT_AVAILABILITY(maccatalyst,unavailable) SWIFT_AVAILABILITY(macos,unavailable) SWIFT_AVAILABILITY(visionos,introduced=1.0) SWIFT_AVAILABILITY(ios,introduced=15.0)

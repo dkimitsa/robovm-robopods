@@ -96,6 +96,9 @@ import org.robovm.apple.avfoundation.*;
     public native void loadAd();
     @Method(selector = "loadAdWithBidPayload:")
     public native void loadAd(String bidPayload);
+    /**
+     * @deprecated Auto-refresh is disabled by default. This method is a no-op and will be removed.
+     */
     @Deprecated
     @Method(selector = "disableAutoRefresh")
     public native void disableAutoRefresh();

@@ -46,17 +46,21 @@ public enum /*<name>*/FBAdTestAdType/*</name>*/ implements ValuedEnum {
     Default(0L),
     Img_16_9_App_Install(1L),
     Img_16_9_Link(2L),
-    Vid_HD_16_9_46s_App_Install(3L),
-    Vid_HD_16_9_46s_Link(4L),
-    Vid_HD_16_9_15s_App_Install(5L),
-    Vid_HD_16_9_15s_Link(6L),
-    Vid_HD_9_16_39s_App_Install(7L),
-    Vid_HD_9_16_39s_Link(8L),
-    Carousel_Img_Square_App_Install(9L),
-    Carousel_Img_Square_Link(10L),
-    Carousel_Vid_Square_Link(11L),
-    Playable(12L),
-    FBRV(13L);
+    Img_9_16_App_Install(3L),
+    Img_9_16_Link(4L),
+    Img_1_1_App_Install(5L),
+    Img_1_1_Link(6L),
+    Vid_HD_16_9_46s_App_Install(7L),
+    Vid_HD_16_9_46s_Link(8L),
+    Vid_HD_16_9_15s_App_Install(9L),
+    Vid_HD_16_9_15s_Link(10L),
+    Vid_HD_9_16_39s_App_Install(11L),
+    Vid_HD_9_16_39s_Link(12L),
+    Carousel_Img_Square_App_Install(13L),
+    Carousel_Img_Square_Link(14L),
+    Carousel_Vid_Square_Link(15L),
+    Playable(16L),
+    FBRV(17L);
     /*</values>*/
 
     /*<bind>*/

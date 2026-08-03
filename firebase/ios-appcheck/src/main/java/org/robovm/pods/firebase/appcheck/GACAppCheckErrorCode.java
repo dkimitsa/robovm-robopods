@@ -72,12 +72,12 @@ public enum /*<name>*/GACAppCheckErrorCode/*</name>*/ implements NSErrorCode {
         protected NSErrorWrap(SkipInit skipInit) {super(skipInit);}
 
         @Override public NSErrorCode getErrorCode() {
-             try {
-                 return  /*<name>*/GACAppCheckErrorCode/*</name>*/.valueOf(getCode());
-             } catch (IllegalArgumentException e) {
-                 return null;
-             }
-         }
+            try {
+                return  /*<name>*/GACAppCheckErrorCode/*</name>*/.valueOf(getCode());
+            } catch (IllegalArgumentException e) {
+                return null;
+            }
+        }
 
         public static String getClassDomain() {
             /** must be inserted in value section */

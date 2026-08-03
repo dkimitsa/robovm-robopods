@@ -49,17 +49,13 @@ import org.robovm.apple.avfoundation.*;
     /*<bind>*/static { ObjCRuntime.bind(FBNativeAdView.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public FBNativeAdView() {}
+    protected FBNativeAdView() {}
     protected FBNativeAdView(Handle h, long handle) { super(h, handle); }
     protected FBNativeAdView(SkipInit skipInit) { super(skipInit); }
     public FBNativeAdView(FBNativeAd nativeAd) { super((Handle) null, create(nativeAd)); retain(getHandle()); }
     public FBNativeAdView(FBNativeAd nativeAd, FBNativeAdViewAttributes attributes) { super((Handle) null, create(nativeAd, attributes)); retain(getHandle()); }
     public FBNativeAdView(FBNativeAd nativeAd, FBNativeAdViewType type) { super((Handle) null, create(nativeAd, type)); retain(getHandle()); }
     public FBNativeAdView(FBNativeAd nativeAd, FBNativeAdViewType type, FBNativeAdViewAttributes attributes) { super((Handle) null, create(nativeAd, type, attributes)); retain(getHandle()); }
-    @Method(selector = "initWithFrame:")
-    public FBNativeAdView(@ByVal CGRect frame) { super(frame); }
-    @Method(selector = "initWithCoder:")
-    public FBNativeAdView(NSCoder coder) { super(coder); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "type")

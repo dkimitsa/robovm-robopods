@@ -47,16 +47,16 @@ import org.robovm.apple.foundation.*;
     protected FIRRecaptchaProvider() {}
     protected FIRRecaptchaProvider(Handle h, long handle) { super(h, handle); }
     protected FIRRecaptchaProvider(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithApp:")
-    public FIRRecaptchaProvider(org.robovm.pods.firebase.core.FIRApp app) { super((SkipInit) null); initObject(init(app)); }
+    @Method(selector = "initWithApp:siteKey:")
+    public FIRRecaptchaProvider(org.robovm.pods.firebase.core.FIRApp app, String siteKey) { super((SkipInit) null); initObject(init(app, siteKey)); }
     /*</constructors>*/
     /*<properties>*/
     
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "initWithApp:")
-    protected native @Pointer long init(org.robovm.pods.firebase.core.FIRApp app);
+    @Method(selector = "initWithApp:siteKey:")
+    protected native @Pointer long init(org.robovm.pods.firebase.core.FIRApp app, String siteKey);
     @Method(selector = "getTokenWithCompletion:")
     public native void getToken(@Block VoidBlock2<FIRAppCheckToken, NSError> handler);
     @Method(selector = "getLimitedUseTokenWithCompletion:")

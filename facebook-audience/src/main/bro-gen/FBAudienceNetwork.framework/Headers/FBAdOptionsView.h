@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+#import <FBAudienceNetwork/FBAdDefines.h>
+
 NS_ASSUME_NONNULL_BEGIN
 
 @class FBNativeAdBase;
@@ -22,6 +24,14 @@ extern const CGFloat FBAdOptionsViewWidth;
  */
 extern const CGFloat FBAdOptionsViewHeight;
 
+/**
+ Deprecated. Use `preferredAdOptionsViewPosition` on `FBNativeAd` or `FBNativeBannerAd` to let the
+ SDK place the AdOptions view for you, instead of creating and positioning this view manually.
+
+ This class remains functional for back-compat — if you have already added an `FBAdOptionsView` as a
+ subview of the registered ad view, SDK-managed placement is skipped.
+ */
+FB_DEPRECATED_WITH_MESSAGE("Use preferredAdOptionsViewPosition on FBNativeAd / FBNativeBannerAd")
 @interface FBAdOptionsView : UIView
 
 /**

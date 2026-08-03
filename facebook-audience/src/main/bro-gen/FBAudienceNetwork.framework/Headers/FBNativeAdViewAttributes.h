@@ -6,8 +6,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+#import <FBAudienceNetwork/FBAdDefines.h>
 #import <UIKit/UIKit.h>
-#import "FBAdDefines.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -70,8 +70,8 @@ FB_CLASS_EXPORT
 /**
  Enables or disables autoplay for some types of media. Defaults to YES.
  */
-@property (nonatomic, assign, getter=isAutoplayEnabled) BOOL autoplayEnabled
-    __attribute((deprecated("This attribute is no longer used.")));
+@property (nonatomic, assign, getter=isAutoplayEnabled)
+    BOOL autoplayEnabled FB_DEPRECATED_WITH_MESSAGE("This attribute is no longer used.");
 
 @end
 

@@ -68,6 +68,10 @@ import org.robovm.apple.avfoundation.*;
     public native FBNativeBannerAdDelegate getDelegate();
     @Property(selector = "setDelegate:", strongRef = true)
     public native void setDelegate(FBNativeBannerAdDelegate v);
+    @Property(selector = "preferredAdOptionsViewPosition")
+    public native FBNativeAdOptionsViewPosition getPreferredAdOptionsViewPosition();
+    @Property(selector = "setPreferredAdOptionsViewPosition:")
+    public native void setPreferredAdOptionsViewPosition(FBNativeAdOptionsViewPosition v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

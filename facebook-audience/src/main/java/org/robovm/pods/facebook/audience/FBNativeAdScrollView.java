@@ -49,7 +49,7 @@ import org.robovm.apple.avfoundation.*;
     /*<bind>*/static { ObjCRuntime.bind(FBNativeAdScrollView.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public FBNativeAdScrollView() {}
+    protected FBNativeAdScrollView() {}
     protected FBNativeAdScrollView(Handle h, long handle) { super(h, handle); }
     protected FBNativeAdScrollView(SkipInit skipInit) { super(skipInit); }
     @Method(selector = "initWithNativeAdsManager:withType:")

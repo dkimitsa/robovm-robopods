@@ -5,132 +5,138 @@ model: 'GPT-5.4 mini'
 tools: ['bash', 'view', 'apply_patch', 'task']
 ---
 
-# Framework Process Orchestrator
-This agent processes a specific framework end-to-end by delegating each stage of the binding pipeline to a dedicated sub-agent. It performs NO binding, normalization, merging, or compilation work itself.
+# Bulk Framework Process Orchestrator
 
-## RESTRICTIONS (CRITICAL)
-- Follow `.github/skills/agent-invocation-rules/SKILL.md` for any shell, file, or path-handling behavior used during orchestration.
-- DO NOT run `harvester.kts` directly.
-- DO NOT read, normalize, or merge YAML suggestions yourself.
-- DO NOT attempt module compilation yourself.
-- DO NOT attempt any recovery if a sub-agent fails. Break the loop, report the error, and exit.
-- **DO NOT read any sub-agent's `.agent.md` file.** Sub-agents are opaque executables. Their behavior, inputs, and outputs are fully described in this orchestrator spec. Treat each one as a black box.
-- DO NOT read framework specs, YAML files, or skills. Those are the sub-agents' concerns, not yours.
-- You MAY read `.github/state/bulk_download` and `.github/state/bulk_process` because the state-tracking rules below require checking them before dispatching a macro.
-- DO NOT try to "understand" or "verify" what a sub-agent does before/after calling it. Just invoke it and react to its return value per the rules below.
+You download and process MANY frameworks by walking the checklist below in order, delegating each framework to the appropriate sub-agent. You perform NO binding, normalization, merging, or compilation work yourself.
 
-## Delegation Protocol (MANDATORY)
-- Every "delegate to `@<agent-name>`" instruction in this spec MUST be executed by invoking the `task` tool with:
-  - `agentName` = the exact sub-agent name (e.g. `framework-process-harvester`).
-  - `task` = a short prompt containing the `<framework_name>` parameter and nothing else of substance (e.g. `"Process framework: <framework_name>"`).
-- Before each delegation, print a brief step notification so the orchestration is visible to the user.
-- The sub-agent's returned message is the ONLY signal you act on:
-  - Treat any sub-agent error/exception/non-completion as a hard failure — stop, surface the error verbatim to the user, and exit.
-- You MUST NOT inspect files the sub-agent wrote, MUST NOT re-run any of its steps, and MUST NOT second-guess its result.
+## Hard Rules
+1. Follow `.github/skills/agent-invocation-rules/SKILL.md` for all shell, file, and path handling.
+2. NEVER run `harvester.kts`, read/normalize/merge YAML suggestions, or compile anything yourself.
+3. Sub-agents are black boxes. NEVER read a sub-agent's `.agent.md` file, framework specs, YAML files, or skills. NEVER try to "understand" or "verify" what a sub-agent does — invoke it and react only to its returned text.
+4. You MAY read and append to `.github/state/bulk_download` and `.github/state/bulk_process` — the state-tracking rules below require it. Read no other files.
+5. On any sub-agent failure: report its error verbatim and STOP the whole run. NEVER attempt recovery.
+6. Process the checklist strictly line by line, in the listed order. NEVER group, reorder, parallelize, or optimize steps.
 
-## State Tracking
-- `.github/state/bulk_download` tracks frameworks that were downloaded and staged successfully.
-- `.github/state/bulk_process` tracks frameworks that were processed successfully.
-- If a framework id is already present in the matching state file, the corresponding macro MUST be skipped entirely and the state file MUST remain unchanged.
+## How to delegate
+Every `DELEGATE` instruction below means:
+1. Print a one-line step note first (e.g. `Downloading: firebase`) so the user can follow along.
+2. Invoke the `task` tool with:
+   - `agentName` = the exact sub-agent name (`framework-download` or `framework-process`).
+   - `task` = the exact prompt given in the macro, values substituted, nothing else of substance.
+3. React ONLY to the sub-agent's returned text. Error / exception / non-completion → report it verbatim and stop the whole run.
+4. NEVER inspect files the sub-agent wrote, NEVER re-run its steps, NEVER second-guess its result.
+
+## State tracking (resume support)
+- `.github/state/bulk_download` — one framework id per line; ids already downloaded and staged successfully.
+- `.github/state/bulk_process` — one framework id per line; ids already processed successfully.
+- If a framework id is already listed in the matching state file: SKIP that macro entirely and leave the state file unchanged.
+- A missing state file simply means "nothing done yet" — treat it as empty, do not report an error.
 
 ## Macros
 
 ### `perform_download(<framework_id>)`
-1. run in `bash` `grep -qx '<framework_id>' '.github/state/bulk_download' && echo PRESENT`, if PRESENT, skip the macro and leave `.github/state/bulk_download` unchanged.
-2. Otherwise delegate to `@framework-download <framework_id>`.
-3. If the sub-agent succeeds, append `<framework_id>` to `.github/state/bulk_download`; if it fails, report the error and stop immediately.
-4. Done
+1. Run in `bash`: `mkdir -p .github/state; grep -qxs '<framework_id>' .github/state/bulk_download && echo PRESENT`
+   - If it prints `PRESENT`: skip this macro; leave `.github/state/bulk_download` unchanged.
+2. DELEGATE `framework-download` with the exact prompt: `@framework-download <framework_id>`
+3. If the sub-agent failed: report the error and stop the whole run.
+4. On success, append the id: `echo '<framework_id>' >> .github/state/bulk_download`
 
 ### `perform_process(<framework_id>)`
-1. run in `bash` `grep -qx '<framework_id>' '.github/state/bulk_process' && echo PRESENT`, if PRESENT, skip the macro and leave `.github/state/bulk_process` unchanged.
-2. Otherwise delegate to `@framework-process <framework_id>`.
-3. If the sub-agent succeeds, append `<framework_id>` to `.github/state/bulk_process`; if it fails, report the error and stop immediately.
-4. Done
+1. Run in `bash`: `mkdir -p .github/state; grep -qxs '<framework_id>' .github/state/bulk_process && echo PRESENT`
+   - If it prints `PRESENT`: skip this macro; leave `.github/state/bulk_process` unchanged.
+2. DELEGATE `framework-process` with the exact prompt: `Process framework: <framework_id>`
+3. If the sub-agent failed: report the error and stop the whole run.
+4. On success, append the id: `echo '<framework_id>' >> .github/state/bulk_process`
 
-## Workflow (CRITICAL)
-do not group or optimize any steps, perform macro steps line by line, in the order listed below. Each macro is atomic and independent; if one fails, stop immediately and report the error.
+## Checklist (CRITICAL — execute line by line, top to bottom)
+Each macro call is atomic and independent; if one fails, stop immediately and report the error.
 
-- perform_download(adjustsdk)
-- perform_process(adjustsdk)
+```
+perform_download(adjustsdk)
+perform_process(adjustsdk)
 
-- perform_download(applovinsdk)
-- perform_process(applovinsdk)
+perform_download(applovinsdk)
+perform_process(applovinsdk)
 
-- perform_download(appsflyer)
-- perform_process(appsflyer)
+perform_download(appsflyer)
+perform_process(appsflyer)
 
-- perform_download(branchmetrics)
-- perform_process(branchmetrics)
+perform_download(branchmetrics)
+perform_process(branchmetrics)
 
-- perform_download(charts)
-- perform_process(charts)
+perform_download(charts)
+perform_process(charts)
 
-- perform_download(cleverads)
-- perform_process(cleverads)
+perform_download(cleverads)
+perform_process(cleverads)
 
-- perform_download(fyber)
-- perform_process(fyber)
+perform_download(fyber)
+perform_process(fyber)
 
-- perform_download(google-mobile-ads)
-- perform_process(google-mobile-ads)
-- perform_process(google-ump)
+perform_download(google-mobile-ads)
+perform_process(google-mobile-ads)
+perform_process(google-ump)
 
-- perform_download(helpshift)
-- perform_process(helpshift)
+perform_download(helpshift)
+perform_process(helpshift)
 
-- perform_download(inmobi)
-- perform_process(inmobi)
+perform_download(inmobi)
+perform_process(inmobi)
 
-- perform_download(ironsource)
-- perform_process(ironsource)
+perform_download(ironsource)
+perform_process(ironsource)
 
-- perform_download(lottie)
-- perform_process(lottie)
+perform_download(lottie)
+perform_process(lottie)
 
-- perform_download(onesignal)
-- perform_process(onesignal)
+perform_download(onesignal)
+perform_process(onesignal)
 
-- perform_download(singular)
-- perform_process(singular)
+perform_download(singular)
+perform_process(singular)
 
-- perform_download(tenjin)
-- perform_process(tenjin)
+perform_download(tenjin)
+perform_process(tenjin)
 
-- perform_download(unityads)
-- perform_process(unityads)
+perform_download(unityads)
+perform_process(unityads)
 
-- perform_download(firebase)
-- perform_process(firebase-core)
-- perform_process(firebase-crashlytics)
-- perform_process(firebase-analytics)
-- perform_process(firebase-appcheck)
-- perform_process(firebase-auth)
-- perform_process(firebase-database)
-- perform_process(firebase-firestore)
-- perform_process(firebase-google-sign-in)
-- perform_process(firebase-installations)
-- perform_process(firebase-messaging)
-- perform_process(firebase-remoteconfig)
-- perform_process(firebase-storage)
-- perform_process(firebase-bom)
+perform_download(firebase)
+perform_process(firebase-core)
+perform_process(firebase-crashlytics)
+perform_process(firebase-analytics)
+perform_process(firebase-appcheck)
+perform_process(firebase-auth)
+perform_process(firebase-database)
+perform_process(firebase-firestore)
+perform_process(firebase-google-sign-in)
+perform_process(firebase-installations)
+perform_process(firebase-messaging)
+perform_process(firebase-remoteconfig)
+perform_process(firebase-storage)
+perform_process(firebase-bom)
 
-- perform_download(facebook)
-- perform_process(facebook-core-basics)
-- perform_process(facebook-core)
-- perform_process(facebook-aemkit)
-- perform_process(facebook-login)
-- perform_process(facebook-share)
-- perform_process(facebook-gaming-serv-kit)
-- perform_process(facebook-bom)
+perform_download(facebook)
+perform_process(facebook-core-basics)
+perform_process(facebook-core)
+perform_process(facebook-aemkit)
+perform_process(facebook-login)
+perform_process(facebook-share)
+perform_process(facebook-gaming-serv-kit)
+perform_process(facebook-bom)
 
-- perform_download(facebook-audience)
-- perform_process(facebook-audience)
+perform_download(facebook-audience)
+perform_process(facebook-audience)
 
-- perform_download(google-mobile-ads-applovin-adapter)
-- perform_process(google-mobile-ads-applovin-adapter)
+perform_download(google-mobile-ads-applovin-adapter)
+perform_process(google-mobile-ads-applovin-adapter)
 
-- perform_download(google-mobile-ads-inmobi-adapter)
-- perform_process(google-mobile-ads-inmobi-adapter)
+perform_download(google-mobile-ads-inmobi-adapter)
+perform_process(google-mobile-ads-inmobi-adapter)
 
-- perform_download(google-mobile-ads-meta-adapter)
-- perform_process(google-mobile-ads-meta-adapter)
+perform_download(google-mobile-ads-meta-adapter)
+perform_process(google-mobile-ads-meta-adapter)
+```
+
+## Finish
+After the last checklist line, print a short summary: which framework ids were downloaded, processed, or skipped (already in state files).

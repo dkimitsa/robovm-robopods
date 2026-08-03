@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+#import <FBAudienceNetwork/FBAdDefines.h>
 #import <FBAudienceNetwork/FBAdImage.h>
 #import <FBAudienceNetwork/FBAdSettings.h>
 #import <FBAudienceNetwork/FBNativeAdBase.h>
 #import <Foundation/Foundation.h>
-#import "FBAdDefines.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -27,6 +27,21 @@ NS_ASSUME_NONNULL_BEGIN
 FB_CLASS_EXPORT FB_SUBCLASSING_RESTRICTED @interface FBNativeBannerAd : FBNativeAdBase
 
 @property (nonatomic, weak, nullable) id<FBNativeBannerAdDelegate> delegate;
+
+/**
+ The corner of the registered ad view where the SDK should place the AdOptions view.
+
+ When set, the SDK adds an `FBAdOptionsView` in the chosen corner of the view passed to
+ `registerViewForInteraction:...`, so you don't need to create and position it yourself. This makes
+ it easy to keep the AdOptions view within your layout regardless of its size.
+
+ Defaults to `FBNativeAdOptionsViewPositionTopRight`.
+
+ If you have already added an `FBAdOptionsView` as a subview of the registered ad view, SDK-managed
+ placement is skipped and your view is used. This property is the recommended replacement for
+ creating and positioning `FBAdOptionsView` manually.
+ */
+@property (nonatomic, assign) FBNativeAdOptionsViewPosition preferredAdOptionsViewPosition;
 
 - (instancetype)initWithPlacementID:(NSString *)placementID;
 

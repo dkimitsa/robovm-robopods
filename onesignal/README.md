@@ -6,6 +6,7 @@ https://github.com/OneSignal/OneSignal-iOS-SDK
 ## Available RoboPods
 | RoboPods Version | OneSignal Version |
 |------------------|-------------------|
+| 5.5.6.0          | 5.5.6             |
 | 5.5.5.0          | 5.5.5             |
 | 5.5.3.0          | 5.5.3             |
 | 5.5.1.0          | 5.5.1             |

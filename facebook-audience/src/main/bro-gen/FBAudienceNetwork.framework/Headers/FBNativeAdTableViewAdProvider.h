@@ -9,10 +9,10 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+#import <FBAudienceNetwork/FBAdDefines.h>
 #import <FBAudienceNetwork/FBAdExtraHint.h>
 #import <FBAudienceNetwork/FBNativeAd.h>
 #import <FBAudienceNetwork/FBNativeAdsManager.h>
-#import "FBAdDefines.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -23,6 +23,9 @@ NS_ASSUME_NONNULL_BEGIN
  */
 FB_CLASS_EXPORT
 @interface FBNativeAdTableViewAdProvider : NSObject
+
++ (instancetype)new NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 /**
  Passes delegate methods from FBNativeAd. Separate delegate calls will be made for each native ad contained.

@@ -18,6 +18,22 @@ typedef NS_ENUM(NSInteger, FBAdFormatType) {
     FBAdFormatTypeCarousel
 };
 
+/**
+ The corner of the registered ad view where the SDK should place the AdOptions view.
+
+ Pass one of these values to `preferredAdOptionsViewPosition` on `FBNativeAd` or `FBNativeBannerAd`
+ to let the SDK position the AdOptions view for you, so it fits cleanly within your layout without
+ manual placement. If you have already added an `FBAdOptionsView` as a subview of the registered ad
+ view, SDK-managed positioning is skipped and your view is used.
+ */
+typedef NS_ENUM(NSInteger, FBNativeAdOptionsViewPosition) {
+    /** Default position. */
+    FBNativeAdOptionsViewPositionTopRight = 0,
+    FBNativeAdOptionsViewPositionTopLeft,
+    FBNativeAdOptionsViewPositionBottomRight,
+    FBNativeAdOptionsViewPositionBottomLeft,
+};
+
 NS_ASSUME_NONNULL_BEGIN
 
 @class FBAdImage;
@@ -66,6 +82,10 @@ typedef NS_ENUM(NSInteger, FBNativeAdsCachePolicy) {
  Typed access to the call to action phrase of the ad, for example "Install Now".
  */
 @property (nonatomic, copy, readonly, nullable) NSString *callToAction;
+/**
+ Typed access to the call to action phrase with appended metadata, for example "Install Now · $0.99".
+ */
+@property (nonatomic, copy, readonly, nullable) NSString *callToActionWithMetadata;
 /**
  Typed access to the body raw untruncated text, Contains the text that the advertiser entered when they created their
  ad. This often tells people what the ad is promoting.

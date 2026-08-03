@@ -49,7 +49,7 @@ import org.robovm.apple.avfoundation.*;
     /*<bind>*/static { ObjCRuntime.bind(FBRewardedInterstitialAd.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public FBRewardedInterstitialAd() {}
+    protected FBRewardedInterstitialAd() {}
     protected FBRewardedInterstitialAd(Handle h, long handle) { super(h, handle); }
     protected FBRewardedInterstitialAd(SkipInit skipInit) { super(skipInit); }
     @Method(selector = "initWithPlacementID:")

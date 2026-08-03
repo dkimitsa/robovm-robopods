@@ -44,15 +44,19 @@ import org.robovm.apple.foundation.*;
     /*<bind>*/static { ObjCRuntime.bind(FIRRecaptchaProviderFactory.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public FIRRecaptchaProviderFactory() {}
+    protected FIRRecaptchaProviderFactory() {}
     protected FIRRecaptchaProviderFactory(Handle h, long handle) { super(h, handle); }
     protected FIRRecaptchaProviderFactory(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithSiteKey:")
+    public FIRRecaptchaProviderFactory(String siteKey) { super((SkipInit) null); initObject(init(siteKey)); }
     /*</constructors>*/
     /*<properties>*/
     
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
+    @Method(selector = "initWithSiteKey:")
+    protected native @Pointer long init(String siteKey);
     @Method(selector = "createProviderWithApp:")
     public native FIRAppCheckProvider createProvider(org.robovm.pods.firebase.core.FIRApp app);
     /*</methods>*/
