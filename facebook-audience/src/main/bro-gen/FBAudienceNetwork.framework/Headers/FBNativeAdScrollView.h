@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+#import <FBAudienceNetwork/FBAdDefines.h>
 #import <FBAudienceNetwork/FBNativeAdView.h>
 #import <FBAudienceNetwork/FBNativeAdsManager.h>
 #import <Foundation/Foundation.h>
-#import "FBAdDefines.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -27,6 +27,9 @@ NS_ASSUME_NONNULL_BEGIN
 
  */
 FB_CLASS_EXPORT FB_SUBCLASSING_RESTRICTED @interface FBNativeAdScrollView : UIView
+
++ (instancetype)new NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 /**
  Maximum native ads that this scroll view will load. Defaults to 10. If changed after calling loadAds, all current ads

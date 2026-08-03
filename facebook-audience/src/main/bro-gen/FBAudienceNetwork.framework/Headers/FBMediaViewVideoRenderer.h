@@ -7,8 +7,8 @@
  */
 
 #import <AVFoundation/AVFoundation.h>
+#import <FBAudienceNetwork/FBAdDefines.h>
 #import <UIKit/UIKit.h>
-#import "FBAdDefines.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

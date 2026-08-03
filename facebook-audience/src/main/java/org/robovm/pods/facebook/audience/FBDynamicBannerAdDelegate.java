@@ -38,9 +38,11 @@ import org.robovm.apple.avfoundation.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
+/**
+ * @deprecated FBDynamicBannerAdDelegate is deprecated and will be removed in a future version of Audience Network. This ad format is no longer supported; use FBAdView / FBAdViewDelegate for banner ads instead.
+ */
 /*</javadoc>*/
-/*<annotations>*//*</annotations>*/
+/*<annotations>*/@Deprecated/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ interface /*<name>*/FBDynamicBannerAdDelegate/*</name>*/ 
     /*<implements>*/extends NSObjectProtocol/*</implements>*/ {
 

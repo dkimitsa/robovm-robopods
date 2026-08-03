@@ -41,26 +41,12 @@ import org.robovm.apple.avfoundation.*;
 
 /*</javadoc>*/
 /*<annotations>*/@Marshaler(ValuedEnum.AsMachineSizedSIntMarshaler.class)/*</annotations>*/
-public enum /*<name>*/FBAdTestAdType/*</name>*/ implements ValuedEnum {
+public enum /*<name>*/FBNativeAdOptionsViewPosition/*</name>*/ implements ValuedEnum {
     /*<values>*/
-    Default(0L),
-    Img_16_9_App_Install(1L),
-    Img_16_9_Link(2L),
-    Img_9_16_App_Install(3L),
-    Img_9_16_Link(4L),
-    Img_1_1_App_Install(5L),
-    Img_1_1_Link(6L),
-    Vid_HD_16_9_46s_App_Install(7L),
-    Vid_HD_16_9_46s_Link(8L),
-    Vid_HD_16_9_15s_App_Install(9L),
-    Vid_HD_16_9_15s_Link(10L),
-    Vid_HD_9_16_39s_App_Install(11L),
-    Vid_HD_9_16_39s_Link(12L),
-    Carousel_Img_Square_App_Install(13L),
-    Carousel_Img_Square_Link(14L),
-    Carousel_Vid_Square_Link(15L),
-    Playable(16L),
-    FBRV(17L);
+    TopRight(0L),
+    TopLeft(1L),
+    BottomRight(2L),
+    BottomLeft(3L);
     /*</values>*/
 
     /*<bind>*/
@@ -70,15 +56,15 @@ public enum /*<name>*/FBAdTestAdType/*</name>*/ implements ValuedEnum {
 
     private final long n;
 
-    private /*<name>*/FBAdTestAdType/*</name>*/(long n) { this.n = n; }
+    private /*<name>*/FBNativeAdOptionsViewPosition/*</name>*/(long n) { this.n = n; }
     public long value() { return n; }
-    public static /*<name>*/FBAdTestAdType/*</name>*/ valueOf(long n) {
-        for (/*<name>*/FBAdTestAdType/*</name>*/ v : values()) {
+    public static /*<name>*/FBNativeAdOptionsViewPosition/*</name>*/ valueOf(long n) {
+        for (/*<name>*/FBNativeAdOptionsViewPosition/*</name>*/ v : values()) {
             if (v.n == n) {
                 return v;
             }
         }
         throw new IllegalArgumentException("No constant with value " + n + " found in " 
-            + /*<name>*/FBAdTestAdType/*</name>*/.class.getName());
+            + /*<name>*/FBNativeAdOptionsViewPosition/*</name>*/.class.getName());
     }
 }

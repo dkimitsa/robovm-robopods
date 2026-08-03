@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+#import <FBAudienceNetwork/FBAdDefines.h>
 #import <FBAudienceNetwork/FBNativeAd.h>
 #import <FBAudienceNetwork/FBNativeAdBaseView.h>
 #import <FBAudienceNetwork/FBNativeAdViewAttributes.h>
-#import "FBAdDefines.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -33,6 +33,11 @@ typedef NS_ENUM(NSInteger, FBNativeAdViewType) {
  */
 FB_CLASS_EXPORT
 @interface FBNativeAdView : FBNativeAdBaseView
+
+- (instancetype)init NS_UNAVAILABLE;
++ (instancetype)new NS_UNAVAILABLE;
+- (instancetype)initWithCoder:(NSCoder *)coder NS_UNAVAILABLE;
+- (instancetype)initWithFrame:(CGRect)frame NS_UNAVAILABLE;
 
 /**
  The type of the view, specifies which template to use

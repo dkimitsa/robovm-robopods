@@ -23,6 +23,7 @@ enums:
     FBNativeAdsCachePolicy: {}
     FBNativeAdViewType: {}
     FBNativeBannerAdViewType: {}
+    FBNativeAdOptionsViewPosition: {}
     FBGLViewController: {exclude: true} # bridge for Audience Network Unity SDK
     FBAdViewBridgeSize: {exclude: true} # bridge for Audience Network Unity SDK
 

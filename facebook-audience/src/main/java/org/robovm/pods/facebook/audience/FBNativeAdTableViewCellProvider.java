@@ -49,7 +49,7 @@ import org.robovm.apple.avfoundation.*;
     /*<bind>*/static { ObjCRuntime.bind(FBNativeAdTableViewCellProvider.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public FBNativeAdTableViewCellProvider() {}
+    protected FBNativeAdTableViewCellProvider() {}
     protected FBNativeAdTableViewCellProvider(Handle h, long handle) { super(h, handle); }
     protected FBNativeAdTableViewCellProvider(SkipInit skipInit) { super(skipInit); }
     @Method(selector = "initWithManager:forType:")

@@ -74,6 +74,8 @@ import org.robovm.apple.avfoundation.*;
     public native String getSocialContext();
     @Property(selector = "callToAction")
     public native String getCallToAction();
+    @Property(selector = "callToActionWithMetadata")
+    public native String getCallToActionWithMetadata();
     @Property(selector = "rawBodyText")
     public native String getRawBodyText();
     @Property(selector = "bodyText")

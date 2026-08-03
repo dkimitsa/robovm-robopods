@@ -49,7 +49,7 @@ import org.robovm.apple.avfoundation.*;
     /*<bind>*/static { ObjCRuntime.bind(FBAdChoicesView.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public FBAdChoicesView() {}
+    protected FBAdChoicesView() {}
     protected FBAdChoicesView(Handle h, long handle) { super(h, handle); }
     protected FBAdChoicesView(SkipInit skipInit) { super(skipInit); }
     @Method(selector = "initWithNativeAd:")

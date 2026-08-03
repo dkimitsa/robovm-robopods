@@ -9,10 +9,10 @@
 #import <Foundation/Foundation.h>
 
 #import <FBAudienceNetwork/FBAdCompanionView.h>
+#import <FBAudienceNetwork/FBAdDefines.h>
 #import <FBAudienceNetwork/FBAdExtraHint.h>
 #import <FBAudienceNetwork/FBAdView.h>
 #import <UIKit/UIKit.h>
-#import "FBAdDefines.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -22,7 +22,10 @@ NS_ASSUME_NONNULL_BEGIN
  A modal view controller to represent a Facebook dynamic banner ad. This
  is a full-screen ad shown in your application.
  */
-FB_CLASS_EXPORT FB_SUBCLASSING_RESTRICTED @interface FBDynamicBannerAd : NSObject
+FB_CLASS_EXPORT FB_SUBCLASSING_RESTRICTED FB_DEPRECATED_WITH_MESSAGE(
+    "FBDynamicBannerAd is deprecated and will be removed in a future version of Audience Network. "
+    "This ad format is no longer supported; use FBAdView for banner ads instead.") @interface FBDynamicBannerAd
+    : NSObject
 
 /**
  Typed access to the id of the ad placement.
@@ -123,6 +126,9 @@ FB_CLASS_EXPORT FB_SUBCLASSING_RESTRICTED @interface FBDynamicBannerAd : NSObjec
  to messages from the FBDynamicBannerAd class and thus respond to operations such as whether the
  dynamic banner ad has been loaded, user has clicked or closed the dynamic banner.
  */
+FB_DEPRECATED_WITH_MESSAGE(
+    "FBDynamicBannerAdDelegate is deprecated and will be removed in a future version of Audience Network. "
+    "This ad format is no longer supported; use FBAdView / FBAdViewDelegate for banner ads instead.")
 @protocol FBDynamicBannerAdDelegate <NSObject>
 
 @optional
