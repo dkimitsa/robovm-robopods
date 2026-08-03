@@ -83,11 +83,16 @@ classes:
         methods:
             '-initWithApp:':
                 name: init
+            '-initWithApp:siteKey:':
+                name: init
             '-getTokenWithCompletion:':
                 name: getToken
             '-getLimitedUseTokenWithCompletion:':
                 name: getLimitedUseToken
-    FIRRecaptchaProviderFactory: {} #since 15.0
+    FIRRecaptchaProviderFactory: #since 15.0
+        methods:
+            '-initWithSiteKey:':
+                name: init
     _GACAppCheckAPIService:
         exclude: true # looks to be internal
     _GACAppCheckBackoffWrapper:

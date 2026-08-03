@@ -12,18 +12,18 @@ https://firebase.google.com
 
 | RoboPod                                                                          | Description                                    | Version |
 |----------------------------------------------------------------------------------|------------------------------------------------|---------|
-| [ios-analytics](ios-analytics/)                                                  | Firebase iOS Analytics                         | 12.16.0 |
-| [ios-auth](ios-auth/)                                                            | Firebase iOS Authentication                    | 12.16.0 |
-| [ios-core](ios-core/)                                                            | Firebase iOS Core                              | 12.16.0 |
-| [ios-crashlytics](ios-crashlytics/)                                              | Firebase iOS Crashlytics                       | 12.16.0 |
-| [ios-database](ios-database/)                                                    | Firebase iOS DataBase                          | 12.16.0 |
-| [ios-firestore](ios-firestore/)                                                  | Firebase iOS Firestore                         | 12.16.0 |
+| [ios-analytics](ios-analytics/)                                                  | Firebase iOS Analytics                         | 12.17.0 |
+| [ios-auth](ios-auth/)                                                            | Firebase iOS Authentication                    | 12.17.0 |
+| [ios-core](ios-core/)                                                            | Firebase iOS Core                              | 12.17.0 |
+| [ios-crashlytics](ios-crashlytics/)                                              | Firebase iOS Crashlytics                       | 12.17.0 |
+| [ios-database](ios-database/)                                                    | Firebase iOS DataBase                          | 12.17.0 |
+| [ios-firestore](ios-firestore/)                                                  | Firebase iOS Firestore                         | 12.17.0 |
 | [ios-google-sign-in](ios-google-sign-in/)                                        | Firebase iOS Google Sign In                    | 9.2.0   |
-| [ios-messaging](ios-messaging/)                                                  | Firebase iOS Messaging                         | 12.16.0 |
-| [ios-installations](ios-installations/)                                          | Firebase iOS Installations                     | 12.16.0 |
-| [ios-remoteconfig](ios-remoteconfig/)                                            | Firebase iOS Remote Config                     | 12.16.0 |
-| [ios-storage](ios-storage/)                                                      | Firebase iOS Storage                           | 12.16.0 |
-| [ios-appcheck](ios-appcheck/)                                                    | Firebase iOS App Check                         | 12.16.0 |
+| [ios-messaging](ios-messaging/)                                                  | Firebase iOS Messaging                         | 12.17.0 |
+| [ios-installations](ios-installations/)                                          | Firebase iOS Installations                     | 12.17.0 |
+| [ios-remoteconfig](ios-remoteconfig/)                                            | Firebase iOS Remote Config                     | 12.17.0 |
+| [ios-storage](ios-storage/)                                                      | Firebase iOS Storage                           | 12.17.0 |
+| [ios-appcheck](ios-appcheck/)                                                    | Firebase iOS App Check                         | 12.17.0 |
 
 ## Versions
 

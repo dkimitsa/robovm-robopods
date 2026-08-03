@@ -1023,7 +1023,6 @@ SWIFT_CLASS_NAMED("Auth")
 
 @class UIScene;
 @class UIOpenURLContext;
-SWIFT_AVAILABILITY(ios,introduced=13.0)
 @interface FIRAuth (SWIFT_EXTENSION(FirebaseAuth)) <UISceneDelegate>
 - (void)scene:(UIScene * _Nonnull)scene openURLContexts:(NSSet<UIOpenURLContext *> * _Nonnull)URLContexts;
 @end
@@ -1038,7 +1037,6 @@ SWIFT_AVAILABILITY(ios,introduced=13.0)
 @end
 
 @class UIApplication;
-SWIFT_AVAILABILITY(ios,introduced=13.0)
 @interface FIRAuth (SWIFT_EXTENSION(FirebaseAuth)) <UIApplicationDelegate>
 - (void)application:(UIApplication * _Nonnull)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData * _Nonnull)deviceToken;
 - (void)application:(UIApplication * _Nonnull)application didFailToRegisterForRemoteNotificationsWithError:(NSError * _Nonnull)error;
@@ -1464,7 +1462,7 @@ SWIFT_PROTOCOL_NAMED("FederatedAuthProvider")
 /// asynchronously on the main thread when the mobile web flow is
 /// completed.
 ///
-- (void)getCredentialWithUIDelegate:(id <FIRAuthUIDelegate> _Nullable)uiDelegate completion:(void (^ _Nonnull)(FIRAuthCredential * _Nullable, NSError * _Nullable))completionHandler SWIFT_AVAILABILITY(watchos,introduced=8) SWIFT_AVAILABILITY(macos,introduced=10.15) SWIFT_AVAILABILITY(tvos,introduced=13) SWIFT_AVAILABILITY(ios,introduced=13);
+- (void)getCredentialWithUIDelegate:(id <FIRAuthUIDelegate> _Nullable)uiDelegate completion:(void (^ _Nonnull)(FIRAuthCredential * _Nullable, NSError * _Nullable))completionHandler SWIFT_AVAILABILITY(watchos,introduced=8);
 @end
 
 /// A concrete implementation of <code>AuthProvider</code> for Game Center Sign In. Not available on watchOS.
