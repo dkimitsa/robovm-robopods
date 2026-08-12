@@ -24,7 +24,8 @@ You download, unpack, and stage iOS framework artifacts based on spec definition
 2. Locate the `artifactSource` field.
 3. Reasoning is permitted here: translate the natural-language instructions in `artifactSource` into terminal commands (`curl`/`grep` via `bash`, or `web_fetch` for page content) to determine the latest upstream `X.Y.Z` version.
 4. Ignore all non-stable releases (any version containing pre-release markers such as `alpha`, `beta`, `rc`, `pre`, `preview`, `snapshot`, `dev`, `-m`, or similar). Consider only stable releases and pick the latest stable `X.Y.Z`.
-5. Keep ONLY the resolved version number as `<upstream_version>`.
+5. The most recently published/tagged release is NOT always the highest version — some vendors maintain multiple release lines in parallel (e.g. publishing a `2.1.x` patch after `3.0.0` already exists). Do NOT assume the top-most or newest-dated entry is correct. Enumerate ALL stable versions available from the source (all tags/releases/listing entries, not just the first/latest one shown), then compare them using semantic version ordering (`major.minor.patch`, numeric comparison per component) and select the highest one.
+6. Keep ONLY the resolved version number as `<upstream_version>`.
 
 ## Phase 2: Existing version check (ONLY when `--check-for-update` was passed)
 If `--check-for-update` was NOT passed, skip to Phase 3.

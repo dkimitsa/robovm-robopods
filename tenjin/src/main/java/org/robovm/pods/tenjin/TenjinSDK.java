@@ -127,6 +127,10 @@ import org.robovm.apple.dispatch.*;
     public static native void connect();
     @Method(selector = "connectWithDeferredDeeplink:")
     public static native void connect(NSURL url);
+    @Method(selector = "handleOpenURL:")
+    public static native void handleOpenURL(NSURL url);
+    @Method(selector = "handleOpenURLString:")
+    public static native void handleOpenURLString(String urlString);
     @Method(selector = "sendEventWithName:")
     public static native void sendEvent(String eventName);
     /**

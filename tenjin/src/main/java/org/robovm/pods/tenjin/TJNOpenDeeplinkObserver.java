@@ -37,31 +37,27 @@ import org.robovm.apple.dispatch.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*//*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ interface /*<name>*/EventGating/*</name>*/ 
-    /*<implements>*/extends NSObjectProtocol/*</implements>*/ {
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("TenjinSDK.TJNOpenDeeplinkObserver")/*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/TJNOpenDeeplinkObserver/*</name>*/ 
+    extends /*<extends>*/NSObject/*</extends>*/ 
+    /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/
-    /*</ptr>*/
-    /*<bind>*/
-    /*</bind>*/
+    /*<ptr>*/public static class TJNOpenDeeplinkObserverPtr extends Ptr<TJNOpenDeeplinkObserver, TJNOpenDeeplinkObserverPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(TJNOpenDeeplinkObserver.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
+    /*<constructors>*/
+    protected TJNOpenDeeplinkObserver() {}
+    protected TJNOpenDeeplinkObserver(Handle h, long handle) { super(h, handle); }
+    protected TJNOpenDeeplinkObserver(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithOnOpenURL:")
+    public TJNOpenDeeplinkObserver(@Block VoidBlock1<NSURL> onOpenURL) { super((SkipInit) null); initObject(init(onOpenURL)); }
+    /*</constructors>*/
     /*<properties>*/
-    @Property(selector = "canSendEvents")
-    boolean canSendEvents();
+    
     /*</properties>*/
+    /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "tryBeginConnectWithFlushHandler:")
-    boolean tryBeginConnect(@Block VoidBlock1<NSDictionary<NSString, ?>> flushHandler);
-    @Method(selector = "tryBeginConnectWithForce:flushHandler:")
-    boolean tryBeginConnect(boolean force, @Block VoidBlock1<NSDictionary<NSString, ?>> flushHandler);
-    @Method(selector = "handleConnectCompletionWithSuccess:processHandler:")
-    void handleConnectCompletion(boolean success, @Block VoidBlock1<NSDictionary<NSString, ?>> processHandler);
-    @Method(selector = "queueEvent:sendHandler:")
-    void sendHandler(NSDictionary<NSString, ?> eventData, @Block VoidBlock1<NSDictionary<NSString, ?>> sendHandler);
-    @Method(selector = "ensureConnectedWithConnectHandler:")
-    void ensureConnected(@Block Runnable connectHandler);
+    @Method(selector = "initWithOnOpenURL:")
+    protected native @Pointer long init(@Block VoidBlock1<NSURL> onOpenURL);
     /*</methods>*/
-    /*<adapter>*/
-    /*</adapter>*/
 }

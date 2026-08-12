@@ -67,6 +67,10 @@ import org.robovm.apple.dispatch.*;
     public native String getDeferredDeeplink();
     @Property(selector = "setDeferredDeeplink:")
     public native void setDeferredDeeplink(String v);
+    @Property(selector = "openDeeplinkUrl")
+    public native String getOpenDeeplinkUrl();
+    @Property(selector = "setOpenDeeplinkUrl:")
+    public native void setOpenDeeplinkUrl(String v);
     @Property(selector = "productQuantity")
     public native int getProductQuantity();
     @Property(selector = "setProductQuantity:")
@@ -110,6 +114,14 @@ import org.robovm.apple.dispatch.*;
     public native void ping();
     @Method(selector = "pingWithDeferredDeeplink:")
     public native void ping(NSURL url);
+    @Method(selector = "handleOpenURL:")
+    public native void handleOpenURL(NSURL url);
+    @Method(selector = "handleOpenURLString:")
+    public native void handleOpenURLString(String urlString);
+    @Method(selector = "claimOpenDeeplinkUrl")
+    public native String claimOpenDeeplinkUrl();
+    @Method(selector = "restoreOpenDeeplinkUrl:")
+    public native void restoreOpenDeeplinkUrl(String urlString);
     @Method(selector = "pingEventWithName:")
     public native void pingEvent(String eventName);
     @Method(selector = "pingEventWithName:andIntegerValue:")
@@ -121,6 +133,8 @@ import org.robovm.apple.dispatch.*;
     public native void transaction(String productName, String currencyCode, @MachineSizedSInt long quantity, NSDecimalNumber price);
     @Method(selector = "deviceDataWithEvent:")
     public native NSMutableDictionary<?, ?> deviceData(String eventName);
+    @Method(selector = "deviceDataWithEvent:openDeeplinkUrl:")
+    public native NSMutableDictionary<?, ?> deviceData(String eventName, String openDeeplinkUrl);
     @Method(selector = "optOut")
     public native void optOut();
     @Method(selector = "optIn")

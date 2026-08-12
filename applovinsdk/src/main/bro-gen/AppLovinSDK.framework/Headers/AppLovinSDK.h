@@ -34,6 +34,7 @@
 #import <AppLovinSDK/ALPostbackDelegate.h>
 #import <AppLovinSDK/ALPrivacySettings.h>
 #import <AppLovinSDK/ALSdk.h>
+#import <AppLovinSDK/ALUserData.h>
 #import <AppLovinSDK/ALSdkConfiguration.h>
 #import <AppLovinSDK/ALSdkInitializationConfiguration.h>
 #import <AppLovinSDK/ALSdkSettings.h>

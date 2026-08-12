@@ -291,6 +291,7 @@ classes:
         methods:
             '-initWithName:':
                 name: init
+    ALUserData: {}
     ALConsentFlowSettings: { }
     MAMediatedNetworkInfo: { }
     MAError: { }
