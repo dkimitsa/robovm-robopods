@@ -113,7 +113,6 @@ typedef void (^MANativeAdBuilderBlock) (MANativeAdBuilder *builder);
  * Google Ad Manager  v9.6.0.1
  * Google AdMob  v9.6.0.2
  * Mintegral  v7.1.7.0.2
- * myTarget  v5.15.2.1
  * Pangle  v4.5.2.4.1
  * Smaato  v21.7.6.1
  */

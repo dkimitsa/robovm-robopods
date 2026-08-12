@@ -55,6 +55,8 @@ import org.robovm.apple.dispatch.*;
     /*<methods>*/
     @NotImplemented("tryBeginConnectWithFlushHandler:")
     public boolean tryBeginConnect(@Block VoidBlock1<NSDictionary<NSString, ?>> flushHandler) { return false; }
+    @NotImplemented("tryBeginConnectWithForce:flushHandler:")
+    public boolean tryBeginConnect(boolean force, @Block VoidBlock1<NSDictionary<NSString, ?>> flushHandler) { return false; }
     @NotImplemented("handleConnectCompletionWithSuccess:processHandler:")
     public void handleConnectCompletion(boolean success, @Block VoidBlock1<NSDictionary<NSString, ?>> processHandler) {}
     @NotImplemented("queueEvent:sendHandler:")

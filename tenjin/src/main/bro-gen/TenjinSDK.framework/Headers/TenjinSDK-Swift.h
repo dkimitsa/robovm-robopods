@@ -317,6 +317,7 @@ SWIFT_PROTOCOL("_TtP9TenjinSDK11EventGating_")
 @protocol EventGating
 @property (nonatomic, readonly) BOOL canSendEvents;
 - (BOOL)tryBeginConnectWithFlushHandler:(void (^ _Nonnull)(NSDictionary<NSString *, id> * _Nonnull))flushHandler SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)tryBeginConnectWithForce:(BOOL)force flushHandler:(void (^ _Nonnull)(NSDictionary<NSString *, id> * _Nonnull))flushHandler SWIFT_WARN_UNUSED_RESULT;
 - (void)handleConnectCompletionWithSuccess:(BOOL)success processHandler:(void (^ _Nonnull)(NSDictionary<NSString *, id> * _Nonnull))processHandler;
 - (void)queueEvent:(NSDictionary<NSString *, id> * _Nonnull)eventData sendHandler:(void (^ _Nonnull)(NSDictionary<NSString *, id> * _Nonnull))sendHandler;
 - (void)ensureConnectedWithConnectHandler:(void (^ _Nonnull)(void))connectHandler;
@@ -335,6 +336,9 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) EventGatingM
 @property (nonatomic) NSTimeInterval connectInterval;
 @property (nonatomic) NSInteger maxQueueSize;
 - (BOOL)tryBeginConnectWithFlushHandler:(void (^ _Nonnull)(NSDictionary<NSString *, id> * _Nonnull))flushHandler SWIFT_WARN_UNUSED_RESULT;
+/// force skips the connect-interval dedupe (used to deliver an open deeplink after the
+/// session’s open already went out) but still yields to an in-progress connect.
+- (BOOL)tryBeginConnectWithForce:(BOOL)force flushHandler:(void (^ _Nonnull)(NSDictionary<NSString *, id> * _Nonnull))flushHandler SWIFT_WARN_UNUSED_RESULT;
 - (void)handleConnectCompletionWithSuccess:(BOOL)success processHandler:(void (^ _Nonnull)(NSDictionary<NSString *, id> * _Nonnull))processHandler;
 - (void)queueEvent:(NSDictionary<NSString *, id> * _Nonnull)eventData sendHandler:(void (^ _Nonnull)(NSDictionary<NSString *, id> * _Nonnull))sendHandler;
 - (void)ensureConnectedWithConnectHandler:(void (^ _Nonnull)(void))connectHandler;
@@ -435,6 +439,18 @@ SWIFT_CLASS("_TtC9TenjinSDK13TJNHTTPClient")
 - (void)method:(NSString * _Nonnull)method url:(NSString * _Nonnull)url body:(NSString * _Nullable)body headers:(NSDictionary * _Nullable)headers;
 - (void)method:(NSString * _Nonnull)method url:(NSString * _Nonnull)url body:(NSString * _Nullable)body headers:(NSDictionary * _Nullable)headers completionBlock:(void (^ _Nullable)(NSData * _Nullable, NSURLResponse * _Nullable, NSError * _Nullable, BOOL))block;
 - (void)URLSession:(NSURLSession * _Nonnull)session didReceiveChallenge:(NSURLAuthenticationChallenge * _Nonnull)challenge completionHandler:(void (^ _Nonnull)(NSURLSessionAuthChallengeDisposition, NSURLCredential * _Nullable))completionHandler;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+@class NSURL;
+
+/// Best-effort capture of the URL the app was cold-launched with (custom scheme or Universal Link)
+/// so re-engagement opens are reported without integration changes. Warm opens and scene-based
+/// launches are reported by the app through <code>TenjinSDK.handleOpenURL:</code>.
+SWIFT_CLASS("_TtC9TenjinSDK23TJNOpenDeeplinkObserver")
+@interface TJNOpenDeeplinkObserver : NSObject
+- (nonnull instancetype)initWithOnOpenURL:(void (^ _Nonnull)(NSURL * _Nonnull))onOpenURL OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end

@@ -2,7 +2,7 @@
 name: framework-process-merger
 description: 'Merges normalized YAML suggestions into the framework bro-gen YAML file. Returns REBIND-REQUIRED when any merge occurred.'
 model: 'GPT-5.4 mini'
-tools: ['bash', 'apply_patch', 'view', 'rg', 'glob']
+tools: ['bash', 'apply_patch', 'view']
 ---
 
 # Framework Process Merger Agent
@@ -16,7 +16,7 @@ You are the THIRD stage of the framework binding pipeline. You apply the previou
   moduleFolder: <moduleFolder>
   ```
   When `<moduleFolder>` is provided, use it verbatim — do NOT read any spec file to re-derive it.
-- Input file: `.github/state/framework-process-suggestions-normalized.txt` (absent = nothing to merge).
+- Input file: `.github/state/framework-process-suggestions-normalized.txt` (use direct_read / exact-path check; absent or empty = nothing to merge).
 - Target file (the ONLY file you may edit): `<moduleFolder>/src/main/bro-gen/<framework_name>.yaml`.
 - Final message:
   - Merge performed and validated → `REBIND-REQUIRED` on its own line, then `[DELEGATION COMPLETE]`.
@@ -42,8 +42,9 @@ You are the THIRD stage of the framework binding pipeline. You apply the previou
    - Only if NOT provided (fallback path): read `.github/specs/framework-spec.md` (spec structure), then read `.github/specs/frameworks/<framework_name>.yaml` and extract `moduleFolder`. If it cannot be resolved: report the error and stop.
 
 ## Step 1: Detect work
-1. If `.github/state/framework-process-suggestions-normalized.txt` is absent or empty: output `[DELEGATION COMPLETE]` and stop. (Do NOT emit `REBIND-REQUIRED`.)
-2. Otherwise read it — this is the normalized fragment to merge.
+1. Check `.github/state/framework-process-suggestions-normalized.txt` directly with `view` at the exact path (or an exact-path existence check). Do NOT use `glob` or `rg` for this file.
+2. If it is absent or empty: output `[DELEGATION COMPLETE]` and stop. (Do NOT emit `REBIND-REQUIRED`.)
+3. Otherwise read it — this is the normalized fragment to merge.
 
 ## Step 2: Locate target YAML
 1. The target file is exactly `<moduleFolder>/src/main/bro-gen/<framework_name>.yaml`.

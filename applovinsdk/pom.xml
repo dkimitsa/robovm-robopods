@@ -7,8 +7,8 @@
     </parent>
 
     <artifactId>robopods-applovinsdk-ios</artifactId>
-    <version>13.6.3.0</version>
-    <name>RoboPods AppLovinSDK iOS v13.6.3</name>
+    <version>13.6.4.0</version>
+    <name>RoboPods AppLovinSDK iOS v13.6.4</name>
     <packaging>jar</packaging>
 
     <licenses>

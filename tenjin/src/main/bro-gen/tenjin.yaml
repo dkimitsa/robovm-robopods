@@ -124,6 +124,8 @@ classes:
                 name: transaction
             '-deviceDataWithEvent:':
                 name: deviceData
+            '-deviceDataWithEvent:openDeeplinkUrl:':
+                name: deviceData
             '-transaction:andReceipt:':
                 name: transaction
             '-transactionWithProductName:andCurrencyCode:andQuantity:andUnitPrice:andTransactionId:andReceipt:':
@@ -142,6 +144,10 @@ classes:
                 name: setPlugin
             '+setGoogleDMAParametersWithAdPersonalization:adUserData:':
                 name: setGoogleDMAParameters
+    TJNOpenDeeplinkObserver:
+        methods:
+            '-initWithOnOpenURL:':
+                name: init
 
     GDPRHelper: {}
     AttributionOperationHelper:
@@ -208,6 +214,8 @@ protocols:
             '-ensureConnectedWithConnectHandler:':
                 name: ensureConnected
             '-tryBeginConnectWithFlushHandler:':
+                name: tryBeginConnect
+            '-tryBeginConnectWithForce:flushHandler:':
                 name: tryBeginConnect
     DataStore:
         methods:

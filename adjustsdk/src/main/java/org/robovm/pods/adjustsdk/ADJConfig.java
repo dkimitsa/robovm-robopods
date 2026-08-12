@@ -139,6 +139,8 @@ import org.robovm.apple.coreanimation.*;
     public native void disableIdfvReading();
     @Method(selector = "disableFbIdReading")
     public native void disableFbIdReading();
+    @Method(selector = "disableDeviceIdsReading")
+    public native void disableDeviceIdsReading();
     @Method(selector = "disableSkanAttribution")
     public native void disableSkanAttribution();
     @Method(selector = "enableSendingInBackground")

@@ -12,6 +12,7 @@
 @class ALSdkConfiguration;
 @class ALSdkInitializationConfiguration;
 @class ALSdkSettings;
+@class ALUserData;
 @class MAMediatedNetworkInfo;
 @class MASegmentCollection;
 
@@ -114,6 +115,15 @@ NS_ASSUME_NONNULL_BEGIN
  * @param incomingURL The URL used to open or bring the app into the foreground. It may contain query parameters that need to be filtered and processed.
  */
 - (void)processDeepLink:(NSURL *)incomingURL;
+
+/**
+ * User identity data attached to Axon events and ad requests.
+ *
+ * Set this after the user logs in or provides their information.
+ * The SDK hashes PII fields (email, phone) before transmission.
+ * Set to nil to clear previously set user data.
+ */
+@property (nonatomic, strong, nullable) ALUserData *userData;
 
 #pragma mark - SDK Initialization
 

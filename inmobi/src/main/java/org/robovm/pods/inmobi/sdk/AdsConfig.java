@@ -99,6 +99,10 @@ import org.robovm.apple.coreanimation.*;
     public native boolean isShowIntWithoutVC();
     @Property(selector = "setShowIntWithoutVC:")
     public native void setShowIntWithoutVC(boolean v);
+    @Property(selector = "enableOrientationReentryGuard")
+    public native boolean isEnableOrientationReentryGuard();
+    @Property(selector = "setEnableOrientationReentryGuard:")
+    public native void setEnableOrientationReentryGuard(boolean v);
     @Property(selector = "timeouts")
     public native TimeoutsConfig getTimeouts();
     @Property(selector = "setTimeouts:")

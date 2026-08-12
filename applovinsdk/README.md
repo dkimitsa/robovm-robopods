@@ -8,6 +8,7 @@ https://github.com/AppLovin/AppLovin-MAX-SDK-iOS
 
 | RoboPods Version | AppLovinSDK Version |
 |------------------|---------------------|
+| 13.6.4.0         | 13.6.4              |
 | 13.6.3.0         | 13.6.3              |
 | 13.6.2.0         | 13.6.2              |
 | 13.6.0.0         | 13.6.0              |

@@ -71,6 +71,10 @@ import org.robovm.apple.safariservices.*;
     public native ALCMPService getCmpService();
     @Property(selector = "availableMediatedNetworks")
     public native NSArray<MAMediatedNetworkInfo> getAvailableMediatedNetworks();
+    @Property(selector = "userData")
+    public native ALUserData getUserData();
+    @Property(selector = "setUserData:")
+    public native void setUserData(ALUserData v);
     @Property(selector = "isInitialized")
     public native boolean isInitialized();
     /*</properties>*/

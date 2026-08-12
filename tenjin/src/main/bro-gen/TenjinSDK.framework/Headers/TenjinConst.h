@@ -16,7 +16,7 @@
 #define kTenjinConversionEndpoint @"v0/conversion-values"
 
 //this line replaced by build script
-#define kTenjinTenjinSDKVersion @"1.18.0"
+#define kTenjinTenjinSDKVersion @"1.19.0"
 
 
 
@@ -50,6 +50,9 @@
 #define kTenjinPlugin @"plugin"
 #define kTenjinPluginVersion @"plugin_version"
 #define kTenjinEvent @"event"
+#define kTenjinOpenDeeplinkUrl @"open_deeplink_url"
+#define kTenjinOpenDeeplinkUrlMaxLength 4096
+#define kTenjinOpenDeeplinkRedeliveryWindow 10.0
 #define kTenjinAnalyticsId @"analytics_installation_id"
 #define kTenjinSDKAnalyticsMetrics @"sdk_analytics_metrics"
 

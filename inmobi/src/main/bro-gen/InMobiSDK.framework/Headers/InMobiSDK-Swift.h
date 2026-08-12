@@ -404,6 +404,7 @@ SWIFT_CLASS("_TtC9InMobiSDK9AdsConfig")
 @property (nonatomic, strong) AdQualityConfig * _Nonnull adQuality;
 @property (nonatomic) BOOL watermarkEnabled;
 @property (nonatomic) BOOL showIntWithoutVC;
+@property (nonatomic) BOOL enableOrientationReentryGuard;
 @property (nonatomic, strong) TimeoutsConfig * _Nonnull timeouts;
 @property (nonatomic, strong) VastVideoConfig * _Nonnull vastVideo;
 @property (nonatomic, strong) AssetCacheConfig * _Nonnull assetCache;
