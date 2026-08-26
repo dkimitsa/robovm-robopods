@@ -4,6 +4,7 @@ App Check helps protect your backend resources from abuse, such as billing fraud
 ### Available RoboPods
 | RoboPods Version | FirebaseAppCheck |
 |------------------|------------------|
+| 12.18.0.0        | 12.18.0          |
 | 12.17.0.0        | 12.17.0          |
 | 12.16.0.0        | 12.16.0          |
 | 12.15.0.0        | 12.15.0          |

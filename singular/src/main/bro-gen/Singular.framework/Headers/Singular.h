@@ -13,6 +13,11 @@
 #import "SingularAdData.h"
 #import "SingularLogLevel.h"
 
+#if !defined(SINGULAR_KIDS) && __has_include("SingularUserDetails.h")
+#define SINGULAR_HAS_USER_DETAILS 1
+#import "SingularUserDetails.h"
+#endif
+
 // avoid circular include of SingularLinkParams
 #ifndef SingularLinkParams
 #import "SingularLinkParams.h"
@@ -133,6 +138,14 @@
 #ifndef SINGULAR_KIDS
 + (void)setLimitAdvertisingIdentifiers:(BOOL)enabled;
 #endif // !SINGULAR_KIDS
+
+#pragma mark - User Details
+
+#ifdef SINGULAR_HAS_USER_DETAILS
++ (void)setUserDetails:(SingularUserDetails *)userDetails;
++ (void)clearUserDetails;
+#endif // SINGULAR_HAS_USER_DETAILS
+
 #pragma mark - SKAN Methods
 
 + (void)skanRegisterAppForAdNetworkAttribution;

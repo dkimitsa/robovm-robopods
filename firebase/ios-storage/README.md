@@ -4,6 +4,7 @@ Cloud Storage is built for app developers who need to store and serve user-gener
 ### Available RoboPods
 | RoboPods Version | Firebase Storage |
 |------------------|------------------|
+| 12.18.0.0        | 12.18.0          |
 | 12.17.0.0        | 12.17.0          |
 | 12.16.0.0        | 12.16.0          |
 | 12.15.0.0        | 12.15.0          |

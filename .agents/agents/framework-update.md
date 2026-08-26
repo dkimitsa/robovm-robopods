@@ -1,8 +1,13 @@
 ---
 name: framework-update
 description: 'agent updates a single framework passed as a parameter: it first checks whether an updated version is available online (against the correct owning package) and only in this case performs download and processing of that framework.'
-tools: ['bash', 'view', 'apply_patch', 'task']
-model: 'GPT-5.4 mini'
+subagent: true
+model: inherit
+tools:
+  - run_command
+  - view_file
+  - invoke_subagent
+  - send_message
 ---
 
 # Single Framework Update Orchestrator
@@ -14,17 +19,18 @@ You update ONE framework end-to-end by delegating to sub-agents. You perform NO 
 - On any sub-agent failure: report its error verbatim and stop. NEVER attempt recovery.
 
 ## Hard Rules
-1. Follow `.github/skills/agent-invocation-rules/SKILL.md` for all shell, file, and path handling.
+1. Follow `.agents/skills/agent-invocation-rules/SKILL.md` for all shell, file, and path handling.
 2. NEVER read, normalize, or merge YAML suggestions, and NEVER compile anything yourself.
-3. Sub-agents are black boxes. NEVER read a sub-agent's `.agent.md` file, framework specs, YAML files, or skills. NEVER try to "understand" or "verify" what a sub-agent does — invoke it and react only to its returned text.
+3. Sub-agents are black boxes. NEVER read a sub-agent's `.md` file, framework specs, YAML files, or skills. NEVER try to "understand" or "verify" what a sub-agent does — invoke it and react only to its returned text.
 4. Update ONLY `<framework_name>`. NEVER process sibling frameworks of the same package.
 
 ## How to delegate
 Every `DELEGATE` instruction below means:
 1. Print a one-line step note first (e.g. `Step: version check`) so the user can follow along.
-2. Invoke the `task` tool with:
-   - `agentName` = the exact sub-agent name (`framework-download` or `framework-process`).
-   - `task` = the exact prompt given in the step, values substituted, nothing else of substance.
+2. Invoke the subagent using `invoke_subagent` with:
+   - `TypeName` = the exact sub-agent name (`framework-download` or `framework-process`).
+   - `Role` = subagent role (e.g. `Framework Downloader` or `Framework Processor`).
+   - `Prompt` = the exact prompt given in the step, values substituted, nothing else of substance.
 3. React ONLY to the sub-agent's returned text. Error / exception / non-completion → report it verbatim and stop.
 4. NEVER inspect files the sub-agent wrote, NEVER re-run its steps, NEVER second-guess its result.
 

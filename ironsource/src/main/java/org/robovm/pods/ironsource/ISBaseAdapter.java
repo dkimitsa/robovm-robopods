@@ -115,6 +115,8 @@ import org.robovm.apple.coreanimation.*;
     public native void destroyRewardedVideoAd(ISAdapterConfig adapterConfig);
     @Method(selector = "destroyInterstitialAdWithAdapterConfig:")
     public native void destroyInterstitialAd(ISAdapterConfig adapterConfig);
+    @Method(selector = "networkAdapterVersion")
+    public static native String networkAdapterVersion();
     @Method(selector = "isConfigValueValid:")
     public native boolean isConfigValueValid(String value);
     @Method(selector = "errorForMissingCredentialFieldWithName:")

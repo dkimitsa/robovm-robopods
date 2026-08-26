@@ -60,5 +60,7 @@ import org.robovm.apple.coreanimation.*;
     public native void initSDK(ISAdapterConfig adapterConfig);
     @Method(selector = "createInitExtraParams")
     public native NSDictionary<?, ?> createInitExtraParams();
+    @Method(selector = "networkAdapterVersion")
+    public static native String networkAdapterVersion();
     /*</methods>*/
 }

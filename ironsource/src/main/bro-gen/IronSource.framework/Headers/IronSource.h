@@ -59,6 +59,7 @@
 #import "ISBaseRewardedVideo.h"
 #import "ISDataKeys.h"
 #import "ISSetAPSDataProtocol.h"
+#import "LevelPlayBaseAdapter.h"
 
 // Native Ads
 #import "ISNativeAdProtocol.h"
@@ -94,8 +95,8 @@ NS_ASSUME_NONNULL_BEGIN
 #define IS_BANNER @"banner"
 #define IS_NATIVE_AD @"nativead"
 
-static NSString *const MEDIATION_SDK_VERSION = @"9.5.0";
-static NSString *GitHash = @"4533f4b";
+static NSString *const MEDIATION_SDK_VERSION = @"9.6.0";
+static NSString *GitHash = @"ac73104";
 
 @interface IronSource : NSObject
 

@@ -44,7 +44,7 @@ import org.robovm.apple.uikit.*;
     /*<bind>*/static { ObjCRuntime.bind(SingularAdData.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    protected SingularAdData() {}
+    public SingularAdData() {}
     protected SingularAdData(Handle h, long handle) { super(h, handle); }
     protected SingularAdData(SkipInit skipInit) { super(skipInit); }
     @Method(selector = "initWithAdPlatform:withCurrency:withRevenue:")

@@ -1,5 +1,6 @@
 .settings/
 .classpath
+.agents/state/
 .github/state/
 .project
 *.o

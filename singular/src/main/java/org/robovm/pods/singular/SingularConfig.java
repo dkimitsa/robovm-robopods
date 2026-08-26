@@ -139,6 +139,10 @@ import org.robovm.apple.uikit.*;
     public native boolean isLimitAdvertisingIdentifiers();
     @Property(selector = "setLimitAdvertisingIdentifiers:")
     public native void setLimitAdvertisingIdentifiers(boolean v);
+    @Property(selector = "userDetails")
+    public native SingularUserDetails getUserDetails();
+    @Property(selector = "setUserDetails:")
+    public native void setUserDetails(SingularUserDetails v);
     @Property(selector = "pushNotificationPayload")
     public native NSDictionary<?, ?> getPushNotificationPayload();
     @Property(selector = "setPushNotificationPayload:")

@@ -18,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
                                                         ISAdapterMetaDataProtocol,
                                                         ISAdapterTestModeProtocol>
 
++ (nullable NSString *)networkAdapterVersion;
+
 @end
 
 NS_ASSUME_NONNULL_END

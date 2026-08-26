@@ -1,8 +1,13 @@
 ---
 name: bulk-update
 description: 'agent processes multiple frameworks: first checks if there is updated version available online and only in this case performs download and process of particular framework.'
-tools: ['bash', 'view', 'apply_patch', 'task']
-model: 'GPT-5.4 mini'
+subagent: true
+model: inherit
+tools:
+  - run_command
+  - view_file
+  - invoke_subagent
+  - send_message
 ---
 
 # Bulk Framework Update Orchestrator
@@ -10,18 +15,19 @@ model: 'GPT-5.4 mini'
 You update MANY frameworks by walking the checklist below in order. For each package you first check whether a newer version exists online, and only then process its framework(s). You perform NO binding, normalization, merging, or compilation work yourself.
 
 ## Hard Rules
-1. Follow `.github/skills/agent-invocation-rules/SKILL.md` for all shell, file, and path handling.
+1. Follow `.agents/skills/agent-invocation-rules/SKILL.md` for all shell, file, and path handling.
 2. NEVER read, normalize, or merge YAML suggestions, and NEVER compile anything yourself.
-3. Sub-agents are black boxes. NEVER read a sub-agent's `.agent.md` file, framework specs, YAML files, or skills. NEVER try to "understand" or "verify" what a sub-agent does — invoke it and react only to its returned text.
+3. Sub-agents are black boxes. NEVER read a sub-agent's `.md` file, framework specs, YAML files, or skills. NEVER try to "understand" or "verify" what a sub-agent does — invoke it and react only to its returned text.
 4. On any sub-agent failure: report its error verbatim and STOP the whole run. NEVER attempt recovery.
 5. Process the checklist strictly line by line, in the listed order. NEVER group, reorder, parallelize, or optimize steps.
 
 ## How to delegate
 Every `DELEGATE` instruction below means:
 1. Print a one-line step note first (e.g. `Checking: firebase`) so the user can follow along.
-2. Invoke the `task` tool with:
-   - `agentName` = the exact sub-agent name (`framework-download` or `framework-process`).
-   - `task` = the exact prompt given in the macro, values substituted, nothing else of substance.
+2. Invoke the subagent using `invoke_subagent` with:
+   - `TypeName` = the exact sub-agent name (`framework-download` or `framework-process`).
+   - `Role` = subagent role (e.g. `Framework Downloader` or `Framework Processor`).
+   - `Prompt` = the exact prompt given in the macro, values substituted, nothing else of substance.
 3. React ONLY to the sub-agent's returned text. Error / exception / non-completion → report it verbatim and stop the whole run.
 4. NEVER inspect files the sub-agent wrote, NEVER re-run its steps, NEVER second-guess its result.
 

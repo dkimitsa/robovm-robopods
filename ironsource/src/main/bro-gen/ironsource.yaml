@@ -455,6 +455,7 @@ classes:
             '-getNativeAdPropertiesWithAdData:':
                 name: getNativeAdProperties
     LPMPrivacySettings: {}
+    LevelPlayBaseAdapter: {}
 protocols:
     ISAdapterAdDelegate:
         methods:
@@ -885,6 +886,11 @@ protocols:
         methods:
             '-setObject:forKey:':
                 name: setObject
+    ISAdapterTestModeProtocol: {}
+    ISBiddingDataProtocol:
+        methods:
+            '-collectBiddingDataWithAdData:delegate:':
+                name: collectBiddingData
 functions:
     # Make sure we don't miss any functions if new ones are introduced in a later version
     (.*):

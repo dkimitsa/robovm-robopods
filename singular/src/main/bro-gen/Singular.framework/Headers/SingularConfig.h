@@ -13,6 +13,11 @@
 #import "SingularLinkParams.h"
 #endif
 
+#if !defined(SINGULAR_KIDS) && __has_include("SingularUserDetails.h")
+#define SINGULAR_HAS_USER_DETAILS 1
+#import "SingularUserDetails.h"
+#endif
+
 @interface SingularConfig : NSObject
 
 // General Fields
@@ -55,6 +60,10 @@ typedef void (^SdidAccessorHandler)(NSString *result);
 #ifndef SINGULAR_KIDS
 @property (assign) BOOL limitAdvertisingIdentifiers;
 #endif // !SINGULAR_KIDS
+
+#ifdef SINGULAR_HAS_USER_DETAILS
+@property (strong) SingularUserDetails *userDetails;
+#endif // SINGULAR_HAS_USER_DETAILS
 
 // Push Notifications fields
 @property (strong) NSDictionary *pushNotificationPayload;

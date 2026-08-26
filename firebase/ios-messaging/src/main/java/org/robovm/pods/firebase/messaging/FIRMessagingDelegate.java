@@ -47,6 +47,10 @@ import org.robovm.apple.usernotifications.*;
     
     /*</properties>*/
     /*<methods>*/
+    /**
+     * @deprecated Use messaging(_:didReceiveRegistration:) instead.
+     */
+    @Deprecated
     @Method(selector = "messaging:didReceiveRegistrationToken:")
     void didReceiveRegistrationToken(FIRMessaging messaging, String fcmToken);
     @Method(selector = "messaging:didReceiveRegistration:")

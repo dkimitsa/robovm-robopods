@@ -5,7 +5,7 @@ description: Rules for evaluating bro-gen or harvester suggestions and safely me
 
 # bro-gen binding rules
 
-Use this skill whenever an agent or Copilot session needs to interpret suggested binding entries and modify a framework binding YAML.
+Use this skill whenever an agent session needs to interpret suggested binding entries and modify a framework binding YAML.
 
 ## Suggestion Handling Rules
 Suggestions are captured from `harvester.kts` output and represent YAML sections that may contain new entries to be merged into existing bro-gen YAML files. These suggestions are drafts and MUST be reviewed and renamed before writing into the final bro-gen YAML.

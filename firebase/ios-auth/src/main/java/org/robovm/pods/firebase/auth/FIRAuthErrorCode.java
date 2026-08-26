@@ -124,6 +124,7 @@ public enum /*<name>*/FIRAuthErrorCode/*</name>*/ implements NSErrorCode {
     RecaptchaSDKNotLinked(17208L),
     RecaptchaSiteKeyMissing(17209L),
     RecaptchaActionCreationFailed(17210L),
+    PasswordDoesNotMeetRequirements(17211L),
     KeychainError(17995L),
     InternalError(17999L),
     MalformedJWT(18000L);

@@ -1,4 +1,4 @@
-All framework configuration files in `/.github/specs/frameworks/*.yaml`. must strictly adhere to the structure described in this spec.
+All framework configuration files in `.agents/specs/frameworks/*.yaml` must strictly adhere to the structure described in this spec.
 
 A framework spec tells an agent:
 - which module folder the framework belongs to;
