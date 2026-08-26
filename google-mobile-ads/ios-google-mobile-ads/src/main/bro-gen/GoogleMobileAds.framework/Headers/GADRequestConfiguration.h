@@ -49,7 +49,9 @@ NS_SWIFT_NAME(RequestConfiguration)
 
 /// Identifiers corresponding to test devices which will always request test ads.
 /// The test device identifier for the current device is logged to the console when the first
-/// ad request is made.
+/// ad request is made. Simulators are always considered test devices.
+///
+/// Warning: Ad inspector can increase memory usage on test devices.
 @property(nonatomic, copy, nullable) NSArray<NSString *> *testDeviceIdentifiers;
 
 /// The age treatment to apply to ad requests. Consult your own legal counsel to determine the age

@@ -38,6 +38,8 @@
 - (NSString *)version;
 - (NSString *)dynamicUserId;
 
++ (nullable NSString *)networkAdapterVersion;
+
 // to be used by adapters that implement each ad unit separately
 - (ISLoadWhileShowSupportState)getLWSSupportState:(ISAdapterConfig *)adapterConfig;
 

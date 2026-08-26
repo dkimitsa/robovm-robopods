@@ -8,6 +8,7 @@ https://github.com/ironsource-mobile/iOS-sdk/releases/
 
 | RoboPods Version | IronSource Version |
 |------------------|--------------------|
+| 9.6.0.0          | 9.6.0              |
 | 9.5.0.0          | 9.5.0              |
 | 9.4.2.0          | 9.4.2              |
 | 9.4.1.0          | 9.4.1              |

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.robovm.pods.firebase.messaging;
+package org.robovm.pods.ironsource;
 
 /*<imports>*/
 import java.io.*;
@@ -28,36 +28,30 @@ import org.robovm.rt.bro.*;
 import org.robovm.rt.bro.annotation.*;
 import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
-import org.robovm.apple.usernotifications.*;
+import org.robovm.apple.uikit.*;
+import org.robovm.apple.coregraphics.*;
+import org.robovm.apple.coreanimation.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
 /*</javadoc>*/
 /*<annotations>*//*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ interface /*<name>*/FIRMessagingDelegate/*</name>*/ 
-    /*<implements>*/extends NSObjectProtocol/*</implements>*/ {
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/ISBiddingDataProtocolAdapter/*</name>*/ 
+    extends /*<extends>*/NSObject/*</extends>*/ 
+    /*<implements>*/implements ISBiddingDataProtocol/*</implements>*/ {
 
     /*<ptr>*/
     /*</ptr>*/
     /*<bind>*/
     /*</bind>*/
     /*<constants>*//*</constants>*/
+    /*<constructors>*//*</constructors>*/
     /*<properties>*/
     
     /*</properties>*/
+    /*<members>*//*</members>*/
     /*<methods>*/
-    /**
-     * @deprecated Use messaging(_:didReceiveRegistration:) instead.
-     */
-    @Deprecated
-    @Method(selector = "messaging:didReceiveRegistrationToken:")
-    void didReceiveRegistrationToken(FIRMessaging messaging, String fcmToken);
-    @Method(selector = "messaging:didReceiveRegistration:")
-    void didReceiveRegistration(FIRMessaging messaging, String installationId);
-    @Method(selector = "messaging:didUnregister:")
-    void didUnregister(FIRMessaging messaging, String installationId);
+    @NotImplemented("collectBiddingDataWithAdData:delegate:")
+    public void collectBiddingData(ISAdData adData, ISBiddingDataDelegate delegate) {}
     /*</methods>*/
-    /*<adapter>*/
-    /*</adapter>*/
 }

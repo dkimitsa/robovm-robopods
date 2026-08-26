@@ -7,8 +7,8 @@
     </parent>
 
     <artifactId>robopods-google-mobile-ads-ios</artifactId>
-    <version>13.7.0.0</version>
-    <name>RoboPods Google Mobile Ads iOS v13.7.0</name>
+    <version>13.9.0.0</version>
+    <name>RoboPods Google Mobile Ads iOS v13.9.0</name>
     <packaging>jar</packaging>
 
     <licenses>

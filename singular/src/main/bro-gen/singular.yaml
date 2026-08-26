@@ -100,6 +100,8 @@ classes:
                 name: customRevenue
     SingularAdData:
         methods:
+            '-initWithCoder:':
+                exclude: true
             '-initWithAdPlatfrom:withCurrency:withRevenue:':
                 exclude: true
             '-initWithAdPlatform:withCurrency:withRevenue:':
@@ -116,6 +118,7 @@ classes:
                 name: init
             '-initWithDeeplink:passthrough:isDeferred:url:':
                 name: init
+    SingularUserDetails: {}
 protocols:
 
 functions:
@@ -144,6 +147,8 @@ constants:
         class: Singular
         static_class: Attributes
         name: '#{g[0]}'
+    SINGULAR_HAS_USER_DETAILS:
+        exclude: true
 
     # Make sure we don't miss any constants if new ones are introduced in a later version
     (.*):

@@ -62,6 +62,10 @@ import org.robovm.apple.usernotifications.*;
     public native void setAutoInitEnabled(boolean v);
     @Property(selector = "isInstallationIdEnabled")
     public native boolean isInstallationIdEnabled();
+    /**
+     * @deprecated Use register(completion:) instead.
+     */
+    @Deprecated
     @Property(selector = "FCMToken")
     public native String getFCMToken();
     /*</properties>*/
@@ -71,6 +75,10 @@ import org.robovm.apple.usernotifications.*;
     public static class Notifications {
         static { Bro.bind(Notifications.class); }
 
+        /**
+         * @deprecated Use messaging(_:didReceiveRegistration:) instead.
+         */
+        @Deprecated
         @GlobalValue(symbol="FIRMessagingRegistrationTokenRefreshedNotification", optional=true)
         public static native NSString RegistrationTokenRefreshed();
         @GlobalValue(symbol="FIRMessagingInstallationIdUnregisteredNotification", optional=true)
@@ -79,12 +87,28 @@ import org.robovm.apple.usernotifications.*;
     
     @Method(selector = "setAPNSToken:type:")
     public native void setAPNSToken(NSData apnsToken, FIRMessagingAPNSTokenType type);
+    /**
+     * @deprecated Use register(completion:) instead.
+     */
+    @Deprecated
     @Method(selector = "tokenWithCompletion:")
     public native void getToken(@Block VoidBlock2<NSString, NSError> completion);
+    /**
+     * @deprecated Use unregister(completion:) instead.
+     */
+    @Deprecated
     @Method(selector = "deleteTokenWithCompletion:")
     public native void deleteToken(@Block VoidBlock1<NSError> completion);
+    /**
+     * @deprecated Use register(completion:) instead.
+     */
+    @Deprecated
     @Method(selector = "retrieveFCMTokenForSenderID:completion:")
     public native void retrieveFCMToken(String senderID, @Block VoidBlock2<NSString, NSError> completion);
+    /**
+     * @deprecated Use unregister(completion:) instead.
+     */
+    @Deprecated
     @Method(selector = "deleteFCMTokenForSenderID:completion:")
     public native void deleteFCMToken(String senderID, @Block VoidBlock1<NSError> completion);
     @Method(selector = "registerWithCompletion:")

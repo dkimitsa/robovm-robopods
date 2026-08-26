@@ -96,6 +96,8 @@ NS_SWIFT_NAME(MobileAds)
 /// to launch Ad Inspector. Set
 /// GADMobileAds.sharedInstance.requestConfiguration.testDeviceIdentifiers to enable test mode on
 /// this device.
+///
+/// Warning: Ad inspector can increase memory usage on test devices.
 /// @param viewController A view controller to present Ad Inspector. If nil, uses the top view
 /// controller of the app's main window.
 /// @param completionHandler A handler to execute when Ad Inspector is closed.

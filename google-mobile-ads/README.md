@@ -9,6 +9,6 @@ https://developers.google.com/admob/ios/download
 
 | RoboPod                                                                          | Description                                    | Version |
 |----------------------------------------------------------------------------------|------------------------------------------------|---------|
-| [ios-mobile ads](ios-google-mobile-ads/)                                         | Firebase iOS Google Mobile Ads                 | 13.7.0  |
+| [ios-mobile ads](ios-google-mobile-ads/)                                         | Firebase iOS Google Mobile Ads                 | 13.9.0  |
 | [ios-mobile ads-adapters](ios-google-mobile-ads-adapters/)                       | Firebase iOS AdMob Adapters                    |         |
 | [ios-google-ump](ios-google-ump/)                                                | Firebase iOS Google UMP                        | 3.1.0   |

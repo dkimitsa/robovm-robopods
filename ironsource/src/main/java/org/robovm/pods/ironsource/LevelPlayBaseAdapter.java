@@ -37,30 +37,30 @@ import org.robovm.apple.coreanimation.*;
 
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/ISIronSourceAdapter/*</name>*/ 
-    extends /*<extends>*/ISBaseAdapter/*</extends>*/ 
-    /*<implements>*//*</implements>*/ {
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/LevelPlayBaseAdapter/*</name>*/ 
+    extends /*<extends>*/ISBaseNetworkAdapter/*</extends>*/ 
+    /*<implements>*/implements ISAdapterAdaptiveProtocol, ISAdapterMetaDataProtocol, ISAdapterTestModeProtocol/*</implements>*/ {
 
-    /*<ptr>*/public static class ISIronSourceAdapterPtr extends Ptr<ISIronSourceAdapter, ISIronSourceAdapterPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(ISIronSourceAdapter.class); }/*</bind>*/
+    /*<ptr>*/public static class LevelPlayBaseAdapterPtr extends Ptr<LevelPlayBaseAdapter, LevelPlayBaseAdapterPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(LevelPlayBaseAdapter.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public ISIronSourceAdapter() {}
-    protected ISIronSourceAdapter(Handle h, long handle) { super(h, handle); }
-    protected ISIronSourceAdapter(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initAdapter:")
-    public ISIronSourceAdapter(String name) { super(name); }
+    public LevelPlayBaseAdapter() {}
+    protected LevelPlayBaseAdapter(Handle h, long handle) { super(h, handle); }
+    protected LevelPlayBaseAdapter(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
     
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "initSDK:")
-    public native void initSDK(ISAdapterConfig adapterConfig);
-    @Method(selector = "createInitExtraParams")
-    public native NSDictionary<?, ?> createInitExtraParams();
     @Method(selector = "networkAdapterVersion")
     public static native String networkAdapterVersion();
+    @Method(selector = "getAdaptiveHeightWithWidth:")
+    public native @MachineSizedFloat double getAdaptiveHeightForWidth(@MachineSizedFloat double width);
+    @Method(selector = "setMetaDataWithKey:andValues:")
+    public native void setMetaData(String key, NSMutableArray<?> values);
+    @Method(selector = "setTestMode:")
+    public native void setTestMode(boolean enabled);
     /*</methods>*/
 }

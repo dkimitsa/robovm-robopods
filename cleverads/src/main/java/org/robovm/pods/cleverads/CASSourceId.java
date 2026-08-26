@@ -61,6 +61,7 @@ public enum /*<name>*/CASSourceId/*</name>*/ implements ValuedEnum {
     Bigo(19L),
     Ogury(20L),
     Madex(21L),
+    Monetrix(22L),
     Mintegral(23L),
     Pangle(24L),
     YsoNetwork(25L),

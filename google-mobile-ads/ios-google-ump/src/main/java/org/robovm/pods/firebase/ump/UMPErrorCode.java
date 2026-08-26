@@ -77,12 +77,12 @@ public enum /*<name>*/UMPErrorCode/*</name>*/ implements NSErrorCode {
         protected NSErrorWrap(SkipInit skipInit) {super(skipInit);}
 
         @Override public NSErrorCode getErrorCode() {
-             try {
-                 return  /*<name>*/UMPErrorCode/*</name>*/.valueOf(getCode());
-             } catch (IllegalArgumentException e) {
-                 return null;
-             }
-         }
+            try {
+                return  /*<name>*/UMPErrorCode/*</name>*/.valueOf(getCode());
+            } catch (IllegalArgumentException e) {
+                return null;
+            }
+        }
 
         public static String getClassDomain() {
             /** must be inserted in value section */
