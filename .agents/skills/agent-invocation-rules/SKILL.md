@@ -13,14 +13,14 @@ Use this skill whenever an agent invokes terminal commands, reads repository fil
 ## File read 
 `direct_read` directive means following: 
 - if path to file is constructed by you, check if it is valid and there is no typo in it.
-- use the `view` tool to read the file, do not use `glob` or `rg` or any other discovery search to verify its presence.
+- use the `view_file` tool to read the file, do not use `find_by_name` or `grep_search` or any other discovery search to verify its presence.
 - if operation fails, report the error and stop immediately. Do not try to recover or guess a replacement path.
 
 ## Pathing and Scope
 - Do not guess file locations. Use only the file paths named by the agent's required inputs and workflow.
-- **DO NOT** use discovery searches like `glob` or `rg` to locate a deterministic file path; read that file directly using `view`;
+- **DO NOT** use discovery searches like `find_by_name` or `grep_search` to locate a deterministic file path; read that file directly using `view_file`.
 - Do not search beyond the agent's explicitly allowed scope.
-- Use only the exact absolute path already provided.
+- Use only the exact path already provided.
 - Never prepend, rewrite, normalize, or “repair” a path unless explicitly instructed.
 - Never infer missing path segments from context.
 - Never swap one user path segment for another, even if it looks similar.
@@ -34,8 +34,8 @@ Use this skill whenever an agent invokes terminal commands, reads repository fil
 - Do not silently retry, fallback, or recover unless the agent workflow says to do so.
 
 ## Terminal Safety (CRITICAL)
-- Never switch shells for command execution. Use the current shell only; do not wrap commands in `sh -lc`, `bash -lc`, or similar shell-launching prefixes.
-- When generating `bash` commands, do not use `set -e`, `set -euo pipefail`, or `exit`.
+- Use `run_command` for terminal commands. Never switch shells for command execution; do not wrap commands in `sh -lc`, `bash -lc`, or similar shell-launching prefixes.
+- When generating commands, do not use `set -e`, `set -euo pipefail`, or `exit`.
 - Avoid piping into commands that are also consuming heredoc input.
 - Prefer simple chained commands using `&&` or `;`.
 - Keep shell snippets minimal and deterministic.
