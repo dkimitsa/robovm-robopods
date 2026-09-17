@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.robovm.pods.onesignal;
+package org.robovm.pods.facebook.corebasics;
 
 /*<imports>*/
 import java.io.*;
@@ -28,32 +28,30 @@ import org.robovm.rt.bro.*;
 import org.robovm.rt.bro.annotation.*;
 import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
-import org.robovm.apple.usernotifications.*;
+import org.robovm.apple.dispatch.*;
+import org.robovm.apple.coregraphics.*;
 import org.robovm.apple.uikit.*;
+import org.robovm.apple.webkit.*;
+import org.robovm.apple.coreanimation.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/OSDeviceUtils/*</name>*/ 
-    extends /*<extends>*/NSObject/*</extends>*/ 
+/*<annotations>*//*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/FBSDKVersions/*</name>*/ 
+    extends /*<extends>*/CocoaUtility/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class OSDeviceUtilsPtr extends Ptr<OSDeviceUtils, OSDeviceUtilsPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(OSDeviceUtils.class); }/*</bind>*/
-    /*<constants>*//*</constants>*/
-    /*<constructors>*/
-    public OSDeviceUtils() {}
-    protected OSDeviceUtils(Handle h, long handle) { super(h, handle); }
-    protected OSDeviceUtils(SkipInit skipInit) { super(skipInit); }
-    /*</constructors>*/
-    /*<properties>*/
-    
-    /*</properties>*/
+    /*<ptr>*/
+    /*</ptr>*/
+    /*<bind>*/
+    /*</bind>*/
+    /*<constants>*/
+    public static final String Version = "18.1.1";
+    public static final String DefaultGraphApiVersion = "v26.0";
+    /*</constants>*/
+    /*<constructors>*//*</constructors>*/
+    /*<properties>*//*</properties>*/
     /*<members>*//*</members>*/
-    /*<methods>*/
-    @Method(selector = "getDeviceVariant")
-    public static native String getDeviceVariant();
-    /*</methods>*/
+    /*<methods>*//*</methods>*/
 }

@@ -60,6 +60,8 @@ import org.robovm.pods.facebook.corebasics.*;
     /*<methods>*/
     @Method(selector = "configureWithGraphRequestConnectionFactory:")
     public native void configure(FBSDKGraphRequestConnectionFactoryProtocol graphRequestConnectionFactory);
+    @Method(selector = "configureWithGraphRequestConnectionFactory:settings:")
+    public native void configure(FBSDKGraphRequestConnectionFactoryProtocol graphRequestConnectionFactory, FBSDKSettingsProtocol settings);
     @Method(selector = "enqueueRequest:completion:")
     public native void enqueueRequest(FBSDKGraphRequestProtocol request, @Block VoidBlock3<FBSDKGraphRequestConnecting, NSObject, NSError> completion);
     @Method(selector = "flush")

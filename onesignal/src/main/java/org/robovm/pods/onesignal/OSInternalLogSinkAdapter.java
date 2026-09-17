@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.robovm.pods.facebook.core;
+package org.robovm.pods.onesignal;
 
 /*<imports>*/
 import java.io.*;
@@ -28,32 +28,29 @@ import org.robovm.rt.bro.*;
 import org.robovm.rt.bro.annotation.*;
 import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
-import org.robovm.apple.dispatch.*;
-import org.robovm.apple.coregraphics.*;
+import org.robovm.apple.usernotifications.*;
 import org.robovm.apple.uikit.*;
-import org.robovm.apple.webkit.*;
-import org.robovm.apple.coreanimation.*;
-import org.robovm.apple.storekit.*;
-import org.robovm.pods.facebook.corebasics.*;
 /*</imports>*/
 
 /*<javadoc>*/
 /*</javadoc>*/
 /*<annotations>*//*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/FBSDKCore/*</name>*/ 
-    extends /*<extends>*/CocoaUtility/*</extends>*/ 
-    /*<implements>*//*</implements>*/ {
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/OSInternalLogSinkAdapter/*</name>*/ 
+    extends /*<extends>*/NSObject/*</extends>*/ 
+    /*<implements>*/implements OSInternalLogSink/*</implements>*/ {
 
     /*<ptr>*/
     /*</ptr>*/
     /*<bind>*/
     /*</bind>*/
-    /*<constants>*/
-    public static final String Version = "18.1.0";
-    public static final String DefaultGraphApiVersion = "v21.0";
-    /*</constants>*/
+    /*<constants>*//*</constants>*/
     /*<constructors>*//*</constructors>*/
-    /*<properties>*//*</properties>*/
+    /*<properties>*/
+    
+    /*</properties>*/
     /*<members>*//*</members>*/
-    /*<methods>*//*</methods>*/
+    /*<methods>*/
+    @NotImplemented("captureLogWithLevel:message:exceptionType:exceptionMessage:exceptionStacktrace:")
+    public void captureLog(OSLogLevel level, String message, String exceptionType, String exceptionMessage, String exceptionStacktrace) {}
+    /*</methods>*/
 }

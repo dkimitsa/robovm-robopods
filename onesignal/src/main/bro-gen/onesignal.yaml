@@ -518,6 +518,11 @@ classes:
             '+updateCachedBadgeValue:usePreviousBadgeCount:':
                 name: updateCachedBadgeValue
     OneSignalLogEvent: {}
+    OSFeatureFlagsRefreshService:
+        methods:
+            '+startWithIsInForeground:':
+                name: start
+    OSFeatureManager: {}
 protocols:
     OSNotificationDisplayTypeDelegate:
         skip_adapter: true # only one method there
@@ -597,6 +602,10 @@ protocols:
             '-getNewestTokenWithIndexedTokens:':
                 name: getNewestToken
     OSLogListener: {}
+    OSInternalLogSink:
+        methods:
+            '-captureLogWithLevel:message:exceptionType:exceptionMessage:exceptionStacktrace:':
+                name: captureLog
 functions:
     injectSelector:
         exclude: true

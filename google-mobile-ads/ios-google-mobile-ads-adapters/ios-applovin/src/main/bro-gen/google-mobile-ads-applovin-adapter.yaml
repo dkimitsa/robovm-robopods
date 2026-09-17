@@ -17,7 +17,6 @@ typed_enums:
 
 classes:
     GADMAdapterAppLovinExtras: {}
-    GADMediationAdapterAppLovin: {}
 protocols:
 
 functions:

@@ -64,6 +64,14 @@ import org.robovm.apple.dispatch.*;
     public static native FIRFieldValue fieldValueForDoubleIncrement(double d);
     @Method(selector = "fieldValueForIntegerIncrement:")
     public static native FIRFieldValue fieldValueForIntegerIncrement(long l);
+    @Method(selector = "fieldValueForDoubleMinimum:")
+    public static native FIRFieldValue fieldValueForDoubleMinimum(double d);
+    @Method(selector = "fieldValueForIntegerMinimum:")
+    public static native FIRFieldValue fieldValueForIntegerMinimum(long l);
+    @Method(selector = "fieldValueForDoubleMaximum:")
+    public static native FIRFieldValue fieldValueForDoubleMaximum(double d);
+    @Method(selector = "fieldValueForIntegerMaximum:")
+    public static native FIRFieldValue fieldValueForIntegerMaximum(long l);
     @Method(selector = "vectorWithArray:")
     public static native FIRVectorValue vectorFromArray(NSArray<NSNumber> array);
     /*</methods>*/

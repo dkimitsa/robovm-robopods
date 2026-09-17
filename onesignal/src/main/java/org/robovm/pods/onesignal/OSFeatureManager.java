@@ -36,34 +36,34 @@ import org.robovm.apple.uikit.*;
 
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/OneSignalNotificationSettings/*</name>*/ 
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/OSFeatureManager/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class OneSignalNotificationSettingsPtr extends Ptr<OneSignalNotificationSettings, OneSignalNotificationSettingsPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(OneSignalNotificationSettings.class); }/*</bind>*/
+    /*<ptr>*/public static class OSFeatureManagerPtr extends Ptr<OSFeatureManager, OSFeatureManagerPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(OSFeatureManager.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public OneSignalNotificationSettings() {}
-    protected OneSignalNotificationSettings(Handle h, long handle) { super(h, handle); }
-    protected OneSignalNotificationSettings(SkipInit skipInit) { super(skipInit); }
+    protected OSFeatureManager() {}
+    protected OSFeatureManager(Handle h, long handle) { super(h, handle); }
+    protected OSFeatureManager(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
     
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "getNotificationTypes")
-    public native int getNotificationTypes();
-    @Method(selector = "getNotificationPermissionState")
-    public native OSPermissionStateInternal getNotificationPermissionState();
-    @Method(selector = "getNotificationPermissionState:")
-    public native void getNotificationPermissionState(@Block VoidBlock1<OSPermissionStateInternal> completionHandler);
-    @Method(selector = "promptForNotifications:")
-    public native void promptForNotifications(@Block VoidBooleanBlock block);
-    @Method(selector = "registerForProvisionalAuthorization:")
-    public native void registerForProvisionalAuthorization(@Block VoidBooleanBlock block);
-    @Method(selector = "getQueue")
-    public static native org.robovm.apple.dispatch.DispatchQueue getQueue();
+    @Method(selector = "isEnabledForKey:")
+    public native boolean isEnabledForKey(String featureKey);
+    @Method(selector = "enabledFeatureKeys")
+    public native NSArray<NSString> enabledFeatureKeys();
+    @Method(selector = "shared")
+    public static native OSFeatureManager shared();
+    @Method(selector = "enabledFeatureKeysIfInitialized")
+    public static native NSArray<NSString> enabledFeatureKeysIfInitialized();
+    @Method(selector = "reset")
+    public static native void reset();
+    @Method(selector = "resetAndClearCachedFlags")
+    public static native void resetAndClearCachedFlags();
     /*</methods>*/
 }

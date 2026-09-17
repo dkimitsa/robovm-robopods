@@ -12,8 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#import <Foundation/Foundation.h>
+
 #import <GoogleMobileAds/GoogleMobileAds.h>
-#import <AppLovinSDK/AppLovinSDK.h>
 
 @interface GADMAdapterAppLovinExtras : NSObject<GADAdNetworkExtras>
 

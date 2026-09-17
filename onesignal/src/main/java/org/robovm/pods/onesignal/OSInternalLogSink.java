@@ -35,25 +35,22 @@ import org.robovm.apple.uikit.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/OSDeviceUtils/*</name>*/ 
-    extends /*<extends>*/NSObject/*</extends>*/ 
-    /*<implements>*//*</implements>*/ {
+/*<annotations>*//*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ interface /*<name>*/OSInternalLogSink/*</name>*/ 
+    /*<implements>*/extends NSObjectProtocol/*</implements>*/ {
 
-    /*<ptr>*/public static class OSDeviceUtilsPtr extends Ptr<OSDeviceUtils, OSDeviceUtilsPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(OSDeviceUtils.class); }/*</bind>*/
+    /*<ptr>*/
+    /*</ptr>*/
+    /*<bind>*/
+    /*</bind>*/
     /*<constants>*//*</constants>*/
-    /*<constructors>*/
-    public OSDeviceUtils() {}
-    protected OSDeviceUtils(Handle h, long handle) { super(h, handle); }
-    protected OSDeviceUtils(SkipInit skipInit) { super(skipInit); }
-    /*</constructors>*/
     /*<properties>*/
     
     /*</properties>*/
-    /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "getDeviceVariant")
-    public static native String getDeviceVariant();
+    @Method(selector = "captureLogWithLevel:message:exceptionType:exceptionMessage:exceptionStacktrace:")
+    void captureLog(OSLogLevel level, String message, String exceptionType, String exceptionMessage, String exceptionStacktrace);
     /*</methods>*/
+    /*<adapter>*/
+    /*</adapter>*/
 }
