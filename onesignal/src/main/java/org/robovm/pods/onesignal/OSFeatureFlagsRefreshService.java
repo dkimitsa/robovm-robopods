@@ -36,34 +36,28 @@ import org.robovm.apple.uikit.*;
 
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/OneSignalNotificationSettings/*</name>*/ 
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/OSFeatureFlagsRefreshService/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class OneSignalNotificationSettingsPtr extends Ptr<OneSignalNotificationSettings, OneSignalNotificationSettingsPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(OneSignalNotificationSettings.class); }/*</bind>*/
+    /*<ptr>*/public static class OSFeatureFlagsRefreshServicePtr extends Ptr<OSFeatureFlagsRefreshService, OSFeatureFlagsRefreshServicePtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(OSFeatureFlagsRefreshService.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public OneSignalNotificationSettings() {}
-    protected OneSignalNotificationSettings(Handle h, long handle) { super(h, handle); }
-    protected OneSignalNotificationSettings(SkipInit skipInit) { super(skipInit); }
+    protected OSFeatureFlagsRefreshService() {}
+    protected OSFeatureFlagsRefreshService(Handle h, long handle) { super(h, handle); }
+    protected OSFeatureFlagsRefreshService(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
     
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "getNotificationTypes")
-    public native int getNotificationTypes();
-    @Method(selector = "getNotificationPermissionState")
-    public native OSPermissionStateInternal getNotificationPermissionState();
-    @Method(selector = "getNotificationPermissionState:")
-    public native void getNotificationPermissionState(@Block VoidBlock1<OSPermissionStateInternal> completionHandler);
-    @Method(selector = "promptForNotifications:")
-    public native void promptForNotifications(@Block VoidBooleanBlock block);
-    @Method(selector = "registerForProvisionalAuthorization:")
-    public native void registerForProvisionalAuthorization(@Block VoidBooleanBlock block);
-    @Method(selector = "getQueue")
-    public static native org.robovm.apple.dispatch.DispatchQueue getQueue();
+    @Method(selector = "shared")
+    public static native OSFeatureFlagsRefreshService shared();
+    @Method(selector = "startWithIsInForeground:")
+    public static native void start(boolean isInForeground);
+    @Method(selector = "reset")
+    public static native void reset();
     /*</methods>*/
 }

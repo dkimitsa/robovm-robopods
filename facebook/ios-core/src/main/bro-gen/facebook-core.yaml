@@ -688,6 +688,8 @@ classes:
         methods:
             '-configureWithGraphRequestConnectionFactory:':
                 name: configure
+            '-configureWithGraphRequestConnectionFactory:settings:':
+                name: configure
             '-enqueueRequest:completion:':
                 name: enqueueRequest
             '-enqueueRequests:':

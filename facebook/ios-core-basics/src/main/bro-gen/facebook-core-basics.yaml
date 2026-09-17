@@ -118,6 +118,12 @@ values:
         name: 'Value_#{g[0]}'
 
 constants:
+    FBSDK_VERSION_STRING:
+        class: FBSDKVersions
+        name: Version
+    FBSDK_DEFAULT_GRAPH_API_VERSION:
+        class: FBSDKVersions
+        name: DefaultGraphApiVersion
 
     # Make sure we don't miss any constants if new ones are introduced in a later version
     (.*):

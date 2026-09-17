@@ -40,6 +40,8 @@ classes:
         methods:
             '-initWithCode:userInfo:':
                 name: init
+            '+new':
+                exclude: true
     UADSBannerView:
         methods:
             '-initWithPlacementId:size:':

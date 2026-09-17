@@ -175,7 +175,7 @@ val knownFrameworks = mutableMapOf<String, (String) -> Unit>(
         val framework = "OneSignal"
         val artifact = "$framework.framework"
         val versionFile: String by lazy {
-            downloadFolder.extend("OneSignal/.version-metadata").readText().dropLastWhile { it == '\n' || it == '\r' }
+            downloadFolder.extend("OneSignal/.version-metadata").readVersionMetadataText()
         }
         val internalFrameworks = arrayOf("OneSignalFramework", "OneSignalCore", "OneSignalOSCore",
             "OneSignalExtension", "OneSignalLocation", "OneSignalNotifications", "OneSignalInAppMessages",
@@ -265,7 +265,7 @@ val knownFrameworks = mutableMapOf<String, (String) -> Unit>(
     "unityads" to {
         val framework = "UnityAds"
         val unityVersion: String by lazy {
-            downloadFolder.extend("UnityAds/.version-metadata/").readText()
+            downloadFolder.extend("UnityAds/.version-metadata").readVersionMetadataText()
         }
         val artifactLocation = downloadFolder.extend("UnityAds/$framework.xcframework/ios-arm64/$framework.framework")
         processFramework(
@@ -935,6 +935,8 @@ fun File.extractVersion(versionKey: String = "CFBundleShortVersionString"): Stri
 fun File.extend(path: String): File = File(this, path)
 fun String.extend(path: String): File = File(this, path)
 
+fun File.readVersionMetadataText(): String = readText().dropLastWhile { it == '\n' || it == '\r' }
+
 fun exec(prefix: String, command: String) {
     val p = Runtime.getRuntime().exec(command)
     thread { p.errorStream.pipeTo(System.err, prefix) }
@@ -1420,7 +1422,7 @@ fun registerMobileAds(frameworkRegistry: MutableMap<String, (String) -> Unit>, g
         val artifact = "$framework.framework"
         val artifactLocation = downloadFolder.extend("AppLovinAdapter/AppLovinAdapter.xcframework/ios-arm64/$artifact")
         val versionProvider: () -> String = {
-            downloadFolder.extend("AppLovinAdapter/.version-metadata").readText().dropLastWhile { it == '\n' || it == '\r' }
+            downloadFolder.extend("AppLovinAdapter/.version-metadata").readVersionMetadataText()
         }
         processFramework(
             artifact = artifact,
@@ -1444,7 +1446,7 @@ fun registerMobileAds(frameworkRegistry: MutableMap<String, (String) -> Unit>, g
         val artifact = "$framework.framework"
         val artifactLocation = downloadFolder.extend("MetaAdapter/MetaAdapter.xcframework/ios-arm64/$artifact")
         val versionProvider: () -> String = {
-            downloadFolder.extend("MetaAdapter/.version-metadata").readText().dropLastWhile { it == '\n' || it == '\r' }
+            downloadFolder.extend("MetaAdapter/.version-metadata").readVersionMetadataText()
         }
         processFramework(
             artifact = artifact,
@@ -1468,7 +1470,7 @@ fun registerMobileAds(frameworkRegistry: MutableMap<String, (String) -> Unit>, g
         val artifact = "$framework.framework"
         val artifactLocation = downloadFolder.extend("InMobiAdapter/InMobiAdapter.xcframework/ios-arm64/$artifact")
         val versionProvider: () -> String = {
-            downloadFolder.extend("InMobiAdapter/.version-metadata").readText().dropLastWhile { it == '\n' || it == '\r' }
+            downloadFolder.extend("InMobiAdapter/.version-metadata").readVersionMetadataText()
         }
         processFramework(
             artifact = artifact,
@@ -1500,7 +1502,7 @@ fun registerFacebook(frameworkRegistry: MutableMap<String, (String) -> Unit>, gr
     }
 
     val facebookVersion: String by lazy {
-        downloadFolder.extend("Facebook/.version-metadata").readText().dropLastWhile { it == '\n' || it == '\r' }
+        downloadFolder.extend("Facebook/.version-metadata").readVersionMetadataText()
     }
 
     val facebookInstallInstruction = """

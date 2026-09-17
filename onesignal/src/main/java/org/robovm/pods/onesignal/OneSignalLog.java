@@ -59,6 +59,10 @@ import org.robovm.apple.uikit.*;
     public static native void log(OSLogLevel logLevel, String message);
     @Method(selector = "getLogLevel")
     public static native OSLogLevel getLogLevel();
+    @Method(selector = "setInternalLogSink:")
+    public static native void setInternalLogSink(OSInternalLogSink sink);
+    @Method(selector = "removeInternalLogSink:")
+    public static native void removeInternalLogSink(OSInternalLogSink sink);
     @Method(selector = "setLogLevel:")
     public static native void setLogLevel(OSLogLevel logLevel);
     @Method(selector = "setAlertLevel:")

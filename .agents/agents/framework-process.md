@@ -30,8 +30,10 @@ You orchestrate the binding pipeline for ONE framework by delegating each stage 
 
 ## How to delegate
 Every `DELEGATE <agent-name>` instruction below means:
-1. Print a one-line step note first (e.g. `Step: harvest (attempt 2)`) so the user can follow along.
-2. Invoke the subagent using `invoke_subagent` with:
+1. Log delegation start to `.agents/state/pipeline.log` via `run_command`:
+   `mkdir -p .agents/state && echo "[$(date +%T)] [framework-process] Delegating to <agent-name> for <framework_name> (attempt <attempt>)..." >> .agents/state/pipeline.log`
+2. Print a one-line step note first (e.g. `Step: harvest (attempt 2)`) so the user can follow along.
+3. Invoke the subagent using `invoke_subagent` with:
    - `TypeName` = the exact sub-agent name (e.g. `framework-process-harvester`).
    - `Role` = subagent role (e.g. `Binding Harvester`).
    - `Prompt` = exactly these two lines, values substituted, nothing else of substance:
@@ -40,10 +42,14 @@ Every `DELEGATE <agent-name>` instruction below means:
      moduleFolder: <moduleFolder>
      ```
      (Forwarding `<moduleFolder>` lets sub-agents skip re-reading the spec files.)
-3. React ONLY to the sub-agent's returned text:
+   - Specify descriptive `toolAction` and `toolSummary` (e.g., `toolAction: 'Delegating to <agent-name>'`, `toolSummary: 'Delegate <agent-name>'`).
+4. React to the sub-agent's returned text:
+   - Print the sub-agent's returned text (summary/report) to the user so progress and details are visible in the chat.
+   - Log completion to `.agents/state/pipeline.log` via `run_command`:
+     `echo "[$(date +%T)] [framework-process] Completed stage: <agent-name>." >> .agents/state/pipeline.log`
    - Error / exception / non-completion → report it verbatim and stop. No retry, no recovery.
    - Contains the literal token `REBIND-REQUIRED` → follow that step's rebind rule.
-4. NEVER inspect files the sub-agent wrote, NEVER re-run its steps, NEVER second-guess its result.
+5. NEVER inspect files the sub-agent wrote, NEVER re-run its steps, NEVER second-guess its result.
 
 ## Procedure
 Execute the steps in order. `GOTO` means jump to that step.
@@ -53,6 +59,8 @@ Execute the steps in order. `GOTO` means jump to that step.
 2. Read `.agents/specs/frameworks/<framework_name>.yaml` with `view_file` and extract the `moduleFolder` field into `<moduleFolder>`.
    - If the file cannot be read, or `moduleFolder` is missing/empty: report the error and stop. Do NOT guess a value.
 3. This is the ONLY read of that file in the whole pipeline; `<moduleFolder>` is forwarded to every sub-agent.
+4. Log start to `.agents/state/pipeline.log` via `run_command`:
+   `mkdir -p .agents/state && echo "[$(date +%T)] [framework-process] === Processing framework: <framework_name> (moduleFolder: <moduleFolder>) ===" >> .agents/state/pipeline.log`
 
 ### Step 1 — Loop guard
 1. If `attempt >= 5`: report "Framework process exceeded 5 attempts without stabilizing" and stop.
@@ -85,4 +93,6 @@ Reached ONLY via the `-bom` shortcut in Step 3; the generic path never falls thr
 2. GOTO Step 7.
 
 ### Step 7 — Finish
-1. Output the exact string `[DELEGATION COMPLETE]` and stop.
+1. Log completion to `.agents/state/pipeline.log` via `run_command`:
+   `echo "[$(date +%T)] [framework-process] Successfully finished framework: <framework_name>." >> .agents/state/pipeline.log`
+2. Output the exact string `[DELEGATION COMPLETE]` and stop.

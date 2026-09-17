@@ -22,13 +22,18 @@ You are the THIRD stage of the framework binding pipeline. You apply the previou
   When `<moduleFolder>` is provided, use it verbatim — do NOT read any spec file to re-derive it.
 - Input file: `.agents/state/framework-process-suggestions-normalized.txt` (use direct_read / exact-path check; absent or empty = nothing to merge).
 - Target file (the ONLY file you may edit): `<moduleFolder>/src/main/bro-gen/<framework_name>.yaml`.
+- Log progress to `.agents/state/pipeline.log`.
 - Final message:
-  - Merge performed and validated → `REBIND-REQUIRED` on its own line, then `[DELEGATION COMPLETE]`.
-  - Nothing to merge → `[DELEGATION COMPLETE]` only (NO `REBIND-REQUIRED`).
+  - Merge performed and validated → concise summary, then `REBIND-REQUIRED` on its own line, then `[DELEGATION COMPLETE]`.
+  - Nothing to merge → concise summary, then `[DELEGATION COMPLETE]` only (NO `REBIND-REQUIRED`).
 - On any failure: report the raw error and stop immediately.
 
 ## Hard Rules
 - Follow `.agents/skills/agent-invocation-rules/SKILL.md` for terminal safety, fail-fast handling, path resolution, and bounded search scope.
+- Tool descriptions: Always supply descriptive, informative `toolAction` and `toolSummary` for all tool calls so the CLI status indicator displays live activity.
+- Live logging: At each step, append a timestamped progress message to `.agents/state/pipeline.log` via `run_command`:
+  `mkdir -p .agents/state && echo "[$(date +%T)] [merger] <message>" >> .agents/state/pipeline.log`
+- Print a brief 1-line progress note before each step so progress is visible in chat.
 - NEVER run `harvester.kts`.
 - NEVER re-normalize, rename, or deduplicate suggestions — that already happened upstream.
 - NEVER compile anything.
@@ -47,7 +52,17 @@ You are the THIRD stage of the framework binding pipeline. You apply the previou
 
 ## Step 1: Detect work
 1. Check `.agents/state/framework-process-suggestions-normalized.txt` directly with `view_file` at the exact path (or an exact-path existence check). Do NOT use `find_by_name` or `grep_search` for this file.
-2. If it is absent or empty: output `[DELEGATION COMPLETE]` and stop. (Do NOT emit `REBIND-REQUIRED`.)
+2. If it is absent or empty:
+   - Log to `.agents/state/pipeline.log`:
+     `echo "[$(date +%T)] [merger] No normalized suggestions found. Nothing to merge." >> .agents/state/pipeline.log`
+   - Output summary and stop:
+     ```
+     === Merger Summary ===
+     - Framework: <framework_name>
+     - Status: Nothing to merge
+     [DELEGATION COMPLETE]
+     ```
+     (Do NOT emit `REBIND-REQUIRED`.)
 3. Otherwise read it — this is the normalized fragment to merge.
 
 ## Step 2: Locate target YAML
@@ -86,4 +101,14 @@ Perform this procedure for every entry in the normalized fragment:
 
 ## Step 5: Cleanup & signal
 1. On successful merge AND successful validation: delete `.agents/state/framework-process-suggestions-normalized.txt` so the same fragment is not re-applied.
-2. Output `REBIND-REQUIRED` on its own line, then `[DELEGATION COMPLETE]`, and stop.
+2. Log to `.agents/state/pipeline.log`:
+   `echo "[$(date +%T)] [merger] Merge succeeded and validated for <framework_name>. Signaling REBIND-REQUIRED." >> .agents/state/pipeline.log`
+3. Output concise summary, followed by `REBIND-REQUIRED` on its own line, then `[DELEGATION COMPLETE]`, and stop:
+   ```
+   === Merger Summary ===
+   - Framework: <framework_name>
+   - Target: <moduleFolder>/src/main/bro-gen/<framework_name>.yaml
+   - Status: Merged and validated cleanly
+   REBIND-REQUIRED
+   [DELEGATION COMPLETE]
+   ```
