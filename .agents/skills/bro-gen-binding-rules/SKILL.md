@@ -43,8 +43,14 @@ When handling global constants, values, or functions, apply the following struct
     SWIFT_.*:
         exclude: true
     ```
-4. **No FixMe Sink Bindings:** Never preserve or introduce `__FixMe`, `__FIXME`, `*FixMe`, or similar placeholder classes as the final destination for a suggestion. If an entity is only known from a FixMe hint, resolve it to the actual owning class/protocol/enum using the header or symbol context; otherwise stop evaluating that entity.
-5. **Strict Failure Mode:** If the correct class belonging for a constant, value, or function cannot be definitively resolved using the rules above, the agent MUST stop evaluating that entity. Do not attempt to guess or recover.
+4. **No FixMe Sink Bindings:** Never preserve or introduce `__FixMe`, `__FIXME`, `*FixMe`, or similar placeholder classes as the final destination for a suggestion. If an entity is only known from a FixMe hint, resolve it to the actual owning class/protocol/enum using the header or symbol context.
+5. **Unresolved Entities / User Consultation:** If the correct class belonging or mapping for a constant, value, function, or FIXME hint cannot be definitively resolved using the rules above:
+   - NEVER silently drop or ignore the entity (silent dropping leaves `__FixMe.java` or unresolved bindings behind).
+   - The agent MUST ask the user using `ask_question` how to proceed:
+     - **Exclude:** Exclude the symbol from bindings (`exclude: true`) if it is unused, internal, or already bound elsewhere.
+     - **Map to Class:** Place the symbol into a specific target class/utility (e.g. `class: TargetClass`, `name: CustomName`).
+     - **Skip:** Drop the entity from the current normalization pass without generating YAML entries.
+   - Do NOT guess or invent class associations without user confirmation.
 
 ## Name Cleanup Rules
 When normalizing generated Java names, remove tool-added prefixes before applying the rest of the merge rules:

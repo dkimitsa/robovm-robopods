@@ -104,7 +104,7 @@ File("pom-dev.xml").writeText(resultPom.joinToString(System.lineSeparator()))
 // DONE!
 println()
 println("done, use following for deploy !")
-println("mvn -T 10 -f pom-dev.xml install deploy")
+println("mvn -T 10 -f pom-dev.xml install deploy -Possrh-release")
 exitProcess(0)
 
 /// finds child element by tag and returns its text
