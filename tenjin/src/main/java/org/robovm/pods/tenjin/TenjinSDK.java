@@ -159,6 +159,14 @@ import org.robovm.apple.dispatch.*;
      */
     @Method(selector = "subscriptionWithStoreKitForProductId:andCurrencyCode:andUnitPrice:")
     public static native void subscription(String productId, String currencyCode, NSDecimalNumber price);
+    @Method(selector = "enableAutoSubscriptionTracking")
+    public static native void enableAutoSubscriptionTracking();
+    @Method(selector = "disableAutoSubscriptionTracking")
+    public static native void disableAutoSubscriptionTracking();
+    @Method(selector = "enableAutoPurchaseTracking")
+    public static native void enableAutoPurchaseTracking();
+    @Method(selector = "disableAutoPurchaseTracking")
+    public static native void disableAutoPurchaseTracking();
     @Method(selector = "optOut")
     public static native void optOut();
     @Method(selector = "optIn")
@@ -245,6 +253,12 @@ import org.robovm.apple.dispatch.*;
     public static native void casImpressionFromJSON(String jsonString);
     @Method(selector = "handleCASILRD:")
     public static native void handleCASILRD(NSObject adImpression);
+    @Method(selector = "handleCloudXILRD:")
+    public static native void handleCloudXILRD(NSObject adImpression);
+    @Method(selector = "cloudXImpressionFromJSON:")
+    public static native void cloudXImpressionFromJSON(String jsonString);
+    @Method(selector = "customImpressionFromJSON:")
+    public static native void customImpressionFromJSON(String jsonString);
     @Method(selector = "hyperBidImpressionFromDict:")
     public static native void hyperBidImpressionFromDict(NSDictionary<?, ?> adImpression);
     @Method(selector = "hyperBidImpressionFromJSON:")

@@ -4,7 +4,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "DataStore.h"
+#import <TenjinSDK/DataStore.h>
 
 
 @interface PersistedFileStore : NSObject<DataStore>

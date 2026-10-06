@@ -57,18 +57,18 @@ Latest bindings:
 | [Facebook Audience](facebook-audience/) | 6.22.0  |
 | [Firebase](firebase/)                   | 12.19.0 |
 | [Fyber](fyber/)                         | 8.5.0   |
-| [Google Mobile Ads](google-mobile-ads/) | 13.9.0  |
+| [Google Mobile Ads](google-mobile-ads/) | 13.11.0 |
 | [HelpShiftX](helpshift/)                | 10.5.0  |
-| [InMobi](inmobi/)                       | 11.4.1  |
-| [IronSource](ironsource/)               | 9.6.0   |
+| [InMobi](inmobi/)                       | 11.5.0  |
+| [IronSource](ironsource/)               | 9.6.1   |
 | [Lottie](lottie/)                       | 4.6.1   |
-| [OneSignal](onesignal/)                 | 5.6.1   |
+| [OneSignal](onesignal/)                 | 5.7.0   |
 | [Pollfish](pollfish/)                   | 6.5.0   |
 | [RevenueCat](revenuecat/)               | 5.83.0  |
 | [SAMKeychain](samkeychain/)             | 1.5.3   |
 | [Singular](singular/)                   | 12.14.2 |
-| [Tenjin](tenjin/)                       | 1.19.0  |
-| [UnityAds](unityads/)                   | 4.20.1  |
+| [Tenjin](tenjin/)                       | 1.20.0  |
+| [UnityAds](unityads/)                   | 4.21.0  |
 | [YouTubePlayer](youtube/)               | 1.0.4   |
 
 [Older versions](CHANGELOG.md)

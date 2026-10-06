@@ -529,6 +529,10 @@ SWIFT_CLASS("_TtC9TenjinSDK22TenjinPurchasesManager") SWIFT_AVAILABILITY(ios,int
 @interface TenjinPurchasesManager : NSObject
 + (TenjinPurchasesManager * _Nonnull)sharedWith:(TenjinImpl * _Nonnull)apiClient SWIFT_WARN_UNUSED_RESULT;
 + (void)handleSubscriptionWithProductId:(NSString * _Nonnull)productId currencyCode:(NSString * _Nonnull)currencyCode unitPrice:(NSDecimalNumber * _Nonnull)unitPrice;
+- (void)startAutoTrackingAllowingNonProduction:(BOOL)allowingNonProduction subscriptions:(BOOL)subscriptions purchases:(BOOL)purchases;
+- (void)stopAutoTracking;
+- (void)reportUntrackedEntitlements;
+- (void)recordReportedTransaction:(NSString * _Nonnull)transactionID;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end

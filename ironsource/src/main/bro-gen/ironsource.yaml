@@ -170,6 +170,8 @@ classes:
                 name: appendErrorWithPrefix
             '+appendError:withSuffix:':
                 name: appendErrorWithSuffix
+            '+new':
+                exclude: true
     ISNativeAdDataImage:
         methods:
             '-initWithImage:url:':

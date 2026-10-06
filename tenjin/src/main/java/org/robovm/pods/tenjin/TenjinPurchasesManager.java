@@ -57,6 +57,14 @@ import org.robovm.apple.dispatch.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
+    @Method(selector = "startAutoTrackingAllowingNonProduction:subscriptions:purchases:")
+    public native void startAutoTrackingAllowingNonProduction(boolean allowingNonProduction, boolean subscriptions, boolean purchases);
+    @Method(selector = "stopAutoTracking")
+    public native void stopAutoTracking();
+    @Method(selector = "reportUntrackedEntitlements")
+    public native void reportUntrackedEntitlements();
+    @Method(selector = "recordReportedTransaction:")
+    public native void recordReportedTransaction(String transactionID);
     @Method(selector = "sharedWith:")
     public static native TenjinPurchasesManager shared(TenjinImpl apiClient);
     @Method(selector = "handleSubscriptionWithProductId:currencyCode:unitPrice:")

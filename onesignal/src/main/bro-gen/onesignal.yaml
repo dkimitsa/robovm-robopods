@@ -163,6 +163,7 @@ classes:
                 name: initialize
 
     OSDevice: {}
+    OSDeviceGestureDetector: {}
     OSInAppMessageOutcome: {}
     OSInAppMessageTag: {}
     OSSMSSubscriptionState: { }
@@ -496,6 +497,8 @@ classes:
             '-getRywTokenFromAwaitableCondition:forId:':
                 name: getRywTokenFromAwaitableCondition
             '-resolveConditionsWithIDWithId:':
+                name: resolveConditions
+            '-resolveConditionsWithConditionId:forId:':
                 name: resolveConditions
     OSIamFetchReadyCondition:
         methods:

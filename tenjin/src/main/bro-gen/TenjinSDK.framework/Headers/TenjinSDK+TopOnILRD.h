@@ -4,7 +4,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#if !__has_feature(modules)
 #import "TenjinSDK.h"
+#endif
 
 @interface TenjinSDK (TopOnILRD)
 + (void)topOnImpressionFromDict:(NSDictionary *)adImpression;

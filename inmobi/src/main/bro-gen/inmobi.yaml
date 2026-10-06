@@ -24,6 +24,7 @@ enums:
     IMTelemetryLandingPageEventType: { }
     ConfigMuteIconPosition: { }
     VideoEventObjC: {}
+    IMAnonymisationSignalKey: {}
 typed_enums:
 
 classes:
@@ -68,7 +69,11 @@ classes:
                 name: notifyWin
             '-notifyLossWithLossReasonCode:auctionPrice:':
                 name: notifyLoss
-    IMRequestStatus: {skip_def_constructor: true}
+    IMRequestStatus:
+        skip_def_constructor: true
+        methods:
+            '+new':
+                exclude: true
     IMSdk:
         methods:
             '+initWithAccountID:andCompletionHandler:':
@@ -281,6 +286,14 @@ classes:
         methods:
             '-initWithId:domain:':
                 name: init
+    IMAnonymisationManager: {}
+    IMCustomExpandFrames: {}
+    IMCustomExpandLayout:
+        methods:
+            '+framesForBounds:safeArea:percentage:landscape:':
+                name: framesForBounds
+            '+offScreenBrowserFrameForFrame:bounds:landscape:':
+                name: offScreenBrowserFrameForFrame
 protocols:
     IMBannerDelegate:
         methods:

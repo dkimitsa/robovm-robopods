@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.robovm.pods.onesignal;
+package org.robovm.pods.inmobi.sdk;
 
 /*<imports>*/
 import java.io.*;
@@ -28,34 +28,36 @@ import org.robovm.rt.bro.*;
 import org.robovm.rt.bro.annotation.*;
 import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
-import org.robovm.apple.usernotifications.*;
 import org.robovm.apple.uikit.*;
+import org.robovm.apple.corelocation.*;
+import org.robovm.apple.coregraphics.*;
+import org.robovm.apple.coreanimation.*;
 /*</imports>*/
 
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*//*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ interface /*<name>*/OSCondition/*</name>*/ 
-    /*<implements>*/extends NSObjectProtocol/*</implements>*/ {
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/IMCustomExpandFrames/*</name>*/ 
+    extends /*<extends>*/NSObject/*</extends>*/ 
+    /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/
-    /*</ptr>*/
-    /*<bind>*/
-    /*</bind>*/
+    /*<ptr>*/public static class IMCustomExpandFramesPtr extends Ptr<IMCustomExpandFrames, IMCustomExpandFramesPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(IMCustomExpandFrames.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
+    /*<constructors>*/
+    protected IMCustomExpandFrames() {}
+    protected IMCustomExpandFrames(Handle h, long handle) { super(h, handle); }
+    protected IMCustomExpandFrames(SkipInit skipInit) { super(skipInit); }
+    /*</constructors>*/
     /*<properties>*/
-    @Property(selector = "conditionId")
-    String getConditionId();
+    @Property(selector = "adFrame")
+    public native @ByVal CGRect getAdFrame();
+    @Property(selector = "browserFrame")
+    public native @ByVal CGRect getBrowserFrame();
     /*</properties>*/
+    /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "isMetWithIndexedTokens:")
-    boolean isMet(NSDictionary<?, ?> indexedTokens);
-    @Method(selector = "getNewestTokenWithIndexedTokens:")
-    OSReadYourWriteData getNewestToken(NSDictionary<?, ?> indexedTokens);
-    @Method(selector = "onConditionSatisfied")
-    void onConditionSatisfied();
+    
     /*</methods>*/
-    /*<adapter>*/
-    /*</adapter>*/
 }

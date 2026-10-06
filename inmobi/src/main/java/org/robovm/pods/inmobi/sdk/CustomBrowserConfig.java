@@ -79,6 +79,10 @@ import org.robovm.apple.coreanimation.*;
     public native CustomBrowserInternalConfig getBanner();
     @Property(selector = "setBanner:")
     public native void setBanner(CustomBrowserInternalConfig v);
+    @Property(selector = "customExpandAnimationEnabled")
+    public native boolean isCustomExpandAnimationEnabled();
+    @Property(selector = "setCustomExpandAnimationEnabled:")
+    public native void setCustomExpandAnimationEnabled(boolean v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

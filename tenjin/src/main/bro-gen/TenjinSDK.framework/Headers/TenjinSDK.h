@@ -165,6 +165,26 @@ andDeferredDeeplink:(NSURL *)url
                             andCurrencyCode:(NSString *)currencyCode
                                andUnitPrice:(NSDecimalNumber *)price API_AVAILABLE(ios(16.0));
 
+//opt in to automatic StoreKit 2 subscription tracking (iOS 16+), before or after init.
+//Starts with the first connect; purchases, renewals and out-of-app transactions are reported without
+//explicit calls. Auto-renewable purchases go out as they happen, non-renewing ones on the next
+//connect or foreground (StoreKit only surfaces those through current entitlements).
+//Only production, non-family-shared transactions are sent, and nothing is sent while opted out
+//(transactions from that time are picked up after opting back in).
++ (void)enableAutoSubscriptionTracking;
+
++ (void)disableAutoSubscriptionTracking;
+
+//opt in to automatic StoreKit 2 one-time purchase tracking (iOS 16+), before or after init.
+//Non-consumables are reported on the next connect or foreground; consumables can't be auto-tracked
+//(StoreKit drops a finished consumable), so those still need an explicit transaction call.
+//Same filters as subscription tracking. A purchase the app reports itself isn't re-sent when that
+//call supplies a transaction id; the 4-argument transaction methods don't, so an app on those
+//should keep auto purchase tracking off.
++ (void)enableAutoPurchaseTracking;
+
++ (void)disableAutoPurchaseTracking;
+
 // GDPR opt-out
 + (void)optOut;
 
@@ -257,3 +277,14 @@ andDeferredDeeplink:(NSURL *)url
 - (void)setGoogleDMAParametersWithAdPersonalization:(BOOL)adPersonalization adUserData:(BOOL)adUserData;
 
 @end
+
+// Impression Level Ad Revenue (ILRD) integrations
+#import <TenjinSDK/TenjinSDK+AdMobILRD.h>
+#import <TenjinSDK/TenjinSDK+AppLovinILRD.h>
+#import <TenjinSDK/TenjinSDK+CASILRD.h>
+#import <TenjinSDK/TenjinSDK+CloudXILRD.h>
+#import <TenjinSDK/TenjinSDK+CustomILRD.h>
+#import <TenjinSDK/TenjinSDK+HyperBidILRD.h>
+#import <TenjinSDK/TenjinSDK+IronSourceILRD.h>
+#import <TenjinSDK/TenjinSDK+TopOnILRD.h>
+#import <TenjinSDK/TenjinSDK+TradPlusILRD.h>

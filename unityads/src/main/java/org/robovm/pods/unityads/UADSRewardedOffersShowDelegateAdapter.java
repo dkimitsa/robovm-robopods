@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.robovm.pods.onesignal;
+package org.robovm.pods.unityads;
 
 /*<imports>*/
 import java.io.*;
@@ -28,34 +28,36 @@ import org.robovm.rt.bro.*;
 import org.robovm.rt.bro.annotation.*;
 import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
-import org.robovm.apple.usernotifications.*;
 import org.robovm.apple.uikit.*;
+import org.robovm.apple.coregraphics.*;
+import org.robovm.apple.coreanimation.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
 /*</javadoc>*/
 /*<annotations>*//*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ interface /*<name>*/OSCondition/*</name>*/ 
-    /*<implements>*/extends NSObjectProtocol/*</implements>*/ {
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/UADSRewardedOffersShowDelegateAdapter/*</name>*/ 
+    extends /*<extends>*/NSObject/*</extends>*/ 
+    /*<implements>*/implements UADSRewardedOffersShowDelegate/*</implements>*/ {
 
     /*<ptr>*/
     /*</ptr>*/
     /*<bind>*/
     /*</bind>*/
     /*<constants>*//*</constants>*/
+    /*<constructors>*//*</constructors>*/
     /*<properties>*/
-    @Property(selector = "conditionId")
-    String getConditionId();
+    
     /*</properties>*/
+    /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "isMetWithIndexedTokens:")
-    boolean isMet(NSDictionary<?, ?> indexedTokens);
-    @Method(selector = "getNewestTokenWithIndexedTokens:")
-    OSReadYourWriteData getNewestToken(NSDictionary<?, ?> indexedTokens);
-    @Method(selector = "onConditionSatisfied")
-    void onConditionSatisfied();
+    @NotImplemented("showDidStart:")
+    public void showDidStart(UADSRewardedOffersAd unityAd) {}
+    @NotImplemented("showDidClick:")
+    public void showDidClick(UADSRewardedOffersAd unityAd) {}
+    @NotImplemented("showDidComplete:with:")
+    public void showDidComplete(UADSRewardedOffersAd unityAd, UADSShowFinishState finishState) {}
+    @NotImplemented("showDidFail:error:")
+    public void showDidFail(UADSRewardedOffersAd unityAd, UnityAdsError error) {}
     /*</methods>*/
-    /*<adapter>*/
-    /*</adapter>*/
 }

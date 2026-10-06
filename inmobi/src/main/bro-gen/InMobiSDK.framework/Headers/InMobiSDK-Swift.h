@@ -502,6 +502,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) ConfigManage
 + (ConfigManager * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+/// Applies one config refreshed by the network path, then updates components
+/// that depend on that config after the new value is available in memory.
 - (void)updateConfigWith:(NSString * _Nonnull)configType;
 - (IMConfigBase * _Nullable)validateConfigWithConfigType:(NSString * _Nonnull)configType dictionary:(NSDictionary<NSString *, id> * _Nullable)dictionary SWIFT_WARN_UNUSED_RESULT;
 @end
@@ -596,6 +598,9 @@ SWIFT_CLASS("_TtC9InMobiSDK19CustomBrowserConfig")
 @property (nonatomic, copy) NSArray<NSString *> * _Nonnull appleScheme;
 @property (nonatomic, strong) CustomBrowserInternalConfig * _Nonnull interstitial;
 @property (nonatomic, strong) CustomBrowserInternalConfig * _Nonnull banner;
+/// Custom-expand split transitions animate when true (default). When false, the ad/browser
+/// frames are assigned directly to their end state with no CADisplayLink animation.
+@property (nonatomic) BOOL customExpandAnimationEnabled;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -638,12 +643,6 @@ SWIFT_CLASS("_TtC9InMobiSDK17ExperimentsConfig")
 @end
 
 
-SWIFT_CLASS("_TtC9InMobiSDK17FraudSignalConfig")
-@interface FraudSignalConfig : NSObject
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
 SWIFT_CLASS("_TtC9InMobiSDK13GestureConfig")
 @interface GestureConfig : NSObject
 @property (nonatomic) BOOL isHTEnable;
@@ -669,10 +668,10 @@ SWIFT_CLASS("_TtC9InMobiSDK18HybridNativePlayer")
 
 
 
-
 @interface HybridNativePlayer (SWIFT_EXTENSION(InMobiSDK))
 - (void)fireVideoPositionChangeEvent;
 @end
+
 
 
 
@@ -699,6 +698,77 @@ SWIFT_CLASS("_TtC9InMobiSDK12IMAdMetaInfo")
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
+enum IMAnonymisationSignalKey : NSInteger;
+
+/// Owns the per-session PII-suppression decision and applies it at every SDK boundary.
+/// Suppression is active only when the SynAps handshake requests it and
+/// <code>anon.enabled</code> is true. This config switch is a fail-safe: when it is false,
+/// all anonymisation gates return the normal production behavior. <code>anon.pSignals</code>
+/// defines additional signal keys to suppress.
+/// Usage:
+/// <ul>
+///   <li>
+///     Read and egress paths: use this manager’s gate and filter methods. The immutable
+///     current policy remains private to the manager.
+///   </li>
+///   <li>
+///     Storage mutation sites: use the current-policy gate at their mutation boundary.
+///   </li>
+///   <li>
+///     Synapse handshake state: call <code>refreshFromSynapseHandshakeState()</code>.
+///   </li>
+/// </ul>
+/// Adding a new suppressible key = add it to <code>IMAnonymisationSignalKey</code>. The exhaustive
+/// <code>IMAnonymisationSignalCatalog.clearStoredValue(for:)</code> switch then requires an explicit
+/// stored-state cleanup decision; add it to <code>mandatoryPIIKeys</code> only when it must always be
+/// suppressed while active.
+SWIFT_CLASS_NAMED("IMAnonymisationManager")
+@interface IMAnonymisationManager : NSObject
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) IMAnonymisationManager * _Nonnull shared;)
++ (IMAnonymisationManager * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
+/// Checks one SDK signal against the policy that is current at this operation boundary.
+- (BOOL)isSignalPermitted:(enum IMAnonymisationSignalKey)key SWIFT_WARN_UNUSED_RESULT;
+- (void)refreshFromSynapseHandshakeState;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+
+typedef SWIFT_ENUM(NSInteger, IMAnonymisationSignalKey, open) {
+/// Server-facing UID-map carrier. When suppressed, the SDK removes only its
+/// nested <code>IDA</code>/IDFA member; the outer map and <code>IDV</code>/IDFV remain available.
+  IMAnonymisationSignalKeyUidMap = 0,
+  IMAnonymisationSignalKeyNovatiqHyperId = 1,
+  IMAnonymisationSignalKeyUnifiedId = 2,
+  IMAnonymisationSignalKeyClientIp = 3,
+  IMAnonymisationSignalKeyBootTime = 4,
+  IMAnonymisationSignalKeyDeviceVolumeCreationDate = 5,
+  IMAnonymisationSignalKeyFingermark = 6,
+  IMAnonymisationSignalKeyLatLongAccuracy = 7,
+  IMAnonymisationSignalKeyLocationTimestamp = 8,
+  IMAnonymisationSignalKeyLocationAllowed = 9,
+  IMAnonymisationSignalKeyLocationGranularity = 10,
+  IMAnonymisationSignalKeyConnectedOperator = 11,
+  IMAnonymisationSignalKeyIsoCountryCode = 12,
+  IMAnonymisationSignalKeyCarrierName = 13,
+  IMAnonymisationSignalKeyAge = 14,
+  IMAnonymisationSignalKeyYearOfBirth = 15,
+  IMAnonymisationSignalKeyGender = 16,
+  IMAnonymisationSignalKeyLocation = 17,
+  IMAnonymisationSignalKeyAgeGroup = 18,
+  IMAnonymisationSignalKeyPostalCode = 19,
+  IMAnonymisationSignalKeyAreaCode = 20,
+  IMAnonymisationSignalKeyInterests = 21,
+  IMAnonymisationSignalKeyEducation = 22,
+  IMAnonymisationSignalKeyLanguage = 23,
+  IMAnonymisationSignalKeyUnifiedIdPhone = 24,
+  IMAnonymisationSignalKeyUnifiedIdEmail = 25,
+  IMAnonymisationSignalKeyUnifiedIdAge = 26,
+  IMAnonymisationSignalKeyClientIp6 = 27,
+  IMAnonymisationSignalKeyUbiquityTokenHash = 28,
+};
 
 @class NSMutableDictionary;
 
@@ -1118,6 +1188,53 @@ SWIFT_CLASS("_TtC9InMobiSDK27IMCustomAlertViewController")
 - (void)configureWithTitle:(NSString * _Nullable)title message:(NSString * _Nullable)message showCancelButton:(BOOL)showCancelButton showTextField:(BOOL)showsTextField defaultInputText:(NSString * _Nullable)textFieldDefaultText dismissOnOutsideTap:(BOOL)dismissOnOutsideTap;
 - (void)viewDidLoad;
 - (BOOL)gestureRecognizer:(UIGestureRecognizer * _Nonnull)gestureRecognizer shouldReceiveTouch:(UITouch * _Nonnull)touch SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+/// The two halves of a custom-expand split, in the coordinate space of the bounds
+/// passed to the layout.
+/// A reference type rather than a struct because <code>@objc</code> methods cannot return a
+/// C struct, and <code>IMEmbeddedBrowser</code> is Objective-C. Treated as an immutable value:
+/// both properties are <code>let</code>, so it behaves like the struct it replaces.
+/// <code>public</code> for the same reason as its siblings in this folder
+/// (<code>IMCustomAlertViewController</code>, <code>HybridNativePlayer</code>): only <code>public</code> Swift
+/// declarations are emitted into <code>InMobiSDK-Swift.h</code>, which is the sole
+/// compile-time route into Swift from Objective-C. It is <em>not</em> re-exported by the
+/// <code>InMobiSDK.h</code> umbrella, so this does not widen the publisher-facing API.
+SWIFT_CLASS_NAMED("IMCustomExpandFrames")
+@interface IMCustomExpandFrames : NSObject
+/// Region the ad keeps: the top slice in portrait, the leading slice in landscape.
+@property (nonatomic, readonly) CGRect adFrame;
+/// Region the browser occupies: the bottom slice in portrait, the trailing slice
+/// in landscape.
+@property (nonatomic, readonly) CGRect browserFrame;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// Splits a host’s bounds between the ad and the custom-expand browser.
+/// Stateless by design. Every input arrives as a parameter, which is what lets the
+/// split be tested without a view, a window, or a presentation.
+SWIFT_CLASS_NAMED("IMCustomExpandLayout")
+@interface IMCustomExpandLayout : NSObject
+/// Splits <code>bounds</code> into an ad region and a browser region.
+/// The browser takes <code>percentage</code> of the safe-area-inset content box and is
+/// anchored to the bottom (portrait) or trailing edge (landscape); the ad takes
+/// the remainder. The two frames always abut exactly, with no gap and no overlap.
+/// \param percentage fraction of the content box given to the browser,
+/// clamped to <code>0...1</code>.
+///
+///
+/// returns:
+/// <code>IMCustomExpandFrames.empty</code> if the content box has no usable area.
++ (IMCustomExpandFrames * _Nonnull)framesForBounds:(CGRect)bounds safeArea:(UIEdgeInsets)safeArea percentage:(CGFloat)percentage landscape:(BOOL)isLandscape SWIFT_WARN_UNUSED_RESULT;
+/// Off-screen starting/ending frame for <code>browserFrame</code>, used as the from-value of
+/// the present animation and the to-value of the dismiss animation.
+/// Keeps the size and pushes the origin just past the trailing edge of <code>bounds</code>,
+/// so the browser slides in along the same axis the split uses.
++ (CGRect)offScreenBrowserFrameForFrame:(CGRect)browserFrame bounds:(CGRect)bounds landscape:(BOOL)isLandscape SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
@@ -1887,6 +2004,7 @@ typedef SWIFT_ENUM(NSInteger, IMSDKAgeGroup, closed) {
   IMSDKAgeGroupAbove65 = 8,
 };
 
+
 /// User Education
 typedef SWIFT_ENUM(NSInteger, IMSDKEducation, closed) {
   IMSDKEducationHighSchoolOrLess = 1,
@@ -2046,34 +2164,6 @@ SWIFT_CLASS("_TtC9InMobiSDK5IMSdk")
 
 
 @interface IMSdk (SWIFT_EXTENSION(InMobiSDK))
-/// Enable or disable the AVAudioSession management by SDK
-/// Indicates whether the application wants to manage audio session. If set as NO, the InMobi SDK will stop managing AVAudioSession during the HTML video playback lifecycle. If set as YES,
-/// the InMobi SDK will manage AVAudioSession. That might set AVAudioSession’s category to AVAudioSessionCategoryAmbient and categoryOption to AVAudioSessionCategoryOptionMixWithOthers,
-/// when HTML video is rendering. This setting will not stop the app audio from playing in an app. It will mix with ad audio and if any sound playing in another app, it will stop that sound and play the ads’
-/// sound and once the ad is dismissed it notifies another app.
-/// \param value Boolean depicting enable or disable the AVAudioSession management by SDK
-///
-+ (void)shouldAutoManageAVAudioSession:(BOOL)value;
-/// Use this to set the global state of the SDK to mute.
-/// \param shouldMute Boolean depicting the mute state of the SDK
-///
-+ (void)setMute:(BOOL)shouldMute;
-/// Set Unified Id procured from vendors directly.
-/// The ids are to be submitted in the following format.
-/// key would be the vendor and value would be the identifier.
-/// \code
-/// {
-/// "id5" :  "jkfid3ufolkb89hgvhb@$dj!@?#",
-/// "live Ramp":  "$fvjk@kjfsk%$nfkvd9008jkf"
-/// }
-///
-/// \endcode\param ids Represents the unified ids in dictionary format.
-///
-+ (void)setPublisherProvidedUnifiedId:(NSDictionary<NSString *, id> * _Nonnull)ids;
-@end
-
-
-@interface IMSdk (SWIFT_EXTENSION(InMobiSDK))
 /// Pass or update custom signals to InMobi.
 /// <ul>
 ///   <li>
@@ -2129,6 +2219,34 @@ SWIFT_CLASS("_TtC9InMobiSDK5IMSdk")
 ///
 /// \endcode
 + (void)resetPublisherSignals;
+@end
+
+
+@interface IMSdk (SWIFT_EXTENSION(InMobiSDK))
+/// Enable or disable the AVAudioSession management by SDK
+/// Indicates whether the application wants to manage audio session. If set as NO, the InMobi SDK will stop managing AVAudioSession during the HTML video playback lifecycle. If set as YES,
+/// the InMobi SDK will manage AVAudioSession. That might set AVAudioSession’s category to AVAudioSessionCategoryAmbient and categoryOption to AVAudioSessionCategoryOptionMixWithOthers,
+/// when HTML video is rendering. This setting will not stop the app audio from playing in an app. It will mix with ad audio and if any sound playing in another app, it will stop that sound and play the ads’
+/// sound and once the ad is dismissed it notifies another app.
+/// \param value Boolean depicting enable or disable the AVAudioSession management by SDK
+///
++ (void)shouldAutoManageAVAudioSession:(BOOL)value;
+/// Use this to set the global state of the SDK to mute.
+/// \param shouldMute Boolean depicting the mute state of the SDK
+///
++ (void)setMute:(BOOL)shouldMute;
+/// Set Unified Id procured from vendors directly.
+/// The ids are to be submitted in the following format.
+/// key would be the vendor and value would be the identifier.
+/// \code
+/// {
+/// "id5" :  "jkfid3ufolkb89hgvhb@$dj!@?#",
+/// "live Ramp":  "$fvjk@kjfsk%$nfkvd9008jkf"
+/// }
+///
+/// \endcode\param ids Represents the unified ids in dictionary format.
+///
++ (void)setPublisherProvidedUnifiedId:(NSDictionary<NSString *, id> * _Nonnull)ids;
 @end
 
 @class CLLocation;
@@ -2894,7 +3012,6 @@ SWIFT_CLASS("_TtC9InMobiSDK12SignalConfig")
 @property (nonatomic, strong) PurchasesConfig * _Nonnull purchases;
 @property (nonatomic, strong) PublisherConfig * _Nonnull publisher;
 @property (nonatomic, strong) ExperimentsConfig * _Nonnull experiments;
-@property (nonatomic, strong) FraudSignalConfig * _Nonnull fraud;
 @property (nonatomic, strong) LPAppOwnershipConfig * _Nonnull appOwnership;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end

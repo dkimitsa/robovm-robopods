@@ -63,6 +63,10 @@ import org.robovm.apple.dispatch.*;
     public native boolean hasCheckedAttribution();
     @Property(selector = "setHasCheckedAttribution:")
     public native void setHasCheckedAttribution(boolean v);
+    @Property(selector = "hasPinged")
+    public native boolean hasPinged();
+    @Property(selector = "setHasPinged:")
+    public native void setHasPinged(boolean v);
     @Property(selector = "deferredDeeplink")
     public native String getDeferredDeeplink();
     @Property(selector = "setDeferredDeeplink:")
@@ -159,6 +163,22 @@ import org.robovm.apple.dispatch.*;
     public native void subscription(NSDictionary<?, ?> subscriptionParams);
     @Method(selector = "handleSubscriptionPurchase:")
     public native void handleSubscriptionPurchase(SKPaymentTransaction transaction);
+    @Method(selector = "startAutoTrackingIfEnabled")
+    public native void startAutoTrackingIfEnabled();
+    @Method(selector = "enableAutoSubscriptionTracking")
+    public native void enableAutoSubscriptionTracking();
+    @Method(selector = "stopAutoSubscriptionTracking")
+    public native void stopAutoSubscriptionTracking();
+    @Method(selector = "autoSubscriptionTrackingEnabled")
+    public native boolean autoSubscriptionTrackingEnabled();
+    @Method(selector = "enableAutoPurchaseTracking")
+    public native void enableAutoPurchaseTracking();
+    @Method(selector = "stopAutoPurchaseTracking")
+    public native void stopAutoPurchaseTracking();
+    @Method(selector = "autoPurchaseTrackingEnabled")
+    public native boolean autoPurchaseTrackingEnabled();
+    @Method(selector = "isOptedOut")
+    public native boolean isOptedOut();
     @Method(selector = "trackConversionValue:coarseValue:lockWindow:hasLockWindow:")
     public native void trackConversionValue(int conversionValue, String coarseValue, boolean lockWindow, boolean hasLockWindow);
     @Method(selector = "setValue:forKey:")

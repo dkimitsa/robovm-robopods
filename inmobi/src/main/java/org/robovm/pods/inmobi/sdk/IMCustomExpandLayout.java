@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.robovm.pods.onesignal;
+package org.robovm.pods.inmobi.sdk;
 
 /*<imports>*/
 import java.io.*;
@@ -28,36 +28,36 @@ import org.robovm.rt.bro.*;
 import org.robovm.rt.bro.annotation.*;
 import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
-import org.robovm.apple.usernotifications.*;
 import org.robovm.apple.uikit.*;
+import org.robovm.apple.corelocation.*;
+import org.robovm.apple.coregraphics.*;
+import org.robovm.apple.coreanimation.*;
 /*</imports>*/
 
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("OneSignalOSCore.OSConsistencyManager")/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/OSConsistencyManager/*</name>*/ 
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/IMCustomExpandLayout/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class OSConsistencyManagerPtr extends Ptr<OSConsistencyManager, OSConsistencyManagerPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(OSConsistencyManager.class); }/*</bind>*/
+    /*<ptr>*/public static class IMCustomExpandLayoutPtr extends Ptr<IMCustomExpandLayout, IMCustomExpandLayoutPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(IMCustomExpandLayout.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    protected OSConsistencyManager() {}
-    protected OSConsistencyManager(Handle h, long handle) { super(h, handle); }
-    protected OSConsistencyManager(SkipInit skipInit) { super(skipInit); }
+    public IMCustomExpandLayout() {}
+    protected IMCustomExpandLayout(Handle h, long handle) { super(h, handle); }
+    protected IMCustomExpandLayout(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
     
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "getRywTokenFromAwaitableCondition:forId:")
-    public native OSReadYourWriteData getRywTokenFromAwaitableCondition(OSCondition condition, String id);
-    @Method(selector = "resolveConditionsWithConditionId:forId:")
-    public native void resolveConditions(String conditionId, String id);
-    @Method(selector = "shared")
-    public static native OSConsistencyManager shared();
+    @Method(selector = "framesForBounds:safeArea:percentage:landscape:")
+    public static native IMCustomExpandFrames framesForBounds(@ByVal CGRect bounds, @ByVal UIEdgeInsets safeArea, @MachineSizedFloat double percentage, boolean isLandscape);
+    @Method(selector = "offScreenBrowserFrameForFrame:bounds:landscape:")
+    public static native @ByVal CGRect offScreenBrowserFrameForFrame(@ByVal CGRect browserFrame, @ByVal CGRect bounds, boolean isLandscape);
     /*</methods>*/
 }
