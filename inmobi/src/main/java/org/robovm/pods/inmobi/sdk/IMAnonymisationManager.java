@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.robovm.pods.onesignal;
+package org.robovm.pods.inmobi.sdk;
 
 /*<imports>*/
 import java.io.*;
@@ -28,34 +28,38 @@ import org.robovm.rt.bro.*;
 import org.robovm.rt.bro.annotation.*;
 import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
-import org.robovm.apple.usernotifications.*;
 import org.robovm.apple.uikit.*;
+import org.robovm.apple.corelocation.*;
+import org.robovm.apple.coregraphics.*;
+import org.robovm.apple.coreanimation.*;
 /*</imports>*/
 
 /*<javadoc>*/
-/*</javadoc>*/
-/*<annotations>*//*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/OSConditionAdapter/*</name>*/ 
-    extends /*<extends>*/NSObject/*</extends>*/ 
-    /*<implements>*/implements OSCondition/*</implements>*/ {
 
-    /*<ptr>*/
-    /*</ptr>*/
-    /*<bind>*/
-    /*</bind>*/
+/*</javadoc>*/
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/IMAnonymisationManager/*</name>*/ 
+    extends /*<extends>*/NSObject/*</extends>*/ 
+    /*<implements>*//*</implements>*/ {
+
+    /*<ptr>*/public static class IMAnonymisationManagerPtr extends Ptr<IMAnonymisationManager, IMAnonymisationManagerPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(IMAnonymisationManager.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
-    /*<constructors>*//*</constructors>*/
+    /*<constructors>*/
+    public IMAnonymisationManager() {}
+    protected IMAnonymisationManager(Handle h, long handle) { super(h, handle); }
+    protected IMAnonymisationManager(SkipInit skipInit) { super(skipInit); }
+    /*</constructors>*/
     /*<properties>*/
-    @NotImplemented("conditionId")
-    public String getConditionId() { return null; }
+    
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @NotImplemented("isMetWithIndexedTokens:")
-    public boolean isMet(NSDictionary<?, ?> indexedTokens) { return false; }
-    @NotImplemented("getNewestTokenWithIndexedTokens:")
-    public OSReadYourWriteData getNewestToken(NSDictionary<?, ?> indexedTokens) { return null; }
-    @NotImplemented("onConditionSatisfied")
-    public void onConditionSatisfied() {}
+    @Method(selector = "isSignalPermitted:")
+    public native boolean isSignalPermitted(IMAnonymisationSignalKey key);
+    @Method(selector = "refreshFromSynapseHandshakeState")
+    public native void refreshFromSynapseHandshakeState();
+    @Method(selector = "shared")
+    public static native IMAnonymisationManager shared();
     /*</methods>*/
 }

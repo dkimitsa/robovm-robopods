@@ -551,7 +551,7 @@ SWIFT_CLASS("_TtC8UnityAds38UADSInitializationConfigurationBuilder")
 @end
 
 /// Base class for Unity ad objects.
-/// This class serves as the base for <code>UADSInterstitialAd</code> and <code>UADSRewardedAd</code>,
+/// This class serves as the base for <code>UADSInterstitialAd</code>, <code>UADSRewardedAd</code>, and <code>UADSRewardedOffersAd</code>,
 /// providing common functionality like ad expiration handling.
 SWIFT_CLASS("_TtC8UnityAds7UnityAd")
 @interface UnityAd : NSObject
@@ -772,6 +772,74 @@ SWIFT_CLASS("_TtC8UnityAds14UADSRewardedAd")
 /// \param delegate A delegate conforming to <code>UADSRewardedShowDelegate</code> to handle rewarded ad events.
 ///
 - (void)show:(UADSShowConfiguration * _Nullable)configuration delegate:(id <UADSRewardedShowDelegate> _Nonnull)delegate;
+@end
+
+@protocol UADSRewardedOffersShowDelegate;
+/// Manages the loading and showing of rewarded offers.
+/// Use this class to load and display the user’s in-progress rewarded offers and new rewarded offers.
+/// <blockquote>
+/// Experimental: This Unity Ads API is experimental. It may be changed in the future without notice.
+///
+/// </blockquote>
+/// Example usage:
+/// \code
+/// let config = UADSLoadConfigurationBuilder(placementId: "rewardedOffers")
+///     .build()
+///
+/// UADSRewardedOffersAd.load(config) { ad, error in
+///     if let ad = ad {
+///         ad.show(delegate: self)
+///     }
+/// }
+///
+/// \endcode
+SWIFT_CLASS("_TtC8UnityAds20UADSRewardedOffersAd")
+@interface UADSRewardedOffersAd : UnityAd
+/// Loads a rewarded offers ad with the specified options.
+/// \param configuration An instance of <code>UADSLoadConfiguration</code> containing the ad loading options.
+///
+/// \param completion A callback that gets called when ad loading finishes.
+/// Passes a <code>UADSRewardedOffersAd</code> instance if successful, or a <code>UnityAdsError</code> if loading fails.
+///
++ (void)load:(UADSLoadConfiguration * _Nonnull)configuration completion:(void (^ _Nonnull)(UADSRewardedOffersAd * _Nullable, id <UnityAdsError> _Nullable))completion;
+/// Displays the loaded rewarded offers ad.
+/// \param configuration Optional settings for showing the ad.
+///
+/// \param delegate A delegate conforming to <code>UADSRewardedOffersShowDelegate</code> to handle rewarded offers ad events.
+///
+- (void)show:(UADSShowConfiguration * _Nullable)configuration delegate:(id <UADSRewardedOffersShowDelegate> _Nonnull)delegate;
+@end
+
+/// A protocol for handling rewarded offers ad show events.
+/// Implement this protocol to receive callbacks when rewarded offers ads start, complete, click or fail.
+/// There is no reward callback: rewarded offers grant rewards through server-side callbacks as offers
+/// complete, not through a client-side show event.
+/// <blockquote>
+/// Experimental: This Unity Ads API is experimental. It may be changed in the future without notice.
+///
+/// </blockquote>
+SWIFT_PROTOCOL("_TtP8UnityAds30UADSRewardedOffersShowDelegate_")
+@protocol UADSRewardedOffersShowDelegate <NSObject>
+/// Called when the rewarded offers ad starts showing.
+/// \param unityAd The ad that started showing.
+///
+- (void)showDidStart:(UADSRewardedOffersAd * _Nonnull)unityAd;
+/// Called when the rewarded offers ad is clicked.
+/// \param unityAd The ad that was clicked.
+///
+- (void)showDidClick:(UADSRewardedOffersAd * _Nonnull)unityAd;
+/// Called when the ad finishes showing.
+/// \param unityAd The ad that finished showing.
+///
+/// \param finishState A <code>UADSShowFinishState</code> indicating whether the ad was skipped or completed.
+///
+- (void)showDidComplete:(UADSRewardedOffersAd * _Nonnull)unityAd with:(enum UADSShowFinishState)finishState;
+/// Called if the ad fails to show.
+/// \param unityAd The ad that failed to show.
+///
+/// \param error A <code>UnityAdsError</code> explaining the failure.
+///
+- (void)showDidFail:(UADSRewardedOffersAd * _Nonnull)unityAd error:(id <UnityAdsError> _Nonnull)error;
 @end
 
 /// A protocol for handling rewarded ad show events.

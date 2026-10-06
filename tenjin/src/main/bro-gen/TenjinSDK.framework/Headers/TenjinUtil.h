@@ -4,8 +4,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "AsyncOperation.h"
-#import "TJNOperationQueue.h"
+#import <TenjinSDK/AsyncOperation.h>
+#import <TenjinSDK/TJNOperationQueue.h>
 
 
 @interface TenjinUtil : NSObject

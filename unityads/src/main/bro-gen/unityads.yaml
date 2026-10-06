@@ -204,6 +204,12 @@ classes:
                 name: show
             '+load:completion:':
                 name: load
+    UADSRewardedOffersAd:
+        methods:
+            '-show:delegate:':
+                name: show
+            '+load:completion:':
+                name: load
     UADSShowConfiguration: { }
     UADSShowConfigurationBuilder: { }
     UADSTokenConfiguration: { }
@@ -262,6 +268,12 @@ protocols:
             '-showDidFail:error:':
                 name: showDidFail
     UADSRewardedShowDelegate:
+        methods:
+            '-showDidComplete:with:':
+                name: showDidComplete
+            '-showDidFail:error:':
+                name: showDidFail
+    UADSRewardedOffersShowDelegate:
         methods:
             '-showDidComplete:with:':
                 name: showDidComplete

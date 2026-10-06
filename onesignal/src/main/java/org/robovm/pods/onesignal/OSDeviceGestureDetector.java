@@ -35,36 +35,27 @@ import org.robovm.apple.uikit.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("OneSignalOSCore.OSIamFetchReadyCondition")/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/OSIamFetchReadyCondition/*</name>*/ 
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/OSDeviceGestureDetector/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
-    /*<implements>*/implements OSCondition/*</implements>*/ {
+    /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class OSIamFetchReadyConditionPtr extends Ptr<OSIamFetchReadyCondition, OSIamFetchReadyConditionPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(OSIamFetchReadyCondition.class); }/*</bind>*/
+    /*<ptr>*/public static class OSDeviceGestureDetectorPtr extends Ptr<OSDeviceGestureDetector, OSDeviceGestureDetectorPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(OSDeviceGestureDetector.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    protected OSIamFetchReadyCondition() {}
-    protected OSIamFetchReadyCondition(Handle h, long handle) { super(h, handle); }
-    protected OSIamFetchReadyCondition(SkipInit skipInit) { super(skipInit); }
+    protected OSDeviceGestureDetector() {}
+    protected OSDeviceGestureDetector(Handle h, long handle) { super(h, handle); }
+    protected OSDeviceGestureDetector(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
-    @Property(selector = "conditionId")
-    public native String getConditionId();
+    
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "onConditionSatisfied")
-    public native void onConditionSatisfied();
-    @Method(selector = "isMetWithIndexedTokens:")
-    public native boolean isMet(NSDictionary<?, ?> indexedTokens);
-    @Method(selector = "getNewestTokenWithIndexedTokens:")
-    public native OSReadYourWriteData getNewestToken(NSDictionary<?, ?> indexedTokens);
-    @Method(selector = "sharedInstanceWithId:")
-    public static native OSIamFetchReadyCondition sharedInstance(String id);
+    @Method(selector = "start")
+    public static native void start();
     @Method(selector = "reset")
     public static native void reset();
-    @Method(selector = "CONDITIONID")
-    public static native String CONDITIONID();
     /*</methods>*/
 }

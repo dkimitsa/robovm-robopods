@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.robovm.pods.onesignal;
+package org.robovm.pods.unityads;
 
 /*<imports>*/
 import java.io.*;
@@ -28,34 +28,35 @@ import org.robovm.rt.bro.*;
 import org.robovm.rt.bro.annotation.*;
 import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
-import org.robovm.apple.usernotifications.*;
 import org.robovm.apple.uikit.*;
+import org.robovm.apple.coregraphics.*;
+import org.robovm.apple.coreanimation.*;
 /*</imports>*/
 
 /*<javadoc>*/
-/*</javadoc>*/
-/*<annotations>*//*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/OSConditionAdapter/*</name>*/ 
-    extends /*<extends>*/NSObject/*</extends>*/ 
-    /*<implements>*/implements OSCondition/*</implements>*/ {
 
-    /*<ptr>*/
-    /*</ptr>*/
-    /*<bind>*/
-    /*</bind>*/
+/*</javadoc>*/
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("UnityAds.UADSRewardedOffersAd")/*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/UADSRewardedOffersAd/*</name>*/ 
+    extends /*<extends>*/UnityAd/*</extends>*/ 
+    /*<implements>*//*</implements>*/ {
+
+    /*<ptr>*/public static class UADSRewardedOffersAdPtr extends Ptr<UADSRewardedOffersAd, UADSRewardedOffersAdPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(UADSRewardedOffersAd.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
-    /*<constructors>*//*</constructors>*/
+    /*<constructors>*/
+    protected UADSRewardedOffersAd() {}
+    protected UADSRewardedOffersAd(Handle h, long handle) { super(h, handle); }
+    protected UADSRewardedOffersAd(SkipInit skipInit) { super(skipInit); }
+    /*</constructors>*/
     /*<properties>*/
-    @NotImplemented("conditionId")
-    public String getConditionId() { return null; }
+    
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @NotImplemented("isMetWithIndexedTokens:")
-    public boolean isMet(NSDictionary<?, ?> indexedTokens) { return false; }
-    @NotImplemented("getNewestTokenWithIndexedTokens:")
-    public OSReadYourWriteData getNewestToken(NSDictionary<?, ?> indexedTokens) { return null; }
-    @NotImplemented("onConditionSatisfied")
-    public void onConditionSatisfied() {}
+    @Method(selector = "show:delegate:")
+    public native void show(UADSShowConfiguration configuration, UADSRewardedOffersShowDelegate delegate);
+    @Method(selector = "load:completion:")
+    public static native void load(UADSLoadConfiguration configuration, @Block VoidBlock2<UADSRewardedOffersAd, UnityAdsError> completion);
     /*</methods>*/
 }
