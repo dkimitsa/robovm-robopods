@@ -4,8 +4,8 @@ internal_frameworks: [FirebaseFirestoreInternal]
 framework: FirebaseFirestore
 clang_args: ['-x', 'objective-c']
 headers:
-    - "#include <FirebaseFirestoreInternal/FirebaseFirestoreInternal-umbrella.h>"
-    - "#include <FirebaseFirestore/FirebaseFirestore-umbrella.h>"
+    - "#include <FirebaseFirestore/FirebaseFirestore.h>"
+    - "#include <FirebaseFirestore/FIRPersistentCacheIndexManager.h>"
 
 private_typedefs:
     "FIRApp *": org.robovm.pods.firebase.core.FIRApp
@@ -22,6 +22,7 @@ enums:
     FIRAggregateSource: {}
     FIRListenSource: {}
 classes:
+    (__FIR.*): { exclude: true }
     FIRCollectionReference:
         methods:
             '-documentWithAutoID':
@@ -422,19 +423,36 @@ classes:
         methods:
             '-initWithName:':
                 name: init
-    __FIRPipelineListenOptionsBridge:
+    FIRBSONObjectId:
         methods:
-            '-initWithServerTimestampBehavior:includeMetadata:source:':
+            '-initWithValue:':
                 name: init
-    __FIRPipelineResultBridge:
+    FIRBSONTimestamp:
         methods:
-            '-dataWithServerTimestampBehavior:':
-                name: data
-            '-get:serverTimestampBehavior:':
-                name: get
-    __FIRPipelineResultChangeBridge: { }
-    __FIRPipelineSnapshotBridge: { }
-    __FIRRealtimePipelineSnapshotBridge: { }
+            '-initWithSeconds:increment:':
+                name: init
+    FIRBlob:
+        methods:
+            '+blobWithBytes:':
+                name: blob
+            '+blobWithBSONBinary:':
+                name: blobWithBSONBinary
+            '+blobWithBSONBinary:subtype:':
+                name: blobWithBSONBinary
+    FIRDecimal128Value:
+        methods:
+            '-initWithValue:':
+                name: init
+    FIRInt32Value:
+        methods:
+            '-initWithValue:':
+                name: init
+    FIRMaxKey: {}
+    FIRMinKey: {}
+    FIRRegexValue:
+        methods:
+            '-initWithPattern:options:':
+                name: init
 protocols:
     FIRListenerRegistration: { }
     FIRLocalCacheSettings: { }

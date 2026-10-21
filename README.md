@@ -48,26 +48,26 @@ Latest bindings:
 | [AdjustSdk](adjustsdk/)                 | 5.8.0   |
 | [AppCenter](appcenter/)                 | 5.10.0  |
 | [AppLovinSDK](applovinsdk/)             | 13.6.4  |
-| [AppsFlyer](appsflyer/)                 | 7.0.2   |
+| [AppsFlyer](appsflyer/)                 | 7.0.3   |
 | [Azure](azure/)                         | 3.1.4   |
 | [BranchMetrics](branchmetrics/)         | 3.14.2  |
 | [Charts](charts/)                       | 5.1.0   |
 | [CleverAds](cleverads/)                 | 4.8.0   |
-| [Facebook](facebook/)                   | 18.1.1  |
-| [Facebook Audience](facebook-audience/) | 6.22.0  |
-| [Firebase](firebase/)                   | 12.19.0 |
-| [Fyber](fyber/)                         | 8.5.0   |
+| [Facebook](facebook/)                   | 19.0.0  |
+| [Facebook Audience](facebook-audience/) | 6.22.1  |
+| [Firebase](firebase/)                   | 13.1.0  |
+| [Fyber](fyber/)                         | 8.5.1   |
 | [Google Mobile Ads](google-mobile-ads/) | 13.11.0 |
 | [HelpShiftX](helpshift/)                | 10.5.0  |
 | [InMobi](inmobi/)                       | 11.5.0  |
 | [IronSource](ironsource/)               | 9.6.1   |
 | [Lottie](lottie/)                       | 4.6.1   |
-| [OneSignal](onesignal/)                 | 5.7.0   |
+| [OneSignal](onesignal/)                 | 5.8.0   |
 | [Pollfish](pollfish/)                   | 6.5.0   |
 | [RevenueCat](revenuecat/)               | 5.83.0  |
 | [SAMKeychain](samkeychain/)             | 1.5.3   |
-| [Singular](singular/)                   | 12.14.2 |
-| [Tenjin](tenjin/)                       | 1.20.0  |
+| [Singular](singular/)                   | 12.15.0 |
+| [Tenjin](tenjin/)                       | 1.20.1  |
 | [UnityAds](unityads/)                   | 4.21.0  |
 | [YouTubePlayer](youtube/)               | 1.0.4   |
 

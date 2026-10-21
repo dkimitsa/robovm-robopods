@@ -76,6 +76,7 @@ import org.robovm.apple.coreanimation.*;
         public static final String CustomerUserId = "af_customer_user_id";
         public static final String Validated = "af_validated";
         public static final String Revenue = "af_revenue";
+        public static final String NetRevenue = "af_net_revenue";
         public static final String ReceiptId = "af_receipt_id";
         public static final String TutorialId = "af_tutorial_id";
         public static final String VirtualCurrencyName = "af_virtual_currency_name";

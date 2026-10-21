@@ -60,8 +60,16 @@ import org.robovm.apple.coregraphics.*;
     public native String getPublisherAppStoreID();
     @Property(selector = "setPublisherAppStoreID:")
     public native void setPublisherAppStoreID(String v);
+    /**
+     * @deprecated Use addGlobalAdDelegate: / removeGlobalAdDelegate: instead.
+     */
+    @Deprecated
     @Property(selector = "globalAdDelegate")
     public native IAGlobalAdDelegate getGlobalAdDelegate();
+    /**
+     * @deprecated Use addGlobalAdDelegate: / removeGlobalAdDelegate: instead.
+     */
+    @Deprecated
     @Property(selector = "setGlobalAdDelegate:", strongRef = true)
     public native void setGlobalAdDelegate(IAGlobalAdDelegate v);
     @Property(selector = "GDPRConsent")
@@ -119,6 +127,10 @@ import org.robovm.apple.coregraphics.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
+    @Method(selector = "addGlobalAdDelegate:")
+    public native void addGlobalAdDelegate(IAGlobalAdDelegate delegate);
+    @Method(selector = "removeGlobalAdDelegate:")
+    public native void removeGlobalAdDelegate(IAGlobalAdDelegate delegate);
     /**
      * @deprecated This API is deprecated, please use `initWithAppID:completionBlock:completionQueue:` instead
      */

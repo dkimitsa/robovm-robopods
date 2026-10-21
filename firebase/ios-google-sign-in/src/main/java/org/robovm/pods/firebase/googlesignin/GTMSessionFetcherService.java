@@ -119,14 +119,8 @@ import org.robovm.apple.coreanimation.*;
     public native NSDictionary<NSString, ?> getProperties();
     @Property(selector = "setProperties:")
     public native void setProperties(NSDictionary<NSString, ?> v);
-    /**
-     * @since Available in iOS 10.0 and later.
-     */
     @Property(selector = "metricsCollectionBlock")
     public native @Block VoidBlock1<NSURLSessionTaskMetrics> getMetricsCollectionBlock();
-    /**
-     * @since Available in iOS 10.0 and later.
-     */
     @Property(selector = "setMetricsCollectionBlock:")
     public native void setMetricsCollectionBlock(@Block VoidBlock1<NSURLSessionTaskMetrics> v);
     @Property(selector = "stopFetchingTriggersCompletionHandler")

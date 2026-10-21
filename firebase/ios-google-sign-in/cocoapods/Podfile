@@ -1,0 +1,19 @@
+install! 'cocoapods', integrate_targets: false
+platform :ios, '15.0'
+use_frameworks!
+
+target 'pods' do
+  if ENV['VERSION'] && !ENV['VERSION'].empty?
+    pod 'GoogleSignIn', :git => 'https://github.com/google/GoogleSignIn-iOS.git', :tag => ENV['VERSION']
+  else
+    pod 'GoogleSignIn', :git => 'https://github.com/google/GoogleSignIn-iOS.git'
+  end
+end
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '15.0'
+    end
+  end
+end

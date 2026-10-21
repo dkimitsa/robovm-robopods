@@ -55,8 +55,6 @@ import org.robovm.apple.uikit.*;
     /*<methods>*/
     @Method(selector = "getRywTokenFromAwaitableCondition:forId:")
     public native OSReadYourWriteData getRywTokenFromAwaitableCondition(OSCondition condition, String id);
-    @Method(selector = "resolveConditionsWithConditionId:forId:")
-    public native void resolveConditions(String conditionId, String id);
     @Method(selector = "shared")
     public static native OSConsistencyManager shared();
     /*</methods>*/

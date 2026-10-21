@@ -3,7 +3,7 @@ include: [foundation, dispatch]
 framework: FirebaseStorage
 clang_args: ['-x', 'objective-c']
 headers:
-    - FirebaseStorage-umbrella.h
+    - FIRStorageTypedefs.h
     - FirebaseStorage-Swift.h
 
 private_typedefs:

@@ -281,11 +281,10 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #if __has_warning("-Watimport-in-framework-header")
 #pragma clang diagnostic ignored "-Watimport-in-framework-header"
 #endif
+@import DeviceCheck;
 @import Foundation;
 @import ObjectiveC;
 #endif
-
-#import <AppCheckCore/AppCheckCore.h>
 
 #endif
 #pragma clang diagnostic ignored "-Wproperty-attribute-mismatch"
@@ -307,9 +306,287 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 
 #if defined(__OBJC__)
 
+@class GACAppCheckTokenResult;
+SWIFT_PROTOCOL_NAMED("AppCheckCoreProtocol")
+@protocol GACAppCheckProtocol <NSObject>
+- (void)tokenForcingRefresh:(BOOL)forcingRefresh completion:(void (^ _Nonnull)(GACAppCheckTokenResult * _Nonnull))completion;
+- (void)limitedUseTokenWithCompletion:(void (^ _Nonnull)(GACAppCheckTokenResult * _Nonnull))completion;
+@end
+
 @class NSString;
-@class NSMutableURLRequest;
+@protocol GACAppCheckProvider;
+@protocol GACAppCheckSettingsProtocol;
+@protocol GACAppCheckTokenDelegate;
+SWIFT_CLASS_NAMED("AppCheckCore")
+@interface GACAppCheck : NSObject <GACAppCheckProtocol>
+- (nonnull instancetype)initWithServiceName:(NSString * _Nonnull)serviceName resourceName:(NSString * _Nonnull)resourceName appCheckProvider:(id <GACAppCheckProvider> _Nonnull)appCheckProvider settings:(id <GACAppCheckSettingsProtocol> _Nonnull)settings tokenDelegate:(id <GACAppCheckTokenDelegate> _Nullable)tokenDelegate keychainAccessGroup:(NSString * _Nullable)keychainAccessGroup OBJC_DESIGNATED_INITIALIZER;
+- (void)tokenForcingRefresh:(BOOL)forcingRefresh completion:(void (^ _Nonnull)(GACAppCheckTokenResult * _Nonnull))completion;
+- (void)limitedUseTokenWithCompletion:(void (^ _Nonnull)(GACAppCheckTokenResult * _Nonnull))completion;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+@class NSURLSession;
+@class NSURL;
+@class NSData;
+@class _GACURLSessionDataResponse;
+SWIFT_CLASS_NAMED("AppCheckCoreAPIService")
+@interface _GACAppCheckAPIService : NSObject
+/// \param requestHooks Hooks invoked on each outgoing request. From Swift, pass
+/// <code>[AppCheckCoreAPIRequestHook]</code>. From Objective-C, pass an <code>NSArray</code> of blocks with the
+/// signature <code>void (^)(NSMutableURLRequest *)</code>; the signature is not checked at compile
+/// time and a mismatch will crash when the hook is invoked.
+/// Typed <code>[Any]?</code> rather than <code>[AppCheckCoreAPIRequestHook]?</code> deliberately: Swift cannot
+/// bridge an <code>NSArray</code> into a Swift <code>Array</code> whose element is a function type, so the typed
+/// signature traps at runtime for any non-nil array passed from Objective-C. Do not
+/// “simplify” this type — see PR #111.
+///
+- (nonnull instancetype)initWithURLSession:(NSURLSession * _Nonnull)urlSession baseURL:(NSString * _Nullable)baseURL APIKey:(NSString * _Nullable)apiKey requestHooks:(NSArray * _Nullable)requestHooks;
+- (void)sendRequestWithURL:(NSURL * _Nonnull)requestURL httpMethod:(NSString * _Nonnull)httpMethod body:(NSData * _Nullable)body additionalHeaders:(NSDictionary<NSString *, NSString *> * _Nullable)additionalHeaders completionHandler:(void (^ _Nonnull)(_GACURLSessionDataResponse * _Nullable, NSError * _Nullable))completionHandler;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
 @class GACAppCheckToken;
+SWIFT_PROTOCOL_NAMED("AppCheckCoreProvider")
+@protocol GACAppCheckProvider <NSObject>
+- (void)getTokenWithCompletion:(void (^ _Nonnull)(GACAppCheckToken * _Nullable, NSError * _Nullable))completion;
+- (void)getLimitedUseTokenWithCompletion:(void (^ _Nonnull)(GACAppCheckToken * _Nullable, NSError * _Nullable))completion;
+@end
+
+SWIFT_CLASS_NAMED("AppCheckCoreAppAttestProvider") SWIFT_AVAILABILITY(watchos,introduced=9.0) SWIFT_AVAILABILITY(tvos,introduced=15.0) SWIFT_AVAILABILITY(macos,introduced=11.0) SWIFT_AVAILABILITY(ios,introduced=14.0)
+@interface GACAppAttestProvider : NSObject <GACAppCheckProvider>
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER SWIFT_UNAVAILABLE;
+/// \param requestHooks Hooks invoked on each outgoing request. From Swift, pass
+/// <code>[AppCheckCoreAPIRequestHook]</code>. From Objective-C, pass an <code>NSArray</code> of blocks with the
+/// signature <code>void (^)(NSMutableURLRequest *)</code>; the signature is not checked at compile
+/// time and a mismatch will crash when the hook is invoked.
+/// Typed <code>[Any]?</code> rather than <code>[AppCheckCoreAPIRequestHook]?</code> deliberately: Swift cannot
+/// bridge an <code>NSArray</code> into a Swift <code>Array</code> whose element is a function type, so the typed
+/// signature traps at runtime for any non-nil array passed from Objective-C. Do not
+/// “simplify” this type — see PR #111.
+///
+- (nonnull instancetype)initWithServiceName:(NSString * _Nonnull)serviceName resourceName:(NSString * _Nonnull)resourceName baseURL:(NSString * _Nullable)baseURL APIKey:(NSString * _Nullable)apiKey keychainAccessGroup:(NSString * _Nullable)accessGroup requestHooks:(NSArray * _Nullable)requestHooks;
+- (void)getTokenWithCompletion:(void (^ _Nonnull)(GACAppCheckToken * _Nullable, NSError * _Nullable))handler;
+- (void)getLimitedUseTokenWithCompletion:(void (^ _Nonnull)(GACAppCheckToken * _Nullable, NSError * _Nullable))handler;
+@end
+
+typedef SWIFT_ENUM_NAMED(NSUInteger, GACAppCheckBackoffType, "AppCheckCoreBackoffType", open) {
+  GACAppCheckBackoffTypeNone = 0,
+  GACAppCheckBackoffTypeOneDay = 1,
+  GACAppCheckBackoffTypeExponential = 2,
+};
+
+@class NSDate;
+SWIFT_CLASS_NAMED("AppCheckCoreBackoffWrapper")
+@interface _GACAppCheckBackoffWrapper : NSObject
+- (nonnull instancetype)init;
+- (nonnull instancetype)initWithDateProvider:(NSDate * _Nonnull (^ _Nonnull)(void))dateProvider OBJC_DESIGNATED_INITIALIZER;
++ (NSDate * _Nonnull (^ _Nonnull)(void))currentDateProvider SWIFT_WARN_UNUSED_RESULT;
+- (enum GACAppCheckBackoffType (^ _Nonnull)(NSError * _Nonnull))defaultAppCheckProviderErrorHandler SWIFT_WARN_UNUSED_RESULT;
+@end
+
+SWIFT_CLASS_NAMED("AppCheckCoreCryptoUtils")
+@interface GACAppCheckCryptoUtils : NSObject
++ (NSData * _Nonnull)sha256HashFromData:(NSData * _Nonnull)dataToHash SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+SWIFT_CLASS_NAMED("AppCheckCoreDebugProvider")
+@interface GACAppCheckDebugProvider : NSObject <GACAppCheckProvider>
+/// \param requestHooks Hooks invoked on each outgoing request. From Swift, pass
+/// <code>[AppCheckCoreAPIRequestHook]</code>. From Objective-C, pass an <code>NSArray</code> of blocks with the
+/// signature <code>void (^)(NSMutableURLRequest *)</code>; the signature is not checked at compile
+/// time and a mismatch will crash when the hook is invoked.
+/// Typed <code>[Any]?</code> rather than <code>[AppCheckCoreAPIRequestHook]?</code> deliberately: Swift cannot
+/// bridge an <code>NSArray</code> into a Swift <code>Array</code> whose element is a function type, so the typed
+/// signature traps at runtime for any non-nil array passed from Objective-C. Do not
+/// “simplify” this type — see PR #111.
+///
+- (nonnull instancetype)initWithServiceName:(NSString * _Nonnull)serviceName resourceName:(NSString * _Nonnull)resourceName baseURL:(NSString * _Nullable)baseURL APIKey:(NSString * _Nonnull)apiKey requestHooks:(NSArray * _Nullable)requestHooks;
+- (NSString * _Nonnull)localDebugToken SWIFT_WARN_UNUSED_RESULT;
+- (NSString * _Nonnull)currentDebugToken SWIFT_WARN_UNUSED_RESULT;
+- (void)getTokenWithCompletion:(void (^ _Nonnull)(GACAppCheckToken * _Nullable, NSError * _Nullable))handler;
+- (void)getLimitedUseTokenWithCompletion:(void (^ _Nonnull)(GACAppCheckToken * _Nullable, NSError * _Nullable))handler;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+SWIFT_CLASS_NAMED("AppCheckCoreDeviceCheckProvider") SWIFT_AVAILABILITY(watchos,introduced=9.0) SWIFT_AVAILABILITY(tvos,introduced=11.0) SWIFT_AVAILABILITY(maccatalyst,introduced=13.0) SWIFT_AVAILABILITY(macos,introduced=10.15) SWIFT_AVAILABILITY(ios,introduced=11.0)
+@interface GACDeviceCheckProvider : NSObject <GACAppCheckProvider>
+/// \param requestHooks Hooks invoked on each outgoing request. From Swift, pass
+/// <code>[AppCheckCoreAPIRequestHook]</code>. From Objective-C, pass an <code>NSArray</code> of blocks with the
+/// signature <code>void (^)(NSMutableURLRequest *)</code>; the signature is not checked at compile
+/// time and a mismatch will crash when the hook is invoked.
+/// Typed <code>[Any]?</code> rather than <code>[AppCheckCoreAPIRequestHook]?</code> deliberately: Swift cannot
+/// bridge an <code>NSArray</code> into a Swift <code>Array</code> whose element is a function type, so the typed
+/// signature traps at runtime for any non-nil array passed from Objective-C. Do not
+/// “simplify” this type — see PR #111.
+///
+- (nonnull instancetype)initWithServiceName:(NSString * _Nonnull)serviceName resourceName:(NSString * _Nonnull)resourceName APIKey:(NSString * _Nonnull)apiKey requestHooks:(NSArray * _Nullable)requestHooks OBJC_DESIGNATED_INITIALIZER;
+- (void)getTokenWithCompletion:(void (^ _Nonnull)(GACAppCheckToken * _Nullable, NSError * _Nullable))handler;
+- (void)getLimitedUseTokenWithCompletion:(void (^ _Nonnull)(GACAppCheckToken * _Nullable, NSError * _Nullable))handler;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+SWIFT_PROTOCOL_NAMED("AppCheckCoreDeviceCheckTokenGenerator")
+@protocol GACDeviceCheckTokenGenerator <NSObject>
+@property (nonatomic, readonly) BOOL isSupported;
+- (void)generateTokenWithCompletionHandler:(void (^ _Nonnull)(NSData * _Nullable, NSError * _Nullable))completionHandler;
+@end
+
+typedef SWIFT_ENUM_NAMED(NSInteger, GACAppCheckErrorCode, "AppCheckCoreErrorCode", open) {
+/// An unknown or non-actionable error.
+  GACAppCheckErrorCodeUnknown = 0,
+/// A network connection error.
+  GACAppCheckErrorCodeServerUnreachable = 1,
+/// Invalid configuration error. Currently, an exception is thrown but this error is reserved
+/// for future implementations of invalid configuration detection.
+  GACAppCheckErrorCodeInvalidConfiguration = 2,
+/// System keychain access error. Ensure that the app has proper keychain access.
+  GACAppCheckErrorCodeKeychain = 3,
+/// Selected app attestation provider is not supported on the current platform or OS version.
+  GACAppCheckErrorCodeUnsupported = 4,
+};
+static NSString * _Nonnull const GACAppCheckErrorCodeDomain = @"AppCheckCore.AppCheckCoreErrorCode";
+
+@class NSHTTPURLResponse;
+@class GACAppCheckHTTPError;
+@class NSError;
+SWIFT_CLASS_NAMED("AppCheckCoreErrorUtil")
+@interface _GACAppCheckErrorUtil : NSObject
++ (NSError * _Nonnull)publicDomainErrorWith:(NSError * _Nonnull)error SWIFT_WARN_UNUSED_RESULT;
++ (NSError * _Nonnull)cachedTokenNotFound SWIFT_WARN_UNUSED_RESULT;
++ (NSError * _Nonnull)cachedTokenExpired SWIFT_WARN_UNUSED_RESULT;
++ (NSError * _Nonnull)keychainErrorWith:(NSError * _Nonnull)error SWIFT_WARN_UNUSED_RESULT;
++ (GACAppCheckHTTPError * _Nonnull)apiErrorWith:(NSHTTPURLResponse * _Nonnull)httpResponse data:(NSData * _Nullable)data SWIFT_WARN_UNUSED_RESULT;
++ (NSError * _Nonnull)apiErrorWithNetworkError:(NSError * _Nonnull)networkError SWIFT_WARN_UNUSED_RESULT;
++ (NSError * _Nonnull)appCheckTokenResponseErrorWithMissingField:(NSString * _Nonnull)fieldName SWIFT_WARN_UNUSED_RESULT;
++ (NSError * _Nonnull)appAttestAttestationResponseErrorWithMissingField:(NSString * _Nonnull)fieldName SWIFT_WARN_UNUSED_RESULT;
++ (NSError * _Nonnull)jsonSerializationError:(NSError * _Nullable)error SWIFT_WARN_UNUSED_RESULT;
++ (NSError * _Nonnull)errorWithFailureReason:(NSString * _Nonnull)failureReason SWIFT_WARN_UNUSED_RESULT;
++ (NSError * _Nonnull)unsupportedAttestationProvider:(NSString * _Nonnull)providerName SWIFT_WARN_UNUSED_RESULT;
++ (NSError * _Nonnull)missingRecaptchaSDKError SWIFT_WARN_UNUSED_RESULT;
++ (NSError * _Nonnull)appAttestKeyIDNotFound SWIFT_WARN_UNUSED_RESULT;
++ (NSError * _Nonnull)appAttestGenerateKeyFailedWith:(NSError * _Nonnull)error SWIFT_WARN_UNUSED_RESULT;
++ (NSError * _Nonnull)appAttestAttestKeyFailedWith:(NSError * _Nonnull)error keyId:(NSString * _Nonnull)keyId clientDataHash:(NSData * _Nonnull)clientDataHash SWIFT_WARN_UNUSED_RESULT;
++ (NSError * _Nonnull)appAttestGenerateAssertionFailedWith:(NSError * _Nonnull)error keyId:(NSString * _Nonnull)keyId clientDataHash:(NSData * _Nonnull)clientDataHash SWIFT_WARN_UNUSED_RESULT;
++ (NSError * _Nonnull)unknownErrorWith:(NSError * _Nonnull)error SWIFT_WARN_UNUSED_RESULT;
++ (NSError * _Nonnull)appCheckErrorWithCode:(enum GACAppCheckErrorCode)code failureReason:(NSString * _Nullable)failureReason underlyingError:(NSError * _Nullable)underlyingError SWIFT_WARN_UNUSED_RESULT;
++ (NSString * _Nonnull)errorDescriptionWithDeviceCheckError:(NSError * _Nonnull)error SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+/// Objective-C accessor for the App Check error domain.
+/// Swift global constants are not bridged to Objective-C, so the v11
+/// <code>GACAppCheckErrorDomain</code> global is no longer visible there. Objective-C
+/// callers should use <code>GACAppCheckErrors.errorDomain</code> instead:
+/// \code
+/// if ([error.domain isEqualToString:GACAppCheckErrors.errorDomain]) { ... }
+///
+/// \endcode
+SWIFT_CLASS_NAMED("AppCheckCoreErrorsObjC")
+@interface GACAppCheckErrors : NSObject
+/// The App Check error domain. Equivalent to the Swift
+/// <code>AppCheckCoreErrorDomain</code> global.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull errorDomain;)
++ (NSString * _Nonnull)errorDomain SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+@class NSCoder;
+SWIFT_CLASS_NAMED("AppCheckCoreHTTPError")
+@interface GACAppCheckHTTPError : NSError
+@property (nonatomic, readonly, strong) NSHTTPURLResponse * _Nonnull httpResponse;
+@property (nonatomic, readonly, copy) NSData * _Nonnull data;
+- (nonnull instancetype)initWithHTTPResponse:(NSHTTPURLResponse * _Nonnull)httpResponse data:(NSData * _Nullable)data OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER SWIFT_UNAVAILABLE;
+- (id _Nonnull)copyWithZone:(struct _NSZone * _Nullable)zone SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)initWithDomain:(NSString * _Nonnull)domain code:(NSInteger)code userInfo:(NSDictionary<NSString *, id> * _Nullable)dict SWIFT_UNAVAILABLE;
+@end
+
+typedef SWIFT_ENUM_NAMED(NSInteger, GACAppCheckLogLevel, "AppCheckCoreLogLevel", open) {
+  GACAppCheckLogLevelDebug = 1,
+  GACAppCheckLogLevelInfo = 2,
+  GACAppCheckLogLevelWarning = 3,
+  GACAppCheckLogLevelError = 4,
+  GACAppCheckLogLevelFault = 5,
+};
+
+SWIFT_CLASS_NAMED("AppCheckCoreLogger")
+@interface GACAppCheckLogger : NSObject
+/// The current log level.
+/// Access is serialized by a lock to match the <code>atomic</code> semantics of the
+/// Objective-C <code>GACAppCheckLogger.logLevel</code> class property, which was backed
+/// by a <code>volatile</code> static.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class) enum GACAppCheckLogLevel logLevel;)
++ (enum GACAppCheckLogLevel)logLevel SWIFT_WARN_UNUSED_RESULT;
++ (void)setLogLevel:(enum GACAppCheckLogLevel)newValue;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+typedef SWIFT_ENUM_NAMED(NSInteger, GACAppCheckMessageCode, "AppCheckCoreMessageCode", open) {
+  GACAppCheckMessageCodeUnknown = 1001,
+  GACAppCheckMessageCodeProviderIsMissing = 2002,
+  GACAppCheckMessageCodeStagingModeEnabled = 2003,
+  GACAppCheckMessageCodeUnexpectedHTTPCode = 3001,
+  GACAppCheckMessageCodeInvalidRequestHook = 3002,
+  GACAppCheckMessageCodeLocalDebugToken = 4001,
+  GACAppCheckMessageCodeEnvironmentVariableDebugToken = 4002,
+  GACAppCheckMessageCodeDebugProviderFirebaseEnvironmentVariable = 4003,
+  GACAppCheckMessageCodeDebugProviderFailedExchange = 4004,
+  GACAppCheckMessageCodeAppAttestNotSupported = 7001,
+  GACAppCheckMessageCodeAttestationRejected = 7002,
+  GACAppCheckMessageCodeAssertionRejected = 7003,
+};
+
+SWIFT_PROTOCOL_NAMED("AppCheckCoreSettingsProtocol")
+@protocol GACAppCheckSettingsProtocol <NSObject>
+@property (nonatomic) BOOL isTokenAutoRefreshEnabled;
+@end
+
+SWIFT_CLASS_NAMED("AppCheckCoreSettings")
+@interface GACAppCheckSettings : NSObject <GACAppCheckSettingsProtocol>
+@property (nonatomic) BOOL isTokenAutoRefreshEnabled;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+SWIFT_CLASS_NAMED("AppCheckCoreToken")
+@interface GACAppCheckToken : NSObject
+@property (nonatomic, readonly, copy) NSString * _Nonnull token;
+@property (nonatomic, readonly, copy) NSDate * _Nonnull expirationDate;
+@property (nonatomic, readonly, copy) NSDate * _Nonnull receivedAtDate;
+- (nonnull instancetype)initWithToken:(NSString * _Nonnull)token expirationDate:(NSDate * _Nonnull)expirationDate receivedAtDate:(NSDate * _Nonnull)receivedAtDate OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithToken:(NSString * _Nonnull)token expirationDate:(NSDate * _Nonnull)expirationDate;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+SWIFT_PROTOCOL_NAMED("AppCheckCoreTokenDelegate")
+@protocol GACAppCheckTokenDelegate <NSObject>
+- (void)tokenDidUpdate:(GACAppCheckToken * _Nonnull)token serviceName:(NSString * _Nonnull)serviceName;
+@end
+
+SWIFT_CLASS_NAMED("AppCheckCoreTokenResult")
+@interface GACAppCheckTokenResult : NSObject
+@property (nonatomic, readonly, strong) GACAppCheckToken * _Nonnull token;
+@property (nonatomic, readonly) NSError * _Nullable error;
+- (nonnull instancetype)initWithToken:(GACAppCheckToken * _Nonnull)token error:(NSError * _Nullable)error OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithToken:(GACAppCheckToken * _Nonnull)token;
+- (nonnull instancetype)initWithError:(NSError * _Nonnull)error;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+/// The class represents HTTP response received from <code>URLSession</code>.
+SWIFT_CLASS_NAMED("AppCheckCoreURLSessionDataResponse")
+@interface _GACURLSessionDataResponse : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
 /// Firebase App Check provider that verifies app integrity using the
 /// <a href="https://firebase.google.com/docs/app-check/ios/recaptcha-enterprise-provider">reCAPTCHA
 /// Enterprise</a>
@@ -326,14 +603,43 @@ SWIFT_CLASS_NAMED("AppCheckRecaptchaProvider") SWIFT_AVAILABILITY(watchos,unavai
 ///
 /// \param APIKey The Google Cloud Platform API key.
 ///
-/// \param requestHooks Hooks that will be invoked on requests through this service.
+/// \param requestHooks Hooks invoked on each outgoing request. From Swift, pass
+/// <code>[AppCheckCoreAPIRequestHook]</code>. From Objective-C, pass an <code>NSArray</code> of blocks with the
+/// signature <code>void (^)(NSMutableURLRequest *)</code>; the signature is not checked at compile
+/// time and a mismatch will crash when the hook is invoked.
+/// Typed <code>[Any]?</code> rather than <code>[AppCheckCoreAPIRequestHook]?</code> deliberately: Swift cannot
+/// bridge an <code>NSArray</code> into a Swift <code>Array</code> whose element is a function type, so the typed
+/// signature traps at runtime for any non-nil array passed from Objective-C. Do not
+/// “simplify” this type — see PR #111.
 ///
-- (nullable instancetype)initWithSiteKey:(NSString * _Nonnull)siteKey resourceName:(NSString * _Nonnull)resourceName APIKey:(NSString * _Nonnull)APIKey requestHooks:(NSArray<void (^)(NSMutableURLRequest * _Nonnull)> * _Nullable)requestHooks;
-- (nullable instancetype)initWithSiteKey:(NSString * _Nonnull)siteKey resourceName:(NSString * _Nonnull)resourceName APIKey:(NSString * _Nonnull)APIKey requestHooks:(NSArray<void (^)(NSMutableURLRequest * _Nonnull)> * _Nullable)requestHooks actionName:(NSString * _Nonnull)actionName;
+- (nullable instancetype)initWithSiteKey:(NSString * _Nonnull)siteKey resourceName:(NSString * _Nonnull)resourceName APIKey:(NSString * _Nonnull)APIKey requestHooks:(NSArray * _Nullable)requestHooks;
+/// \param siteKey The reCAPTCHA site key.
+///
+/// \param resourceName The name of the resource protected by App Check; for a Firebase App this is
+/// “projects/{project_id}/apps/{app_id}”.
+///
+/// \param APIKey The Google Cloud Platform API key.
+///
+/// \param requestHooks Hooks invoked on each outgoing request. From Swift, pass
+/// <code>[AppCheckCoreAPIRequestHook]</code>. From Objective-C, pass an <code>NSArray</code> of blocks with the
+/// signature <code>void (^)(NSMutableURLRequest *)</code>; the signature is not checked at compile
+/// time and a mismatch will crash when the hook is invoked.
+/// Typed <code>[Any]?</code> rather than <code>[AppCheckCoreAPIRequestHook]?</code> deliberately: Swift cannot
+/// bridge an <code>NSArray</code> into a Swift <code>Array</code> whose element is a function type, so the typed
+/// signature traps at runtime for any non-nil array passed from Objective-C. Do not
+/// “simplify” this type — see PR #111.
+///
+/// \param actionName The reCAPTCHA custom action name.
+///
+- (nullable instancetype)initWithSiteKey:(NSString * _Nonnull)siteKey resourceName:(NSString * _Nonnull)resourceName APIKey:(NSString * _Nonnull)APIKey requestHooks:(NSArray * _Nullable)requestHooks actionName:(NSString * _Nonnull)actionName;
 - (void)getTokenWithCompletion:(void (^ _Nonnull)(GACAppCheckToken * _Nullable, NSError * _Nullable))handler;
 - (void)getLimitedUseTokenWithCompletion:(void (^ _Nonnull)(GACAppCheckToken * _Nullable, NSError * _Nullable))handler;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+SWIFT_AVAILABILITY(watchos,introduced=9.0) SWIFT_AVAILABILITY(tvos,introduced=11.0) SWIFT_AVAILABILITY(macos,introduced=10.15) SWIFT_AVAILABILITY(ios,introduced=11.0)
+@interface DCDevice (SWIFT_EXTENSION(AppCheckCore)) <GACDeviceCheckTokenGenerator>
 @end
 
 #endif

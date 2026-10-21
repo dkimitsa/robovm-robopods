@@ -72,6 +72,12 @@ import org.robovm.apple.uikit.*;
     public static native void login(String externalId);
     @Method(selector = "login:withToken:")
     public static native void login(String externalId, String token);
+    @Method(selector = "addUserJwtInvalidatedListener:")
+    public static native void addUserJwtInvalidatedListener(OSUserJwtInvalidatedListener listener);
+    @Method(selector = "removeUserJwtInvalidatedListener:")
+    public static native void removeUserJwtInvalidatedListener(OSUserJwtInvalidatedListener listener);
+    @Method(selector = "updateUserJwt:withToken:")
+    public static native void updateUserJwt(String externalId, String token);
     @Method(selector = "logout")
     public static native void logout();
     @Method(selector = "Notifications")

@@ -55,10 +55,8 @@ import org.robovm.apple.uikit.*;
     public native String getLanguage();
     @Property(selector = "pushSubscriptionImpl")
     public native OSPushSubscriptionImpl getPushSubscriptionImpl();
-    @Property(selector = "requiresUserAuth")
-    public native boolean requiresUserAuth();
-    @Property(selector = "setRequiresUserAuth:")
-    public native void setRequiresUserAuth(boolean v);
+    @Property(selector = "newCodePathsRun")
+    public native boolean isNewCodePathsRun();
     @Property(selector = "User")
     public native OSUser getUser();
     @Property(selector = "pushSubscription")
@@ -76,14 +74,6 @@ import org.robovm.apple.uikit.*;
     public native void login(String externalId, String token);
     @Method(selector = "logout")
     public native void logout();
-    @Method(selector = "clearAllModelsFromStores")
-    public native void clearAllModelsFromStores();
-    @Method(selector = "getTagsInternal")
-    public native NSDictionary<NSString, NSString> getTagsInternal();
-    @Method(selector = "setLocationWithLatitude:longitude:")
-    public native void setLocation(float latitude, float longitude);
-    @Method(selector = "sendPurchases:")
-    public native void sendPurchases(NSArray<?> purchases);
     @Method(selector = "sharedInstance")
     public static native OneSignalUserManagerImpl sharedInstance();
     @Method(selector = "setNotificationTypes:")
@@ -96,8 +86,22 @@ import org.robovm.apple.uikit.*;
     public native void sendSessionTime(NSNumber sessionTime);
     @Method(selector = "runBackgroundTasks")
     public native void runBackgroundTasks();
-    @Method(selector = "onJwtExpiredWithExpiredHandler:")
-    public native void onJwtExpired(@Block("(,@Block)") VoidBlock2<NSString, VoidBlock1<NSString>> expiredHandler);
+    @Method(selector = "clearAllModelsFromStores")
+    public native void clearAllModelsFromStores();
+    @Method(selector = "getTagsInternal")
+    public native NSDictionary<NSString, NSString> getTagsInternal();
+    @Method(selector = "setLocationWithLatitude:longitude:")
+    public native void setLocation(float latitude, float longitude);
+    @Method(selector = "sendPurchases:")
+    public native void sendPurchases(NSArray<?> purchases);
+    @Method(selector = "addUserJwtInvalidatedListener:")
+    public native void addUserJwtInvalidatedListener(OSUserJwtInvalidatedListener listener);
+    @Method(selector = "removeUserJwtInvalidatedListener:")
+    public native void removeUserJwtInvalidatedListener(OSUserJwtInvalidatedListener listener);
+    @Method(selector = "updateUserJwtWithExternalId:token:")
+    public native void updateUserJwt(String externalId, String token);
+    @Method(selector = "authorizationForCurrentUser")
+    public native OSUserRequestAuthorization authorizationForCurrentUser();
     @Method(selector = "addObserver:")
     public native void addObserver(OSUserStateObserver observer);
     @Method(selector = "removeObserver:")

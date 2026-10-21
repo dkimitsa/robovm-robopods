@@ -9,6 +9,7 @@ headers:
     - SingularLinkParams.h
     - Attributes.h
     - Events.h
+    - Singular-Swift.h
 enums:
     SingularLogLevel: {}
 private_typedefs:
@@ -119,6 +120,7 @@ classes:
             '-initWithDeeplink:passthrough:isDeferred:url:':
                 name: init
     SingularUserDetails: {}
+    SingularNetworkInterface: {}
 protocols:
 
 functions:
@@ -148,6 +150,8 @@ constants:
         static_class: Attributes
         name: '#{g[0]}'
     SINGULAR_HAS_USER_DETAILS:
+        exclude: true
+    SWIFT_.*:
         exclude: true
 
     # Make sure we don't miss any constants if new ones are introduced in a later version
