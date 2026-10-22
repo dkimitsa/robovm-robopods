@@ -44,7 +44,7 @@ import org.robovm.apple.uikit.*;
     /*<bind>*/static { ObjCRuntime.bind(OSOperationRepo.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public OSOperationRepo() {}
+    protected OSOperationRepo() {}
     protected OSOperationRepo(Handle h, long handle) { super(h, handle); }
     protected OSOperationRepo(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/

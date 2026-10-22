@@ -59,6 +59,10 @@ import org.robovm.apple.coreanimation.*;
     public native GIDConfiguration getConfiguration();
     @Property(selector = "setConfiguration:")
     public native void setConfiguration(GIDConfiguration v);
+    @Property(selector = "wrapperIdentifier")
+    public static native String getWrapperIdentifier();
+    @Property(selector = "setWrapperIdentifier:")
+    public static native void setWrapperIdentifier(String v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

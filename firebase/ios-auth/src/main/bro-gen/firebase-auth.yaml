@@ -96,6 +96,8 @@ classes:
                 name: initializeRecaptchaConfig
             '-signInAnonymouslyWithCompletionHandler:':
                 exclude: true # seems to be duplicate
+            '-getTokenForcingRefresh:withCallback:':
+                name: getTokenForcingRefresh
     FIRAuthCredential: {}
     FIRAuthDataResult: {}
     FIRAuthErrors: {exclude: true} # empty used only for aggregation

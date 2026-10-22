@@ -74,6 +74,14 @@ import org.robovm.pods.facebook.corebasics.*;
     public native boolean isAdvertiserIDCollectionEnabled();
     @Property(selector = "setIsAdvertiserIDCollectionEnabled:")
     public native void setIsAdvertiserIDCollectionEnabled(boolean v);
+    @Property(selector = "isMetaDataCollectionEnabled")
+    public native boolean isMetaDataCollectionEnabled();
+    @Property(selector = "setIsMetaDataCollectionEnabled:")
+    public native void setIsMetaDataCollectionEnabled(boolean v);
+    @Property(selector = "isAutoLogProductImprovementEnabled")
+    public native boolean isAutoLogProductImprovementEnabled();
+    @Property(selector = "setIsAutoLogProductImprovementEnabled:")
+    public native void setIsAutoLogProductImprovementEnabled(boolean v);
     /**
      * @deprecated This property is deprecated and will be removed in the next major release.       Use `isSKAdNetworkReportEnabled` instead.
      */

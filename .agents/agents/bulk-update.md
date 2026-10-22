@@ -69,6 +69,8 @@ if is_outdated(singular)   { process(singular) }
 if is_outdated(tenjin)     { process(tenjin) }
 if is_outdated(unityads)   { process(unityads) }
 
+if is_outdated(google-sign-in) { process(google-sign-in) }
+
 if is_outdated(firebase) {
   process(firebase-core)
   process(firebase-crashlytics)
@@ -77,7 +79,6 @@ if is_outdated(firebase) {
   process(firebase-auth)
   process(firebase-database)
   process(firebase-firestore)
-  process(firebase-google-sign-in)
   process(firebase-installations)
   process(firebase-messaging)
   process(firebase-remoteconfig)

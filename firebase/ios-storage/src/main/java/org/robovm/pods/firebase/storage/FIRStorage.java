@@ -77,11 +77,6 @@ import org.robovm.apple.dispatch.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @GlobalValue(symbol="FirebaseStorageVersionNumber", optional=true)
-    public static native @org.robovm.rt.bro.annotation.Marshaler(StringMarshalers.AsAsciiZMarshaler.class) double versionNumber();
-    @GlobalValue(symbol="FirebaseStorageVersionString", optional=true)
-    public static native BytePtr VersionString();
-    
     @Method(selector = "reference")
     public native FIRStorageReference reference();
     @Method(selector = "referenceForURL:")

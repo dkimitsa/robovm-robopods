@@ -77,9 +77,29 @@ typedef NS_ENUM(NSInteger, IASDKCoreInitErrorType) {
 @property (atomic, strong, nullable) NSString *publisherAppStoreID; // publisher app ID in Apple’s App Store
 
 /**
- *  @brief Use this delegate in order to get an info about every shown ad.
+ *  @brief Deprecated. Use @c addGlobalAdDelegate: and @c removeGlobalAdDelegate: instead.
+ *
+ *  @discussion The setter calls @c addGlobalAdDelegate: internally. The getter always returns @c nil.
  */
-@property (atomic, weak, nullable) id<IAGlobalAdDelegate> globalAdDelegate;
+@property (weak, nullable) id<IAGlobalAdDelegate> globalAdDelegate
+    DEPRECATED_MSG_ATTRIBUTE("Use addGlobalAdDelegate: / removeGlobalAdDelegate: instead.");
+
+/**
+ *  @brief Registers a global ad delegate to receive impression callbacks.
+ *
+ *  @discussion Multiple delegates can be registered. Each will receive @c adDidShowWithImpressionData:withAdRequest:
+ *  when an ad is shown. Delegates are held weakly and deduplicated by identity.
+ *
+ *  @param delegate The delegate to register.
+ */
+- (void)addGlobalAdDelegate:(id<IAGlobalAdDelegate> _Nonnull)delegate;
+
+/**
+ *  @brief Unregisters a global ad delegate so it no longer receives impression callbacks.
+ *
+ *  @param delegate The delegate to unregister.
+ */
+- (void)removeGlobalAdDelegate:(id<IAGlobalAdDelegate> _Nonnull)delegate;
 
 /**
  *  @brief The GDPR consent status.
@@ -177,7 +197,7 @@ typedef NS_ENUM(NSInteger, IASDKCoreInitErrorType) {
 /**
  *  @brief Use this property in order to provide a user Id. Once it's set, it is saved on a device.
  *
- *  @discussion It will be passed as is, without any validation/modification. In order to clear it from a device, pass a nil or empty string.
+ *  @discussion Values longer than 512 characters are truncated. In order to clear it from a device, pass a nil or empty string.
  */
 @property (atomic, nullable) NSString *userID;
 
@@ -185,7 +205,7 @@ typedef NS_ENUM(NSInteger, IASDKCoreInitErrorType) {
  *  @brief Use userData for better ad targeting.
  *  @discussion This userData will be used in bidding flow, while bidding token creation.
  */
-@property (nonatomic, nullable) IAUserData *userData;
+@property (atomic, nullable) IAUserData *userData;
 
 /**
  *  @brief Deprecated.

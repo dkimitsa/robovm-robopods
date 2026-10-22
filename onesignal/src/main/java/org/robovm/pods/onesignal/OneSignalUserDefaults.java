@@ -90,6 +90,8 @@ import org.robovm.apple.uikit.*;
     public native void saveObject(String key, NSObject value);
     @Method(selector = "getSavedCodeableDataForKey:defaultValue:")
     public native NSObject getSavedCodeableData(String key, NSObject value);
+    @Method(selector = "getSavedCodeableDataForKey:defaultValue:maxBytes:")
+    public native NSObject getSavedCodeableDataForKey(String key, NSObject value, @MachineSizedUInt long maxBytes);
     @Method(selector = "saveCodeableDataForKey:withValue:")
     public native void saveCodeableData(String key, NSObject value);
     @Method(selector = "initStandard")

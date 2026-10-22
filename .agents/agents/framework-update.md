@@ -40,10 +40,11 @@ The version check must target the *owning package*, which is not always the fram
 Evaluate these rules IN ORDER; `<check_id>` = the result of the FIRST rule that matches (order matters because of prefix overlaps):
 1. `<framework_name>` == `facebook-audience` → `<check_id>` = `facebook-audience`
 2. `<framework_name>` is one of `google-mobile-ads-applovin-adapter`, `google-mobile-ads-inmobi-adapter`, `google-mobile-ads-meta-adapter` → `<check_id>` = `<framework_name>` (each adapter is its own package)
-3. `<framework_name>` == `firebase` OR starts with `firebase-` → `<check_id>` = `firebase`
-4. `<framework_name>` == `facebook` OR starts with `facebook-` → `<check_id>` = `facebook`
-5. `<framework_name>` is one of `google-mobile-ads`, `google-ump` → `<check_id>` = `google-mobile-ads`
-6. otherwise → `<check_id>` = `<framework_name>` (framework is its own package)
+3. `<framework_name>` == `google-sign-in` → `<check_id>` = `google-sign-in` (Google Sign-In is its own package)
+4. `<framework_name>` == `firebase` OR starts with `firebase-` → `<check_id>` = `firebase`
+5. `<framework_name>` == `facebook` OR starts with `facebook-` → `<check_id>` = `facebook`
+6. `<framework_name>` is one of `google-mobile-ads`, `google-ump` → `<check_id>` = `google-mobile-ads`
+7. otherwise → `<check_id>` = `<framework_name>` (framework is its own package)
 
 ## Step 2 — Check for update
 1. DELEGATE `framework-download` with the exact prompt: `@framework-download <check_id> --check-for-update`

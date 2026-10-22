@@ -56,6 +56,7 @@
 #import <FBSDKCoreKit/FBSDKAppLinkTargetCreating.h>
 #import <FBSDKCoreKit/FBSDKAppLinkTargetProtocol.h>
 #import <FBSDKCoreKit/FBSDKAppLinkURL.h>
+#import <FBSDKCoreKit/FBSDKAppLinkURLCache.h>
 #import <FBSDKCoreKit/FBSDKAppLinkURLCreating.h>
 #import <FBSDKCoreKit/FBSDKAppLinkURLKeys.h>
 #import <FBSDKCoreKit/FBSDKAppLinkUtility.h>
@@ -171,6 +172,7 @@
 #import <FBSDKCoreKit/FBSDKRandom.h>
 #import <FBSDKCoreKit/FBSDKRestrictiveDataFilterManager.h>
 #import <FBSDKCoreKit/FBSDKRulesFromKeyProvider.h>
+#import <FBSDKCoreKit/FBSDKScreenTitleObserver.h>
 #import <FBSDKCoreKit/FBSDKServerConfiguration.h>
 #import <FBSDKCoreKit/FBSDKServerConfigurationManager.h>
 #import <FBSDKCoreKit/FBSDKServerConfigurationProviding.h>

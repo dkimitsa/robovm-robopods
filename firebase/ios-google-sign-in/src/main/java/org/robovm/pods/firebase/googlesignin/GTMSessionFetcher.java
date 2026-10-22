@@ -207,14 +207,8 @@ import org.robovm.apple.coreanimation.*;
     public native @Block("(,,@Block)") VoidBlock3<Boolean, NSError, VoidBooleanBlock> getRetryBlock();
     @Property(selector = "setRetryBlock:")
     public native void setRetryBlock(@Block("(,,@Block)") VoidBlock3<Boolean, NSError, VoidBooleanBlock> v);
-    /**
-     * @since Available in iOS 10.0 and later.
-     */
     @Property(selector = "metricsCollectionBlock")
     public native @Block VoidBlock1<NSURLSessionTaskMetrics> getMetricsCollectionBlock();
-    /**
-     * @since Available in iOS 10.0 and later.
-     */
     @Property(selector = "setMetricsCollectionBlock:")
     public native void setMetricsCollectionBlock(@Block VoidBlock1<NSURLSessionTaskMetrics> v);
     @Property(selector = "maxRetryInterval")
@@ -370,7 +364,7 @@ import org.robovm.apple.coreanimation.*;
     @Method(selector = "setRequestValue:forHTTPHeaderField:")
     public native void setRequestValue(String value, String field);
     @Method(selector = "sessionIdentifierMetadata")
-    public native NSDictionary<NSString, NSString> sessionIdentifierMetadata();
+    public native NSDictionary<NSString, ?> sessionIdentifierMetadata();
     @Method(selector = "beginFetchWithDelegate:didFinishSelector:")
     public native void beginFetch(NSObject delegate, Selector finishedSEL);
     @Method(selector = "beginFetchWithCompletionHandler:")

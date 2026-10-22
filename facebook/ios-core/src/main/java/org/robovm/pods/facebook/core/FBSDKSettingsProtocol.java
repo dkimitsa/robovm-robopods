@@ -88,6 +88,10 @@ import org.robovm.pods.facebook.corebasics.*;
     boolean isAdvertiserIDCollectionEnabled();
     @Property(selector = "setIsAdvertiserIDCollectionEnabled:")
     void setIsAdvertiserIDCollectionEnabled(boolean v);
+    @Property(selector = "isMetaDataCollectionEnabled")
+    boolean isMetaDataCollectionEnabled();
+    @Property(selector = "isAutoLogProductImprovementEnabled")
+    boolean isAutoLogProductImprovementEnabled();
     /**
      * @deprecated This property is deprecated and will be removed in the next major release.       Use `isATETimeSufficientlyDelayed` instead.
      */

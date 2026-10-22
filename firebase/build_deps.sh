@@ -55,7 +55,6 @@ frameworks=(
   FirebaseDynamicLinks
   GoogleMobileAds
   GoogleAppMeasurement
-  GoogleSignIn
   UserMessagingPlatform
   FirebaseMessaging
   FirebaseRemoteConfig

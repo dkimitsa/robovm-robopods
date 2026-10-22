@@ -470,6 +470,44 @@ val knownFrameworks = mutableMapOf<String, (String) -> Unit>(
             """.trimIndent(),
         )
     },
+    "google-sign-in" to { framework ->
+        val artifact = "GoogleSignIn.framework"
+        val artifactLocation = downloadFolder.extend("GoogleSignIn/GoogleSignIn.xcframework/ios-arm64/$artifact")
+        val gtmLocation = downloadFolder.extend("GoogleSignIn/GTMSessionFetcher.xcframework/ios-arm64/GTMSessionFetcher.framework")
+        processFramework(
+            artifact = artifact,
+            moduleFolder = "firebase/ios-google-sign-in",
+            destinationHeadersDir = Path.of("firebase", "ios-google-sign-in", "src", "main", "bro-gen").toFile(),
+            sourceHeadersDir = artifactLocation.headers,
+            yaml = "firebase-google-sign-in.yaml",
+            version = { artifactLocation.infoPlist.extractVersion() },
+            instruction = """
+                0. run firebase/ios-google-sign-in/cocoapods/fetch.sh to fetch and build from https://github.com/google/GoogleSignIn-iOS
+                1. expected location $artifactLocation
+            """.trimIndent(),
+            headerFolderCleaner = { _, dst ->
+                cleanUpHeaders("GoogleSignIn", dst.extend("GoogleSignIn.framework"))
+                cleanUpHeaders("GTMSessionFetcher", dst.extend("GTMSessionFetcher.framework"))
+            },
+            headersCopier = { _, _, dst ->
+                copyHeaders("GoogleSignIn.framework",
+                    artifactLocation.headers,
+                    dst.extend("GoogleSignIn.framework/Headers"))
+                copyHeaders("GTMSessionFetcher.framework",
+                    gtmLocation.headers,
+                    dst.extend("GTMSessionFetcher.framework/Headers"))
+            },
+            interactiveValidateHeaderFolder = { _, _, instruction, optional ->
+                interactiveValidateHeaderFolder("GoogleSignIn.framework",
+                    artifactLocation.headers, instruction, optional)
+                interactiveValidateHeaderFolder("GTMSessionFetcher.framework",
+                    gtmLocation.headers, instruction, optional)
+            },
+            readmeFileVersionUpdater = { frm, modFolder, version ->
+                updateModuleReadmeFileVersionString(frm, File("$modFolder/README.md"), version, "$version.0")
+            }
+        )
+    },
 ).also {
     registerAppCenter(it, knownGroups)
     registerFirebase(it, knownGroups)
@@ -1292,31 +1330,6 @@ fun registerFirebase(frameworkRegistry: MutableMap<String, (String) -> Unit>, gr
     registry["firebase-messaging"] = { action("FirebaseMessaging", "firebase/ios-messaging", "firebase-messaging.yaml") }
     registry["firebase-remoteconfig"] = { action("FirebaseRemoteConfig", "firebase/ios-remoteconfig", "firebase-remoteconfig.yaml") }
     registry["firebase-storage"] = { action("FirebaseStorage", "firebase/ios-storage", "firebase-storage.yaml") }
-    registry["firebase-google-sign-in"] = {
-        action("GoogleSignIn",
-            moduleFolder = "firebase/ios-google-sign-in", "firebase-google-sign-in.yaml",
-            frameworkLocation =  pickLocation("GoogleSignIn"),
-            destinationHeadersDir = Path.of("firebase", "ios-google-sign-in", "src", "main", "bro-gen").toFile(),
-            headerFolderCleaner = { _, dst ->
-                cleanUpHeaders("GoogleSignIn", dst.extend("GoogleSignIn.framework"))
-                cleanUpHeaders("GTMSessionFetcher", dst.extend("GTMSessionFetcher.framework"))
-            },
-            headersCopier = { _, _, dst ->
-                copyHeaders("GoogleSignIn.framework",
-                    pickLocation("GoogleSignIn").extend("Headers"),
-                    dst.extend("GoogleSignIn.framework/Headers"))
-                copyHeaders("GTMSessionFetcher.framework",
-                    pickLocation("GTMSessionFetcher", "GoogleSignIn").extend("Headers"),
-                    dst.extend("GTMSessionFetcher.framework/Headers"))
-            } ,
-            interactiveValidateHeaderFolder = { _, _, instruction, optional ->
-                interactiveValidateHeaderFolder("GoogleSignIn.framework",
-                    pickLocation("GoogleSignIn").extend("Headers"), instruction, optional)
-                interactiveValidateHeaderFolder("GTMSessionFetcher.framework",
-                    pickLocation("GTMSessionFetcher", "GoogleSignIn").extend("Headers"), instruction, optional)
-            },
-        )
-    }
     registry["firebase-appcheck"] = {
         action("FirebaseAppCheck", "firebase/ios-appcheck", "firebase-appcheck.yaml",
             destinationHeadersDir = Path.of("firebase", "ios-appcheck", "src", "main", "bro-gen").toFile(),
@@ -1360,7 +1373,7 @@ fun registerFirebase(frameworkRegistry: MutableMap<String, (String) -> Unit>, gr
         // update artifacts list in bom
         with (PomUtils()) {
             listSubmodules(File("firebase/"))
-                .filter { it.moduleDir != "ios-bom" }
+                .filter { it.moduleDir != "ios-bom" && it.moduleDir != "ios-google-sign-in" }
                 .let { updateAggregatedPom(File("firebase/ios-bom/pom.xml"), it) }
         }
     }

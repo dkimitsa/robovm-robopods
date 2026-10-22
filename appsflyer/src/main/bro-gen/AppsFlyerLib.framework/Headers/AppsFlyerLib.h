@@ -81,6 +81,7 @@ NS_ASSUME_NONNULL_BEGIN
 #define AFEventParamValidated              @"af_validated"
 #define AFEventParamRevenue                @"af_revenue"
 #define AFEventProjectedParamRevenue       @"af_projected_revenue"
+#define AFEventParamNetRevenue             @"af_net_revenue"
 #define AFEventParamReceiptId              @"af_receipt_id"
 #define AFEventParamTutorialId             @"af_tutorial_id"
 #define AFEventParamVirtualCurrencyName    @"af_virtual_currency_name"

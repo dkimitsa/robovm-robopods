@@ -35,7 +35,7 @@ import org.robovm.apple.uikit.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("_TtCC13OneSignalUser24OneSignalUserManagerImpl22OSPushSubscriptionImpl")/*</annotations>*/
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("OneSignalUser.OSPushSubscriptionImpl")/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/OSPushSubscriptionImpl/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*/implements OSPushSubscription/*</implements>*/ {

@@ -59,11 +59,6 @@ import org.robovm.apple.dispatch.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @GlobalValue(symbol="FirebaseFirestoreVersionNumber", optional=true)
-    public static native double getVersionNumber();
-    @GlobalValue(symbol="FirebaseFirestoreVersionString", optional=true)
-    public static native BytePtr getVersionString();
-    
     /**
      * @deprecated Instead of creating cache indexes manually, consider using `PersistentCacheIndexManager.enableIndexAutoCreation()` to let the SDK decide whether to create cache indexes for queries running locally.
      */

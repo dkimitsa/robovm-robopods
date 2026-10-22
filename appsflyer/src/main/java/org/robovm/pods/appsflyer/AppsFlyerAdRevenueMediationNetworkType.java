@@ -52,7 +52,9 @@ public enum /*<name>*/AppsFlyerAdRevenueMediationNetworkType/*</name>*/ implemen
     Unity(11L),
     ToponPte(12L),
     Custom(13L),
-    DirectMonetization(14L);
+    DirectMonetization(14L),
+    GoogleAdManager(15L),
+    CloudX(16L);
     /*</values>*/
 
     /*<bind>*/

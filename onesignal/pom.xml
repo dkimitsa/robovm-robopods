@@ -7,8 +7,8 @@
     </parent>
 
     <artifactId>robopods-onesignal-ios</artifactId>
-    <version>5.7.0.0</version>
-    <name>RoboPods OneSignal iOS v5.7.0</name>
+    <version>5.8.0.0</version>
+    <name>RoboPods OneSignal iOS v5.8.0</name>
     <packaging>jar</packaging>
 
     <licenses>

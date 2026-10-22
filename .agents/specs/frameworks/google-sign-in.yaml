@@ -1,0 +1,6 @@
+name: google-sign-in
+moduleFolder: firebase/ios-google-sign-in
+artifactSource:
+  - to get last version tag use https://api.github.com/repos/google/GoogleSignIn-iOS/releases or https://github.com/google/GoogleSignIn-iOS/releases
+  - to build the artifact, change directory to `firebase/ios-google-sign-in/cocoapods` and run `./fetch.sh $version`, which builds and stages GoogleSignIn.xcframework into expected downloadLocation
+downloadLocation: ./.robopods-wip/GoogleSignIn/GoogleSignIn.xcframework

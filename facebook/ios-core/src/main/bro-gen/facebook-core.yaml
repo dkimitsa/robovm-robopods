@@ -704,6 +704,8 @@ classes:
                 name: isProtectedModeApplied
     FBSDKShimGraphRequestInterceptor:
         exclude: true #INTERNAL - DO NOT USE
+    FBSDKAppLinkURLCache: {}
+    FBSDKScreenTitleObserver: {}
 protocols:
     FBSDKAppLinkResolving:
         methods:
@@ -1085,6 +1087,7 @@ protocols:
         exclude: true #INTERNAL - DO NOT USE
     FBSDKTransactionObserving:
         exclude: true #INTERNAL - DO NOT USE
+    FBSDKRestoredAuthenticationSessionObserving: {}
 functions:
     fb_randomString:
         exclude: true

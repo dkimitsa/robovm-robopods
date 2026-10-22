@@ -37,7 +37,7 @@ import org.robovm.apple.uikit.*;
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/FIRAuth/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
-    /*<implements>*/implements UISceneDelegate, FIRAuthInterop, UIApplicationDelegate/*</implements>*/ {
+    /*<implements>*/implements UISceneDelegate, UIApplicationDelegate/*</implements>*/ {
 
     /*<ptr>*/public static class FIRAuthPtr extends Ptr<FIRAuth, FIRAuthPtr> {}/*</ptr>*/
     /*<bind>*/static { ObjCRuntime.bind(FIRAuth.class); }/*</bind>*/

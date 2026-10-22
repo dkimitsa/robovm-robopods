@@ -89,6 +89,10 @@ import org.robovm.pods.facebook.corebasics.*;
     public boolean isAdvertiserIDCollectionEnabled() { return false; }
     @NotImplemented("setIsAdvertiserIDCollectionEnabled:")
     public void setIsAdvertiserIDCollectionEnabled(boolean v) {}
+    @NotImplemented("isMetaDataCollectionEnabled")
+    public boolean isMetaDataCollectionEnabled() { return false; }
+    @NotImplemented("isAutoLogProductImprovementEnabled")
+    public boolean isAutoLogProductImprovementEnabled() { return false; }
     /**
      * @deprecated This property is deprecated and will be removed in the next major release.       Use `isATETimeSufficientlyDelayed` instead.
      */
