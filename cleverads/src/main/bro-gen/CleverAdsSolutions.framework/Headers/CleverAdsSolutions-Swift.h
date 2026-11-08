@@ -488,8 +488,9 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) CASSize * _N
 /// Medium Rectangle size 300dp width and 250dp height
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) CASSize * _Nonnull mediumRectangle;)
 + (CASSize * _Nonnull)mediumRectangle SWIFT_WARN_UNUSED_RESULT;
-/// Typically, Smart Banners on phones have a <code>banner</code> size.
-/// Or on tablets a <code>leaderboard</code> size.
+/// Returns <code>leaderboard</code> when the app window is a large canvas
+/// (regular width and height, e.g. iPad or an open iPhone Duo) and the leaderboard fits,
+/// otherwise <code>banner</code>.
 + (CASSize * _Nonnull)getSmartBanner SWIFT_WARN_UNUSED_RESULT;
 /// Inline adaptive banners are larger, taller banners compared to anchored adaptive banners.
 /// They are of variable height, and can be as tall as the device screen.
@@ -514,7 +515,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) CASSize * _N
 /// Create Adaptive AdSize placed in container for current screen orientation.
 /// <ul>
 ///   <li>
-///     The height of adaptive banners cannot be less than 50 points and more than 250 points.
+///     The height of adaptive banners cannot be less than 50 points and more than 90 points.
 ///   </li>
 ///   <li>
 ///     The adaptive banners use fixed aspect ratios instead of fixed heights.
@@ -524,7 +525,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) CASSize * _N
 /// Create Adaptive AdSize with window width for current orientation.
 /// <ul>
 ///   <li>
-///     The height of adaptive banners cannot be less than 50 points and more than 250 points.
+///     The height of adaptive banners cannot be less than 50 points and more than 90 points.
 ///   </li>
 ///   <li>
 ///     The adaptive banners use fixed aspect ratios instead of fixed heights.
@@ -534,7 +535,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) CASSize * _N
 /// Create Adaptive AdSize with Max Width for current screen orientation.
 /// <ul>
 ///   <li>
-///     The height of adaptive banners cannot be less than 50 points and more than 250 points.
+///     The height of adaptive banners cannot be less than 50 points and more than 90 points.
 ///   </li>
 ///   <li>
 ///     The width of adaptive banners cannot be less than 300 points.
@@ -544,6 +545,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) CASSize * _N
 ///   </li>
 /// </ul>
 + (CASSize * _Nonnull)getAdaptiveBannerForMaxWidth:(CGFloat)maxWidth SWIFT_WARN_UNUSED_RESULT;
+/// Create Adaptive AdSize with Max Width for current screen orientation.
++ (CASSize * _Nonnull)getAdaptiveBannerForMaxWidth:(CGFloat)maxWidth in:(UIWindow * _Nullable)window SWIFT_WARN_UNUSED_RESULT;
 - (CGSize)toCGSize SWIFT_WARN_UNUSED_RESULT;
 @property (nonatomic, readonly) BOOL isAdaptive;
 @property (nonatomic, readonly) BOOL isInline;
@@ -593,6 +596,7 @@ typedef SWIFT_ENUM_NAMED(NSInteger, CASSourceId, "AdSourceId", open) {
   CASSourceIdDisplayIO = 73,
   CASSourceIdBidease = 74,
   CASSourceIdMoloco = 76,
+  CASSourceIdBlueSea = 78,
 };
 
 typedef SWIFT_ENUM_NAMED(NSInteger, CASAudience, "Audience", open) {
@@ -622,6 +626,8 @@ SWIFT_CLASS_NAMED("BiddingUnit") SWIFT_DEPRECATED_MSG("Use new MediationAd imple
 @class CASTargetingOptions;
 @class CASMediationManager;
 @class CASManagerBuilder;
+@class CASPurchaseInfo;
+@class UIViewController;
 SWIFT_CLASS_NAMED("CAS")
 @interface CAS : NSObject
 /// Get singleton instance to configure all mediation managers
@@ -648,11 +654,16 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) CASMediationManager * 
 + (NSInteger)getSKNetworksCount SWIFT_WARN_UNUSED_RESULT;
 /// Returns the number of AdAttributionKit entries bundled with the SDK.
 + (NSInteger)getAdAttributionKitCount SWIFT_WARN_UNUSED_RESULT;
+/// For internal purposes only.
+/// Allowed after initialization only.
++ (void)reportCustomRevenueWithJson:(NSString * _Nonnull)json;
+/// Reports purchase data to analytics services.
++ (void)reportPurchase:(CASPurchaseInfo * _Nonnull)purchase;
+/// Displays the CAS Integration Page on screen with the current SDK integration status.
++ (void)presentIntegrationPageFrom:(UIViewController * _Nonnull)viewController casId:(NSString * _Nonnull)casId;
 /// Call Integration Helper and check current integration in console.
 /// Log tag: [CASIntegrationHelper]
 + (void)validateIntegration;
-/// For internal purposes only.
-+ (void)reportCustomRevenueWithJson:(NSString * _Nonnull)json;
 + (NSString * _Nonnull)getMessageOf:(CASError * _Nonnull)error SWIFT_WARN_UNUSED_RESULT SWIFT_AVAILABILITY(ios,deprecated=0.0.1,message="Use CASError.description instead");
 + (CASError * _Nonnull)getErrorFor:(NSString * _Nullable)message SWIFT_WARN_UNUSED_RESULT SWIFT_AVAILABILITY(ios,deprecated=0.0.1,message="Use [CASError fromMessage:message] instead");
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
@@ -720,7 +731,6 @@ SWIFT_PROTOCOL_NAMED("CASScreenContent")
 - (void)destroy;
 @end
 
-@class UIViewController;
 @protocol CASCallback;
 /// Manages an app open ad, allowing for loading, presenting, and destroying the ad content.
 /// This class facilitates the handling of app open ads, which are full-screen ads shown when the user opens or resumes the app.
@@ -1643,6 +1653,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 + (NSString * _Nonnull)bidease SWIFT_WARN_UNUSED_RESULT;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull moloco;)
 + (NSString * _Nonnull)moloco SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull blueSea;)
++ (NSString * _Nonnull)blueSea SWIFT_WARN_UNUSED_RESULT;
 /// Meta Audience Network  Advertising Tracking Enabled
 /// Set the <code>FBAdSettings.setAdvertiserTrackingEnabled</code> flag.
 /// The setAdvertiserTrackingEnabled “1” flag allows you to inform Audience Network whether to use the data to deliver personalized ads in line with your own legal obligations,
@@ -1720,11 +1732,6 @@ SWIFT_CLASS_NAMED("CASRewarded")
 /// Additionally, if an error occurs while loading an ad, the system will automatically attempt to load a new ad.
 /// By default, this feature is disabled.
 @property (nonatomic) BOOL isAutoloadEnabled;
-/// Controls whether interstitial ads are shown as a fallback when a rewarded video ad has no available fill.
-/// Interstitial ads do not require the user to watch the entire ad to completion. However, the
-/// <code>userDidEarnRewardHandler</code> will still be triggered as if the user completed the rewarded video.
-/// This option is enabled by default.
-@property (nonatomic) BOOL isExtraFillInterstitialAdEnabled;
 /// <ul>
 ///   <li>
 ///     An optional placement name for the ad instance that helps categorize
@@ -1743,6 +1750,22 @@ SWIFT_CLASS_NAMED("CASRewarded")
 /// including the <code>placement</code> and <code>userID</code> from <code>CAS.targetingOptions</code> alongside any custom data provided here.
 /// This feature is currently in closed beta.
 @property (nonatomic, copy) NSString * _Nullable serverSideVerificationData;
+/// Controls whether interstitial ads are shown as a fallback when a rewarded video ad has no available fill.
+/// Interstitial ads do not require the user to watch the entire ad to completion.
+/// attention:
+/// Server-side verification is not performed for interstitial ads shown as a fallback.
+/// The <code>userDidEarnRewardHandler</code> is still triggered on the client, but your server will not receive a reward callback.
+/// If your app relies on server-side verification to grant rewards, check <code>isInterstitialAdFallbackLoaded</code>
+/// property before showing the ad and handle the reward accordingly.
+/// This option is enabled by default.
+@property (nonatomic) BOOL isExtraFillInterstitialAdEnabled;
+/// Indicates whether an interstitial ad is loaded and ready to be shown
+/// instead of a rewarded video ad.
+/// Returns <code>true</code> only an interstitial ad has been loaded as a fallback for a rewarded video ad
+/// with no available fill.
+/// seealso:
+/// <code>isExtraFillInterstitialAdEnabled</code>
+@property (nonatomic, readonly) BOOL isInterstitialAdFallbackLoaded;
 /// Loads the rewarded ad content.
 /// Call this function to load the ad before attempting to present it. The loading process may take some time,
 /// and you will be notified when the ad is successfully loaded or if the loading fails via the <code>delegate</code>.
@@ -2408,6 +2431,167 @@ SWIFT_CLASS_NAMED("NativeAdContent")
 /// and preventing memory leaks.
 - (void)destroy;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class NSDecimalNumber;
+@class NSData;
+@class NSDate;
+/// Information about an in-app purchase.
+/// The total revenue generated will be the: <code>quantity * price * currency_rate</code>
+/// Example Store Kit 2:
+/// \code
+/// CAS.reportPurchase(
+///     PurchaseInfo(
+///         productID: transaction.productID,
+///         price: transaction.price ?? 0,
+///         currency: transaction.currency?.identifier,
+///         quantity: transaction.purchasedQuantity
+///     )
+///     // Recommended add info to validate purchase
+///     .setValidation(
+///         transactionID: transaction.id,
+///         jwsRepresentation: verificationResult.jwsRepresentation
+///     )
+///     // If product is subscription
+///     .setSubsValidation(
+///         transactionID: transaction.id,
+///         originalID: transaction.originalID,
+///         originalPurchaseDate: transaction.originalPurchaseDate,
+///         jwsRepresentation: verificationResult.jwsRepresentation,
+///         jsonRepresentation: transaction.jsonRepresentation
+///     )
+/// )
+///
+/// \endcodeExample Store Kit 1:
+/// \code
+/// guard transaction.transactionState == .purchased else { return }
+/// let receiptURL = Bundle.main.appStoreReceiptURL
+/// let receiptData = receiptURL.flatMap { try? Data(contentsOf: $0) }
+///
+/// CAS.reportPurchase(
+///     PurchaseInfo(
+///         productID: transaction.payment.productIdentifier,
+///         price: product.price as Decimal,
+///         currency: product.priceLocale.currencyCode,
+///         quantity: transaction.payment.quantity,
+///     )
+///     // Recommended add info to validate purchase
+///     .setValidation(
+///         transactionID: transaction.transactionIdentifier,
+///         receiptData: receiptData
+///     )
+///     // If product is subscription
+///     .setSubsValidationFromStoreKit()
+/// )
+///
+/// \endcode
+SWIFT_CLASS_NAMED("PurchaseInfo")
+@interface CASPurchaseInfo : NSObject
+/// Product identifier from the IAP provider.
+@property (nonatomic, readonly, copy) NSString * _Nonnull productID;
+/// Number of items being purchased.
+@property (nonatomic, readonly) NSInteger quantity;
+/// Price of one purchased item in the selected currency.
+@property (nonatomic, readonly, strong) NSDecimalNumber * _Nonnull price;
+/// ISO 4217 currency code, for example USD or EUR.
+@property (nonatomic, readonly, copy) NSString * _Nullable currency;
+/// Binary StoreKit legacy receipt from <code>Bundle.main.appStoreReceiptURL</code> (ASN.1)
+@property (nonatomic, readonly, copy) NSString * _Nullable receiptBase64;
+/// Cryptographically signed by Apple JWS representation from <code>VerificationResult.jwsRepresentation</code>
+@property (nonatomic, readonly, copy) NSString * _Nullable jwsRepresentation;
+/// JSON representation from <code>Transaction.jsonRepresentation</code>
+@property (nonatomic, readonly, copy) NSString * _Nullable jsonRepresentation;
+/// Transaction identifier from StoreKit.
+@property (nonatomic, readonly, copy) NSString * _Nullable transactionID;
+/// Original transaction identifier for subscription validation.
+@property (nonatomic, readonly, copy) NSString * _Nullable originalTransactionID;
+/// Original purchase date for subscription analytics.
+@property (nonatomic, readonly) int64_t originalPurchaseDate;
+/// Original IAP user id
+@property (nonatomic, readonly, copy) NSString * _Nullable userID;
+/// IAP provider that processed purchase.
+@property (nonatomic, copy) NSString * _Nonnull provider;
+/// Create Purchase Info
+/// \param productID Product identifier from the IAP provider. 
+///
+/// \param price Price of one purchased item in the selected currency. 
+///
+/// \param currency ISO 4217 currency code, for example USD or EUR. 
+///
+/// \param quantity Number of items being purchased. 
+///
+- (nonnull instancetype)initWithProductID:(NSString * _Nonnull)productID price:(NSDecimalNumber * _Nonnull)price currency:(NSString * _Nullable)currency quantity:(NSInteger)quantity OBJC_DESIGNATED_INITIALIZER;
+/// Adds Store Kit 2 data required to validate the purchase.
+/// <ul>
+///   <li>
+///     Parameters:
+///   </li>
+///   <li>
+///     transactionID Transaction.id
+///   </li>
+///   <li>
+///     jwsRepresentation JWS representation from <code>VerificationResult.jwsRepresentation</code>
+///   </li>
+/// </ul>
+- (CASPurchaseInfo * _Nonnull)setValidationWithTransactionID:(uint64_t)transactionID jwsRepresentation:(NSString * _Nullable)jwsRepresentation;
+/// Adds Store Kit 1 data required to validate the purchase.
+/// <ul>
+///   <li>
+///     Parameters:
+///   </li>
+///   <li>
+///     transactionID SKPaymentTransaction.transactionIdentifier
+///   </li>
+///   <li>
+///     receiptData Binary receipt from <code>Bundle.main.appStoreReceiptURL</code> (ASN.1)
+///   </li>
+/// </ul>
+- (CASPurchaseInfo * _Nonnull)setValidationWithTransactionID:(NSString * _Nullable)transactionID receiptData:(NSData * _Nullable)receiptData;
+/// Adds Store Kit subscription purchase data required to validate.
+/// <ul>
+///   <li>
+///     Parameters:
+///   </li>
+///   <li>
+///     transactionID Transaction.id
+///   </li>
+///   <li>
+///     originalID Transaction.originalID
+///   </li>
+///   <li>
+///     originalPurchaseDate Transaction.originalPurchaseDate
+///   </li>
+///   <li>
+///     jwsRepresentation JWS representation from <code>VerificationResult.jwsRepresentation</code>
+///   </li>
+///   <li>
+///     jsonRepresentation JSON representation from <code>Transaction.jsonRepresentation</code>
+///   </li>
+/// </ul>
+- (CASPurchaseInfo * _Nonnull)setSubsValidationWithTransactionID:(uint64_t)transactionID originalID:(uint64_t)originalID originalPurchaseDate:(NSDate * _Nullable)originalPurchaseDate jwsRepresentation:(NSString * _Nullable)jwsRepresentation jsonRepresentation:(NSData * _Nullable)jsonRepresentation;
+/// Adds Store Kit subscription purchase data required to validate from last <code>Transaction.currentEntitlement</code> by <code>productID</code>.
+- (CASPurchaseInfo * _Nonnull)setSubsValidationFromStoreKit SWIFT_AVAILABILITY(ios,introduced=16.0);
+/// Adds the required Order ID data to validate an Xsolla purchase,
+/// and marks this <code>PurchaseInfo</code> as coming from the Xsolla.
+/// <ul>
+///   <li>
+///     Parameters:
+///   </li>
+///   <li>
+///     orderID Xsolla order id.
+///   </li>
+///   <li>
+///     userID Xsolla user id.
+///   </li>
+/// </ul>
+- (void)setXsollaValidationWithOrderID:(NSString * _Nonnull)orderID userID:(NSString * _Nullable)userID;
+- (nonnull instancetype)initWithCopying:(CASPurchaseInfo * _Nonnull)other OBJC_DESIGNATED_INITIALIZER;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull providerAppleAppStore;)
++ (NSString * _Nonnull)providerAppleAppStore SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull providerXsolla;)
++ (NSString * _Nonnull)providerXsolla SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 #endif

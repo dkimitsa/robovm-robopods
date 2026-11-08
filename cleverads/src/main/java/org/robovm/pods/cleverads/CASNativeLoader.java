@@ -50,7 +50,7 @@ import org.robovm.apple.corelocation.*;
     protected CASNativeLoader(Handle h, long handle) { super(h, handle); }
     protected CASNativeLoader(SkipInit skipInit) { super(skipInit); }
     @Method(selector = "initWithCasID:")
-    public CASNativeLoader(String casID) { super((SkipInit) null); initObject(initWithCasID$(casID)); }
+    public CASNativeLoader(String casID) { super((SkipInit) null); initObject(init(casID)); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "delegate")
@@ -75,7 +75,7 @@ import org.robovm.apple.corelocation.*;
     /*<members>*//*</members>*/
     /*<methods>*/
     @Method(selector = "initWithCasID:")
-    protected native @Pointer long initWithCasID$(String casID);
+    protected native @Pointer long init(String casID);
     @Method(selector = "loadAd")
     public native void loadAd();
     @Method(selector = "loadWithMaxNumberOfAds:")

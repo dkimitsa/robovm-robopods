@@ -417,7 +417,12 @@ NS_SWIFT_NAME(setPluginInfo(plugin:version:additionalParams:));
  entries in its own @c PrivacyInfo.xcprivacy manifest — the SDK does not.
  */
 
-/// Sets the user's email. Sent as @c email_hashed.
+/**
+ Sets the user's email. Sent as two variants:
+   - @c email_hashed: the normalized email.
+   - @c email_noperiod_hashed: for @c gmail.com and @c googlemail.com addresses, periods removed from
+     the local part; otherwise equal to @c email_hashed.
+ */
 - (void)setUserEmail:(NSString *)email NS_SWIFT_NAME(setUserEmail(_:));
 
 /**

@@ -275,6 +275,8 @@ import org.robovm.apple.uikit.*;
     public static native boolean getLimitDataSharing();
     @Method(selector = "setLimitAdvertisingIdentifiers:")
     public static native void setLimitAdvertisingIdentifiers(boolean enabled);
+    @Method(selector = "setCollectIpv6Address:")
+    public static native void setCollectIpv6Address(boolean enabled);
     @Method(selector = "setUserDetails:")
     public static native void setUserDetails(SingularUserDetails userDetails);
     @Method(selector = "clearUserDetails")

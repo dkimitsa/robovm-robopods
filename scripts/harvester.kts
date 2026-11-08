@@ -479,7 +479,7 @@ val knownFrameworks = mutableMapOf<String, (String) -> Unit>(
             moduleFolder = "firebase/ios-google-sign-in",
             destinationHeadersDir = Path.of("firebase", "ios-google-sign-in", "src", "main", "bro-gen").toFile(),
             sourceHeadersDir = artifactLocation.headers,
-            yaml = "firebase-google-sign-in.yaml",
+            yaml = "google-sign-in.yaml",
             version = { artifactLocation.infoPlist.extractVersion() },
             instruction = """
                 0. run firebase/ios-google-sign-in/cocoapods/fetch.sh to fetch and build from https://github.com/google/GoogleSignIn-iOS

@@ -6,6 +6,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <GoogleMobileAds/GADAdValue.h>
+#import <GoogleMobileAds/GoogleMobileAdsDefines.h>
 
 @class GADNativeAd;
 
@@ -26,6 +28,11 @@ NS_SWIFT_NAME(NativeAdDelegate)
 /// Called when a swipe gesture click is recorded for an ad.
 - (void)nativeAdDidRecordSwipeGestureClick:(nonnull GADNativeAd *)nativeAd NS_SWIFT_UI_ACTOR;
 
+/// Called when the ad is estimated to have earned money.
+- (void)nativeAd:(nonnull GADNativeAd *)nativeAd
+    didRecordPaidEventWithAdValue:(nonnull GADAdValue *)value
+    NS_SWIFT_NAME(nativeAd(_:didRecordPaidEventWith:)) NS_SWIFT_UI_ACTOR;
+
 #pragma mark - Click-Time Lifecycle Notifications
 
 /// Called before presenting the user a full screen view in response to an ad action. Use this
@@ -37,9 +44,6 @@ NS_SWIFT_NAME(NativeAdDelegate)
 /// applicationWillResignActive: of your UIApplicationDelegate object.
 - (void)nativeAdWillPresentScreen:(nonnull GADNativeAd *)nativeAd NS_SWIFT_UI_ACTOR;
 
-/// Called before dismissing a full screen view.
-- (void)nativeAdWillDismissScreen:(nonnull GADNativeAd *)nativeAd NS_SWIFT_UI_ACTOR;
-
 /// Called after dismissing a full screen view. Use this opportunity to restart anything you may
 /// have stopped as part of nativeAdWillPresentScreen:.
 - (void)nativeAdDidDismissScreen:(nonnull GADNativeAd *)nativeAd NS_SWIFT_UI_ACTOR;
@@ -49,5 +53,12 @@ NS_SWIFT_NAME(NativeAdDelegate)
 /// Used for Mute This Ad feature. Called after the native ad is muted. Only called for Google ads
 /// and is not supported for mediated ads.
 - (void)nativeAdIsMuted:(nonnull GADNativeAd *)nativeAd NS_SWIFT_UI_ACTOR;
+
+#pragma mark - Deprecated
+
+/// Called before dismissing a full screen view.
+- (void)nativeAdWillDismissScreen:(nonnull GADNativeAd *)nativeAd NS_SWIFT_UI_ACTOR
+    GAD_DEPRECATED_MSG_ATTRIBUTE(
+        "Deprecated. Use [GADNativeAdDelegate nativeAdDidDismissScreen:] instead.");
 
 @end

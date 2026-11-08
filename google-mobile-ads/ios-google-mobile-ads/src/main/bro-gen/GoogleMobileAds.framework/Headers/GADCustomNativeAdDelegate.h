@@ -6,6 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <GoogleMobileAds/GoogleMobileAdsDefines.h>
 
 @class GADCustomNativeAd;
 
@@ -34,11 +35,15 @@ NS_SWIFT_NAME(CustomNativeAdDelegate)
 /// applicationWillResignActive: of your UIApplicationDelegate object.
 - (void)customNativeAdWillPresentScreen:(nonnull GADCustomNativeAd *)nativeAd NS_SWIFT_UI_ACTOR;
 
-/// Called just before dismissing a full screen view.
-- (void)customNativeAdWillDismissScreen:(nonnull GADCustomNativeAd *)nativeAd NS_SWIFT_UI_ACTOR;
-
 /// Called just after dismissing a full screen view. Use this opportunity to restart anything you
 /// may have stopped as part of customNativeAdWillPresentScreen:.
 - (void)customNativeAdDidDismissScreen:(nonnull GADCustomNativeAd *)nativeAd NS_SWIFT_UI_ACTOR;
+
+#pragma mark Deprecated
+
+/// Called just before dismissing a full screen view.
+- (void)customNativeAdWillDismissScreen:(nonnull GADCustomNativeAd *)nativeAd NS_SWIFT_UI_ACTOR
+    GAD_DEPRECATED_MSG_ATTRIBUTE(
+        "Deprecated. Use [GADCustomNativeAdDelegate customNativeAdDidDismissScreen:] instead.");
 
 @end

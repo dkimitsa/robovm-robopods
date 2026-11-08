@@ -46,9 +46,6 @@ NS_SWIFT_NAME(RewardedInterstitialAd)
 /// Delegate for handling full screen content messages.
 @property(nonatomic, weak, nullable) id<GADFullScreenContentDelegate> fullScreenContentDelegate;
 
-/// Called when the ad is estimated to have earned money. Available for allowlisted accounts only.
-@property(nonatomic, nullable, copy) GADPaidEventHandler paidEventHandler;
-
 /// An identifier for a placement in reporting. This property must be set prior to presenting the
 /// ad.
 @property(nonatomic, readwrite) int64_t placementID;
@@ -94,5 +91,12 @@ NS_SWIFT_NAME(RewardedInterstitialAd)
 - (void)presentFromRootViewController:(nullable UIViewController *)viewController
              userDidEarnRewardHandler:(nonnull GADUserDidEarnRewardHandler)userDidEarnRewardHandler
     NS_SWIFT_NAME(present(from:userDidEarnRewardHandler:)) NS_SWIFT_UI_ACTOR;
+
+#pragma mark Deprecated
+
+/// Called when the ad is estimated to have earned money. Available for allowlisted accounts only.
+@property(nonatomic, nullable, copy)
+    GADPaidEventHandler paidEventHandler GAD_DEPRECATED_MSG_ATTRIBUTE(
+        "Use [GADFullScreenContentDelegate ad:didRecordPaidEventWithAdValue:] instead.");
 
 @end

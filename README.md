@@ -45,28 +45,28 @@ Latest bindings:
 | Name                                    | Version |
 |-----------------------------------------|---------|
 | [AdaptySDK](adapty/)                    | 1.17.7  |
-| [AdjustSdk](adjustsdk/)                 | 5.8.0   |
+| [AdjustSdk](adjustsdk/)                 | 5.8.1   |
 | [AppCenter](appcenter/)                 | 5.10.0  |
-| [AppLovinSDK](applovinsdk/)             | 13.6.4  |
-| [AppsFlyer](appsflyer/)                 | 7.0.3   |
+| [AppLovinSDK](applovinsdk/)             | 13.7.0  |
+| [AppsFlyer](appsflyer/)                 | 7.0.4   |
 | [Azure](azure/)                         | 3.1.4   |
 | [BranchMetrics](branchmetrics/)         | 3.14.2  |
 | [Charts](charts/)                       | 5.1.0   |
-| [CleverAds](cleverads/)                 | 4.8.0   |
-| [Facebook](facebook/)                   | 19.0.0  |
+| [CleverAds](cleverads/)                 | 4.8.3   |
+| [Facebook](facebook/)                   | 19.0.1  |
 | [Facebook Audience](facebook-audience/) | 6.22.1  |
-| [Firebase](firebase/)                   | 13.1.0  |
+| [Firebase](firebase/)                   | 13.1.1  |
 | [Fyber](fyber/)                         | 8.5.1   |
-| [Google Mobile Ads](google-mobile-ads/) | 13.11.0 |
+| [Google Mobile Ads](google-mobile-ads/) | 13.12.0 |
 | [HelpShiftX](helpshift/)                | 10.5.0  |
 | [InMobi](inmobi/)                       | 11.5.0  |
-| [IronSource](ironsource/)               | 9.6.1   |
+| [IronSource](ironsource/)               | 9.7.0   |
 | [Lottie](lottie/)                       | 4.6.1   |
-| [OneSignal](onesignal/)                 | 5.8.0   |
+| [OneSignal](onesignal/)                 | 5.8.1   |
 | [Pollfish](pollfish/)                   | 6.5.0   |
 | [RevenueCat](revenuecat/)               | 5.83.0  |
 | [SAMKeychain](samkeychain/)             | 1.5.3   |
-| [Singular](singular/)                   | 12.15.0 |
+| [Singular](singular/)                   | 12.16.0 |
 | [Tenjin](tenjin/)                       | 1.20.1  |
 | [UnityAds](unityads/)                   | 4.21.0  |
 | [YouTubePlayer](youtube/)               | 1.0.4   |

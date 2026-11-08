@@ -57,13 +57,19 @@ import org.robovm.apple.webkit.*;
     public void adDidRecordImpression(GADFullScreenPresentingAd ad) {}
     @NotImplemented("adDidRecordClick:")
     public void adDidRecordClick(GADFullScreenPresentingAd ad) {}
+    @NotImplemented("ad:didRecordPaidEventWithAdValue:")
+    public void didRecordPaidEvent(GADFullScreenPresentingAd ad, GADAdValue value) {}
     @NotImplemented("ad:didFailToPresentFullScreenContentWithError:")
     public void didFailToPresentFullScreenContent(GADFullScreenPresentingAd ad, NSError error) {}
     @NotImplemented("adWillPresentFullScreenContent:")
     public void adWillPresentFullScreenContent(GADFullScreenPresentingAd ad) {}
-    @NotImplemented("adWillDismissFullScreenContent:")
-    public void adWillDismissFullScreenContent(GADFullScreenPresentingAd ad) {}
     @NotImplemented("adDidDismissFullScreenContent:")
     public void adDidDismissFullScreenContent(GADFullScreenPresentingAd ad) {}
+    /**
+     * @deprecated Deprecated. Use [GADFullScreenContentDelegate adDidDismissFullScreenContent:] instead.
+     */
+    @Deprecated
+    @NotImplemented("adWillDismissFullScreenContent:")
+    public void adWillDismissFullScreenContent(GADFullScreenPresentingAd ad) {}
     /*</methods>*/
 }

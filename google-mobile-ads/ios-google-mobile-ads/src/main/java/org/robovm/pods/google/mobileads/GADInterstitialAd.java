@@ -60,14 +60,22 @@ import org.robovm.apple.webkit.*;
     public native GADFullScreenContentDelegate getFullScreenContentDelegate();
     @Property(selector = "setFullScreenContentDelegate:", strongRef = true)
     public native void setFullScreenContentDelegate(GADFullScreenContentDelegate v);
-    @Property(selector = "paidEventHandler")
-    public native @Block VoidBlock1<GADAdValue> getPaidEventHandler();
-    @Property(selector = "setPaidEventHandler:")
-    public native void setPaidEventHandler(@Block VoidBlock1<GADAdValue> v);
     @Property(selector = "placementID")
     public native long getPlacementID();
     @Property(selector = "setPlacementID:")
     public native void setPlacementID(long v);
+    /**
+     * @deprecated Use [GADFullScreenContentDelegate ad:didRecordPaidEventWithAdValue:] instead.
+     */
+    @Deprecated
+    @Property(selector = "paidEventHandler")
+    public native @Block VoidBlock1<GADAdValue> getPaidEventHandler();
+    /**
+     * @deprecated Use [GADFullScreenContentDelegate ad:didRecordPaidEventWithAdValue:] instead.
+     */
+    @Deprecated
+    @Property(selector = "setPaidEventHandler:")
+    public native void setPaidEventHandler(@Block VoidBlock1<GADAdValue> v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

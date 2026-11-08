@@ -6,6 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <GoogleMobileAds/GoogleMobileAdsDefines.h>
 
 typedef NS_ENUM(NSInteger, GADAdValuePrecision) {
   /// An ad value with unknown precision.
@@ -17,11 +18,6 @@ typedef NS_ENUM(NSInteger, GADAdValuePrecision) {
   /// The precise value paid for this ad.
   GADAdValuePrecisionPrecise = 3
 } NS_SWIFT_NAME(AdValuePrecision);
-
-@class GADAdValue;
-
-/// Handles ad events that are estimated to have earned money.
-typedef void (^GADPaidEventHandler)(GADAdValue *_Nonnull value);
 
 /// The monetary value earned from an ad.
 NS_SWIFT_NAME(AdValue)
@@ -37,3 +33,9 @@ NS_SWIFT_NAME(AdValue)
 @property(nonatomic, nonnull, readonly) NSString *currencyCode;
 
 @end
+
+#pragma mark Deprecated
+
+/// Handles ad events that are estimated to have earned money.
+typedef void (^GADPaidEventHandler)(GADAdValue *_Nonnull value) GAD_DEPRECATED_MSG_ATTRIBUTE(
+    "Use the didRecordPaidEventWithAdValue: method on the ad's delegate instead.");

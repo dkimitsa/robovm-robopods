@@ -297,6 +297,7 @@ classes:
             '-initWithSwipeGestureDirection:tapsAllowed:':
                 name: init
     GADMediationAppOpenAdConfiguration: { }
+    GADMediationSwipeableInterstitialAdConfiguration: {}
     GADAppOpenSignalRequest:
         methods:
             '-initWithSignalType:':
@@ -372,6 +373,8 @@ protocols:
                 name: "will#{g[0]}"
             '-bannerView:didFailToReceiveAdWithError:':
                 name: didFailToReceiveAd
+            '-bannerView:didRecordPaidEventWithAdValue:':
+                name: didRecordPaidEvent
     GADCustomEventBanner:
         skip_adapter: true
         methods:
@@ -546,6 +549,8 @@ protocols:
                 name: loadInterscrollerAd
             '-loadAppOpenAdForAdConfiguration:completionHandler:':
                 name: loadAppOpenAd
+            '-loadSwipeableInterstitialForAdConfiguration:completionHandler:':
+                name: loadSwipeableInterstitialForAdConfiguration
     GADMediationBannerAd: {}
     GADMediationBannerAdEventDelegate:
         skip_adapter: true
@@ -575,6 +580,8 @@ protocols:
                 name: didDismissScreen
             '-nativeAdWillLeaveApplication:':
                 name: willLeaveApplication
+            '-nativeAd:didRecordPaidEventWithAdValue:':
+                name: didRecordPaidEvent
     GADRTBAdapter:
         skip_adapter: true
         methods:
@@ -596,6 +603,8 @@ protocols:
         methods:
             '-ad:didFailToPresentFullScreenContentWithError:':
                 name: didFailToPresentFullScreenContent
+            '-ad:didRecordPaidEventWithAdValue:':
+                name: didRecordPaidEvent
     GADFullScreenPresentingAd: {}
     GADAdMetadataDelegate: {}
     GADAdMetadataProvider: {}
@@ -627,6 +636,8 @@ protocols:
                 name: didReceiveGAMBannerView
     GADMediationAppOpenAd: { }
     GADMediationAppOpenAdEventDelegate: { }
+    GADMediationSwipeableInterstitialAd: {}
+    GADMediationSwipeableInterstitialAdEventDelegate: {}
 functions:
     # GADAdSize
     GADPortraitAnchoredAdaptiveBannerAdSizeWithWidth:

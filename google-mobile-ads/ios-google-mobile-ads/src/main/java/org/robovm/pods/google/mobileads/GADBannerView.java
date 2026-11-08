@@ -86,16 +86,24 @@ import org.robovm.apple.webkit.*;
     public native void setAutoloadEnabled(boolean v);
     @Property(selector = "responseInfo")
     public native GADResponseInfo getResponseInfo();
-    @Property(selector = "paidEventHandler")
-    public native @Block VoidBlock1<GADAdValue> getPaidEventHandler();
-    @Property(selector = "setPaidEventHandler:")
-    public native void setPaidEventHandler(@Block VoidBlock1<GADAdValue> v);
     @Property(selector = "placementID")
     public native long getPlacementID();
     @Property(selector = "setPlacementID:")
     public native void setPlacementID(long v);
     @Property(selector = "isCollapsible")
     public native boolean isCollapsible();
+    /**
+     * @deprecated Use [GADBannerViewDelegate bannerView:didRecordPaidEventWithAdValue:] instead.
+     */
+    @Deprecated
+    @Property(selector = "paidEventHandler")
+    public native @Block VoidBlock1<GADAdValue> getPaidEventHandler();
+    /**
+     * @deprecated Use [GADBannerViewDelegate bannerView:didRecordPaidEventWithAdValue:] instead.
+     */
+    @Deprecated
+    @Property(selector = "setPaidEventHandler:")
+    public native void setPaidEventHandler(@Block VoidBlock1<GADAdValue> v);
     @WeaklyLinked
     @Property(selector = "layerClass")
     public static native Class<? extends CALayer> getLayerClass();

@@ -5,6 +5,7 @@ Upstream repository: https://github.com/google/GoogleSignIn-iOS
 ### Available RoboPods
 | RoboPods Version | Google SignIn  |
 |------------------|----------------|
+| 10.1.0.0         | 10.1.0         |
 | 10.0.0.0         | 10.0.0         |
 | 9.2.0.0          | 9.2.0          |
 | 9.1.0.0          | 9.1.0          |

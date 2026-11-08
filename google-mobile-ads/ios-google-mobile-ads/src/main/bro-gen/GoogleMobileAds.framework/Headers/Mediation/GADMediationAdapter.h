@@ -12,6 +12,7 @@
 #import <GoogleMobileAds/Mediation/GADMediationNativeAd.h>
 #import <GoogleMobileAds/Mediation/GADMediationRewardedAd.h>
 #import <GoogleMobileAds/Mediation/GADMediationServerConfiguration.h>
+#import <GoogleMobileAds/Mediation/GADMediationSwipeableInterstitialAd.h>
 #import <GoogleMobileAds/Mediation/GADVersionNumber.h>
 #import <UIKit/UIKit.h>
 
@@ -47,6 +48,14 @@ typedef id<GADMediationRewardedAdEventDelegate> _Nullable (
 typedef id<GADMediationAppOpenAdEventDelegate> _Nullable (
     ^GADMediationAppOpenLoadCompletionHandler)(_Nullable id<GADMediationAppOpenAd> ad,
                                                NSError *_Nullable error);
+
+/// Called by the adapter after loading the swipeable interstitial ad or encountering an error.
+/// Returns an ad event delegate to send ad events to the Google Mobile Ads SDK. The block returns
+/// nil if a delegate couldn't be created or if the block has already been called.
+typedef id<GADMediationSwipeableInterstitialAdEventDelegate> _Nullable (
+    ^GADMediationSwipeableInterstitialLoadCompletionHandler)(
+    _Nullable id<GADMediationSwipeableInterstitialAd> ad, NSError *_Nullable error);
+
 /// Executes when adapter set up completes.
 typedef void (^GADMediationAdapterSetUpCompletionBlock)(NSError *_Nullable error);
 
@@ -130,5 +139,16 @@ NS_SWIFT_NAME(MediationAdapter)
             (nonnull GADMediationAppOpenAdConfiguration *)adConfiguration
                       completionHandler:
                           (nonnull GADMediationAppOpenLoadCompletionHandler)completionHandler;
+
+/// Asks the adapter to load a swipeable interstitial ad with the provided ad configuration. The
+/// adapter must call back completionHandler with the loaded ad, or it may call back with an error.
+/// This method is called on the main thread, and completionHandler must be called back on the main
+/// thread.
+- (void)
+    loadSwipeableInterstitialForAdConfiguration:
+        (nonnull GADMediationSwipeableInterstitialAdConfiguration *)adConfiguration
+                              completionHandler:
+                                  (nonnull GADMediationSwipeableInterstitialLoadCompletionHandler)
+                                      completionHandler;
 
 @end

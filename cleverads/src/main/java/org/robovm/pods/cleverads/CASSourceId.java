@@ -75,7 +75,8 @@ public enum /*<name>*/CASSourceId/*</name>*/ implements ValuedEnum {
     Unknown(33L),
     DisplayIO(73L),
     Bidease(74L),
-    Moloco(76L);
+    Moloco(76L),
+    BlueSea(78L);
     /*</values>*/
 
     /*<bind>*/

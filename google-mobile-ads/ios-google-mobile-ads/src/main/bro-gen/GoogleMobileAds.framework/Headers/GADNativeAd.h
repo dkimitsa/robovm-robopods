@@ -70,9 +70,6 @@ NS_SWIFT_NAME(NativeAd)
 /// Information about the ad response that returned the ad.
 @property(nonatomic, readonly, nonnull) GADResponseInfo *responseInfo;
 
-/// Called when the ad is estimated to have earned money. Available for allowlisted accounts only.
-@property(nonatomic, nullable, copy) GADPaidEventHandler paidEventHandler;
-
 /// An identifier for a placement in reporting. This property must be set prior to associating the
 /// ad with a GADNativeAdView.
 @property(nonatomic, readwrite) int64_t placementID;
@@ -88,6 +85,13 @@ NS_SWIFT_NAME(NativeAd)
 /// Reports the mute event with the mute reason selected by user. Use nil if no reason was selected.
 /// Call this method only if customMuteThisAdAvailable is YES.
 - (void)muteThisAdWithReason:(nullable GADMuteThisAdReason *)reason;
+
+#pragma mark Deprecated
+
+/// Called when the ad is estimated to have earned money. Available for allowlisted accounts only.
+@property(nonatomic, nullable, copy)
+    GADPaidEventHandler paidEventHandler GAD_DEPRECATED_MSG_ATTRIBUTE(
+        "Use [GADNativeAdDelegate nativeAd:didRecordPaidEventWithAdValue:] instead.");
 
 @end
 

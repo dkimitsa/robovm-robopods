@@ -6,6 +6,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <GoogleMobileAds/GADAdValue.h>
+#import <GoogleMobileAds/GoogleMobileAdsDefines.h>
 
 @protocol GADFullScreenContentDelegate;
 
@@ -35,6 +37,11 @@ NS_SWIFT_NAME(FullScreenContentDelegate)
 /// Tells the delegate that a click has been recorded for the ad.
 - (void)adDidRecordClick:(nonnull id<GADFullScreenPresentingAd>)ad NS_SWIFT_UI_ACTOR;
 
+/// Tells the delegate that the ad is estimated to have earned money.
+- (void)ad:(nonnull id<GADFullScreenPresentingAd>)ad
+    didRecordPaidEventWithAdValue:(nonnull GADAdValue *)value
+    NS_SWIFT_NAME(ad(_:didRecordPaidEventWith:)) NS_SWIFT_UI_ACTOR;
+
 /// Tells the delegate that the ad failed to present full screen content.
 - (void)ad:(nonnull id<GADFullScreenPresentingAd>)ad
     didFailToPresentFullScreenContentWithError:(nonnull NSError *)error NS_SWIFT_UI_ACTOR;
@@ -42,11 +49,15 @@ NS_SWIFT_NAME(FullScreenContentDelegate)
 /// Tells the delegate that the ad will present full screen content.
 - (void)adWillPresentFullScreenContent:(nonnull id<GADFullScreenPresentingAd>)ad NS_SWIFT_UI_ACTOR;
 
-/// Tells the delegate that the ad will dismiss full screen content.
-- (void)adWillDismissFullScreenContent:(nonnull id<GADFullScreenPresentingAd>)ad NS_SWIFT_UI_ACTOR;
-
 /// Tells the delegate that the ad dismissed full screen content.
 - (void)adDidDismissFullScreenContent:(nonnull id<GADFullScreenPresentingAd>)ad NS_SWIFT_UI_ACTOR;
+
+#pragma mark - Deprecated
+
+/// Tells the delegate that the ad will dismiss full screen content.
+- (void)adWillDismissFullScreenContent:(nonnull id<GADFullScreenPresentingAd>)ad NS_SWIFT_UI_ACTOR
+    GAD_DEPRECATED_MSG_ATTRIBUTE(
+        "Deprecated. Use [GADFullScreenContentDelegate adDidDismissFullScreenContent:] instead.");
 
 #pragma mark - Unavailable
 
