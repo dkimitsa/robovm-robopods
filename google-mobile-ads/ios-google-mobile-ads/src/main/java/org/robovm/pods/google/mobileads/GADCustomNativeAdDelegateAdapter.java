@@ -59,9 +59,13 @@ import org.robovm.apple.webkit.*;
     public void didRecordClick(GADCustomNativeAd nativeAd) {}
     @NotImplemented("customNativeAdWillPresentScreen:")
     public void willPresentScreen(GADCustomNativeAd nativeAd) {}
-    @NotImplemented("customNativeAdWillDismissScreen:")
-    public void willDismissScreen(GADCustomNativeAd nativeAd) {}
     @NotImplemented("customNativeAdDidDismissScreen:")
     public void didDismissScreen(GADCustomNativeAd nativeAd) {}
+    /**
+     * @deprecated Deprecated. Use [GADCustomNativeAdDelegate customNativeAdDidDismissScreen:] instead.
+     */
+    @Deprecated
+    @NotImplemented("customNativeAdWillDismissScreen:")
+    public void willDismissScreen(GADCustomNativeAd nativeAd) {}
     /*</methods>*/
 }

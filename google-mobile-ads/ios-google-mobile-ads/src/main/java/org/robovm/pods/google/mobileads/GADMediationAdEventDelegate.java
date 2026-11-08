@@ -59,10 +59,14 @@ import org.robovm.apple.webkit.*;
     void willPresentFullScreenView();
     @Method(selector = "didFailToPresentWithError:")
     void didFailToPresent(NSError error);
-    @Method(selector = "willDismissFullScreenView")
-    void willDismissFullScreenView();
     @Method(selector = "didDismissFullScreenView")
     void didDismissFullScreenView();
+    /**
+     * @deprecated Deprecated. Use [GADMediationAdEventDelegate didDismissFullScreenView] instead.
+     */
+    @Deprecated
+    @Method(selector = "willDismissFullScreenView")
+    void willDismissFullScreenView();
     /*</methods>*/
     /*<adapter>*/
     /*</adapter>*/

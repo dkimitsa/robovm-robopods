@@ -99,6 +99,7 @@ FOUNDATION_EXPORT const unsigned char GoogleMobileAdsVersionString[] NS_SWIFT_NA
 #import <GoogleMobileAds/Mediation/GADMediationNativeAd.h>
 #import <GoogleMobileAds/Mediation/GADMediationRewardedAd.h>
 #import <GoogleMobileAds/Mediation/GADMediationServerConfiguration.h>
+#import <GoogleMobileAds/Mediation/GADMediationSwipeableInterstitialAd.h>
 #import <GoogleMobileAds/Mediation/GADVersionNumber.h>
 #import <GoogleMobileAds/RTBMediation/GADRTBAdapter.h>
 #import <GoogleMobileAds/RTBMediation/GADRTBRequestParameters.h>

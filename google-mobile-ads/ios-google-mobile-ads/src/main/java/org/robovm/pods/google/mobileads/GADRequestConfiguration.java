@@ -64,6 +64,10 @@ import org.robovm.apple.webkit.*;
     public native GADAgeRestrictedTreatment getAgeRestrictedTreatment();
     @Property(selector = "setAgeRestrictedTreatment:")
     public native void setAgeRestrictedTreatment(GADAgeRestrictedTreatment v);
+    @Property(selector = "coarseLocationCollectionEnabled")
+    public native boolean isCoarseLocationCollectionEnabled();
+    @Property(selector = "setCoarseLocationCollectionEnabled:")
+    public native void setCoarseLocationCollectionEnabled(boolean v);
     @Property(selector = "publisherPrivacyPersonalizationState")
     public native GADPublisherPrivacyPersonalizationState getPublisherPrivacyPersonalizationState();
     @Property(selector = "setPublisherPrivacyPersonalizationState:")

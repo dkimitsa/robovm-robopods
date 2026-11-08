@@ -64,6 +64,10 @@ NS_SWIFT_NAME(RequestConfiguration)
 /// in termination of your Google account.
 @property(nonatomic) GADAgeRestrictedTreatment ageRestrictedTreatment;
 
+/// Controls whether the Google Mobile Ads SDK automatically collects coarse location when the app
+/// has location permission. Defaults to YES.
+@property(nonatomic) BOOL coarseLocationCollectionEnabled;
+
 /// Controls whether the Google Mobile Ads SDK publisher first-party ID, formerly known as the same
 /// app key, is enabled. The value set persists across app sessions. The key is enabled by default.
 - (void)setPublisherFirstPartyIDEnabled:(BOOL)enabled;

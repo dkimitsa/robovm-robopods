@@ -69,6 +69,8 @@ import org.robovm.pods.google.mobileads.*;
     public native void loadRewardedInterstitialAd(GADMediationRewardedAdConfiguration adConfiguration, @Block Block2<GADMediationRewardedAd, NSError, GADMediationRewardedAdEventDelegate> completionHandler);
     @Method(selector = "loadAppOpenAdForAdConfiguration:completionHandler:")
     public native void loadAppOpenAd(GADMediationAppOpenAdConfiguration adConfiguration, @Block Block2<GADMediationAppOpenAd, NSError, GADMediationAppOpenAdEventDelegate> completionHandler);
+    @Method(selector = "loadSwipeableInterstitialForAdConfiguration:completionHandler:")
+    public native void loadSwipeableInterstitialForAdConfiguration(GADMediationSwipeableInterstitialAdConfiguration adConfiguration, @Block Block2<GADMediationSwipeableInterstitialAd, NSError, GADMediationSwipeableInterstitialAdEventDelegate> completionHandler);
     @Method(selector = "adapterVersion")
     public static native @ByVal GADVersionNumber adapterVersion();
     @Method(selector = "adSDKVersion")

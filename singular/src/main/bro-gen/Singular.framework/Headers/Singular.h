@@ -137,6 +137,7 @@
 + (BOOL)getLimitDataSharing;
 #ifndef SINGULAR_KIDS
 + (void)setLimitAdvertisingIdentifiers:(BOOL)enabled;
++ (void)setCollectIpv6Address:(BOOL)enabled;
 #endif // !SINGULAR_KIDS
 
 #pragma mark - User Details

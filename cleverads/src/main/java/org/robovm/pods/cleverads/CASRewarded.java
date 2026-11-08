@@ -50,7 +50,7 @@ import org.robovm.apple.corelocation.*;
     protected CASRewarded(Handle h, long handle) { super(h, handle); }
     protected CASRewarded(SkipInit skipInit) { super(skipInit); }
     @Method(selector = "initWithCasID:")
-    public CASRewarded(String casID) { super((SkipInit) null); initObject(initWithCasID$(casID)); }
+    public CASRewarded(String casID) { super((SkipInit) null); initObject(init(casID)); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "delegate")
@@ -65,10 +65,6 @@ import org.robovm.apple.corelocation.*;
     public native boolean isAutoloadEnabled();
     @Property(selector = "setIsAutoloadEnabled:")
     public native void setIsAutoloadEnabled(boolean v);
-    @Property(selector = "isExtraFillInterstitialAdEnabled")
-    public native boolean isExtraFillInterstitialAdEnabled();
-    @Property(selector = "setIsExtraFillInterstitialAdEnabled:")
-    public native void setIsExtraFillInterstitialAdEnabled(boolean v);
     @Property(selector = "placement")
     public native String getPlacement();
     @Property(selector = "setPlacement:")
@@ -77,6 +73,12 @@ import org.robovm.apple.corelocation.*;
     public native String getServerSideVerificationData();
     @Property(selector = "setServerSideVerificationData:")
     public native void setServerSideVerificationData(String v);
+    @Property(selector = "isExtraFillInterstitialAdEnabled")
+    public native boolean isExtraFillInterstitialAdEnabled();
+    @Property(selector = "setIsExtraFillInterstitialAdEnabled:")
+    public native void setIsExtraFillInterstitialAdEnabled(boolean v);
+    @Property(selector = "isInterstitialAdFallbackLoaded")
+    public native boolean isInterstitialAdFallbackLoaded();
     @Property(selector = "isAdLoaded")
     public native boolean isAdLoaded();
     @Property(selector = "contentInfo")
@@ -85,11 +87,11 @@ import org.robovm.apple.corelocation.*;
     /*<members>*//*</members>*/
     /*<methods>*/
     @Method(selector = "initWithCasID:")
-    protected native @Pointer long initWithCasID$(String casID);
+    protected native @Pointer long init(String casID);
     @Method(selector = "loadAd")
     public native void loadAd();
     @Method(selector = "presentFromViewController:userDidEarnRewardHandler:")
-    public native void presentFromViewController$userDidEarnRewardHandler$(UIViewController viewController, @Block VoidBlock1<CASContentInfo> userDidEarnRewardHandler);
+    public native void present(UIViewController viewController, @Block VoidBlock1<CASContentInfo> userDidEarnRewardHandler);
     @Method(selector = "destroy")
     public native void destroy();
     /*</methods>*/

@@ -6,6 +6,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <GoogleMobileAds/GADAdValue.h>
+#import <GoogleMobileAds/GoogleMobileAdsDefines.h>
 
 @class GADBannerView;
 
@@ -33,17 +35,26 @@ NS_SWIFT_NAME(BannerViewDelegate)
 /// Tells the delegate that a click has been recorded for the ad.
 - (void)bannerViewDidRecordClick:(nonnull GADBannerView *)bannerView NS_SWIFT_UI_ACTOR;
 
+/// Tells the delegate that the banner view is estimated to have earned money.
+- (void)bannerView:(nonnull GADBannerView *)bannerView
+    didRecordPaidEventWithAdValue:(nonnull GADAdValue *)value
+    NS_SWIFT_NAME(bannerView(_:didRecordPaidEventWith:)) NS_SWIFT_UI_ACTOR;
+
 #pragma mark Click-Time Lifecycle Notifications
 
 /// Tells the delegate that a full screen view will be presented in response to the user clicking on
 /// an ad. The delegate may want to pause animations and time sensitive interactions.
 - (void)bannerViewWillPresentScreen:(nonnull GADBannerView *)bannerView NS_SWIFT_UI_ACTOR;
 
-/// Tells the delegate that the full screen view will be dismissed.
-- (void)bannerViewWillDismissScreen:(nonnull GADBannerView *)bannerView NS_SWIFT_UI_ACTOR;
-
 /// Tells the delegate that the full screen view has been dismissed. The delegate should restart
 /// anything paused while handling bannerViewWillPresentScreen:.
 - (void)bannerViewDidDismissScreen:(nonnull GADBannerView *)bannerView NS_SWIFT_UI_ACTOR;
+
+#pragma mark Deprecated
+
+/// Tells the delegate that the full screen view will be dismissed.
+- (void)bannerViewWillDismissScreen:(nonnull GADBannerView *)bannerView NS_SWIFT_UI_ACTOR
+    GAD_DEPRECATED_MSG_ATTRIBUTE(
+        "Deprecated. Use [GADBannerViewDelegate bannerViewDidDismissScreen:] instead.");
 
 @end

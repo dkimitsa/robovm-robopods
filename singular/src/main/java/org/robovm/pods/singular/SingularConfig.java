@@ -139,6 +139,10 @@ import org.robovm.apple.uikit.*;
     public native boolean isLimitAdvertisingIdentifiers();
     @Property(selector = "setLimitAdvertisingIdentifiers:")
     public native void setLimitAdvertisingIdentifiers(boolean v);
+    @Property(selector = "collectIpv6Address")
+    public native boolean isCollectIpv6Address();
+    @Property(selector = "setCollectIpv6Address:")
+    public native void setCollectIpv6Address(boolean v);
     @Property(selector = "userDetails")
     public native SingularUserDetails getUserDetails();
     @Property(selector = "setUserDetails:")

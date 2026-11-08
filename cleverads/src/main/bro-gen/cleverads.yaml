@@ -37,6 +37,8 @@ classes:
                 name: createMediationManager
             '+reportCustomRevenueWithJson:':
                 name: reportCustomRevenue
+            '+presentIntegrationPageFrom:casId:':
+                name: presentIntegrationPage
     CASAnalytics: { }
     CASAppOpen:
         methods:
@@ -161,6 +163,8 @@ classes:
         methods:
             '+getInlineBannerWithWidth:maxHeight:':
                 name: getInlineBanner
+            '+getAdaptiveBannerForMaxWidth:in:':
+                name: getAdaptiveBanner
     CASTargetingOptions:
         methods:
             '-initWithOptions:':
@@ -232,16 +236,29 @@ classes:
     CASNativeLoader:
         methods:
             '-initWithCasID:':
-                name: initWithCasID$
+                name: init
             '-loadWithMaxNumberOfAds:':
                 name: loadWithMaxNumberOfAds$
+    CASPurchaseInfo:
+        methods:
+            '-initWithProductID:price:currency:quantity:':
+                name: init
+            '-setValidationWithTransactionID:jwsRepresentation:':
+                name: setValidation
+            '-setValidationWithTransactionID:receiptData:':
+                name: setValidation
+            '-setSubsValidationWithTransactionID:originalID:originalPurchaseDate:jwsRepresentation:jsonRepresentation:':
+                name: setSubsValidation
+            '-setXsollaValidationWithOrderID:userID:':
+                name: setXsollaValidation
+            '-initWithCopying:':
+                name: init
     CASRewarded:
         methods:
             '-initWithCasID:':
-                name: initWithCasID$
+                name: init
             '-presentFromViewController:userDidEarnRewardHandler:':
-                #trim_after_first_colon: true
-                name: presentFromViewController$userDidEarnRewardHandler$
+                name: present
     MediationAdBase: { }
     MediationAdapter: { }
     MediationNativeAdContent: { }

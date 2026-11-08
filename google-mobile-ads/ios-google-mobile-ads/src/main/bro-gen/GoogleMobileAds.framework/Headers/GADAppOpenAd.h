@@ -55,9 +55,6 @@ NS_SWIFT_NAME(AppOpenAd)
 /// Information about the ad response that returned the ad.
 @property(nonatomic, readonly, nonnull) GADResponseInfo *responseInfo;
 
-/// Called when the ad is estimated to have earned money. Available for allowlisted accounts only.
-@property(nonatomic, nullable, copy) GADPaidEventHandler paidEventHandler;
-
 /// An identifier for a placement in reporting. This property must be set prior to presenting the
 /// ad.
 @property(nonatomic, readwrite) int64_t placementID;
@@ -80,5 +77,12 @@ NS_SWIFT_NAME(AppOpenAd)
 /// application's main window.
 - (void)presentFromRootViewController:(nullable UIViewController *)rootViewController
     NS_SWIFT_NAME(present(from:)) NS_SWIFT_UI_ACTOR;
+
+#pragma mark Deprecated
+
+/// Called when the ad is estimated to have earned money. Available for allowlisted accounts only.
+@property(nonatomic, nullable, copy)
+    GADPaidEventHandler paidEventHandler GAD_DEPRECATED_MSG_ATTRIBUTE(
+        "Use [GADFullScreenContentDelegate ad:didRecordPaidEventWithAdValue:] instead.");
 
 @end

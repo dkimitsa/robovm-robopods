@@ -38,7 +38,7 @@ NS_SWIFT_NAME(AdManagerBannerView)
 /// placement of an ad in your application. Set this to the ID assigned for this placement. Ad units
 /// are important for targeting and statistics.
 ///
-/// Example Ad Manager ad unit ID: @"/6499/example/banner"
+/// Example Ad Manager ad unit ID: @"/21775744923/example/fixed-size-banner"
 @property(nonatomic, copy, nullable) NSString *adUnitID;
 
 /// Optional delegate that is notified when creatives send app events.

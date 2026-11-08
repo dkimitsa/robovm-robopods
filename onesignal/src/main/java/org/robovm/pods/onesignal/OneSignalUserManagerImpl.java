@@ -80,6 +80,10 @@ import org.robovm.apple.uikit.*;
     public native void setNotificationTypes(int notificationTypes);
     @Method(selector = "setPushToken:")
     public native void setPushToken(String pushToken);
+    @Method(selector = "onFocus")
+    public native void onFocus();
+    @Method(selector = "onUnfocus")
+    public native void onUnfocus();
     @Method(selector = "startNewSession")
     public native void startNewSession();
     @Method(selector = "sendSessionTime:")

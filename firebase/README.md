@@ -12,17 +12,17 @@ https://firebase.google.com
 
 | RoboPod                                                                          | Description                                    | Version |
 |----------------------------------------------------------------------------------|------------------------------------------------|---------|
-| [ios-analytics](ios-analytics/)                                                  | Firebase iOS Analytics                         | 13.1.0  |
-| [ios-auth](ios-auth/)                                                            | Firebase iOS Authentication                    | 13.1.0  |
-| [ios-core](ios-core/)                                                            | Firebase iOS Core                              | 13.1.0  |
-| [ios-crashlytics](ios-crashlytics/)                                              | Firebase iOS Crashlytics                       | 13.1.0  |
-| [ios-database](ios-database/)                                                    | Firebase iOS DataBase                          | 13.1.0  |
-| [ios-firestore](ios-firestore/)                                                  | Firebase iOS Firestore                         | 13.1.0  |
-| [ios-messaging](ios-messaging/)                                                  | Firebase iOS Messaging                         | 13.1.0  |
-| [ios-installations](ios-installations/)                                          | Firebase iOS Installations                     | 13.1.0  |
-| [ios-remoteconfig](ios-remoteconfig/)                                            | Firebase iOS Remote Config                     | 13.1.0  |
-| [ios-storage](ios-storage/)                                                      | Firebase iOS Storage                           | 13.1.0  |
-| [ios-appcheck](ios-appcheck/)                                                    | Firebase iOS App Check                         | 13.1.0  |
+| [ios-analytics](ios-analytics/)                                                  | Firebase iOS Analytics                         | 13.1.1  |
+| [ios-auth](ios-auth/)                                                            | Firebase iOS Authentication                    | 13.1.1  |
+| [ios-core](ios-core/)                                                            | Firebase iOS Core                              | 13.1.1  |
+| [ios-crashlytics](ios-crashlytics/)                                              | Firebase iOS Crashlytics                       | 13.1.1  |
+| [ios-database](ios-database/)                                                    | Firebase iOS DataBase                          | 13.1.1  |
+| [ios-firestore](ios-firestore/)                                                  | Firebase iOS Firestore                         | 13.1.1  |
+| [ios-messaging](ios-messaging/)                                                  | Firebase iOS Messaging                         | 13.1.1  |
+| [ios-installations](ios-installations/)                                          | Firebase iOS Installations                     | 13.1.1  |
+| [ios-remoteconfig](ios-remoteconfig/)                                            | Firebase iOS Remote Config                     | 13.1.1  |
+| [ios-storage](ios-storage/)                                                      | Firebase iOS Storage                           | 13.1.1  |
+| [ios-appcheck](ios-appcheck/)                                                    | Firebase iOS App Check                         | 13.1.1  |
 
 ## Versions
 

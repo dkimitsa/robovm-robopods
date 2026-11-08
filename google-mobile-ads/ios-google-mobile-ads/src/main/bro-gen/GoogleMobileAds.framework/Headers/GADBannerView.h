@@ -75,14 +75,18 @@ NS_SWIFT_NAME(BannerView)
 /// ad request succeeds or fails.
 @property(nonatomic, readonly, nullable) GADResponseInfo *responseInfo;
 
-/// Called when ad is estimated to have earned money. Available for allowlisted accounts only.
-@property(nonatomic, nullable, copy) GADPaidEventHandler paidEventHandler;
-
 /// An identifier for a placement in reporting. This property must be set prior to placing the ad
 /// into a visible superview.
 @property(nonatomic, readwrite) int64_t placementID;
 
 /// Indicates whether the last loaded ad is a collapsible banner.
 @property(nonatomic, readonly) BOOL isCollapsible;
+
+#pragma mark Deprecated
+
+/// Called when ad is estimated to have earned money. Available for allowlisted accounts only.
+@property(nonatomic, nullable, copy)
+    GADPaidEventHandler paidEventHandler GAD_DEPRECATED_MSG_ATTRIBUTE(
+        "Use [GADBannerViewDelegate bannerView:didRecordPaidEventWithAdValue:] instead.");
 
 @end

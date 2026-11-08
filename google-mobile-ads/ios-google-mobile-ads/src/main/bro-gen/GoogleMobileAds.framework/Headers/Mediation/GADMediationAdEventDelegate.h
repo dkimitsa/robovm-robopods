@@ -28,12 +28,15 @@ NS_SWIFT_NAME(MediationAdEventDelegate)
 /// Notifies Google Mobile Ads SDK that the GADMediationAd failed to present with an error.
 - (void)didFailToPresentWithError:(nonnull NSError *)error;
 
-/// Notifies Google Mobile Ads SDK that the GADMediationAd will dismiss a full screen modal view.
-- (void)willDismissFullScreenView;
-
 /// Notifies Google Mobile Ads SDK that the GADMediationAd finished dismissing a full screen modal
 /// view.
 - (void)didDismissFullScreenView;
+
+#pragma mark - Deprecated
+
+/// Notifies Google Mobile Ads SDK that the GADMediationAd will dismiss a full screen modal view.
+- (void)willDismissFullScreenView GAD_DEPRECATED_MSG_ATTRIBUTE(
+    "Deprecated. Use [GADMediationAdEventDelegate didDismissFullScreenView] instead.");
 
 @end
 
@@ -88,5 +91,12 @@ NS_SWIFT_NAME(MediationRewardedAdEventDelegate)
 /// Reports app open related information to the Google Mobile Ads SDK from the adapter.
 NS_SWIFT_NAME(MediationAppOpenAdEventDelegate)
 @protocol GADMediationAppOpenAdEventDelegate <GADMediationAdEventDelegate>
+
+@end
+
+/// Reports swipeable interstitial related information to the Google Mobile Ads SDK from the
+/// adapter.
+NS_SWIFT_NAME(MediationSwipeableInterstitialAdEventDelegate)
+@protocol GADMediationSwipeableInterstitialAdEventDelegate <GADMediationAdEventDelegate>
 
 @end

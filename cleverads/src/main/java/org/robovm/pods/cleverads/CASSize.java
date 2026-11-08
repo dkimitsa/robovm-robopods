@@ -88,5 +88,7 @@ import org.robovm.apple.corelocation.*;
     public static native CASSize getAdaptiveBannerInWindow(UIWindow inWindow);
     @Method(selector = "getAdaptiveBannerForMaxWidth:")
     public static native CASSize getAdaptiveBannerForMaxWidth(@MachineSizedFloat double maxWidth);
+    @Method(selector = "getAdaptiveBannerForMaxWidth:in:")
+    public static native CASSize getAdaptiveBanner(@MachineSizedFloat double maxWidth, UIWindow window);
     /*</methods>*/
 }

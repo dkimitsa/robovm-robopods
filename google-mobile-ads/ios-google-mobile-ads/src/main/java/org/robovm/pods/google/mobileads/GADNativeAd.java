@@ -84,10 +84,6 @@ import org.robovm.apple.webkit.*;
     public native NSDictionary<NSString, ?> getExtraAssets();
     @Property(selector = "responseInfo")
     public native GADResponseInfo getResponseInfo();
-    @Property(selector = "paidEventHandler")
-    public native @Block VoidBlock1<GADAdValue> getPaidEventHandler();
-    @Property(selector = "setPaidEventHandler:")
-    public native void setPaidEventHandler(@Block VoidBlock1<GADAdValue> v);
     @Property(selector = "placementID")
     public native long getPlacementID();
     @Property(selector = "setPlacementID:")
@@ -96,6 +92,18 @@ import org.robovm.apple.webkit.*;
     public native boolean isCustomMuteThisAdAvailable();
     @Property(selector = "muteThisAdReasons")
     public native NSArray<GADMuteThisAdReason> getMuteThisAdReasons();
+    /**
+     * @deprecated Use [GADNativeAdDelegate nativeAd:didRecordPaidEventWithAdValue:] instead.
+     */
+    @Deprecated
+    @Property(selector = "paidEventHandler")
+    public native @Block VoidBlock1<GADAdValue> getPaidEventHandler();
+    /**
+     * @deprecated Use [GADNativeAdDelegate nativeAd:didRecordPaidEventWithAdValue:] instead.
+     */
+    @Deprecated
+    @Property(selector = "setPaidEventHandler:")
+    public native void setPaidEventHandler(@Block VoidBlock1<GADAdValue> v);
     @Property(selector = "unconfirmedClickDelegate")
     public native GADNativeAdUnconfirmedClickDelegate getUnconfirmedClickDelegate();
     @Property(selector = "setUnconfirmedClickDelegate:", strongRef = true)

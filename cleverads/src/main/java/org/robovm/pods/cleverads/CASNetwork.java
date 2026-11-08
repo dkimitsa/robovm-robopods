@@ -119,6 +119,8 @@ import org.robovm.apple.corelocation.*;
     public static native String bidease();
     @Method(selector = "moloco")
     public static native String moloco();
+    @Method(selector = "blueSea")
+    public static native String blueSea();
     @Method(selector = "facebookAdvertiserTracking")
     public static native String facebookAdvertiserTracking();
     @Method(selector = "facebookDataProcessing")

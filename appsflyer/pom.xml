@@ -7,8 +7,8 @@
     </parent>
 
     <artifactId>robopods-appsflyer-ios</artifactId>
-    <version>7.0.3.0</version>
-    <name>RoboPods AppsFlyer iOS v7.0.3</name>
+    <version>7.0.4.0</version>
+    <name>RoboPods AppsFlyer iOS v7.0.4</name>
     <packaging>jar</packaging>
 
     <licenses>

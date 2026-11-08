@@ -59,12 +59,18 @@ import org.robovm.apple.webkit.*;
     void didRecordImpression(GADBannerView bannerView);
     @Method(selector = "bannerViewDidRecordClick:")
     void didRecordClick(GADBannerView bannerView);
+    @Method(selector = "bannerView:didRecordPaidEventWithAdValue:")
+    void didRecordPaidEvent(GADBannerView bannerView, GADAdValue value);
     @Method(selector = "bannerViewWillPresentScreen:")
     void willPresentScreen(GADBannerView bannerView);
-    @Method(selector = "bannerViewWillDismissScreen:")
-    void willDismissScreen(GADBannerView bannerView);
     @Method(selector = "bannerViewDidDismissScreen:")
     void didDismissScreen(GADBannerView bannerView);
+    /**
+     * @deprecated Deprecated. Use [GADBannerViewDelegate bannerViewDidDismissScreen:] instead.
+     */
+    @Deprecated
+    @Method(selector = "bannerViewWillDismissScreen:")
+    void willDismissScreen(GADBannerView bannerView);
     /*</methods>*/
     /*<adapter>*/
     /*</adapter>*/

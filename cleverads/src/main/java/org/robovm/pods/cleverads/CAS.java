@@ -45,8 +45,8 @@ import org.robovm.apple.corelocation.*;
     /*<ptr>*/public static class CASPtr extends Ptr<CAS, CASPtr> {}/*</ptr>*/
     /*<bind>*/static { ObjCRuntime.bind(CAS.class); }/*</bind>*/
     /*<constants>*/
-    public static final String FRAMEWORK_VERSION = "4.8.0";
-    public static final int FRAMEWORK_CODE = 408050;
+    public static final String FRAMEWORK_VERSION = "4.8.3";
+    public static final int FRAMEWORK_CODE = 408350;
     /*</constants>*/
     /*<constructors>*/
     public CAS() {}
@@ -76,10 +76,14 @@ import org.robovm.apple.corelocation.*;
     public static native @MachineSizedSInt long getSKNetworksCount();
     @Method(selector = "getAdAttributionKitCount")
     public static native @MachineSizedSInt long getAdAttributionKitCount();
-    @Method(selector = "validateIntegration")
-    public static native void validateIntegration();
     @Method(selector = "reportCustomRevenueWithJson:")
     public static native void reportCustomRevenue(String json);
+    @Method(selector = "reportPurchase:")
+    public static native void reportPurchase(CASPurchaseInfo purchase);
+    @Method(selector = "presentIntegrationPageFrom:casId:")
+    public static native void presentIntegrationPage(UIViewController viewController, String casId);
+    @Method(selector = "validateIntegration")
+    public static native void validateIntegration();
     @Method(selector = "getMessageOf:")
     public static native String getMessageOf(CASError error);
     @Method(selector = "getErrorFor:")

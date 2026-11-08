@@ -61,6 +61,11 @@ typedef void (^SdidAccessorHandler)(NSString *result);
 @property (assign) BOOL limitAdvertisingIdentifiers;
 #endif // !SINGULAR_KIDS
 
+// IPv6 Address Collection
+#ifndef SINGULAR_KIDS
+@property (assign) BOOL collectIpv6Address;
+#endif // !SINGULAR_KIDS
+
 #ifdef SINGULAR_HAS_USER_DETAILS
 @property (strong) SingularUserDetails *userDetails;
 #endif // SINGULAR_HAS_USER_DETAILS
