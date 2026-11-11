@@ -4,7 +4,6 @@
         <framework>FirebaseCrashlytics</framework>
         <framework>FirebaseSessions</framework>
         <framework>GoogleDataTransport</framework>
-        <framework>Promises</framework>
         <framework>FirebaseRemoteConfigInterop</framework>
     </frameworks>
     <exportedSymbols>

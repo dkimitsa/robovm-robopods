@@ -7,7 +7,7 @@
     </parent>
 
     <artifactId>robopods-firebase-crashlytics-ios</artifactId>
-    <version>13.1.1.0</version>
+    <version>13.1.1.1</version>
     <name>RoboPods FireBase Crashlytics iOS v13.1.1</name>
     <packaging>jar</packaging>
 
@@ -15,7 +15,8 @@
         <dependency>
             <groupId>io.github.dkimitsa.robovm</groupId>
             <artifactId>robopods-firebase-core-ios</artifactId>
-            <version>${project.version}</version>
+            <version>13.1.1.0</version>
+            <!-- <version>${project.version}</version> TODO: hardcoded while applying 13.1.1.1 fix - revert back on next scan -->
         </dependency>
     </dependencies>
 
