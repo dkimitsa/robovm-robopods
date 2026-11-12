@@ -21,3 +21,4 @@ FOUNDATION_EXPORT GADNativeAssetIdentifier _Nonnull const GADNativeStarRatingAss
 FOUNDATION_EXPORT GADNativeAssetIdentifier _Nonnull const GADNativeAdvertiserAsset;
 FOUNDATION_EXPORT GADNativeAssetIdentifier _Nonnull const GADNativeMediaViewAsset;
 FOUNDATION_EXPORT GADNativeAssetIdentifier _Nonnull const GADNativeAdChoicesViewAsset;
+FOUNDATION_EXPORT GADNativeAssetIdentifier _Nonnull const GADNativeCreativeSummaryAsset;

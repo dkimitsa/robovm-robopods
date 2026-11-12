@@ -70,6 +70,8 @@ import org.robovm.apple.webkit.*;
     public native String getPrice();
     @Property(selector = "advertiser")
     public native String getAdvertiser();
+    @Property(selector = "creativeSummary")
+    public native String getCreativeSummary();
     @Property(selector = "mediaContent")
     public native GADMediaContent getMediaContent();
     @Property(selector = "delegate")

@@ -1,6 +1,6 @@
 <config>
     <frameworks>
-        <framework>Branch</framework>
+        <framework>BranchSDK</framework>
         <framework>AdSupport</framework>
         <framework>SafariServices</framework>
         <framework>MobileCoreServices</framework>

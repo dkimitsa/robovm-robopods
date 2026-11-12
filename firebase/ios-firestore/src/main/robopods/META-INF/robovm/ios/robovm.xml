@@ -10,5 +10,6 @@
         <framework>grpcpp</framework>
         <framework>leveldb</framework>
         <framework>openssl_grpc</framework>
+        <framework>Network</framework>
     </frameworks>
 </config>

@@ -96,6 +96,10 @@ import org.robovm.apple.webkit.*;
     public native UIView getAdvertiserView();
     @Property(selector = "setAdvertiserView:", strongRef = true)
     public native void setAdvertiserView(UIView v);
+    @Property(selector = "creativeSummaryView")
+    public native UIView getCreativeSummaryView();
+    @Property(selector = "setCreativeSummaryView:", strongRef = true)
+    public native void setCreativeSummaryView(UIView v);
     @Property(selector = "mediaView")
     public native GADMediaView getMediaView();
     @Property(selector = "setMediaView:", strongRef = true)

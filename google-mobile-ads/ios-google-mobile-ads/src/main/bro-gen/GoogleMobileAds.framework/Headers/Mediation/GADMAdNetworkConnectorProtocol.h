@@ -14,6 +14,8 @@
 /// GADMAdNetworkConnector protocol. The connector object can be used to obtain necessary
 /// information for ad requests, and to call back to the mediation SDK on ad request returns and
 /// user interactions.
+GAD_DEPRECATED_MSG_ATTRIBUTE(
+    "Use GADMediationAdConfiguration and GADMediationAdEventDelegate instead.")
 NS_SWIFT_NAME(MediationAdNetworkConnector)
 @protocol GADMAdNetworkConnector <GADMediationAdRequest>
 

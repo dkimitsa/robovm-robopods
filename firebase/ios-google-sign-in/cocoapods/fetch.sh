@@ -13,29 +13,42 @@ else
 fi
 
 # Clean previous build artifacts
-rm -rf Pods Podfile.lock build
-rm -rf GoogleSignIn.xcframework GTMSessionFetcher.xcframework
+rm -rf Pods Podfile.lock build-iphoneos build-iphonesimulator *.xcframework
 
 # Install pods
 VERSION="$VERSION" pod install
 
-# Build frameworks
-xcodebuild -project Pods/Pods.xcodeproj -scheme GoogleSignIn -configuration Release -sdk iphoneos build CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO CONFIGURATION_BUILD_DIR="$DIR/build"
+# Build frameworks for device and simulator with static linkage
+xcodebuild -project Pods/Pods.xcodeproj -scheme GoogleSignIn -configuration Release -sdk iphoneos ONLY_ACTIVE_ARCH=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES build CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO CONFIGURATION_BUILD_DIR="$DIR/build-iphoneos"
+xcodebuild -project Pods/Pods.xcodeproj -scheme GoogleSignIn -configuration Release -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES build CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO CONFIGURATION_BUILD_DIR="$DIR/build-iphonesimulator"
+
+# Frameworks unique to GoogleSignIn to package as xcframeworks (others are available in Firebase package)
+FRAMEWORKS=(
+    "GoogleSignIn"
+    "AppAuth"
+    "GTMAppAuth"
+    "Promises"
+)
 
 # Create xcframeworks
-rm -rf "$DIR/GoogleSignIn.xcframework" "$DIR/GTMSessionFetcher.xcframework"
-xcodebuild -create-xcframework -framework "$DIR/build/GoogleSignIn.framework" -output "$DIR/GoogleSignIn.xcframework"
-xcodebuild -create-xcframework -framework "$DIR/build/GTMSessionFetcher.framework" -output "$DIR/GTMSessionFetcher.xcframework"
+for FW in "${FRAMEWORKS[@]}"; do
+    rm -rf "$DIR/${FW}.xcframework"
+    xcodebuild -create-xcframework \
+        -framework "$DIR/build-iphoneos/${FW}.framework" \
+        -framework "$DIR/build-iphonesimulator/${FW}.framework" \
+        -output "$DIR/${FW}.xcframework"
+done
 
 # Resolve built version
-BUILT_VERSION=$(defaults read "$DIR/build/GoogleSignIn.framework/Info.plist" CFBundleShortVersionString)
+BUILT_VERSION=$(defaults read "$DIR/build-iphoneos/GoogleSignIn.framework/Info.plist" CFBundleShortVersionString)
 
 # Stage to .robopods-wip/GoogleSignIn
 DEST="$DIR/../../../.robopods-wip/GoogleSignIn"
 mkdir -p "$DEST"
-rm -rf "$DEST/GoogleSignIn.xcframework" "$DEST/GTMSessionFetcher.xcframework"
-cp -R "$DIR/GoogleSignIn.xcframework" "$DEST/"
-cp -R "$DIR/GTMSessionFetcher.xcframework" "$DEST/"
+for FW in "${FRAMEWORKS[@]}"; do
+    rm -rf "$DEST/${FW}.xcframework"
+    cp -R "$DIR/${FW}.xcframework" "$DEST/"
+done
 echo -n "$BUILT_VERSION" > "$DEST/.version-metadata"
 
-echo "Successfully built and staged GoogleSignIn $BUILT_VERSION into $DEST"
+echo "Successfully built and staged GoogleSignIn $BUILT_VERSION and dependencies into $DEST"

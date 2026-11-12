@@ -7,10 +7,16 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <UserNotifications/UserNotifications.h>
+#ifdef STATIC_FW
 #import "HelpshiftDelegate.h"
 #import "HelpshiftProactiveAPIConfigCollectorDelegate.h"
 #import "HelpshiftUserLoginFailureReason.h"
-#import <UserNotifications/UserNotifications.h>
+#else
+#import <HelpshiftX/HelpshiftDelegate.h>
+#import <HelpshiftX/HelpshiftProactiveAPIConfigCollectorDelegate.h>
+#import <HelpshiftX/HelpshiftUserLoginFailureReason.h>
+#endif
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -25,6 +31,16 @@ FOUNDATION_EXPORT NSString *const HelpshiftUserEmail;
 
 /// Key to be used for providing user's authentication token in the loginUser: method
 FOUNDATION_EXPORT NSString *const HelpshiftUserAuthToken;
+
+/// Loading screen configuration keys.
+FOUNDATION_EXPORT NSString *const kHsLoadingConfig;
+FOUNDATION_EXPORT NSString *const kHsLoadingThemePortraitImageSource;
+FOUNDATION_EXPORT NSString *const kHsLoadingThemeLandscapeImageSource;
+FOUNDATION_EXPORT NSString *const kHsLoadingThemeBackgroundGradientColors;
+FOUNDATION_EXPORT NSString *const kHsLoadingThemeIconColor;
+FOUNDATION_EXPORT NSString *const kHsLoadingThemeActionColor;
+FOUNDATION_EXPORT NSString *const kHsLoadingThemeImageOverlayColor;
+FOUNDATION_EXPORT NSString *const kHsLoadingThemeImageBlurRadius;
 
 /// Callback invoked on login success when using `loginWithIdentity:` method is used.
 typedef void (^HelpshiftLoginSuccessCallback)(void);

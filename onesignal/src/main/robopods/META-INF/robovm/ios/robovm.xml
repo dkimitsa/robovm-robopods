@@ -6,6 +6,8 @@
         <framework>OneSignalNotifications</framework>
         <framework>OneSignalOutcomes</framework>
         <framework>OneSignalUser</framework>
+        <framework>OneSignalExtension</framework>
+        <framework>OneSignalLiveActivities</framework>
         <framework>CoreGraphics</framework>
         <framework>WebKit</framework>
         <framework>SystemConfiguration</framework>

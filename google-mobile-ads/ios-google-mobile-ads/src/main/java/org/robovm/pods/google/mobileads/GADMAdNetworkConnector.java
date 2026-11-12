@@ -36,9 +36,11 @@ import org.robovm.apple.webkit.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
+/**
+ * @deprecated Use GADMediationAdConfiguration and GADMediationAdEventDelegate instead.
+ */
 /*</javadoc>*/
-/*<annotations>*//*</annotations>*/
+/*<annotations>*/@Deprecated/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ interface /*<name>*/GADMAdNetworkConnector/*</name>*/ 
     /*<implements>*/extends GADMediationAdRequest/*</implements>*/ {
 

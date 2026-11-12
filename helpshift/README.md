@@ -7,6 +7,7 @@ https://developers.helpshift.com
 
 | RoboPods Version | HelpShift Version |
 |------------------|-------------------|
+| 10.6.0.0         | 10.6.0            |
 | 10.5.0.0         | 10.5.0            |
 | 1.54.0           | 10.4.1            |
 | 1.46.0-1.54.0    | 10.4.0            |

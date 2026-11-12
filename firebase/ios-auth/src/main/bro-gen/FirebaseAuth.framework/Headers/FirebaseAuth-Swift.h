@@ -315,7 +315,8 @@ SWIFT_CLASS_NAMED("ActionCodeInfo")
 /// The operation being performed.
 @property (nonatomic, readonly) enum FIRActionCodeOperation operation;
 /// The email address to which the code was sent. The new email address in the case of
-/// <code>ActionCodeOperation.recoverEmail</code>.
+/// <code>ActionCodeOperation.recoverEmail</code>. Empty in the case of <code>ActionCodeOperation.emailLink</code>,
+/// because the server doesn’t return the email address for email sign-in codes.
 @property (nonatomic, readonly, copy) NSString * _Nonnull email;
 /// The email that is being recovered in the case of <code>ActionCodeOperation.recoverEmail</code>.
 @property (nonatomic, readonly, copy) NSString * _Nullable previousEmail;

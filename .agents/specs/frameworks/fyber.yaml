@@ -1,4 +1,7 @@
 name: fyber
 moduleFolder: fyber
-artifactSource: check version(MARKETING_VERSION) in https://raw.githubusercontent.com/inner-active/InneractiveAdSDK-iOS/refs/heads/master/VERSION.xcconfig, download and unpack https://github.com/inner-active/InneractiveAdSDK-iOS/archive/refs/heads/master.zip unpack to InneractiveAdSDK-iOS-master
-downloadLocation: ./.robopods-wip/InneractiveAdSDK-iOS-master/IASDKCore/IASDKCore.xcframework
+artifactSource:
+  - check version(MARKETING_VERSION) in https://raw.githubusercontent.com/inner-active/InneractiveAdSDK-iOS/refs/heads/master/VERSION.xcconfig
+  - download and unpack https://github.com/inner-active/InneractiveAdSDK-iOS/archive/refs/heads/master.zip into a temporary staging folder
+  - move IASDKCore/IASDKCore.xcframework to downloadLocation and remove temporary folder
+downloadLocation: ./.robopods-wip/IASDKCore.xcframework

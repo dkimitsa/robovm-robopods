@@ -34,6 +34,7 @@ enums:
     UADSAdFormat: { }
     UADSLogLevel: { }
     UADSShowFinishState: { }
+    UnityAdsInitModuleError: {}
 classes:
     UADSBannerError:
         skip_def_constructor: true
@@ -280,6 +281,14 @@ protocols:
             '-showDidFail:error:':
                 name: showDidFail
     UnityAdsError: { }
+    UnityAdsInitModuleListener:
+        methods:
+            '-initParamsWithExtraData:':
+                name: initParams
+            '-onSuccessWithConfig:extraData:':
+                name: onSuccess
+            '-onFailureWithReason:errorCode:':
+                name: onFailure
 functions:
     NSStringFromPlacementContentState:
         class: UnityMonetizationPlacementContentState
