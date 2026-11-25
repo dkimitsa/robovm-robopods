@@ -1213,6 +1213,90 @@ SWIFT_PROTOCOL("_TtP8UnityAds13UnityAdsError_")
 @property (nonatomic, readonly, copy) NSString * _Nonnull message;
 @end
 
+/// The failure kinds reported to <code>UnityAdsInitModuleListener/onFailure(reason:errorCode:)</code>.
+typedef SWIFT_ENUM(NSInteger, UnityAdsInitModuleError, open) {
+/// Unity Ads initialization failed before this module’s config could be delivered.
+  UnityAdsInitModuleErrorInitializationFailed = 1,
+/// The initialization response contained no (non-empty) config slice for the module.
+  UnityAdsInitModuleErrorNoConfig = 2,
+/// An unexpected error occurred while delivering this module’s config.
+  UnityAdsInitModuleErrorInternalError = 3,
+};
+
+@class NSData;
+/// A listener that lets a module (e.g. LevelPlay) receive its own configuration slice from the
+/// Unity Ads SDK during initialization.
+/// Implementations are discovered at runtime: a module registers its implementation class with the
+/// <code>UADS_INIT_MODULE(ClassName)</code> macro from <code>UnityAdsInitModule.h</code> and must expose a no-argument
+/// initializer. The listener is self-describing: Unity Ads uses <code>moduleName()</code> to select this
+/// module’s slice from the gateway response and hands it back as opaque bytes. Unity Ads never parses
+/// the slice’s contents; each module parses it with its own schema. The protocol is generic and
+/// reusable across modules; it names no specific module.
+/// The implementing class must derive from <code>NSObject</code>. Conformance to <code>NSObjectProtocol</code> alone is
+/// not enough – an <code>NSProxy</code>-rooted class formally conforms to it too, but discovery instantiates
+/// the class through <code>NSObject</code>’s initializer and will not discover it.
+/// The runtime class name of the implementation is reported to the gateway (<code>class_name</code>) so the
+/// module’s identity can be validated.
+/// Threading: <code>onSuccess(config:extraData:)</code> and <code>onFailure(reason:errorCode:)</code> are delivered
+/// asynchronously on a private background serial queue that Unity Ads owns for this listener, never
+/// on the main thread. Callbacks to the same listener never run concurrently. Dispatch to the main
+/// thread yourself before touching UI or main-thread-only state.
+/// <code>moduleName()</code> and <code>initParams(extraData:)</code> are not serialized by Unity Ads. They are called
+/// synchronously on whichever thread builds an initialization request: a Unity Ads background
+/// thread during initialization, or the caller’s thread for a synchronous <code>UnityAds.getToken()</code>.
+/// They can therefore run concurrently with each other and with <code>onSuccess(config:extraData:)</code> or
+/// <code>onFailure(reason:errorCode:)</code>. Make them thread-safe, e.g. guard any state they share with
+/// the callbacks with a lock.
+/// Callbacks per attempt: each Unity Ads initialization attempt reports to the listener on its own,
+/// and a failed initialization can be retried (by a later <code>UnityAds.initialize</code>, an ad load, or a
+/// token request). A listener can therefore receive more than one callback: <code>onFailure(reason:errorCode:)</code>
+/// can be followed by another <code>onFailure(reason:errorCode:)</code> or by <code>onSuccess(config:extraData:)</code>.
+/// A module that needs a single outcome per request of its own must ignore the callbacks it no
+/// longer waits for.
+SWIFT_PROTOCOL("_TtP8UnityAds26UnityAdsInitModuleListener_")
+@protocol UnityAdsInitModuleListener <NSObject>
+/// The name of the module this listener belongs to (e.g. <code>"LevelPlay"</code>).
+/// Unity Ads matches this, ignoring case, against the module names in the initialization
+/// response to select the config slice to deliver. It must match the name the gateway emits for
+/// this module.
+///
+/// returns:
+/// The module name used to select this module’s config slice.
+- (NSString * _Nonnull)moduleName SWIFT_WARN_UNUSED_RESULT;
+/// The module’s own initialization parameters, fetched by Unity Ads while building the gateway
+/// initialization request and sent up in the request’s <code>module_init_params</code> field together with
+/// <code>moduleName()</code>. The bytes are opaque to Unity Ads; the module and the gateway agree on their
+/// encoding (e.g. a serialized proto).
+/// Can be called more than once and from more than one thread at a time (see the threading notes
+/// on <code>UnityAdsInitModuleListener</code>).
+/// Called synchronously while the initialization request is being built: a slow implementation
+/// directly delays Unity Ads initialization (bounded by the overall init timeout), so return
+/// quickly and never block on network or long I/O.
+/// \param extraData Runtime extras from Unity Ads.
+///
+///
+/// returns:
+/// The module’s init parameters, or <code>nil</code> when the module has nothing to send (e.g.
+/// it has not started an initialization of its own).
+- (NSData * _Nullable)initParamsWithExtraData:(NSDictionary<NSString *, id> * _Nonnull)extraData SWIFT_METHOD_FAMILY(none) SWIFT_WARN_UNUSED_RESULT;
+/// Called when Unity Ads has delivered this module’s config slice.
+/// \param config This module’s config slice as opaque bytes. Unity Ads does not parse it; the
+/// module is responsible for parsing it with its own schema.
+///
+/// \param extraData Runtime extras from initialization. Contains <code>"sessionId"</code> (<code>String</code>) and
+/// <code>"sessionToken"</code> (<code>Data</code>).
+///
+- (void)onSuccessWithConfig:(NSData * _Nonnull)config extraData:(NSDictionary<NSString *, id> * _Nonnull)extraData;
+/// Called when this module’s config could not be delivered. This includes the case where no
+/// config slice was found for <code>moduleName()</code>, as well as an early or top-level Unity Ads
+/// initialization failure.
+/// \param reason A human-readable description of the failure.
+///
+/// \param errorCode One of the <code>UnityAdsInitModuleError</code> raw values identifying the failure kind.
+///
+- (void)onFailureWithReason:(NSString * _Nonnull)reason errorCode:(NSInteger)errorCode;
+@end
+
 SWIFT_CLASS("_TtC8UnityAds26UnityAdsTokenConfiguration") SWIFT_DEPRECATED_MSG("Use UADSTokenConfiguration instead.")
 @interface UnityAdsTokenConfiguration : NSObject
 - (nonnull instancetype)initWithAdFormat:(enum UnityAdsAdFormat)adFormat extras:(NSDictionary<NSString *, NSString *> * _Nonnull)extras OBJC_DESIGNATED_INITIALIZER;

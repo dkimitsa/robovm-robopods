@@ -116,6 +116,13 @@ values:
         type: NSString
         name: 'user#{g[0]}'
 
+    # Loading screen configuration keys
+    kHsLoading(.*):
+        class: Helpshift
+        static_class: LoadingConfigKeys
+        type: NSString
+        name: 'loading#{g[0]}'
+
     HelpshiftXVersionNumber:
         exclude: true
 
@@ -125,6 +132,8 @@ values:
         name: 'Value_#{g[0]}'
 
 constants:
+    SWIFT_.*:
+        exclude: true
 
     # Make sure we don't miss any constants if new ones are introduced in a later version
     (.*):

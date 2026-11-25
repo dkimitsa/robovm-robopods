@@ -1,5 +1,6 @@
 Pods/
 build/
+build-*/
 *.xcframework
 *.xcworkspace
 Podfile.lock

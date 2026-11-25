@@ -10,18 +10,24 @@ Upstream repository: https://github.com/google/GoogleSignIn-iOS
 | 9.2.0.0          | 9.2.0          |
 | 9.1.0.0          | 9.1.0          |
 
-### Frameworks required for this pod: 
-* AppAuth.xcframework
-* AppCheckCore.xcframework
-* GTMAppAuth.xcframework
-* GTMSessionFetcher.xcframework
-* FBLPromises.xcframework
-* GoogleUtilities.xcframework
-* GoogleSignIn.xcframework
+### Frameworks required for this pod:
 
-### to use this pod configure your `robovm.xml`
+#### 1. Picked from CocoaPods (`GoogleSignIn-iOS` repository):
+* `GoogleSignIn.xcframework`
+* `AppAuth.xcframework`
+* `GTMAppAuth.xcframework`
+* `Promises.xcframework`
 
-```
+#### 2. Available in Firebase package:
+* `FBLPromises.xcframework` (from `FirebaseAnalytics`)
+* `GoogleUtilities.xcframework` (from `FirebaseAnalytics`)
+* `GTMSessionFetcher.xcframework` (from `FirebaseAuth` or `FirebaseStorage`)
+* `AppCheckCore.xcframework` (from `FirebaseAppCheck`)
+* `RecaptchaInterop.xcframework` (from `FirebaseAuth` or `FirebaseAppCheck`)
+
+### To use this pod configure your `robovm.xml`
+
+```xml
 <config>
     ...
     <frameworkPaths>
@@ -34,7 +40,7 @@ Upstream repository: https://github.com/google/GoogleSignIn-iOS
 
 Add the following dependency to your `build.gradle`:
 
-```
+```groovy
 repositories {
     maven { url 'https://central.sonatype.com/repository/maven-snapshots/' }
 }

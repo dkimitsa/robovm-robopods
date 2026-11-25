@@ -36,9 +36,11 @@ import org.robovm.apple.webkit.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
+/**
+ * @deprecated Use GADMediationAdapter instead.
+ */
 /*</javadoc>*/
-/*<annotations>*//*</annotations>*/
+/*<annotations>*/@Deprecated/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ interface /*<name>*/GADMAdNetworkAdapter/*</name>*/ 
     /*<implements>*/extends NSObjectProtocol/*</implements>*/ {
 

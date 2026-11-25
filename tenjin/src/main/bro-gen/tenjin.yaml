@@ -196,6 +196,7 @@ classes:
             '+extractPropertiesFromProduct:to:':
                 name: extractProperties
     FirebaseAnalyticsManager: {}
+    MetaAnonymousIdManager: {}
 protocols:
     TJNRequestSender:
         methods:

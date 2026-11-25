@@ -30,4 +30,7 @@ unzip ~/Downloads/OneSignalOutcomes.xcframework.zip -d ~/Downloads
 curl --output-dir ~/Downloads -L -O $BASE_URL/OneSignalUser.xcframework.zip
 unzip ~/Downloads/OneSignalUser.xcframework.zip -d ~/Downloads
 
+curl --output-dir ~/Downloads -L -O $BASE_URL/OneSignalLiveActivities.xcframework.zip
+unzip ~/Downloads/OneSignalLiveActivities.xcframework.zip -d ~/Downloads
+
 echo -n "$VERSION" > ~/Downloads/OneSignalFramework.xcframework/version

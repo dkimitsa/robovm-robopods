@@ -1,6 +1,6 @@
 install! 'cocoapods', integrate_targets: false
 platform :ios, '15.0'
-use_frameworks!
+use_frameworks! :linkage => :static
 
 target 'pods' do
   if ENV['VERSION'] && !ENV['VERSION'].empty?

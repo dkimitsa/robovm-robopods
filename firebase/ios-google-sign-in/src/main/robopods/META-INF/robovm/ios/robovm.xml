@@ -7,5 +7,7 @@
         <framework>FBLPromises</framework>
         <framework>GoogleUtilities</framework>
         <framework>GoogleSignIn</framework>
+        <framework>Promises</framework>
+        <framework>RecaptchaInterop</framework>
     </frameworks>
 </config>

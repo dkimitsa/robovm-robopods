@@ -14,6 +14,7 @@
 #define GADMAdapterClassNamePrefix @"GADMAdapter"
 
 /// Ad network adapter protocol.
+GAD_DEPRECATED_MSG_ATTRIBUTE("Use GADMediationAdapter instead.")
 NS_SWIFT_NAME(MediationAdNetworkAdapter)
 @protocol GADMAdNetworkAdapter <NSObject>
 

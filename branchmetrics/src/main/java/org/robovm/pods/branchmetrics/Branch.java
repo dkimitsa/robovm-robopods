@@ -431,6 +431,10 @@ import org.robovm.apple.intents.*;
     public static native void setDMAParamsForEEA(boolean eeaRegion, boolean adPersonalizationConsent, boolean adUserDataUsageConsent);
     @Method(selector = "setODMInfo:andFirstOpenTimestamp:")
     public static native void setODMInfo(String odmInfo, NSDate firstOpenTimestamp);
+    /**
+     * @deprecated The value is ignored. Link the Facebook SDK so Branch can read the Meta Anon ID automatically.
+     */
+    @Deprecated
     @Method(selector = "setAnonID:")
     public static native void setAnonID(String anonID);
     /*</methods>*/

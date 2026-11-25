@@ -20,3 +20,4 @@ When the user asks to update or process frameworks (or mentions `@bulk-update`, 
 1. Follow `.agents/skills/agent-invocation-rules/SKILL.md` for all shell execution, paths, and fail-fast handling.
 2. If any subagent returns an error or exception: report the raw error and STOP immediately. Do NOT attempt unguided recovery.
 3. Subagents are black boxes: invoke them using `invoke_subagent` and react only to their returned text / status tokens (`UP_TO_DATE`, `STAGED`, `DOWNLOADED`, `REBIND-REQUIRED`, `[DELEGATION COMPLETE]`).
+4. When adding, configuring, or running smoke tests in `alt-pods-tests`, follow `.agents/skills/alt-pods-smoke-tests/SKILL.md`.

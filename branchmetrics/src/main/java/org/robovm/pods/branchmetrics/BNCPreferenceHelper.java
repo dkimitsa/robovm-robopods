@@ -75,8 +75,16 @@ import org.robovm.apple.intents.*;
     public native String getRandomizedBundleToken();
     @Property(selector = "setRandomizedBundleToken:")
     public native void setRandomizedBundleToken(String v);
+    /**
+     * @deprecated Returns the Meta anon ID the SDK sends. Setting it has no effect.
+     */
+    @Deprecated
     @Property(selector = "anonID")
     public native String getAnonID();
+    /**
+     * @deprecated Returns the Meta anon ID the SDK sends. Setting it has no effect.
+     */
+    @Deprecated
     @Property(selector = "setAnonID:")
     public native void setAnonID(String v);
     @Property(selector = "sessionID")

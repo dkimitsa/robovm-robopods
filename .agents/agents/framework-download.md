@@ -45,12 +45,16 @@ If `--check-for-update` was NOT passed, skip to Phase 3.
 ## Phase 3: Local cache check
 1. Locate the `downloadLocation` from the spec. If the directory does not exist, continue to Phase 4.
 2. If it exists, view `<downloadLocation>/.version-metadata` using `view_file`.
-3. If the metadata matches `<upstream_version>`: nothing to do — report `STAGED` and stop.
+3. If the metadata matches `<upstream_version>`:
+   - Verify no `Info.plist` inside `<downloadLocation>` has a `CFBundleShortVersionString` containing pre-release markers (`alpha`, `beta`, `rc`, `pre`, `preview`, `snapshot`, `dev`, `-m`, etc.) — e.g. check `CFBundleShortVersionString` via `PlistBuddy` or `plutil` if a `.framework/Info.plist` is present.
+   - If a pre-release marker is found in the cached binary, treat the cache as poisoned: remove `<downloadLocation>` and continue to Phase 4.
+   - Otherwise, nothing to do — report `STAGED` and stop.
 
 ## Phase 4: Download & stage
 1. Translate the remaining download and extraction instructions in `artifactSource` into exact shell commands.
 2. Execute directory creation, download, and unzip step by step with `run_command`.
 3. Verify the resulting `.xcframework` or `.framework` exists at the exact `downloadLocation` path. If not, report the error and stop.
+4. If the staged bundle contains a `.framework/Info.plist`, verify its `CFBundleShortVersionString` does NOT contain pre-release markers (`alpha`, `beta`, `rc`, `pre`, `preview`, `snapshot`, `dev`, `-m`, etc.). If it does, remove `<downloadLocation>`, report the raw error (pre-release binary detected), and stop.
 
 ## Phase 5: Local metadata
 1. Write `<upstream_version>` to `<downloadLocation>/.version-metadata` with `run_command`:

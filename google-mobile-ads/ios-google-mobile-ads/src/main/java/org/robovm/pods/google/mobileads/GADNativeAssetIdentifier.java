@@ -103,9 +103,10 @@ import org.robovm.apple.webkit.*;
     public static final GADNativeAssetIdentifier AdvertiserAsset = new GADNativeAssetIdentifier("AdvertiserAsset");
     public static final GADNativeAssetIdentifier MediaViewAsset = new GADNativeAssetIdentifier("MediaViewAsset");
     public static final GADNativeAssetIdentifier AdChoicesViewAsset = new GADNativeAssetIdentifier("AdChoicesViewAsset");
+    public static final GADNativeAssetIdentifier CreativeSummaryAsset = new GADNativeAssetIdentifier("CreativeSummaryAsset");
     /*</constants>*/
     
-    private static /*<name>*/GADNativeAssetIdentifier/*</name>*/[] values = new /*<name>*/GADNativeAssetIdentifier/*</name>*/[] {/*<value_list>*/HeadlineAsset, CallToActionAsset, IconAsset, BodyAsset, StoreAsset, PriceAsset, ImageAsset, StarRatingAsset, AdvertiserAsset, MediaViewAsset, AdChoicesViewAsset/*</value_list>*/};
+    private static /*<name>*/GADNativeAssetIdentifier/*</name>*/[] values = new /*<name>*/GADNativeAssetIdentifier/*</name>*/[] {/*<value_list>*/HeadlineAsset, CallToActionAsset, IconAsset, BodyAsset, StoreAsset, PriceAsset, ImageAsset, StarRatingAsset, AdvertiserAsset, MediaViewAsset, AdChoicesViewAsset, CreativeSummaryAsset/*</value_list>*/};
     
     /*<name>*/GADNativeAssetIdentifier/*</name>*/ (String getterName) {
         super(Values.class, getterName);
@@ -150,6 +151,8 @@ import org.robovm.apple.webkit.*;
         public static native NSString MediaViewAsset();
         @GlobalValue(symbol="GADNativeAdChoicesViewAsset", optional=true)
         public static native NSString AdChoicesViewAsset();
+        @GlobalValue(symbol="GADNativeCreativeSummaryAsset", optional=true)
+        public static native NSString CreativeSummaryAsset();
         /*</values>*/
     }
 }

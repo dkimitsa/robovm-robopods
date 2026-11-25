@@ -50,6 +50,9 @@ NS_SWIFT_NAME(NativeAd)
 @property(nonatomic, readonly, copy, nullable) NSString *price;
 /// Identifies the advertiser. For example, the advertiser’s name or visible URL.
 @property(nonatomic, readonly, copy, nullable) NSString *advertiser;
+/// Summary of the ad creative.
+
+@property(nonatomic, readonly, copy, nullable) NSString *creativeSummary;
 /// Media content. Set the associated media view's mediaContent property to this object to display
 /// this content.
 @property(nonatomic, readonly, nonnull) GADMediaContent *mediaContent;
@@ -135,6 +138,8 @@ NS_SWIFT_NAME(NativeAdView)
 @property(nonatomic, weak, nullable) IBOutlet UIView *starRatingView;
 /// Weak reference to your ad view's advertiser asset view.
 @property(nonatomic, weak, nullable) IBOutlet UIView *advertiserView;
+/// Weak reference to your ad view's creative summary asset view.
+@property(nonatomic, weak, nullable) IBOutlet UIView *creativeSummaryView;
 /// Weak reference to your ad view's media asset view.
 @property(nonatomic, weak, nullable) IBOutlet GADMediaView *mediaView;
 /// Weak reference to your ad view's AdChoices view. Must set adChoicesView before setting

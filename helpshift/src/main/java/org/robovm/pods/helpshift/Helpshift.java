@@ -61,6 +61,28 @@ import org.robovm.apple.usernotifications.*;
     /*<members>*//*</members>*/
     /*<methods>*/
     @Library(Library.INTERNAL)
+    public static class LoadingConfigKeys {
+        static { Bro.bind(LoadingConfigKeys.class); }
+
+        @GlobalValue(symbol="kHsLoadingConfig", optional=true)
+        public static native NSString loadingConfig();
+        @GlobalValue(symbol="kHsLoadingThemePortraitImageSource", optional=true)
+        public static native NSString loadingThemePortraitImageSource();
+        @GlobalValue(symbol="kHsLoadingThemeLandscapeImageSource", optional=true)
+        public static native NSString loadingThemeLandscapeImageSource();
+        @GlobalValue(symbol="kHsLoadingThemeBackgroundGradientColors", optional=true)
+        public static native NSString loadingThemeBackgroundGradientColors();
+        @GlobalValue(symbol="kHsLoadingThemeIconColor", optional=true)
+        public static native NSString loadingThemeIconColor();
+        @GlobalValue(symbol="kHsLoadingThemeActionColor", optional=true)
+        public static native NSString loadingThemeActionColor();
+        @GlobalValue(symbol="kHsLoadingThemeImageOverlayColor", optional=true)
+        public static native NSString loadingThemeImageOverlayColor();
+        @GlobalValue(symbol="kHsLoadingThemeImageBlurRadius", optional=true)
+        public static native NSString loadingThemeImageBlurRadius();
+    }
+
+    @Library(Library.INTERNAL)
     public static class LoginFailureReasons {
         static { Bro.bind(LoginFailureReasons.class); }
 
